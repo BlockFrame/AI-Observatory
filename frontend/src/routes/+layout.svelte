@@ -37,21 +37,6 @@
 				</a>
 			</nav>
 			
-			<div class="mt-auto pt-6 border-t border-outline-variant/10">
-				<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-caps text-label-caps hover:brightness-110 transition-all shadow-lg shadow-primary/20 mb-4" type="button">
-					Deploy Agent
-				</button>
-				<div class="space-y-1">
-					<button class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface text-sm w-full" type="button">
-						<span class="material-symbols-outlined text-sm">menu_book</span>
-						<span class="font-label-caps text-[12px]">Docs</span>
-					</button>
-					<button class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface text-sm w-full" type="button">
-						<span class="material-symbols-outlined text-sm">logout</span>
-						<span class="font-label-caps text-[12px]">Logout</span>
-					</button>
-				</div>
-			</div>
 		</div>
 	</aside>
 
@@ -65,10 +50,6 @@
 				</div>
 			</div>
 			<div class="flex items-center gap-4">
-				<button class="bg-surface-container-high hover:bg-surface-container-highest px-4 py-2 rounded-lg text-primary text-sm font-semibold flex items-center gap-2 border border-primary/20" type="button">
-					<span class="material-symbols-outlined text-sm">terminal</span>
-					Execute Prompt
-				</button>
 				<div class="flex items-center gap-2">
 					<button class="p-2 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined">notifications</span></button>
 					<button class="p-2 hover:text-primary transition-colors" type="button"><span class="material-symbols-outlined">help_outline</span></button>
@@ -82,10 +63,6 @@
 		<slot />
 	</main>
 
-	<!-- FAB -->
-	<button class="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-2xl shadow-primary/40 hover:scale-110 transition-transform z-40" type="button">
-		<span class="material-symbols-outlined text-3xl">psychiatry</span>
-	</button>
 </div>
 
 <svelte:head>

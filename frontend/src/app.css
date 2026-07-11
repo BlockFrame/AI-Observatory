@@ -55,6 +55,16 @@
 	.nav-link {
 		@apply transition-all duration-300;
 	}
+
+	/* Hero section button styles */
+	button.bg-primary {
+		transition: all 0.3s ease;
+	}
+
+	button.bg-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(192, 193, 255, 0.4);
+	}
 }
 
 @layer utilities {

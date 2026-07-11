@@ -295,8 +295,55 @@
 		{/if}
 	{:else if summary}
 		<!-- Overview View -->
-		<!-- Hero Section -->
-		<section class="mb-8">
+		<!-- Custom Hero Section with Logo -->
+		<section class="relative h-[500px] rounded-xl overflow-hidden mb-gutter group">
+			<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-surface-container to-background"></div>
+			<div class="absolute inset-0 flex flex-col justify-end p-10">
+				<!-- Live Indicator -->
+				<div class="flex items-center gap-2 mb-4">
+					<span class="flex h-3 w-3 rounded-full bg-secondary pulse-live"></span>
+					<span class="font-label-caps text-label-caps text-secondary">LIVE INTELLIGENCE STREAM</span>
+				</div>
+				
+				<!-- Title with Logo -->
+				<div class="flex items-center gap-4 mb-4">
+					<img src="/assets/logo.png" alt="AI Observatory" class="w-12 h-12 rounded-lg" />
+					<div>
+						<h1 class="font-headline-xl text-headline-xl text-on-background leading-tight">AI Observatory</h1>
+						<p class="font-body-sm text-body-sm text-on-surface-variant">Live Intelligence Feed</p>
+					</div>
+				</div>
+				
+				<!-- Description -->
+				<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-8">
+					Powered by Claude Opus 3.5. Real-time synthesized monitoring of {summary.total_items_analyzed} global neural developments, research breakthroughs, and social velocity metrics.
+				</p>
+				
+				<!-- Action Buttons -->
+				<div class="flex gap-4">
+					<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-semibold shadow-xl shadow-primary/30 flex items-center gap-2 hover:brightness-110 transition-all">
+						<span class="material-symbols-outlined">monitoring</span>
+						View Live Matrix
+					</button>
+					<button class="glass-panel text-on-surface px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+						Executive Summary
+					</button>
+				</div>
+			</div>
+
+			<!-- Ticker -->
+			<div class="absolute bottom-0 w-full bg-surface-container-lowest/80 backdrop-blur-sm border-t border-white/5 py-2 overflow-hidden">
+				<div class="ticker-scroll whitespace-nowrap flex items-center gap-10">
+					<span class="font-data-mono text-data-mono text-tertiary">GPT-4.5 LAUNCH CONFIRMED +++ </span>
+					<span class="font-data-mono text-data-mono text-electric-blue">CLAUDE OPUS LEADERS: 98.2% TASK SUCCESS +++ </span>
+					<span class="font-data-mono text-data-mono text-secondary">OPEN SOURCE MOMENTUM: 2.7T PARAMETER MODELS +++ </span>
+					<span class="font-data-mono text-data-mono text-tertiary">MULTIMODAL BREAKTHROUGHS: 92% ACCURACY +++ </span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Original Hero Section (can be hidden/modified) -->
+		<section class="mb-8 hidden">
 			<HeroSection
 				date={summary.date}
 				coverageDate={summary.coverage_date}

@@ -84,12 +84,16 @@ export default {
 		fontSize: {
 			// Display
 			'display-hero': ['84px', { lineHeight: '90%', letterSpacing: '-0.04em', fontWeight: '800' }],
+			'headline-xl': ['32px', { lineHeight: '120%', letterSpacing: '-0.015em', fontWeight: '700' }],
 			'headline-lg': ['48px', { lineHeight: '110%', letterSpacing: '-0.02em', fontWeight: '700' }],
 			'headline-lg-mobile': ['32px', { lineHeight: '110%', fontWeight: '700' }],
 			'headline-md': ['32px', { lineHeight: '120%', fontWeight: '600' }],
 			'body-lg': ['18px', { lineHeight: '160%', fontWeight: '400' }],
 			'body-md': ['16px', { lineHeight: '160%', fontWeight: '400' }],
+			'body-sm': ['14px', { lineHeight: '150%', fontWeight: '400' }],
+			'label-caps': ['14px', { lineHeight: '140%', letterSpacing: '0.1em', fontWeight: '600' }],
 			'label-mono': ['14px', { lineHeight: '140%', letterSpacing: '0.1em', fontWeight: '500' }],
+			'data-mono': ['12px', { lineHeight: '140%', letterSpacing: '0.05em', fontWeight: '500', fontFamily: 'JetBrains Mono' }],
 			'caption': ['12px', { lineHeight: '140%', letterSpacing: '0.05em', fontWeight: '500' }]
 		},
 		spacing: {
