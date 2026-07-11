@@ -4,76 +4,86 @@ export default {
 	darkMode: 'class',
 	theme: {
 		colors: {
-			// Cybernetic Blueprint - Dark Base
+			// Synthetic Intelligence Observatory palette
 			transparent: 'transparent',
 			black: '#000000',
 			white: '#ffffff',
 
-			// Surface Palette
-			'surface': '#131313',
-			'surface-dim': '#131313',
-			'surface-bright': '#3a3939',
-			'surface-container-lowest': '#0e0e0e',
-			'surface-container-low': '#1c1b1b',
-			'surface-container': '#201f1f',
-			'surface-container-high': '#2a2a2a',
-			'surface-container-highest': '#353534',
-			'on-surface': '#e5e2e1',
-			'on-surface-variant': '#b9cac3',
-			'inverse-surface': '#e5e2e1',
-			'inverse-on-surface': '#313030',
-			'outline': '#83948e',
-			'outline-variant': '#3a4a45',
-			'surface-tint': '#00e0bb',
-			'surface-variant': '#353534',
+			// Surfaces
+			'surface': '#0c1322',
+			'surface-dim': '#0c1322',
+			'surface-bright': '#323949',
+			'surface-container-lowest': '#070e1d',
+			'surface-container-low': '#141b2b',
+			'surface-container': '#191f2f',
+			'surface-container-high': '#232a3a',
+			'surface-container-highest': '#2e3545',
+			'on-surface': '#dce2f7',
+			'on-surface-variant': '#c7c4d7',
+			'inverse-surface': '#dce2f7',
+			'inverse-on-surface': '#293040',
+			'outline': '#908fa0',
+			'outline-variant': '#464554',
+			'surface-tint': '#c0c1ff',
+			'surface-variant': '#2e3545',
 
-			// Primary (Neon Cyan)
-			'primary': '#ffffff',
-			'on-primary': '#00382d',
-			'primary-container': '#00ffd5',
-			'on-primary-container': '#00725e',
-			'inverse-primary': '#006b58',
-			'primary-fixed': '#00ffd5',
-			'primary-fixed-dim': '#00e0bb',
-			'on-primary-fixed': '#002019',
-			'on-primary-fixed-variant': '#005142',
+			// Brand
+			'primary': '#c0c1ff',
+			'on-primary': '#1000a9',
+			'primary-container': '#8083ff',
+			'on-primary-container': '#0d0096',
+			'inverse-primary': '#494bd6',
+			'primary-fixed': '#e1e0ff',
+			'primary-fixed-dim': '#c0c1ff',
+			'on-primary-fixed': '#07006c',
+			'on-primary-fixed-variant': '#2f2ebe',
 
-			// Secondary (Electric Lime)
-			'secondary': '#ffffff',
-			'on-secondary': '#283500',
-			'secondary-container': '#c3f400',
-			'on-secondary-container': '#556d00',
-			'secondary-fixed': '#c3f400',
-			'secondary-fixed-dim': '#abd600',
-			'on-secondary-fixed': '#161e00',
-			'on-secondary-fixed-variant': '#3c4d00',
+			'secondary': '#ffb3ad',
+			'on-secondary': '#68000a',
+			'secondary-container': '#a40217',
+			'on-secondary-container': '#ffaea8',
+			'secondary-fixed': '#ffdad7',
+			'secondary-fixed-dim': '#ffb3ad',
+			'on-secondary-fixed': '#410004',
+			'on-secondary-fixed-variant': '#930013',
 
-			// Tertiary
-			'tertiary': '#ffffff',
-			'on-tertiary': '#313030',
-			'tertiary-container': '#e5e2e1',
-			'on-tertiary-container': '#656464',
-			'tertiary-fixed': '#e5e2e1',
-			'tertiary-fixed-dim': '#c8c6c5',
-			'on-tertiary-fixed': '#1c1b1b',
-			'on-tertiary-fixed-variant': '#474746',
+			'tertiary': '#4edea3',
+			'on-tertiary': '#003824',
+			'tertiary-container': '#00885d',
+			'on-tertiary-container': '#000703',
+			'tertiary-fixed': '#6ffbbe',
+			'tertiary-fixed-dim': '#4edea3',
+			'on-tertiary-fixed': '#002113',
+			'on-tertiary-fixed-variant': '#005236',
 
-			// Error
+			// Semantic
 			'error': '#ffb4ab',
 			'on-error': '#690005',
 			'error-container': '#93000a',
 			'on-error-container': '#ffdad6',
 
 			// Background
-			'background': '#131313',
-			'on-background': '#e5e2e1',
+			'background': '#0c1322',
+			'on-background': '#dce2f7',
 
-			// Brand-specific
-			'neon-cyan': '#00ffd5',
-			'electric-lime': '#ccff00',
-			'wireframe-gray': '#333333',
-			'surface-black': '#050505',
-			'ghost-white': '#f5f5f5'
+			// Accent
+			'electric-blue': '#60A5FA',
+
+			// Legacy aliases used in components
+			'trend-red': '#c0c1ff',
+			'guardian-red': '#8083ff',
+			'trend-dark': '#0c1322',
+			'trend-gray-50': '#070e1d',
+			'trend-gray-100': '#141b2b',
+			'trend-gray-200': '#191f2f',
+			'trend-gray-300': '#232a3a',
+			'trend-gray-400': '#2e3545',
+			'trend-gray-500': '#908fa0',
+			'trend-gray-600': '#a9a8ba',
+			'trend-gray-700': '#c7c4d7',
+			'trend-gray-800': '#dce2f7',
+			'trend-gray-900': '#e8ecff',
+			'category-social': '#4edea3'
 		},
 		fontFamily: {
 			// Hanken Grotesk for main typography

@@ -39,6 +39,57 @@
 		@apply backdrop-blur-xl border border-outline-variant/20;
 	}
 
+	.card {
+		background: rgba(31, 41, 55, 0.6);
+		@apply rounded-lg border border-white/10 backdrop-blur-xl p-6 text-on-surface;
+	}
+
+	.card-importance-high {
+		@apply border-secondary/70 shadow-[0_0_18px_rgba(255,179,173,0.22)];
+	}
+
+	.card-importance-medium {
+		@apply border-primary/40;
+	}
+
+	.card-importance-standard {
+		@apply border-white/15;
+	}
+
+	.card-importance-low {
+		@apply border-outline-variant/60;
+	}
+
+	.btn-primary {
+		@apply inline-flex items-center rounded-md bg-primary px-4 py-2 font-semibold text-on-primary transition-all hover:brightness-110;
+	}
+
+	.prose,
+	.prose-summary {
+		@apply text-on-surface-variant;
+	}
+
+	.prose p,
+	.prose-summary p {
+		@apply text-on-surface-variant;
+	}
+
+	.prose a,
+	.prose-summary a {
+		@apply text-primary-fixed-dim underline;
+	}
+
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose-summary h1,
+	.prose-summary h2,
+	.prose-summary h3,
+	.prose-summary h4 {
+		@apply text-on-surface;
+	}
+
 	.neon-border-primary:hover {
 		@apply border-primary/80;
 		box-shadow: 0 0 15px rgba(192, 193, 255, 0.3);

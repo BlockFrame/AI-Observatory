@@ -30,7 +30,7 @@
 	<title>Archive | AI News Daily</title>
 </svelte:head>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">
 		News Archive
 	</h1>
@@ -99,3 +99,4 @@
 		</div>
 	{/if}
 </div>
+

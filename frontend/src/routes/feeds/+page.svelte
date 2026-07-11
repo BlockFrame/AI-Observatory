@@ -91,7 +91,7 @@
 	<title>RSS Feeds | AI News Daily</title>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-4xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-2">
 		RSS Feeds
 	</h1>
@@ -274,3 +274,4 @@
 		</p>
 	</div>
 </div>
+

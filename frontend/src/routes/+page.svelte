@@ -184,7 +184,7 @@
 	{/if}
 </svelte:head>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	{#if categoryParam && config}
 		<!-- Category View Header -->
 		<div
