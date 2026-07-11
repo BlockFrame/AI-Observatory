@@ -99,6 +99,14 @@
 		animation: ticker 30s linear infinite;
 	}
 
+	.hero-brand-rail {
+		animation: hero-rail 24s linear infinite;
+	}
+
+	.hero-brand-pill {
+		@apply rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-medium tracking-[0.08em] text-on-surface-variant;
+	}
+
 	.pulse-live {
 		animation: pulse-red 2s infinite;
 	}
@@ -126,6 +134,11 @@
 	@keyframes ticker {
 		0% { transform: translateX(100%); }
 		100% { transform: translateX(-100%); }
+	}
+
+	@keyframes hero-rail {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(-50%); }
 	}
 
 	@keyframes pulse-red {

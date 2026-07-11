@@ -178,9 +178,9 @@
 
 <svelte:head>
 	{#if categoryParam && config}
-		<title>{config.title} - {effectiveDate || 'Latest'} | AATF AI News Aggregator</title>
+		<title>{config.title} - {effectiveDate || 'Latest'} | AI Observatory</title>
 	{:else}
-		<title>AATF AI News Aggregator</title>
+		<title>AI Observatory</title>
 	{/if}
 </svelte:head>
 
@@ -296,8 +296,16 @@
 	{:else if summary}
 		<!-- Overview View -->
 		<!-- Custom Hero Section with Logo -->
-		<section class="relative h-[500px] rounded-xl overflow-hidden mb-gutter group">
-			<div class="absolute inset-0 bg-gradient-to-br from-primary/10 via-surface-container to-background"></div>
+		<section class="relative h-[500px] rounded-xl overflow-hidden mb-gutter group border border-white/10">
+			<video
+				autoplay
+				muted
+				loop
+				playsinline
+				class="absolute inset-0 h-full w-full object-cover opacity-25"
+				src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
+			></video>
+			<div class="absolute inset-0 bg-gradient-to-br from-background/70 via-surface-container/60 to-background/90"></div>
 			<div class="absolute inset-0 flex flex-col justify-end p-10">
 				<!-- Live Indicator -->
 				<div class="flex items-center gap-2 mb-4">
@@ -320,7 +328,7 @@
 				</p>
 				
 				<!-- Action Buttons -->
-				<div class="flex gap-4">
+				<div class="flex gap-4 mb-6">
 					<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-semibold shadow-xl shadow-primary/30 flex items-center gap-2 hover:brightness-110 transition-all">
 						<span class="material-symbols-outlined">monitoring</span>
 						View Live Matrix
@@ -328,6 +336,24 @@
 					<button class="glass-panel text-on-surface px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
 						Executive Summary
 					</button>
+				</div>
+
+				<!-- Motion Brand Rail -->
+				<div class="relative overflow-hidden rounded-md border border-white/10 bg-background/50 py-2">
+					<div class="hero-brand-rail flex w-max items-center gap-8 px-4">
+						<span class="hero-brand-pill">NVIDIA</span>
+						<span class="hero-brand-pill">OPENAI</span>
+						<span class="hero-brand-pill">GITHUB</span>
+						<span class="hero-brand-pill">ANTHROPIC</span>
+						<span class="hero-brand-pill">MICROSOFT</span>
+						<span class="hero-brand-pill">META AI</span>
+						<span class="hero-brand-pill">NVIDIA</span>
+						<span class="hero-brand-pill">OPENAI</span>
+						<span class="hero-brand-pill">GITHUB</span>
+						<span class="hero-brand-pill">ANTHROPIC</span>
+						<span class="hero-brand-pill">MICROSOFT</span>
+						<span class="hero-brand-pill">META AI</span>
+					</div>
 				</div>
 			</div>
 

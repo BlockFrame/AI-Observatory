@@ -88,7 +88,7 @@
 </script>
 
 <svelte:head>
-	<title>RSS Feeds | AI News Daily</title>
+	<title>RSS Feeds | AI Observatory</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-6 lg:px-10 py-8">
@@ -274,4 +274,3 @@
 		</p>
 	</div>
 </div>
-

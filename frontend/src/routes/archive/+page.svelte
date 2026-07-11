@@ -27,7 +27,7 @@
 </script>
 
 <svelte:head>
-	<title>Archive | AI News Daily</title>
+	<title>Archive | AI Observatory</title>
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
@@ -99,4 +99,3 @@
 		</div>
 	{/if}
 </div>
-

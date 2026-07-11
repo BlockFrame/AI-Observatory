@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>About | AI News Daily</title>
+	<title>About | AI Observatory</title>
 </svelte:head>
 
 <div class="max-w-4xl mx-auto px-6 lg:px-10 py-8">
@@ -154,4 +154,3 @@
 		</div>
 	</section>
 </div>
-
