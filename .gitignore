@@ -1,0 +1,75 @@
+# Environment variables
+.env
+.env.backup*
+!.env.example
+
+# Provider configuration (contains API keys)
+config/providers.yaml
+
+# Test scripts (local development only)
+test_*.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+/lib/
+/lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Data and generated files (top-level only)
+/data/
+/logs/
+
+# Claude Code
+.claude/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Docker volumes
+volumes/
+
+# Frontend build artifacts (built during Docker build)
+web/_app/
+frontend/.svelte-kit/
+.data-backup/
+
+# SSH Keys
+*.pem
+webhook/hooks.json
+README-internal.md
+# Real deploy signing allow-list (host-only; deploy/allowed_signers.example is the template)
+deploy/allowed_signers
+
+# Legacy Lunr search outputs (replaced by web/data/search-corpus.json; never re-track)
+web/data/search-index.json
+web/data/search-documents.json
+web/data/search-simple.json

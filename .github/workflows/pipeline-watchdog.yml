@@ -1,0 +1,201 @@
+name: Pipeline Watchdog
+
+# Safety net for the daily pipeline. The pipeline can exit 0 even when Topic
+# Detection / Executive Summary failed (e.g. the 2026-06-02 ~90 min triple-provider
+# outage published a "generation failed" report while CI stayed green). The publish
+# gate in daily-pipeline.yml now blocks committing a broken report, which means a
+# failed synthesis run leaves YESTERDAY's report live. This watchdog notices that the
+# published report is stale/broken for the target day and re-dispatches the pipeline
+# once, after providers have likely recovered.
+
+on:
+  schedule:
+    # Hourly sweep across the 4 AM-9 AM ET window (covers DST). The 3 AM pipeline
+    # normally finishes by ~3:25 ET, so the first 4 AM ET pass catches a failed/stale
+    # report only ~30-60 min after the failure instead of waiting until 6 AM. Running
+    # the whole window (not a single hour) means GitHub cron jitter can't make the
+    # watchdog no-op entirely the way the old single 6-ET entry did on 2026-06-23
+    # (its only runs landed 7:09 + 8:04 ET and both skipped). The 6-hour retry cap in
+    # the guard step still prevents loop-burning ~$8.50/run during a sustained outage:
+    # only the first pass that sees a bad report dispatches; later passes are capped.
+    # UTC entries 08-14 cover 04-09 ET across both EDT (UTC-4) and EST (UTC-5); the
+    # ET gate below lets only passes whose ET hour is in 04..09 proceed.
+    - cron: "0 8-14 * * *"
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: "Report date to validate/recover (YYYY-MM-DD). Defaults to today in ET."
+        required: false
+        type: string
+      force_rerun:
+        description: "Re-dispatch the pipeline even if the report looks valid."
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  actions: write   # needed to dispatch and inspect daily-pipeline runs
+
+concurrency:
+  group: pipeline-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    name: Validate published report and recover
+    if: github.repository == 'flyryan/ai-news-aggregator'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://news.aatf.ai' }}
+      PIPELINE_WORKFLOW: daily-pipeline.yml
+      # GH CLI auth for dispatch/inspection. The default GITHUB_TOKEN cannot trigger
+      # another workflow (GitHub blocks recursive workflow_dispatch), so we use a PAT.
+      GH_TOKEN: ${{ secrets.WORKFLOW_DISPATCH_PAT }}
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve ET schedule gate
+        id: gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          # GitHub cron is UTC-only; all entries fire, but only let passes whose
+          # ET hour falls in the 04..09 recovery window continue (mirrors the
+          # pipeline's ET gate). Manual dispatch always proceeds.
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: proceeding."
+            exit 0
+          fi
+          actual_hour="$(TZ=America/New_York date +%H)"
+          # Strip any leading zero so 04..09 compare as integers.
+          h=$((10#$actual_hour))
+          if [[ "$h" -ge 4 && "$h" -le 9 ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "${actual_hour}:xx ET is in the 04-09 recovery window: proceeding."
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Not in 04-09 ET window (got ${actual_hour}); skipping as no-op."
+          fi
+
+      - name: Validate published report
+        id: validate
+        if: steps.gate.outputs.should_run == 'true'
+        shell: bash
+        env:
+          TARGET_DATE_INPUT: ${{ inputs.target_date }}
+        run: |
+          set -euo pipefail
+          report_date="$TARGET_DATE_INPUT"
+          if [[ -z "$report_date" ]]; then
+            report_date="$(TZ=America/New_York date +%F)"
+          fi
+          # Reject anything but YYYY-MM-DD to prevent shell injection (CWE-78).
+          if [[ ! "$report_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+            echo "Invalid target_date '$report_date'; expected YYYY-MM-DD" >&2
+            exit 1
+          fi
+          echo "report_date=$report_date" >> "$GITHUB_OUTPUT"
+
+          # Validate the LIVE published report. validate_report.py exits:
+          #   0 valid | 1 invalid (failed checks) | 2 could not load (missing/stale)
+          set +e
+          python3 scripts/validate_report.py --url "$PIPELINE_BASE_URL" --date "$report_date"
+          rc=$?
+          set -e
+          echo "validate_rc=$rc" >> "$GITHUB_OUTPUT"
+          if [[ "$rc" -eq 0 ]]; then
+            echo "needs_rerun=false" >> "$GITHUB_OUTPUT"
+            echo "Published report for $report_date is valid."
+          else
+            echo "needs_rerun=true" >> "$GITHUB_OUTPUT"
+            echo "Published report for $report_date is invalid/missing (rc=$rc)."
+          fi
+
+      - name: Guard against in-progress or repeated runs
+        id: guard
+        if: steps.gate.outputs.should_run == 'true' && (steps.validate.outputs.needs_rerun == 'true' || inputs.force_rerun == true)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Do not stack pipelines: skip if one is already queued/running.
+          # NOTE: `gh run list --status` is a single-value string flag, NOT
+          # repeatable/OR'd — passing it twice silently keeps only the LAST
+          # value (queued), so an in_progress run was invisible to this check
+          # (root cause of the 2026-07-08 04:53 ET false-positive recovery
+          # dispatch: the 3:49 AM nominal run was still in_progress, running
+          # long that morning, and this guard reported active=0). Query each
+          # status separately and sum, so both queued AND in_progress count.
+          active_queued="$(gh run list --workflow "$PIPELINE_WORKFLOW" \
+            --status queued --limit 5 --json databaseId \
+            --jq 'length' 2>/dev/null || echo 0)"
+          active_running="$(gh run list --workflow "$PIPELINE_WORKFLOW" \
+            --status in_progress --limit 5 --json databaseId \
+            --jq 'length' 2>/dev/null || echo 0)"
+          active="$(( ${active_queued:-0} + ${active_running:-0} ))"
+          if [[ "${active:-0}" -gt 0 ]]; then
+            echo "should_dispatch=false" >> "$GITHUB_OUTPUT"
+            echo "A pipeline run is already in progress/queued ($active); not dispatching."
+            exit 0
+          fi
+
+          # Cap retries: if THIS watchdog already ran a recovery cycle in the last
+          # 6 hours that dispatched the pipeline, don't loop-burn ~$8.50/run during a
+          # sustained outage. We key off the watchdog's own prior runs (not arbitrary
+          # manual pipeline dispatches, so a manual run by Ryan doesn't suppress a
+          # genuine recovery). Manual force_rerun bypasses this cap.
+          if [[ "${{ inputs.force_rerun }}" != "true" ]]; then
+            cutoff="$(date -u -d '6 hours ago' +%FT%TZ 2>/dev/null || date -u -v-6H +%FT%TZ)"
+            # Count completed watchdog runs in the window EXCLUDING this one. A prior
+            # watchdog run existing in the last 6h means we already had a recovery
+            # opportunity; one retry is enough.
+            prior_watchdog="$(gh run list --workflow pipeline-watchdog.yml \
+              --limit 20 --json createdAt,databaseId,status \
+              --jq "[.[] | select(.createdAt > \"$cutoff\") | select(.databaseId != ${{ github.run_id }}) | select(.status == \"completed\")] | length" 2>/dev/null || echo 0)"
+            if [[ "${prior_watchdog:-0}" -gt 0 ]]; then
+              echo "should_dispatch=false" >> "$GITHUB_OUTPUT"
+              echo "A prior watchdog recovery cycle ran in the last 6h ($prior_watchdog); not re-dispatching (retry cap). Use force_rerun to override."
+              exit 0
+            fi
+          fi
+
+          echo "should_dispatch=true" >> "$GITHUB_OUTPUT"
+
+      - name: Re-dispatch pipeline (recovery run)
+        id: dispatch
+        if: steps.guard.outputs.should_dispatch == 'true'
+        shell: bash
+        env:
+          REPORT_DATE: ${{ steps.validate.outputs.report_date }}
+        run: |
+          set -euo pipefail
+          report_date="$REPORT_DATE"
+          echo "Dispatching recovery run of $PIPELINE_WORKFLOW for $report_date"
+          gh workflow run "$PIPELINE_WORKFLOW" \
+            -f target_date="$report_date" \
+            -f commit_outputs=true
+          echo "Recovery run dispatched."
+
+      - name: Summary
+        if: always() && steps.gate.outputs.should_run == 'true'
+        shell: bash
+        env:
+          REPORT_DATE: ${{ steps.validate.outputs.report_date }}
+        run: |
+          set -euo pipefail
+          {
+            echo "### Pipeline Watchdog"
+            echo ""
+            echo "- date: $REPORT_DATE"
+            echo "- validate_rc: ${{ steps.validate.outputs.validate_rc }} (0=valid,1=invalid,2=missing)"
+            echo "- needs_rerun: ${{ steps.validate.outputs.needs_rerun }}"
+            echo "- dispatched recovery: ${{ steps.guard.outputs.should_dispatch || 'false' }}"
+          } >> "$GITHUB_STEP_SUMMARY"

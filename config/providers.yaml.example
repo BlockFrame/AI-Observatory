@@ -1,0 +1,161 @@
+# =============================================================================
+# AI News Aggregator - Provider Configuration
+# =============================================================================
+# This file configures API providers and pipeline settings.
+# Copy this file to providers.yaml and fill in your values.
+#
+# Environment variables can be referenced using ${VAR_NAME} syntax:
+#   api_key: "${ANTHROPIC_API_KEY}"
+# This lets you keep secrets in .env while using this config structure.
+#
+# Quick Start:
+# 1. Copy this file: cp providers.yaml.example providers.yaml
+# 2. Set your API keys (use ${ENV_VAR} to reference environment variables)
+# 3. Adjust settings as needed
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# LLM Provider Configuration (Required)
+# -----------------------------------------------------------------------------
+# Supports two modes:
+# - anthropic: Direct Anthropic API with x-api-key header (recommended)
+# - openai-compatible: OpenAI-compatible proxy (LiteLLM, vLLM, etc.)
+llm:
+  # API mode: "anthropic" or "openai-compatible"
+  #
+  # anthropic (default):
+  #   - Direct Anthropic API access
+  #   - Uses x-api-key header authentication
+  #   - Adaptive thinking support (QUICK/STANDARD/DEEP/ULTRATHINK profiles)
+  #
+  # openai-compatible:
+  #   - For LiteLLM, AWS Bedrock proxies, or other OpenAI-compatible endpoints
+  #   - Uses Bearer token authentication
+  #   - Thinking support depends on proxy passthrough support
+  #
+  mode: "anthropic"
+
+  # API key for authentication
+  # Recommended: Use environment variable reference
+  api_key: "${ANTHROPIC_API_KEY}"
+
+  # API base URL (no /v1 suffix)
+  # For direct Anthropic: https://api.anthropic.com (default)
+  # For proxy: your proxy URL (e.g., http://localhost:4000)
+  # Uncomment to override the default:
+  # base_url: "https://api.anthropic.com"
+
+  # Model identifier. Use whatever Opus 4.8 alias your endpoint expects.
+  # AATF's hosted proxy currently uses claude-4.8-opus-aws as the
+  # single-provider fallback.
+  model: "claude-4.8-opus-aws"
+
+  # Request timeout in seconds (1-600)
+  timeout: 600
+
+  # Optional multi-provider routing. When present, async LLM calls rotate
+  # across routes and retryable provider failures fail over to another route.
+  # Each route inherits mode, api_key, base_url, timeout, and max_output_tokens
+  # unless overridden. The async LLM request cap applies per route, so three
+  # routes with LLM_MAX_CONCURRENT_REQUESTS=8 can run up to 24 LLM calls.
+  #
+  # routes:
+  #   - id: "aws"
+  #     model: "claude-4.8-opus-aws"
+  #   - id: "gcp"
+  #     model: "claude-4.8-opus-gcp"
+  #   - id: "anthropic"
+  #     model: "claude-4.8-opus-anthropic"
+  #     # Optional per-route overrides:
+  #     # mode: "anthropic"
+  #     # api_key: "${ANTHROPIC_DIRECT_API_KEY}"
+  #     # base_url: "https://api.anthropic.com"
+  #     # timeout: 600
+  #     # max_concurrent_requests: 8
+
+# -----------------------------------------------------------------------------
+# Image Provider Configuration (Optional)
+# -----------------------------------------------------------------------------
+# Generates a daily hero image featuring the AATF skunk mascot.
+# Comment out this entire section to skip hero image generation.
+#
+# Supports two modes:
+# - native: Google Gemini API via google-genai SDK (recommended)
+# - openai-compatible: OpenAI-compatible image endpoint (for LiteLLM proxies)
+image:
+  # API mode: "native" or "openai-compatible"
+  #
+  # native (default):
+  #   - Uses google-genai SDK directly
+  #   - Requires Google AI API key
+  #   - Model: gemini-3-pro-image-preview
+  #   - No endpoint needed (SDK handles it)
+  #
+  # openai-compatible:
+  #   - Uses REST chat/completions format
+  #   - For LiteLLM or other proxies that wrap Gemini
+  #   - Requires endpoint URL
+  #   - Model name depends on your proxy (e.g., gemini-3-pro-image)
+  #
+  mode: "native"
+
+  # API key for image generation
+  # For native mode: Google AI API key
+  # For openai-compatible mode: your proxy's API key
+  api_key: "${GOOGLE_API_KEY}"
+
+  # Endpoint URL (required for openai-compatible mode only)
+  # Not used in native mode (SDK determines endpoint automatically)
+  # endpoint: "https://your-proxy.example.com/v1"
+
+  # Model name
+  # - native: gemini-3-pro-image-preview
+  # - openai-compatible: depends on your proxy (e.g., gemini-3-pro-image)
+  model: "gemini-3-pro-image-preview"
+
+# -----------------------------------------------------------------------------
+# Pipeline Settings (Optional)
+# -----------------------------------------------------------------------------
+# General pipeline configuration. All fields have sensible defaults.
+# You can omit this entire section to use defaults.
+pipeline:
+  # Base URL for RSS feed links
+  # Set this to your deployment domain for production
+  # Examples:
+  #   - https://news.aatf.ai (production default)
+  #   - https://news.example.com (alternate production domain)
+  base_url: "https://news.aatf.ai"
+
+  # Data collection window in hours (1-168)
+  # How far back to look for news items
+  # Default: 24 (one day)
+  lookback_hours: 24
+
+# =============================================================================
+# Example: OpenAI-compatible proxy configuration
+# =============================================================================
+# If you're using a LiteLLM proxy or similar, your config might look like:
+#
+# llm:
+#   mode: "openai-compatible"
+#   api_key: "${PROXY_API_KEY}"
+#   base_url: "https://your-litellm-proxy.example.com"
+#   model: "claude-4.8-opus-aws"  # Legacy single-provider fallback
+#   timeout: 600
+#   routes:
+#     - id: "aws"
+#       model: "claude-4.8-opus-aws"
+#     - id: "gcp"
+#       model: "claude-4.8-opus-gcp"
+#     - id: "anthropic"
+#       model: "claude-4.8-opus-anthropic"
+#
+# image:
+#   mode: "openai-compatible"
+#   api_key: "${PROXY_API_KEY}"
+#   endpoint: "https://your-litellm-proxy.example.com/v1"
+#   model: "gemini-3-pro-image"  # Your proxy's model alias
+#
+# pipeline:
+#   base_url: "https://news.your-domain.com"
+#   lookback_hours: 24

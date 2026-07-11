@@ -1,0 +1,458 @@
+name: Daily Pipeline
+
+on:
+  schedule:
+    # GitHub cron is UTC-only. These two entries cover 3 AM America/New_York
+    # across daylight saving time; the ET gate below lets only the nominal
+    # 3 AM run continue even when GitHub starts the runner late.
+    - cron: "0 7 * * *"
+    - cron: "0 8 * * *"
+  workflow_dispatch:
+    inputs:
+      target_date:
+        description: "Report date to generate (YYYY-MM-DD). Defaults to today in ET."
+        required: false
+        type: string
+      resume_from:
+        description: "Optional pipeline phase to resume from, for manual recovery."
+        required: false
+        type: string
+      anthropic_model:
+        description: "Optional LLM model ID override for this run."
+        required: false
+        type: string
+      commit_outputs:
+        description: "Commit and push generated outputs after the run."
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-pipeline-${{ github.ref }}
+  # Only a manual dispatch cancels an in-flight run, so a manual re-run
+  # supersedes an overlapping scheduled run instead of double-publishing the
+  # same day (see the 2026-07-08 double run). Scheduled runs must NOT cancel
+  # each other: the two DST-backstop crons (0 7 / 0 8) intentionally overlap and
+  # rely on the ET gate below to pick the nominal 3 AM run. A plain
+  # `cancel-in-progress: true` would let the 8 AM UTC cron kill the still-running
+  # 3 AM run, then gate itself out — publishing nothing.
+  cancel-in-progress: ${{ github.event_name == 'workflow_dispatch' }}
+
+jobs:
+  daily-pipeline:
+    name: Generate and publish daily data
+    if: github.repository == 'strossi/ai-news-aggregator'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      TZ: America/New_York
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
+      ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-4.8-opus-aws' }}
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
+      SCRAPECREATORS_API_KEY: ${{ secrets.SCRAPECREATORS_API_KEY }}
+      SCRAPECREATORS_BASE: ${{ vars.SCRAPECREATORS_BASE || 'https://api.scrapecreators.com' }}
+      REDDIT_PROXY_URL: ${{ secrets.REDDIT_PROXY_URL }}
+      REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT || 'AI-News-Aggregator/1.0 (by u/flyryan)' }}
+      LESSWRONG_PROXY_URL: ${{ secrets.LESSWRONG_PROXY_URL }}
+      PIPELINE_PROXY_URL: ${{ secrets.PIPELINE_PROXY_URL }}
+      MULLVAD_ACCOUNT: ${{ secrets.MULLVAD_ACCOUNT }}
+      MULLVAD_WG_PRIVATE_KEY: ${{ secrets.MULLVAD_WG_PRIVATE_KEY }}
+      MULLVAD_RELAY_FILTER: ${{ vars.MULLVAD_RELAY_FILTER || 'us' }}
+      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://news.aatf.ai' }}
+      PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'web/data llms.txt ai-index.json config/model_releases.yaml config/ecosystem_context.yaml' }}
+      PIPELINE_IMAGE_MODEL: ${{ vars.PIPELINE_IMAGE_MODEL || 'gemini-3-pro-image-preview' }}
+      LLM_TRUST_ENV_PROXY: ${{ vars.LLM_TRUST_ENV_PROXY || 'false' }}
+      LLM_TIMEOUT_SECONDS: ${{ vars.LLM_TIMEOUT_SECONDS || '240' }}
+      LLM_MAX_CONCURRENT_REQUESTS: ${{ vars.LLM_MAX_CONCURRENT_REQUESTS || '8' }}
+      LLM_ADAPTIVE_MAX_TOKENS: ${{ vars.LLM_ADAPTIVE_MAX_TOKENS || '65536' }}
+      LLM_MAX_RETRIES: ${{ vars.LLM_MAX_RETRIES || '2' }}
+      LLM_LOG_REQUESTS: ${{ vars.LLM_LOG_REQUESTS || 'true' }}
+      LLM_HEARTBEAT_SECONDS: ${{ vars.LLM_HEARTBEAT_SECONDS || '60' }}
+      LLM_METRICS_PATH: ${{ vars.LLM_METRICS_PATH || 'data/llm_metrics.jsonl' }}
+      ANALYZER_BATCH_SIZE: ${{ vars.ANALYZER_BATCH_SIZE || '75' }}
+      ANALYZER_MAX_CONCURRENT_BATCHES: ${{ vars.ANALYZER_MAX_CONCURRENT_BATCHES || '3' }}
+      TARGET_DATE_INPUT: ${{ inputs.target_date || '' }}
+      RESUME_FROM_INPUT: ${{ inputs.resume_from || '' }}
+      COMMIT_OUTPUTS: ${{ github.event_name != 'workflow_dispatch' || inputs.commit_outputs }}
+
+    steps:
+      - name: Check 3 AM ET schedule gate
+        id: schedule_gate
+        shell: bash
+        env:
+          SCHEDULE_CRON: ${{ github.event.schedule || '' }}
+        run: |
+          set -euo pipefail
+          if [[ "${{ github.event_name }}" != "schedule" ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Manual dispatch: bypassing ET schedule gate."
+            exit 0
+          fi
+
+          if [[ -z "${SCHEDULE_CRON:-}" ]]; then
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Scheduled run is missing github.event.schedule; exiting as a no-op."
+            exit 0
+          fi
+
+          nominal_info="$(
+            python3 <<'PY'
+          from datetime import datetime, timezone
+          from os import environ
+          from zoneinfo import ZoneInfo
+
+          cron = environ["SCHEDULE_CRON"]
+          parts = cron.split()
+          if len(parts) < 2:
+              raise SystemExit(f"Unsupported schedule expression: {cron!r}")
+
+          minute = int(parts[0])
+          hour = int(parts[1])
+          et_today = datetime.now(ZoneInfo("America/New_York")).date()
+          nominal_utc = datetime(
+              et_today.year,
+              et_today.month,
+              et_today.day,
+              hour,
+              minute,
+              tzinfo=timezone.utc,
+          )
+          nominal_et = nominal_utc.astimezone(ZoneInfo("America/New_York"))
+          should_run = nominal_et.hour == 3 and nominal_et.minute == 0
+
+          print(f"should_run={'true' if should_run else 'false'}")
+          print(f"nominal_utc={nominal_utc.strftime('%Y-%m-%dT%H:%M:%SZ')}")
+          print(f"nominal_et={nominal_et.strftime('%Y-%m-%d %H:%M:%S %Z')}")
+          PY
+          )"
+
+          should_run="$(awk -F= '/^should_run=/{print $2}' <<< "$nominal_info")"
+          nominal_utc="$(awk -F= '/^nominal_utc=/{print $2}' <<< "$nominal_info")"
+          nominal_et="$(awk -F= '/^nominal_et=/{print $2}' <<< "$nominal_info")"
+          actual_et="$(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
+
+          if [[ "$should_run" == "true" ]]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "Scheduled cron '$SCHEDULE_CRON' maps to $nominal_et ($nominal_utc); continuing."
+            echo "Actual runner start time was $actual_et."
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+            echo "Scheduled cron '$SCHEDULE_CRON' maps to $nominal_et ($nominal_utc), not 3 AM ET; exiting as a no-op."
+            echo "Actual runner start time was $actual_et."
+          fi
+
+      - name: Check out flyryan main
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PIPELINE_PUSH_TOKEN || github.token }}
+
+      - name: Set up Python
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Write provider configuration
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        env:
+          PIPELINE_PROVIDERS_YAML: ${{ secrets.PIPELINE_PROVIDERS_YAML }}
+        run: |
+          set -euo pipefail
+          if [[ -n "${PIPELINE_PROVIDERS_YAML:-}" ]]; then
+            printf '%s\n' "$PIPELINE_PROVIDERS_YAML" > config/providers.yaml
+            echo "Wrote config/providers.yaml from PIPELINE_PROVIDERS_YAML."
+          elif [[ -f "config/providers.yaml" ]]; then
+            echo "Using repository config/providers.yaml."
+          else
+            echo "providers.yaml missing and PIPELINE_PROVIDERS_YAML not set." >&2
+            exit 1
+          fi
+
+      - name: Start Mullvad tunnel for hosted egress
+        if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == '' && env.REDDIT_PROXY_URL == ''
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y wireguard-tools
+          python -m pip install cryptography
+
+          tmp_dir="$(mktemp -d)"
+          settings_file="$tmp_dir/settings.conf"
+          curl -fsSL \
+            https://raw.githubusercontent.com/mullvad/wg-tools/c85b7ed35bdb6e0bd38fa24481819088fa6a68c5/wg-mullvad.py \
+            -o "$tmp_dir/wg-mullvad.py"
+
+          if [[ -n "${MULLVAD_WG_PRIVATE_KEY:-}" ]]; then
+            umask 077
+            {
+              echo "[Interface]"
+              echo "privatekey = ${MULLVAD_WG_PRIVATE_KEY}"
+            } > "$settings_file"
+          fi
+
+          python "$tmp_dir/wg-mullvad.py" \
+            --account "$MULLVAD_ACCOUNT" \
+            --filter "$MULLVAD_RELAY_FILTER" \
+            --active \
+            --settings-file "$settings_file" \
+            --output-dir "$tmp_dir/wg"
+
+          wg_conf="$(find "$tmp_dir/wg" -name '*.conf' | sort | head -1)"
+          if [[ -z "$wg_conf" ]]; then
+            echo "No Mullvad WireGuard config generated." >&2
+            exit 1
+          fi
+
+          sudo sed -i '/^dns[[:space:]]*=/Id' "$wg_conf"
+          sudo sed -i 's#^allowedips[[:space:]]*=.*#allowedips = 10.64.0.1/32#I' "$wg_conf"
+          sudo wg-quick up "$wg_conf"
+
+          {
+            echo "PIPELINE_PROXY_URL=socks5h://10.64.0.1:1080"
+            echo "REDDIT_PROXY_URL=socks5h://10.64.0.1:1080"
+          } >> "$GITHUB_ENV"
+          proxy_ip="$(curl -fsSL --proxy socks5h://10.64.0.1:1080 https://am.i.mullvad.net/ip || true)"
+          if [[ -n "$proxy_ip" ]]; then
+            echo "Mullvad SOCKS proxy is reachable."
+          else
+            echo "Mullvad SOCKS proxy did not return an external IP smoke-test response." >&2
+          fi
+
+          # Reddit no longer hits reddit.com directly: the gatherer collects via the
+          # ScrapeCreators API (server-side unblocking, direct egress), so no .json probe
+          # through Mullvad is needed. The Mullvad tunnel above still serves LLM/other egress.
+
+      - name: Run pipeline
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "${PIPELINE_PROXY_URL:-}" ]]; then
+            export ALL_PROXY="$PIPELINE_PROXY_URL"
+            export HTTPS_PROXY="$PIPELINE_PROXY_URL"
+            export HTTP_PROXY="$PIPELINE_PROXY_URL"
+            export all_proxy="$PIPELINE_PROXY_URL"
+            export https_proxy="$PIPELINE_PROXY_URL"
+            export http_proxy="$PIPELINE_PROXY_URL"
+            # ScrapeCreators (Reddit) unblocks server-side and must go direct, not through
+            # the Mullvad tunnel. The gatherer sets requests trust_env=False as the primary
+            # guard; this NO_PROXY entry is belt-and-suspenders.
+            export NO_PROXY="localhost,127.0.0.1,::1,api.scrapecreators.com"
+            export no_proxy="$NO_PROXY"
+            echo "Pipeline-wide proxy is configured."
+          fi
+
+          args=(--config-dir ./config --data-dir ./data --web-dir ./web)
+          if [[ -n "${TARGET_DATE_INPUT:-}" ]]; then
+            args+=(--date "$TARGET_DATE_INPUT")
+          fi
+          if [[ -n "${RESUME_FROM_INPUT:-}" ]]; then
+            args+=(--resume-from "$RESUME_FROM_INPUT")
+          fi
+          python3 run_pipeline.py "${args[@]}"
+
+      - name: Verify llms index artifacts
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f llms.txt
+          test -f ai-index.json
+
+      - name: Validate generated report (publish gate)
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          # The pipeline can exit 0 even when Topic Detection / Executive Summary
+          # failed (those phases catch their own errors and write failure sentinels
+          # into summary.json). Validate the actual user-facing artifact so we never
+          # publish a "generation failed" report. Exit 1 here fails the job and
+          # blocks the commit; the revert step below restores the prior good data.
+          python3 scripts/validate_report.py --web-dir ./web --date "$report_date"
+
+      - name: Discard invalid generated data (keep last good report)
+        if: failure() && steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          # If validation (or anything before the commit) failed, do not leave a
+          # broken report staged/committed. Restore tracked files and drop any
+          # untracked generated output so the previously published report stands.
+          read -r -a commit_paths <<< "$PIPELINE_COMMIT_PATHS"
+          echo "Reverting generated paths after failure: ${commit_paths[*]}"
+          git checkout -- "${commit_paths[@]}" 2>/dev/null || true
+          git clean -fd -- "${commit_paths[@]}" 2>/dev/null || true
+
+      - name: Commit generated outputs
+        if: steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS == 'true'
+        id: commit
+        shell: bash
+        env:
+          PIPELINE_SIGNING_KEY: ${{ secrets.PIPELINE_SIGNING_KEY }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          read -r -a commit_paths <<< "$PIPELINE_COMMIT_PATHS"
+          git add -- "${commit_paths[@]}"
+
+          if git diff --cached --quiet; then
+            echo "committed=false" >> "$GITHUB_OUTPUT"
+            echo "No generated output changes to commit."
+            exit 0
+          fi
+
+          # Sign the commit so the deploy gate (scripts/deploy.sh) accepts it.
+          # An unsigned tip on origin/main would abort the production deploy
+          # (CWE-345 fix), so fail loudly here rather than stall publishing.
+          if [ -z "${PIPELINE_SIGNING_KEY:-}" ]; then
+            echo "ERROR: PIPELINE_SIGNING_KEY secret is empty; refusing to create an unsigned commit." >&2
+            echo "  Set the PIPELINE_SIGNING_KEY secret (see deploy/README.md) so deploy.sh will accept the tip." >&2
+            exit 1
+          fi
+          signing_key="${RUNNER_TEMP}/pipeline_signing_key"
+          printf '%s\n' "$PIPELINE_SIGNING_KEY" > "$signing_key"
+          chmod 600 "$signing_key"
+          git config gpg.format ssh
+          git config user.signingkey "$signing_key"
+          git config commit.gpgsign true
+          # rebase.gpgSign so the `git pull --rebase` in the Push step re-signs
+          # the recreated commit (a plain rebase drops the signature). These
+          # git config values persist in .git/config for that later step; the
+          # key file stays in the ephemeral RUNNER_TEMP for the same reason and
+          # is discarded with the runner.
+          git config rebase.gpgSign true
+
+          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          git commit -S -m "data: Auto-update ${report_date}"
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload generated outputs without committing
+        if: steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-pipeline-output
+          path: |
+            web/data
+            config/model_releases.yaml
+            config/ecosystem_context.yaml
+          if-no-files-found: error
+
+      - name: Upload pipeline diagnostics
+        if: always() && steps.schedule_gate.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-diagnostics
+          path: |
+            data/llm_metrics.jsonl
+            data/processed/cost_report_*.json
+          if-no-files-found: ignore
+
+      - name: Push generated commit
+        if: steps.schedule_gate.outputs.should_run == 'true' && steps.commit.outputs.committed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      # ---------------------------------------------------------------------
+      # Detection gap fix (2026-06-21): a scheduled run can exit 0 without ever
+      # producing today's report. The 3 AM ET gate makes the OTHER scheduled
+      # entry exit as a 7-second "success" no-op, and a run that does real work
+      # but fails synthesis gets reverted by the publish gate (last good report
+      # stays live) WITHOUT failing loudly. Either way the site silently serves
+      # stale content. This step runs only on the nominal 3 AM ET pass (the one
+      # that is SUPPOSED to publish) and asserts a `data: Auto-update <today>`
+      # commit actually landed on origin/main. If not, it fails the job, which
+      # triggers the failure-alert step below.
+      - name: Assert today's report is published on origin/main
+        if: steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          git fetch origin main --quiet
+          # Verify the actual published artifact for report_date exists on the live
+          # branch. This is commit-timing independent (no false positives on same-day
+          # re-dispatches or backfills where nothing new was committed), and directly
+          # answers "is the site serving today's report?" If summary.json for the date
+          # is absent from origin/main, the run claimed success but the site is STALE.
+          artifact="web/data/${report_date}/summary.json"
+          if git cat-file -e "origin/main:${artifact}" 2>/dev/null; then
+            echo "Verified: ${artifact} is published on origin/main."
+          else
+            echo "::error::${artifact} is NOT on origin/main after a run that was \
+          supposed to publish. The site is serving STALE content for ${report_date}." >&2
+            echo "Recent origin/main subjects:" >&2
+            git log origin/main -8 --pretty='  %h %s' >&2
+            exit 1
+          fi
+
+      # Proactive failure alert (2026-06-21). Fires on ANY failure of a run that
+      # was supposed to publish (RED synthesis, publish-gate revert, or the
+      # commit-landed assertion above). POSTs to the graph-webhooks alert ingress
+      # (Cloudflare tunnel -> LaunchDaemon on Ryan's Mac mini), which wakes FlyBot
+      # with a system event in under a minute instead of the site sitting stale
+      # for hours. Bearer-authenticated; the endpoint fails closed without it.
+      # best-effort: never let the alert itself fail the job or leak the token.
+      - name: Alert on pipeline failure
+        if: failure() && steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        env:
+          PIPELINE_ALERT_TOKEN: ${{ secrets.PIPELINE_ALERT_TOKEN }}
+          PIPELINE_ALERT_URL: ${{ vars.PIPELINE_ALERT_URL || 'https://flybotwebhook.duffplex.com/alert/pipeline' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -uo pipefail
+          if [[ -z "${PIPELINE_ALERT_TOKEN:-}" ]]; then
+            echo "PIPELINE_ALERT_TOKEN not set; skipping alert POST (configure the repo secret)."
+            exit 0
+          fi
+          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          payload="$(python3 - "$report_date" "$RUN_URL" <<'PY'
+          import json, sys
+          print(json.dumps({
+              "status": "failure",
+              "report_date": sys.argv[1],
+              "reason": "daily-pipeline.yml failed before today's report published",
+              "run_url": sys.argv[2],
+          }))
+          PY
+          )"
+          code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 \
+            -X POST "$PIPELINE_ALERT_URL" \
+            -H "Authorization: Bearer ${PIPELINE_ALERT_TOKEN}" \
+            -H 'Content-Type: application/json' \
+            -d "$payload" || true)"
+          echo "Alert POST -> HTTP ${code:-no-response}"
+          # Do not fail the job on alert delivery problems; the run is already red.
+          exit 0

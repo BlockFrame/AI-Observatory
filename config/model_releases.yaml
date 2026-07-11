@@ -1,0 +1,545 @@
+# Model Release Dates - Source of Truth
+#
+# Each model has two dates:
+#   ga_date: General Availability (public announcement/release)
+#   api_date: API Availability (when available via OpenRouter/public APIs)
+#
+# Sources:
+#   - Wikipedia "List of large language models" for GA dates
+#   - OpenRouter API for API dates
+#   - Web search verification for specific releases (Codex, etc.)
+#
+# Coverage: November 2025 onwards (post Claude Opus 4.8 knowledge cutoff)
+# Last verified: 2026-07-09
+
+openai:
+  # GPT-Live-1 (auto-detected 2026-07-09)
+  GPT-Live-1:
+    ga_date: "2026-07-08"
+    api_date: "unknown"
+
+  # GPT-5.6-Sol (auto-detected 2026-06-27)
+  GPT-5.6-Sol:
+    ga_date: "2026-06-26"
+    api_date: "unknown"
+  # GPT-5.6-Terra (auto-detected 2026-06-27)
+  GPT-5.6-Terra:
+    ga_date: "2026-06-26"
+    api_date: "unknown"
+  # GPT-5.6-Luna (auto-detected 2026-06-27)
+  GPT-5.6-Luna:
+    ga_date: "2026-06-26"
+    api_date: "unknown"
+
+  # GPT-5.6 (auto-detected 2026-06-26)
+  GPT-5.6:
+    ga_date: "2026-06-25"
+    api_date: "unknown"
+
+  # GPT-5.5-Cyber (auto-detected 2026-06-23)
+  GPT-5.5-Cyber:
+    ga_date: "2026-06-22"
+    api_date: "unknown"
+
+  # GPT-5.5-Instant (auto-detected 2026-06-19)
+  GPT-5.5-Instant:
+    ga_date: "2026-06-18"
+    api_date: "unknown"
+
+  # GPT-next (auto-detected 2026-05-22)
+  GPT-next:
+    ga_date: "2026-05-21"
+    api_date: "unknown"
+
+  # GPT-Realtime-2 (auto-detected 2026-05-09)
+  GPT-Realtime-2:
+    ga_date: "2026-05-08"
+    api_date: "unknown"
+  # GPT-Realtime-Translate (auto-detected 2026-05-09)
+  GPT-Realtime-Translate:
+    ga_date: "2026-05-08"
+    api_date: "unknown"
+  # GPT-Realtime-Whisper (auto-detected 2026-05-09)
+  GPT-Realtime-Whisper:
+    ga_date: "2026-05-08"
+    api_date: "unknown"
+
+  # Privacy-Filter (auto-detected 2026-04-29)
+  Privacy-Filter:
+    ga_date: "2026-04-28"
+    api_date: "unknown"
+
+  # GPT-5.5 (auto-detected 2026-04-24)
+  GPT-5.5:
+    ga_date: "2026-04-23"
+    api_date: "unknown"
+
+  # GPT-Image-2 (auto-detected 2026-04-23)
+  GPT-Image-2:
+    ga_date: "2026-04-22"
+    api_date: "unknown"
+
+  # GPT-5.4-Cyber (auto-detected 2026-04-18)
+  GPT-5.4-Cyber:
+    ga_date: "2026-04-17"
+    api_date: "unknown"
+
+  # GPT-Rosalind (auto-detected 2026-04-17)
+  GPT-Rosalind:
+    ga_date: "2026-04-16"
+    api_date: "unknown"
+
+  # GPT-5.4-Mini (auto-detected 2026-04-02)
+  GPT-5.4-Mini:
+    ga_date: "2026-04-01"
+    api_date: "unknown"
+  # GPT-5.4-Nano (auto-detected 2026-04-02)
+  GPT-5.4-Nano:
+    ga_date: "2026-04-01"
+    api_date: "unknown"
+
+  # GPT-5.4 (auto-detected 2026-03-06)
+  GPT-5.4:
+    ga_date: "2026-03-05"
+    api_date: "unknown"
+  # GPT-5.4-Thinking (auto-detected 2026-03-06)
+  GPT-5.4-Thinking:
+    ga_date: "2026-03-05"
+    api_date: "unknown"
+  # GPT-5.4-Pro (auto-detected 2026-03-06)
+  GPT-5.4-Pro:
+    ga_date: "2026-03-05"
+    api_date: "unknown"
+
+  # GPT-5.3-Instant (auto-detected 2026-03-05)
+  GPT-5.3-Instant:
+    ga_date: "2026-03-04"
+    api_date: "unknown"
+
+  # GPT-5.3-Codex-Spark (auto-detected 2026-02-13)
+  GPT-5.3-Codex-Spark:
+    ga_date: "2026-02-12"
+    api_date: "unknown"
+
+  # GPT-5.3-Codex (auto-detected 2026-02-06)
+  GPT-5.3-Codex:
+    ga_date: "2026-02-05"
+    api_date: "unknown"
+
+  # GPT-5.2 family
+  GPT-5.2:
+    ga_date: "2025-12-11"   # Wikipedia
+    api_date: "2025-12-10"  # OpenRouter
+  GPT-5.2-Codex:
+    ga_date: "2025-12-18"   # OpenAI announcement
+    api_date: "2026-01-14"  # OpenRouter / CLI 0.81.0
+  GPT-5.2-Chat:
+    ga_date: "2025-12-11"   # Same as base
+    api_date: "2025-12-10"  # OpenRouter
+  GPT-5.2-Pro:
+    ga_date: "2025-12-11"   # Same as base
+    api_date: "2025-12-10"  # OpenRouter
+
+  # GPT-5.1 family
+  GPT-5.1:
+    ga_date: "2025-11-12"   # Wikipedia / OpenAI announcement
+    api_date: "2025-11-13"  # OpenRouter
+  GPT-5.1-Codex:
+    ga_date: "2025-11-12"   # Same as base
+    api_date: "2025-11-13"  # OpenRouter
+  GPT-5.1-Codex-Max:
+    ga_date: "2025-11-19"   # OpenAI release (1 week after GPT-5.1)
+    api_date: "2025-12-04"  # GitHub Copilot public preview
+  GPT-5.1-Codex-Mini:
+    ga_date: "2025-11-12"   # Same as base
+    api_date: "2025-11-13"  # OpenRouter
+
+  # GPT-5 base
+  GPT-5:
+    ga_date: "2025-08-07"   # Wikipedia
+    api_date: "2025-08-07"  # Inferred
+
+  # GPT-4.5
+  GPT-4.5:
+    ga_date: "2025-02-27"   # Wikipedia
+    api_date: "2025-02-27"  # Inferred
+
+  # o-series (reasoning models)
+  o3:
+    ga_date: "2025-04-16"   # Wikipedia
+    api_date: "2025-04-16"  # Inferred
+  o1:
+    ga_date: "2024-09-12"   # Wikipedia
+    api_date: "2024-09-12"  # Inferred
+
+  # OSS models
+  GPT-OSS:
+    ga_date: "2025-08-05"   # Wikipedia
+    api_date: "2025-10-29"  # OpenRouter (later)
+
+anthropic:
+  # Claude-Sonnet-5 (auto-detected 2026-07-01)
+  Claude-Sonnet-5:
+    ga_date: "2026-06-30"
+    api_date: "unknown"
+
+  # Claude-Fable-5 (auto-detected 2026-06-10)
+  Claude-Fable-5:
+    ga_date: "2026-06-09"
+    api_date: "unknown"
+  # Claude-Mythos-5 (auto-detected 2026-06-10)
+  Claude-Mythos-5:
+    ga_date: "2026-06-09"
+    api_date: "unknown"
+
+  # Claude-Opus-4.8 (auto-detected 2026-05-29)
+  Claude-Opus-4.8:
+    ga_date: "2026-05-28"
+    api_date: "unknown"
+
+  # Claude-Opus-4.7 (auto-detected 2026-04-17)
+  Claude-Opus-4.7:
+    ga_date: "2026-04-16"
+    api_date: "unknown"
+
+  # Claude-Mythos-Preview (auto-detected 2026-04-08)
+  Claude-Mythos-Preview:
+    ga_date: "2026-04-07"
+    api_date: "unknown"
+
+  # Claude-Sonnet-4.6 (auto-detected 2026-02-18)
+  Claude-Sonnet-4.6:
+    ga_date: "2026-02-17"
+    api_date: "unknown"
+
+  # Claude-Opus-4.6 (auto-detected 2026-02-06)
+  Claude-Opus-4.6:
+    ga_date: "2026-02-05"
+    api_date: "unknown"
+
+  Claude-Opus-4.5:
+    ga_date: "2025-11-24"   # Wikipedia
+    api_date: "2025-11-24"  # OpenRouter
+  Claude-Sonnet-4.5:
+    ga_date: "2025-09-29"   # Wikipedia
+    api_date: "2025-09-29"  # OpenRouter
+  Claude-Haiku-4.5:
+    ga_date: "2025-10-15"   # Wikipedia (inferred)
+    api_date: "2025-10-15"  # OpenRouter
+  Claude-4.1:
+    ga_date: "2025-08-05"   # Wikipedia
+    api_date: "2025-08-05"  # OpenRouter
+  Claude-4:
+    ga_date: "2025-05-22"   # Wikipedia
+    api_date: "2025-05-22"  # OpenRouter
+  Claude-3.7:
+    ga_date: "2025-02-24"   # Wikipedia
+    api_date: "2025-02-24"  # OpenRouter
+
+google:
+  # TabFM (auto-detected 2026-07-02)
+  TabFM:
+    ga_date: "2026-07-01"
+    api_date: "unknown"
+
+  # Nano-Banana-2-Lite (Gemini-3.1-Flash-Lite-Image) (auto-detected 2026-07-01)
+  Nano-Banana-2-Lite (Gemini-3.1-Flash-Lite-Image):
+    ga_date: "2026-06-30"
+    api_date: "unknown"
+  # Gemini-Omni-Flash (auto-detected 2026-07-01)
+  Gemini-Omni-Flash:
+    ga_date: "2026-06-30"
+    api_date: "unknown"
+
+  # Gemini-SQL2 (auto-detected 2026-06-13)
+  Gemini-SQL2:
+    ga_date: "2026-06-12"
+    api_date: "unknown"
+
+  # DiffusionGemma (auto-detected 2026-06-11)
+  DiffusionGemma:
+    ga_date: "2026-06-10"
+    api_date: "unknown"
+
+  # Gemini-3.5-Live-Translate (auto-detected 2026-06-10)
+  Gemini-3.5-Live-Translate:
+    ga_date: "2026-06-09"
+    api_date: "unknown"
+
+  # Gemini-Omni (auto-detected 2026-05-27)
+  Gemini-Omni:
+    ga_date: "2026-05-26"
+    api_date: "unknown"
+  # Gemini-Spark (auto-detected 2026-05-27)
+  Gemini-Spark:
+    ga_date: "2026-05-26"
+    api_date: "unknown"
+
+  # Gemini-3.5-Flash (auto-detected 2026-05-20)
+  Gemini-3.5-Flash:
+    ga_date: "2026-05-19"
+    api_date: "unknown"
+
+  # Vision-Banana (auto-detected 2026-04-26)
+  Vision-Banana:
+    ga_date: "2026-04-24"
+    api_date: "unknown"
+
+  # Gemini-Robotics-ER-1.6 (auto-detected 2026-04-16)
+  Gemini-Robotics-ER-1.6:
+    ga_date: "2026-04-15"
+    api_date: "unknown"
+  # Gemini-3.1-Flash-TTS (auto-detected 2026-04-16)
+  Gemini-3.1-Flash-TTS:
+    ga_date: "2026-04-15"
+    api_date: "unknown"
+
+  # Gemma-4 (auto-detected 2026-04-03)
+  Gemma-4:
+    ga_date: "2026-04-02"
+    api_date: "unknown"
+
+  # Gemma-4 (auto-detected 2026-04-03)
+  Gemma-4:
+    ga_date: "2026-04-02"
+    api_date: "unknown"
+
+  # Veo-3.1-Lite (auto-detected 2026-04-02)
+  Veo-3.1-Lite:
+    ga_date: "2026-04-01"
+    api_date: "unknown"
+
+  # Gemini-3.1-Flash-Live (auto-detected 2026-03-27)
+  Gemini-3.1-Flash-Live:
+    ga_date: "2026-03-26"
+    api_date: "unknown"
+
+  # Gemini-Embedding-2 (auto-detected 2026-03-12)
+  Gemini-Embedding-2:
+    ga_date: "2026-03-11"
+    api_date: "unknown"
+
+  # Gemini-3.1-Flash-Lite (auto-detected 2026-03-04)
+  Gemini-3.1-Flash-Lite:
+    ga_date: "2026-03-03"
+    api_date: "unknown"
+
+  # Gemini-3.1-Flash-Image (auto-detected 2026-02-27)
+  Gemini-3.1-Flash-Image:
+    ga_date: "2026-02-26"
+    api_date: "unknown"
+
+  # Gemini-3.1-Pro (auto-detected 2026-02-20)
+  Gemini-3.1-Pro:
+    ga_date: "2026-02-19"
+    api_date: "unknown"
+
+  # Lyria-3 (auto-detected 2026-02-19)
+  Lyria-3:
+    ga_date: "2026-02-18"
+    api_date: "unknown"
+
+  # Gemini-3-Deep-Think (auto-detected 2026-02-13)
+  Gemini-3-Deep-Think:
+    ga_date: "2026-02-12"
+    api_date: "unknown"
+
+  # Genie-3 (auto-detected 2026-02-07)
+  Genie-3:
+    ga_date: "2026-02-06"
+    api_date: "unknown"
+
+  Gemini-3:
+    ga_date: "2025-11-18"   # Wikipedia
+    api_date: "2025-11-18"  # OpenRouter
+  Gemini-3-Flash:
+    ga_date: "2025-12-17"   # Later variant
+    api_date: "2025-12-17"  # OpenRouter
+  Gemini-2.5:
+    ga_date: "2025-03-25"   # Wikipedia
+    api_date: "2025-06-17"  # OpenRouter (later)
+  Gemini-2.5-Flash:
+    ga_date: "2025-06-17"   # Inferred
+    api_date: "2025-06-17"  # OpenRouter
+  Gemini-2.0:
+    ga_date: "2025-02-01"   # Wikipedia
+    api_date: "2025-02-01"  # Inferred
+
+x-ai:
+  # Grok-4.5 (auto-detected 2026-07-09)
+  Grok-4.5:
+    ga_date: "2026-07-08"
+    api_date: "unknown"
+
+  # Grok-Imagine-Video-1.5 (auto-detected 2026-06-05)
+  Grok-Imagine-Video-1.5:
+    ga_date: "2026-06-04"
+    api_date: "unknown"
+
+  # Grok-Build (auto-detected 2026-05-27)
+  Grok-Build:
+    ga_date: "2026-05-26"
+    api_date: "unknown"
+
+  # Grok-Voice-Think-Fast-1.0 (auto-detected 2026-04-26)
+  Grok-Voice-Think-Fast-1.0:
+    ga_date: "2026-04-24"
+    api_date: "unknown"
+
+  # Grok-STT (auto-detected 2026-04-20)
+  Grok-STT:
+    ga_date: "2026-04-19"
+    api_date: "unknown"
+  # Grok-TTS (auto-detected 2026-04-20)
+  Grok-TTS:
+    ga_date: "2026-04-19"
+    api_date: "unknown"
+
+  # Grok-4.2 (auto-detected 2026-03-06)
+  Grok-4.2:
+    ga_date: "2026-03-05"
+    api_date: "unknown"
+
+  Grok-4.1:
+    ga_date: "2025-11-17"   # Wikipedia (inferred)
+    api_date: "2025-11-19"  # OpenRouter
+  Grok-4:
+    ga_date: "2025-07-09"   # Wikipedia
+    api_date: "2025-07-09"  # OpenRouter
+  Grok-3:
+    ga_date: "2025-02-01"   # Wikipedia
+    api_date: "2025-06-10"  # OpenRouter (much later)
+
+meta-llama:
+  # Muse-Image (auto-detected 2026-07-08)
+  Muse-Image:
+    ga_date: "2026-07-07"
+    api_date: "unknown"
+
+  # Brain2Qwerty-v2 (auto-detected 2026-07-01)
+  Brain2Qwerty-v2:
+    ga_date: "2026-06-30"
+    api_date: "unknown"
+
+  # Sapiens-2 (auto-detected 2026-04-28)
+  Sapiens-2:
+    ga_date: "2026-04-27"
+    api_date: "unknown"
+
+  # Muse-Spark (auto-detected 2026-04-09)
+  Muse-Spark:
+    ga_date: "2026-04-08"
+    api_date: "unknown"
+
+  # EUPE (auto-detected 2026-04-08)
+  EUPE:
+    ga_date: "2026-04-07"
+    api_date: "unknown"
+
+  Llama-4:
+    ga_date: "2025-04-05"   # Wikipedia
+    api_date: "2025-04-05"  # OpenRouter
+  Llama-4-Maverick:
+    ga_date: "2025-04-05"   # Same as base
+    api_date: "2025-04-05"  # OpenRouter
+  Llama-4-Scout:
+    ga_date: "2025-04-05"   # Same as base
+    api_date: "2025-04-05"  # OpenRouter
+
+deepseek:
+  # DeepSeek-V4-Pro (auto-detected 2026-04-25)
+  DeepSeek-V4-Pro:
+    ga_date: "2026-04-24"
+    api_date: "unknown"
+  # DeepSeek-V4-Flash (auto-detected 2026-04-25)
+  DeepSeek-V4-Flash:
+    ga_date: "2026-04-24"
+    api_date: "unknown"
+
+  DeepSeek-V3:
+    ga_date: "2024-12-01"   # Wikipedia (December 2024)
+    api_date: "2025-03-24"  # OpenRouter (V3 0324)
+  DeepSeek-V3.1:
+    ga_date: "2025-08-21"   # Inferred from API
+    api_date: "2025-08-21"  # OpenRouter
+  DeepSeek-V3.2:
+    ga_date: "2025-09-29"   # Inferred from API
+    api_date: "2025-12-01"  # OpenRouter
+  DeepSeek-R1:
+    ga_date: "2025-01-20"   # Wikipedia
+    api_date: "2025-01-20"  # OpenRouter
+
+mistralai:
+  # Robostral-Navigate (auto-detected 2026-07-09)
+  Robostral-Navigate:
+    ga_date: "2026-07-08"
+    api_date: "unknown"
+
+  # Leanstral-1.5 (auto-detected 2026-07-04)
+  Leanstral-1.5:
+    ga_date: "2026-07-03"
+    api_date: "unknown"
+
+  # Mistral-OCR-4 (auto-detected 2026-06-24)
+  Mistral-OCR-4:
+    ga_date: "2026-06-23"
+    api_date: "unknown"
+
+  # Mistral-Medium-3.5 (auto-detected 2026-05-04)
+  Mistral-Medium-3.5:
+    ga_date: "2026-05-03"
+    api_date: "unknown"
+
+  # Mistral-TTS (auto-detected 2026-03-28)
+  Mistral-TTS:
+    ga_date: "2026-03-27"
+    api_date: "unknown"
+
+  # Mistral-Small-4 (auto-detected 2026-03-17)
+  Mistral-Small-4:
+    ga_date: "2026-03-16"
+    api_date: "unknown"
+
+  # Voxtral-Transcribe-2 (auto-detected 2026-02-06)
+  Voxtral-Transcribe-2:
+    ga_date: "2026-02-05"
+    api_date: "unknown"
+
+  Mistral-Large-3:
+    ga_date: "2025-12-01"   # Inferred
+    api_date: "2025-12-01"  # OpenRouter
+  Ministral-3:
+    ga_date: "2025-12-02"   # Inferred
+    api_date: "2025-12-02"  # OpenRouter
+
+# NOTE: provider key MUST equal the OpenRouter id prefix (moonshotai, not
+# moonshot) or _load_releases() filters it out and curated/discovered entries
+# land in separate buckets. Same rule applies to z-ai below.
+moonshotai:
+  Kimi-K2.6:
+    ga_date: "2026-04-20"   # OpenRouter created date
+    api_date: "2026-04-20"  # OpenRouter
+  Kimi-K2.5:
+    ga_date: "2026-01-27"   # TechCrunch, SiliconANGLE
+    api_date: "2026-01-27"  # Same day (API + open source)
+
+# Zhipu / Z.ai (GLM family) — OpenRouter prefix is "z-ai"
+# Seeded 2026-06-29 from HuggingFace org zai-org (weights upload = GA) +
+# OpenRouter created date (API). Chinese frontier labs were previously
+# untracked, so GLM releases had zero date-grounding (GLM-5.2 mis-framed
+# as a "yesterday" release on 2026-06-29 — it was 13 days old).
+z-ai:
+  GLM-5.2:
+    ga_date: "2026-06-16"   # HF zai-org/GLM-5.2 weights upload
+    api_date: "2026-06-16"  # OpenRouter
+  GLM-5.1:
+    ga_date: "2026-04-03"   # HF zai-org/GLM-5.1 weights upload
+    api_date: "2026-04-07"  # OpenRouter
+  GLM-5:
+    ga_date: "2026-02-11"   # HF zai-org/GLM-5 weights upload
+    api_date: "2026-02-11"  # OpenRouter
+
+# Agent enrichment notes:
+# - Models marked "needs verification" should be confirmed by agent
+# - Agent should add new releases discovered in daily news
+# - Format: model_name: { ga_date: "YYYY-MM-DD", api_date: "YYYY-MM-DD" }

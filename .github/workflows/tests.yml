@@ -1,0 +1,58 @@
+name: Tests
+
+# Fast guard checks on every push/PR. Intentionally dependency-light: the
+# call_with_thinking signature guard is stdlib-only (ast), so it runs without
+# installing the project or any secrets/network. This is what turns a silent
+# prod break (like the 2026-06-21 call_with_thinking overload drift that took
+# the daily pipeline RED) into a red check before it can merge.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Signature lockstep guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: call_with_thinking signature lockstep
+        run: python3 -m unittest tests.call_with_thinking_signature_test -v
+      - name: Deploy webhook requires authenticated caller (CWE-306 #1247)
+        run: python3 -m unittest tests.webhook_hook_auth_test -v
+      - name: Topic-detection JSON extraction survives fences/preambles (2026-07-09)
+        run: python3 -m unittest tests.extract_json_str_test -v
+
+  hero-retry:
+    name: Hero image retry-window guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Guards the daily hero image retry window. On 2026-06-26 a single provider
+    # disconnect dropped the hero (no retry); on 2026-06-27 the 3-attempt/~25s
+    # window was too shallow and the hero dropped AGAIN even though a manual
+    # regen minutes later succeeded. This test locks in the multi-minute retry
+    # window + transient-failure handling so neither regression can silently
+    # return. Needs the three deps image_client imports at module load.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install minimal deps for image_client import
+        run: python3 -m pip install --no-input "httpx>=0.27.0" "google-genai>=1.0.0" "Pillow>=10.0.0"
+      - name: Hero image retry behavior
+        run: python3 -m unittest tests.image_client_retry_test -v

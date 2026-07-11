@@ -1,0 +1,50 @@
+# Python backend (not needed for frontend)
+*.py
+__pycache__
+*.pyc
+.env
+.env.local
+venv/
+env/
+
+# Docker
+Dockerfile
+docker-compose.yml
+docker-compose.web.yml
+.dockerignore
+nginx.conf
+
+# Documentation & Planning
+*.md
+docs/
+.planning/
+.github/workflows/
+
+# Temporary & Backup
+.data-backup/
+*.bak
+*.tmp
+
+# Node modules (will be installed fresh)
+node_modules/
+
+# Build output (not needed as build runs fresh)
+.next/
+dist/
+build/
+
+# Git
+.git/
+.gitignore
+LICENSE
+
+# Root config files (not needed for frontend)
+requirements.txt
+config/
+agents/
+generators/
+tests/
+scripts/
+webhook/
+deploy/
+assets/
