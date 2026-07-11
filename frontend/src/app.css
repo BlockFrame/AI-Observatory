@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Hanken+Grotesk:wght@600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,422 +6,75 @@
 
 @layer base {
 	:root {
-		/* Cybernetic Blueprint - CSS Variables */
-		--color-surface: #131313;
-		--color-surface-black: #050505;
-		--color-neon-cyan: #00ffd5;
-		--color-electric-lime: #ccff00;
-		--color-wireframe-gray: #333333;
-		--color-ghost-white: #f5f5f5;
+		color-scheme: dark;
 	}
 
 	html {
 		scroll-behavior: smooth;
-		background-color: var(--color-surface-black);
+		background-color: #0c1322;
 	}
 
 	body {
-		@apply font-sans antialiased;
-		background-color: var(--color-surface-black);
-		color: #e5e2e1;
+		background-color: #0c1322;
+		color: #dce2f7;
+		font-family: 'Inter', sans-serif;
 	}
 
-	/* Hanken Grotesk for headings and body */
 	h1, h2, h3, h4, h5, h6 {
 		font-family: 'Hanken Grotesk', sans-serif;
-		font-weight: 700;
-		letter-spacing: -0.01em;
 	}
 
-	/* JetBrains Mono for technical labels */
-	code, .mono, .label-tech {
+	code, .mono {
 		font-family: 'JetBrains Mono', monospace;
-		letter-spacing: 0.05em;
+	}
+
+	.material-symbols-outlined {
+		font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 	}
 }
 
 @layer components {
-	/* ============================================
-	   CYBERNETIC BLUEPRINT COMPONENT STYLES
-	   ============================================ */
-
-	/* Cards - Wireframe aesthetic */
-	.card {
-		@apply bg-transparent
-		       border border-wireframe-gray
-		       p-6
-		       transition-all duration-200;
-		backdrop-filter: blur(12px);
-		background-color: rgba(255, 255, 255, 0.02);
-	}
-
-	.card:hover {
-		@apply border-neon-cyan
-		       shadow-neon-glow;
-	}
-
-	/* Ghost Button - Primary CTA */
-	.btn-ghost {
-		@apply px-6 py-3
-		       border border-ghost-white
-		       text-ghost-white
-		       font-medium
-		       transition-all duration-200
-		       hover:bg-ghost-white hover:text-surface-black;
-	}
-
-	.btn-ghost-primary {
-		@apply border-neon-cyan
-		       text-neon-cyan
-		       hover:bg-neon-cyan hover:text-surface-black;
-	}
-
-	.btn-ghost-secondary {
-		@apply border-electric-lime
-		       text-electric-lime
-		       hover:bg-electric-lime hover:text-surface-black;
-	}
-
-	/* Skeletal Label - Monospaced Technical Text */
-	.label-skeleton {
-		@apply font-mono text-label-mono
-		       text-on-surface-variant
-		       uppercase
-		       tracking-widest;
-	}
-
-	.label-active {
-		@apply text-neon-cyan;
-	}
-
-	.label-utility {
-		@apply text-electric-lime;
-	}
-
-	/* Input Fields - Blueprint line style */
-	.input-blueprint {
-		@apply w-full px-0 py-2
-		       border-0 border-b border-wireframe-gray
-		       bg-transparent
-		       text-on-surface
-		       placeholder-on-surface-variant
-		       focus:border-neon-cyan focus:ring-0 focus:shadow-none
-		       outline-none
-		       transition-colors duration-200
-		       font-body-md;
-	}
-
-	.input-blueprint::placeholder {
-		@apply text-on-surface-variant;
-	}
-
-	/* Chips & Status Tags */
-	.chip {
-		@apply inline-block px-3 py-1
-		       border border-wireframe-gray
-		       font-mono text-label-mono
-		       text-on-surface
-		       rounded-none
-		       transition-all duration-200;
-	}
-
-	.chip-active {
-		@apply border-neon-cyan
-		       text-neon-cyan;
-	}
-
-	.chip-success {
-		@apply border-electric-lime
-		       text-electric-lime;
-	}
-
-	.chip-error {
-		@apply border-error
-		       text-error;
-	}
-
-	/* Wireframe Grid Background */
-	.wireframe-bg {
-		background-image:
-			linear-gradient(rgba(51, 51, 51, 0.1) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(51, 51, 51, 0.1) 1px, transparent 1px);
-		background-size: 40px 40px;
-	}
-
-	/* Inner Glow - Neon Accent */
-	.glow-primary {
-		@apply shadow-neon-glow;
-	}
-
-	.glow-secondary {
-		@apply shadow-lime-glow;
-	}
-
-	/* Glassmorphism - Backdrop blur cards */
 	.glass-panel {
-		@apply bg-glass
-		       backdrop-blur-glass
-		       border border-wireframe-gray
-		       rounded-none;
+		background: rgba(31, 41, 55, 0.6);
+		@apply backdrop-blur-xl border border-outline-variant/20;
 	}
 
-	.glass-panel:hover {
-		@apply border-neon-cyan;
+	.neon-border-primary:hover {
+		@apply border-primary/80;
+		box-shadow: 0 0 15px rgba(192, 193, 255, 0.3);
 	}
 
-	/* Navigation Link */
+	.ticker-scroll {
+		animation: ticker 30s linear infinite;
+	}
+
+	.pulse-live {
+		animation: pulse-red 2s infinite;
+	}
+
 	.nav-link {
-		@apply px-4 py-2
-		       border-b-2 border-transparent
-		       text-on-surface
-		       transition-colors duration-200
-		       hover:text-neon-cyan
-		       hover:border-neon-cyan;
-	}
-
-	.nav-link-active {
-		@apply text-neon-cyan
-		       border-neon-cyan;
-	}
-
-	/* Importance-driven card styling with neon borders */
-	.card-importance-high {
-		@apply border-neon-cyan
-		       shadow-neon-glow;
-	}
-
-	.card-importance-medium {
-		@apply border-electric-lime
-		       shadow-lime-glow;
-	}
-
-	.card-importance-standard {
-		@apply border-wireframe-gray;
-	}
-
-	.card-importance-low {
-		@apply border-outline-variant
-		       opacity-75;
-	}
-
-	/* Scroll affordance */
-	.scroll-indicator {
-		@apply fixed right-8 bottom-20
-		       font-mono text-caption
-		       text-on-surface-variant
-		       uppercase tracking-widest
-		       pointer-events-none;
-	}
-
-	.scroll-indicator::after {
-		content: '';
-		@apply block w-0.5 h-12
-		       bg-wireframe-gray
-		       mx-auto mt-2;
-	}
-
-	.scroll-indicator::before {
-		content: '↓';
-		@apply block text-center
-		       text-neon-cyan;
+		@apply transition-all duration-300;
 	}
 }
 
 @layer utilities {
-	/* ============================================
-	   CYBERNETIC BLUEPRINT UTILITIES
-	   ============================================ */
-
-	/* Spacing Utilities */
-	.margin-safe {
-		margin-left: 4rem;
-		margin-right: 4rem;
+	.ticker-scroll {
+		animation: ticker 30s linear infinite;
 	}
 
-	.section-gap {
-		margin-top: 10rem;
-		margin-bottom: 10rem;
+	@keyframes ticker {
+		0% { transform: translateX(100%); }
+		100% { transform: translateX(-100%); }
 	}
 
-	.gutter-grid {
-		gap: 1.5rem;
+	@keyframes pulse-red {
+		0% { opacity: 1; transform: scale(1); }
+		50% { opacity: 0.5; transform: scale(1.2); }
+		100% { opacity: 1; transform: scale(1); }
 	}
 
-	.stack-sm {
-		gap: 0.5rem;
-	}
-
-	.stack-md {
-		gap: 1rem;
-	}
-
-	.stack-lg {
-		gap: 2rem;
-	}
-
-	/* Prose/Markdown Styling */
-	.prose-summary {
-		@apply text-body-md
-		       text-on-surface;
-	}
-
-	.prose-summary h2 {
-		@apply text-headline-md
-		       text-neon-cyan
-		       font-bold mt-section-gap mb-stack-lg;
-	}
-
-	.prose-summary h3 {
-		@apply text-headline-md
-		       text-electric-lime
-		       font-semibold mt-stack-lg mb-stack-md;
-	}
-
-	.prose-summary h4 {
-		@apply text-body-lg
-		       text-on-surface
-		       font-semibold mt-stack-md mb-stack-md;
-	}
-
-	.prose-summary h2:first-child,
-	.prose-summary h3:first-child,
-	.prose-summary h4:first-child {
-		@apply mt-0;
-	}
-
-	.prose-summary strong {
-		@apply text-neon-cyan
-		       font-bold;
-	}
-
-	.prose-summary ul {
-		@apply my-stack-md pl-6 space-y-1 list-disc
-		       text-on-surface;
-	}
-
-	.prose-summary li {
-		@apply text-on-surface
-		       marker:text-electric-lime;
-	}
-
-	.prose-summary a {
-		@apply text-neon-cyan
-		       hover:text-electric-lime
-		       underline
-		       decoration-neon-cyan
-		       hover:decoration-electric-lime
-		       transition-colors duration-200;
-	}
-
-	/* Internal links - high contrast */
-	.prose-summary a.internal-link {
-		@apply text-neon-cyan
-		       underline
-		       decoration-neon-cyan/50
-		       hover:text-electric-lime
-		       hover:decoration-electric-lime
-		       transition-colors duration-200;
-	}
-
-	.prose-summary a.internal-link strong {
-		color: inherit;
-		font-weight: bold;
-	}
-
-	.prose-summary p {
-		@apply mb-stack-md
-		       leading-relaxed
-		       text-on-surface;
-	}
-
-	.prose-summary p:last-child {
-		@apply mb-0;
-	}
-
-	/* Neon Text Gradient */
-	.text-gradient-neon {
-		@apply bg-gradient-to-r
-		       from-neon-cyan to-electric-lime
-		       bg-clip-text text-transparent;
-	}
-
-	/* Wireframe Grid Overlay */
-	.grid-overlay {
-		position: relative;
-	}
-
-	.grid-overlay::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background-image:
-			linear-gradient(rgba(0, 255, 213, 0.03) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(0, 255, 213, 0.03) 1px, transparent 1px);
-		background-size: 40px 40px;
-		pointer-events: none;
-	}
-
-	/* Border Animations */
-	.border-glow {
-		@apply border-neon-cyan shadow-neon-glow;
-		animation: border-pulse 2s infinite;
-	}
-
-	@keyframes border-pulse {
-		0%, 100% {
-			box-shadow: inset 0 0 10px rgba(0, 255, 213, 0.3);
-		}
-		50% {
-			box-shadow: inset 0 0 20px rgba(0, 255, 213, 0.5);
-		}
-	}
-
-	/* Scroll affordance animation */
-	.scroll-animate {
-		animation: scroll-pulse 1.5s ease-in-out infinite;
-	}
-
-	@keyframes scroll-pulse {
-		0%, 100% {
-			opacity: 0.5;
-			transform: translateY(0);
-		}
-		50% {
-			opacity: 1;
-			transform: translateY(8px);
-		}
-	}
-
-	/* Grid Layout */
-	.grid-12 {
-		@apply grid grid-cols-12 gap-gutter-grid;
-	}
-
-	@media (max-width: 1280px) {
-		.grid-12 {
-			@apply grid-cols-8;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.grid-12 {
-			@apply grid-cols-1;
-		}
-	}
-
-	/* Container */
-	.container-safe {
-		@apply mx-auto margin-safe;
-		max-width: 1200px;
-	}
-
-	/* Visibility - Hide scroll bar but allow scrolling */
-	.scrollbar-hidden {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-
-	.scrollbar-hidden::-webkit-scrollbar {
-		display: none;
-	}
+	::-webkit-scrollbar { width: 6px; }
+	::-webkit-scrollbar-track { background: #070e1d; }
+	::-webkit-scrollbar-thumb { background: #232a3a; border-radius: 10px; }
+	::-webkit-scrollbar-thumb:hover { background: #464554; }
 }

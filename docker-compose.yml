@@ -5,6 +5,7 @@ services:
     build: .
     container_name: ai-news-aggregator
     ports:
+<<<<<<< HEAD
       - "7100:80"
     volumes:
       - ./config:/app/config
@@ -27,6 +28,24 @@ services:
       - LOOKBACK_HOURS=${LOOKBACK_HOURS:-24}
       - TARGET_DATE=${TARGET_DATE:-}
 
+=======
+      - "8080:80"
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./web:/app/web
+      - ./logs:/app/logs
+    environment:
+      # LiteLLM Configuration
+      - LITELLM_API_BASE=${LITELLM_API_BASE}
+      - LITELLM_API_KEY=${LITELLM_API_KEY}
+      - LITELLM_MODEL=${LITELLM_MODEL:-claude-opus-4.5}
+      
+      # Collection Settings
+      - COLLECTION_SCHEDULE=${COLLECTION_SCHEDULE:-0 6 * * *}
+      - LOOKBACK_HOURS=${LOOKBACK_HOURS:-24}
+      
+>>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
       # Timezone
       - TZ=${TZ:-America/New_York}
     restart: unless-stopped

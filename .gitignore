@@ -1,5 +1,6 @@
 # Environment variables
 .env
+<<<<<<< HEAD
 .env.backup*
 !.env.example
 
@@ -8,6 +9,8 @@ config/providers.yaml
 
 # Test scripts (local development only)
 test_*.py
+=======
+>>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 
 # Python
 __pycache__/
@@ -24,8 +27,13 @@ dist/
 downloads/
 eggs/
 .eggs/
+<<<<<<< HEAD
 /lib/
 /lib64/
+=======
+lib/
+lib64/
+>>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 parts/
 sdist/
 var/
@@ -34,9 +42,19 @@ wheels/
 .installed.cfg
 *.egg
 
+<<<<<<< HEAD
 # Data and generated files (top-level only)
 /data/
 /logs/
+=======
+# Data and generated files
+data/
+logs/
+web/
+
+# Config files (runtime-generated, may contain sensitive info)
+config/*.txt
+>>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 
 # Claude Code
 .claude/
@@ -56,6 +74,7 @@ Thumbs.db
 
 # Docker volumes
 volumes/
+<<<<<<< HEAD
 
 # Frontend build artifacts (built during Docker build)
 web/_app/
@@ -73,3 +92,5 @@ deploy/allowed_signers
 web/data/search-index.json
 web/data/search-documents.json
 web/data/search-simple.json
+=======
+>>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
