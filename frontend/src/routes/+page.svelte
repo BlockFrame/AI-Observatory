@@ -307,7 +307,7 @@
 				
 				<!-- Title with Logo -->
 				<div class="flex items-center gap-4 mb-4">
-					<img src="/assets/logo.png" alt="AI Observatory" class="w-12 h-12 rounded-lg" />
+					<img src="/logo.png" alt="AI Observatory" class="w-12 h-12 rounded-lg" />
 					<div>
 						<h1 class="font-headline-xl text-headline-xl text-on-background leading-tight">AI Observatory</h1>
 						<p class="font-body-sm text-body-sm text-on-surface-variant">Live Intelligence Feed</p>

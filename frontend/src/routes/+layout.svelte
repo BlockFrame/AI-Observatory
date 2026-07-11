@@ -8,7 +8,7 @@
 	<aside class="fixed left-0 top-0 z-40 h-screen w-64 border-r border-[#2b3655] bg-[#111d33] shadow-2xl">
 		<div class="flex h-full flex-col px-5 py-7">
 			<div class="mb-10 flex items-center gap-4 px-2">
-				<img src="/assets/logo.png" alt="AI Observatory Logo" class="h-14 w-14 rounded-lg object-cover" />
+				<img src="/logo.png" alt="AI Observatory Logo" class="h-14 w-14 rounded-lg object-cover" />
 				<div class="min-w-0">
 					<h1 class="text-5xl font-extrabold leading-none tracking-tight text-[#bfc2ff]">AI</h1>
 					<p class="mt-1 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.22em] text-[#8e94ae]">Observatory v2.4</p>
