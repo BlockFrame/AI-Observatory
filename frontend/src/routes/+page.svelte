@@ -9,6 +9,7 @@
 	import { CATEGORY_CONFIG } from '$lib/types';
 	import DateNavigator from '$lib/components/calendar/DateNavigator.svelte';
 	import HeroSection from '$lib/components/layout/HeroSection.svelte';
+	import ShaderBackground from '$lib/components/layout/ShaderBackground.svelte';
 	import TopicCard from '$lib/components/news/TopicCard.svelte';
 	import NewsList from '$lib/components/news/NewsList.svelte';
 	import LoadingSpinner from '$lib/components/common/LoadingSpinner.svelte';
@@ -297,14 +298,7 @@
 		<!-- Overview View -->
 		<!-- Custom Hero Section with Logo -->
 		<section class="relative h-[500px] rounded-xl overflow-hidden mb-gutter group border border-white/10">
-			<video
-				autoplay
-				muted
-				loop
-				playsinline
-				class="absolute inset-0 h-full w-full object-cover opacity-25"
-				src="https://ik.imagekit.io/lrigu76hy/tailark/dna-video.mp4?updatedAt=1745736251477"
-			></video>
+			<ShaderBackground className="opacity-40" />
 			<div class="absolute inset-0 bg-gradient-to-br from-background/70 via-surface-container/60 to-background/90"></div>
 			<div class="absolute inset-0 flex flex-col justify-end p-10">
 				<!-- Live Indicator -->
