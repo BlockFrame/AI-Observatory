@@ -1,4 +1,4 @@
-﻿<script lang="ts">
+<script lang="ts">
 	import { page } from '$app/stores';
 	import '../app.css';
 </script>
@@ -16,30 +16,34 @@
 			</div>
 
 			<nav class="flex-1 space-y-2">
-				<a href="/" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/' ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
-					<span class="material-symbols-outlined text-[22px]">dashboard</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Dashboard</span>
+				<a href="/?category=news" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/' && (!$page.url.search || $page.url.search.includes('category=news')) ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">newspaper</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">AI News</span>
 				</a>
-				<button class="flex w-full items-center gap-4 px-4 py-4 text-left text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]" type="button">
-					<span class="material-symbols-outlined text-[22px]">neurology</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Models</span>
-				</button>
+				<a href="/?category=research" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/' && $page.url.search.includes('category=research') ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">science</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">Research</span>
+				</a>
+				<a href="/?category=social" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/' && $page.url.search.includes('category=social') ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">groups</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">Social Media</span>
+				</a>
+				<a href="/?category=reddit" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/' && $page.url.search.includes('category=reddit') ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">forum</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">Reddit Discussions</span>
+				</a>
 				<a href="/feeds" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/feeds' ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
-					<span class="material-symbols-outlined text-[22px]">dynamic_feed</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Neural Feed</span>
+					<span class="material-symbols-outlined text-[22px]">rss_feed</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">RSS Feed</span>
 				</a>
-				<button class="flex w-full items-center gap-4 px-4 py-4 text-left text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]" type="button">
-					<span class="material-symbols-outlined text-[22px]">error</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Anomalies</span>
-				</button>
-				<button class="flex w-full items-center gap-4 px-4 py-4 text-left text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]" type="button">
-					<span class="material-symbols-outlined text-[22px]">account_tree</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Architectures</span>
-				</button>
-				<button class="flex w-full items-center gap-4 px-4 py-4 text-left text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]" type="button">
-					<span class="material-symbols-outlined text-[22px]">settings</span>
-					<span class="text-[17px] font-semibold tracking-[0.08em]">Settings</span>
-				</button>
+				<a href="/archive" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/archive' ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">history</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">Archive</span>
+				</a>
+				<a href="/about" class="flex items-center gap-4 px-4 py-4 {$page.url.pathname === '/about' ? 'border-r-4 border-[#e4dcff] bg-[#4c4f81] text-[#d7daec]' : 'text-[#b2b8cf] hover:bg-[#2a3550] hover:text-[#d7daec]'}">
+					<span class="material-symbols-outlined text-[22px]">info</span>
+					<span class="text-[17px] font-semibold tracking-[0.08em]">About</span>
+				</a>
 			</nav>
 		</div>
 	</aside>
