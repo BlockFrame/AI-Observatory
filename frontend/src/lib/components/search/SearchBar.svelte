@@ -10,6 +10,7 @@
 
 	export let placeholder = 'Search articles, research, discussions...';
 	export let autofocus = false;
+	export let showCategoryFilter = false;
 
 	let query = '';
 	let category: Category | '' = '';
@@ -91,7 +92,7 @@
 
 	function selectResult(result: SearchResult) {
 		if (result.doc) {
-			goto(`/${result.doc.date}/${result.doc.category}`);
+			goto(`/?date=${result.doc.date}&category=${result.doc.category}#item-${result.doc.id}`);
 			isOpen = false;
 			query = '';
 			dispatch('select', result);
@@ -114,16 +115,18 @@
 <div class="search-container relative">
 	<div class="flex gap-2">
 		<!-- Category filter -->
-		<select
-			bind:value={category}
-			on:change={handleCategoryChange}
-			class="input w-auto min-w-[120px] text-sm"
-		>
-			<option value="">All Categories</option>
-			{#each categories.filter(c => c !== '') as cat}
-				<option value={cat}>{CATEGORY_CONFIG[cat].title}</option>
-			{/each}
-		</select>
+		{#if showCategoryFilter}
+			<select
+				bind:value={category}
+				on:change={handleCategoryChange}
+				class="w-auto min-w-[120px] rounded-md border border-[#2b3655] bg-[#18243b] px-3 py-2 text-sm text-[#d8ddf4] focus:border-[#7f88c4] focus:outline-none"
+			>
+				<option value="">All Categories</option>
+				{#each categories.filter(c => c !== '') as cat}
+					<option value={cat}>{CATEGORY_CONFIG[cat].title}</option>
+				{/each}
+			</select>
+		{/if}
 
 		<!-- Search input -->
 		<div class="relative flex-1">
@@ -135,7 +138,7 @@
 				on:keydown={handleKeydown}
 				type="search"
 				{placeholder}
-				class="input pr-10"
+				class="w-full rounded-full border border-[#2b3655] bg-[#18243b] px-4 py-2 pr-10 text-sm text-[#d8ddf4] placeholder:text-[#7d86a8] focus:border-[#7f88c4] focus:outline-none"
 			/>
 
 			{#if query}

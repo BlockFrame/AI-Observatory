@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import SearchBar from '$lib/components/search/SearchBar.svelte';
 	import '../app.css';
 </script>
 
@@ -16,31 +17,34 @@
 				</div>
 			</div>
 
-			<nav class="flex-1 space-y-2">
-				<a href="/" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && !$page.url.search.includes('category=') ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">Home</span>
+			<nav class="flex-1">
+				<p class="mb-3 px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[#8e94ae]">Navigation</p>
+				<div class="space-y-1.5">
+				<a href="/" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && !$page.url.search.includes('category=') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">Home</span>
 				</a>
-				<a href="/?category=news" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">AI News</span>
+				<a href="/?category=news" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">AI News</span>
 				</a>
-				<a href="/?category=research" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">Research</span>
+				<a href="/?category=research" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">Research</span>
 				</a>
-				<a href="/?category=social" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">Social Media</span>
+				<a href="/?category=social" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">Social Media</span>
 				</a>
-				<a href="/?category=reddit" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=reddit') ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">Reddit Discussions</span>
+				<a href="/?category=reddit" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=reddit') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">Reddit Discussions</span>
 				</a>
-				<a href="/feeds" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/feeds' ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">RSS Feed</span>
+				<a href="/feeds" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/feeds' ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">RSS Feed</span>
 				</a>
-				<a href="/archive" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/archive' ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">Archive</span>
+				<a href="/archive" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/archive' ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">Archive</span>
 				</a>
-				<a href="/about" class="flex items-center rounded-md px-3 py-2.5 transition-all duration-200 {$page.url.pathname === '/about' ? 'border-r-2 border-[#9aa6ff] bg-white/10 text-[#bfc2ff]' : 'text-[#b2b8cf] hover:bg-white/10 hover:text-[#d8ddf4]'}">
-					<span class="text-[12px] font-semibold uppercase tracking-wider">About</span>
+				<a href="/about" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/about' ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+					<span class="text-[13px] font-medium tracking-[0.02em]">About</span>
 				</a>
+				</div>
 			</nav>
 		</div>
 	</aside>
@@ -49,7 +53,9 @@
 	<header class="fixed left-64 right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md">
 		<div class="flex h-16 items-center px-8">
 			<div class="flex items-center">
-				<input class="w-72 rounded-full border border-[#2b3655] bg-[#18243b] px-4 py-2 text-sm text-[#d8ddf4] placeholder:text-[#7d86a8] focus:border-[#7f88c4] focus:outline-none" placeholder="Search..." type="text" />
+				<div class="w-80">
+					<SearchBar placeholder="Search..." />
+				</div>
 			</div>
 		</div>
 	</header>
