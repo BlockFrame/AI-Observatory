@@ -1,27 +1,10 @@
 {
-  "projectSettings": {
-    "sourceFilesOutsideRootDirectory": true,
-    "nodeVersion": "20.x"
-  },
   "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "web",
   "installCommand": "npm install",
   "env": {
     "VERCEL": "true"
   },
-  "routes": [
-    {
-      "src": "/data/.*\\.json$",
-      "headers": {
-        "Cache-Control": "public, max-age=3600",
-        "Content-Type": "application/json"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/data/(.*)",
