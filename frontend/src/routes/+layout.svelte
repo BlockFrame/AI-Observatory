@@ -11,9 +11,7 @@
 	<aside class="fixed h-screen left-0 top-0 w-64 flex flex-col bg-surface-glass backdrop-blur-xl border-r border-outline-variant/20 shadow-2xl z-50" style="background: rgba(31, 41, 55, 0.6);">
 		<div class="flex flex-col h-full py-6 px-4">
 			<div class="flex items-center gap-3 mb-10 px-2">
-				<div class="w-10 h-10 rounded-lg bg-primary/30 flex items-center justify-center">
-					<span class="font-headline-lg text-primary-fixed-dim font-bold">AI</span>
-				</div>
+				<img src="/assets/logo.png" alt="AI Observatory Logo" class="w-10 h-10 rounded-lg" />
 				<div>
 					<h1 class="font-headline-lg text-headline-lg font-bold text-primary-fixed-dim">Observatory</h1>
 					<p class="font-label-caps text-[10px] text-outline uppercase">v2.4</p>
