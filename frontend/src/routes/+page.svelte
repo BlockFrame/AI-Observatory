@@ -317,48 +317,9 @@
 				</div>
 				
 				<!-- Description -->
-				<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-8">
+				<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
 					Powered by Claude Opus 3.5. Real-time synthesized monitoring of {summary.total_items_analyzed} global neural developments, research breakthroughs, and social velocity metrics.
 				</p>
-				
-				<!-- Action Buttons -->
-				<div class="flex gap-4 mb-6">
-					<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-semibold shadow-xl shadow-primary/30 flex items-center gap-2 hover:brightness-110 transition-all">
-						<span class="material-symbols-outlined">monitoring</span>
-						View Live Matrix
-					</button>
-					<button class="glass-panel text-on-surface px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
-						Executive Summary
-					</button>
-				</div>
-
-				<!-- Motion Brand Rail -->
-				<div class="relative overflow-hidden rounded-md border border-white/10 bg-background/50 py-2">
-					<div class="hero-brand-rail flex w-max items-center gap-8 px-4">
-						<span class="hero-brand-pill">NVIDIA</span>
-						<span class="hero-brand-pill">OPENAI</span>
-						<span class="hero-brand-pill">GITHUB</span>
-						<span class="hero-brand-pill">ANTHROPIC</span>
-						<span class="hero-brand-pill">MICROSOFT</span>
-						<span class="hero-brand-pill">META AI</span>
-						<span class="hero-brand-pill">NVIDIA</span>
-						<span class="hero-brand-pill">OPENAI</span>
-						<span class="hero-brand-pill">GITHUB</span>
-						<span class="hero-brand-pill">ANTHROPIC</span>
-						<span class="hero-brand-pill">MICROSOFT</span>
-						<span class="hero-brand-pill">META AI</span>
-					</div>
-				</div>
-			</div>
-
-			<!-- Ticker -->
-			<div class="absolute bottom-0 w-full bg-surface-container-lowest/80 backdrop-blur-sm border-t border-white/5 py-2 overflow-hidden">
-				<div class="ticker-scroll whitespace-nowrap flex items-center gap-10">
-					<span class="font-data-mono text-data-mono text-tertiary">GPT-4.5 LAUNCH CONFIRMED +++ </span>
-					<span class="font-data-mono text-data-mono text-electric-blue">CLAUDE OPUS LEADERS: 98.2% TASK SUCCESS +++ </span>
-					<span class="font-data-mono text-data-mono text-secondary">OPEN SOURCE MOMENTUM: 2.7T PARAMETER MODELS +++ </span>
-					<span class="font-data-mono text-data-mono text-tertiary">MULTIMODAL BREAKTHROUGHS: 92% ACCURACY +++ </span>
-				</div>
 			</div>
 		</section>
 
@@ -397,7 +358,7 @@
 					Top Topics Today
 				</h2>
 				<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-					{#each summary.top_topics as topic}
+					{#each summary.top_topics.slice(0, 3) as topic}
 						<TopicCard {topic} />
 					{/each}
 				</div>
