@@ -17,11 +17,12 @@
 # -----------------------------------------------------------------------------
 # LLM Provider Configuration (Required)
 # -----------------------------------------------------------------------------
-# Supports two modes:
+# Supports three modes:
 # - anthropic: Direct Anthropic API with x-api-key header (recommended)
 # - openai-compatible: OpenAI-compatible proxy (LiteLLM, vLLM, etc.)
+# - openrouter: Direct OpenRouter chat/completions access
 llm:
-  # API mode: "anthropic" or "openai-compatible"
+  # API mode: "anthropic", "openai-compatible", or "openrouter"
   #
   # anthropic (default):
   #   - Direct Anthropic API access
@@ -33,6 +34,11 @@ llm:
   #   - Uses Bearer token authentication
   #   - Thinking support depends on proxy passthrough support
   #
+  # openrouter:
+  #   - Direct OpenRouter chat/completions access
+  #   - Uses ****** authentication with OPENROUTER_API_KEY
+  #   - Budgeted analysis falls back to standard chat completions
+  #
   mode: "anthropic"
 
   # API key for authentication
@@ -42,6 +48,7 @@ llm:
   # API base URL (no /v1 suffix)
   # For direct Anthropic: https://api.anthropic.com (default)
   # For proxy: your proxy URL (e.g., http://localhost:4000)
+  # For OpenRouter: https://openrouter.ai/api/v1
   # Uncomment to override the default:
   # base_url: "https://api.anthropic.com"
 
@@ -159,3 +166,12 @@ pipeline:
 # pipeline:
 #   base_url: "https://news.your-domain.com"
 #   lookback_hours: 24
+#
+# Example: Direct OpenRouter free model
+# llm:
+#   mode: "openrouter"
+#   api_key: "${OPENROUTER_API_KEY}"
+#   base_url: "https://openrouter.ai/api/v1"
+#   model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+#   max_output_tokens: 16384
+#   timeout: 600

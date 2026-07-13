@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Hanken+Grotesk:wght@600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -15,9 +15,13 @@
 	}
 
 	body {
-		background-color: #0c1322;
+		background:
+			radial-gradient(circle at 82% 8%, rgba(99, 102, 241, 0.08), transparent 28rem),
+			radial-gradient(circle at 16% 42%, rgba(78, 222, 163, 0.04), transparent 24rem),
+			#0c1322;
 		color: #dce2f7;
-		font-family: 'Inter', sans-serif;
+		font-family: 'Hanken Grotesk', sans-serif;
+		font-feature-settings: 'kern' 1, 'liga' 1;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -35,13 +39,81 @@
 
 @layer components {
 	.glass-panel {
-		background: rgba(31, 41, 55, 0.6);
-		@apply backdrop-blur-xl border border-outline-variant/20;
+		background: linear-gradient(145deg, rgba(25, 31, 47, 0.8), rgba(12, 19, 34, 0.58));
+		@apply border border-white/10 backdrop-blur-xl;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 	}
 
 	.card {
-		background: rgba(31, 41, 55, 0.6);
-		@apply rounded-lg border border-white/10 backdrop-blur-xl p-6 text-on-surface;
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+		background:
+			linear-gradient(145deg, rgba(25, 31, 47, 0.78), rgba(12, 19, 34, 0.62)),
+			rgba(20, 27, 43, 0.58);
+		@apply rounded-2xl border border-white/10 p-6 text-on-surface backdrop-blur-xl;
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.045),
+			0 18px 45px rgba(2, 8, 23, 0.16);
+		animation: material-rise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+		animation-delay: var(--motion-delay, 0ms);
+		transition:
+			transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+			border-color 220ms ease,
+			box-shadow 220ms ease,
+			background-color 220ms ease;
+	}
+
+	.card::before {
+		position: absolute;
+		inset: 0 0 auto;
+		z-index: -1;
+		height: 1px;
+		content: '';
+		background: linear-gradient(90deg, transparent, rgba(192, 193, 255, 0.42), transparent);
+		opacity: 0.65;
+	}
+
+	.card:hover {
+		transform: translateY(-3px);
+		border-color: rgba(192, 193, 255, 0.26);
+		box-shadow:
+			inset 0 1px 0 rgba(255, 255, 255, 0.06),
+			0 22px 55px rgba(2, 8, 23, 0.28),
+			0 0 28px rgba(99, 102, 241, 0.08);
+	}
+
+	.motion-card {
+		animation: material-rise 520ms cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+		animation-delay: var(--motion-delay, 0ms);
+	}
+
+	.section-heading {
+		@apply mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between;
+	}
+
+	.section-kicker {
+		@apply mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-primary;
+	}
+
+	.section-title {
+		@apply font-extrabold tracking-[-0.02em] text-white;
+		font-size: 1.75rem;
+		line-height: 1.18;
+	}
+
+	.section-copy {
+		@apply max-w-2xl text-sm leading-6 text-on-surface-variant;
+	}
+
+	.material-chip {
+		@apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-semibold text-on-surface-variant backdrop-blur-md;
+	}
+
+	@media (min-width: 640px) {
+		.section-title {
+			font-size: 2rem;
+		}
 	}
 
 	.card-importance-high {
@@ -66,17 +138,22 @@
 
 	.prose,
 	.prose-summary {
-		@apply text-on-surface-variant;
+		@apply max-w-none text-base leading-7 text-on-surface-variant;
 	}
 
 	.prose p,
 	.prose-summary p {
-		@apply text-on-surface-variant;
+		@apply my-0 text-on-surface-variant;
+	}
+
+	.prose p + p,
+	.prose-summary p + p {
+		@apply mt-4;
 	}
 
 	.prose a,
 	.prose-summary a {
-		@apply text-primary-fixed-dim underline;
+		@apply font-semibold text-primary underline decoration-primary/35 underline-offset-4 transition-colors hover:text-white hover:decoration-primary;
 	}
 
 	.prose h1,
@@ -87,7 +164,90 @@
 	.prose-summary h2,
 	.prose-summary h3,
 	.prose-summary h4 {
-		@apply text-on-surface;
+		@apply text-white;
+	}
+
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose-summary h2,
+	.prose-summary h3,
+	.prose-summary h4 {
+		@apply mb-3 mt-8 font-extrabold tracking-[-0.01em];
+	}
+
+	.prose h4,
+	.prose-summary h4 {
+		@apply flex items-center gap-3 text-base uppercase tracking-[0.08em];
+	}
+
+	.prose h4::before,
+	.prose-summary h4::before {
+		width: 0.5rem;
+		height: 0.5rem;
+		flex: 0 0 auto;
+		border-radius: 999px;
+		content: '';
+		background: #6366f1;
+		box-shadow: 0 0 16px rgba(99, 102, 241, 0.7);
+	}
+
+	.prose > :first-child,
+	.prose-summary > :first-child {
+		margin-top: 0;
+	}
+
+	.prose ul,
+	.prose-summary ul {
+		@apply my-4 space-y-3 pl-0;
+		list-style: none;
+	}
+
+	.prose ol,
+	.prose-summary ol {
+		@apply my-4 space-y-3 pl-6;
+		list-style: decimal;
+	}
+
+	.prose ul li,
+	.prose-summary ul li {
+		position: relative;
+		padding-left: 1.5rem;
+		color: #c7c4d7;
+	}
+
+	.prose ul li::before,
+	.prose-summary ul li::before {
+		position: absolute;
+		top: 0.72em;
+		left: 0;
+		width: 0.42rem;
+		height: 0.42rem;
+		border-radius: 999px;
+		content: '';
+		background: #4edea3;
+		box-shadow: 0 0 12px rgba(78, 222, 163, 0.45);
+	}
+
+	.prose ol li,
+	.prose-summary ol li {
+		padding-left: 0.35rem;
+		color: #c7c4d7;
+	}
+
+	.prose ol li::marker,
+	.prose-summary ol li::marker {
+		color: #c0c1ff;
+		font-weight: 700;
+	}
+
+	.prose strong,
+	.prose-summary strong {
+		@apply font-bold text-white;
+	}
+
+	.executive-summary {
+		max-width: 82ch;
 	}
 
 	.neon-border-primary:hover {
@@ -145,6 +305,32 @@
 		0% { opacity: 1; transform: scale(1); }
 		50% { opacity: 0.5; transform: scale(1.2); }
 		100% { opacity: 1; transform: scale(1); }
+	}
+
+	@keyframes material-rise {
+		from {
+			opacity: 0;
+			transform: translateY(14px) scale(0.99);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			scroll-behavior: auto !important;
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+
+		.card:hover {
+			transform: none;
+		}
 	}
 
 	::-webkit-scrollbar { width: 6px; }

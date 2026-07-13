@@ -3,6 +3,7 @@
 	import { CATEGORY_CONFIG } from '$lib/types';
 
 	export let topic: TopTopic;
+	export let animationIndex: number = 0;
 
 	type TopicBullet = {
 		label: string;
@@ -122,11 +123,8 @@
 </script>
 
 <article
-	class="relative flex h-full min-h-[360px] flex-col overflow-hidden rounded-2xl border border-white/5 bg-[#141b2b]/50 p-6 text-on-surface backdrop-blur-md"
-	style:border-left-color={accentColor}
-	style:border-top-color={accentColor}
-	style:border-left-width="2px"
-	style:border-top-width="1px"
+	class="card motion-card relative flex h-full min-h-[360px] flex-col"
+	style="border-left-color: {accentColor}; border-top-color: {accentColor}; border-left-width: 2px; --motion-delay: {Math.min(animationIndex, 8) * 65}ms;"
 >
 	<div class="pointer-events-none absolute right-4 top-3 opacity-[0.08]">
 		<svg width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true">
@@ -139,16 +137,16 @@
 		</svg>
 	</div>
 
-	<div class="mb-4 pr-12">
-		<p class="mb-3 font-['Hanken_Grotesk'] text-[11px] font-semibold uppercase tracking-widest text-on-surface-variant">
+	<div class="mb-5 pr-12">
+		<p class="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
 			Top Topic
 		</p>
-		<h3 class="font-['Hanken_Grotesk'] text-2xl font-extrabold leading-tight text-[#f4f7ff]">
+		<h3 class="text-2xl font-extrabold leading-tight tracking-[-0.015em] text-white">
 			{topic.name}
 		</h3>
 	</div>
 
-	<ul class="flex flex-1 flex-col gap-4 pr-6">
+	<ul class="flex flex-1 flex-col gap-5 pr-2">
 		{#each bullets as bullet}
 			<li class="flex items-start gap-3">
 				<span
@@ -159,16 +157,16 @@
 					{#if bullet.href}
 						<a
 							href={bullet.href}
-							class="font-['Hanken_Grotesk'] text-sm font-bold text-[#f4f7ff] underline decoration-transparent transition-colors hover:text-[#6366f1] hover:decoration-[#6366f1]"
+							class="text-sm font-extrabold text-white underline decoration-transparent underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
 						>
 							{bullet.label}
 						</a>
 					{:else}
-						<p class="font-['Hanken_Grotesk'] text-sm font-bold text-[#f4f7ff]">
+						<p class="text-sm font-extrabold text-white">
 							{bullet.label}
 						</p>
 					{/if}
-					<p class="text-sm leading-6 text-on-surface-variant">
+					<p class="text-sm leading-6 text-on-surface-variant/90">
 						{bullet.description}
 					</p>
 				</div>
@@ -180,9 +178,7 @@
 		<div class="flex flex-wrap gap-2">
 			{#each categories.slice(0, 2) as [category, count]}
 				{@const config = CATEGORY_CONFIG[category]}
-				<span
-					class="inline-flex items-center gap-2 rounded-full bg-white/[0.04] px-2.5 py-1 text-[11px] uppercase tracking-[0.14em] text-on-surface-variant"
-				>
+				<span class="material-chip !px-2.5 !py-1 !text-[10px] !uppercase !tracking-[0.14em]">
 					<span class="h-2 w-2 rounded-full" style="background-color: {config.color}"></span>
 					{count} {config.shortTitle}
 				</span>

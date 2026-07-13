@@ -308,12 +308,14 @@ cp config/providers.yaml.example config/providers.yaml
 
 ### LLM Provider
 
-Supports two modes:
+Supports three modes:
 
 | Mode | Description | Auth | Thinking Support |
 |------|-------------|------|------------------|
 | `anthropic` (default) | Direct Anthropic API | x-api-key header | Adaptive thinking on Opus 4.8 |
 | `openai-compatible` | LiteLLM, vLLM, or other proxies | Bearer token | Depends on proxy passthrough support |
+
+| `openrouter` | Direct OpenRouter chat/completions API | ****** | Standard chat completions (no Anthropic thinking blocks) |
 
 **Direct Anthropic API:**
 
@@ -334,6 +336,18 @@ llm:
   api_key: "${PROXY_API_KEY}"
   base_url: "https://your-litellm-proxy.example.com"
   model: "claude-4.8-opus-aws"  # Your proxy's model alias
+  timeout: 600
+```
+
+**Direct OpenRouter free model:**
+
+```yaml
+llm:
+  mode: "openrouter"
+  api_key: "${OPENROUTER_API_KEY}"
+  base_url: "https://openrouter.ai/api/v1"
+  model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+  max_output_tokens: 16384
   timeout: 600
 ```
 

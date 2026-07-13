@@ -7,7 +7,7 @@ class LLMRouteConfig(BaseModel):
     """Optional per-route override for multi-provider LLM routing."""
 
     id: str = Field(..., min_length=1, description="Stable route/provider identifier")
-    mode: Optional[Literal["anthropic", "openai-compatible"]] = Field(
+    mode: Optional[Literal["anthropic", "openai-compatible", "openrouter"]] = Field(
         default=None,
         description="Override API mode for this route"
     )
@@ -53,11 +53,6 @@ class LLMRouteConfig(BaseModel):
         """Validate route base_url if explicitly configured."""
         if v is None:
             return v
-        if v.endswith('/v1'):
-            raise ValueError(
-                f"base_url should not include '/v1' suffix. "
-                f"Use '{v[:-3]}' instead."
-            )
         return v.rstrip('/')
 
 
@@ -75,7 +70,7 @@ class LLMProviderConfig(BaseModel):
         model: Model identifier
         timeout: Request timeout in seconds (1-600)
     """
-    mode: Literal["anthropic", "openai-compatible"] = Field(
+    mode: Literal["anthropic", "openai-compatible", "openrouter"] = Field(
         default="anthropic",
         description="API mode: 'anthropic' for direct API, 'openai-compatible' for proxies"
     )
@@ -116,17 +111,19 @@ class LLMProviderConfig(BaseModel):
     @field_validator('base_url')
     @classmethod
     def validate_base_url(cls, v: str) -> str:
-        """Validate base_url doesn't have /v1 suffix."""
-        if v.endswith('/v1'):
-            raise ValueError(
-                f"base_url should not include '/v1' suffix. "
-                f"Use '{v[:-3]}' instead."
-            )
+        """Normalize base_url."""
         return v.rstrip('/')
 
     @model_validator(mode='after')
     def validate_routes(self) -> 'LLMProviderConfig':
         """Validate optional multi-provider route configuration."""
+        if self.mode == "openrouter" and self.base_url == "https://api.anthropic.com":
+            self.base_url = "https://openrouter.ai/api/v1"
+        if self.mode != "openrouter" and self.base_url.endswith('/v1'):
+            raise ValueError(
+                f"base_url should not include '/v1' suffix for mode '{self.mode}'. "
+                f"Use '{self.base_url[:-3]}' instead."
+            )
         if self.routes is None:
             return self
         if not self.routes:
@@ -172,13 +169,27 @@ class ResolvedLLMRouteConfig(BaseModel):
     """Concrete LLM provider route after inheritance from root llm config."""
 
     id: str
-    mode: Literal["anthropic", "openai-compatible"]
+    mode: Literal["anthropic", "openai-compatible", "openrouter"]
     api_key: str
     base_url: str
     model: str
     max_output_tokens: int
     timeout: float
     max_concurrent_requests: Optional[int] = None
+
+    @field_validator('base_url')
+    @classmethod
+    def validate_base_url(cls, v: str) -> str:
+        return v.rstrip('/')
+
+    @model_validator(mode='after')
+    def validate_mode_specific_base_url(self) -> 'ResolvedLLMRouteConfig':
+        if self.mode != "openrouter" and self.base_url.endswith('/v1'):
+            raise ValueError(
+                f"base_url should not include '/v1' suffix for mode '{self.mode}'. "
+                f"Use '{self.base_url[:-3]}' instead."
+            )
+        return self
 
 
 class ImageProviderConfig(BaseModel):

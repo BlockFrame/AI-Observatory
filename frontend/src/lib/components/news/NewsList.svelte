@@ -20,9 +20,9 @@
 		message="There are no items in this category for the selected date."
 	/>
 {:else}
-	<div class="space-y-4">
-		{#each displayItems as item (item.id)}
-			<NewsCard {item} {category} {date} {showCategory} />
+	<div class="flex flex-col gap-5">
+		{#each displayItems as item, index (item.id)}
+			<NewsCard {item} {category} {date} {showCategory} animationIndex={index} />
 		{/each}
 	</div>
 

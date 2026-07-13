@@ -11,6 +11,7 @@
 	export let category: Category;
 	export let date: string;
 	export let showCategory: boolean = false;
+	export let animationIndex: number = 0;
 
 	let expanded = false;
 	let copied = false;
@@ -25,7 +26,6 @@
 	$: config = CATEGORY_CONFIG[category];
 	$: safeUrl = isSafeUrl(item.url) ? item.url : undefined;
 	$: hasContent = item.content && item.content.length > 0;
-	$: truncatedContent = item.content?.slice(0, 300);
 	$: needsTruncation = item.content?.length > 300;
 	$: freshness = item.freshness;
 
@@ -44,70 +44,82 @@
 					: 'card-importance-low';
 </script>
 
-<article id="item-{item.id}" class="card {importanceTierClass}" style="scroll-margin-top: 5rem;">
-	<div class="flex items-start justify-between gap-4 mb-3">
-		<div class="flex-1 min-w-0">
+<article
+	id="item-{item.id}"
+	class="card motion-card group {importanceTierClass}"
+	style="scroll-margin-top: 5rem; --motion-delay: {Math.min(animationIndex, 8) * 45}ms;"
+>
+	<div
+		class="absolute inset-y-0 left-0 w-[3px] opacity-80 transition-opacity group-hover:opacity-100"
+		style="background-color: {config.color}"
+	></div>
+
+	<header class="mb-5 flex items-start justify-between gap-5">
+		<div class="min-w-0 flex-1">
 			{#if showCategory}
-				<CategoryBadge {category} class="mb-2" />
+				<CategoryBadge {category} class="mb-3" />
 			{/if}
 
-			<h3 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 leading-snug">
+			<div class="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-on-surface-variant">
+				<span class="font-bold uppercase tracking-[0.14em]" style="color: {config.color}">
+					{config.shortTitle}
+				</span>
+				<span class="h-1 w-1 rounded-full bg-white/25"></span>
+				<span>{item.source}</span>
+				{#if item.published}
+					<span class="h-1 w-1 rounded-full bg-white/25"></span>
+					<span>{formatRelativeTime(item.published)}</span>
+				{/if}
+				{#if freshness?.label}
+					<span
+						class="material-chip !px-2.5 !py-1 !text-[10px] !uppercase !tracking-[0.1em]"
+						title={freshness.reason || freshness.label}
+					>
+						{freshness.label}
+					</span>
+				{/if}
+			</div>
+
+			<h3 class="text-xl font-extrabold leading-snug tracking-[-0.015em] text-white sm:text-2xl">
 				<a
 					href={safeUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="hover:text-trend-red transition-colors"
+					class="transition-colors hover:text-primary"
 				>
 					{item.title}
 				</a>
 			</h3>
+
+			{#if item.author}
+				<p class="mt-2 text-xs text-on-surface-variant">By {item.author}</p>
+			{/if}
 		</div>
 
-		<!-- Importance score -->
 		<div
-			class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold
+			class="flex h-12 w-12 flex-shrink-0 flex-col items-center justify-center rounded-2xl border border-white/10 text-sm font-extrabold shadow-inner
 			       {item.importance_score >= 80
-				? 'bg-trend-red/10 text-trend-red'
+				? 'bg-secondary/10 text-secondary'
 				: item.importance_score >= 60
-					? 'bg-category-social/10 text-category-social'
-					: 'bg-trend-gray-100 dark:bg-trend-gray-700 text-trend-gray-600 dark:text-trend-gray-400'}"
+					? 'bg-tertiary/10 text-tertiary'
+					: 'bg-white/[0.04] text-on-surface-variant'}"
 			title="Importance score: {item.importance_score}"
 		>
 			{Math.round(item.importance_score)}
+			<span class="text-[8px] font-bold uppercase tracking-widest opacity-70">score</span>
 		</div>
-	</div>
-
-	<!-- Metadata -->
-	<div class="flex flex-wrap items-center gap-2 text-sm text-trend-gray-500 dark:text-trend-gray-400 mb-3">
-		<span>{item.source}</span>
-		{#if freshness?.label}
-			<span
-				class="text-[11px] leading-none px-1.5 py-1 rounded border border-trend-gray-200 dark:border-trend-gray-600 text-trend-gray-500 dark:text-trend-gray-400 bg-trend-gray-50 dark:bg-trend-gray-800"
-				title={freshness.reason || freshness.label}
-			>
-				{freshness.label}
-			</span>
-		{/if}
-		{#if item.author}
-			<span>&middot;</span>
-			<span>{item.author}</span>
-		{/if}
-		{#if item.published}
-			<span>&middot;</span>
-			<span>{formatRelativeTime(item.published)}</span>
-		{/if}
-	</div>
+	</header>
 
 	<!-- AI Analysis -->
 	{#if item.summary}
-		<div class="mb-3 pl-3 border-l-2 border-trend-red/30">
-			<div class="flex items-center gap-1.5 text-xs font-bold text-trend-gray-500 dark:text-trend-gray-400 mb-1">
-				<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+		<div class="mb-5 rounded-2xl border border-white/5 bg-black/10 p-5">
+			<div class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
+				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2m6.36.64-1.42 1.42M21 12h-2M5 12H3m4.05-4.95L5.64 5.64M9 18h6m-5 3h4m2.5-9a4.5 4.5 0 10-9 0c0 1.55.79 2.91 2 3.72V18h5v-2.28a4.48 4.48 0 002-3.72z" />
 				</svg>
 				<span>AI Analysis</span>
 			</div>
-			<div class="text-trend-gray-700 dark:text-trend-gray-300 leading-relaxed font-bold prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-a:text-trend-red prose-a:no-underline hover:prose-a:underline">
+			<div class="prose max-w-none text-[15px] leading-7">
 				{@html safeHtml(summaryHtml)}
 			</div>
 		</div>
@@ -115,9 +127,9 @@
 
 	<!-- Content (expandable) -->
 	{#if hasContent}
-		<div class="text-sm text-trend-gray-600 dark:text-trend-gray-400 mb-3">
+		<div class="mb-5 text-sm text-on-surface-variant">
 			<div
-				class="prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-a:text-trend-red prose-a:no-underline hover:prose-a:underline"
+				class="prose max-w-none text-sm leading-6"
 				class:line-clamp-3={!expanded && needsTruncation}
 			>
 				{@html safeHtml(contentHtml)}
@@ -126,7 +138,7 @@
 			{#if needsTruncation}
 				<button
 					on:click={() => (expanded = !expanded)}
-					class="text-trend-red hover:text-guardian-red mt-2 font-medium"
+					class="mt-3 rounded-full px-1 text-sm font-bold text-primary transition-colors hover:text-white"
 				>
 					{expanded ? 'Show less' : 'Read more'}
 				</button>
@@ -136,9 +148,9 @@
 
 	<!-- Themes -->
 	{#if item.themes && item.themes.length > 0}
-		<div class="flex flex-wrap gap-2 mb-3">
+		<div class="mb-5 flex flex-wrap gap-2">
 			{#each item.themes as theme}
-				<span class="text-xs px-2 py-1 rounded-full bg-trend-gray-100 dark:bg-trend-gray-700 text-trend-gray-600 dark:text-trend-gray-400">
+				<span class="material-chip">
 					{theme}
 				</span>
 			{/each}
@@ -146,20 +158,21 @@
 	{/if}
 
 	<!-- Actions -->
-	<div class="flex items-center justify-between pt-3 border-t border-trend-gray-100 dark:border-trend-gray-700">
+	<footer class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
 		<a
 			href={safeUrl}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="text-sm font-medium text-trend-red hover:text-guardian-red transition-colors"
+			class="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white"
 		>
-			{category === 'research' ? 'View Research' : category === 'reddit' ? 'View Discussion' : 'Read More'} &rarr;
+			{category === 'research' ? 'View Research' : category === 'reddit' ? 'View Discussion' : 'Read More'}
+			<span aria-hidden="true">&rarr;</span>
 		</a>
 		<button
 			on:click={copyShareLink}
-			class="text-sm font-medium text-trend-red hover:text-guardian-red transition-colors"
+			class="material-chip transition-colors hover:border-primary/40 hover:text-white"
 		>
 			{copied ? 'Copied!' : 'Share'}
 		</button>
-	</div>
+	</footer>
 </article>

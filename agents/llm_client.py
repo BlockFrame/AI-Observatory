@@ -114,6 +114,103 @@ THINKING_LEVEL_NAMES = {
     ThinkingLevel.ULTRATHINK: "ULTRATHINK",
 }
 
+OPENROUTER_DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
+
+
+def _uses_openrouter(mode: str) -> bool:
+    return mode == "openrouter"
+
+
+@dataclass
+class ResponseUsage:
+    input_tokens: int = 0
+    output_tokens: int = 0
+    cache_creation_input_tokens: int = 0
+    cache_read_input_tokens: int = 0
+
+
+@dataclass
+class ResponseBlock:
+    type: str
+    text: Optional[str] = None
+    thinking: Optional[str] = None
+
+
+@dataclass
+class ProviderResponse:
+    content: List[ResponseBlock]
+    usage: ResponseUsage
+    model: str
+    stop_reason: Optional[str] = None
+
+
+def _coerce_message_content(content: Any) -> str:
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        parts = []
+        for item in content:
+            if isinstance(item, dict) and item.get("type") == "text":
+                parts.append(str(item.get("text", "")))
+            else:
+                parts.append(str(item))
+        return "\n".join(part for part in parts if part)
+    return str(content)
+
+
+def _build_openrouter_messages(
+    messages: List[Dict[str, Any]],
+    system: Optional[str] = None,
+) -> List[Dict[str, str]]:
+    payload_messages: List[Dict[str, str]] = []
+    if system:
+        payload_messages.append({"role": "system", "content": system})
+    for message in messages:
+        payload_messages.append(
+            {
+                "role": message["role"],
+                "content": _coerce_message_content(message.get("content", "")),
+            }
+        )
+    return payload_messages
+
+
+def _extract_openrouter_text(message_content: Any) -> str:
+    if isinstance(message_content, str):
+        return message_content
+    if isinstance(message_content, list):
+        parts = []
+        for item in message_content:
+            if isinstance(item, dict) and item.get("type") == "text":
+                parts.append(str(item.get("text", "")))
+        return "\n".join(part for part in parts if part)
+    if message_content is None:
+        return ""
+    return str(message_content)
+
+
+def _normalize_openrouter_response(response_json: Dict[str, Any]) -> ProviderResponse:
+    choices = response_json.get("choices") or []
+    if not choices:
+        raise ValueError("OpenRouter response did not include any choices")
+
+    choice = choices[0]
+    message = choice.get("message") or {}
+    text = _extract_openrouter_text(message.get("content"))
+    usage_json = response_json.get("usage") or {}
+    usage = ResponseUsage(
+        input_tokens=int(usage_json.get("prompt_tokens") or 0),
+        output_tokens=int(usage_json.get("completion_tokens") or 0),
+        cache_creation_input_tokens=int(usage_json.get("cache_creation_input_tokens") or 0),
+        cache_read_input_tokens=int(usage_json.get("cache_read_input_tokens") or 0),
+    )
+    return ProviderResponse(
+        content=[ResponseBlock(type="text", text=text)],
+        usage=usage,
+        model=response_json.get("model") or "",
+        stop_reason=choice.get("finish_reason"),
+    )
+
 
 def _content_char_count(content: Any) -> int:
     """Estimate request content size without logging the raw content."""
@@ -215,8 +312,10 @@ class AnthropicClient:
             max_output_tokens: Maximum output tokens the model/proxy supports.
                              Defaults to DEFAULT_MODEL_MAX_TOKENS (128000).
         """
-        self.api_key = api_key or os.environ.get('ANTHROPIC_API_KEY')
-        self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE')
+        default_api_key_env = 'OPENROUTER_API_KEY' if mode == "openrouter" else 'ANTHROPIC_API_KEY'
+        default_base_url = OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter" else None
+        self.api_key = api_key or os.environ.get(default_api_key_env)
+        self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE') or default_base_url
         self.model = model or os.environ.get('ANTHROPIC_MODEL', 'claude-4.8-opus-aws')
         self.timeout = _env_float("LLM_TIMEOUT_SECONDS", timeout, minimum=1.0)
         self.mode = mode
@@ -229,17 +328,19 @@ class AnthropicClient:
         self.max_retries = _env_int("LLM_MAX_RETRIES", 2, minimum=0)
 
         if not self.api_key:
-            raise ValueError("ANTHROPIC_API_KEY environment variable or api_key parameter required")
+            raise ValueError(f"{default_api_key_env} environment variable or api_key parameter required")
         if not self.base_url:
-            raise ValueError("ANTHROPIC_API_BASE environment variable or base_url parameter required")
+            raise ValueError("base_url parameter required")
 
         # Select auth based on mode
         if self.mode == "anthropic":
             auth = ApiKeyAuth(self.api_key)
-        elif self.mode == "openai-compatible":
+        elif self.mode in {"openai-compatible", "openrouter"}:
             auth = BearerAuth(self.api_key)
         else:
-            raise ValueError(f"Unknown mode: {self.mode}. Expected 'anthropic' or 'openai-compatible'.")
+            raise ValueError(
+                f"Unknown mode: {self.mode}. Expected 'anthropic', 'openai-compatible', or 'openrouter'."
+            )
 
         # Create httpx client with mode-appropriate auth
         self._http_client = httpx.Client(
@@ -248,13 +349,16 @@ class AnthropicClient:
             trust_env=self.trust_env_proxy
         )
 
-        # Create Anthropic client with custom http client
-        self._client = anthropic.Anthropic(
-            base_url=self.base_url,
-            api_key=self.api_key,  # SDK sends this as x-api-key header
-            http_client=self._http_client,
-            max_retries=self.max_retries,
-        )
+        # Create Anthropic client with custom http client unless we're talking
+        # to OpenRouter's OpenAI-compatible chat/completions API directly.
+        self._client = None
+        if not _uses_openrouter(self.mode):
+            self._client = anthropic.Anthropic(
+                base_url=self.base_url,
+                api_key=self.api_key,  # SDK sends this as x-api-key header
+                http_client=self._http_client,
+                max_retries=self.max_retries,
+            )
 
         logger.info(
             f"AnthropicClient initialized with mode={self.mode}, model={self.model}, "
@@ -282,6 +386,26 @@ class AnthropicClient:
             max_output_tokens=getattr(config, 'max_output_tokens', DEFAULT_MODEL_MAX_TOKENS)
         )
 
+    def _create_openrouter_completion(
+        self,
+        *,
+        messages: List[Dict[str, Any]],
+        system: Optional[str],
+        max_tokens: int,
+        temperature: Optional[float],
+    ) -> ProviderResponse:
+        response = self._http_client.post(
+            f"{self.base_url}/chat/completions",
+            json={
+                "model": self.model,
+                "messages": _build_openrouter_messages(messages, system),
+                "max_tokens": max_tokens,
+                **({"temperature": temperature} if temperature is not None else {}),
+            },
+        )
+        response.raise_for_status()
+        return _normalize_openrouter_response(response.json())
+
     def call(
         self,
         messages: List[Dict[str, str]],
@@ -304,6 +428,29 @@ class AnthropicClient:
         Returns:
             LLMResponse with content and no returned thinking text.
         """
+        if _uses_openrouter(self.mode):
+            response = self._create_openrouter_completion(
+                messages=messages,
+                system=system,
+                max_tokens=max_tokens,
+                temperature=temperature,
+            )
+            content = "".join(block.text or "" for block in response.content)
+            return LLMResponse(
+                content=content,
+                thinking=None,
+                usage={
+                    "input_tokens": response.usage.input_tokens,
+                    "output_tokens": response.usage.output_tokens,
+                },
+                model=response.model or self.model,
+                stop_reason=response.stop_reason,
+                thinking_type=None,
+                adaptive_effort=None,
+                analysis_profile="plain",
+                thinking_block_count=0,
+            )
+
         kwargs = {
             "model": self.model,
             "max_tokens": max_tokens,
@@ -378,6 +525,32 @@ class AnthropicClient:
         """
         requested_profile = profile if profile is not None else budget_tokens
         profile_name = THINKING_LEVEL_NAMES.get(requested_profile, str(requested_profile))
+
+        if _uses_openrouter(self.mode):
+            if max_tokens is None:
+                max_tokens = min(self.max_output_tokens, 16384)
+            response = self._create_openrouter_completion(
+                messages=messages,
+                system=system,
+                max_tokens=max_tokens,
+                temperature=temperature,
+            )
+            content = "".join(block.text or "" for block in response.content)
+            return LLMResponse(
+                content=content,
+                thinking=None,
+                usage={
+                    "input_tokens": response.usage.input_tokens,
+                    "output_tokens": response.usage.output_tokens,
+                },
+                model=response.model or self.model,
+                stop_reason=response.stop_reason,
+                thinking_type=None,
+                adaptive_effort=None,
+                analysis_profile=profile_name,
+                thinking_block_count=0,
+            )
+
         use_adaptive = _uses_adaptive_thinking(self.model)
 
         if use_adaptive:
@@ -585,8 +758,10 @@ class AsyncAnthropicClient:
         max_concurrent_requests: Optional[int] = None,
         max_retries: Optional[int] = None
     ):
-        self.api_key = api_key or os.environ.get('ANTHROPIC_API_KEY')
-        self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE')
+        default_api_key_env = 'OPENROUTER_API_KEY' if mode == "openrouter" else 'ANTHROPIC_API_KEY'
+        default_base_url = OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter" else None
+        self.api_key = api_key or os.environ.get(default_api_key_env)
+        self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE') or default_base_url
         self.model = model or os.environ.get('ANTHROPIC_MODEL', 'claude-4.8-opus-aws')
         self.provider_id = provider_id or self.model
         self.timeout = _env_float("LLM_TIMEOUT_SECONDS", timeout, minimum=1.0)
@@ -622,17 +797,19 @@ class AsyncAnthropicClient:
         self._queued_requests = 0
 
         if not self.api_key:
-            raise ValueError("ANTHROPIC_API_KEY environment variable or api_key parameter required")
+            raise ValueError(f"{default_api_key_env} environment variable or api_key parameter required")
         if not self.base_url:
-            raise ValueError("ANTHROPIC_API_BASE environment variable or base_url parameter required")
+            raise ValueError("base_url parameter required")
 
         # Select auth based on mode
         if self.mode == "anthropic":
             auth = ApiKeyAuth(self.api_key)
-        elif self.mode == "openai-compatible":
+        elif self.mode in {"openai-compatible", "openrouter"}:
             auth = BearerAuth(self.api_key)
         else:
-            raise ValueError(f"Unknown mode: {self.mode}. Expected 'anthropic' or 'openai-compatible'.")
+            raise ValueError(
+                f"Unknown mode: {self.mode}. Expected 'anthropic', 'openai-compatible', or 'openrouter'."
+            )
 
         # Create async httpx client with mode-appropriate auth
         self._http_client = httpx.AsyncClient(
@@ -641,13 +818,16 @@ class AsyncAnthropicClient:
             trust_env=self.trust_env_proxy
         )
 
-        # Create async Anthropic client
-        self._client = anthropic.AsyncAnthropic(
-            base_url=self.base_url,
-            api_key=self.api_key,  # SDK sends this as x-api-key header
-            http_client=self._http_client,
-            max_retries=self.max_retries,
-        )
+        # Create async Anthropic client unless this route targets OpenRouter's
+        # native OpenAI-compatible chat/completions API.
+        self._client = None
+        if not _uses_openrouter(self.mode):
+            self._client = anthropic.AsyncAnthropic(
+                base_url=self.base_url,
+                api_key=self.api_key,  # SDK sends this as x-api-key header
+                http_client=self._http_client,
+                max_retries=self.max_retries,
+            )
 
         logger.info(
             f"AsyncAnthropicClient initialized with provider_id={self.provider_id}, "
@@ -878,8 +1058,78 @@ class AsyncAnthropicClient:
         with metrics_file.open("a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
 
+    async def _create_openrouter_completion(
+        self,
+        request_context: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> ProviderResponse:
+        payload = {
+            "model": kwargs["model"],
+            "messages": _build_openrouter_messages(kwargs["messages"], kwargs.get("system")),
+            "max_tokens": kwargs["max_tokens"],
+        }
+        if "temperature" in kwargs:
+            payload["temperature"] = kwargs["temperature"]
+
+        if not self.log_requests:
+            response = await self._http_client.post(
+                f"{self.base_url}/chat/completions",
+                json=payload,
+            )
+            response.raise_for_status()
+            return _normalize_openrouter_response(response.json())
+
+        queued_at = time.time()
+        request_id, _, _ = await self._register_queued_request(request_context)
+        acquired = False
+        started_at = queued_at
+        heartbeat_task = None
+
+        try:
+            if self._request_semaphore is not None:
+                await self._request_semaphore.acquire()
+            acquired = True
+            started_at = time.time()
+            wait_seconds = await self._mark_request_started(request_id, request_context, queued_at)
+            heartbeat_task = self._start_heartbeat(request_id, request_context, started_at)
+            raw_response = await self._http_client.post(
+                f"{self.base_url}/chat/completions",
+                json=payload,
+            )
+            raw_response.raise_for_status()
+            response = _normalize_openrouter_response(raw_response.json())
+            await self._mark_request_finished(
+                request_id,
+                request_context,
+                started_at,
+                wait_seconds,
+                response=response,
+            )
+            return response
+        except BaseException as error:
+            if acquired:
+                await self._mark_request_finished(
+                    request_id,
+                    request_context,
+                    started_at,
+                    wait_seconds if 'wait_seconds' in locals() else 0.0,
+                    error=error,
+                )
+            else:
+                await self._cancel_queued_request(request_id, request_context, queued_at, error)
+            raise
+        finally:
+            if heartbeat_task is not None:
+                heartbeat_task.cancel()
+                with suppress(asyncio.CancelledError):
+                    await heartbeat_task
+            if acquired and self._request_semaphore is not None:
+                self._request_semaphore.release()
+
     async def _create_message(self, request_context: Optional[Dict[str, Any]] = None, **kwargs):
         """Create a message under the optional global async LLM concurrency cap."""
+        if _uses_openrouter(self.mode):
+            return await self._create_openrouter_completion(request_context=request_context, **kwargs)
         if not self.log_requests:
             if self._request_semaphore is None:
                 return await self._client.messages.create(**kwargs)
@@ -989,6 +1239,61 @@ class AsyncAnthropicClient:
         """
         requested_profile = profile if profile is not None else budget_tokens
         profile_name = THINKING_LEVEL_NAMES.get(requested_profile, str(requested_profile))
+
+        if _uses_openrouter(self.mode):
+            if max_tokens is None:
+                max_tokens = min(self.max_output_tokens, 16384)
+
+            start_time = time.time()
+            request_context = {
+                "caller": caller or "async_openrouter_call_with_thinking",
+                "kind": "openrouter_chat",
+                "provider_id": self.provider_id,
+                "provider_model": self.model,
+                "analysis_profile": profile_name,
+                "response_max_tokens": max_tokens,
+                "message_count": len(messages),
+                "message_chars": _messages_char_count(messages),
+                "system_chars": _content_char_count(system),
+            }
+            if routing_context:
+                request_context.update(routing_context)
+
+            response = await self._create_message(
+                request_context=request_context,
+                model=self.model,
+                max_tokens=max_tokens,
+                messages=messages,
+                system=system,
+                temperature=temperature,
+            )
+            duration = time.time() - start_time
+            usage = {
+                "input_tokens": response.usage.input_tokens,
+                "output_tokens": response.usage.output_tokens,
+            }
+            get_tracker().record_call(
+                caller=caller or "async_openrouter_call_with_thinking",
+                usage=usage,
+                thinking_level=None,
+                duration_seconds=duration,
+                model=response.model or self.model,
+                provider_id=self.provider_id,
+                analysis_profile=profile_name,
+                adaptive_effort=None,
+            )
+            return LLMResponse(
+                content="\n".join(block.text or "" for block in response.content if block.type == "text"),
+                thinking=None,
+                usage=usage,
+                model=response.model or self.model,
+                stop_reason=response.stop_reason,
+                thinking_type=None,
+                adaptive_effort=None,
+                analysis_profile=profile_name,
+                thinking_block_count=0,
+            )
+
         use_adaptive = _uses_adaptive_thinking(self.model)
 
         if use_adaptive:
@@ -1149,6 +1454,57 @@ class AsyncAnthropicClient:
         routing_context: Optional[Dict[str, Any]] = None
     ) -> LLMResponse:
         """Async plain call; Opus 4.8+ still uses adaptive thinking metadata."""
+        if _uses_openrouter(self.mode):
+            start_time = time.time()
+            request_context = {
+                "caller": caller or "async_openrouter_call",
+                "kind": "openrouter_chat",
+                "provider_id": self.provider_id,
+                "provider_model": self.model,
+                "response_max_tokens": max_tokens,
+                "message_count": len(messages),
+                "message_chars": _messages_char_count(messages),
+                "system_chars": _content_char_count(system),
+            }
+            if routing_context:
+                request_context.update(routing_context)
+
+            response = await self._create_message(
+                request_context=request_context,
+                model=self.model,
+                max_tokens=max_tokens,
+                messages=messages,
+                system=system,
+                temperature=temperature,
+            )
+            duration = time.time() - start_time
+            usage = {
+                "input_tokens": response.usage.input_tokens,
+                "output_tokens": response.usage.output_tokens,
+            }
+            get_tracker().record_call(
+                caller=caller or "async_openrouter_call",
+                usage=usage,
+                thinking_level=None,
+                duration_seconds=duration,
+                model=response.model or self.model,
+                provider_id=self.provider_id,
+                analysis_profile="plain",
+                adaptive_effort=None,
+            )
+            content = "".join(block.text or "" for block in response.content)
+            return LLMResponse(
+                content=content,
+                thinking=None,
+                usage=usage,
+                model=response.model or self.model,
+                stop_reason=response.stop_reason,
+                thinking_type=None,
+                adaptive_effort=None,
+                analysis_profile="plain",
+                thinking_block_count=0,
+            )
+
         kwargs = {
             "model": self.model,
             "max_tokens": max_tokens,

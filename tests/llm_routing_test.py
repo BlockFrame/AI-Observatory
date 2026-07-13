@@ -36,6 +36,13 @@ class FakeAnthropicResponse:
     stop_reason = "end_turn"
 
 
+class FakeOpenRouterResponse:
+    content = [FakeTextBlock()]
+    usage = FakeUsage()
+    model = "nvidia/nemotron-3-ultra-550b-a55b:free"
+    stop_reason = "stop"
+
+
 class FakeRouteClient:
     def __init__(self, provider_id, model=None, failures=None):
         self.provider_id = provider_id
@@ -110,6 +117,16 @@ class LLMRouteConfigTests(unittest.TestCase):
                 "claude-4.8-opus-anthropic",
             ],
         )
+
+    def test_openrouter_mode_defaults_to_openrouter_base_url(self):
+        config = LLMProviderConfig(
+            mode="openrouter",
+            api_key="test-key",
+            model="nvidia/nemotron-3-ultra-550b-a55b:free",
+        )
+
+        self.assertEqual(config.base_url, "https://openrouter.ai/api/v1")
+        self.assertEqual(config.get_route_configs()[0].base_url, "https://openrouter.ai/api/v1")
 
     def test_empty_routes_fail_clearly(self):
         with self.assertRaises(ValidationError) as error:
@@ -339,6 +356,40 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertNotIn("profile", captured_context)
             self.assertEqual(captured_context["analysis_profile"], "plain")
             self.assertEqual(captured_context["adaptive_effort"], "high")
+
+        asyncio.run(run())
+
+    def test_openrouter_call_with_thinking_uses_plain_chat_completion(self):
+        async def run():
+            captured_kwargs = {}
+            captured_context = {}
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://openrouter.ai/api/v1",
+                model="nvidia/nemotron-3-ultra-550b-a55b:free",
+                mode="openrouter",
+                max_retries=0,
+            )
+
+            async def fake_create_message(request_context=None, **kwargs):
+                captured_kwargs.update(kwargs)
+                captured_context.update(request_context or {})
+                return FakeOpenRouterResponse()
+
+            client._create_message = fake_create_message
+            try:
+                await client.call_with_thinking(
+                    messages=[{"role": "user", "content": "summarize"}],
+                    profile=ThinkingLevel.QUICK,
+                    caller="test.openrouter",
+                )
+            finally:
+                await client.close()
+
+            self.assertNotIn("thinking", captured_kwargs)
+            self.assertEqual(captured_kwargs["model"], "nvidia/nemotron-3-ultra-550b-a55b:free")
+            self.assertEqual(captured_context["kind"], "openrouter_chat")
+            self.assertEqual(captured_context["analysis_profile"], "QUICK")
 
         asyncio.run(run())
 

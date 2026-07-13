@@ -92,6 +92,7 @@ export default {
 			mono: ['JetBrains Mono', 'monospace']
 		},
 		fontSize: {
+			...require('tailwindcss/defaultTheme').fontSize,
 			// Display
 			'display-hero': ['84px', { lineHeight: '90%', letterSpacing: '-0.04em', fontWeight: '800' }],
 			'headline-xl': ['32px', { lineHeight: '120%', letterSpacing: '-0.015em', fontWeight: '700' }],
@@ -107,6 +108,7 @@ export default {
 			'caption': ['12px', { lineHeight: '140%', letterSpacing: '0.05em', fontWeight: '500' }]
 		},
 		spacing: {
+			...require('tailwindcss/defaultTheme').spacing,
 			// Cybernetic spacing scale
 			'margin-safe': '4rem',
 			'gutter-grid': '1.5rem',

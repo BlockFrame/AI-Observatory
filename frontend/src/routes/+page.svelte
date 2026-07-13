@@ -189,20 +189,21 @@
 	{#if categoryParam && config}
 		<!-- Category View Header -->
 		<div
-			class="rounded-xl p-6 mb-8 text-white"
-			style="background: linear-gradient(135deg, {config.color} 0%, {config.color}dd 100%)"
+			class="card motion-card mb-8 border-l-[3px] p-7 text-white"
+			style="border-left-color: {config.color}; background: linear-gradient(135deg, {config.color}18 0%, rgba(20, 27, 43, 0.72) 62%)"
 		>
 			<div class="flex items-center gap-3 mb-2">
 				<a
 					href={overviewHref}
-					class="text-white/80 hover:text-white transition-colors"
+					class="text-sm font-bold text-on-surface-variant transition-colors hover:text-white"
 				>
 					&larr; Back
 				</a>
 			</div>
-			<h1 class="text-2xl font-bold">{config.title}</h1>
+			<p class="section-kicker">Category intelligence</p>
+			<h1 class="text-3xl font-extrabold tracking-[-0.02em]">{config.title}</h1>
 			{#if categoryData}
-				<p class="text-white/80 mt-1">{categoryData.total_items} items for {effectiveDate}</p>
+				<p class="mt-2 text-on-surface-variant">{categoryData.total_items} items for {effectiveDate}</p>
 			{/if}
 		</div>
 	{/if}
@@ -256,10 +257,9 @@
 			<!-- Category Summary -->
 			{#if categoryData.category_summary}
 				<section class="mb-8">
-					<div class="card border-l-4" style="border-left-color: {config?.color}">
-						<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-3">
-							{config?.title} Summary
-						</h2>
+					<div class="card motion-card border-l-[3px]" style="border-left-color: {config?.color}">
+						<p class="section-kicker">{config?.shortTitle} intelligence</p>
+						<h2 class="mb-5 text-2xl font-extrabold text-white">{config?.title} Summary</h2>
 						<div class="prose-summary max-w-none">
 							{@html safeHtml(categoryData.category_summary_html || categoryData.category_summary)}
 						</div>
@@ -270,14 +270,17 @@
 			<!-- Themes -->
 			{#if categoryData.themes && categoryData.themes.length > 0}
 				<section class="mb-8">
-					<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-4">
-						Key Themes
-					</h2>
+					<div class="section-heading">
+						<div>
+							<p class="section-kicker">Pattern detection</p>
+							<h2 class="section-title">Key Themes</h2>
+						</div>
+					</div>
 					<div class="flex flex-wrap gap-2">
 						{#each categoryData.themes as theme}
 							<span
-								class="px-3 py-1.5 rounded-full text-sm font-medium"
-								style="background-color: {config?.color}20; color: {config?.color}"
+								class="material-chip"
+								style="border-color: {config?.color}40; color: {config?.color}"
 							>
 								{theme.name} ({theme.item_count})
 							</span>
@@ -288,9 +291,13 @@
 
 			<!-- All Items -->
 			<section>
-				<h2 class="font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-6">
-					All Items ({categoryData.items.length})
-				</h2>
+				<div class="section-heading">
+					<div>
+						<p class="section-kicker">Full coverage</p>
+						<h2 class="section-title">All Items</h2>
+					</div>
+					<span class="material-chip">{categoryData.items.length} items</span>
+				</div>
 				<NewsList items={categoryData.items} category={categoryParam} date={effectiveDate || ''} />
 			</section>
 		{/if}
@@ -336,16 +343,25 @@
 
 		<!-- Executive Summary -->
 		<section class="mb-12">
-			<div class="card border-l-4 border-trend-red dark:border-trend-red">
-				<div class="flex items-center justify-between mb-4">
-					<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100">
-						Executive Summary
-					</h2>
-					<span class="text-sm text-trend-gray-500 dark:text-trend-gray-400">
-						{summary.total_items_analyzed} items analyzed
-					</span>
+			<div class="section-heading">
+				<div>
+					<p class="section-kicker">Daily synthesis</p>
+					<h2 class="section-title">Executive Summary</h2>
 				</div>
-				<div class="prose-summary max-w-none">
+				<span class="material-chip">
+					<span class="h-2 w-2 rounded-full bg-tertiary shadow-[0_0_12px_rgba(78,222,163,0.65)]"></span>
+					{summary.total_items_analyzed} items analyzed
+				</span>
+			</div>
+
+			<div class="card motion-card overflow-visible border-l-[3px] border-l-primary p-7 sm:p-8">
+				<div class="pointer-events-none absolute right-6 top-5 text-primary/10" aria-hidden="true">
+					<svg class="h-20 w-20" fill="none" viewBox="0 0 96 96">
+						<path d="M20 48h14l8-22 13 44 8-22h13" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+						<circle cx="48" cy="48" r="38" stroke="currentColor" stroke-width="2" />
+					</svg>
+				</div>
+				<div class="executive-summary prose-summary relative max-w-none">
 					{@html safeHtml(formatExecutiveSummary(summary.executive_summary, summary.executive_summary_html))}
 				</div>
 			</div>
@@ -354,12 +370,18 @@
 		<!-- Top Topics -->
 		{#if summary.top_topics && summary.top_topics.length > 0}
 			<section class="mb-12">
-				<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-6">
-					Top Topics Today
-				</h2>
-				<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-					{#each summary.top_topics.slice(0, 3) as topic}
-						<TopicCard {topic} />
+				<div class="section-heading">
+					<div>
+						<p class="section-kicker">Cross-category signals</p>
+						<h2 class="section-title">Top Topics Today</h2>
+					</div>
+					<p class="section-copy">
+						The strongest narratives detected across news, research, social media, and community discussion.
+					</p>
+				</div>
+				<div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+					{#each summary.top_topics as topic, index}
+						<TopicCard {topic} animationIndex={index} />
 					{/each}
 				</div>
 			</section>
@@ -370,22 +392,25 @@
 			{@const catSummary = summary.categories[category]}
 			{#if catSummary && catSummary.top_items.length > 0}
 				<section class="mb-12">
-					<div class="flex items-center justify-between mb-6">
-						<div class="flex items-center gap-3">
+					<div class="section-heading">
+						<div>
+							<p class="section-kicker">Latest intelligence</p>
+							<div class="flex items-center gap-3">
 							<span
 								class="w-3 h-3 rounded-full"
 								style="background-color: {CATEGORY_CONFIG[category].color}"
 							></span>
-							<h2 class="text-xl font-bold text-trend-gray-800 dark:text-trend-gray-100">
+							<h2 class="section-title">
 								{CATEGORY_CONFIG[category].title}
 							</h2>
-							<span class="text-sm text-trend-gray-500">
+							<span class="material-chip">
 								({catSummary.count} items)
 							</span>
+							</div>
 						</div>
 						<a
 							href={categoryHref(category)}
-							class="text-sm font-medium text-trend-red hover:text-guardian-red transition-colors"
+							class="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white"
 						>
 							View All &rarr;
 						</a>
