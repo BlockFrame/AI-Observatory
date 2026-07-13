@@ -40,44 +40,6 @@ def _safe_url(url):
     return ""
 
 
-def get_arxiv_notice(report_date: str) -> Optional[Dict[str, str]]:
-    """
-    Return notice for research page based on day of week.
-
-    arXiv publishing schedule:
-    - Announcements happen Sun-Thu at ~8PM ET
-    - No announcements Friday or Saturday night
-    - Saturday/Sunday reports have 0 arXiv papers (correct behavior)
-    - Monday announcements cover all weekend submissions (Fri-Sun)
-
-    Args:
-        report_date: Date string in YYYY-MM-DD format
-
-    Returns:
-        Notice dict with type, title, message or None for regular weekdays
-    """
-    try:
-        date_obj = datetime.strptime(report_date, '%Y-%m-%d')
-        day_of_week = date_obj.strftime('%A')
-
-        if day_of_week in ('Saturday', 'Sunday'):
-            return {
-                'type': 'info',
-                'title': 'Weekend Edition',
-                'message': 'arXiv papers are not collected on weekends. Any weekend papers will be included in Monday\'s report.'
-            }
-        elif day_of_week == 'Monday':
-            return {
-                'type': 'info',
-                'title': 'Monday Edition',
-                'message': "Today's arXiv papers cover submissions from the entire weekend (Friday through Sunday) due to arXiv's publishing schedule."
-            }
-    except ValueError:
-        logger.warning(f"Invalid date format for arxiv notice: {report_date}")
-
-    return None
-
-
 def get_news_notice(report_date: str) -> Optional[Dict[str, str]]:
     """
     Return notice for news page for dates before collection began.
@@ -207,12 +169,6 @@ class JSONGenerator:
                 'total_items': len(all_items),
                 'items': self._simplify_items(all_items)
             }
-
-            # Add notice for research category on weekends/Mondays
-            if category == 'research':
-                notice = get_arxiv_notice(report_date)
-                if notice:
-                    category_data['notice'] = notice
 
             # Add notice for news category before collection started
             if category == 'news':

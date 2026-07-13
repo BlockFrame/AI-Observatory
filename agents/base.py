@@ -143,7 +143,7 @@ class CollectedItem:
     author: str
     published: str
     source: str
-    source_type: str  # 'rss', 'arxiv', 'twitter', 'reddit', 'bluesky', 'mastodon', 'linked_article'
+    source_type: str  # 'rss', 'research_paper', 'twitter', 'reddit', 'bluesky', 'mastodon', 'linked_article'
     tags: List[str] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
     collected_at: str = field(default_factory=lambda: datetime.now().isoformat())

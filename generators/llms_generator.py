@@ -45,7 +45,7 @@ def generate_llms_txt(data_dir: Path = Path("web/data")) -> str:
             "",
             "### Categories",
             "- summary.json — Executive summary + top items (500-800 words)",
-            "- research.json — Paper arXiv (cs.AI, cs.LG, cs.CL, cs.CV, cs.NE, cs.RO, stat.ML)",
+            "- research.json — Trending AI papers from Hugging Face Papers and AlphaXiv",
             "- news.json — News AI from RSS feeds + Hacker News + GitHub Trending",
             "- social.json — Posts from Twitter/X, Bluesky, Mastodon",
             "- reddit.json — Threads from AI subreddits",

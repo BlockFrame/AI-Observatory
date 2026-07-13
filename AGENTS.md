@@ -4,7 +4,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Project Overview
 
-AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, arXiv API, Twitter, Reddit, Bluesky, Mastodon), analyzes them using Claude Opus 4.8 with adaptive thinking, and serves a modern Svelte SPA frontend with AATF branding.
+AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, Hugging Face Papers, AlphaXiv, Twitter, Reddit, Bluesky, Mastodon), analyzes them using Claude Opus 4.8 with adaptive thinking, and serves a modern Svelte SPA frontend with AATF branding.
 
 **Testing:** The user always runs tests themselves. Do not run the pipeline or tests unless explicitly asked.
 
@@ -107,7 +107,7 @@ Phase 7: Search Corpus Update (client-built MiniSearch index)
 | Agent Pair | Gatherer Sources | Analysis Focus |
 |------------|------------------|----------------|
 | **News** | RSS feeds + articles from Twitter links | Product releases, company news |
-| **Research** | arXiv API + research blogs (LessWrong) | Research findings, breakthroughs |
+| **Research** | Hugging Face Papers + AlphaXiv + research blogs (LessWrong) | Research findings, breakthroughs |
 | **Social** | Twitter, Bluesky, Mastodon | Industry discussions, reactions |
 | **Reddit** | Reddit via ScrapeCreators API | Community discussions, debates |
 
@@ -125,7 +125,7 @@ agents/
 ├── ecosystem_context.py       # AI model release tracking for grounding
 ├── gatherers/
 │   ├── news_gatherer.py       # RSS + Twitter-linked articles
-│   ├── research_gatherer.py   # arXiv + research blogs (LessWrong)
+│   ├── research_gatherer.py   # Trending paper APIs + research blogs (LessWrong)
 │   ├── social_gatherer.py     # Twitter, Bluesky, Mastodon (with status tracking)
 │   ├── reddit_gatherer.py     # Reddit
 │   └── link_follower.py       # Smart link extraction from social posts
@@ -210,6 +210,10 @@ LESSWRONG_PROXY_URL   # HTTP(S) or SOCKS proxy for LessWrong GraphQL/browser fal
 PIPELINE_PROXY_URL    # HTTP(S) or SOCKS proxy for the whole pipeline (optional)
 NEWS_USER_AGENT       # User-Agent sent to RSS/feed sources, incl. research blog feeds (optional)
 RESEARCH_FEED_TIMEOUT # Network timeout (seconds) for research blog feed fetches (default: 20)
+ALPHAXIV_SORT         # AlphaXiv ranking: Hot|Likes|Recent|Comments|Views (default: Hot)
+ALPHAXIV_PAGE_SIZE    # AlphaXiv papers requested per page (default: 50, max: 100)
+ALPHAXIV_MAX_PAGES    # Maximum AlphaXiv feed pages per run (default: 5)
+RESEARCH_TRENDING_MAX_PAPERS # Maximum merged Hugging Face/AlphaXiv papers (default: 100)
 LLM_TRUST_ENV_PROXY   # Let LLM clients use HTTP(S)/ALL_PROXY env vars (default: false)
 LLM_TIMEOUT_SECONDS   # Override provider-config LLM request timeout (Actions default: 240)
 LLM_MAX_CONCURRENT_REQUESTS # Async LLM request cap per provider route; 0 disables it (default: 8)
@@ -353,7 +357,7 @@ Feeds are output to `web/data/feeds/` and accessible at `/data/feeds/*.xml` on t
 
 ## Important Notes
 
-- **arXiv**: Uses arXiv RSS feeds for today's collection (no rate limits, more reliable) with automatic API fallback. For historical dates, uses API directly since RSS only contains current announcements. Only collects papers with `announce_type` of "new" or "cross" (skips replacements). arXiv only publishes papers on weekdays (Mon-Fri). Weekend dates will return 0 papers.
+- **Trending Papers**: Hugging Face Daily Papers is queried for the exact coverage date. AlphaXiv uses the smallest rolling trend interval containing that date and then filters to exact publication dates. AlphaXiv is skipped for backfills older than 90 days because its API does not expose historical snapshots.
 - **LessWrong**: Uses GraphQL for date-range collection because RSS only exposes the newest posts. The helper tries direct GraphQL, cached cookies, and a Playwright browser warm-up. `LESSWRONG_PROXY_URL` can target only this source; otherwise `PIPELINE_PROXY_URL` is reused.
 - **Reddit (ScrapeCreators)**: The free Reddit `.json` endpoint and OAuth are dead, so Reddit collects via the ScrapeCreators API (`x-api-key`). Listings page `sort=new` newest→oldest and stop once the coverage window is passed (credit-cheap, complete; `REDDIT_MAX_PAGES` safety cap). The top `REDDIT_BODY_TOP_N` posts/sub are enriched via one `post/comments` call: self posts get their `selftext`; high-discussion link posts get a digest of top community comments (analyzer `content`). A hard `REDDIT_CREDIT_BUDGET` aborts calls gracefully if exceeded. Egress is direct (`trust_env=False`), bypassing the pipeline proxy/Mullvad. `sort=new` backfill of dates >2 days old is depth-limited and logs a warning.
 - **External API Usage**: Non-LLM paid APIs report per-run usage and live balance into the end-of-run cost summary (and `cost_report_{date}.json` under `external_apis`): ScrapeCreators shows calls/credits-consumed/remaining-balance, and TwitterAPI.io shows calls/tweets/`recharge_credits` balance ($1 = 100,000 credits). Balance probes are free.
@@ -362,7 +366,7 @@ Feeds are output to `web/data/feeds/` and accessible at `/data/feeds/*.xml` on t
 - **Date Semantics**: TARGET_DATE represents the report date. Coverage period is the day BEFORE the report date (00:00-23:59 ET). For example, TARGET_DATE=2026-01-05 generates a "January 5th report" covering news from January 4th.
 - **Collection Status**: Each gatherer tracks success/partial/failed status. Social gatherer tracks per-platform status (Twitter, Bluesky, Mastodon). Status is logged at end of run and included in JSON output for frontend display.
 - **Output Quality**: LLM prompts are tuned for factual, briefing-style output. Avoid generic "thought leader" language.
-- **Source Diversity**: The ranking algorithm prioritizes news articles (RSS, arXiv) over social discussions (Reddit) to ensure top stories reflect actual developments.
+- **Source Diversity**: The ranking algorithm prioritizes news articles and research papers over social discussions (Reddit) to ensure top stories reflect actual developments.
 - **Item IDs**: Generated as 12-character SHA256 hashes (~280 trillion unique values) for compact URLs.
 - **Ecosystem Grounding**: All analyzers receive model release dates as system context to prevent hallucinations about "new" releases that are actually weeks/months old.
 - **Phase Tracking**: Each phase is tracked with status (success/partial/failed/skipped), timing, and details. End-of-run summary prints before cost report. Phase status is included in `OrchestratorResult` JSON output.
@@ -458,7 +462,7 @@ web/data/
     ├── summary.json        # Executive summary + top items per category + coverage info
     ├── hero.webp           # Daily hero image with skunk mascot
     ├── news.json           # Full news items
-    ├── research.json       # Full research items (arXiv + blogs)
+    ├── research.json       # Full research items (trending papers + blogs)
     ├── social.json         # Full social items
     └── reddit.json         # Full reddit items
 

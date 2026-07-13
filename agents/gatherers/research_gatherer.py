@@ -1,33 +1,27 @@
 """
-Research Gatherer - Collects research content from arXiv and research blogs.
+Research Gatherer - Collects trending papers and research blog posts.
 
-Combines:
-- arXiv papers via RSS feeds (primary) with OAI-PMH fallback
-- Research blog posts from configured RSS feeds (LessWrong, AI Alignment Forum, etc.)
-
-arXiv publishing schedule:
-- Announcements happen Sun-Thu at ~8PM ET
-- No announcements Friday or Saturday night
-- RSS feed on day X contains papers with datestamp X
-- OAI-PMH fallback queries for datestamp = report_date to match RSS behavior
+Paper discovery uses the exact report coverage date:
+- Hugging Face Daily Papers provides date-addressable historical selections.
+- AlphaXiv contributes recent trending papers when its rolling ranking windows
+  include the coverage date.
+- Research blog posts continue to come from the configured RSS/GraphQL sources.
 """
 
 import asyncio
+import json
 import logging
 import os
 import re
 import sys
-import time
 from datetime import datetime
-from email.utils import parsedate_to_datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 import feedparser
 import requests
 
 from ..base import BaseGatherer, CollectedItem
-from .arxiv_oai import ArxivOAIHarvester
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[2] / 'scripts'
 if str(SCRIPTS_DIR) not in sys.path:
@@ -42,18 +36,15 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
-# arXiv rate limit for API: minimum 3 seconds between requests
-ARXIV_REQUEST_DELAY = 3.5  # seconds
-
 # Network timeout (seconds) for research blog feed fetches. feedparser.parse(url) has no
 # network timeout, so a single unresponsive feed would hang the whole gatherer (and Phase 1).
 RESEARCH_FEED_TIMEOUT = float(os.getenv('RESEARCH_FEED_TIMEOUT', '20'))
 
 
 class ResearchGatherer(BaseGatherer):
-    """Gathers research content from arXiv and research blogs."""
+    """Gathers trending AI papers and research blog posts."""
 
-    # arXiv categories relevant to AI
+    # AlphaXiv topic filters relevant to AI.
     CATEGORIES = {
         'cs.AI': 'Artificial Intelligence',
         'cs.LG': 'Machine Learning',
@@ -64,8 +55,8 @@ class ResearchGatherer(BaseGatherer):
         'stat.ML': 'Machine Learning (Statistics)'
     }
 
-    API_BASE = "https://export.arxiv.org/api/query"
-    RSS_BASE = "https://rss.arxiv.org/rss"
+    HUGGINGFACE_DAILY_PAPERS_URL = "https://huggingface.co/api/daily_papers"
+    ALPHAXIV_FEED_URL = "https://api.alphaxiv.org/papers/v3/feed"
     TREND_RESEARCH_FEED_MARKERS = (
         'feeds.trendmicro.com/trendmicrosimplysecurity',
         'trend micro research'
@@ -118,199 +109,469 @@ class ResearchGatherer(BaseGatherer):
     def category(self) -> str:
         return 'research'
 
-    def _is_current_collection(self) -> bool:
-        """Check if we're collecting for today's papers (RSS available) vs historical (API only)."""
-        today = datetime.now().strftime('%Y-%m-%d')
-        # RSS only has today's announcements, which cover yesterday's submissions
-        # So RSS is valid when report_date == today
-        return self.report_date == today
-
-    def _get_arxiv_collection_mode(self) -> tuple:
-        """
-        Determine arXiv collection mode based on day of week.
-
-        arXiv publishing schedule:
-        - No announcements Friday or Saturday night
-        - Saturday/Sunday reports: skip arXiv (no new papers)
-        - Monday: catch-up query for Sat-Mon to catch any anomalies
-
-        Returns:
-            Tuple of (mode, from_date) where mode is:
-            - 'skip': Saturday/Sunday - don't collect arXiv papers
-            - 'catchup': Monday - 3-day range (Sat through Mon)
-            - 'normal': Tue-Fri - single day query
-        """
-        from datetime import timedelta
-
-        report_dt = datetime.strptime(self.report_date, '%Y-%m-%d')
-        day_of_week = report_dt.strftime('%A')
-
-        if day_of_week in ('Saturday', 'Sunday'):
-            return ('skip', None)
-        elif day_of_week == 'Monday':
-            # Query from Saturday through Monday (3-day range)
-            saturday = report_dt - timedelta(days=2)
-            return ('catchup', saturday.strftime('%Y-%m-%d'))
-        else:
-            return ('normal', None)
-
     async def gather(self) -> List[CollectedItem]:
-        """Gather research content from arXiv and research blogs in parallel."""
+        """Gather trending papers and research blogs in parallel."""
         logger.info(f"Starting research collection")
         logger.info(f"Report date: {self.report_date}, Coverage date: {self.coverage_date}")
 
-        # Run arXiv and research blog collection in parallel
-        arxiv_task = self._collect_arxiv()
+        # Paper APIs and research blogs are independent, so collect them together.
+        paper_task = self._collect_trending_papers()
         research_blog_task = self._collect_research_blogs()
 
-        arxiv_papers, blog_posts = await asyncio.gather(arxiv_task, research_blog_task)
+        papers, blog_posts = await asyncio.gather(paper_task, research_blog_task)
 
-        # Combine results
-        all_items = arxiv_papers + blog_posts
+        all_items = papers + blog_posts
 
-        logger.info(f"Total research items: {len(all_items)} ({len(arxiv_papers)} arXiv, {len(blog_posts)} blog posts)")
+        logger.info(
+            "Total research items: %s (%s trending papers, %s blog posts)",
+            len(all_items),
+            len(papers),
+            len(blog_posts),
+        )
 
         # Save to file
         self.save_to_file(all_items, f'research_{self.target_date}.json')
 
         return all_items
 
-    async def _collect_arxiv(self) -> List[CollectedItem]:
-        """Collect papers from arXiv using RSS feeds (primary) with OAI-PMH fallback.
+    async def _collect_trending_papers(self) -> List[CollectedItem]:
+        """Collect and merge Hugging Face Daily Papers and AlphaXiv trends."""
+        loop = asyncio.get_running_loop()
+        huggingface_future = loop.run_in_executor(
+            None, self._fetch_huggingface_daily_papers
+        )
+        alphaxiv_future = loop.run_in_executor(None, self._fetch_alphaxiv_trending)
+        huggingface_papers, alphaxiv_papers = await asyncio.gather(
+            huggingface_future, alphaxiv_future
+        )
 
-        RSS is preferred when available (faster, no pagination). When RSS is empty
-        or unavailable (historical dates), falls back to OAI-PMH which can query
-        any date range by datestamp (announcement date).
+        merged = self._merge_trending_papers(huggingface_papers, alphaxiv_papers)
+        max_papers = max(1, int(os.getenv('RESEARCH_TRENDING_MAX_PAPERS', '100')))
+        if len(merged) > max_papers:
+            logger.info(
+                "Limiting merged trending papers from %s to %s",
+                len(merged),
+                max_papers,
+            )
+            merged = merged[:max_papers]
 
-        Weekend handling:
-        - Saturday/Sunday: Skip arXiv collection entirely (no new papers)
-        - Monday: 3-day catchup query (Sat-Mon) to catch any anomalies
+        logger.info(
+            "Collected %s unique trending papers (%s Hugging Face, %s AlphaXiv)",
+            len(merged),
+            len(huggingface_papers),
+            len(alphaxiv_papers),
+        )
+        return merged
 
-        Uses report_date for queries to match RSS behavior:
-        - RSS on day X contains papers with datestamp X
-        - OAI-PMH queries datestamp = report_date (or range for Monday)
-        """
-        # Check weekend/Monday mode first
-        mode, from_date = self._get_arxiv_collection_mode()
-
-        if mode == 'skip':
-            logger.info(f"Skipping arXiv collection on {self.report_date} (weekend - no new papers)")
+    def _fetch_huggingface_daily_papers(self) -> List[CollectedItem]:
+        """Fetch Hugging Face's curated papers for the exact coverage date."""
+        try:
+            response = requests.get(
+                self.HUGGINGFACE_DAILY_PAPERS_URL,
+                params={'date': self.coverage_date},
+                headers={
+                    'Accept': 'application/json',
+                    'User-Agent': os.environ.get('NEWS_USER_AGENT') or LESSWRONG_USER_AGENT,
+                },
+                timeout=30,
+            )
+            response.raise_for_status()
+            payload = response.json()
+        except (requests.RequestException, ValueError) as exc:
+            logger.error(
+                "Hugging Face Daily Papers request failed for %s: %s",
+                self.coverage_date,
+                exc,
+            )
             return []
 
-        logger.info(f"Collecting from arXiv ({len(self.categories)} categories)")
+        if not isinstance(payload, list):
+            logger.error(
+                "Hugging Face Daily Papers returned an unexpected payload type: %s",
+                type(payload).__name__,
+            )
+            return []
 
-        loop = asyncio.get_event_loop()
+        papers = []
+        for entry in payload:
+            item = self._huggingface_entry_to_item(entry)
+            if item is not None:
+                papers.append(item)
 
-        # Check if RSS is applicable (only has today's papers)
-        use_rss = self._is_current_collection() and mode != 'catchup'
+        logger.info(
+            "Hugging Face Daily Papers returned %s papers for %s",
+            len(papers),
+            self.coverage_date,
+        )
+        return papers
 
-        if use_rss:
-            # RSS collection - parallel, no rate limits
-            logger.info("Using RSS feeds (current day collection, no rate limits)...")
+    def _huggingface_entry_to_item(
+        self, entry: Dict[str, Any]
+    ) -> Optional[CollectedItem]:
+        """Convert one Hugging Face daily-paper record to a collected item."""
+        if not isinstance(entry, dict):
+            logger.warning("Skipping malformed Hugging Face paper record")
+            return None
 
-            rss_tasks = [
-                loop.run_in_executor(None, self._fetch_category_rss, cat)
-                for cat in self.categories
-            ]
-            rss_results = await asyncio.gather(*rss_tasks, return_exceptions=True)
+        paper = entry.get('paper')
+        if not isinstance(paper, dict):
+            paper = entry
 
-            # Check total RSS results
-            rss_papers = []
-            rss_errors = 0
-            for cat, rss_result in zip(self.categories, rss_results):
-                if isinstance(rss_result, Exception):
-                    logger.warning(f"RSS failed for {cat}: {rss_result}")
-                    rss_errors += 1
-                elif rss_result:
-                    rss_papers.extend(rss_result)
+        raw_arxiv_id = paper.get('id') or paper.get('arxiv_id')
+        if not raw_arxiv_id:
+            logger.warning("Skipping Hugging Face paper without an arXiv ID")
+            return None
+        arxiv_id = self._parse_arxiv_id(str(raw_arxiv_id).strip())
 
-            if rss_papers:
-                # RSS returned papers - use them
-                logger.info(f"Collected {len(rss_papers)} papers via RSS")
-                all_papers = rss_papers
-            else:
-                # RSS empty (all failed) - fall back to OAI-PMH
-                logger.info(f"RSS returned 0 papers, falling back to OAI-PMH for {self.report_date}")
-                all_papers = await self._fetch_via_oai(self.report_date)
-        elif mode == 'catchup':
-            # Monday: 3-day catchup query for Sat-Mon
-            logger.info(f"Monday catchup: fetching arXiv papers from {from_date} to {self.report_date}")
-            all_papers = await self._fetch_via_oai(from_date, self.report_date)
-        else:
-            # Historical collection - use OAI-PMH directly (RSS doesn't have past data)
-            logger.info(f"Using OAI-PMH (historical collection for {self.report_date})")
-            all_papers = await self._fetch_via_oai(self.report_date)
+        title = self._clean_text(paper.get('title'))
+        if not title:
+            logger.warning("Skipping Hugging Face paper %s without a title", arxiv_id)
+            return None
 
-        # Deduplicate by arXiv ID
-        seen_arxiv_ids = set()
-        unique_papers = []
+        selected_at = (
+            paper.get('submittedOnDailyAt')
+            or entry.get('submittedOnDailyAt')
+            or self.coverage_date
+        )
+        selected_date = self._source_date(selected_at)
+        if selected_date and selected_date != self.coverage_date:
+            logger.warning(
+                "Skipping Hugging Face paper %s selected on %s, expected %s",
+                arxiv_id,
+                selected_date,
+                self.coverage_date,
+            )
+            return None
 
-        for paper in all_papers:
-            arxiv_id = paper.metadata.get('arxiv_id', '')
-            if arxiv_id and arxiv_id not in seen_arxiv_ids:
-                seen_arxiv_ids.add(arxiv_id)
-                unique_papers.append(paper)
+        summary = self._clean_text(
+            paper.get('ai_summary') or paper.get('summary') or entry.get('summary')
+        )
+        authors = self._format_paper_authors(paper.get('authors'))
+        keywords = self._string_list(paper.get('ai_keywords'))
+        paper_url = f"https://huggingface.co/papers/{arxiv_id}"
+        upvotes = paper.get('upvotes', entry.get('upvotes', 0))
+        published = self._published_timestamp(selected_at, self.coverage_date)
 
-        logger.info(f"Collected {len(unique_papers)} unique papers from arXiv")
-        return unique_papers
+        return CollectedItem(
+            id=self.generate_id(arxiv_id),
+            title=title,
+            content=summary,
+            url=paper_url,
+            author=authors,
+            published=published,
+            source='Hugging Face Papers',
+            source_type='research_paper',
+            tags=keywords,
+            metadata={
+                'arxiv_id': arxiv_id,
+                'category_name': ', '.join(keywords[:3]),
+                'discovery_sources': ['huggingface'],
+                'source_urls': {'huggingface': paper_url},
+                'huggingface': {
+                    'upvotes': upvotes,
+                    'selected_at': str(selected_at),
+                    'paper_published_at': paper.get('publishedAt'),
+                    'github_repo': paper.get('githubRepo'),
+                },
+            },
+            keywords=self.extract_keywords(f"{title} {summary} {' '.join(keywords)}"),
+        )
 
-    async def _fetch_via_oai(self, from_date: str, until_date: Optional[str] = None) -> List[CollectedItem]:
-        """Fetch papers via OAI-PMH for a date or date range.
+    def _fetch_alphaxiv_trending(self) -> List[CollectedItem]:
+        """Fetch AlphaXiv trends whose publication date matches coverage_date."""
+        interval = self._alphaxiv_interval_for_coverage()
+        if interval is None:
+            return []
 
-        Args:
-            from_date: Start date in YYYY-MM-DD format
-            until_date: End date in YYYY-MM-DD format. If None, uses from_date (single day).
+        page_size = max(1, min(100, int(os.getenv('ALPHAXIV_PAGE_SIZE', '50'))))
+        max_pages = max(1, int(os.getenv('ALPHAXIV_MAX_PAGES', '5')))
+        sort = os.getenv('ALPHAXIV_SORT', 'Hot')
+        papers = []
 
-        Returns:
-            List of CollectedItem for new papers announced in the date range
-        """
-        loop = asyncio.get_event_loop()
-        harvester = ArxivOAIHarvester(list(self.CATEGORIES.keys()))
-
-        # Run harvester in executor (blocking I/O)
-        papers = await loop.run_in_executor(None, harvester.harvest_date, from_date, until_date)
-
-        date_desc = from_date if not until_date or from_date == until_date else f"{from_date} to {until_date}"
-        logger.info(f"OAI-PMH returned {len(papers)} new papers for {date_desc}")
-
-        # Convert to CollectedItem format
-        items = []
-        for paper in papers:
+        for page_number in range(max_pages):
             try:
-                primary_cat = paper['categories'].split()[0] if paper.get('categories') else 'cs.AI'
-                category_name = self.CATEGORIES.get(primary_cat, primary_cat)
-
-                # Clean title and abstract
-                title = (paper.get('title') or 'No Title').replace('\n', ' ').strip()
-                abstract = (paper.get('abstract') or '').replace('\n', ' ').strip()
-
-                item = CollectedItem(
-                    id=self.generate_id(paper['arxiv_id']),
-                    title=title,
-                    content=abstract,
-                    url=f"http://arxiv.org/abs/{paper['arxiv_id']}",
-                    author=paper.get('authors', ''),
-                    published=paper['datestamp'],  # Use announcement date
-                    source=f'arXiv ({category_name})',
-                    source_type='arxiv',
-                    tags=[primary_cat],
-                    metadata={
-                        'arxiv_id': paper['arxiv_id'],
-                        'pdf_url': f"http://arxiv.org/pdf/{paper['arxiv_id']}.pdf",
-                        'category': primary_cat,
-                        'category_name': category_name,
-                        'versions': paper.get('versions', []),
-                        'comments': paper.get('comments'),
-                        'journal_ref': paper.get('journal_ref'),
-                        'doi': paper.get('doi'),
+                response = requests.get(
+                    self.ALPHAXIV_FEED_URL,
+                    params={
+                        'sort': sort,
+                        'interval': interval,
+                        'pageNum': page_number,
+                        'pageSize': page_size,
+                        'topics': json.dumps(self.categories),
                     },
-                    keywords=self.extract_keywords(f"{title} {abstract}")
+                    headers={
+                        'Accept': 'application/json',
+                        'User-Agent': os.environ.get('NEWS_USER_AGENT') or LESSWRONG_USER_AGENT,
+                    },
+                    timeout=30,
                 )
-                items.append(item)
-            except Exception as e:
-                logger.error(f"Error converting OAI-PMH paper {paper.get('arxiv_id', 'unknown')}: {e}")
+                response.raise_for_status()
+                payload = response.json()
+            except (requests.RequestException, ValueError) as exc:
+                logger.error(
+                    "AlphaXiv trending request failed on page %s for %s: %s",
+                    page_number,
+                    self.coverage_date,
+                    exc,
+                )
+                break
 
-        return items
+            page_records = self._extract_alphaxiv_records(payload)
+            if page_records is None:
+                logger.error(
+                    "AlphaXiv returned an unexpected payload on page %s",
+                    page_number,
+                )
+                break
+
+            for record in page_records:
+                item = self._alphaxiv_record_to_item(record)
+                if item is not None:
+                    papers.append(item)
+
+            if len(page_records) < page_size:
+                break
+
+        logger.info(
+            "AlphaXiv retained %s trending papers published on %s from its %s window",
+            len(papers),
+            self.coverage_date,
+            interval,
+        )
+        return papers
+
+    def _alphaxiv_interval_for_coverage(self) -> Optional[str]:
+        """Choose the smallest AlphaXiv rolling window containing coverage_date."""
+        coverage = datetime.strptime(self.coverage_date, '%Y-%m-%d').date()
+        age_days = (datetime.now().date() - coverage).days
+        if age_days < 0:
+            logger.warning(
+                "Skipping AlphaXiv: coverage date %s is in the future",
+                self.coverage_date,
+            )
+            return None
+        if age_days < 3:
+            return '3 Days'
+        if age_days < 7:
+            return '7 Days'
+        if age_days < 30:
+            return '30 Days'
+        if age_days < 90:
+            return '90 Days'
+
+        logger.warning(
+            "Skipping AlphaXiv for %s: its API has no historical snapshots beyond "
+            "the 90-day ranking window; Hugging Face remains available for backfill",
+            self.coverage_date,
+        )
+        return None
+
+    @staticmethod
+    def _extract_alphaxiv_records(payload: Any) -> Optional[List[Dict[str, Any]]]:
+        """Return paper records from the known AlphaXiv response envelopes."""
+        if isinstance(payload, list):
+            return [record for record in payload if isinstance(record, dict)]
+        if not isinstance(payload, dict):
+            return None
+
+        for key in ('papers', 'results', 'data'):
+            records = payload.get(key)
+            if isinstance(records, list):
+                return [record for record in records if isinstance(record, dict)]
+            if isinstance(records, dict):
+                nested = records.get('papers') or records.get('results')
+                if isinstance(nested, list):
+                    return [record for record in nested if isinstance(record, dict)]
+        return None
+
+    def _alphaxiv_record_to_item(
+        self, paper: Dict[str, Any]
+    ) -> Optional[CollectedItem]:
+        """Convert and date-filter one AlphaXiv feed record."""
+        raw_arxiv_id = paper.get('universal_paper_id') or paper.get('arxiv_id')
+        if not raw_arxiv_id:
+            logger.warning("Skipping AlphaXiv paper without an arXiv ID")
+            return None
+        arxiv_id = self._parse_arxiv_id(str(raw_arxiv_id).strip())
+
+        publication_value = (
+            paper.get('publication_date') or paper.get('first_publication_date')
+        )
+        publication_date = self._source_date(publication_value)
+        if publication_date != self.coverage_date:
+            return None
+
+        title = self._clean_text(paper.get('title'))
+        if not title:
+            logger.warning("Skipping AlphaXiv paper %s without a title", arxiv_id)
+            return None
+
+        raw_summary = paper.get('paper_summary')
+        if isinstance(raw_summary, dict):
+            raw_summary = raw_summary.get('summary')
+        summary = self._clean_text(raw_summary or paper.get('abstract'))
+        authors = self._format_paper_authors(paper.get('authors'))
+        topics = self._string_list(paper.get('topics'))
+        metrics = paper.get('metrics')
+        if not isinstance(metrics, dict):
+            metrics = {}
+        paper_url = f"https://www.alphaxiv.org/abs/{arxiv_id}"
+
+        return CollectedItem(
+            id=self.generate_id(arxiv_id),
+            title=title,
+            content=summary,
+            url=paper_url,
+            author=authors,
+            published=self._published_timestamp(
+                publication_value, self.coverage_date
+            ),
+            source='AlphaXiv Trending',
+            source_type='research_paper',
+            tags=topics,
+            metadata={
+                'arxiv_id': arxiv_id,
+                'category_name': ', '.join(topics[:3]),
+                'discovery_sources': ['alphaxiv'],
+                'source_urls': {'alphaxiv': paper_url},
+                'alphaxiv': {
+                    'public_total_votes': metrics.get('public_total_votes', 0),
+                    'visits_count': metrics.get('visits_count', 0),
+                    'github_url': paper.get('github_url'),
+                    'github_stars': paper.get('github_stars'),
+                    'ranking_interval': self._alphaxiv_interval_for_coverage(),
+                },
+            },
+            keywords=self.extract_keywords(f"{title} {summary} {' '.join(topics)}"),
+        )
+
+    def _merge_trending_papers(
+        self,
+        huggingface_papers: List[CollectedItem],
+        alphaxiv_papers: List[CollectedItem],
+    ) -> List[CollectedItem]:
+        """Deduplicate cross-platform papers by arXiv ID and merge provenance."""
+        merged = []
+        by_arxiv_id = {}
+
+        for item in huggingface_papers + alphaxiv_papers:
+            arxiv_id = str(item.metadata.get('arxiv_id', '')).lower()
+            if not arxiv_id:
+                logger.warning("Skipping research paper without deduplication ID")
+                continue
+
+            existing = by_arxiv_id.get(arxiv_id)
+            if existing is None:
+                by_arxiv_id[arxiv_id] = item
+                merged.append(item)
+                continue
+
+            existing_sources = existing.metadata.setdefault('discovery_sources', [])
+            for source in item.metadata.get('discovery_sources', []):
+                if source not in existing_sources:
+                    existing_sources.append(source)
+            existing.metadata.setdefault('source_urls', {}).update(
+                item.metadata.get('source_urls', {})
+            )
+            for source_key in ('huggingface', 'alphaxiv'):
+                if source_key in item.metadata:
+                    existing.metadata[source_key] = item.metadata[source_key]
+
+            existing.tags = list(dict.fromkeys(existing.tags + item.tags))
+            existing.keywords = list(dict.fromkeys(existing.keywords + item.keywords))
+            if len(item.content) > len(existing.content):
+                existing.content = item.content
+            if existing.author in ('', 'Unknown') and item.author:
+                existing.author = item.author
+            if len(existing_sources) > 1:
+                existing.source = 'Hugging Face Papers + AlphaXiv'
+
+        return merged
+
+    @staticmethod
+    def _clean_text(value: Any) -> str:
+        """Normalize plain or HTML-bearing API text fields."""
+        if not isinstance(value, str):
+            return ''
+        text = re.sub(r'<[^>]+>', ' ', value)
+        return ' '.join(text.split())
+
+    @classmethod
+    def _format_paper_authors(cls, value: Any) -> str:
+        """Normalize author strings and common API author-object shapes."""
+        if isinstance(value, str):
+            return cls._clean_text(value) or 'Unknown'
+        if not isinstance(value, list):
+            return 'Unknown'
+
+        names = []
+        for author in value:
+            if isinstance(author, str):
+                name = cls._clean_text(author)
+            elif isinstance(author, dict):
+                name = cls._clean_text(
+                    author.get('name')
+                    or author.get('full_name')
+                    or ' '.join(
+                        part
+                        for part in (
+                            author.get('first_name'),
+                            author.get('last_name'),
+                        )
+                        if isinstance(part, str)
+                    )
+                )
+            else:
+                name = ''
+            if name:
+                names.append(name)
+        return ', '.join(names) or 'Unknown'
+
+    @classmethod
+    def _string_list(cls, value: Any) -> List[str]:
+        """Normalize tags/topics from strings or API objects."""
+        if isinstance(value, str):
+            cleaned = cls._clean_text(value)
+            return [cleaned] if cleaned else []
+        if not isinstance(value, list):
+            return []
+
+        values = []
+        for entry in value:
+            if isinstance(entry, str):
+                cleaned = cls._clean_text(entry)
+            elif isinstance(entry, dict):
+                cleaned = cls._clean_text(
+                    entry.get('name') or entry.get('id') or entry.get('label')
+                )
+            else:
+                cleaned = ''
+            if cleaned and cleaned not in values:
+                values.append(cleaned)
+        return values
+
+    @staticmethod
+    def _source_date(value: Any) -> Optional[str]:
+        """Extract a YYYY-MM-DD source date from ISO-compatible API values."""
+        if not isinstance(value, str) or not value.strip():
+            return None
+        normalized = value.strip().replace('Z', '+00:00')
+        try:
+            return datetime.fromisoformat(normalized).date().isoformat()
+        except ValueError:
+            logger.warning("Unable to parse paper source date: %r", value)
+            return None
+
+    @classmethod
+    def _published_timestamp(cls, value: Any, fallback_date: str) -> str:
+        """Return an ISO timestamp while preserving the source date semantics."""
+        if isinstance(value, str) and value.strip():
+            normalized = value.strip().replace('Z', '+00:00')
+            try:
+                return datetime.fromisoformat(normalized).isoformat()
+            except ValueError:
+                logger.warning("Unable to parse paper timestamp: %r", value)
+        return f"{fallback_date}T12:00:00"
 
     async def _collect_research_blogs(self) -> List[CollectedItem]:
         """Collect posts from research blog RSS feeds.
@@ -385,8 +646,8 @@ class ResearchGatherer(BaseGatherer):
                 f"(proxy={'direct' if use_proxy is False else 'default'})"
             )
             # Fetch with an explicit timeout (feedparser.parse(url) has none) so one
-            # unresponsive feed can't hang the gatherer. Mirrors _fetch_category_rss; a
-            # browser-ish UA avoids 403s from feeds like Nature.
+            # unresponsive feed can't hang the gatherer. A browser-ish UA avoids
+            # 403s from feeds like Nature.
             headers = {'User-Agent': os.environ.get('NEWS_USER_AGENT') or LESSWRONG_USER_AGENT}
             # proxy=off -> use the trust_env=False session so requests ignores all
             # ambient *_PROXY env vars (incl. ALL_PROXY) and fetches direct.
@@ -692,193 +953,6 @@ class ResearchGatherer(BaseGatherer):
 
         return None
 
-    def _fetch_category_rss(self, category: str) -> List[CollectedItem]:
-        """Fetch papers from arXiv RSS feed (primary method - no rate limits)."""
-        papers = []
-        url = f"{self.RSS_BASE}/{category}"
-
-        try:
-            logger.info(f"Fetching RSS feed for {category}")
-            response = requests.get(url, timeout=30)
-            response.raise_for_status()
-        except requests.exceptions.RequestException as e:
-            logger.error(f"RSS request failed for {category}: {e}")
-            raise  # Let gather() handle fallback
-
-        try:
-            feed = feedparser.parse(response.content)
-            category_name = self.CATEGORIES.get(category, category)
-
-            for entry in feed.entries:
-                try:
-                    # Filter: only new papers and cross-listings, not replacements
-                    announce_type = getattr(entry, 'arxiv_announce_type', 'new')
-                    if announce_type not in ['new', 'cross']:
-                        continue
-
-                    # Extract arXiv ID from guid or id
-                    entry_id = entry.get('id', entry.get('guid', ''))
-                    arxiv_id = self._parse_arxiv_id(entry_id)
-
-                    # Parse publication date (RFC 2822 format from RSS)
-                    pub_date = self._parse_rss_date(entry.get('published', ''))
-
-                    # Extract authors from dc:creator
-                    authors = []
-                    dc_creator = entry.get('dc_creator', entry.get('author', ''))
-                    if dc_creator:
-                        # dc:creator can be comma-separated or a single author
-                        if isinstance(dc_creator, list):
-                            authors = dc_creator
-                        else:
-                            authors = [a.strip() for a in dc_creator.split(',')]
-
-                    # Extract abstract from description
-                    abstract = entry.get('description', entry.get('summary', ''))
-                    # Clean up HTML and normalize whitespace
-                    abstract = abstract.replace('<p>', '').replace('</p>', ' ')
-                    abstract = abstract.replace('\n', ' ').strip()
-
-                    # Get primary category from tags
-                    primary_category = category
-                    if hasattr(entry, 'tags') and entry.tags:
-                        primary_category = entry.tags[0].get('term', category)
-
-                    # Build arXiv URL
-                    arxiv_url = f"http://arxiv.org/abs/{arxiv_id}"
-
-                    paper = CollectedItem(
-                        id=self.generate_id(arxiv_id),
-                        title=entry.get('title', 'No Title').replace('\n', ' ').strip(),
-                        content=abstract,
-                        url=arxiv_url,
-                        author=', '.join(authors),
-                        published=pub_date.isoformat(),
-                        source=f'arXiv ({category_name})',
-                        source_type='arxiv',
-                        tags=[primary_category],
-                        metadata={
-                            'arxiv_id': arxiv_id,
-                            'pdf_url': f"http://arxiv.org/pdf/{arxiv_id}.pdf",
-                            'category': primary_category,
-                            'category_name': category_name,
-                            'authors': authors,
-                            'announce_type': announce_type
-                        },
-                        keywords=self.extract_keywords(f"{entry.get('title', '')} {abstract}")
-                    )
-
-                    papers.append(paper)
-
-                except Exception as e:
-                    logger.error(f"Error processing RSS entry from {category}: {e}")
-
-            logger.info(f"Collected {len(papers)} papers from {category} via RSS")
-
-        except Exception as e:
-            logger.error(f"Error parsing RSS feed for {category}: {e}")
-            raise  # Let gather() handle fallback
-
-        return papers
-
-    def _fetch_category_api(self, category: str, max_retries: int = 3) -> List[CollectedItem]:
-        """Fetch papers from arXiv API (fallback method - has rate limits)."""
-        papers = []
-
-        # Format dates for arXiv API (YYYYMMDDHHMM)
-        start_str = self.start_time.strftime('%Y%m%d%H%M')
-        end_str = self.end_time.strftime('%Y%m%d%H%M')
-
-        search_query = f"cat:{category} AND submittedDate:[{start_str} TO {end_str}]"
-
-        params = {
-            'search_query': search_query,
-            'start': 0,
-            'max_results': 500,
-            'sortBy': 'submittedDate',
-            'sortOrder': 'descending'
-        }
-
-        # Retry with exponential backoff
-        for attempt in range(max_retries):
-            try:
-                logger.info(f"Fetching arXiv category: {category}" + (f" (attempt {attempt + 1})" if attempt > 0 else ""))
-                response = requests.get(self.API_BASE, params=params, timeout=60)
-                response.raise_for_status()
-                break  # Success, exit retry loop
-            except requests.exceptions.RequestException as e:
-                if attempt < max_retries - 1:
-                    # Wait before retry: 5s, 15s, 45s (exponential backoff)
-                    wait_time = 5 * (3 ** attempt)
-                    logger.warning(f"arXiv request failed for {category}: {e}. Retrying in {wait_time}s...")
-                    time.sleep(wait_time)
-                else:
-                    logger.error(f"Error fetching arXiv category {category} after {max_retries} attempts: {e}")
-                    return papers
-        else:
-            # All retries exhausted
-            return papers
-
-        try:
-            feed = feedparser.parse(response.content)
-            category_name = self.CATEGORIES.get(category, category)
-
-            for entry in feed.entries:
-                try:
-                    # Parse publication date
-                    pub_date = self._parse_date(entry.get('published', ''))
-
-                    # Extract arXiv ID from entry ID
-                    entry_id = entry.get('id', '')
-                    arxiv_id = self._parse_arxiv_id(entry_id)
-
-                    # Extract authors
-                    authors = []
-                    if hasattr(entry, 'authors'):
-                        authors = [a.get('name', '') for a in entry.authors]
-                    elif hasattr(entry, 'author'):
-                        authors = [entry.author]
-
-                    # Extract abstract
-                    abstract = entry.get('summary', '').replace('\n', ' ').strip()
-
-                    # Get primary category
-                    primary_category = category
-                    if hasattr(entry, 'arxiv_primary_category'):
-                        primary_category = entry.arxiv_primary_category.get('term', category)
-
-                    paper = CollectedItem(
-                        id=self.generate_id(arxiv_id),
-                        title=entry.get('title', 'No Title').replace('\n', ' ').strip(),
-                        content=abstract,
-                        url=entry_id,
-                        author=', '.join(authors),
-                        published=pub_date.isoformat(),
-                        source=f'arXiv ({category_name})',
-                        source_type='arxiv',
-                        tags=[primary_category],
-                        metadata={
-                            'arxiv_id': arxiv_id,
-                            'pdf_url': entry_id.replace('/abs/', '/pdf/') + '.pdf',
-                            'category': primary_category,
-                            'category_name': category_name,
-                            'authors': authors
-                        },
-                        keywords=self.extract_keywords(f"{entry.get('title', '')} {abstract}")
-                    )
-
-                    papers.append(paper)
-
-                except Exception as e:
-                    logger.error(f"Error processing paper from {category}: {e}")
-
-            logger.info(f"Collected {len(papers)} papers from {category}")
-
-        except Exception as e:
-            logger.error(f"Error parsing arXiv response for {category}: {e}")
-
-        return papers
-
     def _parse_arxiv_id(self, link: str) -> str:
         """Extract arXiv ID from link or OAI identifier.
 
@@ -901,24 +975,3 @@ class ResearchGatherer(BaseGatherer):
             return arxiv_id
         except:
             return link
-
-    def _parse_date(self, date_str: str) -> datetime:
-        """Parse date string from arXiv API."""
-        try:
-            if date_str:
-                clean_date = date_str.replace('Z', '').replace('T', ' ')
-                if '.' in clean_date:
-                    return datetime.strptime(clean_date.split('.')[0], '%Y-%m-%d %H:%M:%S')
-                return datetime.strptime(clean_date, '%Y-%m-%d %H:%M:%S')
-        except Exception as e:
-            logger.warning(f"Failed to parse date '{date_str}': {e}")
-        return datetime.now()
-
-    def _parse_rss_date(self, date_str: str) -> datetime:
-        """Parse RFC 2822 date string from RSS feed."""
-        try:
-            if date_str:
-                return parsedate_to_datetime(date_str)
-        except Exception as e:
-            logger.warning(f"Failed to parse RSS date '{date_str}': {e}")
-        return datetime.now()

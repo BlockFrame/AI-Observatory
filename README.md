@@ -27,7 +27,7 @@ Daily AI/ML news briefings curated by specialized agents using adaptive thinking
 | [Features](#features) | Multi-agent, continuity detection, frontend |
 | [Architecture](#architecture) | Directory structure, agent pairs, data output |
 | [Frontend Development](#frontend-development) | Dev server, build, URL routes |
-| [Operational Notes](#operational-notes) | arXiv schedule, date semantics |
+| [Operational Notes](#operational-notes) | Research sources, date semantics |
 | [Local Development](#local-development) | Pipeline dev, hero regeneration |
 | [Contributing](#contributing) | How to contribute |
 
@@ -38,8 +38,8 @@ Daily AI/ML news briefings curated by specialized agents using adaptive thinking
 A Python-based pipeline that collects AI/ML news from multiple sources, analyzes them using specialized agents with Claude's adaptive thinking, and serves a modern Svelte SPA frontend.
 
 **Key Stats:**
-- **40+ curated RSS/Atom sources** plus 7 arXiv category feeds
-- **7 arXiv categories** (cs.AI, cs.LG, cs.CL, cs.CV, cs.NE, cs.RO, stat.ML)
+- **40+ curated RSS/Atom sources** plus Hugging Face Papers and AlphaXiv
+- **Date-aligned trending papers** selected from AI-focused topics
 - **6 social platforms** (Twitter, Bluesky, Mastodon, Reddit, LessWrong, research blogs)
 - **Adaptive reasoning profiles** for lightweight triage through cross-category synthesis
 - **Daily hero image** generated with AATF skunk mascot
@@ -55,7 +55,7 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 | Phase | Description | Reasoning Profile |
 |-------|-------------|----------------|
 | **0. Ecosystem Context** | Load AI model release dates for LLM grounding | - |
-| **1. Parallel Gathering** | 4 gatherers collect from RSS, arXiv, Twitter, Reddit, Bluesky, Mastodon | - |
+| **1. Parallel Gathering** | 4 gatherers collect from RSS, Hugging Face Papers, AlphaXiv, Twitter, Reddit, Bluesky, and Mastodon | - |
 | **2. Parallel Analysis** | MAP-REDUCE pattern: batch items (75 each), analyze, then synthesize | STANDARD -> DEEP |
 | **2.5. Continuity Detection** | Track developing stories, detect rehashes, link related coverage | - |
 | **3. Cross-Category Topics** | Identify 3-6 themes spanning all categories | ULTRATHINK |
@@ -519,7 +519,7 @@ Each pipeline run tracks collection status per source:
 | Category | Sources | Collection Method |
 |----------|---------|-------------------|
 | **News** | 26 curated RSS/Atom feeds + linked articles | RSS/Atom + LLM-guided link following |
-| **Research** | 19 research feeds + 7 arXiv categories | RSS/Atom + arXiv RSS/OAI-PMH + LessWrong GraphQL |
+| **Research** | 19 research feeds + Hugging Face Papers + AlphaXiv | Date-addressed API + rolling trend API + RSS/Atom + LessWrong GraphQL |
 | **Social** | Twitter, Bluesky, Mastodon | TwitterAPI.io + free APIs |
 | **Reddit** | Configurable subreddits | ScrapeCreators API (listings + post comments) |
 
@@ -595,7 +595,7 @@ ai-news-aggregator/
 | Category | Gatherer | Analyzer Focus |
 |----------|----------|----------------|
 | **News** | RSS + linked articles from social | Product releases, company news |
-| **Research** | arXiv + LessWrong GraphQL | Papers, breakthroughs |
+| **Research** | Hugging Face Papers + AlphaXiv + LessWrong GraphQL | Trending papers, breakthroughs |
 | **Social** | Twitter, Bluesky, Mastodon | Discussions, reactions |
 | **Reddit** | Reddit via ScrapeCreators API | Community debates |
 
@@ -645,10 +645,11 @@ npm run check            # TypeScript type checking
 
 ## Operational Notes
 
-### arXiv Collection Schedule
-- Papers announced Sun-Thu ~8PM ET
-- **Sat/Sun reports**: Skip arXiv (no new papers)
-- **Monday reports**: 3-day catchup (Sat-Mon announcements)
+### Trending Paper Collection
+- Hugging Face Daily Papers is queried for the exact report coverage date and supports historical backfills.
+- AlphaXiv uses the smallest rolling trend window containing the coverage date, then filters papers to that date.
+- AlphaXiv has no historical ranking snapshots beyond 90 days; older backfills continue with Hugging Face and research blogs.
+- `ALPHAXIV_SORT` (default `Hot`), `ALPHAXIV_PAGE_SIZE`, `ALPHAXIV_MAX_PAGES`, and `RESEARCH_TRENDING_MAX_PAPERS` control ranking and collection limits.
 
 ### Date Semantics
 - `TARGET_DATE` = report date
@@ -790,7 +791,7 @@ A comprehensive Docker-based workflow that automatically collects, analyzes, and
 
 ## Features
 
-- **Multi-Source Collection**: Aggregates from 100+ RSS feeds, arXiv papers, Twitter, Reddit, and more
+- **Multi-Source Collection**: Aggregates from 100+ RSS feeds, trending paper platforms, Twitter, Reddit, and more
 - **AI-Powered Analysis**: Uses Claude Opus 4.5 to summarize, categorize, and rank news items
 - **Daily Website Generation**: Creates a beautiful, browsable website with the day's AI news
 - **Automated Workflow**: Runs on a schedule (default: daily at 6 AM)
@@ -802,7 +803,7 @@ A comprehensive Docker-based workflow that automatically collects, analyzes, and
 
 The system consists of four main phases:
 
-1. **Data Collection**: Fetches content from RSS feeds, arXiv, Twitter, Reddit, and other sources
+1. **Data Collection**: Fetches content from RSS feeds, Hugging Face Papers, AlphaXiv, Twitter, Reddit, and other sources
 2. **Data Processing**: Normalizes, deduplicates, and enriches collected data
 3. **LLM Analysis**: Uses Claude Opus 4.5 to analyze, summarize, and categorize content
 4. **HTML Generation**: Creates a static website with the analyzed news
@@ -976,14 +977,10 @@ The system monitors a curated list of AI news sources including:
 - **Industry Analysis**: Chain of Thought, Last Week in AI, Latent Space
 - **Academic**: ScienceDaily AI, Nature ML, MIT News ML
 
-### arXiv Papers
+### Trending Papers
 
-Monitors key categories:
-- cs.AI (Artificial Intelligence)
-- cs.LG (Machine Learning)
-- cs.CL (Computation and Language)
-- cs.CV (Computer Vision)
-- cs.NE (Neural and Evolutionary Computing)
+- **Hugging Face Papers**: daily curated papers queried by exact coverage date.
+- **AlphaXiv**: recent trending papers filtered to the coverage date and AI-focused topics.
 
 ### Social Media
 
