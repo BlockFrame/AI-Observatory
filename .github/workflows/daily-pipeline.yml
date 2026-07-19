@@ -269,19 +269,6 @@ jobs:
           # ScrapeCreators API (server-side unblocking, direct egress), so no .json probe
           # through Mullvad is needed. The Mullvad tunnel above still serves LLM/other egress.
 
-      - name: Debug API key presence
-        if: steps.schedule_gate.outputs.should_run == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ -n "${OPENROUTER_API_KEY:-}" ]]; then
-            echo "OPENROUTER_API_KEY is set (length: ${#OPENROUTER_API_KEY})"
-          else
-            echo "OPENROUTER_API_KEY is EMPTY or not set"
-          fi
-          python3 -c "import os; v=os.environ.get('OPENROUTER_API_KEY',''); print(f'Python sees: len={len(v)} empty={not bool(v.strip())}')"
-          echo "providers.yaml api_key lines:"; grep 'api_key' config/providers.yaml || true
-
       - name: Run pipeline
         if: steps.schedule_gate.outputs.should_run == 'true'
         shell: bash

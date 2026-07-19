@@ -264,7 +264,6 @@ class MainOrchestrator:
             self.hero_generator = initialize_hero_generator(image_config)
 
         # Initialize ecosystem context manager (Phase 0)
-        from pathlib import Path
         self.ecosystem_manager = EcosystemContextManager(Path(config_dir), prompt_accessor=prompt_accessor)
         self.grounding_context: Optional[str] = None  # Set in run()
 
@@ -539,7 +538,6 @@ class MainOrchestrator:
                     logger.info("Phase 4.7: Generating hero image...")
                     if hero_fallback_used:
                         logger.info("  Using category themes as fallback (topic detection produced no topics)")
-                    from pathlib import Path
                     hero_result = await self.hero_generator.generate(
                         top_topics=hero_topics,
                         date=self.target_date,
