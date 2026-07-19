@@ -3,8 +3,8 @@
 .env.backup*
 !.env.example
 
-# Provider configuration (contains API keys)
-config/providers.yaml
+# Provider configuration (override at runtime via PIPELINE_PROVIDERS_YAML secret)
+# config/providers.yaml is tracked in git with env-var references only (no hardcoded secrets)
 
 # Test scripts (local development only)
 test_*.py

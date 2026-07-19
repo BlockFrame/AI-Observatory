@@ -1,0 +1,21 @@
+llm:
+  mode: "openrouter"
+  api_key: "${OPENROUTER_API_KEY}"
+  base_url: "https://openrouter.ai/api/v1"
+  model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+  max_output_tokens: 16384
+  timeout: 600
+  routes:
+    - id: "primary"
+      mode: "openrouter"
+      model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+      max_concurrent_requests: 3
+
+image:
+  mode: "native"
+  api_key: "${GOOGLE_API_KEY}"
+  model: "gemini-3-pro-image-preview"
+
+pipeline:
+  base_url: "https://ai-observatory.vercel.app"
+  lookback_hours: 24
