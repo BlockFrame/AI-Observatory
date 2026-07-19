@@ -10,6 +10,10 @@ llm:
       mode: "openrouter"
       model: "nvidia/nemotron-3-ultra-550b-a55b:free"
       max_concurrent_requests: 3
+    - id: "free-router-fallback"
+      mode: "openrouter"
+      model: "openrouter/free"
+      max_concurrent_requests: 2
 
 # image section disabled - no GOOGLE_API_KEY configured
 # To enable hero image generation, add GOOGLE_API_KEY secret and uncomment:

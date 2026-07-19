@@ -195,6 +195,10 @@ jobs:
                 mode: "openrouter"
                 model: "nvidia/nemotron-3-ultra-550b-a55b:free"
                 max_concurrent_requests: 3
+              - id: "free-router-fallback"
+                mode: "openrouter"
+                model: "openrouter/free"
+                max_concurrent_requests: 2
 
           pipeline:
             base_url: "${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}"

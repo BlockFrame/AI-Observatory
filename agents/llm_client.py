@@ -144,6 +144,10 @@ class ProviderResponse:
     stop_reason: Optional[str] = None
 
 
+class OpenRouterResponseError(ValueError):
+    """Raised when OpenRouter returns a successful but unusable response."""
+
+
 def _coerce_message_content(content: Any) -> str:
     if isinstance(content, str):
         return content
@@ -192,7 +196,16 @@ def _extract_openrouter_text(message_content: Any) -> str:
 def _normalize_openrouter_response(response_json: Dict[str, Any]) -> ProviderResponse:
     choices = response_json.get("choices") or []
     if not choices:
-        raise ValueError("OpenRouter response did not include any choices")
+        error = response_json.get("error")
+        detail = ""
+        if isinstance(error, dict):
+            detail = str(error.get("message") or error.get("code") or "")
+        elif error:
+            detail = str(error)
+        suffix = f": {detail}" if detail else ""
+        raise OpenRouterResponseError(
+            f"OpenRouter response did not include any choices{suffix}"
+        )
 
     choice = choices[0]
     message = choice.get("message") or {}
@@ -1694,6 +1707,8 @@ class AsyncLLMRouter:
         )
         if isinstance(error, retryable_types):
             return type(error).__name__
+        if isinstance(error, OpenRouterResponseError):
+            return "invalid_openrouter_response"
 
         status_code = getattr(error, "status_code", None)
         response = getattr(error, "response", None)

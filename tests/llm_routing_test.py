@@ -12,6 +12,7 @@ from agents.llm_client import (
     AsyncAnthropicClient,
     AsyncLLMRouter,
     LLMResponse,
+    OpenRouterResponseError,
     ThinkingLevel,
     _uses_adaptive_thinking,
 )
@@ -253,6 +254,25 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(gcp.calls[0]["routing_context"]["attempt"], 2)
             self.assertEqual(gcp.calls[0]["routing_context"]["fallback_from"], "aws")
             self.assertEqual(gcp.calls[0]["routing_context"]["retry_reason"], "ConnectError")
+
+        asyncio.run(run())
+
+    def test_invalid_openrouter_response_falls_back_to_another_route(self):
+        async def run():
+            primary = FakeRouteClient(
+                "primary",
+                failures=[OpenRouterResponseError("missing choices")],
+            )
+            fallback = FakeRouteClient("free-router-fallback")
+            router = AsyncLLMRouter([primary, fallback])
+
+            response = await router.call(messages=[{"role": "user", "content": "hi"}])
+
+            self.assertEqual(response.content, "free-router-fallback")
+            self.assertEqual(
+                fallback.calls[0]["routing_context"]["retry_reason"],
+                "invalid_openrouter_response",
+            )
 
         asyncio.run(run())
 
