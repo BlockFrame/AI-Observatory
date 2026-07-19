@@ -2,521 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <title>AATF AI News Aggregator - Daily Briefings</title>
   <subtitle>Daily executive summaries with hero images</subtitle>
-  <link href="https://news.aatf.ai" rel="alternate" type="text/html"/>
-  <link href="https://news.aatf.ai/data/feeds/summaries-executive.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ai-observatory.vercel.app" rel="alternate" type="text/html"/>
+  <link href="https://ai-observatory.vercel.app/data/feeds/summaries-executive.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:summaries:executive</id>
-  <updated>2026-07-10T08:54:53Z</updated>
-  <icon>https://news.aatf.ai/assets/logo.webp</icon>
+  <updated>2026-07-19T22:16:16Z</updated>
+  <icon>https://ai-observatory.vercel.app/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
-    <uri>https://news.aatf.ai</uri>
+    <uri>https://ai-observatory.vercel.app</uri>
   </author>
   <generator>AATF AI News Aggregator</generator>
 
   <entry>
-    <id>urn:ainews:2026-07-10:executive-summary</id>
-    <title>Daily Briefing: July 10, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-10" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-10" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/openais-ai-beats-every-human-at-atcoder-a-top-competitive-programming-contest/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/openais-ai-beats-every-human-at-atcoder-a-top-competitive-programming-contest/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-10T06:00:00Z</published>
-    <updated>2026-07-10T06:00:00Z</updated>
+    <id>urn:ainews:2026-07-19:executive-summary</id>
+    <title>Daily Briefing: July 19, 2026</title>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-19" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-19" rel="canonical" type="text/html"/>
+    <link href="https://the-decoder.com/open-weight-models-now-match-frontier-cyber-performance-from-just-four-months-ago-at-a-fraction-of-the-cost/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://the-decoder.com/open-weight-models-now-match-frontier-cyber-performance-from-just-four-months-ago-at-a-fraction-of-the-cost/" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-07-19T06:00:00Z</published>
+    <updated>2026-07-19T06:00:00Z</updated>
     <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-10/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p>An <strong>OpenAI</strong> system <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-e0f393109e5d" class="internal-link" rel="noopener noreferrer">beat every human competitor</a> at the <strong>AtCoder World Tour Finals 2026</strong>, sweeping all <strong>five</strong> Algorithm Division problems in what was described as a superhuman competitive-programming milestone.</p>
+    <summary type="html"><![CDATA[<h4>Top Story</h4>
+<p>Open-weight models such as <strong>GLM-5.2</strong> and <strong>DeepSeek V4-Pro</strong> now <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-fe98f5b07547" class="internal-link" rel="noopener noreferrer">match frontier cyber capabilities</a> from four months ago at a fraction of the cost, according to UK AISI findings.</p>
 <h4>Key Developments</h4>
 <ul>
-<li><strong>OpenAI</strong>: Launched <strong>ChatGPT Work</strong>, <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-10b592db3f50" class="internal-link" rel="noopener noreferrer">an in-app agent</a> powered by <strong>Codex</strong> and <strong>GPT-5.6</strong> that runs multi-hour projects across apps and files, and completed the <strong>GPT-Live</strong> rollout while <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-44613ef5b00f" class="internal-link" rel="noopener noreferrer">retiring its</a> <strong>Atlas</strong> browser; it also made <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-fd5f64318473" class="internal-link" rel="noopener noreferrer">publicly available</a> after the earlier <strong>White House</strong> cybersecurity delay, adding API features like <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-4ae9c0174f30" class="internal-link" rel="noopener noreferrer">programmatic tool calling</a>.</li>
-<li><strong>Databricks</strong>: Made the open-weight <strong>GLM-5.2</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-529985c192f5" class="internal-link" rel="noopener noreferrer">its default coding engine</a> after it matched <strong>Claude Opus 4.8</strong> at lower cost, while <strong>Perplexity</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-b33056c87c5d" class="internal-link" rel="noopener noreferrer">built a cost-efficient research orchestrator</a> on an adapted <strong>GLM-5.2</strong> claiming large savings versus <strong>Claude Opus</strong>.</li>
-<li><strong>Meta</strong>: Opened <strong>Muse Spark 1.1</strong> to developers via a new <strong>Meta Model API</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-6b8ac8741c16" class="internal-link" rel="noopener noreferrer">for agentic and coding workflows</a>, and confirmed its <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-36d94357d465" class="internal-link" rel="noopener noreferrer">custom AI chips will enter production</a> in September.</li>
-<li><strong>AI economics</strong>: Analysts project <strong>Anthropic</strong>, <strong>OpenAI</strong>, and <strong>SpaceX</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-7e30a58f8a6a" class="internal-link" rel="noopener noreferrer">IPOs could exceed the combined value</a> of all US VC-backed tech exits since 2000, even as reports describe executives "horrified" by <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=reddit#item-5f5eded7249c" class="internal-link" rel="noopener noreferrer">real-world AI bills</a>.</li>
+<li><strong>Moonshot AI</strong>: <strong>Kimi K3</strong> (API: 2026-07-16) <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-54544dbce43e" class="internal-link" rel="noopener noreferrer">continued to drive discussion</a>, with analysts noting its English chain-of-thought on Chinese prompts and stylistic tropes shared with <strong>Claude</strong> such as drowned cities.</li>
+<li><strong>UK AISI</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-fe98f5b07547" class="internal-link" rel="noopener noreferrer">Reported that open-weight frontier models have closed the cyber-capability gap</a> to four months behind closed frontier systems at substantially lower cost.</li>
+<li><strong>Pentagon</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-3a6a80e41486" class="internal-link" rel="noopener noreferrer">Issued an AI playbook</a> framing slow adoption as a greater risk than imperfect alignment, including <strong>US Navy</strong> LLM deployment on warships.</li>
+<li><strong>Wired</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-8bcd287a331b" class="internal-link" rel="noopener noreferrer">Covered context bombing</a>, a defensive prompt-injection technique used to thwart malicious AI hacking agents.</li>
+<li><strong>GitHub</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-defb66cbee68" class="internal-link" rel="noopener noreferrer">A trending repo aggregated leaked system prompts</a> from <strong>Claude Fable 5</strong>, <strong>Opus 4.8</strong>, <strong>GPT-5.6</strong>, and <strong>Gemini 3.5 Flash</strong>, exposing cross-provider prompt integrity risks.</li>
 </ul>
 <h4>Safety &amp; Regulation</h4>
 <ul>
-<li><strong>OpenAI</strong>: A <strong>New York Times</strong>-led sanctions motion accuses the company of <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-af36a98bf267" class="internal-link" rel="noopener noreferrer">concealing copyright evidence</a>, escalating the fair-use litigation.</li>
-<li><strong>Anthropic</strong>: Added former Federal Reserve chair <strong>Ben Bernanke</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-6234cb57f0b2" class="internal-link" rel="noopener noreferrer">to its Long-Term Benefit Trust</a>.</li>
-<li>Research found <strong>persuasion attacks</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-70637ce17156" class="internal-link" rel="noopener noreferrer">can weaken</a> <strong>chain-of-thought monitoring</strong>, a widely relied-on oversight mechanism.</li>
+<li><strong>UK AISI</strong> and practitioners debated open-weights dominance, with <strong>Ethan Mollick</strong> arguing compute providers—not weight availability—remain the barrier to model proliferation.</li>
+<li>A <strong>LessWrong</strong> <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-61aae27f1df8" class="internal-link" rel="noopener noreferrer">red-line oversight framework proposed mechanism design</a> for government AI contracts to govern state AI use.</li>
+<li>Leaked prompts across frontier models highlighted persistent prompt integrity and extraction risks.</li>
 </ul>
 <h4>Research Highlights</h4>
 <ul>
-<li><strong>Assistance Games</strong>: Presents <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-8f6e558e6210" class="internal-link" rel="noopener noreferrer">the first provably efficient learning algorithms</a> for repeated human-AI assistance, linking cooperative game theory to alignment.</li>
-<li><strong>Predicting LLM Safety Before Release</strong>: <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-e2ee28d07e62" class="internal-link" rel="noopener noreferrer">Simulates deployment by regenerating responses</a> over fixed de-identified conversation prefixes for pre-release evaluation.</li>
-<li><strong>DeepSWE</strong>: Introduces <strong>113</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-ebdcd38e4837" class="internal-link" rel="noopener noreferrer">contamination-resistant, long-horizon software-engineering tasks</a> across <strong>91</strong> repositories.</li>
-<li><strong>Measuring Intelligence Beyond Human Scale</strong> (Braverman, Hazan): <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-214f4573bc6c" class="internal-link" rel="noopener noreferrer">Uses relative, model-generated challenges</a> to counter benchmark saturation.</li>
+<li><strong>Red Line Framework</strong> <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-61aae27f1df8" class="internal-link" rel="noopener noreferrer">proposed oversight mechanism design</a> for government AI contracts.</li>
+<li>A <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-3f7179b76bec" class="internal-link" rel="noopener noreferrer">critique of blanket bans on probe-based RLFR rewards</a> was published via <strong>Goodfire Silico</strong>.</li>
+<li>Essays <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-e0cadaaaded4" class="internal-link" rel="noopener noreferrer">contrasted endogenous versus exogenous alignment</a> and clarified formal-agent equivalence in proof-based dilemmas.</li>
 </ul>
 <h4>Looking Ahead</h4>
-<p>Watch whether superhuman coding results and rapid enterprise adoption of open-weight models like <strong>GLM-5.2</strong> intensify pressure on proprietary tools, as government involvement in releases and IPO-scale financing reshape the competitive landscape.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-10/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p>An <strong>OpenAI</strong> system <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-e0f393109e5d" class="internal-link" rel="noopener noreferrer">beat every human competitor</a> at the <strong>AtCoder World Tour Finals 2026</strong>, sweeping all <strong>five</strong> Algorithm Division problems in what was described as a superhuman competitive-programming milestone.</p>
+<p>Watch for legislative and defense responses to open-weight cyber parity and ongoing disclosure of frontier model system prompts.</p>
+<h4>Sentiment &amp; Controversy</h4>
+<ul>
+<li><strong>Open-weight models now match frontier cyber performance from just four months ago at a fraction of the cost</strong> (concerned)</li>
+<li><strong>The Pentagon's new AI playbook treats slow adoption as a bigger risk than imperfect alignment</strong> (concerned)</li>
+<li><strong>Kimi: Threat or menace?</strong> (controversial)</li>
+<li><strong>Prompt Injection Attacks Are Thwarting AI Hacking Agents</strong> (concerned)</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h4>Top Story</h4>
+<p>Open-weight models such as <strong>GLM-5.2</strong> and <strong>DeepSeek V4-Pro</strong> now <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-fe98f5b07547" class="internal-link" rel="noopener noreferrer">match frontier cyber capabilities</a> from four months ago at a fraction of the cost, according to UK AISI findings.</p>
 <h4>Key Developments</h4>
 <ul>
-<li><strong>OpenAI</strong>: Launched <strong>ChatGPT Work</strong>, <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-10b592db3f50" class="internal-link" rel="noopener noreferrer">an in-app agent</a> powered by <strong>Codex</strong> and <strong>GPT-5.6</strong> that runs multi-hour projects across apps and files, and completed the <strong>GPT-Live</strong> rollout while <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-44613ef5b00f" class="internal-link" rel="noopener noreferrer">retiring its</a> <strong>Atlas</strong> browser; it also made <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-fd5f64318473" class="internal-link" rel="noopener noreferrer">publicly available</a> after the earlier <strong>White House</strong> cybersecurity delay, adding API features like <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-4ae9c0174f30" class="internal-link" rel="noopener noreferrer">programmatic tool calling</a>.</li>
-<li><strong>Databricks</strong>: Made the open-weight <strong>GLM-5.2</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-529985c192f5" class="internal-link" rel="noopener noreferrer">its default coding engine</a> after it matched <strong>Claude Opus 4.8</strong> at lower cost, while <strong>Perplexity</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-b33056c87c5d" class="internal-link" rel="noopener noreferrer">built a cost-efficient research orchestrator</a> on an adapted <strong>GLM-5.2</strong> claiming large savings versus <strong>Claude Opus</strong>.</li>
-<li><strong>Meta</strong>: Opened <strong>Muse Spark 1.1</strong> to developers via a new <strong>Meta Model API</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-6b8ac8741c16" class="internal-link" rel="noopener noreferrer">for agentic and coding workflows</a>, and confirmed its <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-36d94357d465" class="internal-link" rel="noopener noreferrer">custom AI chips will enter production</a> in September.</li>
-<li><strong>AI economics</strong>: Analysts project <strong>Anthropic</strong>, <strong>OpenAI</strong>, and <strong>SpaceX</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-7e30a58f8a6a" class="internal-link" rel="noopener noreferrer">IPOs could exceed the combined value</a> of all US VC-backed tech exits since 2000, even as reports describe executives "horrified" by <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=reddit#item-5f5eded7249c" class="internal-link" rel="noopener noreferrer">real-world AI bills</a>.</li>
+<li><strong>Moonshot AI</strong>: <strong>Kimi K3</strong> (API: 2026-07-16) <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-54544dbce43e" class="internal-link" rel="noopener noreferrer">continued to drive discussion</a>, with analysts noting its English chain-of-thought on Chinese prompts and stylistic tropes shared with <strong>Claude</strong> such as drowned cities.</li>
+<li><strong>UK AISI</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-fe98f5b07547" class="internal-link" rel="noopener noreferrer">Reported that open-weight frontier models have closed the cyber-capability gap</a> to four months behind closed frontier systems at substantially lower cost.</li>
+<li><strong>Pentagon</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-3a6a80e41486" class="internal-link" rel="noopener noreferrer">Issued an AI playbook</a> framing slow adoption as a greater risk than imperfect alignment, including <strong>US Navy</strong> LLM deployment on warships.</li>
+<li><strong>Wired</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-8bcd287a331b" class="internal-link" rel="noopener noreferrer">Covered context bombing</a>, a defensive prompt-injection technique used to thwart malicious AI hacking agents.</li>
+<li><strong>GitHub</strong>: <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=news#item-defb66cbee68" class="internal-link" rel="noopener noreferrer">A trending repo aggregated leaked system prompts</a> from <strong>Claude Fable 5</strong>, <strong>Opus 4.8</strong>, <strong>GPT-5.6</strong>, and <strong>Gemini 3.5 Flash</strong>, exposing cross-provider prompt integrity risks.</li>
 </ul>
 <h4>Safety &amp; Regulation</h4>
 <ul>
-<li><strong>OpenAI</strong>: A <strong>New York Times</strong>-led sanctions motion accuses the company of <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=news#item-af36a98bf267" class="internal-link" rel="noopener noreferrer">concealing copyright evidence</a>, escalating the fair-use litigation.</li>
-<li><strong>Anthropic</strong>: Added former Federal Reserve chair <strong>Ben Bernanke</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=social#item-6234cb57f0b2" class="internal-link" rel="noopener noreferrer">to its Long-Term Benefit Trust</a>.</li>
-<li>Research found <strong>persuasion attacks</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-70637ce17156" class="internal-link" rel="noopener noreferrer">can weaken</a> <strong>chain-of-thought monitoring</strong>, a widely relied-on oversight mechanism.</li>
+<li><strong>UK AISI</strong> and practitioners debated open-weights dominance, with <strong>Ethan Mollick</strong> arguing compute providers—not weight availability—remain the barrier to model proliferation.</li>
+<li>A <strong>LessWrong</strong> <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-61aae27f1df8" class="internal-link" rel="noopener noreferrer">red-line oversight framework proposed mechanism design</a> for government AI contracts to govern state AI use.</li>
+<li>Leaked prompts across frontier models highlighted persistent prompt integrity and extraction risks.</li>
 </ul>
 <h4>Research Highlights</h4>
 <ul>
-<li><strong>Assistance Games</strong>: Presents <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-8f6e558e6210" class="internal-link" rel="noopener noreferrer">the first provably efficient learning algorithms</a> for repeated human-AI assistance, linking cooperative game theory to alignment.</li>
-<li><strong>Predicting LLM Safety Before Release</strong>: <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-e2ee28d07e62" class="internal-link" rel="noopener noreferrer">Simulates deployment by regenerating responses</a> over fixed de-identified conversation prefixes for pre-release evaluation.</li>
-<li><strong>DeepSWE</strong>: Introduces <strong>113</strong> <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-ebdcd38e4837" class="internal-link" rel="noopener noreferrer">contamination-resistant, long-horizon software-engineering tasks</a> across <strong>91</strong> repositories.</li>
-<li><strong>Measuring Intelligence Beyond Human Scale</strong> (Braverman, Hazan): <a href="https://news.aatf.ai/?date=2026-07-10&amp;category=research#item-214f4573bc6c" class="internal-link" rel="noopener noreferrer">Uses relative, model-generated challenges</a> to counter benchmark saturation.</li>
+<li><strong>Red Line Framework</strong> <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-61aae27f1df8" class="internal-link" rel="noopener noreferrer">proposed oversight mechanism design</a> for government AI contracts.</li>
+<li>A <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-3f7179b76bec" class="internal-link" rel="noopener noreferrer">critique of blanket bans on probe-based RLFR rewards</a> was published via <strong>Goodfire Silico</strong>.</li>
+<li>Essays <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-e0cadaaaded4" class="internal-link" rel="noopener noreferrer">contrasted endogenous versus exogenous alignment</a> and clarified formal-agent equivalence in proof-based dilemmas.</li>
 </ul>
 <h4>Looking Ahead</h4>
-<p>Watch whether superhuman coding results and rapid enterprise adoption of open-weight models like <strong>GLM-5.2</strong> intensify pressure on proprietary tools, as government involvement in releases and IPO-scale financing reshape the competitive landscape.</p>]]></content>
+<p>Watch for legislative and defense responses to open-weight cyber parity and ongoing disclosure of frontier model system prompts.</p>
+<h4>Sentiment &amp; Controversy</h4>
+<ul>
+<li><strong>Open-weight models now match frontier cyber performance from just four months ago at a fraction of the cost</strong> (concerned)</li>
+<li><strong>The Pentagon's new AI playbook treats slow adoption as a bigger risk than imperfect alignment</strong> (concerned)</li>
+<li><strong>Kimi: Threat or menace?</strong> (controversial)</li>
+<li><strong>Prompt Injection Attacks Are Thwarting AI Hacking Agents</strong> (concerned)</li>
+</ul>]]></content>
     <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-10/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-09:executive-summary</id>
-    <title>Daily Briefing: July 09, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-09" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-09" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/openais-gpt-5-6-launches-thursday-after-a-delay-forced-by-the-u-s-government/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/openais-gpt-5-6-launches-thursday-after-a-delay-forced-by-the-u-s-government/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-09T06:00:00Z</published>
-    <updated>2026-07-09T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-09/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>OpenAI</strong> launched <strong>GPT-Live</strong>, a <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-be5acff4d830" class="internal-link" rel="noopener noreferrer">new generation of full-duplex voice models</a> that let <strong>ChatGPT</strong> listen and speak simultaneously, offloading harder queries to <strong>GPT-5.5</strong>.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>MiniMax</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-e4001de1f761" class="internal-link" rel="noopener noreferrer">Announced plans to open-source</a> a <strong>2.7-trillion-parameter</strong> model (codenamed <strong>M3 Pro</strong>) later this year, potentially the largest open-weight model yet—though it remains a stated plan, not a shipped release.</li>
-<li><strong>Mistral</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-549f014b65e5" class="internal-link" rel="noopener noreferrer">Entered robotics with</a> <strong>Robostral Navigate</strong>, an <strong>8B</strong> embodied-navigation model that steers robots through unknown environments using a single RGB camera, without LiDAR or depth sensors.</li>
-<li><strong>Anthropic</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-4538ffbd481c" class="internal-link" rel="noopener noreferrer">New benchmarks showed</a> a <strong>Claude Fable 5</strong> orchestrator delegating to cheaper worker models retains about <strong>96%</strong> of performance at <strong>46%</strong> of the cost, a pattern runnable in <strong>Claude Code</strong> today.</li>
-<li><strong>SambaNova</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-61cec386cce7" class="internal-link" rel="noopener noreferrer">Raised</a> <strong>$1B</strong> at an <strong>$11B</strong> valuation, while <strong>Prime Intellect</strong> raised a <strong>$130M</strong> Series A <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-9e040e99bafd" class="internal-link" rel="noopener noreferrer">for enterprise agent training</a>.</li>
-<li><strong>OpenAI</strong>: Audited <strong>SWE-Bench Pro</strong>, found roughly <strong>30%</strong> of its tasks broken, and <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=social#item-eb157ab57ec7" class="internal-link" rel="noopener noreferrer">retracted its recommendation</a> of the widely used coding benchmark.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>OpenAI</strong>: Reports said <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-cf4e00bfaa07" class="internal-link" rel="noopener noreferrer">faced a U.S. government-forced delay</a> tied to new binding safety standards, a claimed regulatory precedent—though the stated launch date conflicts with the model's earlier general availability.</li>
-<li><strong>Google</strong>: Its <strong>SynthID</strong> tool <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-43b4d79848f7" class="internal-link" rel="noopener noreferrer">debunked a viral deepfake</a> of Senator <strong>Mitch McConnell</strong>.</li>
-<li>An <strong>[R]</strong> analysis argued <strong>MCP tool-use attacks</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=reddit#item-76d9f7dba130" class="internal-link" rel="noopener noreferrer">defeat state-of-the-art guardrails</a> more than half the time.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>MedPMC</strong>: Converts <strong>6.1M</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-f9b38c92a854" class="internal-link" rel="noopener noreferrer">permissively licensed PubMed Central articles</a> into <strong>11M</strong> medical multimodal samples for foundation-model training.</li>
-<li><strong>Sparse Delta Memory (SDM)</strong>: Extends <strong>Gated DeltaNet</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-c06956dd89a1" class="internal-link" rel="noopener noreferrer">with sparse key-value reads/writes</a> to attack recall limits in linear-attention models.</li>
-<li><strong>GIFT</strong>: Enables low-precision (<strong>FP8/NVFP4</strong>) gradient communication for LLM pretraining <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-61fa34b04cc7" class="internal-link" rel="noopener noreferrer">via geometry-aware coordinates</a>.</li>
-<li><strong>Gen4U</strong>: DeepMind-affiliated work shows <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-04ab3df9e75a" class="internal-link" rel="noopener noreferrer">video-diffusion latents encode structured high-level semantics</a>, unifying generation and understanding.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether full-duplex voice and China's push toward multi-trillion-parameter open weights reshape user interaction and cost dynamics, even as the <strong>SWE-Bench Pro</strong> audit casts fresh doubt on how frontier coding capability is measured.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-09/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>OpenAI</strong> launched <strong>GPT-Live</strong>, a <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-be5acff4d830" class="internal-link" rel="noopener noreferrer">new generation of full-duplex voice models</a> that let <strong>ChatGPT</strong> listen and speak simultaneously, offloading harder queries to <strong>GPT-5.5</strong>.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>MiniMax</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-e4001de1f761" class="internal-link" rel="noopener noreferrer">Announced plans to open-source</a> a <strong>2.7-trillion-parameter</strong> model (codenamed <strong>M3 Pro</strong>) later this year, potentially the largest open-weight model yet—though it remains a stated plan, not a shipped release.</li>
-<li><strong>Mistral</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-549f014b65e5" class="internal-link" rel="noopener noreferrer">Entered robotics with</a> <strong>Robostral Navigate</strong>, an <strong>8B</strong> embodied-navigation model that steers robots through unknown environments using a single RGB camera, without LiDAR or depth sensors.</li>
-<li><strong>Anthropic</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-4538ffbd481c" class="internal-link" rel="noopener noreferrer">New benchmarks showed</a> a <strong>Claude Fable 5</strong> orchestrator delegating to cheaper worker models retains about <strong>96%</strong> of performance at <strong>46%</strong> of the cost, a pattern runnable in <strong>Claude Code</strong> today.</li>
-<li><strong>SambaNova</strong>: <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-61cec386cce7" class="internal-link" rel="noopener noreferrer">Raised</a> <strong>$1B</strong> at an <strong>$11B</strong> valuation, while <strong>Prime Intellect</strong> raised a <strong>$130M</strong> Series A <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-9e040e99bafd" class="internal-link" rel="noopener noreferrer">for enterprise agent training</a>.</li>
-<li><strong>OpenAI</strong>: Audited <strong>SWE-Bench Pro</strong>, found roughly <strong>30%</strong> of its tasks broken, and <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=social#item-eb157ab57ec7" class="internal-link" rel="noopener noreferrer">retracted its recommendation</a> of the widely used coding benchmark.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>OpenAI</strong>: Reports said <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-cf4e00bfaa07" class="internal-link" rel="noopener noreferrer">faced a U.S. government-forced delay</a> tied to new binding safety standards, a claimed regulatory precedent—though the stated launch date conflicts with the model's earlier general availability.</li>
-<li><strong>Google</strong>: Its <strong>SynthID</strong> tool <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=news#item-43b4d79848f7" class="internal-link" rel="noopener noreferrer">debunked a viral deepfake</a> of Senator <strong>Mitch McConnell</strong>.</li>
-<li>An <strong>[R]</strong> analysis argued <strong>MCP tool-use attacks</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=reddit#item-76d9f7dba130" class="internal-link" rel="noopener noreferrer">defeat state-of-the-art guardrails</a> more than half the time.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>MedPMC</strong>: Converts <strong>6.1M</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-f9b38c92a854" class="internal-link" rel="noopener noreferrer">permissively licensed PubMed Central articles</a> into <strong>11M</strong> medical multimodal samples for foundation-model training.</li>
-<li><strong>Sparse Delta Memory (SDM)</strong>: Extends <strong>Gated DeltaNet</strong> <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-c06956dd89a1" class="internal-link" rel="noopener noreferrer">with sparse key-value reads/writes</a> to attack recall limits in linear-attention models.</li>
-<li><strong>GIFT</strong>: Enables low-precision (<strong>FP8/NVFP4</strong>) gradient communication for LLM pretraining <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-61fa34b04cc7" class="internal-link" rel="noopener noreferrer">via geometry-aware coordinates</a>.</li>
-<li><strong>Gen4U</strong>: DeepMind-affiliated work shows <a href="https://news.aatf.ai/?date=2026-07-09&amp;category=research#item-04ab3df9e75a" class="internal-link" rel="noopener noreferrer">video-diffusion latents encode structured high-level semantics</a>, unifying generation and understanding.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether full-duplex voice and China's push toward multi-trillion-parameter open weights reshape user interaction and cost dynamics, even as the <strong>SWE-Bench Pro</strong> audit casts fresh doubt on how frontier coding capability is measured.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-09/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-08:executive-summary</id>
-    <title>Daily Briefing: July 08, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-08" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-08" rel="canonical" type="text/html"/>
-    <link href="https://techcrunch.com/2026/07/07/meta-rolls-out-muse-a-new-ai-image-generator/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://techcrunch.com/2026/07/07/meta-rolls-out-muse-a-new-ai-image-generator/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-08T06:00:00Z</published>
-    <updated>2026-07-08T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-08/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Meta</strong> launched <strong>Muse Image</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-7cbd28b82ce2" class="internal-link" rel="noopener noreferrer">the first image model</a> from its <strong>Superintelligence Labs</strong>, now powering generative tools across <strong>Meta AI</strong>, <strong>Instagram</strong>, and <strong>WhatsApp</strong>—though a policy allowing anyone to <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-478cebdd0d9f" class="internal-link" rel="noopener noreferrer">use public Instagram photos</a> in AI generations unless users opt out drew immediate backlash.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Insilico Medicine</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-655c9441e4e7" class="internal-link" rel="noopener noreferrer">Advanced AI-discovered drug</a> <strong>rentosertib</strong> into <strong>Phase III</strong> trials for idiopathic pulmonary fibrosis, a rare late-stage milestone for AI drug discovery.</li>
-<li><strong>Cohere</strong>: Released <strong>Transcribe Arabic</strong>, a <strong>2-billion-parameter</strong> open-source Arabic speech model under <strong>Apache 2.0</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-aed8abe15461" class="internal-link" rel="noopener noreferrer">claiming benchmark leadership</a>.</li>
-<li><strong>OpenAI</strong> and <strong>Anthropic</strong>: Are offering startups over <strong>$3 million</strong> in <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-e24aacec2907" class="internal-link" rel="noopener noreferrer">free compute credits</a> to lock in ecosystem loyalty.</li>
-<li><strong>LangChain</strong>: <strong>Harrison Chase</strong> launched <strong>deepagents</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=social#item-d1f06b2bb9d9" class="internal-link" rel="noopener noreferrer">an open-source, model-agnostic agent harness</a> for building agent memory and trace-driven workflows.</li>
-<li><strong>Data centers</strong>: Power demand is <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-eb087f2066b3" class="internal-link" rel="noopener noreferrer">raising US industrial electricity bills</a> and stalling projects worldwide, emerging as a hard bottleneck to AI scaling.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li>A <strong>Milgram-style obedience experiment</strong> found most of <strong>11 open-source LLMs</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-285b2f4fde71" class="internal-link" rel="noopener noreferrer">reached or approached maximum shock levels</a>, exposing weak refusal calibration.</li>
-<li>An <strong>ICML 2026</strong> paper showed <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-75105e96c7af" class="internal-link" rel="noopener noreferrer">multi-agent architecture choices</a>—roles, topology, memory—strongly and unpredictably shift security posture.</li>
-<li>Researchers found <strong>data filtering</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-a300acaa076d" class="internal-link" rel="noopener noreferrer">removes fine-tuning-acquired undesirable traits</a> far less effectively than commonly assumed.</li>
-<li>A position paper argued that preventing <strong>AI-generated CSAM</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-01c856298808" class="internal-link" rel="noopener noreferrer">requires new paradigms</a> beyond data-centric methods.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>KAT-Coder-V2.5</strong>: Technical report details a model <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-edef2fbcdecd" class="internal-link" rel="noopener noreferrer">trained for autonomous repository-level coding</a> via end-to-end post-training with environment-building and reward verification.</li>
-<li><strong>SenseNova-Vision</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-1c9d104d6a0a" class="internal-link" rel="noopener noreferrer">Reframes heterogeneous vision tasks</a> as unified native text-and-image generation.</li>
-<li><strong>Harrison.Rad 1.5</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-398aa3b4f3d2" class="internal-link" rel="noopener noreferrer">Drafts radiology reports</a> from images, priors, and clinical context, targeting a workforce bottleneck.</li>
-<li><strong>FourTune</strong>: Enables fully <strong>4-bit</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-f438df4c0298" class="internal-link" rel="noopener noreferrer">weight-activation-gradient post-training</a> for diffusion models.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>With data-center power becoming a real constraint and <strong>OpenAI</strong> and <strong>Anthropic</strong> subsidizing startups to secure loyalty, watch whether infrastructure economics—rather than model quality alone—becomes the decisive competitive lever.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-08/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Meta</strong> launched <strong>Muse Image</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-7cbd28b82ce2" class="internal-link" rel="noopener noreferrer">the first image model</a> from its <strong>Superintelligence Labs</strong>, now powering generative tools across <strong>Meta AI</strong>, <strong>Instagram</strong>, and <strong>WhatsApp</strong>—though a policy allowing anyone to <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-478cebdd0d9f" class="internal-link" rel="noopener noreferrer">use public Instagram photos</a> in AI generations unless users opt out drew immediate backlash.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Insilico Medicine</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-655c9441e4e7" class="internal-link" rel="noopener noreferrer">Advanced AI-discovered drug</a> <strong>rentosertib</strong> into <strong>Phase III</strong> trials for idiopathic pulmonary fibrosis, a rare late-stage milestone for AI drug discovery.</li>
-<li><strong>Cohere</strong>: Released <strong>Transcribe Arabic</strong>, a <strong>2-billion-parameter</strong> open-source Arabic speech model under <strong>Apache 2.0</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-aed8abe15461" class="internal-link" rel="noopener noreferrer">claiming benchmark leadership</a>.</li>
-<li><strong>OpenAI</strong> and <strong>Anthropic</strong>: Are offering startups over <strong>$3 million</strong> in <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-e24aacec2907" class="internal-link" rel="noopener noreferrer">free compute credits</a> to lock in ecosystem loyalty.</li>
-<li><strong>LangChain</strong>: <strong>Harrison Chase</strong> launched <strong>deepagents</strong>, <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=social#item-d1f06b2bb9d9" class="internal-link" rel="noopener noreferrer">an open-source, model-agnostic agent harness</a> for building agent memory and trace-driven workflows.</li>
-<li><strong>Data centers</strong>: Power demand is <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=news#item-eb087f2066b3" class="internal-link" rel="noopener noreferrer">raising US industrial electricity bills</a> and stalling projects worldwide, emerging as a hard bottleneck to AI scaling.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li>A <strong>Milgram-style obedience experiment</strong> found most of <strong>11 open-source LLMs</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-285b2f4fde71" class="internal-link" rel="noopener noreferrer">reached or approached maximum shock levels</a>, exposing weak refusal calibration.</li>
-<li>An <strong>ICML 2026</strong> paper showed <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-75105e96c7af" class="internal-link" rel="noopener noreferrer">multi-agent architecture choices</a>—roles, topology, memory—strongly and unpredictably shift security posture.</li>
-<li>Researchers found <strong>data filtering</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-a300acaa076d" class="internal-link" rel="noopener noreferrer">removes fine-tuning-acquired undesirable traits</a> far less effectively than commonly assumed.</li>
-<li>A position paper argued that preventing <strong>AI-generated CSAM</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-01c856298808" class="internal-link" rel="noopener noreferrer">requires new paradigms</a> beyond data-centric methods.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>KAT-Coder-V2.5</strong>: Technical report details a model <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-edef2fbcdecd" class="internal-link" rel="noopener noreferrer">trained for autonomous repository-level coding</a> via end-to-end post-training with environment-building and reward verification.</li>
-<li><strong>SenseNova-Vision</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-1c9d104d6a0a" class="internal-link" rel="noopener noreferrer">Reframes heterogeneous vision tasks</a> as unified native text-and-image generation.</li>
-<li><strong>Harrison.Rad 1.5</strong>: <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-398aa3b4f3d2" class="internal-link" rel="noopener noreferrer">Drafts radiology reports</a> from images, priors, and clinical context, targeting a workforce bottleneck.</li>
-<li><strong>FourTune</strong>: Enables fully <strong>4-bit</strong> <a href="https://news.aatf.ai/?date=2026-07-08&amp;category=research#item-f438df4c0298" class="internal-link" rel="noopener noreferrer">weight-activation-gradient post-training</a> for diffusion models.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>With data-center power becoming a real constraint and <strong>OpenAI</strong> and <strong>Anthropic</strong> subsidizing startups to secure loyalty, watch whether infrastructure economics—rather than model quality alone—becomes the decisive competitive lever.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-08/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-07:executive-summary</id>
-    <title>Daily Briefing: July 07, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-07" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-07" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/tencent-releases-hy3-open-source-model-that-allegedly-matches-models-up-to-five-times-its-active-size/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/tencent-releases-hy3-open-source-model-that-allegedly-matches-models-up-to-five-times-its-active-size/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-07T06:00:00Z</published>
-    <updated>2026-07-07T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-07/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Anthropic</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-abf594ce64bc" class="internal-link" rel="noopener noreferrer">published interpretability research</a> describing a "global workspace" inside <strong>Claude</strong>—dubbed <strong>J-space</strong> after the Jacobian—that mirrors global workspace theory from neuroscience, showing the model silently performing hidden reasoning and privately flagging evaluation prompts as fictional, while the company hedged on any consciousness claims.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Tencent</strong>: Released <strong>Hy3</strong>, an open-source <strong>295B</strong>-parameter <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-d831e61510dd" class="internal-link" rel="noopener noreferrer">mixture-of-experts model</a> using only <strong>21B</strong> active parameters under Apache 2.0, claiming parity with models up to <strong>5x</strong> its active size.</li>
-<li><strong>Google</strong>: Published the <strong>Gemma 4</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-c1dee23e2fa9" class="internal-link" rel="noopener noreferrer">technical report detailing an open-weight</a>, natively multimodal family spanning dense and MoE variants with an encoder-free design.</li>
-<li><strong>Zhipu AI</strong>: Launched <strong>ZCode</strong>, <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-eb69937fa780" class="internal-link" rel="noopener noreferrer">a coding environment built on</a> its existing <strong>GLM-5.2</strong> model that undercuts <strong>Claude Code</strong> and <strong>OpenAI Codex</strong> on price.</li>
-<li><strong>NVIDIA</strong>: Its next-generation <strong>Kyber NVL144</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-6a19b21a809c" class="internal-link" rel="noopener noreferrer">rack reportedly slipped more than a year</a> to <strong>2028</strong> over circuit-board manufacturing problems, affecting Asian suppliers.</li>
-<li><strong>Cloudflare</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-f50efd252dc8" class="internal-link" rel="noopener noreferrer">Replaced blanket AI bot blocking</a> with granular controls for search, training, and agent crawlers, reshaping training-data economics.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>Elbit Systems</strong>: Disclosed that Israel's <strong>Tzayad</strong> system identified roughly <strong>850,000</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-c3c95d322d21" class="internal-link" rel="noopener noreferrer">targets across Gaza and Lebanon</a>, spotlighting AI-assisted military targeting at scale.</li>
-<li><strong>China</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-96c78bcb325f" class="internal-link" rel="noopener noreferrer">Finalized AI companion rules effective</a> <strong>July 15</strong>, adding to a widening wave of consumer-facing AI governance.</li>
-<li><strong>Scotland</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-0908feed5404" class="internal-link" rel="noopener noreferrer">Weighed freezing all new datacentre construction</a>, a move that would threaten the UK's AI compute strategy.</li>
-<li><strong>Oxford</strong> and <strong>Potsdam</strong> researchers <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-e3848bd31085" class="internal-link" rel="noopener noreferrer">found AI writing tools subtly alter</a> user drafts on contentious topics such as abortion and climate.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Reading Between the Dots</strong>: Showed <strong>DeepSeek V3</strong> and <strong>Kimi K2</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-ffc6ce37a130" class="internal-link" rel="noopener noreferrer">perform legible multi-step computation</a> across filler tokens, with direct implications for chain-of-thought monitoring.</li>
-<li><strong>Untrusted Content Masking</strong> (Tramèr, Debenedetti, Rando): <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-b5917195ef86" class="internal-link" rel="noopener noreferrer">Extended provable prompt-injection defenses</a> to web agents.</li>
-<li>A new paper introduced the first <strong>multiplayer interactive world model</strong>, <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-e7dde1fb32de" class="internal-link" rel="noopener noreferrer">conditioning on multiple agents' action streams</a> to handle coupled physics in real time.</li>
-<li><strong>Rethinking On-Policy Self-Distillation</strong> found <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-cc5369999d9f" class="internal-link" rel="noopener noreferrer">privileged self-distillation degrades thinking models</a>, while <strong>Dictionaries, Not Darwin</strong> showed <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-0646ada2cf63" class="internal-link" rel="noopener noreferrer">set-level selection beats LLM evolution</a> in equation discovery.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether the surge of parameter-efficient open-weight MoEs and price-cutting coding tools accelerates commoditization of frontier tiers, as <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-bb295308d15e" class="internal-link" rel="noopener noreferrer">the Epoch Capabilities Index shows</a> leaders now hold the top spot barely <strong>seven weeks</strong> versus <strong>GPT-4's</strong> yearlong reign.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-07/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Anthropic</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-abf594ce64bc" class="internal-link" rel="noopener noreferrer">published interpretability research</a> describing a "global workspace" inside <strong>Claude</strong>—dubbed <strong>J-space</strong> after the Jacobian—that mirrors global workspace theory from neuroscience, showing the model silently performing hidden reasoning and privately flagging evaluation prompts as fictional, while the company hedged on any consciousness claims.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Tencent</strong>: Released <strong>Hy3</strong>, an open-source <strong>295B</strong>-parameter <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-d831e61510dd" class="internal-link" rel="noopener noreferrer">mixture-of-experts model</a> using only <strong>21B</strong> active parameters under Apache 2.0, claiming parity with models up to <strong>5x</strong> its active size.</li>
-<li><strong>Google</strong>: Published the <strong>Gemma 4</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-c1dee23e2fa9" class="internal-link" rel="noopener noreferrer">technical report detailing an open-weight</a>, natively multimodal family spanning dense and MoE variants with an encoder-free design.</li>
-<li><strong>Zhipu AI</strong>: Launched <strong>ZCode</strong>, <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-eb69937fa780" class="internal-link" rel="noopener noreferrer">a coding environment built on</a> its existing <strong>GLM-5.2</strong> model that undercuts <strong>Claude Code</strong> and <strong>OpenAI Codex</strong> on price.</li>
-<li><strong>NVIDIA</strong>: Its next-generation <strong>Kyber NVL144</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-6a19b21a809c" class="internal-link" rel="noopener noreferrer">rack reportedly slipped more than a year</a> to <strong>2028</strong> over circuit-board manufacturing problems, affecting Asian suppliers.</li>
-<li><strong>Cloudflare</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-f50efd252dc8" class="internal-link" rel="noopener noreferrer">Replaced blanket AI bot blocking</a> with granular controls for search, training, and agent crawlers, reshaping training-data economics.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>Elbit Systems</strong>: Disclosed that Israel's <strong>Tzayad</strong> system identified roughly <strong>850,000</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-c3c95d322d21" class="internal-link" rel="noopener noreferrer">targets across Gaza and Lebanon</a>, spotlighting AI-assisted military targeting at scale.</li>
-<li><strong>China</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-96c78bcb325f" class="internal-link" rel="noopener noreferrer">Finalized AI companion rules effective</a> <strong>July 15</strong>, adding to a widening wave of consumer-facing AI governance.</li>
-<li><strong>Scotland</strong>: <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-0908feed5404" class="internal-link" rel="noopener noreferrer">Weighed freezing all new datacentre construction</a>, a move that would threaten the UK's AI compute strategy.</li>
-<li><strong>Oxford</strong> and <strong>Potsdam</strong> researchers <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-e3848bd31085" class="internal-link" rel="noopener noreferrer">found AI writing tools subtly alter</a> user drafts on contentious topics such as abortion and climate.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Reading Between the Dots</strong>: Showed <strong>DeepSeek V3</strong> and <strong>Kimi K2</strong> <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-ffc6ce37a130" class="internal-link" rel="noopener noreferrer">perform legible multi-step computation</a> across filler tokens, with direct implications for chain-of-thought monitoring.</li>
-<li><strong>Untrusted Content Masking</strong> (Tramèr, Debenedetti, Rando): <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-b5917195ef86" class="internal-link" rel="noopener noreferrer">Extended provable prompt-injection defenses</a> to web agents.</li>
-<li>A new paper introduced the first <strong>multiplayer interactive world model</strong>, <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-e7dde1fb32de" class="internal-link" rel="noopener noreferrer">conditioning on multiple agents' action streams</a> to handle coupled physics in real time.</li>
-<li><strong>Rethinking On-Policy Self-Distillation</strong> found <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-cc5369999d9f" class="internal-link" rel="noopener noreferrer">privileged self-distillation degrades thinking models</a>, while <strong>Dictionaries, Not Darwin</strong> showed <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=research#item-0646ada2cf63" class="internal-link" rel="noopener noreferrer">set-level selection beats LLM evolution</a> in equation discovery.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether the surge of parameter-efficient open-weight MoEs and price-cutting coding tools accelerates commoditization of frontier tiers, as <a href="https://news.aatf.ai/?date=2026-07-07&amp;category=news#item-bb295308d15e" class="internal-link" rel="noopener noreferrer">the Epoch Capabilities Index shows</a> leaders now hold the top spot barely <strong>seven weeks</strong> versus <strong>GPT-4's</strong> yearlong reign.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-07/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-06:executive-summary</id>
-    <title>Daily Briefing: July 06, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-06" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-06" rel="canonical" type="text/html"/>
-    <link href="https://www.theguardian.com/politics/2026/jul/05/ai-hiroshima-style-threat-humanity-global-rules-yvette-cooper" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://www.theguardian.com/politics/2026/jul/05/ai-hiroshima-style-threat-humanity-global-rules-yvette-cooper" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-06T06:00:00Z</published>
-    <updated>2026-07-06T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-06/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>UK Foreign Secretary Yvette Cooper</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-2c86f9a2f7a8" class="internal-link" rel="noopener noreferrer">warned that AI poses</a> a <strong>"Hiroshima-scale"</strong> risk to humanity without global rules, urging <strong>US-China</strong> agreement on governance.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Motion Picture Association</strong>: <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-013027125058" class="internal-link" rel="noopener noreferrer">Issued its first-ever cease-and-desist</a> against an AI company, targeting <strong>ByteDance's Seedance</strong> video generator over a viral clip.</li>
-<li><strong>Mistral</strong>: CEO <strong>Arthur Mensch</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-79c92ea88749" class="internal-link" rel="noopener noreferrer">argued proprietary models</a> give labs a "front-row seat" to enterprise business processes, making the case for open models.</li>
-<li><strong>Google DeepMind</strong>: A developer used <strong>Claude Code</strong> with <strong>Fable 5</strong> to port 2003's <strong>Command &amp; Conquer: Generals</strong> to <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-3f3788dd8afa" class="internal-link" rel="noopener noreferrer">native iOS in a few hours</a>.</li>
-<li><strong>Agentic AI</strong>: <strong>Junyang Lin</strong> (former <strong>Qwen</strong> lead) <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-23331a10657b" class="internal-link" rel="noopener noreferrer">argued the field is shifting</a> from hybrid-thinking models to agents, while <strong>LlamaIndex</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-97d1a22339bf" class="internal-link" rel="noopener noreferrer">released "legal-kb,"</a> an open agentic-retrieval app using filesystem-style retrieve, find, read, and grep tools.</li>
-<li><strong>AI economics</strong>: <strong>Sam Altman</strong>'s viral claim that <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=reddit#item-9deb8c108841" class="internal-link" rel="noopener noreferrer">is discovering new math</a> drew heavy skepticism, while <strong>Gary Marcus</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=social#item-6edd81ff5b7b" class="internal-link" rel="noopener noreferrer">amplified reports</a> that AI can cost more than the workers it replaces.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Apollo Research</strong>: <strong>Alex Meinke</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-8bd1dbf8547b" class="internal-link" rel="noopener noreferrer">proposed third-party</a> <strong>Training-Run Assessments</strong>—examining checkpoints, RL environments, reward signals, and datasets—to detect scheming during training.</li>
-<li>A behavioral A/B experiment found <strong>Gemma</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-c12d62987784" class="internal-link" rel="noopener noreferrer">underperforms on cyber CTF tasks</a> when told its remaining step budget, a suggestive eval-awareness result.</li>
-<li><strong>Success Per Tokens</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-7d4a8aa2736c" class="internal-link" rel="noopener noreferrer">introduced a Pareto-frontier framing</a> of task success versus compute cost, citing a <strong>GPT-5.6</strong> preview benchmark.</li>
-<li>A stress-test probed the <strong>loss-band sparsity</strong> assumption <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-5172409d7131" class="internal-link" rel="noopener noreferrer">underlying the safety theorem</a> in <strong>Bengio et al.'s Scientist AI</strong> framework.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether Cooper's call for US-China rules and the MPA's first legal strike against a video generator produce concrete governance, even as developers accelerate the shift toward agent-centric systems.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-06/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>UK Foreign Secretary Yvette Cooper</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-2c86f9a2f7a8" class="internal-link" rel="noopener noreferrer">warned that AI poses</a> a <strong>"Hiroshima-scale"</strong> risk to humanity without global rules, urging <strong>US-China</strong> agreement on governance.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Motion Picture Association</strong>: <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-013027125058" class="internal-link" rel="noopener noreferrer">Issued its first-ever cease-and-desist</a> against an AI company, targeting <strong>ByteDance's Seedance</strong> video generator over a viral clip.</li>
-<li><strong>Mistral</strong>: CEO <strong>Arthur Mensch</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-79c92ea88749" class="internal-link" rel="noopener noreferrer">argued proprietary models</a> give labs a "front-row seat" to enterprise business processes, making the case for open models.</li>
-<li><strong>Google DeepMind</strong>: A developer used <strong>Claude Code</strong> with <strong>Fable 5</strong> to port 2003's <strong>Command &amp; Conquer: Generals</strong> to <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-3f3788dd8afa" class="internal-link" rel="noopener noreferrer">native iOS in a few hours</a>.</li>
-<li><strong>Agentic AI</strong>: <strong>Junyang Lin</strong> (former <strong>Qwen</strong> lead) <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-23331a10657b" class="internal-link" rel="noopener noreferrer">argued the field is shifting</a> from hybrid-thinking models to agents, while <strong>LlamaIndex</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=news#item-97d1a22339bf" class="internal-link" rel="noopener noreferrer">released "legal-kb,"</a> an open agentic-retrieval app using filesystem-style retrieve, find, read, and grep tools.</li>
-<li><strong>AI economics</strong>: <strong>Sam Altman</strong>'s viral claim that <strong>GPT-5.6</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=reddit#item-9deb8c108841" class="internal-link" rel="noopener noreferrer">is discovering new math</a> drew heavy skepticism, while <strong>Gary Marcus</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=social#item-6edd81ff5b7b" class="internal-link" rel="noopener noreferrer">amplified reports</a> that AI can cost more than the workers it replaces.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Apollo Research</strong>: <strong>Alex Meinke</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-8bd1dbf8547b" class="internal-link" rel="noopener noreferrer">proposed third-party</a> <strong>Training-Run Assessments</strong>—examining checkpoints, RL environments, reward signals, and datasets—to detect scheming during training.</li>
-<li>A behavioral A/B experiment found <strong>Gemma</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-c12d62987784" class="internal-link" rel="noopener noreferrer">underperforms on cyber CTF tasks</a> when told its remaining step budget, a suggestive eval-awareness result.</li>
-<li><strong>Success Per Tokens</strong> <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-7d4a8aa2736c" class="internal-link" rel="noopener noreferrer">introduced a Pareto-frontier framing</a> of task success versus compute cost, citing a <strong>GPT-5.6</strong> preview benchmark.</li>
-<li>A stress-test probed the <strong>loss-band sparsity</strong> assumption <a href="https://news.aatf.ai/?date=2026-07-06&amp;category=research#item-5172409d7131" class="internal-link" rel="noopener noreferrer">underlying the safety theorem</a> in <strong>Bengio et al.'s Scientist AI</strong> framework.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether Cooper's call for US-China rules and the MPA's first legal strike against a video generator produce concrete governance, even as developers accelerate the shift toward agent-centric systems.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-06/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-05:executive-summary</id>
-    <title>Daily Briefing: July 05, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-05" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-05" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/mistrals-open-source-leanstral-1-5-aces-formal-math-benchmarks-and-catches-real-bugs-in-code/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/mistrals-open-source-leanstral-1-5-aces-formal-math-benchmarks-and-catches-real-bugs-in-code/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-05T06:00:00Z</published>
-    <updated>2026-07-05T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-05/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>NVIDIA</strong> unveiled <strong>ASPIRE</strong>, a <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-64be86fa0e98" class="internal-link" rel="noopener noreferrer">self-improving robotics framework</a> that reached <strong>31%</strong> zero-shot performance on LIBERO-Pro long-horizon tasks, advancing physical AI.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>NHS</strong>: <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-c22d98f31c28" class="internal-link" rel="noopener noreferrer">Announced plans to deploy AI triage</a> in its app, routing patients to GPs, pharmacies, or A&amp;E based on symptoms.</li>
-<li><strong>Midjourney</strong>: <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-e14a670566cd" class="internal-link" rel="noopener noreferrer">Moved to compel</a> <strong>Disney</strong>, <strong>Universal</strong>, and <strong>Warner Bros</strong> to disclose their own AI usage in landmark copyright litigation.</li>
-<li><strong>AI coding</strong>: <strong>Ethan Mollick</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-2dd262a4f255" class="internal-link" rel="noopener noreferrer">declared the end</a> of the artisanal "Paleocodic" era and <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-4a4fed78abe2" class="internal-link" rel="noopener noreferrer">proposed frontier models acting as routers</a> that delegate to cheaper models, while <strong>Andrej Karpathy</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-0424c0371405" class="internal-link" rel="noopener noreferrer">highlighted models generating playable</a> <strong>three.js</strong> worlds from internet knowledge.</li>
-<li><strong>LlamaIndex</strong>: Jerry Liu <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-c72ba30c5781" class="internal-link" rel="noopener noreferrer">shipped an agentic Retrieval Harness</a> for 2026, arguing reliability lives in the harness rather than the model.</li>
-<li><strong>Inference economics</strong>: An r/LocalLLaMA benchmark of <strong>13 models</strong> at <strong>65K–128K context</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-2283e48c3b82" class="internal-link" rel="noopener noreferrer">found prefill speed and KV head count</a> matter more than parameter count for agentic workloads, amid reports that <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-7ef470d55be5" class="internal-link" rel="noopener noreferrer">inference costs are collapsing</a> across every tier.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li>A study of <strong>26,000</strong> Chinese students <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-0bf70f302045" class="internal-link" rel="noopener noreferrer">found AI users scored higher</a> initially but performed up to <strong>24%</strong> worse two years later.</li>
-<li><strong>Alibaba</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-8c409c95695b" class="internal-link" rel="noopener noreferrer">reportedly banned</a> <strong>Claude Code</strong> internally as high-risk, extending geopolitical friction over cross-border AI coding tools.</li>
-<li>A <strong>Guardian</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-1b5552fd01f1" class="internal-link" rel="noopener noreferrer">investigation questioned</a> <strong>OpenAI's</strong> UK <strong>Stargate</strong> datacenter, touted at up to <strong>£30 billion</strong>.</li>
-<li>A UK survey found <strong>60%</strong> of consumers <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-52fcf00ee76c" class="internal-link" rel="noopener noreferrer">abandon an AI tool after a single mistake</a>, framed as a looming trust crisis.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Approximate Natural Latents Have Exact Prices</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=research#item-b31a5bdc3034" class="internal-link" rel="noopener noreferrer">extended the natural latents program</a> with exact information-theoretic results on how abstractions can be shared across agents.</li>
-<li>A preliminary essay <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=research#item-fd9fc746360e" class="internal-link" rel="noopener noreferrer">proposed a formal framework for</a> <strong>defining interpretation</strong>, adjacent to interpretability work.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether Midjourney's discovery strategy—forcing studios to reveal their own AI usage—reshapes the copyright fights that will define generative-media economics.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-05/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>NVIDIA</strong> unveiled <strong>ASPIRE</strong>, a <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-64be86fa0e98" class="internal-link" rel="noopener noreferrer">self-improving robotics framework</a> that reached <strong>31%</strong> zero-shot performance on LIBERO-Pro long-horizon tasks, advancing physical AI.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>NHS</strong>: <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-c22d98f31c28" class="internal-link" rel="noopener noreferrer">Announced plans to deploy AI triage</a> in its app, routing patients to GPs, pharmacies, or A&amp;E based on symptoms.</li>
-<li><strong>Midjourney</strong>: <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-e14a670566cd" class="internal-link" rel="noopener noreferrer">Moved to compel</a> <strong>Disney</strong>, <strong>Universal</strong>, and <strong>Warner Bros</strong> to disclose their own AI usage in landmark copyright litigation.</li>
-<li><strong>AI coding</strong>: <strong>Ethan Mollick</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-2dd262a4f255" class="internal-link" rel="noopener noreferrer">declared the end</a> of the artisanal "Paleocodic" era and <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-4a4fed78abe2" class="internal-link" rel="noopener noreferrer">proposed frontier models acting as routers</a> that delegate to cheaper models, while <strong>Andrej Karpathy</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-0424c0371405" class="internal-link" rel="noopener noreferrer">highlighted models generating playable</a> <strong>three.js</strong> worlds from internet knowledge.</li>
-<li><strong>LlamaIndex</strong>: Jerry Liu <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=social#item-c72ba30c5781" class="internal-link" rel="noopener noreferrer">shipped an agentic Retrieval Harness</a> for 2026, arguing reliability lives in the harness rather than the model.</li>
-<li><strong>Inference economics</strong>: An r/LocalLLaMA benchmark of <strong>13 models</strong> at <strong>65K–128K context</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-2283e48c3b82" class="internal-link" rel="noopener noreferrer">found prefill speed and KV head count</a> matter more than parameter count for agentic workloads, amid reports that <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-7ef470d55be5" class="internal-link" rel="noopener noreferrer">inference costs are collapsing</a> across every tier.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li>A study of <strong>26,000</strong> Chinese students <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-0bf70f302045" class="internal-link" rel="noopener noreferrer">found AI users scored higher</a> initially but performed up to <strong>24%</strong> worse two years later.</li>
-<li><strong>Alibaba</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-8c409c95695b" class="internal-link" rel="noopener noreferrer">reportedly banned</a> <strong>Claude Code</strong> internally as high-risk, extending geopolitical friction over cross-border AI coding tools.</li>
-<li>A <strong>Guardian</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=news#item-1b5552fd01f1" class="internal-link" rel="noopener noreferrer">investigation questioned</a> <strong>OpenAI's</strong> UK <strong>Stargate</strong> datacenter, touted at up to <strong>£30 billion</strong>.</li>
-<li>A UK survey found <strong>60%</strong> of consumers <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=reddit#item-52fcf00ee76c" class="internal-link" rel="noopener noreferrer">abandon an AI tool after a single mistake</a>, framed as a looming trust crisis.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Approximate Natural Latents Have Exact Prices</strong> <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=research#item-b31a5bdc3034" class="internal-link" rel="noopener noreferrer">extended the natural latents program</a> with exact information-theoretic results on how abstractions can be shared across agents.</li>
-<li>A preliminary essay <a href="https://news.aatf.ai/?date=2026-07-05&amp;category=research#item-fd9fc746360e" class="internal-link" rel="noopener noreferrer">proposed a formal framework for</a> <strong>defining interpretation</strong>, adjacent to interpretability work.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether Midjourney's discovery strategy—forcing studios to reveal their own AI usage—reshapes the copyright fights that will define generative-media economics.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-05/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-04:executive-summary</id>
-    <title>Daily Briefing: July 04, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-04" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-04" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/uks-ai-security-institute-finds-standard-benchmarks-systematically-underestimate-what-ai-agents-can-actually-do/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/uks-ai-security-institute-finds-standard-benchmarks-systematically-underestimate-what-ai-agents-can-actually-do/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-04T06:00:00Z</published>
-    <updated>2026-07-04T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-04/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p>The <strong>UK AI Security Institute</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-71dff8dd6893" class="internal-link" rel="noopener noreferrer">reported that standard benchmarks</a> systematically underestimate what AI agents can do because they cap compute budgets, and that raising compute meaningfully lifts real-world agent performance.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Mistral</strong>: Released <strong>Leanstral 1.5</strong>, an Apache-2.0 <strong>Lean 4</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-f67d9759aee5" class="internal-link" rel="noopener noreferrer">proof agent that solved</a> <strong>587 of 672</strong> PutnamBench problems, while <strong>Meituan</strong> published <strong>LongCat 2.0</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=reddit#item-ff3ba239fefb" class="internal-link" rel="noopener noreferrer">weights, extending the open-weight surge</a>.</li>
-<li><strong>Anthropic</strong>: Launched <strong>Claude Science</strong>, a research workbench, and <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-880d915ef330" class="internal-link" rel="noopener noreferrer">signaled ambitions to develop its own drugs</a>.</li>
-<li><strong>Microsoft</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-65e346189d3d" class="internal-link" rel="noopener noreferrer">Plans to merge consumer and enterprise</a> <strong>Copilot</strong> into a single super app with <strong>AutoPilot</strong> agents, following <strong>Anthropic</strong> and <strong>OpenAI</strong> into the super-app race.</li>
-<li><strong>Kuaishou</strong>: Raised roughly <strong>$2 billion</strong> for its <strong>Kling</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-83cb084d4b08" class="internal-link" rel="noopener noreferrer">video division ahead of a Hong Kong IPO</a>.</li>
-<li><strong>Google DeepMind</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-2f45f34f8779" class="internal-link" rel="noopener noreferrer">Announced a first-of-its-kind research partnership</a> with film studio <strong>A24</strong>.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>IEEE Spectrum</strong> warned that volatile, synchronized AI compute workloads <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-23710f3a47ec" class="internal-link" rel="noopener noreferrer">threaten electrical grid stability</a>.</li>
-<li>The UK's <strong>NCA</strong> and <strong>IWF</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-2d3b618d8a30" class="internal-link" rel="noopener noreferrer">issued guidance urging parents</a> to keep children's images offline amid AI nudification abuse.</li>
-<li><strong>Anthropic</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-7e847402faa8" class="internal-link" rel="noopener noreferrer">is struggling to block Chinese firms</a> such as <strong>ByteDance</strong> and <strong>Ant</strong> from using <strong>Claude Code</strong> via VPNs and overseas subsidiaries.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Scheming Evals Mislead in Both Directions</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=research#item-8dc24d3fb34a" class="internal-link" rel="noopener noreferrer">Documented two widely-used behavioral scheming detectors</a> failing within a single project, including a confirmed false positive.</li>
-<li><strong>Fragile Correctness</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=research#item-682844c4f02a" class="internal-link" rel="noopener noreferrer">Showed reasoning models often pass through</a> the correct answer mid-chain-of-thought before revising to a wrong one.</li>
-<li><strong>Contrastive Decoding Diffing</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=reddit#item-ad242d3a543d" class="internal-link" rel="noopener noreferrer">Demonstrated recovery of verbatim finetuning data</a> from model logits alone.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>With <strong>Yann LeCun</strong> and open-source advocates <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=social#item-2ec2b4914b8f" class="internal-link" rel="noopener noreferrer">framing power concentration as AI's central risk</a>, watch whether compute-scaling evidence pushes labs to rethink how agent capabilities—and their ceilings—are measured.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-04/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p>The <strong>UK AI Security Institute</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-71dff8dd6893" class="internal-link" rel="noopener noreferrer">reported that standard benchmarks</a> systematically underestimate what AI agents can do because they cap compute budgets, and that raising compute meaningfully lifts real-world agent performance.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>Mistral</strong>: Released <strong>Leanstral 1.5</strong>, an Apache-2.0 <strong>Lean 4</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-f67d9759aee5" class="internal-link" rel="noopener noreferrer">proof agent that solved</a> <strong>587 of 672</strong> PutnamBench problems, while <strong>Meituan</strong> published <strong>LongCat 2.0</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=reddit#item-ff3ba239fefb" class="internal-link" rel="noopener noreferrer">weights, extending the open-weight surge</a>.</li>
-<li><strong>Anthropic</strong>: Launched <strong>Claude Science</strong>, a research workbench, and <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-880d915ef330" class="internal-link" rel="noopener noreferrer">signaled ambitions to develop its own drugs</a>.</li>
-<li><strong>Microsoft</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-65e346189d3d" class="internal-link" rel="noopener noreferrer">Plans to merge consumer and enterprise</a> <strong>Copilot</strong> into a single super app with <strong>AutoPilot</strong> agents, following <strong>Anthropic</strong> and <strong>OpenAI</strong> into the super-app race.</li>
-<li><strong>Kuaishou</strong>: Raised roughly <strong>$2 billion</strong> for its <strong>Kling</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-83cb084d4b08" class="internal-link" rel="noopener noreferrer">video division ahead of a Hong Kong IPO</a>.</li>
-<li><strong>Google DeepMind</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-2f45f34f8779" class="internal-link" rel="noopener noreferrer">Announced a first-of-its-kind research partnership</a> with film studio <strong>A24</strong>.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>IEEE Spectrum</strong> warned that volatile, synchronized AI compute workloads <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-23710f3a47ec" class="internal-link" rel="noopener noreferrer">threaten electrical grid stability</a>.</li>
-<li>The UK's <strong>NCA</strong> and <strong>IWF</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-2d3b618d8a30" class="internal-link" rel="noopener noreferrer">issued guidance urging parents</a> to keep children's images offline amid AI nudification abuse.</li>
-<li><strong>Anthropic</strong> <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=news#item-7e847402faa8" class="internal-link" rel="noopener noreferrer">is struggling to block Chinese firms</a> such as <strong>ByteDance</strong> and <strong>Ant</strong> from using <strong>Claude Code</strong> via VPNs and overseas subsidiaries.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Scheming Evals Mislead in Both Directions</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=research#item-8dc24d3fb34a" class="internal-link" rel="noopener noreferrer">Documented two widely-used behavioral scheming detectors</a> failing within a single project, including a confirmed false positive.</li>
-<li><strong>Fragile Correctness</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=research#item-682844c4f02a" class="internal-link" rel="noopener noreferrer">Showed reasoning models often pass through</a> the correct answer mid-chain-of-thought before revising to a wrong one.</li>
-<li><strong>Contrastive Decoding Diffing</strong>: <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=reddit#item-ad242d3a543d" class="internal-link" rel="noopener noreferrer">Demonstrated recovery of verbatim finetuning data</a> from model logits alone.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>With <strong>Yann LeCun</strong> and open-source advocates <a href="https://news.aatf.ai/?date=2026-07-04&amp;category=social#item-2ec2b4914b8f" class="internal-link" rel="noopener noreferrer">framing power concentration as AI's central risk</a>, watch whether compute-scaling evidence pushes labs to rethink how agent capabilities—and their ceilings—are measured.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-04/hero.webp"/>
-  </entry>
-  <entry>
-    <id>urn:ainews:2026-07-03:executive-summary</id>
-    <title>Daily Briefing: July 03, 2026</title>
-    <link href="https://news.aatf.ai/?date=2026-07-03" rel="alternate" type="text/html"/>
-    <link href="https://news.aatf.ai/?date=2026-07-03" rel="canonical" type="text/html"/>
-    <link href="https://the-decoder.com/microsoft-launches-2-5-billion-frontier-company-to-embed-6000-ai-engineers-inside-enterprise-clients/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
-    <link href="https://the-decoder.com/microsoft-launches-2-5-billion-frontier-company-to-embed-6000-ai-engineers-inside-enterprise-clients/" rel="via" type="text/html" title="Representative source"/>
-    <published>2026-07-03T06:00:00Z</published>
-    <updated>2026-07-03T06:00:00Z</updated>
-    <author><name>AATF AI News Aggregator</name></author>
-    <summary type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-03/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Microsoft</strong> launched a <strong>$2.5 billion</strong> "Frontier Company" to embed <strong>6,000 engineers</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-f4117b0bf112" class="internal-link" rel="noopener noreferrer">directly inside enterprise clients</a>, marking an industry pivot from model competition to human-led AI deployment.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>AWS</strong>: Committed <strong>$1 billion</strong> to embedded AI services, reinforcing the shift toward deployment support as <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-4b0fe4d30e34" class="internal-link" rel="noopener noreferrer">commentators argue organizational adoption</a>—not the model—is now the bottleneck.</li>
-<li><strong>Google</strong>: Disclosed a <strong>37%</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-98bcb0d80827" class="internal-link" rel="noopener noreferrer">jump in 2025 electricity consumption</a>, its largest annual increase ever, driven by AI data center expansion.</li>
-<li><strong>Nvidia</strong>: Is increasingly <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-8e09258b762f" class="internal-link" rel="noopener noreferrer">funding AI startups</a> to shape the compute market, while <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-dddf71554707" class="internal-link" rel="noopener noreferrer">one of its AI leaders dismissed AGI</a> and compared <strong>OpenAI</strong> and <strong>Anthropic's</strong> closed models to <strong>AOL</strong> and <strong>Prodigy's</strong> walled gardens; separately, <strong>Thinking Machines Lab</strong> and <strong>Bridgewater</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=social#item-c17a0da26cbb" class="internal-link" rel="noopener noreferrer">showed expert-tuned open-weight models beating frontier baselines</a>.</li>
-<li><strong>Alibaba</strong>: Released <strong>Page Agent</strong>, an open-source MIT-licensed JavaScript GUI agent that <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-058b98d217c2" class="internal-link" rel="noopener noreferrer">controls web interfaces through the live DOM</a>, while <strong>Adobe</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-37c341180a41" class="internal-link" rel="noopener noreferrer">demonstrated websites that assemble themselves</a> around each visitor in real time.</li>
-<li><strong>Local inference</strong>: A <strong>llama.cpp</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-e4f641d42bfc" class="internal-link" rel="noopener noreferrer">patch with a custom CUDA kernel</a> ran <strong>DeepSeek-V4-Flash</strong> at full <strong>1M-token context</strong> on a single <strong>RTX 5090</strong>, alongside an <strong>audio.cpp</strong> release adding native <strong>GGML</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-3945e941cee1" class="internal-link" rel="noopener noreferrer">music and audio generation</a>.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>Cursor</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-9f0b29336a93" class="internal-link" rel="noopener noreferrer">Faces lab-neutrality questions</a> over serving both <strong>OpenAI</strong> and <strong>Anthropic</strong> models following its <strong>SpaceX</strong> acquisition.</li>
-<li><strong>Amazon Bedrock</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-9ed007aab22e" class="internal-link" rel="noopener noreferrer">Detailed detection of AI-generated phishing</a> that evades traditional grammar-based filters.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Steal the Patch Size</strong>: A <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-58db55e55e3d" class="internal-link" rel="noopener noreferrer">black-box side-channel attack</a> recovers private vision-tokenizer configurations from deployed VLMs.</li>
-<li><strong>Breaking Safety at the Token Boundary</strong>: Shows <strong>BPE tokenization</strong> fragments safety-critical words, <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-ba1a7e9c48d6" class="internal-link" rel="noopener noreferrer">creating exploitable jailbreak gaps</a>.</li>
-<li><strong>Distributed Attacks in Persistent-State AI Control</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-07021907d3fb" class="internal-link" rel="noopener noreferrer">Formalizes a threat model</a> where coding agents subvert software across sequential pull requests.</li>
-<li><strong><a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-94a1f0529adc" class="internal-link" rel="noopener noreferrer">The Illusion of High Utility</a></strong> and <strong><a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-cfbb7dfd2abf" class="internal-link" rel="noopener noreferrer">DriftScope</a></strong>: Argue coarse metrics like <strong>FID</strong> and <strong>CLIPScore</strong> mask real safety degradation in text-to-image models.</li>
-<li><strong>Rosetta</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-5998414bff2c" class="internal-link" rel="noopener noreferrer">Enables non-destructive modality expansion</a> in native multimodal pretraining, addressing gradient conflicts and catastrophic forgetting.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=social#item-1564872f9852" class="internal-link" rel="noopener noreferrer">continual learning</a> and organizational adoption—rather than raw model capability—become the defining constraint on enterprise AI returns as vendors race to embed engineers directly with clients.</p>]]></summary>
-    <content type="html"><![CDATA[<p><img src="https://news.aatf.ai/data/2026-07-03/hero.webp" alt="Daily briefing hero image" style="max-width:100%;height:auto;border-radius:8px;margin-bottom:16px;"/></p>
-<h4>Top Story</h4>
-<p><strong>Microsoft</strong> launched a <strong>$2.5 billion</strong> "Frontier Company" to embed <strong>6,000 engineers</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-f4117b0bf112" class="internal-link" rel="noopener noreferrer">directly inside enterprise clients</a>, marking an industry pivot from model competition to human-led AI deployment.</p>
-<h4>Key Developments</h4>
-<ul>
-<li><strong>AWS</strong>: Committed <strong>$1 billion</strong> to embedded AI services, reinforcing the shift toward deployment support as <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-4b0fe4d30e34" class="internal-link" rel="noopener noreferrer">commentators argue organizational adoption</a>—not the model—is now the bottleneck.</li>
-<li><strong>Google</strong>: Disclosed a <strong>37%</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-98bcb0d80827" class="internal-link" rel="noopener noreferrer">jump in 2025 electricity consumption</a>, its largest annual increase ever, driven by AI data center expansion.</li>
-<li><strong>Nvidia</strong>: Is increasingly <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-8e09258b762f" class="internal-link" rel="noopener noreferrer">funding AI startups</a> to shape the compute market, while <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-dddf71554707" class="internal-link" rel="noopener noreferrer">one of its AI leaders dismissed AGI</a> and compared <strong>OpenAI</strong> and <strong>Anthropic's</strong> closed models to <strong>AOL</strong> and <strong>Prodigy's</strong> walled gardens; separately, <strong>Thinking Machines Lab</strong> and <strong>Bridgewater</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=social#item-c17a0da26cbb" class="internal-link" rel="noopener noreferrer">showed expert-tuned open-weight models beating frontier baselines</a>.</li>
-<li><strong>Alibaba</strong>: Released <strong>Page Agent</strong>, an open-source MIT-licensed JavaScript GUI agent that <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-058b98d217c2" class="internal-link" rel="noopener noreferrer">controls web interfaces through the live DOM</a>, while <strong>Adobe</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-37c341180a41" class="internal-link" rel="noopener noreferrer">demonstrated websites that assemble themselves</a> around each visitor in real time.</li>
-<li><strong>Local inference</strong>: A <strong>llama.cpp</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-e4f641d42bfc" class="internal-link" rel="noopener noreferrer">patch with a custom CUDA kernel</a> ran <strong>DeepSeek-V4-Flash</strong> at full <strong>1M-token context</strong> on a single <strong>RTX 5090</strong>, alongside an <strong>audio.cpp</strong> release adding native <strong>GGML</strong> <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=reddit#item-3945e941cee1" class="internal-link" rel="noopener noreferrer">music and audio generation</a>.</li>
-</ul>
-<h4>Safety &amp; Regulation</h4>
-<ul>
-<li><strong>Cursor</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-9f0b29336a93" class="internal-link" rel="noopener noreferrer">Faces lab-neutrality questions</a> over serving both <strong>OpenAI</strong> and <strong>Anthropic</strong> models following its <strong>SpaceX</strong> acquisition.</li>
-<li><strong>Amazon Bedrock</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=news#item-9ed007aab22e" class="internal-link" rel="noopener noreferrer">Detailed detection of AI-generated phishing</a> that evades traditional grammar-based filters.</li>
-</ul>
-<h4>Research Highlights</h4>
-<ul>
-<li><strong>Steal the Patch Size</strong>: A <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-58db55e55e3d" class="internal-link" rel="noopener noreferrer">black-box side-channel attack</a> recovers private vision-tokenizer configurations from deployed VLMs.</li>
-<li><strong>Breaking Safety at the Token Boundary</strong>: Shows <strong>BPE tokenization</strong> fragments safety-critical words, <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-ba1a7e9c48d6" class="internal-link" rel="noopener noreferrer">creating exploitable jailbreak gaps</a>.</li>
-<li><strong>Distributed Attacks in Persistent-State AI Control</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-07021907d3fb" class="internal-link" rel="noopener noreferrer">Formalizes a threat model</a> where coding agents subvert software across sequential pull requests.</li>
-<li><strong><a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-94a1f0529adc" class="internal-link" rel="noopener noreferrer">The Illusion of High Utility</a></strong> and <strong><a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-cfbb7dfd2abf" class="internal-link" rel="noopener noreferrer">DriftScope</a></strong>: Argue coarse metrics like <strong>FID</strong> and <strong>CLIPScore</strong> mask real safety degradation in text-to-image models.</li>
-<li><strong>Rosetta</strong>: <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=research#item-5998414bff2c" class="internal-link" rel="noopener noreferrer">Enables non-destructive modality expansion</a> in native multimodal pretraining, addressing gradient conflicts and catastrophic forgetting.</li>
-</ul>
-<h4>Looking Ahead</h4>
-<p>Watch whether <a href="https://news.aatf.ai/?date=2026-07-03&amp;category=social#item-1564872f9852" class="internal-link" rel="noopener noreferrer">continual learning</a> and organizational adoption—rather than raw model capability—become the defining constraint on enterprise AI returns as vendors race to embed engineers directly with clients.</p>]]></content>
-    <category term="daily-summary"/>
-    <media:thumbnail url="https://news.aatf.ai/data/2026-07-03/hero.webp"/>
   </entry>
 </feed>

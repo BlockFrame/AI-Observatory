@@ -1,0 +1,88 @@
+# AI News Aggregator — Daily Intelligence Digest
+
+> Daily AI intelligence digest: news, papers, repos, HN, social signals.
+> Multi-agent analysis with adaptive thinking (MAP-REDUCE).
+> Generated: 2026-07-19
+
+## Data structure
+All daily data is available as JSON at /web/data/{YYYY-MM-DD}/{category}.json
+Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/
+
+### Categories
+- summary.json — Executive summary + top items (500-800 words)
+- research.json — Trending AI papers from Hugging Face Papers and AlphaXiv
+- news.json — News AI from RSS feeds + Hacker News + GitHub Trending
+- social.json — Posts from Twitter/X, Bluesky, Mastodon
+- reddit.json — Threads from AI subreddits
+
+## Available dates (198 total)
+- 2026-07-19: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-19/summary.json
+- 2026-07-10: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-10/summary.json
+- 2026-07-09: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-09/summary.json
+- 2026-07-08: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-08/summary.json
+- 2026-07-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-07/summary.json
+- 2026-07-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-06/summary.json
+- 2026-07-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-05/summary.json
+- 2026-07-04: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-04/summary.json
+- 2026-07-03: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-03/summary.json
+- 2026-07-02: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-02/summary.json
+- 2026-07-01: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-01/summary.json
+- 2026-06-30: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-30/summary.json
+- 2026-06-29: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-29/summary.json
+- 2026-06-28: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-28/summary.json
+- 2026-06-27: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-27/summary.json
+- 2026-06-26: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-26/summary.json
+- 2026-06-25: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-25/summary.json
+- 2026-06-24: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-24/summary.json
+- 2026-06-23: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-23/summary.json
+- 2026-06-22: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-22/summary.json
+- 2026-06-21: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-21/summary.json
+- 2026-06-20: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-20/summary.json
+- 2026-06-19: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-19/summary.json
+- 2026-06-18: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-18/summary.json
+- 2026-06-17: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-17/summary.json
+- 2026-06-16: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-16/summary.json
+- 2026-06-15: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-15/summary.json
+- 2026-06-14: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-14/summary.json
+- 2026-06-13: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-13/summary.json
+- 2026-06-12: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-12/summary.json
+- 2026-06-11: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-11/summary.json
+- 2026-06-10: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-10/summary.json
+- 2026-06-09: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-09/summary.json
+- 2026-06-08: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-08/summary.json
+- 2026-06-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-07/summary.json
+- 2026-06-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-06/summary.json
+- 2026-06-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-05/summary.json
+- 2026-06-04: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-04/summary.json
+- 2026-06-03: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-03/summary.json
+- 2026-06-02: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-02/summary.json
+- 2026-06-01: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-01/summary.json
+- 2026-05-31: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-31/summary.json
+- 2026-05-30: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-30/summary.json
+- 2026-05-29: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-29/summary.json
+- 2026-05-28: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-28/summary.json
+- 2026-05-27: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-27/summary.json
+- 2026-05-26: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-26/summary.json
+- 2026-05-25: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-25/summary.json
+- 2026-05-24: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-24/summary.json
+- 2026-05-23: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-23/summary.json
+- 2026-05-22: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-22/summary.json
+- 2026-05-21: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-21/summary.json
+- 2026-05-20: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-20/summary.json
+- 2026-05-19: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-19/summary.json
+- 2026-05-18: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-18/summary.json
+- 2026-05-17: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-17/summary.json
+- 2026-05-16: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-16/summary.json
+- 2026-05-15: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-15/summary.json
+- 2026-05-14: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-14/summary.json
+- 2026-05-13: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-05-13/summary.json
+
+## Quick query patterns
+- "What happened today?" → fetch /web/data/{today}/summary.json
+- "Recent RAG papers" → fetch /web/data/{date}/research.json, search for "RAG"
+- "What's trending on HN?" → fetch /web/data/{date}/news.json, filter source=hackernews
+- "New AI repos on GitHub" → fetch /web/data/{date}/news.json, filter source=github_trending
+- "Cross-day story tracking" → fetch summary.json for last 7 days, compare topics
+
+## Machine-readable index
+For structured access, fetch: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/ai-index.json

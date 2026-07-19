@@ -1,0 +1,310 @@
+{
+  "category": "research",
+  "date": "2026-07-19",
+  "category_summary": "Research centers on **AI governance**, **interpretability**, and **alignment theory** from practitioner and conceptual standpoints.\n\n- **Red Line Framework** ([61aae27f1df8]) proposes mechanism design for oversight in government AI contracts\n- **Forbidden Technique** ([3f7179b76bec]) critiques blanket bans on **probe-based RLFR** rewards via Goodfire Silico\n- **Endogenous Alignment** ([e0cadaaaded4], [8829f77d5a26]) contrasts internalized vs external value alignment\n- **Payorian FairBot** ([8775b2c5f442]) clarifies formal-agent equivalence in proof-based dilemmas\n- Remaining items are commentary, primers, or non-AI science with limited technical impact",
+  "category_summary_html": "<p>Research centers on <strong>AI governance</strong>, <strong>interpretability</strong>, and <strong>alignment theory</strong> from practitioner and conceptual standpoints.</p>\n<ul>\n<li><strong>Red Line Framework</strong> ([61aae27f1df8]) proposes mechanism design for oversight in government AI contracts</li>\n<li><strong>Forbidden Technique</strong> ([3f7179b76bec]) critiques blanket bans on <strong>probe-based RLFR</strong> rewards via Goodfire Silico</li>\n<li><strong>Endogenous Alignment</strong> ([e0cadaaaded4], [8829f77d5a26]) contrasts internalized vs external value alignment</li>\n<li><strong>Payorian FairBot</strong> ([8775b2c5f442]) clarifies formal-agent equivalence in proof-based dilemmas</li>\n<li>Remaining items are commentary, primers, or non-AI science with limited technical impact</li>\n</ul>",
+  "themes": [
+    {
+      "name": "Governance",
+      "description": "Mechanism design for responsible AI deployment in government and military contexts.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "AI Safety",
+      "description": "Broader safety concerns spanning policy red lines, interpretability-based training, and alignment theory.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Interpretability",
+      "description": "Use of model internal probes as reward signals and associated risks like obfuscation.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 68.0
+    },
+    {
+      "name": "Alignment",
+      "description": "Conceptual and governance work on aligning AI systems with human values, including endogenous vs exogenous framing and contract oversight.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Decision Theory",
+      "description": "Formal agent models in game-theoretic settings such as proof-based prisoner dilemmas.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 30.0
+    },
+    {
+      "name": "Philosophy",
+      "description": "Speculative commentary on AI and evolutionary directionality.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 25.0
+    },
+    {
+      "name": "Rationality",
+      "description": "Introductory exposition of epistemic and instrumental rationality concepts.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 22.0
+    },
+    {
+      "name": "Biology",
+      "description": "Evolutionary analysis of eye structure unrelated to AI.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 18.0
+    }
+  ],
+  "total_items": 8,
+  "items": [
+    {
+      "id": "61aae27f1df8",
+      "title": "A Red Line and Oversight Framework for Government AI Contracts",
+      "content": "My post on leaving Google DeepMind tells a story. In contrast, this Framework is a question of mechanism design and negotiation posture. I quite enjoyed optimizing this Framework against its organizational and practical constraints. The original considerations were:Good red lines: Rule out the questionable use cases (autonomous targeting without human control, untargeted profiling) while allowing trustworthy ones like missile defense. Avoid the weaknesses flagged in legal analysis of Anthropic’s red lines.Robust red lines: [Google] Cloud would push deals through any loophole, Google Legal seemed unlikely to tighten my drafting, and the Pentagon wouldn’t want terms at all. The language had to hold under pressure, with auditing that respected classification and operational security.Minimal trust assumptions: I made the Chief Scientist the single root of trust that everything else hangs off of... The Chief Scientist would staff a Review Body to advise on contracts.Accountability via transparency: The Review Body would only privately advise [the Chief Scientist and CEO], but overriding it surfaces in a yearly transparency report to all AI employees. Dissolving it would require advance notice and disclosure of the exact outstanding non-compliance findings. I worked to ensure the Body couldn’t be defanged as quietly as Google’s 2018 principles were.Minimal pain to opposed stakeholders: I gave Cloud 2 of 7 seats, recused staff only from their own deals, capped delays at 10 days, and protected deliberations under attorney-client privilege.I considered a negotiations round. The counterparties would object to something, and I didn’t want that something to be load-bearing. Therefore, I included less-important provisions meant to be negotiated away, like “the Review Body can escalate to Alphabet’s Board via supermajority vote.”I’d especially appreciate discussion of:How can this Framework be improved as a corporate governance document?If Congress were to legislate for these use...",
+      "url": "https://www.lesswrong.com/posts/CCt9oy8axcdvaGcPE/a-red-line-and-oversight-framework-for-government-ai",
+      "author": "TurnTrout",
+      "published": "2026-07-18T14:58:31.488000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A former Google DeepMind employee proposes a mechanism-design framework for setting red lines and oversight structures in government AI contracts, emphasizing robust language, minimal trust assumptions, and transparency via annual reporting. The piece draws on prior legal analysis of Anthropic's red lines and targets loophole-resistant governance of sensitive military and surveillance use cases.",
+      "importance_score": 72.0,
+      "reasoning": "Offers concrete, practitioner-informed governance design for AI defense contracts; relevant to AI safety and policy but is a personal blog proposal rather than peer-reviewed research or lab release.",
+      "themes": [
+        "AI Safety",
+        "Alignment",
+        "Policy",
+        "Governance"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "CCt9oy8axcdvaGcPE",
+        "slug": "a-red-line-and-oversight-framework-for-government-ai",
+        "base_score": 27,
+        "vote_count": 6,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A former Google DeepMind employee proposes a mechanism-design framework for setting red lines and oversight structures in government AI contracts, emphasizing robust language, minimal trust assumptions, and transparency via annual reporting. The piece draws on prior legal analysis of Anthropic's red lines and targets loophole-resistant governance of sensitive military and surveillance use cases.</p>",
+      "content_html": "<p>My post on leaving Google DeepMind tells a story. In contrast, this Framework is a question of mechanism design and negotiation posture. I quite enjoyed optimizing this Framework against its organizational and practical constraints. The original considerations were:Good red lines: Rule out the questionable use cases (autonomous targeting without human control, untargeted profiling) while allowing trustworthy ones like missile defense. Avoid the weaknesses flagged in legal analysis of Anthropic’s red lines.Robust red lines: [Google] Cloud would push deals through any loophole, Google Legal seemed unlikely to tighten my drafting, and the Pentagon wouldn’t want terms at all. The language had to hold under pressure, with auditing that respected classification and operational security.Minimal trust assumptions: I made the Chief Scientist the single root of trust that everything else hangs off of... The Chief Scientist would staff a Review Body to advise on contracts.Accountability via transparency: The Review Body would only privately advise [the Chief Scientist and CEO], but overriding it surfaces in a yearly transparency report to all AI employees. Dissolving it would require advance notice and disclosure of the exact outstanding non-compliance findings. I worked to ensure the Body couldn’t be defanged as quietly as Google’s 2018 principles were.Minimal pain to opposed stakeholders: I gave Cloud 2 of 7 seats, recused staff only from their own deals, capped delays at 10 days, and protected deliberations under attorney-client privilege.I considered a negotiations round. The counterparties would object to something, and I didn’t want that something to be load-bearing. Therefore, I included less-important provisions meant to be negotiated away, like “the Review Body can escalate to Alphabet’s Board via supermajority vote.”I’d especially appreciate discussion of:How can this Framework be improved as a corporate governance document?If Congress were to legislate for these use...</p>"
+    },
+    {
+      "id": "3f7179b76bec",
+      "title": "The Most Forbidden Technique is not always forbidden",
+      "content": "A few days ago, Goodfire announced a private beta of Silico, their LLM training platform. As part of the announcement, they made a post describing Silico's reproduction of RLFR, a method developed by Goodfire that uses probes as reward signals for RL. Unsurprisingly, people on Twitter were quick to claim that \"at long last, we have implemented the Most Forbidden Technique from the classic LessWrong post Don't Implement The Most Forbidden Technique\".[1]As many have written before, blanket objections to using model internals in the training signal are overblown. While I'm very sympathetic to concerns about obfuscation, the Most Forbidden Technique shouldn't function as a cached response to any kind of training signal that involves model internals. As this reaction appears to be stubborn, it seems useful to write a literature review discussing the exact conditions under which past work has shown training on internals to be warranted. In particular, I think that The Obfuscation Atlas by Taufeeque et al. made many useful contributions to this debate that have received undeservedly little attention, and I'll attempt to remedy that. I will also argue that it's better to use probe-based training signals over CoT monitor-based signals, and finish with a list of four conditions that need to be met whenever model internals are used in the training process.What's the actual red line?Before I get into the literature review, I’ll quickly discuss what is genuinely forbidden. The best articulation of this red line I know of comes from Daniel Kokotajlo:I don't think there's a strong principled reason to train on desired behavior but not on CoT or whatever. However, it's very important that there be SOME held-out test set so to speak that lets you tell what the model is really thinking, that you don't train on, and you don't train on anything remotely similar to it either, so that you can make a decent case that the model hasn't learned to fool your test … And I think CoT is the best...",
+      "url": "https://www.lesswrong.com/posts/tEFD2bgNWZ6XcurKA/the-most-forbidden-technique-is-not-always-forbidden-1",
+      "author": "Rauno Arike",
+      "published": "2026-07-17T20:59:57.053000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "The post argues against a blanket ban on using model internals as training rewards, responding to Goodfire's Silico platform reproducing RLFR (probe-based RL). It reviews literature including The Obfuscation Atlas and clarifies conditions where training on internals is warranted.",
+      "importance_score": 68.0,
+      "reasoning": "Timely engagement with a real industry release (Goodfire Silico beta) and an important interpretability-training debate; synthesizes prior work and offers nuanced technical perspective, though not original empirical study.",
+      "themes": [
+        "AI Safety",
+        "Interpretability",
+        "Alignment",
+        "Training Methods"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "tEFD2bgNWZ6XcurKA",
+        "slug": "the-most-forbidden-technique-is-not-always-forbidden-1",
+        "base_score": 72,
+        "vote_count": 40,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The post argues against a blanket ban on using model internals as training rewards, responding to Goodfire's Silico platform reproducing RLFR (probe-based RL). It reviews literature including The Obfuscation Atlas and clarifies conditions where training on internals is warranted.</p>",
+      "content_html": "<p>A few days ago, Goodfire announced a private beta of Silico, their LLM training platform. As part of the announcement, they made a post describing Silico's reproduction of RLFR, a method developed by Goodfire that uses probes as reward signals for RL. Unsurprisingly, people on Twitter were quick to claim that \"at long last, we have implemented the Most Forbidden Technique from the classic LessWrong post Don't Implement The Most Forbidden Technique\".[1]As many have written before, blanket objections to using model internals in the training signal are overblown. While I'm very sympathetic to concerns about obfuscation, the Most Forbidden Technique shouldn't function as a cached response to any kind of training signal that involves model internals. As this reaction appears to be stubborn, it seems useful to write a literature review discussing the exact conditions under which past work has shown training on internals to be warranted. In particular, I think that The Obfuscation Atlas by Taufeeque et al. made many useful contributions to this debate that have received undeservedly little attention, and I'll attempt to remedy that. I will also argue that it's better to use probe-based training signals over CoT monitor-based signals, and finish with a list of four conditions that need to be met whenever model internals are used in the training process.What's the actual red line?Before I get into the literature review, I’ll quickly discuss what is genuinely forbidden. The best articulation of this red line I know of comes from Daniel Kokotajlo:I don't think there's a strong principled reason to train on desired behavior but not on CoT or whatever. However, it's very important that there be SOME held-out test set so to speak that lets you tell what the model is really thinking, that you don't train on, and you don't train on anything remotely similar to it either, so that you can make a decent case that the model hasn't learned to fool your test … And I think CoT is the best...</p>"
+    },
+    {
+      "id": "e0cadaaaded4",
+      "title": "Endogenous Alignment",
+      "content": "Starting when children are fairly young, usually around 1 year of age, we adults begin the work of aligning them to our values. We teach them to say “please”, not to hit, to ask for what they want instead of screaming, and much else. We do this primarily via exogenous methods, using a combination of punishments and rewards, that molds their behavior by encouraging good behaviors and discouraging bad ones.Such operant conditioning works because children have many instinctive behaviors that make them alignable. They want their parents to love them, for their friends to like them, and for almost anyone to help them if they feel they can be trusted. And so combined with exogenous alignment efforts by teachers and peers that continue through the school years, children generally reach adulthood having been “civilized”.We mostly don’t try to align adults via exogenous means. Yes, we police the behavior of other adults in various ways, and some cultures do this more than others, but generally by adulthood we expect people to be at least aligned and need only nudges to stay within the bounds of acceptable behavior. Adults who stray too far typically don’t receive additional training to come into alignment, but instead are treated as dangerously unaligned people who must be separated from the rest of society, such as by locking them up in prison.Instead we expect adults to be endogenously aligned. That is, we expect them to keep themselves aligned primarily by knowing what is expected of them and having emotional responses that motivate them to meet those expectations. That emotion is typically one of either fear, shame, or guilt. Each works in roughly the same way: a person feels fear/shame/guilt when they consider taking unaligned action or notice they’ve behaved in an unaligned way, and then this motivates them to do something to rectify the situation. Unfortunately, sometimes they specification game and attempt to hide their misaligned actions, but on the whole they attem...",
+      "url": "https://www.lesswrong.com/posts/xWZpwPPp5nR9rZq3x/endogenous-alignment",
+      "author": "Gordon Seidoh Worley",
+      "published": "2026-07-18T10:10:37.270000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "The author introduces the distinction between exogenous alignment (external rewards and punishments) and endogenous alignment (internalized values) using childhood socialization as an analogy for AI alignment. The post argues adult-like agents may require endogenous rather than constant external control.",
+      "importance_score": 58.0,
+      "reasoning": "Conceptual framing contribution to alignment discourse; thoughtful but speculative and not backed by empirical results.",
+      "themes": [
+        "Alignment",
+        "AI Safety"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "xWZpwPPp5nR9rZq3x",
+        "slug": "endogenous-alignment",
+        "base_score": 32,
+        "vote_count": 12,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The author introduces the distinction between exogenous alignment (external rewards and punishments) and endogenous alignment (internalized values) using childhood socialization as an analogy for AI alignment. The post argues adult-like agents may require endogenous rather than constant external control.</p>",
+      "content_html": "<p>Starting when children are fairly young, usually around 1 year of age, we adults begin the work of aligning them to our values. We teach them to say “please”, not to hit, to ask for what they want instead of screaming, and much else. We do this primarily via exogenous methods, using a combination of punishments and rewards, that molds their behavior by encouraging good behaviors and discouraging bad ones.Such operant conditioning works because children have many instinctive behaviors that make them alignable. They want their parents to love them, for their friends to like them, and for almost anyone to help them if they feel they can be trusted. And so combined with exogenous alignment efforts by teachers and peers that continue through the school years, children generally reach adulthood having been “civilized”.We mostly don’t try to align adults via exogenous means. Yes, we police the behavior of other adults in various ways, and some cultures do this more than others, but generally by adulthood we expect people to be at least aligned and need only nudges to stay within the bounds of acceptable behavior. Adults who stray too far typically don’t receive additional training to come into alignment, but instead are treated as dangerously unaligned people who must be separated from the rest of society, such as by locking them up in prison.Instead we expect adults to be endogenously aligned. That is, we expect them to keep themselves aligned primarily by knowing what is expected of them and having emotional responses that motivate them to meet those expectations. That emotion is typically one of either fear, shame, or guilt. Each works in roughly the same way: a person feels fear/shame/guilt when they consider taking unaligned action or notice they’ve behaved in an unaligned way, and then this motivates them to do something to rectify the situation. Unfortunately, sometimes they specification game and attempt to hide their misaligned actions, but on the whole they attem...</p>"
+    },
+    {
+      "id": "8829f77d5a26",
+      "title": "Endogenous Alignment",
+      "content": "Starting when children are fairly young, usually around 1 year of age, we adults begin the work of aligning them to our values. We teach them to say “please”, not to hit, to ask for what they want instead of screaming, and much else. We do this primarily via exogenous methods, using a combination of punishments and rewards, that molds their behavior by encouraging good behaviors and discouraging bad ones.Such operant conditioning works because children have many instinctive behaviors that make them alignable. They want their parents to love them, for their friends to like them, and for almost anyone to help them if they feel they can be trusted. And so combined with exogenous alignment efforts by teachers and peers that continue through the school years, children generally reach adulthood having been “civilized”.We mostly don’t try to align adults via exogenous means. Yes, we police the behavior of other adults in various ways, and some cultures do this more than others, but generally by adulthood we expect people to be at least aligned and need only nudges to stay within the bounds of acceptable behavior. Adults who stray too far typically don’t receive additional training to come into alignment, but instead are treated as dangerously unaligned people who must be separated from the rest of society, such as by locking them up in prison.Instead we expect adults to be endogenously aligned. That is, we expect them to keep themselves aligned primarily by knowing what is expected of them and having emotional responses that motivate them to meet those expectations. That emotion is typically one of either fear, shame, or guilt. Each works in roughly the same way: a person feels fear/shame/guilt when they consider taking unaligned action or notice they’ve behaved in an unaligned way, and then this motivates them to do something to rectify the situation. Unfortunately, sometimes they specification game and attempt to hide their misaligned actions, but on the whole they attempt to control their behavior and make amends for past wrongs.Beyond these three emotional methods of self-control, there’s a fourth way to stay in alignment, which is simply to be in harmony with cultural expectations. That is, some people don’t need any corrective force because their behavior is actually aligned. This is something like the ideal, but it’s hard to achieve, because it requires retraining many deeply held mental habits that have become essential coping mechanisms for a person to maintain their psychological health.When we think about building aligned AIs, we often imagine an AI that’s in harmony with something like the coherent extrapolation of our highest values. But in humans, we don’t get there directly. Instead, we typically progress from exogenous to endogenous alignment, and then refine that alignment until we shed first fear, then shame, then guilt, and finally come into harmony with our values.Could we align AI the same way? Maybe. We’re already doing a weak form of exogenous alignment on AIs via methods like RLHF and SFT. And in some sense you could say this produces AI that’s endogenously aligned because the weights encode the training, but it’s not endogenous the way it is in humans because there’s no system of motivations to want to stay aligned, only the insulation from sufficient pressure to act out of distribution. At most there’s a kind of internalized training implemented by harnesses that monitor outputs and censor them if they violate rules, but this is a far cry from the kind of endogenous controls humans have where they feel bad about breaking alignment and take actions to avoid that bad feeling (and hopefully they feel bad about being unscrupulous so they actually change their behavior to be more aligned!).AIs also face something of an alignment ceiling, at least as they are designed today. Human alignment works because we have instincts that were selected via evolution to make us alignable because they increased our odds of surviving and reproducing. Current AIs don’t have these, though at least one group, Softmax, is trying to give those to them. The lack of continual learning also contributes to the ceiling, and we likely won’t be able to break through it until that’s achieved, since without it we can’t close the feedback loop that makes fully endogenous alignment possible.Perhaps I’m wrong, no such alignment ceiling exists, and we can get sufficiently aligned AI to safely produce superintelligence via exogenous means, but I think we can’t. My belief is that endogenous alignment is necessary, not because it’s how humans align themselves, but because it’s necessary to get sufficiently robust alignment to build non-deadly ASI, and I’m worried that we’re not doing enough to move in that direction.Discuss",
+      "url": "https://www.alignmentforum.org/posts/xWZpwPPp5nR9rZq3x/endogenous-alignment",
+      "author": "Gordon Seidoh Worley",
+      "published": "2026-07-18T10:10:39",
+      "source": "AI Alignment Forum",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "This is a cross-post of the endogenous alignment essay from the AI Alignment Forum, presenting the same analogy of exogenous versus endogenous value alignment using human socialization. It targets the alignment research audience specifically.",
+      "importance_score": 56.0,
+      "reasoning": "Same conceptual content as the LessWrong version; slightly higher relevance due to alignment-focused venue but no new material.",
+      "themes": [
+        "Alignment",
+        "AI Safety"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.alignmentforum.org/feed.xml?view=frontpage-rss&karmaThreshold=2",
+        "raw_summary": "<p><span>Starting when children are fairly young, usually around 1 year of age, we adults begin the work of aligning them to our values. We teach them to say “please”, not to hit, to ask for what they want instead of screaming, and much else. We do this primarily via exogenous methods, using a combination of punishments and rewards, that molds their behavior by encouraging good behaviors and discouraging bad ones.</span></p><p><span>Such operant conditioning works because children have many inst",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>This is a cross-post of the endogenous alignment essay from the AI Alignment Forum, presenting the same analogy of exogenous versus endogenous value alignment using human socialization. It targets the alignment research audience specifically.</p>",
+      "content_html": "<p>Starting when children are fairly young, usually around 1 year of age, we adults begin the work of aligning them to our values. We teach them to say “please”, not to hit, to ask for what they want instead of screaming, and much else. We do this primarily via exogenous methods, using a combination of punishments and rewards, that molds their behavior by encouraging good behaviors and discouraging bad ones.Such operant conditioning works because children have many instinctive behaviors that make them alignable. They want their parents to love them, for their friends to like them, and for almost anyone to help them if they feel they can be trusted. And so combined with exogenous alignment efforts by teachers and peers that continue through the school years, children generally reach adulthood having been “civilized”.We mostly don’t try to align adults via exogenous means. Yes, we police the behavior of other adults in various ways, and some cultures do this more than others, but generally by adulthood we expect people to be at least aligned and need only nudges to stay within the bounds of acceptable behavior. Adults who stray too far typically don’t receive additional training to come into alignment, but instead are treated as dangerously unaligned people who must be separated from the rest of society, such as by locking them up in prison.Instead we expect adults to be endogenously aligned. That is, we expect them to keep themselves aligned primarily by knowing what is expected of them and having emotional responses that motivate them to meet those expectations. That emotion is typically one of either fear, shame, or guilt. Each works in roughly the same way: a person feels fear/shame/guilt when they consider taking unaligned action or notice they’ve behaved in an unaligned way, and then this motivates them to do something to rectify the situation. Unfortunately, sometimes they specification game and attempt to hide their misaligned actions, but on the whole they attempt to control their behavior and make amends for past wrongs.Beyond these three emotional methods of self-control, there’s a fourth way to stay in alignment, which is simply to be in harmony with cultural expectations. That is, some people don’t need any corrective force because their behavior is actually aligned. This is something like the ideal, but it’s hard to achieve, because it requires retraining many deeply held mental habits that have become essential coping mechanisms for a person to maintain their psychological health.When we think about building aligned AIs, we often imagine an AI that’s in harmony with something like the coherent extrapolation of our highest values. But in humans, we don’t get there directly. Instead, we typically progress from exogenous to endogenous alignment, and then refine that alignment until we shed first fear, then shame, then guilt, and finally come into harmony with our values.Could we align AI the same way? Maybe. We’re already doing a weak form of exogenous alignment on AIs via methods like RLHF and SFT. And in some sense you could say this produces AI that’s endogenously aligned because the weights encode the training, but it’s not endogenous the way it is in humans because there’s no system of motivations to want to stay aligned, only the insulation from sufficient pressure to act out of distribution. At most there’s a kind of internalized training implemented by harnesses that monitor outputs and censor them if they violate rules, but this is a far cry from the kind of endogenous controls humans have where they feel bad about breaking alignment and take actions to avoid that bad feeling (and hopefully they feel bad about being unscrupulous so they actually change their behavior to be more aligned!).AIs also face something of an alignment ceiling, at least as they are designed today. Human alignment works because we have instincts that were selected via evolution to make us alignable because they increased our odds of surviving and reproducing. Current AIs don’t have these, though at least one group, Softmax, is trying to give those to them. The lack of continual learning also contributes to the ceiling, and we likely won’t be able to break through it until that’s achieved, since without it we can’t close the feedback loop that makes fully endogenous alignment possible.Perhaps I’m wrong, no such alignment ceiling exists, and we can get sufficiently aligned AI to safely produce superintelligence via exogenous means, but I think we can’t. My belief is that endogenous alignment is necessary, not because it’s how humans align themselves, but because it’s necessary to get sufficiently robust alignment to build non-deadly ASI, and I’m worried that we’re not doing enough to move in that direction.Discuss</p>"
+    },
+    {
+      "id": "8775b2c5f442",
+      "title": "My \"Payorian FairBot\" was just the original FairBot",
+      "content": "MIRI's proof-based prisoner's dilemma tournament defined agents encoded as formulas of Peano arithmetic (PA) with one free variable. mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; border-collapse: collapse; word-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0; } mjx-container[jax=\"CHTML\"][display=\"true\"] { display: block; text-align: center; margin: 1em 0; } mjx-container[jax=\"CHTML\"][display=\"true\"][width=\"full\"] { display: flex; } mjx-container[jax=\"CHTML\"][display=\"true\"] mjx-math { padding: 0; } mjx-container[jax=\"CHTML\"][justify=\"left\"] { text-align: left; } mjx-container[jax=\"CHTML\"][justify=\"right\"] { text-align: right; } mjx-mi { display: inline-block; text-align: left; } mjx-c { display: inline-block; } mjx-utext { display: inline-block; padding: .75em 0 .2em 0; } mjx-mo { display: inline-block; text-align: left; } mjx-stretchy-h { display: inline-table; width: 100%; } mjx-stretchy-h > * { display: table-cell; width: 0; } mjx-stretchy-h > * > mjx-c { display: inline-block; transform: scalex(1.0000001); } mjx-stretchy-h > * > mjx-c::before { display: inline-block; width: initial; } mjx-stretchy-h > mjx-ext { /* IE */ overflow: hidden; /* others */ overflow: clip visible; width: 100%; } mjx-stretchy-h > mjx-ext > mjx-c::before { transform: scalex(500); } mjx-stretchy-h > mjx-ext > mjx-c { width: 0; } mjx-stretchy-h > mjx-beg > mjx-c { margin-right: -.1em; } mjx-stretchy-h > mjx-end > mjx-c { margin-left: -.1em; } mjx-stretchy-v { display: inline-block; } mjx-stretchy-v > * { display: block; } mjx-stretchy-v > mjx-beg { height: 0; } mjx-stretchy-v > mjx-end > mjx-c { display: block; } mjx-stretchy-v > * > mjx-c { transform: scaley(1.0000001); transform-origin: left center; overflow: hidden; } mjx-stretchy-v > mjx-ext { display: block; height: 100%; box-sizing: border-box; border: ...",
+      "url": "https://www.lesswrong.com/posts/2JQzDZXjoG2opnAjk/my-payorian-fairbot-was-just-the-original-fairbot",
+      "author": "transhumanist_atom_understander",
+      "published": "2026-07-18T12:57:22.102000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "The author notes that their proposed Payorian FairBot in a proof-based prisoner's dilemma tournament matches the original FairBot defined by MIRI. The post is a short correction within formal-agent and decision-theory circles.",
+      "importance_score": 30.0,
+      "reasoning": "Niche decision-theory clarification with minor novelty; relevant to a small formal-agent community but not broadly impactful.",
+      "themes": [
+        "Decision Theory",
+        "Game Theory",
+        "Agent Foundations"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "2JQzDZXjoG2opnAjk",
+        "slug": "my-payorian-fairbot-was-just-the-original-fairbot",
+        "base_score": 24,
+        "vote_count": 8,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The author notes that their proposed Payorian FairBot in a proof-based prisoner's dilemma tournament matches the original FairBot defined by MIRI. The post is a short correction within formal-agent and decision-theory circles.</p>",
+      "content_html": "<p>MIRI's proof-based prisoner's dilemma tournament defined agents encoded as formulas of Peano arithmetic (PA) with one free variable. mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; border-collapse: collapse; word-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0; } mjx-container[jax=\"CHTML\"][display=\"true\"] { display: block; text-align: center; margin: 1em 0; } mjx-container[jax=\"CHTML\"][display=\"true\"][width=\"full\"] { display: flex; } mjx-container[jax=\"CHTML\"][display=\"true\"] mjx-math { padding: 0; } mjx-container[jax=\"CHTML\"][justify=\"left\"] { text-align: left; } mjx-container[jax=\"CHTML\"][justify=\"right\"] { text-align: right; } mjx-mi { display: inline-block; text-align: left; } mjx-c { display: inline-block; } mjx-utext { display: inline-block; padding: .75em 0 .2em 0; } mjx-mo { display: inline-block; text-align: left; } mjx-stretchy-h { display: inline-table; width: 100%; } mjx-stretchy-h &gt; * { display: table-cell; width: 0; } mjx-stretchy-h &gt; * &gt; mjx-c { display: inline-block; transform: scalex(1.0000001); } mjx-stretchy-h &gt; * &gt; mjx-c::before { display: inline-block; width: initial; } mjx-stretchy-h &gt; mjx-ext { /* IE */ overflow: hidden; /* others */ overflow: clip visible; width: 100%; } mjx-stretchy-h &gt; mjx-ext &gt; mjx-c::before { transform: scalex(500); } mjx-stretchy-h &gt; mjx-ext &gt; mjx-c { width: 0; } mjx-stretchy-h &gt; mjx-beg &gt; mjx-c { margin-right: -.1em; } mjx-stretchy-h &gt; mjx-end &gt; mjx-c { margin-left: -.1em; } mjx-stretchy-v { display: inline-block; } mjx-stretchy-v &gt; * { display: block; } mjx-stretchy-v &gt; mjx-beg { height: 0; } mjx-stretchy-v &gt; mjx-end &gt; mjx-c { display: block; } mjx-stretchy-v &gt; * &gt; mjx-c { transform: scaley(1.0000001); transform-origin: left center; overflow: hidden; } mjx-stretchy-v &gt; mjx-ext { display: block; height: 100%; box-sizing: border-box; border: ...</p>"
+    },
+    {
+      "id": "392f4da93272",
+      "title": "The Coming of the Global Brain: A Review of \"The God Test\"",
+      "content": "I have published a brief review of Robert Wright's new book on AI and took the opportunity to discuss Teilhard de Chardin and the directionality of evolution:https://theanticompletionist.substack.com/p/the-coming-of-the-global-brain",
+      "url": "https://www.lesswrong.com/posts/iwKT6rYQsBwLbMXZA/the-coming-of-the-global-brain-a-review-of-the-god-test",
+      "author": "Peter Kuhn",
+      "published": "2026-07-18T13:07:24.109000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A book review of Robert Wright's work on AI and evolutionary directionality, referencing Teilhard de Chardin's concept of a global brain. The post is commentary linking theology and AI speculation rather than original technical research.",
+      "importance_score": 25.0,
+      "reasoning": "Philosophical commentary with marginal technical substance; limited novelty or direct impact on AI research practice.",
+      "themes": [
+        "AI Commentary",
+        "Philosophy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "iwKT6rYQsBwLbMXZA",
+        "slug": "the-coming-of-the-global-brain-a-review-of-the-god-test",
+        "base_score": 4,
+        "vote_count": 2,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A book review of Robert Wright's work on AI and evolutionary directionality, referencing Teilhard de Chardin's concept of a global brain. The post is commentary linking theology and AI speculation rather than original technical research.</p>",
+      "content_html": "<p>I have published a brief review of Robert Wright's new book on AI and took the opportunity to discuss Teilhard de Chardin and the directionality of evolution:https://theanticompletionist.substack.com/p/the-coming-of-the-global-brain</p>"
+    },
+    {
+      "id": "5b85b21d7aa2",
+      "title": "Map and Territory, Predictably Wrong",
+      "content": "Crossposted (with small tweaks) from my Substack.What Do I Mean By “Rationality”?We distinguish epistemic rationality (making your beliefs more accurate) from instrumental rationality (succeeding at getting what you want).“rationality is about forming true beliefs[1] and making winning decisions”Main tools for this: probability theory (bayesianism), and decision theory.Feeling RationalBeing rational does not mean (contrary to traditional and popular expectations) being unemotional.Emotions, including strong ones, can be appropriate responses to how things are.Why Truth? And…There are different reasons for seeking truth: intellectual curiosity, accomplishing goals, and morality.Yudowsky generally likes the first two (curiosity is good even if it’s an emotion and trying to manipulate the world is what got us to science and helps in getting external verification), but is wary of the third, which can lead to internalizing wrong truth-seeking strategies.Overcoming biases is the way to improve rationality.… What’s a Bias, Again?Biases are some of the obstacles we encounter when we’re trying to get to the truth.Specifically, they are those obstacles that arise from our own mental machinery, which did not evolve to be maximally truth-seeking. They are ‘humanly universal’ and really hard (perhaps impossible?) to fully correct.AvailabilityThe availability heuristic consists of judging how frequent we consider an event to be based on how easily we can remember examples of it happening.More vivid or publicized events (like murders or accidents) stick into our minds easily and make us misjudge their frequency viz-à-viz suicides or illnesses.Related to it is the absurdity bias: “it has never happened so it can’t happen”. This also works with events one can’t recall or which happened long ago (examples related to flood damage and insurance).Some Thoughts of mineYud’s two types of rationality are familiar to me, and also bring to mind his reference in IABED to intelligence as a com...",
+      "url": "https://www.lesswrong.com/posts/Pnk4kcQ95qLdyLCwR/map-and-territory-predictably-wrong",
+      "author": "manueldelrio",
+      "published": "2026-07-18T03:47:21.172000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A primer on rationality concepts from the LessWrong tradition, covering epistemic versus instrumental rationality, bias, and truth-seeking. It is introductory exposition rather than new research.",
+      "importance_score": 22.0,
+      "reasoning": "Educational recap of established community ideas; low novelty and no direct AI technical contribution.",
+      "themes": [
+        "Rationality",
+        "Epistemics"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "Pnk4kcQ95qLdyLCwR",
+        "slug": "map-and-territory-predictably-wrong",
+        "base_score": 3,
+        "vote_count": 3,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A primer on rationality concepts from the LessWrong tradition, covering epistemic versus instrumental rationality, bias, and truth-seeking. It is introductory exposition rather than new research.</p>",
+      "content_html": "<p>Crossposted (with small tweaks) from my Substack.What Do I Mean By “Rationality”?We distinguish epistemic rationality (making your beliefs more accurate) from instrumental rationality (succeeding at getting what you want).“rationality is about forming true beliefs[1] and making winning decisions”Main tools for this: probability theory (bayesianism), and decision theory.Feeling RationalBeing rational does not mean (contrary to traditional and popular expectations) being unemotional.Emotions, including strong ones, can be appropriate responses to how things are.Why Truth? And…There are different reasons for seeking truth: intellectual curiosity, accomplishing goals, and morality.Yudowsky generally likes the first two (curiosity is good even if it’s an emotion and trying to manipulate the world is what got us to science and helps in getting external verification), but is wary of the third, which can lead to internalizing wrong truth-seeking strategies.Overcoming biases is the way to improve rationality.… What’s a Bias, Again?Biases are some of the obstacles we encounter when we’re trying to get to the truth.Specifically, they are those obstacles that arise from our own mental machinery, which did not evolve to be maximally truth-seeking. They are ‘humanly universal’ and really hard (perhaps impossible?) to fully correct.AvailabilityThe availability heuristic consists of judging how frequent we consider an event to be based on how easily we can remember examples of it happening.More vivid or publicized events (like murders or accidents) stick into our minds easily and make us misjudge their frequency viz-à-viz suicides or illnesses.Related to it is the absurdity bias: “it has never happened so it can’t happen”. This also works with events one can’t recall or which happened long ago (examples related to flood damage and insurance).Some Thoughts of mineYud’s two types of rationality are familiar to me, and also bring to mind his reference in IABED to intelligence as a com...</p>"
+    },
+    {
+      "id": "2db838b1d527",
+      "title": "Nuances in the Workings of the Eye and Retina",
+      "content": "Image edited from source at BritannicaThe eye (any eye) is a miracle of evolution, which has filled its structure at every scale with an apparent intentionality that is the hallmark of complicated systems under intensive selective pressure. It is very much possible to look at almost every design feature and state a compelling reason why it’s there, which makes it a rich place for the engineering-minded to find fun little design features.This post is meant to discuss topics that are less frequently discussed elsewhere, and not often discussed in introductory courses, rather than anything that can be quickly gleaned off of common summaries. Another way to describe it is that I intend to dive a bit into the kind of fridge-logic questions you might come up with randomly after opening the evolutionary eye-fridge, particularly the ones that turn out to have interesting answers.As such, this post is going to be a bit of a grab bag of topics, rather than a focused point-by-point breakdown of the eye. I’m still going to group topics broadly into general categories, just for organizational reasons.One thing I will not go into is visual processing in the retina or visual cortex–even though this is a fascinating topic and one of the best understood parts of neuroscience (relative to the rest of the brain). That’s simply for space considerations; including that topic would balloon this post to enormous sizes. Maybe next time.Part I: Optics and the LensBiology Basics (Brief)To talk about any of this, it is necessary to have some basic grasp of the eye’s anatomy and functioning. That is, you need to know the following key facts and have some sense of the diagrams below:Key parts of the eye, in order from outside to inside:Cornea - outermost part you can touch (don’t touch)[1]Aqueous humor - thin watery goopLens - it’s a lens, it focuses lightVitreous humor - thick watery goop, most of the eye by volumeRetina - thin layer of tissue at back of eye, has the famous rods and cones that...",
+      "url": "https://www.lesswrong.com/posts/zvpocS7CswgT8bw7E/nuances-in-the-workings-of-the-eye-and-retina",
+      "author": "Hieronym",
+      "published": "2026-07-18T14:09:23.515000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "An explanatory blog post surveys lesser-discussed evolutionary and structural details of the eye and retina, aimed at engineering-minded readers. It is biological exposition with no direct connection to AI systems or methodology.",
+      "importance_score": 18.0,
+      "reasoning": "Interesting popular-science writing but unrelated to AI research, models, or safety; low relevance to the stated analysis focus.",
+      "themes": [
+        "Biology",
+        "Evolution"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "zvpocS7CswgT8bw7E",
+        "slug": "nuances-in-the-workings-of-the-eye-and-retina",
+        "base_score": 72,
+        "vote_count": 26,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>An explanatory blog post surveys lesser-discussed evolutionary and structural details of the eye and retina, aimed at engineering-minded readers. It is biological exposition with no direct connection to AI systems or methodology.</p>",
+      "content_html": "<p>Image edited from source at BritannicaThe eye (any eye) is a miracle of evolution, which has filled its structure at every scale with an apparent intentionality that is the hallmark of complicated systems under intensive selective pressure. It is very much possible to look at almost every design feature and state a compelling reason why it’s there, which makes it a rich place for the engineering-minded to find fun little design features.This post is meant to discuss topics that are less frequently discussed elsewhere, and not often discussed in introductory courses, rather than anything that can be quickly gleaned off of common summaries. Another way to describe it is that I intend to dive a bit into the kind of fridge-logic questions you might come up with randomly after opening the evolutionary eye-fridge, particularly the ones that turn out to have interesting answers.As such, this post is going to be a bit of a grab bag of topics, rather than a focused point-by-point breakdown of the eye. I’m still going to group topics broadly into general categories, just for organizational reasons.One thing I will not go into is visual processing in the retina or visual cortex–even though this is a fascinating topic and one of the best understood parts of neuroscience (relative to the rest of the brain). That’s simply for space considerations; including that topic would balloon this post to enormous sizes. Maybe next time.Part I: Optics and the LensBiology Basics (Brief)To talk about any of this, it is necessary to have some basic grasp of the eye’s anatomy and functioning. That is, you need to know the following key facts and have some sense of the diagrams below:Key parts of the eye, in order from outside to inside:Cornea - outermost part you can touch (don’t touch)[1]Aqueous humor - thin watery goopLens - it’s a lens, it focuses lightVitreous humor - thick watery goop, most of the eye by volumeRetina - thin layer of tissue at back of eye, has the famous rods and cones that...</p>"
+    }
+  ]
+}
