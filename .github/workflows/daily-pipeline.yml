@@ -180,6 +180,7 @@ jobs:
         shell: bash
         env:
           PIPELINE_PROVIDERS_YAML: ${{ secrets.PIPELINE_PROVIDERS_YAML }}
+          _OPENROUTER_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           set -euo pipefail
           if [[ -n "${PIPELINE_PROVIDERS_YAML:-}" ]]; then
@@ -190,6 +191,13 @@ jobs:
           else
             echo "providers.yaml missing and PIPELINE_PROVIDERS_YAML not set." >&2
             exit 1
+          fi
+          # Substitute ${OPENROUTER_API_KEY} placeholder with the actual secret value
+          if [[ -n "${_OPENROUTER_KEY:-}" ]]; then
+            sed -i "s|\${OPENROUTER_API_KEY}|${_OPENROUTER_KEY}|g" config/providers.yaml
+            echo "Substituted OPENROUTER_API_KEY into providers.yaml."
+          else
+            echo "WARNING: OPENROUTER_API_KEY secret is empty - pipeline will fail LLM calls." >&2
           fi
 
       - name: Start Mullvad tunnel for hosted egress
