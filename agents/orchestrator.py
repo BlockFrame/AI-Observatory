@@ -59,6 +59,8 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+MIN_EXECUTIVE_SUMMARY_CHARS = 400
+
 
 @dataclass
 class TopTopic:
@@ -461,15 +463,23 @@ class MainOrchestrator:
                 executive_summary, summary_thinking = await self._generate_executive_summary(
                     category_reports, top_topics
                 )
-                executive_summary = append_sentiment_section(executive_summary, category_reports)
-                if executive_summary and not executive_summary.startswith("Executive summary generation failed"):
-                    phases.end_phase('success')
-                else:
-                    phases.end_phase('failed', error="generation failed")
+                phases.end_phase('success')
             except Exception as e:
-                executive_summary = f"Executive summary generation failed: {e}"
-                summary_thinking = f"Error: {e}"
-                phases.end_phase('failed', error=str(e))
+                logger.error(f"Executive summary generation failed; using extractive fallback: {e}")
+                executive_summary = self._build_executive_summary_fallback(
+                    category_reports, top_topics
+                )
+                summary_thinking = (
+                    "Deterministic fallback used after "
+                    f"{type(e).__name__} during executive summary generation."
+                )
+                phases.end_phase(
+                    'partial',
+                    error=str(e),
+                    details="used deterministic summary fallback",
+                )
+
+            executive_summary = append_sentiment_section(executive_summary, category_reports)
 
             # Phase 4.5: Link Enrichment
             phases.start_phase("Phase 4.5: Link Enrichment")
@@ -1230,26 +1240,90 @@ The summary should help a busy professional quickly scan and understand what's N
             task_line="Write the executive summary from the fenced context below according to your system instructions.",
         )
 
-        try:
-            response = await self.async_client.call_with_thinking(
-                messages=[{"role": "user", "content": user_message}],
-                system=system_prompt,
-                profile=ThinkingLevel.DEEP,
-                caller="orchestrator.summary",
-                full_output_budget=True,
+        response = await self.async_client.call_with_thinking(
+            messages=[{"role": "user", "content": user_message}],
+            system=system_prompt,
+            profile=ThinkingLevel.DEEP,
+            caller="orchestrator.summary",
+            full_output_budget=True,
+        )
+
+        if response.stop_reason == "max_tokens":
+            logger.error(
+                "Executive summary truncated at max_tokens after escalation; "
+                "output may be incomplete."
             )
 
-            if response.stop_reason == "max_tokens":
-                logger.error(
-                    "Executive summary truncated at max_tokens after escalation; "
-                    "output may be incomplete."
-                )
+        content = (response.content or "").strip()
+        if len(content) < MIN_EXECUTIVE_SUMMARY_CHARS:
+            raise ValueError(
+                "Executive summary response was empty or too short "
+                f"({len(content)} < {MIN_EXECUTIVE_SUMMARY_CHARS} characters)"
+            )
 
-            return response.content, response.thinking or ""
+        return content, response.thinking or ""
 
-        except Exception as e:
-            logger.error(f"Executive summary generation failed: {e}")
-            return f"Executive summary generation failed: {e}", f"Error: {e}"
+    def _build_executive_summary_fallback(
+        self,
+        category_reports: Dict[str, CategoryReport],
+        top_topics: List[TopTopic],
+    ) -> str:
+        """Build a publishable summary from already analyzed pipeline output."""
+        lines: List[str] = []
+
+        def compact(value: str, limit: int) -> str:
+            text = " ".join(normalize_untrusted_text(value or "").split())
+            if len(text) <= limit:
+                return text
+            return text[:limit].rsplit(" ", 1)[0].rstrip(" ,;:") + "."
+
+        usable_topics = [
+            topic for topic in top_topics
+            if compact(topic.name, 120) and compact(topic.description, 700)
+        ]
+        if usable_topics:
+            lead = usable_topics[0]
+            lines.extend([
+                "#### Top Story",
+                f"**{compact(lead.name, 120)}** — {compact(lead.description, 700)}",
+            ])
+
+            if len(usable_topics) > 1:
+                lines.extend(["", "#### Key Developments"])
+                for topic in usable_topics[1:6]:
+                    lines.append(
+                        f"- **{compact(topic.name, 120)}**: "
+                        f"{compact(topic.description, 550)}"
+                    )
+
+        category_labels = {
+            "news": "News",
+            "research": "Research",
+            "social": "Social",
+            "reddit": "Reddit",
+        }
+        category_lines: List[str] = []
+        for category, report in category_reports.items():
+            label = category_labels.get(category, category.replace("_", " ").title())
+            eligible_items = [
+                item for item in report.top_items
+                if not self._exclude_from_summaries(item)
+            ]
+            for item in eligible_items[:2]:
+                title = compact(item.item.title, 180)
+                summary = compact(item.summary, 500)
+                if title and summary:
+                    category_lines.append(f"- **{label} — {title}**: {summary}")
+
+            if not eligible_items and report.category_summary:
+                summary = compact(report.category_summary, 700)
+                if summary:
+                    category_lines.append(f"- **{label}**: {summary}")
+
+        if category_lines:
+            lines.extend(["", "#### Category Briefings", *category_lines])
+
+        return "\n".join(lines).strip()
 
     def _save_result(self, result: OrchestratorResult):
         """Save orchestrator result to JSON file."""
