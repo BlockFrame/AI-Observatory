@@ -11,10 +11,12 @@ llm:
       model: "nvidia/nemotron-3-ultra-550b-a55b:free"
       max_concurrent_requests: 3
 
-image:
-  mode: "native"
-  api_key: "${GOOGLE_API_KEY}"
-  model: "gemini-3-pro-image-preview"
+# image section disabled - no GOOGLE_API_KEY configured
+# To enable hero image generation, add GOOGLE_API_KEY secret and uncomment:
+# image:
+#   mode: "native"
+#   api_key: "${GOOGLE_API_KEY}"
+#   model: "gemini-3-pro-image-preview"
 
 pipeline:
   base_url: "https://ai-observatory.vercel.app"
