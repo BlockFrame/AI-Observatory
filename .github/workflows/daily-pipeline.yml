@@ -407,6 +407,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          git checkout -- .
+          git clean -fd
           git pull --rebase origin main
           git push origin HEAD:main
 
