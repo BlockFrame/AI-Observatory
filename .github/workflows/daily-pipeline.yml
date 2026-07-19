@@ -178,26 +178,40 @@ jobs:
       - name: Write provider configuration
         if: steps.schedule_gate.outputs.should_run == 'true'
         shell: bash
-        env:
-          PIPELINE_PROVIDERS_YAML: ${{ secrets.PIPELINE_PROVIDERS_YAML }}
-          _OPENROUTER_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           set -euo pipefail
-          if [[ -n "${PIPELINE_PROVIDERS_YAML:-}" ]]; then
-            printf '%s\n' "$PIPELINE_PROVIDERS_YAML" > config/providers.yaml
-            echo "Wrote config/providers.yaml from PIPELINE_PROVIDERS_YAML."
-          elif [[ -f "config/providers.yaml" ]]; then
-            echo "Using repository config/providers.yaml."
-          else
-            echo "providers.yaml missing and PIPELINE_PROVIDERS_YAML not set." >&2
+          # Write providers.yaml with secrets injected directly by GitHub Actions
+          # ${{ secrets.OPENROUTER_API_KEY }} is substituted at workflow parse time
+          cat > config/providers.yaml << 'YAML_EOF'
+          llm:
+            mode: "openrouter"
+            api_key: "${{ secrets.OPENROUTER_API_KEY }}"
+            base_url: "https://openrouter.ai/api/v1"
+            model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+            max_output_tokens: 16384
+            timeout: 600
+            routes:
+              - id: "primary"
+                mode: "openrouter"
+                model: "nvidia/nemotron-3-ultra-550b-a55b:free"
+                max_concurrent_requests: 3
+
+          pipeline:
+            base_url: "${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}"
+            lookback_hours: 24
+          YAML_EOF
+          # Strip leading indentation added by heredoc
+          python3 -c "
+          import re
+          with open('config/providers.yaml') as f: txt = f.read()
+          lines = txt.splitlines()
+          indent = min((len(l) - len(l.lstrip()) for l in lines if l.strip()), default=0)
+          with open('config/providers.yaml', 'w') as f: f.write('\n'.join(l[indent:] for l in lines) + '\n')
+          "
+          echo "providers.yaml written with injected credentials."
+          if grep -q '^\s*api_key: ""' config/providers.yaml; then
+            echo "ERROR: OPENROUTER_API_KEY secret is empty - set it in GitHub repo secrets." >&2
             exit 1
-          fi
-          # Substitute ${OPENROUTER_API_KEY} placeholder with the actual secret value
-          if [[ -n "${_OPENROUTER_KEY:-}" ]]; then
-            sed -i "s|\${OPENROUTER_API_KEY}|${_OPENROUTER_KEY}|g" config/providers.yaml
-            echo "Substituted OPENROUTER_API_KEY into providers.yaml."
-          else
-            echo "WARNING: OPENROUTER_API_KEY secret is empty - pipeline will fail LLM calls." >&2
           fi
 
       - name: Start Mullvad tunnel for hosted egress
