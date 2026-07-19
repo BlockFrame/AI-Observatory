@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Stage 1: Build frontend
 FROM node:20-alpine AS frontend-builder
 
@@ -17,8 +16,6 @@ COPY frontend/ ./
 RUN npm run build
 
 # Stage 2: Python runtime
-=======
->>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 FROM python:3.11-slim
 
 # Set working directory
@@ -28,10 +25,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     cron \
     nginx \
-<<<<<<< HEAD
     curl \
-=======
->>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
@@ -40,7 +34,6 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-<<<<<<< HEAD
 # Install Playwright browser runtime used by the LessWrong cookie bypass
 RUN python -m playwright install --with-deps chromium
 
@@ -49,24 +42,14 @@ COPY agents/ ./agents/
 COPY generators/ ./generators/
 COPY scripts/ ./scripts/
 COPY assets/ ./assets/
-=======
-# Copy application code
-COPY collectors/ ./collectors/
-COPY processors/ ./processors/
-COPY generators/ ./generators/
->>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 COPY run_pipeline.py .
 COPY entrypoint.sh .
 
 # Create necessary directories
-<<<<<<< HEAD
 RUN mkdir -p /app/config /app/data /app/web /app/logs
 
 # Copy built frontend from stage 1
 COPY --from=frontend-builder /frontend/../web ./web/
-=======
-RUN mkdir -p /app/config /app/data /app/web /app/logs /app/templates
->>>>>>> 731b30d (Initial commit: AI News Aggregator pipeline)
 
 # Make scripts executable
 RUN chmod +x run_pipeline.py entrypoint.sh
