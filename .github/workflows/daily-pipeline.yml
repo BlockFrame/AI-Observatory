@@ -44,7 +44,7 @@ concurrency:
 jobs:
   daily-pipeline:
     name: Generate and publish daily data
-    if: github.repository == 'strossi/ai-news-aggregator'
+    if: github.repository == 'BlockFrame/AI-Observatory'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
