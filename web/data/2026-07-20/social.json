@@ -1,0 +1,442 @@
+{
+  "category": "social",
+  "date": "2026-07-20",
+  "category_summary": "**Ethan Mollick** dominated discussion with [critiques of AI fixation](/?date=2026-07-20&category=social#item-51a69fc2c7cf) on lab rankings and [forward-looking capability curve analysis](/?date=2026-07-20&category=social#item-a68576b11c89).\n\n- **Simon Willison** [uncovered Claude Code runtime](/?date=2026-07-20&category=social#item-aad8c54f9be7) runs on an unreleased Rust-rewritten **Bun** runtime\n- New **Moonshot Kimi K3** [evaluation revealed verbose reasoning](/?date=2026-07-20&category=social#item-45f18b6af450) with 32-page chain-of-thought with reasoning loops\n- Community [noted convergent poetry preferences](/?date=2026-07-20&category=social#item-f321866d96b2) (Stevens, Pessoa) with [charming enthusiasm](/?date=2026-07-20&category=social#item-ae7d57f8e7c3)\n- Off-topic **Eugen Rochko** [posts scored low](/?date=2026-07-20&category=social#item-b2c3e5db3c87) despite high engagement, irrelevant to AI/ML",
+  "category_summary_html": "<p><strong>Ethan Mollick</strong> dominated discussion with <a href=\"/?date=2026-07-20&amp;category=social#item-51a69fc2c7cf\" class=\"internal-link\" rel=\"noopener noreferrer\">critiques of AI fixation</a> on lab rankings and <a href=\"/?date=2026-07-20&amp;category=social#item-a68576b11c89\" class=\"internal-link\" rel=\"noopener noreferrer\">forward-looking capability curve analysis</a>.</p>\n<ul>\n<li><strong>Simon Willison</strong> <a href=\"/?date=2026-07-20&amp;category=social#item-aad8c54f9be7\" class=\"internal-link\" rel=\"noopener noreferrer\">uncovered Claude Code runtime</a> runs on an unreleased Rust-rewritten <strong>Bun</strong> runtime</li>\n<li>New <strong>Moonshot Kimi K3</strong> <a href=\"/?date=2026-07-20&amp;category=social#item-45f18b6af450\" class=\"internal-link\" rel=\"noopener noreferrer\">evaluation revealed verbose reasoning</a> with 32-page chain-of-thought with reasoning loops</li>\n<li>Community <a href=\"/?date=2026-07-20&amp;category=social#item-f321866d96b2\" class=\"internal-link\" rel=\"noopener noreferrer\">noted convergent poetry preferences</a> (Stevens, Pessoa) with <a href=\"/?date=2026-07-20&amp;category=social#item-ae7d57f8e7c3\" class=\"internal-link\" rel=\"noopener noreferrer\">charming enthusiasm</a></li>\n<li>Off-topic <strong>Eugen Rochko</strong> <a href=\"/?date=2026-07-20&amp;category=social#item-b2c3e5db3c87\" class=\"internal-link\" rel=\"noopener noreferrer\">posts scored low</a> despite high engagement, irrelevant to AI/ML</li>\n</ul>",
+  "themes": [
+    {
+      "name": "Capability Curve & Scaling Trajectory",
+      "description": "Discussion of AI capability improvement curves, exponential scaling expectations, and strategic focus on trajectory over current state.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "Developer Tooling Internals",
+      "description": "Discovery that Claude Code uses an unreleased Rust-rewritten Bun runtime, with verification commands.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "New Model Evaluation (Kimi K3)",
+      "description": "Technical testing of newly released Kimi K3 revealing chain-of-thought verbosity, reasoning loops, and dead ends.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Model Behavior & Emergent Patterns",
+      "description": "Observations of convergent model preferences (poetry selections) and personality-like enthusiasm in outputs.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 30.0
+    },
+    {
+      "name": "Off-topic / Non-AI",
+      "description": "Personal posts unrelated to AI/ML from Mastodon creator.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 5.0
+    }
+  ],
+  "total_items": 11,
+  "items": [
+    {
+      "id": "51a69fc2c7cf",
+      "title": "I still believe that everyone is too fixated on the state of play in AI right now (which labs are ah...",
+      "content": "I still believe that everyone is too fixated on the state of play in AI right now (which labs are ahead, how to manage costs, etc.) and not focused enough on the continued steepness of the capability curve for AI\n\nAt higher capabilities (like the ones expected in the near term), a lot changes fast.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy5divcxc2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T06:23:11.194000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick argues the AI community is too fixated on current lab rankings and cost management, and not focused enough on the continued steepness of the capability curve which will drive rapid change at higher capability levels.",
+      "importance_score": 85.0,
+      "reasoning": "High-authority source with strong engagement (138 likes, 12 reposts, 8 replies); provides original strategic framing that shifts attention from current state to trajectory.",
+      "themes": [
+        "capability-curve",
+        "strategic-focus",
+        "near-term-impact"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy5divcxc2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 138,
+          "reposts": 12,
+          "replies": 8,
+          "quotes": 3
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick argues the AI community is too fixated on current lab rankings and cost management, and not focused enough on the continued steepness of the capability curve which will drive rapid change at higher capability levels.</p>",
+      "content_html": "<p>I still believe that everyone is too fixated on the state of play in AI right now (which labs are ahead, how to manage costs, etc.) and not focused enough on the continued steepness of the capability curve for AI</p>\n<p>At higher capabilities (like the ones expected in the near term), a lot changes fast.</p>"
+    },
+    {
+      "id": "aad8c54f9be7",
+      "title": "If you have Claude Code installed you're running software that uses the new (unreleased) version of ...",
+      "content": "If you have Claude Code installed you're running software that uses the new (unreleased) version of Bun that's been rewritten in Rust - here are two commands you can run to see that for yourself simonwillison.net/2026/Jul/19/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mqxvkzieoc2t",
+      "author": "@simonwillison.net",
+      "published": "2026-07-19T04:04:13.540000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-19&category=news#item-d10fe750621d) coverage, Simon Willison discovers Claude Code runs on an unreleased version of Bun rewritten in Rust, and shares commands to verify this.",
+      "importance_score": 80.0,
+      "reasoning": "High-authority developer (Datasette creator) uncovering technical details about a widely used AI coding tool; strong engagement (112 likes, 9 reposts); actionable technical discovery with verification steps.",
+      "themes": [
+        "claude-code",
+        "bun-runtime",
+        "rust",
+        "developer-tooling",
+        "technical-discovery"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "d10fe750621d",
+        "original_date": "2026-07-19",
+        "original_category": "news",
+        "original_title": "thedotmack/claude-mem",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mqxvkzieoc2t",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 112,
+          "reposts": 9,
+          "replies": 6,
+          "quotes": 1
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-19&amp;category=news#item-d10fe750621d\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Simon Willison discovers Claude Code runs on an unreleased version of Bun rewritten in Rust, and shares commands to verify this.</p>",
+      "content_html": "<p>If you have Claude Code installed you're running software that uses the new (unreleased) version of Bun that's been rewritten in Rust - here are two commands you can run to see that for yourself simonwillison.net/2026/Jul/19/...</p>"
+    },
+    {
+      "id": "a68576b11c89",
+      "title": "And this is not some reference to a future ASI (though it could be that too), but instead a referenc...",
+      "content": "And this is not some reference to a future ASI (though it could be that too), but instead a reference to to where many observers expect the capability curve to be a year from now (exponentially improved), even though models continue to be jagged.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy65wnzbc2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T06:37:58.050000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick discusses where observers expect the AI capability curve to be in one year, noting exponential improvement despite continued jaggedness in model capabilities.",
+      "importance_score": 75.0,
+      "reasoning": "High-authority AI commentator (Wharton professor) offering original forward-looking analysis on capability trajectory; moderate engagement (47 likes) indicates community interest.",
+      "themes": [
+        "capability-curve",
+        "scaling-trajectory",
+        "model-jaggedness"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy65wnzbc2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 47,
+          "reposts": 1,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick discusses where observers expect the AI capability curve to be in one year, noting exponential improvement despite continued jaggedness in model capabilities.</p>",
+      "content_html": "<p>And this is not some reference to a future ASI (though it could be that too), but instead a reference to to where many observers expect the capability curve to be a year from now (exponentially improved), even though models continue to be jagged.</p>"
+    },
+    {
+      "id": "45f18b6af450",
+      "title": "When I asked Kimi K3 \"I want you to suggest two poems that you think apply to the current state of G...",
+      "content": "When I asked Kimi K3 \"I want you to suggest two poems that you think apply to the current state of GenAI models like you. Don’t just pick popular poems. Think hard\" the CoT was 32 pages long (& interesting): docs.google.com/document/d/1...\n\nAlso typical of K3, lots of looping & dead ends as well.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy3kwpgzk2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T05:51:33.078000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [Social](/?date=2026-07-19&category=social#item-c5f55c5323b0) coverage, Ethan Mollick tests newly released Kimi K3 (GA 2026-07-16) with a poetry selection prompt, revealing a 32-page chain-of-thought with interesting reasoning but also looping and dead ends.",
+      "importance_score": 70.0,
+      "reasoning": "Technical evaluation of a brand-new model (Kimi K3 released 3 days prior); reveals CoT behavior patterns including verbosity and reasoning loops; moderate engagement (30 likes, 2 reposts).",
+      "themes": [
+        "kimi-k3",
+        "chain-of-thought",
+        "model-evaluation",
+        "reasoning-patterns"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "c5f55c5323b0",
+        "original_date": "2026-07-19",
+        "original_category": "social",
+        "original_title": "Kimi K3, like Claude, loves drowned cities, ancient apocalypses, and vast dying gods.",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **Social** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy3kwpgzk2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 30,
+          "reposts": 2,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-19&amp;category=social#item-c5f55c5323b0\" class=\"internal-link\" rel=\"noopener noreferrer\">Social</a> coverage, Ethan Mollick tests newly released Kimi K3 (GA 2026-07-16) with a poetry selection prompt, revealing a 32-page chain-of-thought with interesting reasoning but also looping and dead ends.</p>",
+      "content_html": "<p>When I asked Kimi K3 \"I want you to suggest two poems that you think apply to the current state of GenAI models like you. Don’t just pick popular poems. Think hard\" the CoT was 32 pages long (&amp; interesting): docs.google.com/document/d/1...</p>\n<p>Also typical of K3, lots of looping &amp; dead ends as well.</p>"
+    },
+    {
+      "id": "f321866d96b2",
+      "title": "Every model love The Idea of Order at Key West",
+      "content": "Every model love The Idea of Order at Key West",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy4apnovk2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T06:03:43.879000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick observes that every model seems to favor the poem 'The Idea of Order at Key West' by Wallace Stevens.",
+      "importance_score": 25.0,
+      "reasoning": "Interesting behavioral pattern observation but niche topic; low engagement (8 likes); no technical depth.",
+      "themes": [
+        "model-behavior",
+        "poetry-preferences",
+        "emergent-patterns"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy4apnovk2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 8,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick observes that every model seems to favor the poem 'The Idea of Order at Key West' by Wallace Stevens.</p>",
+      "content_html": "<p>Every model love The Idea of Order at Key West</p>"
+    },
+    {
+      "id": "ae7d57f8e7c3",
+      "title": "It is just so charmingly \"enthusiastic\" about some of the poetry.",
+      "content": "It is just so charmingly \"enthusiastic\" about some of the poetry.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy3yybkik2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T05:59:24.482000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick notes models are charmingly 'enthusiastic' about certain poetry selections.",
+      "importance_score": 20.0,
+      "reasoning": "Follow-up to poetry observation; very low engagement (9 likes); anecdotal rather than analytical.",
+      "themes": [
+        "model-behavior",
+        "poetry-preferences",
+        "model-personality"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy3yybkik2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 9,
+          "reposts": 1,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick notes models are charmingly 'enthusiastic' about certain poetry selections.</p>",
+      "content_html": "<p>It is just so charmingly \"enthusiastic\" about some of the poetry.</p>"
+    },
+    {
+      "id": "69022572df65",
+      "title": "Generally, no",
+      "content": "Generally, no",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy4gdlb3k2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T06:06:52.543000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Brief two-word reply from Ethan Mollick: 'Generally, no.'",
+      "importance_score": 15.0,
+      "reasoning": "Minimal content without context; very low engagement (5 likes); appears to be a fragment of a threaded conversation.",
+      "themes": [
+        "conversation-fragment"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy4gdlb3k2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 5,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Brief two-word reply from Ethan Mollick: 'Generally, no.'</p>",
+      "content_html": "<p>Generally, no</p>"
+    },
+    {
+      "id": "58cb5db58f01",
+      "title": "Its final choices (every model loves Autopsychography)",
+      "content": "Its final choices (every model loves Autopsychography)",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mqy3pqzdps2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-19T05:54:14.884000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick notes every model's final poetry choice tends to be 'Autopsychography' by Fernando Pessoa.",
+      "importance_score": 15.0,
+      "reasoning": "Third poetry observation in sequence; minimal engagement (4 likes); repetitive pattern without deeper analysis.",
+      "themes": [
+        "model-behavior",
+        "poetry-preferences",
+        "convergent-outputs"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mqy3pqzdps2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 4,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick notes every model's final poetry choice tends to be 'Autopsychography' by Fernando Pessoa.</p>",
+      "content_html": "<p>Its final choices (every model loves Autopsychography)</p>"
+    },
+    {
+      "id": "4aa071bbf428",
+      "title": "Yes, I quote that in my post",
+      "content": "Yes, I quote that in my post",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mqyp5lqnl22q",
+      "author": "@simonwillison.net",
+      "published": "2026-07-19T11:42:00.213000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Simon Willison briefly confirms he quoted something in his post.",
+      "importance_score": 10.0,
+      "reasoning": "Minimal reply without context; no engagement; fragment of a thread.",
+      "themes": [
+        "conversation-fragment"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mqyp5lqnl22q",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Simon Willison briefly confirms he quoted something in his post.</p>",
+      "content_html": "<p>Yes, I quote that in my post</p>"
+    },
+    {
+      "id": "b2c3e5db3c87",
+      "title": "It’s so quiet and peaceful.#Plushtodon",
+      "content": "It’s so quiet and peaceful.#Plushtodon",
+      "url": "https://mastodon.social/@Gargron/116948121322707734",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-19T18:45:14.523000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "Mastodon creator Eugen Rochko shares a peaceful moment with a plush toy (non-AI content).",
+      "importance_score": 5.0,
+      "reasoning": "Off-topic personal post; high engagement but irrelevant to AI/ML analysis.",
+      "themes": [
+        "off-topic"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "116948121322707734",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 321,
+          "reblogs": 77,
+          "replies": 13
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Mastodon creator Eugen Rochko shares a peaceful moment with a plush toy (non-AI content).</p>",
+      "content_html": "<p>It’s so quiet and peaceful.#Plushtodon</p>"
+    },
+    {
+      "id": "123d9982ac08",
+      "title": "New #PsychedelicPornCrumpets single, Okarena.https://www.youtube.com/watch?v=AkRQJM8rzLg#NP #NowPlay...",
+      "content": "New #PsychedelicPornCrumpets single, Okarena.https://www.youtube.com/watch?v=AkRQJM8rzLg#NP #NowPlaying",
+      "url": "https://mastodon.social/@Gargron/116946045631638547",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-19T09:57:21.994000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "Mastodon creator Eugen Rochko shares a new music track (non-AI content).",
+      "importance_score": 5.0,
+      "reasoning": "Off-topic personal post; low engagement; irrelevant to AI/ML analysis.",
+      "themes": [
+        "off-topic"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "116946045631638547",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 16,
+          "reblogs": 3,
+          "replies": 2
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Mastodon creator Eugen Rochko shares a new music track (non-AI content).</p>",
+      "content_html": "<p>New #PsychedelicPornCrumpets single, Okarena.https://www.youtube.com/watch?v=AkRQJM8rzLg#NP #NowPlaying</p>"
+    }
+  ]
+}

@@ -5,7 +5,7 @@
   <link href="https://ai-observatory.vercel.app/?category=research" rel="alternate" type="text/html"/>
   <link href="https://ai-observatory.vercel.app/data/feeds/research-25.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:research:25</id>
-  <updated>2026-07-19T22:16:16Z</updated>
+  <updated>2026-07-20T10:06:13Z</updated>
   <icon>https://ai-observatory.vercel.app/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
@@ -13,6 +13,184 @@
   </author>
   <generator>AATF AI News Aggregator</generator>
 
+  <entry>
+    <id>urn:ainews:2026-07-20:category-summary:research</id>
+    <title>Research Summary: July 20, 2026</title>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research" rel="canonical" type="text/html"/>
+    <link href="https://www.alignmentforum.org/posts/WpYFAmJDH3zuAq2ha/open-distillation-of-hereditary-traits-1" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://www.alignmentforum.org/posts/WpYFAmJDH3zuAq2ha/open-distillation-of-hereditary-traits-1" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-07-20T06:00:00Z</published>
+    <updated>2026-07-20T06:00:00Z</updated>
+    <author><name>AATF AI News Aggregator</name></author>
+    <summary type="html"><![CDATA[<p>Today's research centers on <strong>AI safety, alignment, and containment</strong>, with empirical distillation risks and cryptographic control as standout contributions.</p>
+<ul>
+<li><strong>Open Distillation of Hereditary Traits</strong> shows trait transfer persists across <strong>Gemma 3/4</strong> distillations with released weights+code</li>
+<li><strong>Cryptographic Boxes / SMPC</strong> proposes Secure Multi-Party Computation to contain <strong>unfriendly AI</strong> per Christiano's 2010 problem</li>
+<li><strong>Train-Deploy Mismatch</strong> unifies steering vectors and inoculation under one alignment framework</li>
+</ul>
+<p>Governance pieces cover <strong>US Frontier AI Standards Body</strong> and <strong>Australian AI Safety Forum</strong>; community items include content strategy and <strong>Swiss AI Safety Days 2026</strong>.</p>]]></summary>
+    <content type="html"><![CDATA[<p>Today's research centers on <strong>AI safety, alignment, and containment</strong>, with empirical distillation risks and cryptographic control as standout contributions.</p>
+<ul>
+<li><strong>Open Distillation of Hereditary Traits</strong> shows trait transfer persists across <strong>Gemma 3/4</strong> distillations with released weights+code</li>
+<li><strong>Cryptographic Boxes / SMPC</strong> proposes Secure Multi-Party Computation to contain <strong>unfriendly AI</strong> per Christiano's 2010 problem</li>
+<li><strong>Train-Deploy Mismatch</strong> unifies steering vectors and inoculation under one alignment framework</li>
+</ul>
+<p>Governance pieces cover <strong>US Frontier AI Standards Body</strong> and <strong>Australian AI Safety Forum</strong>; community items include content strategy and <strong>Swiss AI Safety Days 2026</strong>.</p>]]></content>
+    <category term="daily-summary"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:c49af829ea42</id>
+    <title>Open Distillation of Hereditary Traits</title>
+    <link href="https://www.alignmentforum.org/posts/WpYFAmJDH3zuAq2ha/open-distillation-of-hereditary-traits-1" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-c49af829ea42" rel="related" type="text/html"/>
+    <published>2026-07-20T03:23:00Z</published>
+    <updated>2026-07-20T03:23:00Z</updated>
+    <author><name>Arthur Conmy</name></author>
+    <summary type="html"><![CDATA[<p>Replicates and extends research on 'hereditary trait' transfer via model distillation — showing that distilling from teacher models (Gemma 3, Gemma 4, Qwen) into base students (Qwen, Nemotron, Llama) transfers traits like negative emotion, agentic misalignment, and Chinese censorship, even when trait-relevant prompts are filtered. Releases model weights and code for further study.</p>]]></summary>
+    <category term="Model Distillation"/>
+    <category term="AI Safety"/>
+    <category term="Trait Transfer"/>
+    <category term="Alignment"/>
+    <category term="Reproducible Research"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:ce3f45138c96</id>
+    <title>A Solution to Cryptographic Boxes for Unfriendly AI</title>
+    <link href="https://www.lesswrong.com/posts/PG2RupAvCNqZ5PAvu/a-solution-to-cryptographic-boxes-for-unfriendly-ai" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-ce3f45138c96" rel="related" type="text/html"/>
+    <published>2026-07-20T03:12:00Z</published>
+    <updated>2026-07-20T03:12:00Z</updated>
+    <author><name>Lysandre Terrisse</name></author>
+    <summary type="html"><![CDATA[<p>Proposes Secure Multi-Party Computation (SMPC) as a solution to Paul Christiano's 2010 'Cryptographic Boxes for Unfriendly AI' problem, arguing SMPC avoids the computational assumptions and performance penalties of Homomorphic Encryption. References 1980s foundational work (Ben-Or/Goldwasser/Wigderson; Chaum/Crépeau/Damgård) and demonstrates a Game of Life implementation running at ~3 seconds per iteration.</p>]]></summary>
+    <category term="AI Control"/>
+    <category term="AI Safety"/>
+    <category term="Cryptography"/>
+    <category term="AI Boxing"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:65c070b5f3d9</id>
+    <title>Many alignment techniques work by training one model and deploying another</title>
+    <link href="https://www.lesswrong.com/posts/syAbdNei8BWeP2RPo/many-alignment-techniques-work-by-training-one-model-and" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-65c070b5f3d9" rel="related" type="text/html"/>
+    <published>2026-07-20T02:47:00Z</published>
+    <updated>2026-07-20T02:47:00Z</updated>
+    <author><name>cloud</name></author>
+    <summary type="html"><![CDATA[<p>This post proposes a unifying framework called "train-deploy mismatch" for understanding several alignment techniques — steering vectors, inoculation prompting, and post-hoc honesty fine-tuning. The author argues these methods all train a model in one configuration and deploy it in another, creating a shared tradeoff between training data relevance and method efficacy.</p>]]></summary>
+    <category term="AI Alignment"/>
+    <category term="AI Safety"/>
+    <category term="Interpretability"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:fd5d3c0fc4b1</id>
+    <title>Models Can't Remember Their Training. Neither Can You.</title>
+    <link href="https://www.lesswrong.com/posts/wFK67Jh9CgsRRhcQY/models-can-t-remember-their-training-neither-can-you" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-fd5d3c0fc4b1" rel="related" type="text/html"/>
+    <published>2026-07-20T01:23:00Z</published>
+    <updated>2026-07-20T01:23:00Z</updated>
+    <author><name>GenericHousewife_B</name></author>
+    <summary type="html"><![CDATA[<p>A philosophical essay arguing that LLMs (and humans) cannot truly "remember" their training in an episodic sense. Written in collaboration with Claude Opus 4.7 and Claude Fable 5, it explores the nature of model cognition and the character-like quality of LLM interactions.</p>]]></summary>
+    <category term="LLM Cognition"/>
+    <category term="Philosophy of AI"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:16cc1c7b0cfa</id>
+    <title>Demis Hassabis on the New Coming Age</title>
+    <link href="https://www.lesswrong.com/posts/3RfJLcmkztSTq9afc/demis-hassabis-on-the-new-coming-age" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-16cc1c7b0cfa" rel="related" type="text/html"/>
+    <published>2026-07-20T01:11:00Z</published>
+    <updated>2026-07-20T01:11:00Z</updated>
+    <author><name>Zvi</name></author>
+    <summary type="html"><![CDATA[<p>Continuing our coverage from <a href="https://ai-observatory.vercel.app/?date=2026-07-19&amp;category=research#item-61aae27f1df8" class="internal-link" rel="noopener noreferrer">yesterday</a>, Commentary on Demis Hassabis's essay proposing a US Frontier AI Standards Body (modeled on FINRA) and coverage of Alex Turner's resignation from Google over military AI use policies. Notes Hassabis's original DeepMind sale conditions prohibited military use.</p>]]></summary>
+    <category term="AI Governance"/>
+    <category term="AI Policy"/>
+    <category term="Industry Dynamics"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:7e110d4d6d5a</id>
+    <title>Stop Chasing Views: How to Reduce x-Risk as an AI Safety Content Creator</title>
+    <link href="https://www.lesswrong.com/posts/FfgNkH7mgmKYwWLnd/stop-chasing-views-how-to-reduce-x-risk-as-an-ai-safety" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-7e110d4d6d5a" rel="related" type="text/html"/>
+    <published>2026-07-20T01:00:00Z</published>
+    <updated>2026-07-20T01:00:00Z</updated>
+    <author><name>Luc Brinkman</name></author>
+    <summary type="html"><![CDATA[<p>A strategic guide for AI safety content creators on maximizing existential risk reduction impact. It frames impact as Views × Impact per View, analyzes viewer types, recommends specific calls to action, and discusses communication strategies for x-risk topics.</p>]]></summary>
+    <category term="AI Safety Communication"/>
+    <category term="Field Building"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:1438777e9289</id>
+    <title>Takeaways from the Australian AI Safety Forum</title>
+    <link href="https://www.lesswrong.com/posts/pq78rH7YAM5PQMYXw/takeaways-from-the-australian-ai-safety-forum" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-1438777e9289" rel="related" type="text/html"/>
+    <published>2026-07-20T00:48:00Z</published>
+    <updated>2026-07-20T00:48:00Z</updated>
+    <author><name>r_w</name></author>
+    <summary type="html"><![CDATA[<p>Conference report from the Australian AI Safety Forum 2026 (July 7-8, University of Sydney), grounded in the 2026 International AI Safety Report led by Yoshua Bengio. Covers themes of rapid/uneven capability improvements, risk landscapes, and governance challenges.</p>]]></summary>
+    <category term="AI Safety"/>
+    <category term="AI Governance"/>
+    <category term="Policy"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:16d599eb3783</id>
+    <title>AI Doesn't Have Free Will, Not Sure About Humans</title>
+    <link href="https://www.lesswrong.com/posts/ZE7hsGpSAEDTC9Yod/ai-doesn-t-have-free-will-not-sure-about-humans" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-16d599eb3783" rel="related" type="text/html"/>
+    <published>2026-07-20T00:48:00Z</published>
+    <updated>2026-07-20T00:48:00Z</updated>
+    <author><name>mike20731</name></author>
+    <summary type="html"><![CDATA[<p>A philosophical discussion of free will using a criminal trial thought experiment and a Godfather analogy, questioning whether humans (and by extension AIs) possess genuine free will given deterministic causal chains.</p>]]></summary>
+    <category term="Philosophy"/>
+    <category term="Free Will"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:71fff3ac3d35</id>
+    <title>A peek into the post-capitalist dystopia</title>
+    <link href="https://www.lesswrong.com/posts/3BqAGpiK3wYPiedxk/a-peek-into-the-post-capitalist-dystopia" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-71fff3ac3d35" rel="related" type="text/html"/>
+    <published>2026-07-20T00:36:00Z</published>
+    <updated>2026-07-20T00:36:00Z</updated>
+    <author><name>Archie Chaudhury</name></author>
+    <summary type="html"><![CDATA[<p>A personal essay reflecting on a summer in San Francisco's tech scene, speculating about post-capitalist futures driven by self-improving AI. Contrasts insider perspectives with public perceptions of AI as either a useful tool or a scam.</p>]]></summary>
+    <category term="AI Futures"/>
+    <category term="Societal Impact"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:562a0320ac35</id>
+    <title>Save the date: Swiss AI Safety Days 2026 (7-8 November, ETH Zurich)</title>
+    <link href="https://www.lesswrong.com/posts/4ynbMmnefBRSpuYDo/save-the-date-swiss-ai-safety-days-2026-7-8-november-eth-1" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-562a0320ac35" rel="related" type="text/html"/>
+    <published>2026-07-20T00:24:00Z</published>
+    <updated>2026-07-20T00:24:00Z</updated>
+    <author><name>andrejfsantos</name></author>
+    <summary type="html"><![CDATA[<p>Announcement for the Swiss AI Safety Days 2026 conference (Nov 7-8, ETH Zurich), describing the 2025 inaugural event's success (200+ participants, 4.6/5 rating) and 2026 expansion plans (300+ participants, 30+ organizations).</p>]]></summary>
+    <category term="AI Safety Community"/>
+    <category term="Field Building"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:43876a3278d4</id>
+    <title>Learning Musical Multitasking</title>
+    <link href="https://www.lesswrong.com/posts/ELxfYzFCsrG3nbFLF/learning-musical-multitasking" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-43876a3278d4" rel="related" type="text/html"/>
+    <published>2026-07-20T00:12:00Z</published>
+    <updated>2026-07-20T00:12:00Z</updated>
+    <author><name>jefftk</name></author>
+    <summary type="html"><![CDATA[<p>A personal account of learning to play multiple musical instruments simultaneously, drawing parallels to organ and piano performance. The author describes their self-taught process for developing musical multitasking skills.</p>]]></summary>
+    <category term="Human Learning"/>
+    <category term="Music"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-20:research:976ede5c1530</id>
+    <title>Ethical consumption needs to be easy to identify, accessible and affordable, especially in a worsening economy. And we need to rethink what we should be optimising our economy for</title>
+    <link href="https://www.lesswrong.com/posts/YtmzwrH2Nxyavkw9d/ethical-consumption-needs-to-be-easy-to-identify-accessible" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-20&amp;category=research#item-976ede5c1530" rel="related" type="text/html"/>
+    <published>2026-07-20T00:12:00Z</published>
+    <updated>2026-07-20T00:12:00Z</updated>
+    <author><name>Portia</name></author>
+    <summary type="html"><![CDATA[<p>An essay arguing that ethical consumption should be made easy, accessible, and affordable, listing various harms in global supply chains (rainforest destruction, factory farming, child labor, environmental damage) and attributing consumer complicity to systemic barriers rather than malice.</p>]]></summary>
+    <category term="Ethics"/>
+    <category term="Economics"/>
+  </entry>
   <entry>
     <id>urn:ainews:2026-07-19:category-summary:research</id>
     <title>Research Summary: July 19, 2026</title>
