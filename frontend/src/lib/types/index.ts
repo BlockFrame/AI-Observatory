@@ -2,7 +2,7 @@
  * Type definitions for AI News Aggregator frontend
  */
 
-export type Category = 'news' | 'research' | 'social' | 'reddit';
+export type Category = 'news' | 'research' | 'social' | 'reddit' | 'github_trending';
 
 export interface NewsItem {
 	id: string;
@@ -187,5 +187,16 @@ export const CATEGORY_CONFIG: Record<
 		textClass: 'text-category-reddit',
 		badgeClass: 'badge-reddit',
 		accentClass: 'category-accent-reddit'
+	},
+	github_trending: {
+		title: 'GitHub Trending Repos',
+		singularTitle: 'GitHub Trending Repo',
+		shortTitle: 'GitHub',
+		color: '#8b5cf6',
+		bgClass: 'bg-category-news',
+		textClass: 'text-category-news',
+		badgeClass: 'badge-news',
+		accentClass: 'category-accent-news'
 	}
 };
+
