@@ -356,20 +356,20 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 end = content.rfind("}")
                 if end != -1:
                     content = content[:end + 1]
-
             result = json.loads(content)
 
             enriched = result.get('enriched_text', text)
             links = result.get('links', [])
 
-            if links:
+            if links and self._has_internal_links(enriched):
                 logger.info(f"  {context_name}: added {len(links)} links")
                 for link in links:
                     logger.debug(f"    Linked '{link.get('phrase', '')}' -> {link.get('category', '')}/{link.get('item_id', '')[:8]}...")
-            else:
-                logger.info(f"  {context_name}: no links added")
+                return enriched
 
-            return enriched
+            logger.warning(f"  {context_name}: model returned no usable links, applying deterministic fallback")
+            fallback = self._inject_deterministic_links(enriched or text, items, context_name)
+            return fallback
 
         except json.JSONDecodeError as e:
             logger.error(f"Failed to parse link enrichment response for {context_name}: {e}")
@@ -389,16 +389,69 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 is_too_short = len(enriched) < len(text) * 0.5
 
                 if open_brackets == close_brackets and not has_incomplete_link and not is_too_short:
-                    logger.info(f"  {context_name}: recovered enriched text via validated regex fallback")
-                    return enriched
+                    if self._has_internal_links(enriched):
+                        logger.info(f"  {context_name}: recovered enriched text via validated regex fallback")
+                        return enriched
+                    logger.warning(f"  {context_name}: regex fallback had no usable links, applying deterministic fallback")
+                    return self._inject_deterministic_links(text, items, context_name)
                 else:
                     logger.warning(f"  {context_name}: regex extraction failed validation (brackets={open_brackets}/{close_brackets}, incomplete={has_incomplete_link}, short={is_too_short})")
-
-            logger.warning(f"  {context_name}: JSON parse failed, using original unenriched text")
-            return text
+            logger.warning(f"  {context_name}: JSON parse failed, applying deterministic fallback")
+            return self._inject_deterministic_links(text, items, context_name)
         except Exception as e:
             logger.error(f"Link enrichment failed for {context_name}: {e}")
+            return self._inject_deterministic_links(text, items, context_name)
+
+    def _has_internal_links(self, text: str) -> bool:
+        return bool(text) and "](/?date=" in text
+
+    def _inject_deterministic_links(self, text: str, items: List[Dict[str, Any]], context_name: str) -> str:
+        """Best-effort internal links when LLM enrichment fails or returns no links."""
+        if not text or not items:
             return text
+
+        max_links = 8 if "executive" in context_name else 6
+        lines = text.splitlines()
+        link_count = 0
+        item_index = 0
+
+        for i, line in enumerate(lines):
+            if link_count >= max_links or item_index >= len(items):
+                break
+            stripped = line.strip()
+            if not stripped or stripped.startswith("####") or "](/?date=" in line:
+                continue
+
+            if stripped.startswith("- ") or (link_count == 0 and len(stripped) >= 60):
+                item = items[item_index]
+                item_index += 1
+                item_id = (item.get("id") or "").strip()
+                category = (item.get("category") or "").strip()
+                if not item_id or not category:
+                    continue
+                url = f"/?date={self.date}&category={category}#item-{item_id}"
+                lines[i] = line.rstrip() + f" ([read more]({url}))"
+                link_count += 1
+
+        if link_count == 0:
+            tail_links = []
+            for item in items[:4]:
+                item_id = (item.get("id") or "").strip()
+                category = (item.get("category") or "").strip()
+                title = normalize_untrusted_text(item.get("title") or "").strip()
+                if not item_id or not category or not title:
+                    continue
+                url = f"/?date={self.date}&category={category}#item-{item_id}"
+                tail_links.append(f"- [{title}]({url})")
+            if tail_links:
+                lines.append("")
+                lines.append("#### Related Coverage")
+                lines.extend(tail_links)
+                link_count = len(tail_links)
+
+        if link_count > 0:
+            logger.info(f"  {context_name}: deterministic fallback added {link_count} links")
+        return "\n".join(lines)
 
     def _markdown_links_to_html(self, text: str) -> str:
         """Convert markdown links to HTML, differentiating internal vs external."""
