@@ -12,6 +12,7 @@ Focuses on FRONTIER AI news only:
 import json
 import logging
 import os
+import re
 from datetime import datetime
 from typing import List, Optional, Set
 
@@ -247,13 +248,12 @@ The summary should read like a professional briefing, focusing on what matters f
         'ai', 'artificial intelligence', 'machine learning', 'ml', 'llm',
         'gpt', 'claude', 'gemini', 'grok', 'llama', 'mistral', 'openai',
         'anthropic', 'deepmind', 'meta ai', 'chatbot', 'neural network',
-        'deep learning', 'transformer', 'language model', 'generative',
-        'diffusion', 'stable diffusion', 'midjourney', 'dall-e', 'copilot',
-        'chatgpt', 'bard', 'perplexity', 'hugging face', 'huggingface',
-        'rlhf', 'alignment', 'benchmark', 'inference', 'embedding',
-        'agi', 'superintelligence', 'multimodal', 'reasoning model',
-        'foundation model', 'frontier model', 'xai', 'cohere', 'databricks',
-        'deepseek', 'qwen', 'phi-', 'phi 3', 'phi 4', 'nvidia ai'
+        'deep learning', 'transformer', 'language model', 'stable diffusion',
+        'midjourney', 'dall-e', 'copilot', 'chatgpt', 'bard', 'perplexity',
+        'hugging face', 'huggingface', 'rlhf', 'embedding', 'agi',
+        'superintelligence', 'multimodal', 'reasoning model', 'foundation model',
+        'frontier model', 'xai', 'cohere', 'deepseek', 'qwen', 'phi-', 'phi 3',
+        'phi 4', 'nvidia ai', 'agentic', 'ai agent', 'mcp server'
     }
 
     def __init__(
@@ -334,9 +334,12 @@ The summary should read like a professional briefing, focusing on what matters f
         return self.RANKING_PROMPT.format(analysis_summary=ranking_context)
 
     def _has_ai_keywords(self, item: CollectedItem) -> bool:
-        """Quick keyword check to identify likely AI articles."""
+        """Quickly identify likely AI articles without substring false positives."""
         text = f"{item.title} {item.content}".lower()
-        return any(kw in text for kw in self.AI_KEYWORDS)
+        return any(
+            re.search(rf"(?<!\w){re.escape(keyword)}(?!\w)", text)
+            for keyword in self.AI_KEYWORDS
+        )
 
     def _truncate_id(self, full_id: str) -> str:
         """Truncate ID to first 16 chars for display."""
@@ -419,7 +422,8 @@ Snippet: {self._clip_context_text(item.content, 300)}...
 
         except Exception as e:
             logger.error(f"LLM filter failed: {e}")
-            # Fall back to returning all items
+            # The keyword gate has already excluded broad-RSS false positives.
+            # Preserve that safety boundary if the semantic filter is unavailable.
             return items
 
     async def _analyze_small_batch(self, items: List[CollectedItem]) -> CategoryReport:
