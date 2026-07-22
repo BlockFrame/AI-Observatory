@@ -426,12 +426,38 @@ class MainOrchestrator:
                 if top_topics:
                     phases.end_phase('success', details=f"{len(top_topics)} topics")
                 else:
-                    phases.end_phase('failed', error="no topics detected")
+                    fallback_topics = self._build_fallback_hero_topics(category_reports)
+                    if fallback_topics:
+                        top_topics = fallback_topics
+                        topic_thinking = (
+                            f"{topic_thinking}\n\n"
+                            "Deterministic fallback used: category themes converted to top topics."
+                        ).strip()
+                        phases.end_phase(
+                            'partial',
+                            error="no cross-category topics detected",
+                            details=f"used {len(top_topics)} category-theme fallback topics",
+                        )
+                    else:
+                        phases.end_phase('failed', error="no topics detected")
             except Exception as e:
                 logger.error(f"Topic detection failed: {e}")
-                top_topics = []
-                topic_thinking = f"Error: {e}"
-                phases.end_phase('failed', error=str(e))
+                fallback_topics = self._build_fallback_hero_topics(category_reports)
+                if fallback_topics:
+                    top_topics = fallback_topics
+                    topic_thinking = (
+                        f"Error: {e}\n\n"
+                        "Deterministic fallback used: category themes converted to top topics."
+                    )
+                    phases.end_phase(
+                        'partial',
+                        error=str(e),
+                        details=f"used {len(top_topics)} category-theme fallback topics",
+                    )
+                else:
+                    top_topics = []
+                    topic_thinking = f"Error: {e}"
+                    phases.end_phase('failed', error=str(e))
 
             self._save_checkpoint('topics', {
                 'top_topics': [asdict(t) for t in top_topics],
