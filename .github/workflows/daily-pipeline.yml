@@ -407,11 +407,28 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          # Ensure a clean tree before rebasing/pushing the generated commit.
           git checkout -- .
           git clean -fd
-          git pull --rebase origin main
-          git push origin HEAD:main
 
+          # Avoid `git pull --rebase` flakiness (exit 128 on detached/non-branch
+          # states or transient race windows). Rebase explicitly on origin/main,
+          # then push with retries in case another commit lands first.
+          git fetch origin main
+          git rebase origin/main
+
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push failed (attempt ${attempt}); refetching and rebasing..."
+            git fetch origin main
+            git rebase origin/main
+            sleep 2
+          done
+
+          echo "ERROR: failed to push generated commit after retries" >&2
+          exit 1
       # ---------------------------------------------------------------------
       # Detection gap fix (2026-06-21): a scheduled run can exit 0 without ever
       # producing today's report. The 3 AM ET gate makes the OTHER scheduled
