@@ -417,7 +417,22 @@ class MainOrchestrator:
                 raise RuntimeError("Cannot resume: no checkpoint for Phase 3 (topics)")
             top_topics = self._restore_top_topics(checkpoint)
             topic_thinking = checkpoint.get('thinking', '')
-            phases.skip_phase("Phase 3: Topic Detection", f"loaded from checkpoint ({len(top_topics)} topics)")
+            if not top_topics:
+                fallback_topics = self._build_fallback_topics(category_reports)
+                if fallback_topics:
+                    top_topics = fallback_topics
+                    topic_thinking = (
+                        f"{topic_thinking}\n\n"
+                        "Deterministic fallback used: analyzed category output converted to top topics."
+                    ).strip()
+                    phases.skip_phase(
+                        "Phase 3: Topic Detection",
+                        f"loaded empty checkpoint; used {len(top_topics)} fallback topics",
+                    )
+                else:
+                    phases.skip_phase("Phase 3: Topic Detection", "loaded empty checkpoint")
+            else:
+                phases.skip_phase("Phase 3: Topic Detection", f"loaded from checkpoint ({len(top_topics)} topics)")
         else:
             phases.start_phase("Phase 3: Topic Detection")
             try:
@@ -426,33 +441,33 @@ class MainOrchestrator:
                 if top_topics:
                     phases.end_phase('success', details=f"{len(top_topics)} topics")
                 else:
-                    fallback_topics = self._build_fallback_hero_topics(category_reports)
+                    fallback_topics = self._build_fallback_topics(category_reports)
                     if fallback_topics:
                         top_topics = fallback_topics
                         topic_thinking = (
                             f"{topic_thinking}\n\n"
-                            "Deterministic fallback used: category themes converted to top topics."
+                            "Deterministic fallback used: analyzed category output converted to top topics."
                         ).strip()
                         phases.end_phase(
                             'partial',
                             error="no cross-category topics detected",
-                            details=f"used {len(top_topics)} category-theme fallback topics",
+                            details=f"used {len(top_topics)} fallback topics",
                         )
                     else:
                         phases.end_phase('failed', error="no topics detected")
             except Exception as e:
                 logger.error(f"Topic detection failed: {e}")
-                fallback_topics = self._build_fallback_hero_topics(category_reports)
+                fallback_topics = self._build_fallback_topics(category_reports)
                 if fallback_topics:
                     top_topics = fallback_topics
                     topic_thinking = (
                         f"Error: {e}\n\n"
-                        "Deterministic fallback used: category themes converted to top topics."
+                        "Deterministic fallback used: analyzed category output converted to top topics."
                     )
                     phases.end_phase(
                         'partial',
                         error=str(e),
-                        details=f"used {len(top_topics)} category-theme fallback topics",
+                        details=f"used {len(top_topics)} fallback topics",
                     )
                 else:
                     top_topics = []
@@ -564,7 +579,7 @@ class MainOrchestrator:
         hero_topics = top_topics
         hero_fallback_used = False
         if not hero_topics and category_reports:
-            hero_topics = self._build_fallback_hero_topics(category_reports)
+            hero_topics = self._build_fallback_topics(category_reports)
             hero_fallback_used = bool(hero_topics)
 
         if resume_from is None or resume_from <= 4.7:
@@ -665,8 +680,8 @@ class MainOrchestrator:
 
         return result
 
-    def _build_fallback_hero_topics(self, category_reports: Dict[str, CategoryReport]) -> List[TopTopic]:
-        """Build fallback hero topics from category themes when topic detection fails."""
+    def _build_fallback_topics(self, category_reports: Dict[str, CategoryReport]) -> List[TopTopic]:
+        """Build publishable topics from category themes or analyzed items."""
         all_themes = []
         for category, report in category_reports.items():
             for theme in report.themes[:3]:  # Top 3 per category
@@ -687,6 +702,8 @@ class MainOrchestrator:
 
         fallback_topics = []
         for theme, category in unique_themes:
+            if not theme.name.strip() or not theme.description.strip():
+                continue
             fallback_topics.append(TopTopic(
                 name=theme.name,
                 description=theme.description,
@@ -697,7 +714,48 @@ class MainOrchestrator:
             ))
 
         if fallback_topics:
-            logger.info(f"  Built {len(fallback_topics)} fallback hero topics from category themes")
+            logger.info(f"  Built {len(fallback_topics)} fallback topics from category themes")
+            return fallback_topics
+
+        category_labels = {
+            "news": "News",
+            "research": "Research",
+            "social": "Social",
+            "reddit": "Reddit",
+        }
+        for category, report in category_reports.items():
+            eligible_items = [
+                item for item in report.top_items
+                if not self._exclude_from_summaries(item)
+            ]
+            if eligible_items:
+                item = eligible_items[0]
+                title = item.item.title.strip()
+                description = (item.summary or report.category_summary).strip()
+                if title and description:
+                    fallback_topics.append(TopTopic(
+                        name=title,
+                        description=description,
+                        description_html=self._markdown_links_to_html(description),
+                        category_breakdown={category: 1},
+                        representative_items=[item.item.id],
+                        importance=item.importance_score,
+                    ))
+                    continue
+
+            description = report.category_summary.strip()
+            if description:
+                fallback_topics.append(TopTopic(
+                    name=f"{category_labels.get(category, category.title())} briefing",
+                    description=description,
+                    description_html=self._markdown_links_to_html(description),
+                    category_breakdown={category: len(report.all_items)},
+                    representative_items=[],
+                    importance=50,
+                ))
+
+        if fallback_topics:
+            logger.info(f"  Built {len(fallback_topics)} fallback topics from analyzed category output")
         return fallback_topics
 
     # --- Checkpoint Methods ---

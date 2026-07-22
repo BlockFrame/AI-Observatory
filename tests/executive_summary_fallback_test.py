@@ -9,6 +9,33 @@ from agents.orchestrator import (
 
 
 class ExecutiveSummaryFallbackTest(unittest.TestCase):
+    def test_builds_topics_from_analyzed_items_when_category_themes_are_empty(self):
+        orchestrator = MainOrchestrator.__new__(MainOrchestrator)
+        item = SimpleNamespace(
+            item=SimpleNamespace(
+                id="item-1",
+                title="New reasoning model improves scientific workflows",
+                metadata={},
+            ),
+            summary="The release improves tool use and scientific reasoning benchmarks.",
+            importance_score=88,
+        )
+        reports = {
+            "news": SimpleNamespace(
+                themes=[],
+                top_items=[item],
+                all_items=[item],
+                category_summary="",
+            )
+        }
+
+        topics = orchestrator._build_fallback_topics(reports)
+
+        self.assertEqual(len(topics), 1)
+        self.assertEqual(topics[0].name, item.item.title)
+        self.assertEqual(topics[0].representative_items, [item.item.id])
+        self.assertEqual(topics[0].importance, item.importance_score)
+
     def test_builds_publishable_summary_without_failure_sentinel(self):
         orchestrator = MainOrchestrator.__new__(MainOrchestrator)
         topics = [
