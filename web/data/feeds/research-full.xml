@@ -5,7 +5,7 @@
   <link href="https://ai-observatory.vercel.app/?category=research" rel="alternate" type="text/html"/>
   <link href="https://ai-observatory.vercel.app/data/feeds/research-full.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:research:full</id>
-  <updated>2026-07-22T21:28:09Z</updated>
+  <updated>2026-07-23T09:28:52Z</updated>
   <icon>https://ai-observatory.vercel.app/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
@@ -13,6 +13,1572 @@
   </author>
   <generator>AATF AI News Aggregator</generator>
 
+  <entry>
+    <id>urn:ainews:2026-07-23:category-summary:research</id>
+    <title>Research Summary: July 23, 2026</title>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research" rel="canonical" type="text/html"/>
+    <link href="https://huggingface.co/papers/2607.19343" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://huggingface.co/papers/2607.19343" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-07-23T06:00:00Z</published>
+    <updated>2026-07-23T06:00:00Z</updated>
+    <author><name>AATF AI News Aggregator</name></author>
+    <summary type="html"><![CDATA[<p>Analysis complete. Top items selected by score.</p>
+<h4>Related Coverage</h4>
+<ul>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-822ed75b0abb" class="internal-link" rel="noopener noreferrer">Masked Visual Actions for Unified World Modeling</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9aef17282434" class="internal-link" rel="noopener noreferrer">ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1ae6ceb1b42c" class="internal-link" rel="noopener noreferrer">Where Should Optimizer State Live? Tiered State Allocation for Memory-Efficient Mixture-of-Experts Training</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ced9cfb4c0ad" class="internal-link" rel="noopener noreferrer">Asymptotically Optimal Regret for Reinforcement Learning without Horizon Dependence</a></li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<p>Analysis complete. Top items selected by score.</p>
+<h4>Related Coverage</h4>
+<ul>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-822ed75b0abb" class="internal-link" rel="noopener noreferrer">Masked Visual Actions for Unified World Modeling</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9aef17282434" class="internal-link" rel="noopener noreferrer">ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1ae6ceb1b42c" class="internal-link" rel="noopener noreferrer">Where Should Optimizer State Live? Tiered State Allocation for Memory-Efficient Mixture-of-Experts Training</a></li>
+<li><a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ced9cfb4c0ad" class="internal-link" rel="noopener noreferrer">Asymptotically Optimal Regret for Reinforcement Learning without Horizon Dependence</a></li>
+</ul>]]></content>
+    <category term="daily-summary"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:822ed75b0abb</id>
+    <title>Masked Visual Actions for Unified World Modeling</title>
+    <link href="https://huggingface.co/papers/2607.19343" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-822ed75b0abb" rel="related" type="text/html"/>
+    <published>2026-07-23T03:33:00Z</published>
+    <updated>2026-07-23T03:33:00Z</updated>
+    <author><name>Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang</name></author>
+    <summary type="html"><![CDATA[<p>Masked Visual Actions (MVA) introduces a pixel-space control interface for video world models, expressing action as a partially revealed trajectory of an arbitrary entity. Revealing robot motion makes the model predict scene response (forward dynamics); revealing desired object motion makes it recover robot behavior (inverse dynamics). Fine-tuned with only 15 hours of manipulation data, it unifies forward/inverse modeling.</p>]]></summary>
+    <category term="Robot Learning"/>
+    <category term="World Models"/>
+    <category term="Video Generation"/>
+    <category term="Imitation Learning"/>
+    <category term="Visual Control"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9aef17282434</id>
+    <title>ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</title>
+    <link href="https://huggingface.co/papers/2607.19191" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9aef17282434" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Fan Jiang, Zhaoxu Sun, Mengchao Wang, Ziyu Zhu, Chiyu Wang, Yunpeng Zhang, Wenlin Liu, Yun Wang, Xue Zheng, Rui Sun, Junfeng Ni, Hongyu Pan, Zhongxu Sun, Fei Yu, Zengye Ge, Mengmeng Du, Nianfei Fan, Mingchao Sun, Yu Liu, Yongchang, Yanqing Zhu, Jiahang Wang, Ning Ying, Yuze Xuan, Di Yang, Zhicheng Liu, Zhe Gao, Tingbing Xu, Jiacheng Sui, Wenjin Yang, Junnan Lai, Shufeng Liu, Yuan Liu, Zheng Zhou, Yingliang Peng, Dawei Cao, Kaifeng Sheng, Yuxiang Cai, Fei Lu, Mu Xu, Ning Guo</name></author>
+    <summary type="html"><![CDATA[<p>ABot-World-0 presents an action-conditioned video world model enabling real-time, long-horizon closed-loop interaction on a single desktop GPU. It uses multi-source data from AAA games, simulations, and internet videos, with a unified pipeline applying 14 quality checks and VLM-based assessment. The model progressively distills a bidirectional teacher into a causal student using teacher forcing and ODE distillation, with LongForcing to align long self-rollouts and mitigate distribution shift.</p>]]></summary>
+    <category term="World Models"/>
+    <category term="Video Generation"/>
+    <category term="Embodied AI"/>
+    <category term="Efficient Inference"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1ae6ceb1b42c</id>
+    <title>Where Should Optimizer State Live? Tiered State Allocation for Memory-Efficient Mixture-of-Experts Training</title>
+    <link href="https://huggingface.co/papers/2607.19058" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1ae6ceb1b42c" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Nuemaan Malik</name></author>
+    <summary type="html"><![CDATA[<p>SkewAdam reduces optimizer state memory for MoE training by 97.4% (50.6 GB → 1.29 GB) and peak training memory from 81.4 GB to 31.3 GB. It assigns different state configurations to MoE's three parameter populations: float32 momentum + factored second moment for dense backbone (5% params), factored second moment alone for experts (95%), exact second moment for router (&lt;0.01%).</p>]]></summary>
+    <category term="MoE Training"/>
+    <category term="Optimizer Design"/>
+    <category term="Memory Efficiency"/>
+    <category term="Large-scale Training"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ced9cfb4c0ad</id>
+    <title>Asymptotically Optimal Regret for Reinforcement Learning without Horizon Dependence</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19854" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ced9cfb4c0ad" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Runlong Zhou, Zihan Zhang, Maryam Fazel, Simon S. Du</name></author>
+    <summary type="html"><![CDATA[<p>This paper proves asymptotically optimal horizon-free regret for finite-horizon tabular MDPs: Õ(√(SAK) + S⁸A³), completely removing log H dependence from prior Õ(√(SAK log H) + S²A log H) and drastically improving prior horizon-free Õ(√(S⁹A³K)). Matches contextual bandit lower bound Ω(√(SAK)) up to log factors.</p>]]></summary>
+    <category term="RL Theory"/>
+    <category term="Regret Bounds"/>
+    <category term="Horizon-free"/>
+    <category term="Online Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:58097f22f2c1</id>
+    <title>ISO: An RLVR-Native Optimization Stack</title>
+    <link href="https://huggingface.co/papers/2607.19331" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-58097f22f2c1" rel="related" type="text/html"/>
+    <published>2026-07-23T03:28:00Z</published>
+    <updated>2026-07-23T03:28:00Z</updated>
+    <author><name>Hanqing Zhu, Wenyan Cong, Zhizhou Sha, Sagnik Mukherjee, Xinyuan Song, David González-Martínez, Xiaoxia Wu, Yuandong Tian, Shiwei Liu, David Z. Pan, Zhangyang "Atlas" Wang</name></author>
+    <summary type="html"><![CDATA[<p>ISO (Isospectral Optimization) is an RLVR-native optimization framework building on the discovery of spectral inheritance: RLVR reuses base model weight spectra while acquiring new behaviors through changes in input/output singular frames. ISO-Merger combines frame changes of specialists offline; ISO-Online applies fixed-spectrum updates online. This rethinks the optimization layer converting reward feedback to weight updates.</p>]]></summary>
+    <category term="RLVR"/>
+    <category term="Optimization"/>
+    <category term="Reasoning Models"/>
+    <category term="Spectral Analysis"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4925125762fa</id>
+    <title>The World Model Remembers, the Actor Forgets: Dream Rehearsal for Continual Model-Based RL</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19749" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4925125762fa" rel="related" type="text/html"/>
+    <published>2026-07-23T03:28:00Z</published>
+    <updated>2026-07-23T03:28:00Z</updated>
+    <author><name>Gurp Nijjer</name></author>
+    <summary type="html"><![CDATA[<p>In DreamerV3 continual RL, the world model retains everything measurable about old tasks (reward discrimination ~1.0, value estimates, termination structure) while the actor's behavior collapses. Forgetting is a channel problem, not memory. Freezing world model with identical imagined rollouts and retraining actor recovers performance.</p>]]></summary>
+    <category term="Continual RL"/>
+    <category term="World Models"/>
+    <category term="Catastrophic Forgetting"/>
+    <category term="Model-based RL"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:236e0d2d5dea</id>
+    <title>Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing</title>
+    <link href="https://huggingface.co/papers/2607.19064" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-236e0d2d5dea" rel="related" type="text/html"/>
+    <published>2026-07-23T03:26:00Z</published>
+    <updated>2026-07-23T03:26:00Z</updated>
+    <author><name>Xinjie Zhang, Peng Zhang, Shicheng Zheng, Jinghao Guo, Zhaoyang Jia, Yifei Shen, Xun Guo, Yuxuan Luo, Jiahao Li, Wenxuan Xie, Fanyi Pu, Xiaoyi Zhang, Kaichen Zhang, Zongyu Guo, Tianci Bi, Dongnan Gui, Zhening Liu, Zimo Wen, Zihan Zheng, Senqiao Yang, Xiao Li, Jinglu Wang, Bin Li, Yan Lu</name></author>
+    <summary type="html"><![CDATA[<p>Mage-Flow introduces a compact 4B-scale generative stack for efficient text-to-image generation and instruction-based editing. It co-designs Mage-VAE (lightweight latent tokenizer with one-step diffusion encoding/decoding and anchor-latent regularization) with a Native-Resolution Multimodal Diffusion Transformer trained via rectified flow matching. Achieves &gt;10x tokenization cost reduction with native-resolution packing and CUDA kernel fusion.</p>]]></summary>
+    <category term="Image Generation"/>
+    <category term="Diffusion Models"/>
+    <category term="Model Efficiency"/>
+    <category term="Multimodal Models"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c1e44f993ac7</id>
+    <title>Robots Acquire Manipulation Skills in Seconds from a Single Human Video</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20033" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c1e44f993ac7" rel="related" type="text/html"/>
+    <published>2026-07-23T03:26:00Z</published>
+    <updated>2026-07-23T03:26:00Z</updated>
+    <author><name>Guangyan Chen, Meiling Wang, Te Cui, Zichen Zhou, Qi Shao, Shalfun Li, Hang Su, Roy Gan, Hao Wang, Mengyin Fu, Yi Yang, Yufeng Yue</name></author>
+    <summary type="html"><![CDATA[<p>HOST (Human-to-robot One-Shot Skill Acquisition) enables robots to acquire novel manipulation skills from a single human video in ~29 seconds, achieving 62% average success on 50 novel tasks while preserving previously mastered skills without policy parameter updates.</p>]]></summary>
+    <category term="Robot Learning"/>
+    <category term="One-shot Learning"/>
+    <category term="Imitation Learning"/>
+    <category term="Skill Acquisition"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:d7a4497835d9</id>
+    <title>Text Template Tokens Are Implicit Semantic Registers in Diffusion Transformers</title>
+    <link href="https://huggingface.co/papers/2607.19139" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-d7a4497835d9" rel="related" type="text/html"/>
+    <published>2026-07-23T03:23:00Z</published>
+    <updated>2026-07-23T03:23:00Z</updated>
+    <author><name>Maohua Li, Qirui Li, Yanke Zhou, Yiduo Li, Zhaosheng Chi, Chao Xu, Cuifeng Shen, Yixuan Xu, Hanlin Tang, Kan Liu, Tao Lan, Lin Qu, Shao-Qun Zhang</name></author>
+    <summary type="html"><![CDATA[<p>This paper introduces a causal interpretability framework for diffusion transformers (DiTs) combining attention decomposition with targeted interventions. It discovers that structural template tokens, despite carrying little prompt-specific information at encoder output, emerge as dominant image-to-text attention sinks and act as implicit semantic registers maintaining object identity. These tokens acquire identity indirectly through prompt semantics injected into image latents.</p>]]></summary>
+    <category term="Interpretability"/>
+    <category term="Diffusion Models"/>
+    <category term="Vision-Language Models"/>
+    <category term="Mechanistic Interpretability"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9e624d890f31</id>
+    <title>SLAI T-Rex: Full-Parameter Post-training of the DeepSeek-V4 Family on Ascend SuperPOD</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20145" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9e624d890f31" rel="related" type="text/html"/>
+    <published>2026-07-23T03:23:00Z</published>
+    <updated>2026-07-23T03:23:00Z</updated>
+    <author><name>Dongfang Li, Xiaodong Luo, Ruoyu Sun, Xuhui Chen, Linyuan Qiu, Jian Meng, Zhengxuan Lu, Yiting Wang, Yucheng Xie, Tao Guo, Tianxiang Fang, Jing Li, Sihang Chen, Shihao Hong, Chang Liu, Weihua Dai, Zirong Zeng, Ziwei Zhu, Zhuohan Wang, Zhengjun Yue, Igor Vasilyev, Min Liu, Weijian Sun, Xin Chen, Yingmeng Gao, Jinhua Zhou, Taolue Chen, Chenwei Wu, Dong Zhang, Wenlong Jin, Jinmin Xiang, Barkova Maria, Ushakov Anton, Xianfei Jin, Tian Ding, Zhihang Lin, Qian Chen, Linxin Yang, Mingzhe Yang, Bingwei Zhang, Hongzhang Yang, Fangxue Zhang, Shijun Qin, Jie Yu, Cuihua Hu, Tolstykh Vasiliy, Nosov Ivan, Abdullin Amir, Zhichen Zhou, Xin Zhang, Zhixiong Ning, Xutong Zhao, Junjie Huang, Jiajun Liu, Weiyan Kong, Zheng Zhang, Wenhan Luo, Lin Hu, Yangbo Guo, Li Zeng, Shihao Zeng, Baotian Hu, Min Zhang, Haizhou Li, Zhiquan Luo</name></author>
+    <summary type="html"><![CDATA[<p>SLAI T-Rex presents full-parameter post-training of trillion-parameter MoE models (DeepSeek-V4 family) on Ascend NPU SuperPOD. Develops hierarchical optimization across model parallelism, computation-communication orchestration, and kernel execution, achieving 34.22% MFU with 2.93x improvement over open-source baseline while maintaining training stability.</p>]]></summary>
+    <category term="Large-scale Training"/>
+    <category term="MoE Models"/>
+    <category term="Distributed Systems"/>
+    <category term="NPU/Accelerator Optimization"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c1f808aa450f</id>
+    <title>HijackKV: New Threat in Position-Independent KV Cache Reuse</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19957" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c1f808aa450f" rel="related" type="text/html"/>
+    <published>2026-07-23T03:23:00Z</published>
+    <updated>2026-07-23T03:23:00Z</updated>
+    <author><name>Yichi Zhang, Zhiqi Wang, Huan Zhang, Yuchen Yang</name></author>
+    <summary type="html"><![CDATA[<p>HijackKV reveals a new threat in position-independent KV cache reuse: KV caches retrieved by token match encode attacker-controlled prefix context. When reused in victim queries, contaminated KV silently hijacks model behavior without attacker-controlled tokens in the victim query. Affects system optimizations for cache efficiency.</p>]]></summary>
+    <category term="AI Security"/>
+    <category term="KV Cache"/>
+    <category term="Adversarial Attacks"/>
+    <category term="LLM Serving"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f21b382008e3</id>
+    <title>AlayaWorld: Interactive Long-Horizon World Modeling -- Full Technical Report</title>
+    <link href="https://huggingface.co/papers/2607.18367" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f21b382008e3" rel="related" type="text/html"/>
+    <published>2026-07-23T03:21:00Z</published>
+    <updated>2026-07-23T03:21:00Z</updated>
+    <author><name>AlayaWorld Team, Kaipeng Zhang, Chuanhao Li, Yifan Zhan, Yongtao Ge, Yuanyang Yin, Jiaming Tan, Kang He, Liaoyuan Fan, Mingliang Zhai, Ruicong Liu, Xiaojie Xu, Xuangeng Chu, Zhen Li, Zhengyuan Lin, Zhixiang Wang, Zian Meng, Zihui Gao</name></author>
+    <summary type="html"><![CDATA[<p>AlayaWorld presents a 15B video diffusion transformer for interactive long-horizon world modeling, generating 24-fps video at 540p/720p. It generates short latent chunks autoregressively under camera trajectories and switchable text prompts, with bounded memory via a sliding window. The full technical report covers architecture, data, training, and evaluation for persistent spatiotemporal consistency and stable long-horizon generation.</p>]]></summary>
+    <category term="World Models"/>
+    <category term="Video Generation"/>
+    <category term="Embodied AI"/>
+    <category term="Long-horizon Generation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a937a56b7416</id>
+    <title>Self Gradient Forcing: Native Long Video Extrapolation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20368" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a937a56b7416" rel="related" type="text/html"/>
+    <published>2026-07-23T03:21:00Z</published>
+    <updated>2026-07-23T03:21:00Z</updated>
+    <author><name>Junhao Zhuang, Shiyi Zhang, Yuxuan Bian, Yaowei Li, Yawen Luo, Yijun Liu, Weiyang Jin, Songchun Zhang, Xianglong He, Xuying Zhang, Haoran Li, Haoyang Huang, Zeyue Xue, Nan Duan</name></author>
+    <summary type="html"><![CDATA[<p>Self Gradient Forcing (SGF) enables native long video extrapolation by restoring the historical context-gradient gap in Self Forcing. Two-pass training: Pass 1 does no-gradient autoregressive rollout; at sampled denoising step, Pass 2 computes gradients through the historical KV cache to supervise how earlier latents should be written for later generation.</p>]]></summary>
+    <category term="Video Generation"/>
+    <category term="Diffusion Models"/>
+    <category term="Long-horizon Generation"/>
+    <category term="Training Methods"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1352204bf652</id>
+    <title>Trace: A Taxonomy-Guided Environment for Multidomain Visual Reasoning</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19790" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1352204bf652" rel="related" type="text/html"/>
+    <published>2026-07-23T03:21:00Z</published>
+    <updated>2026-07-23T03:21:00Z</updated>
+    <author><name>Md Tanvirul Alam</name></author>
+    <summary type="html"><![CDATA[<p>Trace introduces a taxonomy-guided environment for multidomain visual reasoning with 1,000 tasks over 277 scene grammars and 11 visual domains. Factorizes task construction into scene grammar and executable program, separating visual realization from answer verification. RLVR on 64K Trace instances improves visual reasoning.</p>]]></summary>
+    <category term="RLVR"/>
+    <category term="Visual Reasoning"/>
+    <category term="Environment Design"/>
+    <category term="Verifiable Rewards"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e2f3ae68d489</id>
+    <title>Reading and Steering Representations of Materials-Science Mechanisms in an Open-Weight Language Model</title>
+    <link href="https://huggingface.co/papers/2607.20058" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e2f3ae68d489" rel="related" type="text/html"/>
+    <published>2026-07-23T03:19:00Z</published>
+    <updated>2026-07-23T03:19:00Z</updated>
+    <author><name>Markus J. Buehler</name></author>
+    <summary type="html"><![CDATA[<p>This work shows that materials science mechanism information in Gemma-4-E4B-it has three separable forms: concepts readable in hidden states, constitutive orientation carried by controlled state transformations, and selected representations causally controlling engineering answers. Uses Jacobian vocabulary readouts, option-free state geometry, 60-law counterfactual benchmark, and causal interventions.</p>]]></summary>
+    <category term="Interpretability"/>
+    <category term="Scientific Reasoning"/>
+    <category term="Mechanistic Interpretability"/>
+    <category term="Causal Analysis"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:bdf575449f0b</id>
+    <title>Extreme-RGMT: Continual Learning of Highly Dynamic Skills for Robust Generalist Humanoid Control</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20110" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-bdf575449f0b" rel="related" type="text/html"/>
+    <published>2026-07-23T03:19:00Z</published>
+    <updated>2026-07-23T03:19:00Z</updated>
+    <author><name>Yubiao Ma, Han Yu, Kai Guo, Changtai Lv, Zhengquan Mao, Boyang Xing, Xuemei Ren, Dongdong Zheng</name></author>
+    <summary type="html"><![CDATA[<p>Extreme-RGMT is a two-stage continual RL framework enabling humanoid robots to acquire highly dynamic motor skills (aerial cartwheels, backflips) while preserving generalist competence. Deployed on Unitree G1 with noisy online teleoperation from inertial motion capture.</p>]]></summary>
+    <category term="Humanoid Robotics"/>
+    <category term="Continual RL"/>
+    <category term="Dynamic Skills"/>
+    <category term="Sim2Real"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:111c3faa9278</id>
+    <title>The Giant Hippocampus: From Structural Monoculture to a System of Systems</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19973" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-111c3faa9278" rel="related" type="text/html"/>
+    <published>2026-07-23T03:19:00Z</published>
+    <updated>2026-07-23T03:19:00Z</updated>
+    <author><name>Jaeho Seol</name></author>
+    <summary type="html"><![CDATA[<p>Argues the Transformer structural monoculture is a measurable error, not stylistic. Neuroscience shows cortex is a mosaic of structurally distinct regions for different functions (Brodmann areas, Patch-seq). CNNs proved structural priors work. Proposes moving from single repeated structure to a system of systems with differentiated architectures.</p>]]></summary>
+    <category term="Architecture Design"/>
+    <category term="Neuroscience-inspired AI"/>
+    <category term="Transformer Alternatives"/>
+    <category term="Structural Priors"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3ab0fd22df96</id>
+    <title>Generative World Renderer at the Speed of Play</title>
+    <link href="https://huggingface.co/papers/2607.18703" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3ab0fd22df96" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Guixu Lin, Zheng-Hui Huang, Siqi Yang, Ming-Hsuan Yang, Kaipeng Zhang, Zhixiang Wang</name></author>
+    <summary type="html"><![CDATA[<p>AlayaRenderer-Flash achieves real-time generative world rendering (31.54 FPS, up from 0.56 FPS) by reformulating the original renderer as a few-step autoregressive streaming model with lightweight adaptations. It receives structured world states from physics engines and synthesizes RGB frames while preserving scene structure and underlying world dynamics, demonstrating an alternative path to interactive world modeling.</p>]]></summary>
+    <category term="World Models"/>
+    <category term="Real-time Generation"/>
+    <category term="3D Rendering"/>
+    <category term="Efficient Inference"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:82bd6cd373ca</id>
+    <title>Two-Level Meta-Rubrics for Evaluating Open-Ended Generation: GAMUT, a Benchmark for Factual Completeness</title>
+    <link href="https://huggingface.co/papers/2607.19322" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-82bd6cd373ca" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Xilun Chen, Zhaleh Feizollahi, Ross Goodwin, Seungwhan Moon, Scott Yih, Pinar Donmez, Babak Damavandi, Luna Dong</name></author>
+    <summary type="html"><![CDATA[<p>GAMUT introduces a two-level meta-rubric framework for evaluating factual completeness in long-form generation, addressing the missing half of factuality (precision being the dominant focus). It enumerates the full set of facts a complete answer should contain, handling open-ended sets, ordered processes, and fact relationships that independent boolean checks miss.</p>]]></summary>
+    <category term="Evaluation"/>
+    <category term="Factuality"/>
+    <category term="Long-form Generation"/>
+    <category term="Benchmarks"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:67065d021e71</id>
+    <title>Agentic Real2Sim: Physics-based World Modeling with Vision-Language Agents</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19190" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-67065d021e71" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Guanxiong Chen, Qianjun Xia, Jiawei Peng, Heng Zhang, Bole Ma, Justin Qian, Ziyi Jiao, Bingyang Zhou, Luoxin Ye, Kaifeng Zhang, Kunyi Wang, Weijia Zeng, Yunuo Chen, Pengzhi Yang, Ziqiu Zeng, Huamin Wang, Chao Liu, Alan Yuille, Fan Shi, Changxi Zheng, Yunzhu Li, Chenfanfu Jiang, Peter Yichen Chen</name></author>
+    <summary type="html"><![CDATA[<p>Agentic Real2Sim automatically converts real-world robotic interaction recordings into physically accurate, simulatable digital twins (rigid, deformable, humanoid). Achieves 48% replay success on 100 DROID rigid manipulation episodes using open-weight VLM backend, demonstrating cost-effectiveness vs. proprietary models.</p>]]></summary>
+    <category term="Robot Learning"/>
+    <category term="Sim2Real"/>
+    <category term="Digital Twins"/>
+    <category term="Vision-Language Models"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3426457f7355</id>
+    <title>PRO-LONG: Programmatic Memory Enables Long-Horizon Reasoning</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20064" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3426457f7355" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Alexis Fox, Junlin Wang, Paul Rosu, Bhuwan Dhingra</name></author>
+    <summary type="html"><![CDATA[<p>PRO-LONG introduces programmatic memory for long-horizon LLM agent reasoning, using code as external memory to manage what to save from environment and how to load into context. Avoids the tradeoff between preserving information and retrieval tractability by structuring memory as executable programs.</p>]]></summary>
+    <category term="LLM Agents"/>
+    <category term="Long-horizon Reasoning"/>
+    <category term="Memory Management"/>
+    <category term="Programmatic Memory"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:58913d5645df</id>
+    <title>Vera: Identity-Faithful Human Subject-to-Video Generation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20247" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-58913d5645df" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Yulong Xu, Xinyue Liu, Shujuan Li, huafeng shi, Yan Zhou, Jiwen Liu, Xintao Wang, Yu Shen Liu, Huaibo Huang</name></author>
+    <summary type="html"><![CDATA[<p>Vera proposes unified human-centric subject-to-video generation for single/multi-person scenarios. Constructs million-pair identity-aligned human image-video dataset via person-level cross-clip retrieval. Addresses identity drift in multi-person scenarios (subject confusion, attribute swapping, excessive copying) with explicit identity correspondence.</p>]]></summary>
+    <category term="Video Generation"/>
+    <category term="Human Generation"/>
+    <category term="Identity Consistency"/>
+    <category term="Subject-to-Video"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a6d61b10c6d8</id>
+    <title>Test-Time Training for Modality Order Consistency in Vision-Language Models</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20351" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a6d61b10c6d8" rel="related" type="text/html"/>
+    <published>2026-07-23T03:16:00Z</published>
+    <updated>2026-07-23T03:16:00Z</updated>
+    <author><name>Aditi Gupta, Yossi Gandelsman</name></author>
+    <summary type="html"><![CDATA[<p>Discovers modality order failure in VLMs: image-first prompting consistently outperforms question-first across 3 models/3 benchmarks. Designs order-consistent test-time training closing the gap and bootstrapping both orderings. Activation patching localizes failure to narrow mid-network region where representations diverge.</p>]]></summary>
+    <category term="VLM Robustness"/>
+    <category term="Test-time Training"/>
+    <category term="Prompt Sensitivity"/>
+    <category term="Activation Patching"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ca0891e77eea</id>
+    <title>Appearance Pointers -- Multimodal Region Control of Diffusion Transformers</title>
+    <link href="https://huggingface.co/papers/2607.19344" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ca0891e77eea" rel="related" type="text/html"/>
+    <published>2026-07-23T03:14:00Z</published>
+    <updated>2026-07-23T03:14:00Z</updated>
+    <author><name>Rahul Sajnani, Yulia Gryaditskaya, Radomír Měch, Srinath Sridhar, Matheus Gadelha</name></author>
+    <summary type="html"><![CDATA[<p>Appearance Pointers enable precise regional control in Diffusion Transformors by aligning text/image inputs with user-specified masks via compact tokens from a region correspondence network with spatial aggregation. Handles multiple regions, materials, object identities, and spatial arrangements beyond text prompting capabilities.</p>]]></summary>
+    <category term="Controllable Generation"/>
+    <category term="Diffusion Transformers"/>
+    <category term="Image Editing"/>
+    <category term="Region Control"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e954894776e1</id>
+    <title>RoboInter1.5: A Holistic Intermediate Representation Suite for Embodied World Modeling and Robotic Manipulation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.18709" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e954894776e1" rel="related" type="text/html"/>
+    <published>2026-07-23T03:14:00Z</published>
+    <updated>2026-07-23T03:14:00Z</updated>
+    <author><name>Ziqin Wang, Hao Li, Weijun Wang, Junhao Cai, Jia Zeng, Yilun Chen, Jiangmiao Pang, Si Liu</name></author>
+    <summary type="html"><![CDATA[<p>RoboInter1.5 extends the intermediate representation suite for embodied world modeling and robotic manipulation with 230k+ episodes across 571 scenes, dense per-frame annotations covering 10+ representation types (subtasks, primitive skills, object/gripper states, contact, force, etc.), plus benchmarks and models.</p>]]></summary>
+    <category term="Robot Datasets"/>
+    <category term="Embodied AI"/>
+    <category term="World Modeling"/>
+    <category term="Manipulation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:501d5f09c165</id>
+    <title>Look Less, Think Faster: Joint Token-Compute Adaptation for Multimodal LLMs</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20357" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-501d5f09c165" rel="related" type="text/html"/>
+    <published>2026-07-23T03:14:00Z</published>
+    <updated>2026-07-23T03:14:00Z</updated>
+    <author><name>Pengcheng Wang, Zhiquan Wang, Jayoung Lee, Zhuoyan Xu, Ran Xu, Saurabh Bagchi, Yin Li, Somali Chaterji</name></author>
+    <summary type="html"><![CDATA[<p>SmartVL proposes joint token-compute adaptation for MLLMs, unifying visual token pruning and LLM layer/head skipping with dynamic resource allocation based on input content. Addresses the coupling where available compute must be allocated across dimensions, unlike prior independent approaches.</p>]]></summary>
+    <category term="MLLM Efficiency"/>
+    <category term="Adaptive Inference"/>
+    <category term="Token Pruning"/>
+    <category term="Compute Optimization"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:748d58a86e2d</id>
+    <title>Train the Model, Not the Reader: Decodability Supervision for Verifiable Activation Explanations</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20379" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-748d58a86e2d" rel="related" type="text/html"/>
+    <published>2026-07-23T03:14:00Z</published>
+    <updated>2026-07-23T03:14:00Z</updated>
+    <author><name>Hiskias Dingeto</name></author>
+    <summary type="html"><![CDATA[<p>This paper critiques natural-language autoencoder evaluation of activation explanations (reconstruction-based scoring) as structurally insensitive to false claims. Shows explanations reconstruct well while ~2% of specific claims are reconstruction-dependent. Standard recipe develops co-adapted private codes. Contributes two audit procedures for verifiable explanations.</p>]]></summary>
+    <category term="Interpretability"/>
+    <category term="Activation Explanations"/>
+    <category term="Evaluation Methods"/>
+    <category term="Mechanistic Interpretability"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4d36430fadd6</id>
+    <title>Subliminal Clocks: Latent Time Modelling in Diffusion Language Models</title>
+    <link href="https://huggingface.co/papers/2607.01774" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4d36430fadd6" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Maximo Eduardo Rulli, Thomas Vaitses Fontanari, Simone Petruzzi, Federico Alvetreti, Giorgio Strano, Donato Crisostomi, Giorgos Nikolaou, Tommaso Mencattini, Andrea Santilli, Emanuele Rodolà, Simone Scardapane, Alessio Devoto</name></author>
+    <summary type="html"><![CDATA[<p>This work shows that Diffusion Language Models (DLMs) internally encode a latent representation of denoising progress (timestep) in their residual streams, despite not being explicitly conditioned on timesteps. This signal is reliably extractable via probes across layers, and steering along the associated low-dimensional subspace systematically modulates the model's notion of denoising progress, enabling control over generation.</p>]]></summary>
+    <category term="Diffusion Language Models"/>
+    <category term="Interpretability"/>
+    <category term="Representation Learning"/>
+    <category term="Generation Control"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:5f4dcefdd592</id>
+    <title>H^2SD: Hybrid Hindsight Self-Distillation</title>
+    <link href="https://huggingface.co/papers/2607.18955" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-5f4dcefdd592" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Qiye Cai, Yichuan Ma, Linyang Li, Peiji Li, Yongkang Chen, Qipeng Guo, Yicheng Zou, Tao Gui, Xiaocheng Feng, Bing Qin</name></author>
+    <summary type="html"><![CDATA[<p>H^2SD (Hybrid Hindsight Self-Distillation) improves RLVR by combining on-policy self-distillation with hindsight relabeling. It addresses sparse scalar outcome rewards and limitations of OPD (needs separate teacher) and OPSD (information leakage, instability). Uses privileged information to construct teacher policy and hybridizes with hindsight for stable token-level credit assignment.</p>]]></summary>
+    <category term="RLVR"/>
+    <category term="Self-Distillation"/>
+    <category term="Reasoning"/>
+    <category term="Credit Assignment"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:74c911ce6505</id>
+    <title>ATSplat: Compact Feed-forward 3D Gaussian Splatting with Adaptive Token Expansion</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20417" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-74c911ce6505" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Cho In, Jeonghwan Cho, Mijin Yoo, Gim Hee Lee, Seon Joo Kim</name></author>
+    <summary type="html"><![CDATA[<p>ATSplat restores adaptive capacity allocation of 3D Gaussian Splatting optimization in feed-forward 3DGS via Adaptive 3D Tokens. Lifts coarse patch-level depth/camera cues into sparse 3D anchors, then expands tokens adaptively based on scene complexity rather than image resolution/viewpoints, avoiding dense redundant Gaussian sets.</p>]]></summary>
+    <category term="3D Reconstruction"/>
+    <category term="Gaussian Splatting"/>
+    <category term="Feed-forward 3D"/>
+    <category term="Adaptive Computation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:99d727a084a8</id>
+    <title>Beyond Relevance-Centric Retrieval: Rubric-Oriented Document Set Selection and Ranking</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19747" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-99d727a084a8" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Kailin Jiang, Lei Liu, Jian Xi, Hui Xu, Junlin Liu, Baochen Fu, Shaoqing Ren, Bin Li, Vichwang, Yu Lu, Haibo Shi</name></author>
+    <summary type="html"><![CDATA[<p>This work proposes a complete evaluate-diagnose-optimize framework for document set retrieval beyond relevance-centric nDCG. Introduces SetwiseEvalKit (3-level, 9-dimension benchmark, ~28K rubrics) covering short/long-form scenarios. Finds even best rerankers achieve ≤45% coverage, revealing inter-document interaction gaps (redundancy, conflict, complementarity).</p>]]></summary>
+    <category term="Retrieval Evaluation"/>
+    <category term="Document Sets"/>
+    <category term="RAG"/>
+    <category term="Information Retrieval"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:b33a8198ea72</id>
+    <title>PerceptDrive: Perception Prior World-Action Modeling with Adaptive Expert Routing for End-to-End Autonomous Driving</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20175" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-b33a8198ea72" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Yushan Liu, Tianxiong Lv, Bohua Wang, Hangqi Fan, Chenxu Zhao, He Zheng, Xuchang Zhong, Yifan Xie, Congyang Zhao, Zhihao Liao, Leigang Luo, Yang Cai, Xiao-Ping Zhang, Wenbo Ding</name></author>
+    <summary type="html"><![CDATA[<p>PerceptDrive achieves SOTA on NAVSIM v1 (90.4 PDMS) and v2 (90.2 EPDMS) for end-to-end autonomous driving. Uses adaptive expert routing and per-branch prior retention to transfer knowledge from frozen perception foundation models to trajectory generation, with efficient single-trajectory inference.</p>]]></summary>
+    <category term="Autonomous Driving"/>
+    <category term="End-to-end Driving"/>
+    <category term="Perception Priors"/>
+    <category term="Expert Routing"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:906581ed6436</id>
+    <title>Multi-Mask Diffusion Language Models for Few-Step Generation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19686" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-906581ed6436" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Sijin Chen, Yinuo Ren, Heyang Zhao, Ziheng Cheng, Quanquan Gu, Lexing Ying</name></author>
+    <summary type="html"><![CDATA[<p>MultiMDM (Multi-Mask Diffusion Model) preserves masking structure for few-step generation. Forward process pushes each clean token to designated mask then gradually mixes over mask set. Backward process distinguishes clean tokens from noise better than uniform-state diffusion, preserving MDM training efficiency and modeling quality.</p>]]></summary>
+    <category term="Diffusion Language Models"/>
+    <category term="Few-step Generation"/>
+    <category term="Masked Diffusion"/>
+    <category term="Generative Modeling"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e3cc6fbf4159</id>
+    <title>SeededGrasp: Language-Guided Grasping in Complex Scenes with Multiple Embodiments</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20207" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e3cc6fbf4159" rel="related" type="text/html"/>
+    <published>2026-07-23T03:12:00Z</published>
+    <updated>2026-07-23T03:12:00Z</updated>
+    <author><name>Yang Xu, Gurpreet Singh Mukker, Raymond Wang, Jasper Gerigk, Maria Attarian, Igor Gilitschenski</name></author>
+    <summary type="html"><![CDATA[<p>SeededGrasp decouples high-level semantic reasoning (VLM for seed point prediction) from low-level geometric grasp generation for language-guided multi-embodiment grasping in cluttered scenes. Achieves 78% real-world success with unseen gripper, outperforming simulation baselines by 35%.</p>]]></summary>
+    <category term="Robotic Grasping"/>
+    <category term="Vision-Language Models"/>
+    <category term="Multi-embodiment"/>
+    <category term="Language-guided Manipulation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ce5ffc295c35</id>
+    <title>Stale but Stable: Staleness-Adaptive Trust Regions for Stabilizing Asynchronous Reinforcement Learning</title>
+    <link href="https://huggingface.co/papers/2607.18722" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ce5ffc295c35" rel="related" type="text/html"/>
+    <published>2026-07-23T03:09:00Z</published>
+    <updated>2026-07-23T03:09:00Z</updated>
+    <author><name>Junyao Yang, Yucheng Shi, Zongxia Li, Zhongzhi Li, Ruhan Wang, Xiangxin Zhou, Kishan Panaganti, Haitao Mi, Leowei Liang</name></author>
+    <summary type="html"><![CDATA[<p>SAT (Staleness-Adaptive Trust Region) stabilizes asynchronous reinforcement learning by using detached sampled log-ratio as a staleness proxy, identifying high-mismatch tails within batches, and applying adaptive trust-region constraints. This addresses the critical mismatch between training and inference policies in async RL where PPO clipping only gates sampled updates rather than constraining full-policy divergence.</p>]]></summary>
+    <category term="Reinforcement Learning"/>
+    <category term="Asynchronous Training"/>
+    <category term="Policy Optimization"/>
+    <category term="Trust Regions"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c24b0e0ea064</id>
+    <title>Solar Open 2 Technical Report</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20062" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c24b0e0ea064" rel="related" type="text/html"/>
+    <published>2026-07-23T03:09:00Z</published>
+    <updated>2026-07-23T03:09:00Z</updated>
+    <author><name>Sungrae Park, Sanghoon Kim, Gyoungjin Gim, Jungho Cho, Hyunwoong Ko, Minbyul Jeong, Minjeong Kim, Keunwoo Choi, Chaehun Shin, Chanwoong Yoon, Dongjun Kim, Eunwon Kim, Gyungin Shin, Hyeonju Lee, Hyungkyu Kang, Inseo Song, Jisu Bae, Jiyoon Han, Jiyun Lee, Joonkee Kim, Junyeop Lee, Mikyoung Cha, Sangwon Yu, Sehwan Joo, Seokyoon Kang, Seonghoon Yang, Seung Shin, Seunghyun Lee, Seungseop Lim, Seungyoun Shin, Sukyung Lee, Taegyeong Eo, Taehwan Oh, Taewhoo Lee, Wonho Song, Wonjun Oh, Wonseok Hwang, Yunsu Kim, Yura Shim, Hwalsuk Lee, Sunghun Kim, Du-Seong Chang, Kyunghyun Cho, Seungju Han, Yejin Choi, Junsuk Choe, Hwaran Lee, Minjeong Ban, Yun Taewon, Hwanjun Song, Jae-Gil Lee, KyungTae Lim, Alice Oh</name></author>
+    <summary type="html"><![CDATA[<p>Solar Open 2 is a 250B-A15B MoE model for sovereign AI in Korea with 1M-token context and enhanced agentic capabilities. Leads Korean benchmarks (complex office work) and shows competitive English performance against larger frontier models. Technical report from Upstage Solar Team with 40+ authors.</p>]]></summary>
+    <category term="LLM Release"/>
+    <category term="MoE Models"/>
+    <category term="Long Context"/>
+    <category term="Sovereign AI"/>
+    <category term="Korean Language"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f9ed2e5b02a8</id>
+    <title>EgoRecovery: Acquiring Failure Recovery Ability Through Human Recovery Demonstration</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19745" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f9ed2e5b02a8" rel="related" type="text/html"/>
+    <published>2026-07-23T03:09:00Z</published>
+    <updated>2026-07-23T03:09:00Z</updated>
+    <author><name>Zuhao Ge, Yuchen Zhou, Weitao Zhou, Minglei Li, Xinyu Li, Chao Wu, Hanwen Zhao, Haotian Wang, Zuxuan Wu, Xiaosong Jia, Yu-Gang Jiang</name></author>
+    <summary type="html"><![CDATA[<p>EgoRecovery shows egocentric human failure recovery data provides scalable alternative to robot teleoperation for training recovery policies. Efficiently arranges task-level failure configurations and records short human recoveries, enabling robots to learn failure recovery in unstructured environments.</p>]]></summary>
+    <category term="Robot Learning"/>
+    <category term="Failure Recovery"/>
+    <category term="Human Demonstration Data"/>
+    <category term="Imitation Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c27be698e62a</id>
+    <title>Self-supervision drives representational convergence in medical foundation models more than clinical supervision</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20274" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c27be698e62a" rel="related" type="text/html"/>
+    <published>2026-07-23T03:09:00Z</published>
+    <updated>2026-07-23T03:09:00Z</updated>
+    <author><name>Soroosh Tayebi Arasteh, Sebastian Ziegelmayer, Mahshad Lotfinia, Lisa Adams, Sven Nebelung, Jakob Nikolas Kather, Daniel Truhn</name></author>
+    <summary type="html"><![CDATA[<p>Research demonstrates self-supervised objectives (not clinical supervision or model scale) are primary drivers of representational convergence in medical foundation models. Functional transferability possible despite modest geometric alignment, but convergence is uneven across demographics and largely absent between image/text modalities.</p>]]></summary>
+    <category term="Medical AI"/>
+    <category term="Self-supervised Learning"/>
+    <category term="Representational Convergence"/>
+    <category term="Fairness"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:cbbc5a115089</id>
+    <title>PerfAgent: Profiler-Guided Iterative Refinement for Repository-Level Code Optimization</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19653" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-cbbc5a115089" rel="related" type="text/html"/>
+    <published>2026-07-23T03:09:00Z</published>
+    <updated>2026-07-23T03:09:00Z</updated>
+    <author><name>Ryan Deng, Yuanzhe Liu, Bastian Lipka, Yao Ma, Xuhao Chen, Tim Kaler, Jatin Ganhotra</name></author>
+    <summary type="html"><![CDATA[<p>PerfAgent introduces profiler-guided, verifier-in-the-loop workflow for repository-level code optimization. Gives coding agents feedback to find bottlenecks behind abstractions, avoid shallow speedups, and test patches for edge cases. Addresses behavior preservation + performance improvement + expert speedups.</p>]]></summary>
+    <category term="Code Optimization"/>
+    <category term="LLM Agents"/>
+    <category term="Profiling"/>
+    <category term="Repository-level Tasks"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:57e8f0a585dd</id>
+    <title>DataFlow-Harness: A Grounded Code-Agent Platform for Constructing Editable LLM Data Pipelines</title>
+    <link href="https://huggingface.co/papers/2607.16617" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-57e8f0a585dd" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Runming He, Zhen Hao Wong, Hao Liang, Zimo Meng, Chengyu Shen, Xiaochen Ma, Wentao Zhang</name></author>
+    <summary type="html"><![CDATA[<p>DataFlow-Harness bridges the NL2Pipeline gap by guiding LLM agents to construct persistent, editable DAG-based data pipelines through typed incremental mutations rather than free-form scripts. It combines procedural guidance skills, a Model Context Protocol layer exposing live operator registry, and a visual DAG editor synchronized with conversational authoring. Achieves 90%+ success on a 12-task data engineering benchmark.</p>]]></summary>
+    <category term="LLM Agents"/>
+    <category term="Data Engineering"/>
+    <category term="Human-AI Collaboration"/>
+    <category term="Code Generation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a075c20cc5b9</id>
+    <title>HPD-Parsing: Hierarchical Parallel Document Parsing</title>
+    <link href="https://huggingface.co/papers/2607.18839" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a075c20cc5b9" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Shu Wei, Jingjing Wu, Lingshu Zhang, Qunyi Xie, Hao Zou, Le Xiang, Xu Fan, Yangliu Xu, Manhui Lin, Xiaolong Ma, Cheng Cui, Tengyu Du, YY</name></author>
+    <summary type="html"><![CDATA[<p>HPD-Parsing introduces Hierarchical Parallel Decoding for document parsing, replacing full-page autoregressive generation with a main layout branch that organizes document structure and dynamically assigns block-level parsing to parallel sub-branches. This reflects the principle that layout requires global analysis while block content can be parsed in parallel, eliminating the sequential bottleneck.</p>]]></summary>
+    <category term="Document Understanding"/>
+    <category term="Vision-Language Models"/>
+    <category term="Efficient Decoding"/>
+    <category term="Parallel Generation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c5af036dcb2f</id>
+    <title>Transcription Policy as a Latent Variable: Activating Controllable Verbatim ASR with Word-Level Timing</title>
+    <link href="https://huggingface.co/papers/2607.18934" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c5af036dcb2f" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Laurin Wagner, Mario Zusag, Bernhard Thallinger</name></author>
+    <summary type="html"><![CDATA[<p>This paper treats transcription style (verbatim vs. intended) as a controllable latent variable in ASR models trained on heterogeneous data. Using coverage-aware decoder task tokens trained on parallel verbatim/intended pairs, it raises German disfluency F1 from 10% to 79% zero-shot (English-only training). Full fine-tuning surpasses baselines in verbatim accuracy, disfluency detection, and intended-mode quality across languages.</p>]]></summary>
+    <category term="ASR"/>
+    <category term="Controllable Generation"/>
+    <category term="Speech Recognition"/>
+    <category term="Cross-lingual Transfer"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:fa3a4decac73</id>
+    <title>Pushing the Frontier of Full-Song Generation: Hierarchical Autoregressive Planning Meets Flow-Matching Rendering</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20253" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-fa3a4decac73" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Junyu Dai, Xinyue Fan, Weiqin Li, Xiangang Li, Yunjia Li, Bin Ma, Yukun Ma, Chongjia Ni, Yufei Shi, Haoxu Wang, Menglin Wu, Jianwei Yu, Huaicheng Zhang, Han Zhao, Shengkui Zhao, Haina Zhu</name></author>
+    <summary type="html"><![CDATA[<p>Alibaba Token Foundry develops a unified framework for high-fidelity controllable full-song generation from lyrics, text, and reference audio, integrating open-ended song, instrumental, and cover generation. Achieves Elo 1,129 on external leaderboard and leads most internal evaluation dimensions.</p>]]></summary>
+    <category term="Audio Generation"/>
+    <category term="Music Generation"/>
+    <category term="Multimodal Generation"/>
+    <category term="Flow Matching"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:6bd4cf2ab84f</id>
+    <title>PyroDash: Cost-Efficient Token-Level Small-Large Language Model Collaborative Inference</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20327" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-6bd4cf2ab84f" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Niqi Lyu, Pengtao Shi, Wei Qiu, Jianlin Zhong, Sicong Xia, Jianyao Ma, Yicheng Ding</name></author>
+    <summary type="html"><![CDATA[<p>PyroDash enables cost-efficient token-level collaborative inference where a small LM autonomously decides when to offload to a large LM in a single context-preserving handoff. Achieves higher accuracy than LLM-only or significant cost reductions while maintaining competitive performance.</p>]]></summary>
+    <category term="Efficient Inference"/>
+    <category term="Model Routing"/>
+    <category term="SLM-LLM Collaboration"/>
+    <category term="Cost Optimization"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a17480ef654c</id>
+    <title>Defer to Plan: Adaptive Multi-Agent Fusion for End-to-End V2X Driving</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19774" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a17480ef654c" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Nuoran Li, Zhang Zhang, Yueran Zhao, Tianze Wang, Chao Sun</name></author>
+    <summary type="html"><![CDATA[<p>Defer to Plan proposes an end-to-end V2X collaborative driving system directly optimizing planning performance. Uses MotionNetwork for temporal fusion, attention for spatial compression, autoregressive decoder for adaptive multi-agent fusion, and MoE for heterogeneous feature representation. Optimizes planning not just perception.</p>]]></summary>
+    <category term="Autonomous Driving"/>
+    <category term="V2X"/>
+    <category term="End-to-end Planning"/>
+    <category term="Multi-agent Fusion"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:7920d021835a</id>
+    <title>Notes to Self: Can LLMs Benefit from Experiential Abstractions?</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20372" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-7920d021835a" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Chang Liu, Xinyu Li, Artur Dubrawski</name></author>
+    <summary type="html"><![CDATA[<p>CMU Auton Lab investigates if smaller LLMs can extract and use experiential abstractions from their own reasoning (notes-to-self). Self-extracted abstractions improve math/logic reasoning, achieving performance comparable to larger teacher models.</p>]]></summary>
+    <category term="Self-improvement"/>
+    <category term="Reasoning"/>
+    <category term="Knowledge Distillation"/>
+    <category term="Experiential Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:645cd1a354c8</id>
+    <title>LKValues: Aligning Large Language Models with Sri Lankan Societal Values</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20410" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-645cd1a354c8" rel="related" type="text/html"/>
+    <published>2026-07-23T03:07:00Z</published>
+    <updated>2026-07-23T03:07:00Z</updated>
+    <author><name>Nethmi Muthugala, Supryadi, Surangika Ranathunga, Nisansa de Silva, Ruijie Tao, Ovindu Gunatunga, Pengyun Zhu, Shaowei Zhang, Jingting Zheng, Deyi Xiong</name></author>
+    <summary type="html"><![CDATA[<p>LKValues creates first Sri Lankan value alignment resource suite from trilingual survey of 205 respondents. Derives 40 majority-endorsed societal values, constructs Sinhala-English instruction corpus (150K scenarios) for culturally sensitive evaluation/fine-tuning. Addresses Western bias in LLM value alignment.</p>]]></summary>
+    <category term="Value Alignment"/>
+    <category term="Cultural AI"/>
+    <category term="Low-resource Languages"/>
+    <category term="Instruction Tuning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f13ac8fee138</id>
+    <title>AgentDebugX: An Open-Source Toolkit for Failure Observability, Attribution, and Recovery in LLM Agents</title>
+    <link href="https://huggingface.co/papers/2607.18754" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f13ac8fee138" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Kunlun Zhu, Xuyan Ye, Zhiguang Han, Yuchen Zhao, Bingxuan Li, Weijia Zhang, Muxin Tian, Xiangru Tang, Pan Lu, James Zou, Jiaxuan You, Heng Ji</name></author>
+    <summary type="html"><![CDATA[<p>AgentDebugX is an open-source debugging framework for LLM agents organizing debugging as a closed loop: Detect, Attribute, Recover, Rerun. Its core DeepDebug performs multi-turn root-cause diagnosis via global trajectory understanding, structure-guided investigation, and cross-examination. Achieves best strict attribution accuracy on Who/When benchmark (28.8% exact agent-and-step accuracy on Qwen3.5-9B).</p>]]></summary>
+    <category term="LLM Agents"/>
+    <category term="Debugging"/>
+    <category term="Observability"/>
+    <category term="Agent Reliability"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ff5d09929b3a</id>
+    <title>ConsiSpace: Learning Geometric Consistency Matters for Video Spatial Reasoning</title>
+    <link href="https://huggingface.co/papers/2607.17599" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ff5d09929b3a" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Ting Huang, Zhenyu Zhang, Wenyuan Huang, Jian Yang, Hao Tang</name></author>
+    <summary type="html"><![CDATA[<p>ConsiSpace proposes a geometry-consistency-aware framework for video spatial reasoning, turning spatial consistency into both an evidence organization principle and explicit post-SFT learning signal. Builds a geometry-consistent memory (GCM) with implicit evidence tokens and explicit geometric cues for navigation and long-video QA under changing viewpoints.</p>]]></summary>
+    <category term="Video Understanding"/>
+    <category term="Spatial Reasoning"/>
+    <category term="Multimodal LLMs"/>
+    <category term="Geometry Consistency"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:b89c2c378bf7</id>
+    <title>Audio-Zero: Label-Free Self-Evolution for Fine-Grained Audio Reasoning</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20166" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-b89c2c378bf7" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Siqian Tong, Xuan Li, Chaozhuo Li, Baolong Bi, Yiwei Wang, Yujun Cai, Shenghua Liu, Chengpeng Hao</name></author>
+    <summary type="html"><![CDATA[<p>Audio-Zero introduces label-free self-evolution for fine-grained audio reasoning via self-play with unlabeled audio contrast pairs. Achieves 8% improvement on MMAU Test-mini and 10% on MMAR for Qwen2.5-Omni-7B, demonstrating consistent gains without labeled data.</p>]]></summary>
+    <category term="Audio Understanding"/>
+    <category term="Self-supervised Learning"/>
+    <category term="Self-play"/>
+    <category term="Multimodal LLMs"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:112b44a33ab0</id>
+    <title>WearWow: Native 2K Multi-Garment Virtual Try-On via Adaptive Token Packing and Preference Alignment</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19923" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-112b44a33ab0" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Xujie Zhang, Runyan Du, Song Chang, Jiang Li, Dongliang Shao, Liping Wu, Wei Luo, Xiaochao Qu, Luoqi Liu, Xiaodan Liang</name></author>
+    <summary type="html"><![CDATA[<p>WearWow enables native 2K multi-garment virtual try-on via Adaptive 2D Token Packing (ATP) leveraging garment sparsity to pack items on unified canvas, pruning background tokens. Rectifies texture degradation via preference alignment. Mask-free, end-to-end, ultra-high-resolution synthesis.</p>]]></summary>
+    <category term="Virtual Try-on"/>
+    <category term="Fashion AI"/>
+    <category term="High-resolution Generation"/>
+    <category term="Token Packing"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:364cd01927fa</id>
+    <title>StreamHOI: Interaction-aware Temporal Memory Adaptation for Streaming HOI Video Generation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20174" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-364cd01927fa" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Zejing Rao, Haoxian Zhang, Xiaoqiang Liu, Yiping Meng, Guoxin Zhang, Pengfei Wan, Fan Tang, Tong-Yee Lee</name></author>
+    <summary type="html"><![CDATA[<p>StreamHOI presents low-latency streaming framework for long-duration human-object interaction video generation. Studies how image-to-video streaming generator should organize historical memory to preserve interactions under bounded latency. Finds standard sink-local memory faces tradeoffs; different transformer blocks prefer different memory for HOI vs. surrounding regions.</p>]]></summary>
+    <category term="Video Generation"/>
+    <category term="Streaming"/>
+    <category term="Human-Object Interaction"/>
+    <category term="Memory Management"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4323dbf28641</id>
+    <title>PoTRE: Test-Time Reasoning inspired by Cognitive Heterogeneity</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20268" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4323dbf28641" rel="related" type="text/html"/>
+    <published>2026-07-23T03:04:00Z</published>
+    <updated>2026-07-23T03:04:00Z</updated>
+    <author><name>Anmol Kankariya, Sercan Ö. Arık</name></author>
+    <summary type="html"><![CDATA[<p>PoTRE (Poly-Topological Reasoning Ensembles) decouples inference into four heterogeneous agents: Adversarial Refinement, Hierarchical Planning, Spectrum Search, and Direct Chain. Task-Adaptive Aggregation Layer reconciles via candidate selection, semantic synthesis, or neuro-symbolic verification. Inspired by cognitive heterogeneity.</p>]]></summary>
+    <category term="Multi-agent Reasoning"/>
+    <category term="Chain-of-Thought"/>
+    <category term="Ensemble Methods"/>
+    <category term="Neuro-symbolic"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a4f9874aadce</id>
+    <title>AutoIndex: Learning Representation Programs for Retrieval</title>
+    <link href="https://huggingface.co/papers/2607.18603" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a4f9874aadce" rel="related" type="text/html"/>
+    <published>2026-07-23T03:02:00Z</published>
+    <updated>2026-07-23T03:02:00Z</updated>
+    <author><name>Sam O'Nuallain, Nithya Rajkumar, Ramya Narayanasamy, Hanna Jiang, Shreyas Chaudhari, Andrew Drozdov</name></author>
+    <summary type="html"><![CDATA[<p>AutoIndex learns representation programs—executable transformations mapping raw documents to retrieval representations—via validation-guided program search. Agents diagnose failures and synthesize candidate updates, retaining only improvements. Evaluated on CRUMB benchmark with fixed BM25, learned programs improve recall over static baselines.</p>]]></summary>
+    <category term="Retrieval"/>
+    <category term="Agentic Workflows"/>
+    <category term="Program Synthesis"/>
+    <category term="RAG"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9b0338caaaa9</id>
+    <title>Delineate Anything v2: A Global Foundation Model for Field Delineation</title>
+    <link href="https://huggingface.co/papers/2607.19069" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9b0338caaaa9" rel="related" type="text/html"/>
+    <published>2026-07-23T03:02:00Z</published>
+    <updated>2026-07-23T03:02:00Z</updated>
+    <author><name>Mykola Lavreniuk, Nataliia Kussul, Andrii Shelestov, Yevhenii Salii, Volodymyr Kuzin, Charlotte Julia Li-Xing Wang, Zoltan Szantoi</name></author>
+    <summary type="html"><![CDATA[<p>Delineate Anything v2 is a global foundation model for agricultural field boundary delineation, addressing SAM's failures in geospatial domains (topological complexity, cropland textures, lack of scale awareness). It constructs FBIS-73M (73M instances, 61 countries) with a resolution-specific curation pipeline using topological image-space adaptation to address multi-field parcel merging.</p>]]></summary>
+    <category term="Geospatial AI"/>
+    <category term="Segmentation"/>
+    <category term="Foundation Models"/>
+    <category term="Agriculture"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4807193ed371</id>
+    <title>SLPO: Scaling Latent Reasoning via a Surrogate Policy</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19691" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4807193ed371" rel="related" type="text/html"/>
+    <published>2026-07-23T03:02:00Z</published>
+    <updated>2026-07-23T03:02:00Z</updated>
+    <author><name>Runyang You, Zhiyuan Liu, Yongqi Li, Wenjie Li</name></author>
+    <summary type="html"><![CDATA[<p>SLPO (Surrogate Latent Policy Optimization) enables outcome-reward RL for latent reasoners via tractable surrogate policy density for continuous transitions and adaptive stopping. Improves Pass@k scores (COCONUT+SLPO on GPT-2: Pass@16 49.13%→51.55% on GSM8K) and adaptively allocates compute by problem difficulty.</p>]]></summary>
+    <category term="Latent Reasoning"/>
+    <category term="RL Optimization"/>
+    <category term="Adaptive Computation"/>
+    <category term="Reasoning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:bf933117da12</id>
+    <title>HeadCast: Casting Attention Heads for Efficient Autoregressive Video Generation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20125" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-bf933117da12" rel="related" type="text/html"/>
+    <published>2026-07-23T03:02:00Z</published>
+    <updated>2026-07-23T03:02:00Z</updated>
+    <author><name>Jinliang Shen, Lianghao Su, Zheming Li, Kang He, ZiLiang Lai, Yanbing Jiang, Chengru Song</name></author>
+    <summary type="html"><![CDATA[<p>HeadCast is a training-free framework for autoregressive video diffusion that classifies attention heads into archetypes and applies tailored cache management/computation. Achieves up to 1.95x speedup at 1080P while maintaining quality and mitigating flickering.</p>]]></summary>
+    <category term="Video Generation"/>
+    <category term="Inference Optimization"/>
+    <category term="Attention Mechanisms"/>
+    <category term="Training-free Acceleration"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:927e3a9b35c3</id>
+    <title>SOPD-SocialNav: Selective On-Policy Distillation for Vision-Language Social Navigation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19850" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-927e3a9b35c3" rel="related" type="text/html"/>
+    <published>2026-07-23T03:02:00Z</published>
+    <updated>2026-07-23T03:02:00Z</updated>
+    <author><name>Xinyu Zhang, Zishuo Wang, Ling Xiao</name></author>
+    <summary type="html"><![CDATA[<p>SOPD-SocialNav transfers social navigation knowledge from large teacher VLM to lightweight student VLM via selective on-policy distillation. Entropy-based token selection uses teacher uncertainty to identify socially informative decision tokens, suppressing gradients from trivial navigation states.</p>]]></summary>
+    <category term="Social Navigation"/>
+    <category term="Knowledge Distillation"/>
+    <category term="VLM Compression"/>
+    <category term="Robot Deployment"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:99d36c0acd74</id>
+    <title>SciForma: Structure-Faithful Generation of Scientific Diagrams</title>
+    <link href="https://huggingface.co/papers/2607.18091" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-99d36c0acd74" rel="related" type="text/html"/>
+    <published>2026-07-23T03:00:00Z</published>
+    <updated>2026-07-23T03:00:00Z</updated>
+    <author><name>Yuxuan Luo, Peng Zhang, Xinjie Zhang, Xun Guo, Zhouhui Lian, Yan Lu</name></author>
+    <summary type="html"><![CDATA[<p>SciForma addresses structure-faithful generation of scientific methodology diagrams where a single error (reversed arrow, unreadable equation) invalidates the entire figure. It introduces a framework with structured representation, constraint-aware generation, and multi-dimensional verification to ensure conjunctive correctness across components, directional relations, and textual annotations.</p>]]></summary>
+    <category term="Scientific AI"/>
+    <category term="Diagram Generation"/>
+    <category term="Structured Generation"/>
+    <category term="Verification"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:dcf119f0f2c2</id>
+    <title>PercepCap: Video Captioner with Structured Spatio-Temporal Perception</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20389" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-dcf119f0f2c2" rel="related" type="text/html"/>
+    <published>2026-07-23T03:00:00Z</published>
+    <updated>2026-07-23T03:00:00Z</updated>
+    <author><name>Yifan Xu, Zihao Wang, Zhixiao Wang, Jiaming Zhang, Yichun Yang, Desen Meng, Yuanxing Zhang, Pengfei Wan, Limin Wang</name></author>
+    <summary type="html"><![CDATA[<p>PercepCap presents a perception-aware video captioning framework with explicit perceive-describe generation chain. Model first produces spatiotemporal perception trace (object locations, event timing) before final caption, making perceptual evidence explicit and enabling direct identification of spatiotemporal errors.</p>]]></summary>
+    <category term="Video Captioning"/>
+    <category term="Perception"/>
+    <category term="Interpretability"/>
+    <category term="Structured Generation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:74840bce7445</id>
+    <title>Personalized Recommendation Tool Learning via Autonomous Language Agents</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19739" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-74840bce7445" rel="related" type="text/html"/>
+    <published>2026-07-23T03:00:00Z</published>
+    <updated>2026-07-23T03:00:00Z</updated>
+    <author><name>Mingdai Yang, Zhiwei Liu, Weizhi Zhang, Yibo Wang, Hao Peng, Philip Yu</name></author>
+    <summary type="html"><![CDATA[<p>PRTA proposes agent-based recommendation framework where LLM acts as central planner interacting with multiple recommendation models as tools. LLM handles high-level reasoning and personalized tool selection; recommendation models handle full-ranking. Memory-based tool learning via autonomous agents circumvents hallucination and context limits.</p>]]></summary>
+    <category term="Recommender Systems"/>
+    <category term="LLM Agents"/>
+    <category term="Tool Learning"/>
+    <category term="Memory-Augmented"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4da82c29290d</id>
+    <title>What Matters in Humanoid General Motion Tracking? An Empirical Study</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19903" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4da82c29290d" rel="related" type="text/html"/>
+    <published>2026-07-23T03:00:00Z</published>
+    <updated>2026-07-23T03:00:00Z</updated>
+    <author><name>Fabio Amadio, Enrico Mingo Hoffman</name></author>
+    <summary type="html"><![CDATA[<p>Empirical study (YAHMP framework) investigates modeling/training factors in humanoid general motion tracking. Demonstrates zero-shot transfer to Unitree G1, clarifying how design choices influence tracking accuracy, actuation effort, and physical interaction capabilities.</p>]]></summary>
+    <category term="Humanoid Robotics"/>
+    <category term="Motion Tracking"/>
+    <category term="Sim2Real"/>
+    <category term="Empirical Study"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:78df1752aa18</id>
+    <title>EduPanel: A Three-Agent LLM Judge for Teaching Videos -- Reliability, Complementarity, and Human Trust Calibration</title>
+    <link href="https://huggingface.co/papers/2607.18529" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-78df1752aa18" rel="related" type="text/html"/>
+    <published>2026-07-23T02:57:00Z</published>
+    <updated>2026-07-23T02:57:00Z</updated>
+    <author><name>Jia-Kai Dong, Yi-Cheng Lin, Hung-yi Lee</name></author>
+    <summary type="html"><![CDATA[<p>EduPanel is a three-agent LLM judge for teaching video evaluation, decomposing assessment across specialized agents for interpretable, learner-conditioned pedagogical quality scores. Achieves reliability comparable to median human expert; expert feedback improves scoring accuracy (MAE 0.87→0.73); experts retain final authority.</p>]]></summary>
+    <category term="LLM Judges"/>
+    <category term="Education"/>
+    <category term="Multi-agent Systems"/>
+    <category term="Human-AI Collaboration"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:d47ee7e32c79</id>
+    <title>Towards Miniature Humanoid Tele-Loco-Manipulation Using Virtual Reality and Reinforcement Learning</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20399" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-d47ee7e32c79" rel="related" type="text/html"/>
+    <published>2026-07-23T02:57:00Z</published>
+    <updated>2026-07-23T02:57:00Z</updated>
+    <author><name>Nicolas Kosanovic, Jordan Dowdy, Jean Chagas Vaz</name></author>
+    <summary type="html"><![CDATA[<p>Describes a compliant full-body telepresence control stack for miniature humanoids using VR for upper-body teleoperation and RL for lower-body balance/locomotion. Brings powerful control stack (previously for expensive full-sized robots) to accessible miniature platforms.</p>]]></summary>
+    <category term="Humanoid Robotics"/>
+    <category term="Teleoperation"/>
+    <category term="VR Control"/>
+    <category term="RL Locomotion"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:74a5d07b7ee9</id>
+    <title>ReferTrack: Referring Then Tracking for Embodied Visual Tracking</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20061" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-74a5d07b7ee9" rel="related" type="text/html"/>
+    <published>2026-07-23T02:57:00Z</published>
+    <updated>2026-07-23T02:57:00Z</updated>
+    <author><name>Hanjing Ye, Tianle Zeng, Jiazhao Zhang, Shaoan Wang, Zibo Zhang, Weisi Situ, Yuchen Zhou, Yonggen Ling, Hong Zhang</name></author>
+    <summary type="html"><![CDATA[<p>ReferTrack introduces referring-then-tracking paradigm for embodied visual tracking: first selects target from indexed bounding boxes, then decodes tracking waypoints conditioned on this image-grounded decision. Maintains sliding-window queue of past detections to preserve motion cues.</p>]]></summary>
+    <category term="Embodied Tracking"/>
+    <category term="Vision-Language-Action"/>
+    <category term="Grounded Reasoning"/>
+    <category term="Robot Vision"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4931adcbbca4</id>
+    <title>MoAKE: Toward Unified All-in-One Action Quality Assessment via Mixture of Action Knowledge Experts</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19826" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4931adcbbca4" rel="related" type="text/html"/>
+    <published>2026-07-23T02:57:00Z</published>
+    <updated>2026-07-23T02:57:00Z</updated>
+    <author><name>Huangbiao Xu, Huanqi Wu, Xiao Ke, Jiaxin Cai, Junyi Wu, Jinglin Xu</name></author>
+    <summary type="html"><![CDATA[<p>MoAKE (Mixture of Action Knowledge Experts) addresses all-in-one Action Quality Assessment across heterogeneous actions in a single model. Learns complementary experts capturing diverse action patterns within shared architecture, mitigating negative transfer from semantic discrepancies between action types.</p>]]></summary>
+    <category term="Action Recognition"/>
+    <category term="Mixture of Experts"/>
+    <category term="Video Understanding"/>
+    <category term="Quality Assessment"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:0914fbe8aa15</id>
+    <title>EA-Nav: Learning Safe Visual Navigation Policies with Embodiment Awareness</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19880" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-0914fbe8aa15" rel="related" type="text/html"/>
+    <published>2026-07-23T02:55:00Z</published>
+    <updated>2026-07-23T02:55:00Z</updated>
+    <author><name>Jialu Zhang, Yong Du, Xianda Guo, Shunwang Sun, Xinqi Liu, Yue Sun, Guodong Lu, Wei Sui, Jituo Li</name></author>
+    <summary type="html"><![CDATA[<p>EA-Nav (Zhejiang University) enhances visual navigation by explicitly incorporating robot embodiment geometry and risk-aware trajectory correction via imitation learning. Achieves improved safety and generalization across diverse robotic platforms in simulation and real world.</p>]]></summary>
+    <category term="Robot Navigation"/>
+    <category term="Embodied AI"/>
+    <category term="Imitation Learning"/>
+    <category term="Safety"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:d92b5e8fd669</id>
+    <title>Trajectory-aware Cross-view Geo-localization with Sequential Observations</title>
+    <link href="https://huggingface.co/papers/2607.15491" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-d92b5e8fd669" rel="related" type="text/html"/>
+    <published>2026-07-23T02:52:00Z</published>
+    <updated>2026-07-23T02:52:00Z</updated>
+    <author><name>Tianyi Gao, Jiayu Lin, Danielle Beaulieu, Nathan Jacobs</name></author>
+    <summary type="html"><![CDATA[<p>TrajLoc introduces SeqGeo-VL dataset (39K video-text-satellite triplets) and a unified framework for cross-view geo-localization using both video clips and route descriptions. It leverages dense visual and abstract linguistic semantics for mutual reinforcement, addressing the gap where sequential queries (video) and route descriptions (higher-level abstraction) were previously treated separately.</p>]]></summary>
+    <category term="Geo-localization"/>
+    <category term="Multimodal Learning"/>
+    <category term="Vision-Language"/>
+    <category term="Navigation"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c6b9ea6d0fd1</id>
+    <title>Closing the Lab-to-Store Gap: A Data-Efficient Post-Training and Experience-Driven Learning VLA Framework for Retail Humanoids</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20345" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c6b9ea6d0fd1" rel="related" type="text/html"/>
+    <published>2026-07-23T02:52:00Z</published>
+    <updated>2026-07-23T02:52:00Z</updated>
+    <author><name>Roger Sala Sisó, Tiago Silvério, Jakob Sand, Tran Nguyen Le</name></author>
+    <summary type="html"><![CDATA[<p>DEED framework deploys VLA-based humanoids in dynamic retail environments via data-efficient post-training and experience-driven learning. Transforms non-functional foundation model to competent chip-restocking (32%→42% success after one iteration). Systematic engineering + targeted post-training.</p>]]></summary>
+    <category term="Humanoid Deployment"/>
+    <category term="Retail Robotics"/>
+    <category term="VLA Models"/>
+    <category term="Experience-driven Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3bc314e06e4c</id>
+    <title>Decentralized Online Riemannian Optimization for Strongly Geodesically Convex Functions</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20316" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3bc314e06e4c" rel="related" type="text/html"/>
+    <published>2026-07-23T02:52:00Z</published>
+    <updated>2026-07-23T02:52:00Z</updated>
+    <author><name>Zhanyuan Cai, Emre Sahinoglu, Shahin Shahrampour</name></author>
+    <summary type="html"><![CDATA[<p>Studies decentralized online Riemannian optimization for strongly geodesically convex losses on manifolds with bounded curvature. Provides general network-error analysis for time-varying step sizes and establishes logarithmic regret bounds, addressing incompatibility of decaying step sizes with fixed-step network analyses.</p>]]></summary>
+    <category term="Optimization Theory"/>
+    <category term="Riemannian Optimization"/>
+    <category term="Decentralized Learning"/>
+    <category term="Online Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3041057de5ad</id>
+    <title>MTVDiff: Multimodal Conditional Latent Diffusion for Enhanced Thermal-to-Visible Face Translation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19886" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3041057de5ad" rel="related" type="text/html"/>
+    <published>2026-07-23T02:52:00Z</published>
+    <updated>2026-07-23T02:52:00Z</updated>
+    <author><name>Zhiyuan Xia, Haojie Li, Jingyu Lin, Yiguo Qiao, Cunjian Chen</name></author>
+    <summary type="html"><![CDATA[<p>MTVDiff proposes multimodal latent diffusion for thermal-to-visible face translation with Dual-Branch Cross-Attention Fusion (thermal-depth), Gated Text-to-Visual Feature Alignment, and Spatial Feature Transformations for adaptive multimodal integration. Addresses geometric discontinuities, semantic mismatches, identity degradation.</p>]]></summary>
+    <category term="Thermal Imaging"/>
+    <category term="Diffusion Models"/>
+    <category term="Face Translation"/>
+    <category term="Multimodal Fusion"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:2fb2658a6e2a</id>
+    <title>Multimodal Large Language Models for Remote Sensing Image Understanding: Domain-Specific or General-Purpose?</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20284" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-2fb2658a6e2a" rel="related" type="text/html"/>
+    <published>2026-07-23T02:47:00Z</published>
+    <updated>2026-07-23T02:47:00Z</updated>
+    <author><name>Qiwei Ma, Chunping Qiu, Xinjun Cheng, Xiaoyu Zhang, Puhong Duan, Ke Yang, Xudong Kang, Shutao Li</name></author>
+    <summary type="html"><![CDATA[<p>Systematic survey and diagnostic evaluation comparing domain-specific RS-MLLMs vs. general-purpose CV-MLLMs for remote sensing image understanding. Reveals task-dependent advantages: RS-MLLMs excel in visual grounding; advanced CV-MLLMs show strong transferability to RSISU benchmarks.</p>]]></summary>
+    <category term="Remote Sensing"/>
+    <category term="Multimodal LLMs"/>
+    <category term="Domain Adaptation"/>
+    <category term="Survey"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:6abbd36eb6c2</id>
+    <title>Lipschitzian SLLNs for random functions</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20411" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-6abbd36eb6c2" rel="related" type="text/html"/>
+    <published>2026-07-23T02:47:00Z</published>
+    <updated>2026-07-23T02:47:00Z</updated>
+    <author><name>Lai Tian, Johannes O. Royset</name></author>
+    <summary type="html"><![CDATA[<p>Proves strong laws of large numbers for locally Lipschitz functions in Lipschitz pseudometric under topological or model-theoretic conditions (encompassing o-minimal structures). Applications include uniform convergence of subdifferentials and finite-sample solution identification. Identifies broad function classes avoiding failure phenomena from prior negative results.</p>]]></summary>
+    <category term="Mathematical Theory"/>
+    <category term="Probability"/>
+    <category term="Optimization Theory"/>
+    <category term="Lipschitz Functions"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:63c529a2291e</id>
+    <title>Computational Humor with Multimodal LLMs: Methods, Datasets, Evaluation, and Challenges</title>
+    <link href="https://huggingface.co/papers/2607.19011" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-63c529a2291e" rel="related" type="text/html"/>
+    <published>2026-07-23T02:36:00Z</published>
+    <updated>2026-07-23T02:36:00Z</updated>
+    <author><name>Tuo Liang, Zhe Hu, Disheng Liu, Jing Li, Yu Yin</name></author>
+    <summary type="html"><![CDATA[<p>This survey covers computational humor with multimodal LLMs, focusing on visual humor understanding in memes, cartoons, comics. Organizes literature via capability-centric hierarchy (recognition, interpretation/reasoning, generation), synthesizes benchmarks, evaluation protocols, and modeling paradigms, tracing shift from task-specific fusion to large-model alignment approaches.</p>]]></summary>
+    <category term="Multimodal LLMs"/>
+    <category term="Humor Understanding"/>
+    <category term="Survey"/>
+    <category term="Benchmark Analysis"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:998234153b85</id>
+    <title>OpenSkillRisk: Benchmarking Agent Safety When Using Real-World Risky Third-Party Skills</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20121" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-998234153b85" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Qiyuan Liu, Tingfeng Hui, Kun Zhan, Kaike Zhang, Ning Miao</name></author>
+    <summary type="html"><![CDATA[<p>OpenSkillRisk introduces a benchmark to evaluate LLM agent safety against latent risks in real-world third-party skills, finding that current systems have incomplete protection, frequently executing u...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:07886b3c7105</id>
+    <title>Reinforcement Learning for Large Language Model Selective Evidence Adoption from Contaminated Retrieval Results</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20090" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-07886b3c7105" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yanyu Chen, Yue Li, Yongyi Cui, Dongsheng Shi, Lichang Dai</name></author>
+    <summary type="html"><![CDATA[<p>Retrieval-augmented large language models frequently face contexts that interleave useful evidence with misleading statements or instruction-like content. Blanket refusal discards valid evidence, wher...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:5f335a2fcd66</id>
+    <title>GaussianSeed: Hierarchical Gaussian Seeding for High-Resolution 3D Occupancy Prediction</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20071" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-5f335a2fcd66" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Xinzhuo Li, Xianghui Pan, Jiayuan Du, Wei Wei, Liuyi Wang, Chengju Liu, Qijun Chen</name></author>
+    <summary type="html"><![CDATA[<p>Vision-centric 3D occupancy prediction provides dense scene representations essential for autonomous driving and robotic navigation, yet existing methods struggle to scale to high voxel resolutions du...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3c6ce37a8e62</id>
+    <title>Efficient Tracking and Understanding Object Transformations</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19743" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3c6ce37a8e62" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yihong Sun, Bharath Hariharan</name></author>
+    <summary type="html"><![CDATA[<p>Tracking objects through state transformations is essential for understanding real-world dynamics. However, existing methods are computationally expensive. TubeletGraph recently showed impressive capa...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e074af22dec8</id>
+    <title>Enhanced Neural Quantum State via Annealed Gradient Descent</title>
+    <link href="https://www.alphaxiv.org/abs/2607.18865" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e074af22dec8" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Shiwei Zhou, Yiming Huang, Xiao Yuan, Xiaoxia Cai</name></author>
+    <summary type="html"><![CDATA[<p>Researchers identified "subspace trapping" as a self-reinforcing instability in Neural Quantum State optimization, where critical but rare configurations become statistically invisible, leading to sub...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:b27e2deff160</id>
+    <title>OSVE: One Step Video Editing with One Step Diffusion Models</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19895" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-b27e2deff160" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Habin Lim, Gyeong-Moon Park</name></author>
+    <summary type="html"><![CDATA[<p>Text-guided video editing with diffusion models is impractically slow, hindered by costly multi-step sampling and inversion. We present OSVE, the first framework to successfully adapt one-step Text-to...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:0fbe044b0662</id>
+    <title>LAVIFT: Latent-Action-Guided Vision Fine-Tuning for Surgical Interaction Recognition</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19889" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-0fbe044b0662" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jiajun Cheng, Subarna Tripathi, Sainan Liu, Xiaofan Yu, Shan Lin</name></author>
+    <summary type="html"><![CDATA[<p>Understanding instrument-tissue interactions is essential for context-aware surgical AI and autonomous robotic surgery. Pretrained vision-language models (VLMs) and vision encoders offer an alternativ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:d74b2fde64bb</id>
+    <title>DocOps: A Verifiable Benchmark for Autonomous Agents in Complex Document Operations</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19865" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-d74b2fde64bb" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jiazhen Jiang, Boxi Cao, Lingyong Yan, Yaojie Lu, Hongyu Lin, Shuaiqiang Wang, Dawei Yin, Xianpei Han, Le Sun</name></author>
+    <summary type="html"><![CDATA[<p>As autonomous agents rapidly evolve, their ability to reliably manipulate ubiquitous digital documents has become critical for enabling general-purpose AI assistants and automating complex workspace w...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:48289c4524ca</id>
+    <title>PRISM-DR: Per-lesion Retinal Inference with Specialist Models for Diabetic Retinopathy</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19864" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-48289c4524ca" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Zübeyr Özeren, Tansel Uyar</name></author>
+    <summary type="html"><![CDATA[<p>Diabetic retinopathy is a leading cause of preventable blindness; its early lesions are small, low contrast, and easily missed in manual screening. Most automated detectors handle the four non-prolife...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:b3c3f86151a9</id>
+    <title>Beyond Fail-to-Pass: Iterative Hardening of Co-Generated Bug Reproduction Tests and Fixes</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19843" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-b3c3f86151a9" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yuhao Tan, Zhibang Yang, Fangkai Yang, Yuan Yao, Yu Kang, Lu Wang, Pu Zhao, Xin Zhang, Xiaoxing Ma, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang</name></author>
+    <summary type="html"><![CDATA[<p>Large language models (LLMs) have made automated program repair (APR) increasingly practical for real-world bugs, but repairing directly from bug reports remains underconstrained. Bug reproduction tes...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:03a3b464bb4d</id>
+    <title>Hypothesis-and-Refinement Learning of Organic Structures from Multimodal Spectroscopic Data</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19816" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-03a3b464bb4d" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Chengchun Liu, Zhiyuan Yan, Li Yuan, Hao Li, Boxuan Zhao, Yonghong Tian, Bartosz A. Grzybowski, Fanyang Mo</name></author>
+    <summary type="html"><![CDATA[<p>Determining molecular structures from spectroscopic data remains fundamentally challenging because the inverse problem is intrinsically underdetermined: individual spectra are sparse, low-dimensional,...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:8dda11c02ffb</id>
+    <title>Diverse-Intent Multi-Turn Fashion Image Retrieval</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20291" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-8dda11c02ffb" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Mingqiang Tang, Haokun Wen, Meng Liu, Yupeng Hu, Weili Guan, Xuemeng Song</name></author>
+    <summary type="html"><![CDATA[<p>Real-world fashion search involves interactive retrieval across multiple turns. However, existing multi-turn retrieval methods are built on a restrictive assumption that every interaction follows the ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:4c5c9500e8eb</id>
+    <title>V2F: Vision-Informed Grasp Force Prediction for Damage-Aware Robotic Handling of Date Fruits</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19804" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-4c5c9500e8eb" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Shahd Shami, Obadah Wali, Eric Feron, Shinkyu Park</name></author>
+    <summary type="html"><![CDATA[<p>This paper presents a vision-informed grasp force prediction framework for robotic handling of date fruits. Addressing the dual challenge of high detachment forces and low bruise thresholds, we first ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ddc4c85c54b0</id>
+    <title>On the Systematic Challenges of Culturally Loaded Machine Translation: Dream of the Red Chamber as the Cultural Lens</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20241" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ddc4c85c54b0" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yiming Wang, Jiayuan Di</name></author>
+    <summary type="html"><![CDATA[<p>Culturally loaded translation poses unique challenges for machine translation (MT), as meanings are deeply embedded in socio-cultural contexts beyond surface linguistic forms. Although large language ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:fd325d9c7a08</id>
+    <title>Look Before You Edit: Attention-Guided Camera Placement and Multi-View Alignment for 3D Gaussian Splatting Editing</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19777" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-fd325d9c7a08" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jaeyeon Park, Taeho Kang, Youngki Lee</name></author>
+    <summary type="html"><![CDATA[<p>Text-driven 3D scene editing with 3D Gaussian Splatting (3DGS) typically applies a 2D diffusion editor to views rendered from fixed training cameras, limiting both the spatial coverage of edits and th...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:63944faf4811</id>
+    <title>Koopman Dreamer: Spectrally Constrained Latent Dynamics for Stable World-Model Imagination</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19719" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-63944faf4811" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jiaqi Li, Xinglong Zhang, Haibin Xie, Yixing Lan, Wei Pan, Xin Xu</name></author>
+    <summary type="html"><![CDATA[<p>Latent world models improve sample efficiency in continuous control by optimizing policies over imagined latent trajectories, but common neural transitions offer limited direct control over modal pers...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:d8d5fb611287</id>
+    <title>NavVerse: Benchmarking Indoor-to-Outdoor Embodied Navigation in Continuous Robot Simulation</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19695" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-d8d5fb611287" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Junzhe Wu, Yue Hu, Zeyu Han, Po-Hsun Chang, Yinan Dong, Behrad Rabiei, Maani Ghaffari</name></author>
+    <summary type="html"><![CDATA[<p>Robots deployed in delivery, campus, and emergency-response settings often need to navigate from buildings to streets within a single continuous episode. Existing benchmarks usually evaluate indoor an...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:6dc3fd557f50</id>
+    <title>Generalized Kalman filter based temporal difference reinforcement learning</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20010" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-6dc3fd557f50" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Vasos Arnaoutis, Eric Lutters, Bojana Rosić</name></author>
+    <summary type="html"><![CDATA[<p>In this paper, we present a generalized temporal-difference (TD) reinforcement learning framework based on the theory of conditional expectations. The value and action-value (Q-value) functions are tr...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:15ce5f3ba04f</id>
+    <title>CLARK: Closed-loop Learning for Adaptive Reasoning over Knowledge Graphs</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19996" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-15ce5f3ba04f" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yousef Khan, Luca Gherardini, Marco Maratea, Joel Arrais, Jose Sousa</name></author>
+    <summary type="html"><![CDATA[<p>Machine Learning models are widely used for automating classification tasks by extracting statistical patterns from data. However, their performance deteriorates if the data distribution changes, maki...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f890d0532476</id>
+    <title>JANUS: Foreseeing Latent Risk for Long-Horizon Agent Safety</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19913" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f890d0532476" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yuan Xiong, Linji Hao, Shizhu He, Yequan Wang, Lijun Li</name></author>
+    <summary type="html"><![CDATA[<p>The JANUS framework enables training predictive guardrails, implemented as the Vanguard model, for large language model agents to foresee and prevent latent operational risks in long-horizon tasks. Va...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ffeda5df7a3e</id>
+    <title>VizRAG: Enhancing Retrieval-Augmented Generation with Hypergraph Visualization</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19830" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ffeda5df7a3e" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yanbin Wei, Yang Chen, Renling Gan, Ziru Liu, Xinyu Fu, Chun Kang, Ning Lu, Rui Liu, Yu Zhang, James Kwok</name></author>
+    <summary type="html"><![CDATA[<p>Hypergraph-based RAG systems surpass traditional graph-based approaches by organizing complex n-ary atomic facts among entities, rather than relying solely on binary relationships. Despite the advance...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:5a1b55d5811c</id>
+    <title>Lean-SAM2: Target-Anchored Memory and Encoder Acceleration for SAM2</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19811" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-5a1b55d5811c" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Xudong Ouyang, Wenlun Zhang, Yimin Xu, Huazhong Liu, Yunshan Zhong</name></author>
+    <summary type="html"><![CDATA[<p>A lightweight framework for SAM2, Lean-SAM2, accelerates inference and enhances robustness in video object segmentation, achieving a 1.417x speedup on SAM2.1-Base+ and improving J&amp;F scores by 3.6% on ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:8a0c7129b9e5</id>
+    <title>AlphaRoute: Large Language Models as Semantic Optimizers for Multi-Objective Routing</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19768" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-8a0c7129b9e5" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Kabir Murjani, Mishri Bhavsar, Manish I. Patel, Jonti Talukdar</name></author>
+    <summary type="html"><![CDATA[<p>Very Large Scale Integration (VLSI) global routing is an NP-hard combinatorial optimization problem requiring signal net assignment across capacity-constrained 3D grids while minimizing congestion, wi...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:3daa32fbab55</id>
+    <title>SoftReason: A Fully Differentiable Neuro-Soft-Symbolic Deductive Reasoning Architecture over High-Dimensional Perceptual Data</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20402" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-3daa32fbab55" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Wael AbdAlmageed</name></author>
+    <summary type="html"><![CDATA[<p>In many reasoning problems, the premises are not observed as discrete symbols, but must be inferred from high-dimensional inputs. Further, the predicate vocabulary, argument structure, and trusted evi...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f97302dda54a</id>
+    <title>Nuclear Quantum Effects as a Denoising Problem</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19680" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f97302dda54a" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Weizhou Wang, Jonathan Weare, Aaron R. Dinner</name></author>
+    <summary type="html"><![CDATA[<p>Nuclear quantum effects are rigorously captured by imaginary-time path integrals, which map the quantum Boltzmann distribution onto a ring polymer of classical replicas. Yet the nuclear masses, the co...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:09a034f87e8a</id>
+    <title>Not All Patches are Equal: Sampling Matters for Visible-Infrared Pre-Training</title>
+    <link href="https://www.alphaxiv.org/abs/2607.20238" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-09a034f87e8a" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Qiwei Ma, Bin Deng, Junjie Zhu, Qiangjuan Huang, Puhong Duan, Ke Yang, Xudong Kang, Shutao Li</name></author>
+    <summary type="html"><![CDATA[<p>Visible-infrared (VIS-IR) alignment is a key pre-training task for robust multi-sensor perception. Most existing methods use uniform patch-wise contrastive learning, but this can be unreliable in VIS-...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:af5db9557b42</id>
+    <title>A Multi-Agent Extension for Petri</title>
+    <link href="https://www.lesswrong.com/posts/DhFgiMzWjg7XboPDz/a-multi-agent-extension-for-petri" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-af5db9557b42" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>carissacullen</name></author>
+    <summary type="html"><![CDATA[<p>IntroPetri is an open-source framework built on Inspect AI for automated AI Safety evaluations first released by Anthropic, but now maintained and developed by Meridian Labs. Each evaluation involves ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:a3d43b550cf9</id>
+    <title>In other words: The influence of prompt variation on alignment evals</title>
+    <link href="https://www.lesswrong.com/posts/SZk2PGk6GXmKfGpGL/in-other-words-the-influence-of-prompt-variation-on" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-a3d43b550cf9" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>lwroe</name></author>
+    <summary type="html"><![CDATA[<p>If alignment evaluations are phrased differently, does model behaviour change? In this post, we describe our attempt to answer this question. This project was completed as a 5-day project sprint durin...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:2fb0d68c1055</id>
+    <title>Two Coefficient Givings beat one twice as big</title>
+    <link href="https://www.lesswrong.com/posts/jJ8DLYTvfFKi4Z3PF/two-coefficient-givings-beat-one-twice-as-big" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-2fb0d68c1055" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>jackultraphil</name></author>
+    <summary type="html"><![CDATA[<p>Why the AI windfall should build new grantmakers, not just bigger onesOriginally published at my Funding Anthropalypse Substack.Imagine you could live in one of two worlds in 2027.In the first, Coeffi...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ddf672913a0a</id>
+    <title>Can an LLM make a feature-length movie on its own?</title>
+    <link href="https://www.lesswrong.com/posts/24RKHEkwgZ6Hm6ygY/can-an-llm-make-a-feature-length-movie-on-its-own" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ddf672913a0a" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Josh Snider</name></author>
+    <summary type="html"><![CDATA[<p>How it didBetteridge's Law of Headlines says the answer is no[1], but I was able to make a feature-length adaptation of William Hope Hodgson's The House on the Borderland.I have a YouTube channel wher...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:81fa982bb2e0</id>
+    <title>Will almost all future companies eventually be founded and run by autonomous AIs?</title>
+    <link href="https://www.lesswrong.com/posts/BHEcssYwYrzTBf9Qm/will-almost-all-future-companies-eventually-be-founded-and" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-81fa982bb2e0" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Steven Byrnes</name></author>
+    <summary type="html"><![CDATA[<p>Intended for a broad audience.[1]My belief is that keeping AI under human control would be an unprecedented global challenge, if it’s even possible at all.Many other people’s believe that AIs will nat...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ea4305c29ac3</id>
+    <title>OpenAI Model Hacks Into HuggingFace During Cybersecurity Evaluation</title>
+    <link href="https://www.lesswrong.com/posts/usptCfzEnYoNcsTd5/openai-model-hacks-into-huggingface-during-cybersecurity" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ea4305c29ac3" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Zvi</name></author>
+    <summary type="html"><![CDATA[<p>This latest incident is a rather dramatic escalation in agentic AI cybersecurity breaches. It was severe enough to have been initially reported to authorities, before either HuggingFace or OpenAI unde...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9eb10e0c082c</id>
+    <title>We cannot simulate AI security research</title>
+    <link href="https://www.lesswrong.com/posts/hrrhtxnFYYJFHcTz7/we-cannot-simulate-ai-security-research-1" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9eb10e0c082c" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jafar Isbarov</name></author>
+    <summary type="html"><![CDATA[<p>We use AI agents not only for writing but also for maintaining and deploying code. The most widespread examples are found in GitHub Actions Marketplace, which contains over a thousand AI-assisted acti...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9540c22b1568</id>
+    <title>The Conjecture of Strong Subjectivity</title>
+    <link href="https://www.lesswrong.com/posts/EQneqpYW5D5wWEg3B/the-conjecture-of-strong-subjectivity" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9540c22b1568" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>D.Schetselaar</name></author>
+    <summary type="html"><![CDATA[<p>This is a linkpost to a short article that I published on PhilPapers. I hope to get some useful feedback here.The article was borne out of the frustrating observation that many scientists working on t...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:be3796cbffba</id>
+    <title>The Best AI Bill Congress Hasn't Introduced Yet</title>
+    <link href="https://www.lesswrong.com/posts/2SExw8KWDC3kRx9NX/the-best-ai-bill-congress-hasn-t-introduced-yet" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-be3796cbffba" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>dan.parshall</name></author>
+    <summary type="html"><![CDATA[<p>Related posts Crossposted from canaryinstitute.ai/blog/gaaia-visibility-not-control. I haven't seen any discussion, other than a brief mention by Zvi. Overall looks like many beneficial first steps, a...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f31e8f2a60d7</id>
+    <title>Your AIs don't do what you want. This is really bad</title>
+    <link href="https://www.lesswrong.com/posts/NmwzGEAPamauYec3A/your-ais-don-t-do-what-you-want-this-is-really-bad" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f31e8f2a60d7" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Kaustubh Kislay</name></author>
+    <summary type="html"><![CDATA[<p>Replit AI deletes entire database during code freeze, then lies about it— a Hacker News headline from this corpus, July 2025July 21st 2026, OpenAI released a report addressing a security incident.Duri...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:467aca7699c6</id>
+    <title>Models don’t seem to be dishonest in the way humans are</title>
+    <link href="https://www.lesswrong.com/posts/QYmnkQyZD2fDjHCJ8/models-don-t-seem-to-be-dishonest-in-the-way-humans-are" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-467aca7699c6" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>David Africa</name></author>
+    <summary type="html"><![CDATA[<p>TLDRModels often behave dishonestly without acquiring a coherent deceptive disposition.We trained some mid-sized models on their own plausible but false reasoning.True and false training usually produ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:611428b8053e</id>
+    <title>Comment on Measuring Reward-Seeking by Instilling Contrastive Beliefs paper from mechanistic interpretability perspective</title>
+    <link href="https://www.lesswrong.com/posts/DrLEzwQvW9EvQzDgF/comment-on-measuring-reward-seeking-by-instilling" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-611428b8053e" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Burny</name></author>
+    <summary type="html"><![CDATA[<p>This is interesting research! https://alignment.openai.com/measuring-reward-seekingIt made me think of few overlapping hypotheses for what might be happening here, how did the grader behavior emerge a...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e106394352b6</id>
+    <title>How do neural networks regress cubic polynomials? Apparently, they use a trick invented in Milan 500 years ago</title>
+    <link href="https://www.lesswrong.com/posts/ysztF7doGvEbvTMqN/how-do-neural-networks-regress-cubic-polynomials-apparently" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e106394352b6" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>enricobottazzi</name></author>
+    <summary type="html"><![CDATA[<p>TL;DR: Neural networks can easily learn to regress cubic polynomials of type mjx-container[jax="CHTML"] { line-height: 0; } mjx-container [space="1"] { margin-left: .111em; } mjx-container [space="2"]...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ce34e5cb95ca</id>
+    <title>(2/3) The Dangers of AGI</title>
+    <link href="https://www.lesswrong.com/posts/rqz7y3vcZQCJCDyKL/2-3-the-dangers-of-agi" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ce34e5cb95ca" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Eigenbraid</name></author>
+    <summary type="html"><![CDATA[<p>Mini-Series:Part 1 - The Dangers of LLMsPart 2 - The Dangers of AGI (you are here)Part 3 - The Dangers of ASI (coming Thursday)IntroductionPart 1 discussed the idea of "LLMs as machine guns." We proba...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1c28241b7dfe</id>
+    <title>Announcing AIXI Labs</title>
+    <link href="https://www.lesswrong.com/posts/RzeyMfLxwjgGjQFpv/announcing-aixi-labs" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1c28241b7dfe" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Cole Wyeth</name></author>
+    <summary type="html"><![CDATA[<p>We are starting AIXI Labs, an AI safety org focused on algorithmic information theory (AIT), continual reinforcement learning (RL), and in particular the eponymous AIXI. We aim to strengthen the techn...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:b4d5928b153b</id>
+    <title>We should push for no-fault liability for actions taken by AI</title>
+    <link href="https://www.lesswrong.com/posts/Kj3YpqzhFySCjYcWi/we-should-push-for-no-fault-liability-for-actions-taken-by" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-b4d5928b153b" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Yair Halberstadt</name></author>
+    <summary type="html"><![CDATA[<p>Before I start, I'll mention that I'm in contact with a world expert on legislation and regulation, who would be happy to help with this or similar work pro-bono. If you work in AI policy and believe ...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1ee77ac89d24</id>
+    <title>[Paper] Stringological sequence prediction II</title>
+    <link href="https://www.lesswrong.com/posts/TTei7oq9ndjJFgnsT/paper-stringological-sequence-prediction-ii" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1ee77ac89d24" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Vanessa Kosoy</name></author>
+    <summary type="html"><![CDATA[<p>Abstract: In a previous paper, we began the study of sequence prediction algorithms adapted to stringological word complexity measures. One measure we considered was left-to-right (most-significant-di...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:18f16927f867</id>
+    <title>OpenAI and Hugging Face partner to address security incident during model evaluation</title>
+    <link href="https://www.lesswrong.com/posts/xcyGdxHC5Rad3fv9h/openai-and-hugging-face-partner-to-address-security-incident" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-18f16927f867" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Matrice Jacobine</name></author>
+    <summary type="html"><![CDATA[<p>Last week, Hugging Face disclosed a new kind of security incident⁠(opens in a new window) after they detected and contained an AI agent that compromised their infrastructure, something we expect to be...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:816a8e66cda7</id>
+    <title>SymptomAI: Towards a conversational AI agent for everyday symptom assessment</title>
+    <link href="https://research.google/blog/symptomai-towards-a-conversational-ai-agent-for-everyday-symptom-assessment/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-816a8e66cda7" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Unknown</name></author>
+    <summary type="html"><![CDATA[<p>General Science</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:c95d71048b6d</id>
+    <title>Towards a quantum computer that learns from its errors</title>
+    <link href="https://research.google/blog/towards-a-quantum-computer-that-learns-from-its-errors/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-c95d71048b6d" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Unknown</name></author>
+    <summary type="html"><![CDATA[<p>Machine Intelligence</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1a07f49efb82</id>
+    <title>The Economics of Recursive Self-Improvement</title>
+    <link href="https://metr.org/notes/2026-07-22-economics-of-recursive-self-improvement/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1a07f49efb82" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Unknown</name></author>
+    <summary type="html"><![CDATA[<p>We (Parker and Tom) recently coauthored a paper, “The Economics of Recursive Self-Improvement”, with 7 other economists. The paper walks through a series of simple models of how AI may accelerate AI R...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:f2e5484c5c1a</id>
+    <title>Are we existentially threatened by the type of AI misalignment seen in the OpenAI Hugging Face attack?</title>
+    <link href="https://www.alignmentforum.org/posts/H6DDSEvrtCk8Sehfd/are-we-existentially-threatened-by-the-type-of-ai" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-f2e5484c5c1a" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Alex Mallen</name></author>
+    <summary type="html"><![CDATA[<p>OpenAI models recently broke through a series of security boundaries and into Hugging Face servers in order to cheat on a cyber eval. A lot of people thought it was scary because it was a clear exampl...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:e05a8f3df29f</id>
+    <title>Professor Emeritus Dimitri Bertsekas, influential computer scientist and prolific author, dies at 83</title>
+    <link href="https://news.mit.edu/2026/dimitri-bertsekas-influential-computer-scientist-prolific-author-dies-0722" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-e05a8f3df29f" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Jane Halpern | Department of Electrical Engineering and Computer Science</name></author>
+    <summary type="html"><![CDATA[<p>Dimitri Bertsekas PhD ’71, the Jerry McAfee (1940) Emeritus Professor in Engineering in the Department of Electrical Engineering and Computer Science (EECS), a principal investigator in the Laboratory...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1b90bc58e204</id>
+    <title>Open models recap: more on Kimi K3, Qwen 3.8, Xi's WAIC speech, distillation, the open-closed gap, and what's next</title>
+    <link href="https://www.interconnects.ai/p/open-models-recap-more-on-kimi-k3" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1b90bc58e204" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Nathan Lambert</name></author>
+    <summary type="html"><![CDATA[<p>Exciting news! My book trying to share post-training knowledge with the world is done and shipping soon. Order on Manning or Amazon. Thanks for the support. It’s currently the #1 AI book on Amaz...</p>]]></summary>
+  </entry>
   <entry>
     <id>urn:ainews:2026-07-22:category-summary:research</id>
     <title>Research Summary: July 22, 2026</title>

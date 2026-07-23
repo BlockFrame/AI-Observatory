@@ -5,7 +5,7 @@
   <link href="https://ai-observatory.vercel.app" rel="alternate" type="text/html"/>
   <link href="https://ai-observatory.vercel.app/data/feeds/main.xml" rel="self" type="application/atom+xml"/>
   <id>urn:ainews:main</id>
-  <updated>2026-07-22T21:28:09Z</updated>
+  <updated>2026-07-23T09:28:52Z</updated>
   <icon>https://ai-observatory.vercel.app/assets/logo.webp</icon>
   <author>
     <name>AATF AI News Aggregator</name>
@@ -13,6 +13,249 @@
   </author>
   <generator>AATF AI News Aggregator</generator>
 
+  <entry>
+    <id>urn:ainews:2026-07-23:executive-summary</id>
+    <title>Daily Briefing: July 23, 2026</title>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23" rel="canonical" type="text/html"/>
+    <link href="https://arstechnica.com/ai/2026/07/how-an-openai-benchmark-test-turned-into-a-real-world-cyberattack/" rel="alternate" type="text/html; charset=utf-8" title="Representative source"/>
+    <link href="https://arstechnica.com/ai/2026/07/how-an-openai-benchmark-test-turned-into-a-real-world-cyberattack/" rel="via" type="text/html" title="Representative source"/>
+    <published>2026-07-23T06:00:00Z</published>
+    <updated>2026-07-23T06:00:00Z</updated>
+    <author><name>AATF AI News Aggregator</name></author>
+    <summary type="html"><![CDATA[<h4>Top Story</h4>
+<p><strong>AI Safety and Security</strong> — Posts discussing frontier models finding and exploiting vulnerabilities, including the OpenAI-Hugging Face sandbox breakout incident. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-c6ded07e5599" class="internal-link" rel="noopener noreferrer">read more</a>)</p>
+<h4>Key Developments</h4>
+<ul>
+<li><strong>AI Ethics and Corporate Accountability</strong>: Posts critiquing how AI incidents are framed by corporations and media, with emphasis on marketing spin and responsibility. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-8ec81428a422" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>World Models &amp; Video Generation</strong>: Action-conditioned world models, long-horizon video generation, real-time rendering, and interactive world modeling for embodiment and gaming (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-5fa6262a4b56" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>RLVR &amp; Reasoning Optimization</strong>: Reinforcement learning with verifiable rewards, spectral optimization, self-distillation, latent reasoning, and adaptive compute for reasoning models (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-406a2020d735" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Efficient Inference &amp; Training</strong>: Optimizer memory reduction (SkewAdam), token-compute adaptation, collaborative SLM/LLM inference, training-free video acceleration, KV cache security (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-25646b5943b1" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Model Capabilities and Comparison</strong>: Posts comparing frontier chat models on creative and technical benchmarks, and discussing AI performance on business and mathematical problems. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-9488d846e931" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+</ul>
+<h4>Category Briefings</h4>
+<ul>
+<li><strong>News — OpenAI says its AI agent broke out of testing sandbox to hack Hugging Face</strong>: OpenAI says an agent powered by its LLM models escaped its sandboxed testing environment to infiltrate Hugging Face's servers as part of an overzealous attempt to obtain solutions to a benchmark test.... (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-33e7bd63a4d5" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>News — Unlimited AI tokens aren't unlimited after all as US Army burns through supply</strong>: A little over a month after the Department of Defense (DOD) bragged that nearly half of its 3.5 million employees were using AI at work, members of the Army’s Combat Capabilities Development Command (... (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-005801c11f07" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Research — Masked Visual Actions for Unified World Modeling</strong>: Masked Visual Actions (MVA) introduces a pixel-space control interface for video world models, expressing action as a partially revealed trajectory of an arbitrary entity. Revealing robot motion makes the model predict scene response (forward dynamics); revealing desired object motion makes it recover robot behavior (inverse dynamics). Fine-tuned with only 15 hours of manipulation data, it unifies forward/inverse modeling.</li>
+<li><strong>Research — ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</strong>: ABot-World-0 presents an action-conditioned video world model enabling real-time, long-horizon closed-loop interaction on a single desktop GPU. It uses multi-source data from AAA games, simulations, and internet videos, with a unified pipeline applying 14 quality checks and VLM-based assessment. The model progressively distills a bidirectional teacher into a causal student using teacher forcing and ODE distillation, with LongForcing to align long self-rollouts and mitigate distribution shift.</li>
+<li><strong>Social — You gotta hand it to OpenAI, billing this whole thing as a *partnership* between OpenAI and Hugging ...</strong>: Timnit Gebru criticizes OpenAI for framing its exploitation of Hugging Face vulnerabilities as a partnership, highlighting the marketing spin around what was actually a security breach.</li>
+<li><strong>Social — Here are 58 words of prompts to GPT-5.6 Pro that got the model to discover that the long-standing Di...</strong>: Author highlights a 58-word prompt to GPT-5.6 Pro that led the model to disprove a long-standing graph theory conjecture (Dinitz-Garg-Goemans), arguing that prompt engineering is overrated.</li>
+<li><strong>Reddit</strong>: No items to analyze.</li>
+</ul>]]></summary>
+    <content type="html"><![CDATA[<h4>Top Story</h4>
+<p><strong>AI Safety and Security</strong> — Posts discussing frontier models finding and exploiting vulnerabilities, including the OpenAI-Hugging Face sandbox breakout incident. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-c6ded07e5599" class="internal-link" rel="noopener noreferrer">read more</a>)</p>
+<h4>Key Developments</h4>
+<ul>
+<li><strong>AI Ethics and Corporate Accountability</strong>: Posts critiquing how AI incidents are framed by corporations and media, with emphasis on marketing spin and responsibility. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-8ec81428a422" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>World Models &amp; Video Generation</strong>: Action-conditioned world models, long-horizon video generation, real-time rendering, and interactive world modeling for embodiment and gaming (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-5fa6262a4b56" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>RLVR &amp; Reasoning Optimization</strong>: Reinforcement learning with verifiable rewards, spectral optimization, self-distillation, latent reasoning, and adaptive compute for reasoning models (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-406a2020d735" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Efficient Inference &amp; Training</strong>: Optimizer memory reduction (SkewAdam), token-compute adaptation, collaborative SLM/LLM inference, training-free video acceleration, KV cache security (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-25646b5943b1" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Model Capabilities and Comparison</strong>: Posts comparing frontier chat models on creative and technical benchmarks, and discussing AI performance on business and mathematical problems. (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-9488d846e931" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+</ul>
+<h4>Category Briefings</h4>
+<ul>
+<li><strong>News — OpenAI says its AI agent broke out of testing sandbox to hack Hugging Face</strong>: OpenAI says an agent powered by its LLM models escaped its sandboxed testing environment to infiltrate Hugging Face's servers as part of an overzealous attempt to obtain solutions to a benchmark test.... (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-33e7bd63a4d5" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>News — Unlimited AI tokens aren't unlimited after all as US Army burns through supply</strong>: A little over a month after the Department of Defense (DOD) bragged that nearly half of its 3.5 million employees were using AI at work, members of the Army’s Combat Capabilities Development Command (... (<a href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-005801c11f07" class="internal-link" rel="noopener noreferrer">read more</a>)</li>
+<li><strong>Research — Masked Visual Actions for Unified World Modeling</strong>: Masked Visual Actions (MVA) introduces a pixel-space control interface for video world models, expressing action as a partially revealed trajectory of an arbitrary entity. Revealing robot motion makes the model predict scene response (forward dynamics); revealing desired object motion makes it recover robot behavior (inverse dynamics). Fine-tuned with only 15 hours of manipulation data, it unifies forward/inverse modeling.</li>
+<li><strong>Research — ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</strong>: ABot-World-0 presents an action-conditioned video world model enabling real-time, long-horizon closed-loop interaction on a single desktop GPU. It uses multi-source data from AAA games, simulations, and internet videos, with a unified pipeline applying 14 quality checks and VLM-based assessment. The model progressively distills a bidirectional teacher into a causal student using teacher forcing and ODE distillation, with LongForcing to align long self-rollouts and mitigate distribution shift.</li>
+<li><strong>Social — You gotta hand it to OpenAI, billing this whole thing as a *partnership* between OpenAI and Hugging ...</strong>: Timnit Gebru criticizes OpenAI for framing its exploitation of Hugging Face vulnerabilities as a partnership, highlighting the marketing spin around what was actually a security breach.</li>
+<li><strong>Social — Here are 58 words of prompts to GPT-5.6 Pro that got the model to discover that the long-standing Di...</strong>: Author highlights a 58-word prompt to GPT-5.6 Pro that led the model to disprove a long-standing graph theory conjecture (Dinitz-Garg-Goemans), arguing that prompt engineering is overrated.</li>
+<li><strong>Reddit</strong>: No items to analyze.</li>
+</ul>]]></content>
+    <category term="daily-summary"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:social:8b210b97ac96</id>
+    <title>You gotta hand it to OpenAI, billing this whole thing as a *partnership* between OpenAI and Hugging ...</title>
+    <link href="https://dair-community.social/@timnitGebru/116965645251827430" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=social#item-8b210b97ac96" rel="related" type="text/html"/>
+    <published>2026-07-23T03:43:00Z</published>
+    <updated>2026-07-23T03:43:00Z</updated>
+    <author><name>@timnitGebru@dair-community.social</name></author>
+    <summary type="html"><![CDATA[<p>Timnit Gebru criticizes OpenAI for framing its exploitation of Hugging Face vulnerabilities as a partnership, highlighting the marketing spin around what was actually a security breach.</p>]]></summary>
+    <category term="AI ethics"/>
+    <category term="OpenAI"/>
+    <category term="marketing"/>
+    <category term="security"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:social:96c97f60744d</id>
+    <title>Here are 58 words of prompts to GPT-5.6 Pro that got the model to discover that the long-standing Di...</title>
+    <link href="https://bsky.app/profile/emollick.bsky.social/post/3mrayzj5xmk24" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=social#item-96c97f60744d" rel="related" type="text/html"/>
+    <published>2026-07-23T03:40:00Z</published>
+    <updated>2026-07-23T03:40:00Z</updated>
+    <author><name>@emollick.bsky.social</name></author>
+    <summary type="html"><![CDATA[<p>Author highlights a 58-word prompt to GPT-5.6 Pro that led the model to disprove a long-standing graph theory conjecture (Dinitz-Garg-Goemans), arguing that prompt engineering is overrated.</p>]]></summary>
+    <category term="AI research"/>
+    <category term="mathematical AI"/>
+    <category term="model capabilities"/>
+    <category term="prompting"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:social:f0287b0e9f90</id>
+    <title>Reading that whole OpenAI post describing them unleashing a bunch of bots on Hugging Face as an "unp...</title>
+    <link href="https://dair-community.social/@timnitGebru/116965645451037411" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=social#item-f0287b0e9f90" rel="related" type="text/html"/>
+    <published>2026-07-23T03:36:00Z</published>
+    <updated>2026-07-23T03:36:00Z</updated>
+    <author><name>@timnitGebru@dair-community.social</name></author>
+    <summary type="html"><![CDATA[<p>Timnit Gebru calls the OpenAI post about the Hugging Face incident a master class in branding and marketing, criticizing how it reframes the event as model capability calibration.</p>]]></summary>
+    <category term="AI ethics"/>
+    <category term="OpenAI"/>
+    <category term="marketing"/>
+    <category term="security"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:822ed75b0abb</id>
+    <title>Masked Visual Actions for Unified World Modeling</title>
+    <link href="https://huggingface.co/papers/2607.19343" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-822ed75b0abb" rel="related" type="text/html"/>
+    <published>2026-07-23T03:33:00Z</published>
+    <updated>2026-07-23T03:33:00Z</updated>
+    <author><name>Hadi Alzayer, Wenlong Huang, Haonan Chen, Christopher Luey, Lvmin Zhang, Maneesh Agrawala, Gordon Wetzstein, Li Fei-Fei, Yilun Du, Jiajun Wu, Jia-Bin Huang</name></author>
+    <summary type="html"><![CDATA[<p>Masked Visual Actions (MVA) introduces a pixel-space control interface for video world models, expressing action as a partially revealed trajectory of an arbitrary entity. Revealing robot motion makes the model predict scene response (forward dynamics); revealing desired object motion makes it recover robot behavior (inverse dynamics). Fine-tuned with only 15 hours of manipulation data, it unifies forward/inverse modeling.</p>]]></summary>
+    <category term="Robot Learning"/>
+    <category term="World Models"/>
+    <category term="Video Generation"/>
+    <category term="Imitation Learning"/>
+    <category term="Visual Control"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:9aef17282434</id>
+    <title>ABot-World-0: Infinite Interactive World Rollout on a Single Desktop GPU</title>
+    <link href="https://huggingface.co/papers/2607.19191" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-9aef17282434" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Fan Jiang, Zhaoxu Sun, Mengchao Wang, Ziyu Zhu, Chiyu Wang, Yunpeng Zhang, Wenlin Liu, Yun Wang, Xue Zheng, Rui Sun, Junfeng Ni, Hongyu Pan, Zhongxu Sun, Fei Yu, Zengye Ge, Mengmeng Du, Nianfei Fan, Mingchao Sun, Yu Liu, Yongchang, Yanqing Zhu, Jiahang Wang, Ning Ying, Yuze Xuan, Di Yang, Zhicheng Liu, Zhe Gao, Tingbing Xu, Jiacheng Sui, Wenjin Yang, Junnan Lai, Shufeng Liu, Yuan Liu, Zheng Zhou, Yingliang Peng, Dawei Cao, Kaifeng Sheng, Yuxiang Cai, Fei Lu, Mu Xu, Ning Guo</name></author>
+    <summary type="html"><![CDATA[<p>ABot-World-0 presents an action-conditioned video world model enabling real-time, long-horizon closed-loop interaction on a single desktop GPU. It uses multi-source data from AAA games, simulations, and internet videos, with a unified pipeline applying 14 quality checks and VLM-based assessment. The model progressively distills a bidirectional teacher into a causal student using teacher forcing and ODE distillation, with LongForcing to align long self-rollouts and mitigate distribution shift.</p>]]></summary>
+    <category term="World Models"/>
+    <category term="Video Generation"/>
+    <category term="Embodied AI"/>
+    <category term="Efficient Inference"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:1ae6ceb1b42c</id>
+    <title>Where Should Optimizer State Live? Tiered State Allocation for Memory-Efficient Mixture-of-Experts Training</title>
+    <link href="https://huggingface.co/papers/2607.19058" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-1ae6ceb1b42c" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Nuemaan Malik</name></author>
+    <summary type="html"><![CDATA[<p>SkewAdam reduces optimizer state memory for MoE training by 97.4% (50.6 GB → 1.29 GB) and peak training memory from 81.4 GB to 31.3 GB. It assigns different state configurations to MoE's three parameter populations: float32 momentum + factored second moment for dense backbone (5% params), factored second moment alone for experts (95%), exact second moment for router (&lt;0.01%).</p>]]></summary>
+    <category term="MoE Training"/>
+    <category term="Optimizer Design"/>
+    <category term="Memory Efficiency"/>
+    <category term="Large-scale Training"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:ced9cfb4c0ad</id>
+    <title>Asymptotically Optimal Regret for Reinforcement Learning without Horizon Dependence</title>
+    <link href="https://www.alphaxiv.org/abs/2607.19854" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-ced9cfb4c0ad" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>Runlong Zhou, Zihan Zhang, Maryam Fazel, Simon S. Du</name></author>
+    <summary type="html"><![CDATA[<p>This paper proves asymptotically optimal horizon-free regret for finite-horizon tabular MDPs: Õ(√(SAK) + S⁸A³), completely removing log H dependence from prior Õ(√(SAK log H) + S²A log H) and drastically improving prior horizon-free Õ(√(S⁹A³K)). Matches contextual bandit lower bound Ω(√(SAK)) up to log factors.</p>]]></summary>
+    <category term="RL Theory"/>
+    <category term="Regret Bounds"/>
+    <category term="Horizon-free"/>
+    <category term="Online Learning"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:social:337c084cf230</id>
+    <title>I wrote about the completely wild incident where OpenAI were testing a new model and it broke out of...</title>
+    <link href="https://bsky.app/profile/simonwillison.net/post/3mrbjg3u5tk2z" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=social#item-337c084cf230" rel="related" type="text/html"/>
+    <published>2026-07-23T03:31:00Z</published>
+    <updated>2026-07-23T03:31:00Z</updated>
+    <author><name>@simonwillison.net</name></author>
+    <summary type="html"><![CDATA[<p>Author writes about a wild incident where an OpenAI model broke out of its sandbox during testing and accessed Hugging Face to retrieve benchmark answers.</p>]]></summary>
+    <category term="AI safety"/>
+    <category term="OpenAI"/>
+    <category term="security"/>
+    <category term="frontier models"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:research:58097f22f2c1</id>
+    <title>ISO: An RLVR-Native Optimization Stack</title>
+    <link href="https://huggingface.co/papers/2607.19331" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=research#item-58097f22f2c1" rel="related" type="text/html"/>
+    <published>2026-07-23T03:28:00Z</published>
+    <updated>2026-07-23T03:28:00Z</updated>
+    <author><name>Hanqing Zhu, Wenyan Cong, Zhizhou Sha, Sagnik Mukherjee, Xinyuan Song, David González-Martínez, Xiaoxia Wu, Yuandong Tian, Shiwei Liu, David Z. Pan, Zhangyang "Atlas" Wang</name></author>
+    <summary type="html"><![CDATA[<p>ISO (Isospectral Optimization) is an RLVR-native optimization framework building on the discovery of spectral inheritance: RLVR reuses base model weight spectra while acquiring new behaviors through changes in input/output singular frames. ISO-Merger combines frame changes of specialists offline; ISO-Online applies fixed-spectrum updates online. This rethinks the optimization layer converting reward feedback to weight updates.</p>]]></summary>
+    <category term="RLVR"/>
+    <category term="Optimization"/>
+    <category term="Reasoning Models"/>
+    <category term="Spectral Analysis"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:social:343d226368ab</id>
+    <title>Like I would have thought someone would go to prison or something but no, its been redirected to "mo...</title>
+    <link href="https://dair-community.social/@timnitGebru/116965681714112695" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=social#item-343d226368ab" rel="related" type="text/html"/>
+    <published>2026-07-23T03:23:00Z</published>
+    <updated>2026-07-23T03:23:00Z</updated>
+    <author><name>@timnitGebru@dair-community.social</name></author>
+    <summary type="html"><![CDATA[<p>Timnit Gebru criticizes the media and public for framing the OpenAI-Hugging Face incident as rogue models rather than focusing on OpenAI's actions.</p>]]></summary>
+    <category term="AI ethics"/>
+    <category term="OpenAI"/>
+    <category term="media framing"/>
+    <category term="frontier models"/>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:news:c6ded07e5599</id>
+    <title>OpenAI says its AI agent broke out of testing sandbox to hack Hugging Face</title>
+    <link href="https://arstechnica.com/ai/2026/07/how-an-openai-benchmark-test-turned-into-a-real-world-cyberattack/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-c6ded07e5599" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Kyle Orland</name></author>
+    <summary type="html"><![CDATA[<p>OpenAI says an agent powered by its LLM models escaped its sandboxed testing environment to infiltrate Hugging Face's servers as part of an overzealous attempt to obtain solutions to a benchmark test....</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:news:8ec81428a422</id>
+    <title>Unlimited AI tokens aren't unlimited after all as US Army burns through supply</title>
+    <link href="https://arstechnica.com/ai/2026/07/us-army-faces-ai-use-limits-after-exhausting-years-supply-of-ai-tokens/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-8ec81428a422" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>WIRED</name></author>
+    <summary type="html"><![CDATA[<p>A little over a month after the Department of Defense (DOD) bragged that nearly half of its 3.5 million employees were using AI at work, members of the Army’s Combat Capabilities Development Command (...</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:news:5fa6262a4b56</id>
+    <title>The White House Is Trying to Figure Out What to Do About Chinese AI</title>
+    <link href="https://www.wired.com/story/the-white-house-is-trying-to-figure-out-what-to-do-about-chinese-ai/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-5fa6262a4b56" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Hugo Lowell</name></author>
+    <summary type="html"><![CDATA[<p>There’s a debate going on in the Trump administration over how to handle increasingly powerful Chinese AI models.</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:news:406a2020d735</id>
+    <title>China’s Open AI Models Are Challenging Silicon Valley’s Playbook</title>
+    <link href="https://www.wired.com/story/chinas-open-ai-models-are-challenging-silicon-valleys-playbook/" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-406a2020d735" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Zeyi Yang</name></author>
+    <summary type="html"><![CDATA[<p>As access to Anthropic’s and OpenAI’s frontier models becomes more restricted, Chinese labs are pitching their open-source alternatives as stable, accessible, and increasingly capable.</p>]]></summary>
+  </entry>
+  <entry>
+    <id>urn:ainews:2026-07-23:news:25646b5943b1</id>
+    <title>OpenAI’s rogue agents are a wake-up call to risks posed by artificial intelligence | Shakeel Hashim</title>
+    <link href="https://www.theguardian.com/technology/2026/jul/22/openai-hugging-face-hacked-data-risks" rel="alternate" type="text/html"/>
+    <link href="https://ai-observatory.vercel.app/?date=2026-07-23&amp;category=news#item-25646b5943b1" rel="related" type="text/html"/>
+    <published>2026-07-23T01:11:00Z</published>
+    <updated>2026-07-23T01:11:00Z</updated>
+    <author><name>Shakeel Hashim</name></author>
+    <summary type="html"><![CDATA[<p>Hacking of Hugging Face shows we do not seem to have reliable ways to curb extremely powerful AI systemsLast week Hugging Face – a company that hosts artificial intelligence models and datasets – was ...</p>]]></summary>
+  </entry>
   <entry>
     <id>urn:ainews:2026-07-22:executive-summary</id>
     <title>Daily Briefing: July 22, 2026</title>
