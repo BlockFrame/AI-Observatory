@@ -20,7 +20,7 @@
 			<p>
 				This project is a custom fork of the excellent AI News Aggregator created by the <a href="https://www.trendmicro.com/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">TrendAI AATF</a>. 
 				While we maintain the robust underlying multi-agent logic of the original architecture, this instance introduces deep customizations: 
-				we have tailored the data sources, integrated continuous analysis of <strong>GitHub Repositories</strong>, 
+				we have tailored the data sources, integrated continuous analysis of GitHub Repositories, 
 				and entirely redesigned the information representation to focus on strategic insights, business implications, and trend velocity.
 			</p>
 			<p>
