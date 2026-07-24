@@ -661,18 +661,18 @@ analysis:
 orchestration:
   # Available variables: ${context}
   topic_detection: |
-    Analyze the following category reports from today's AI news, research, social media, and GitHub trending collection, and identify the TOP 6 cross-category topics that represent the most significant strategic developments today.
+    Analyze the following category reports from today's AI news, research papers, social media, and GitHub trending collection, and identify the TOP 6 cross-category topics that represent the most significant developments today. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
 
     ${context}
 
     For each top topic, provide:
     1. A concise, authoritative name (2-5 words)
-    2. A rich, high-insight description (2-4 sentences) written as PLAIN TEXT without any links:
+    2. A rich, high-insight description (2-3 sentences) written as PLAIN TEXT without any links:
        - DO NOT include any markdown links or URLs.
        - Synthesize what happened across categories (news, research, open-source repos, community signals).
-       - Explicitly explain the **strategic and technical insight** for an AI Director (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or technical trade-offs).
+       - Explain the **strategic and technical insight** for an AI Director (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or technical trade-offs).
        - Reference key sources, institutions, or repositories by name (e.g., "Google announced...", "A Stanford paper demonstrated...", "The koala73/worldmonitor repo emerged as...")
-    3. Category breakdown mapping: {"news": N, "research": N, "social": N, "github_trending": N}
+    3. Which categories it appears in and roughly how many items: {"news": N, "research": N, "social": N, "github_trending": N}
     4. An importance score (0-100)
 
     IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name, but do NOT include URLs or markdown link syntax. Links will be added automatically in a post-processing step.
@@ -703,17 +703,17 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    Write a structured, high-level executive summary of today's AI news, research breakthroughs, and open-source landscape tailored for an AI Director, incorporating the clean structural sections of the original briefing framework.
+    Write a structured executive summary of today's AI news, research breakthroughs, and open-source landscape using markdown formatting, tailored for an AI Director.
 
     ${context}
 
-    FORMAT YOUR SUMMARY EXACTLY LIKE THIS:
+    FORMAT YOUR SUMMARY LIKE THIS:
 
-    #### Top Story & Strategic Insight
-    2-3 sentences synthesizing the most important development of the day, explaining what happened and why it matters strategically for an AI Director.
+    #### Top Story
+    2-3 sentences synthesizing the single most important development of the day, explaining what happened and its strategic impact for an AI Director.
 
     #### Key Developments
-    - **[Company/Product Name]**: Concise description of the news and its strategic implications for products or infrastructure (1-2 sentences)
+    - **[Company/Product Name]**: Concise description of what happened and its practical/strategic implications (1-2 sentences)
     - **[Company/Product Name]**: Concise strategic description (1-2 sentences)
     - (Include 3-5 bullet points covering the primary news announcements and frontier product updates)
 
@@ -725,21 +725,25 @@ orchestration:
     - **[Paper/Model Name]** ([Institution/Lab]): Technical insight explaining the breakthrough, key metrics (e.g., **3x inference speedup**, **+15% benchmark gain**), and why it matters for model design or deployment (1-2 sentences)
     - (Include 2-3 bullet points analyzing the top research papers - omit section if no research items today)
 
-    #### Looking Ahead & Leadership Implications
+    #### Safety & Regulation
+    - Brief bullet points on any safety, ethics, or regulatory news (omit section if none)
+
+    #### Looking Ahead
     1-2 sentences on forward-looking strategic implications for AI leaders and engineering decisions.
 
     FORMATTING RULES:
     - Target audience: AI Director / VP of AI needing strategic clarity, technical depth, and actionable insights.
-    - For research & GitHub repos: NEVER just list titles or URLs. Provide actionable technical insights, metrics, and strategic utility.
-    - Use **bold** for company names, product names, repository names, paper names, model names, and key numbers/stats.
+    - Use **bold** for company names (OpenAI, Google, Anthropic), product names, repository names, paper/model names, and key numbers/stats.
     - Use #### for section headers and - for bullet points.
-    - Write in an authoritative, clear, and insight-driven executive tone - no hype or generic filler phrases.
+    - Keep each bullet to 1-2 sentences maximum.
+    - Only include sections that have relevant content today (skip empty sections).
+    - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
 
     CRITICAL - AVOID REPETITION:
     - Review the PREVIOUS DAYS' COVERAGE section above carefully.
     - If a story was already a headline in previous days, do NOT present it as breaking news again.
 
-    The summary must serve as a complete, high-value executive briefing for an AI Director.
+    The summary should help a busy professional quickly scan and understand what's NEW and STRATEGICALLY IMPORTANT in AI today.
 
 # -----------------------------------------------------------------------------
 # POST-PROCESSING PHASE
