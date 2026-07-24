@@ -115,30 +115,49 @@ if [ -f "$PROJECT_DIR/.env" ]; then
     source "$PROJECT_DIR/.env" 2>/dev/null
     set -e
     
-    if [ -z "$ANTHROPIC_API_KEY" ]; then
-        ISSUES+=("API: ANTHROPIC_API_KEY not set in .env")
-        echo "  ❌ ANTHROPIC_API_KEY not set"
-    else
-        echo "  ✅ ANTHROPIC_API_KEY set (${#ANTHROPIC_API_KEY} chars)"
-    fi
-    
-    if [ -z "$ANTHROPIC_API_BASE" ]; then
-        ISSUES+=("API: ANTHROPIC_API_BASE not set in .env")
-        echo "  ❌ ANTHROPIC_API_BASE not set"
-    else
-        echo "  ✅ ANTHROPIC_API_BASE: $ANTHROPIC_API_BASE"
-        
-        # Test connectivity (HEAD request, 5s timeout)
-        HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 "$ANTHROPIC_API_BASE" 2>/dev/null || echo "000")
-        if [ "$HTTP_CODE" = "000" ]; then
-            ISSUES+=("API: Cannot reach $ANTHROPIC_API_BASE (connection failed)")
-            echo "  ❌ API endpoint unreachable"
+    LLM_MODE=$(awk '
+        /^llm:/ { in_llm=1; next }
+        in_llm && /^[^[:space:]]/ { exit }
+        in_llm && /^[[:space:]]+mode:/ {
+            gsub(/["'\'']/, "", $2)
+            print $2
+            exit
+        }
+    ' "$PROJECT_DIR/config/providers.yaml")
+
+    if [ "$LLM_MODE" = "gemini" ]; then
+        if [ -z "${GEMINI_API_KEY:-}" ]; then
+            ISSUES+=("API: GEMINI_API_KEY not set in .env")
+            echo "  ❌ GEMINI_API_KEY not set"
         else
-            echo "  ✅ API endpoint reachable (HTTP $HTTP_CODE)"
+            echo "  ✅ GEMINI_API_KEY set (${#GEMINI_API_KEY} chars)"
+        fi
+    else
+        if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+            ISSUES+=("API: ANTHROPIC_API_KEY not set in .env")
+            echo "  ❌ ANTHROPIC_API_KEY not set"
+        else
+            echo "  ✅ ANTHROPIC_API_KEY set (${#ANTHROPIC_API_KEY} chars)"
+        fi
+
+        if [ -z "${ANTHROPIC_API_BASE:-}" ]; then
+            ISSUES+=("API: ANTHROPIC_API_BASE not set in .env")
+            echo "  ❌ ANTHROPIC_API_BASE not set"
+        else
+            echo "  ✅ ANTHROPIC_API_BASE: $ANTHROPIC_API_BASE"
+
+            # Test connectivity (HEAD request, 5s timeout)
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 "$ANTHROPIC_API_BASE" 2>/dev/null || echo "000")
+            if [ "$HTTP_CODE" = "000" ]; then
+                ISSUES+=("API: Cannot reach $ANTHROPIC_API_BASE (connection failed)")
+                echo "  ❌ API endpoint unreachable"
+            else
+                echo "  ✅ API endpoint reachable (HTTP $HTTP_CODE)"
+            fi
         fi
     fi
     
-    if [ -z "$TWITTERAPI_IO_KEY" ]; then
+    if [ -z "${TWITTERAPI_IO_KEY:-}" ]; then
         echo "  ℹ️  TWITTERAPI_IO_KEY not set (Twitter collection will be skipped)"
     else
         echo "  ✅ TWITTERAPI_IO_KEY set"

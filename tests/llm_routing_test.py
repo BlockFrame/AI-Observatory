@@ -13,7 +13,10 @@ from agents.llm_client import (
     AsyncLLMRouter,
     LLMResponse,
     OpenRouterResponseError,
+    ProviderQuotaExhaustedError,
+    ProviderRateLimiter,
     ThinkingLevel,
+    _normalize_gemini_response,
     _uses_adaptive_thinking,
 )
 
@@ -45,12 +48,21 @@ class FakeOpenRouterResponse:
 
 
 class FakeRouteClient:
-    def __init__(self, provider_id, model=None, failures=None):
+    def __init__(
+        self,
+        provider_id,
+        model=None,
+        failures=None,
+        route_profiles=None,
+        caller_patterns=None,
+    ):
         self.provider_id = provider_id
         self.model = model or f"claude-4.8-opus-{provider_id}"
         self.max_concurrent_requests = 8
         self.failures = list(failures or [])
         self.calls = []
+        self.route_profiles = set(route_profiles or [])
+        self.caller_patterns = list(caller_patterns or [])
 
     async def call(self, **kwargs):
         self.calls.append(kwargs)
@@ -128,6 +140,34 @@ class LLMRouteConfigTests(unittest.TestCase):
 
         self.assertEqual(config.base_url, "https://openrouter.ai/api/v1")
         self.assertEqual(config.get_route_configs()[0].base_url, "https://openrouter.ai/api/v1")
+
+    def test_gemini_mode_defaults_and_route_quota_fields(self):
+        config = LLMProviderConfig(
+            mode="gemini",
+            api_key="test-key",
+            model="gemini-3.5-flash-lite",
+            requests_per_minute=15,
+            tokens_per_minute=250000,
+            requests_per_day=500,
+            routes=[
+                LLMRouteConfig(
+                    id="quality",
+                    model="gemini-3.6-flash",
+                    requests_per_minute=5,
+                    requests_per_day=20,
+                    profiles=["DEEP", "ULTRATHINK"],
+                    caller_patterns=["orchestrator.*"],
+                )
+            ],
+        )
+
+        route = config.get_route_configs()[0]
+        self.assertEqual(config.base_url, "https://generativelanguage.googleapis.com")
+        self.assertEqual(route.mode, "gemini")
+        self.assertEqual(route.requests_per_minute, 5)
+        self.assertEqual(route.tokens_per_minute, 250000)
+        self.assertEqual(route.requests_per_day, 20)
+        self.assertEqual(route.profiles, ["DEEP", "ULTRATHINK"])
 
     def test_empty_routes_fail_clearly(self):
         with self.assertRaises(ValidationError) as error:
@@ -290,6 +330,79 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
         asyncio.run(run())
 
+    def test_profile_and_caller_routing_prefers_quality_route(self):
+        async def run():
+            bulk = FakeRouteClient(
+                "bulk",
+                route_profiles=["QUICK", "STANDARD", "DEEP"],
+            )
+            quality = FakeRouteClient(
+                "quality",
+                route_profiles=["STANDARD", "DEEP", "ULTRATHINK"],
+                caller_patterns=["orchestrator.*", "*_analyzer.reduce_rank"],
+            )
+            router = AsyncLLMRouter([bulk, quality])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "rank"}],
+                profile=ThinkingLevel.DEEP,
+                caller="news_analyzer.reduce_rank",
+            )
+
+            self.assertEqual(response.content, "quality")
+            self.assertEqual(len(bulk.calls), 0)
+            self.assertEqual(len(quality.calls), 1)
+
+        asyncio.run(run())
+
+    def test_deep_bulk_caller_stays_on_flash_lite_route(self):
+        async def run():
+            bulk = FakeRouteClient(
+                "bulk",
+                route_profiles=["QUICK", "STANDARD", "DEEP"],
+            )
+            quality = FakeRouteClient(
+                "quality",
+                route_profiles=["STANDARD", "DEEP", "ULTRATHINK"],
+                caller_patterns=["orchestrator.*", "*_analyzer.reduce_rank"],
+            )
+            router = AsyncLLMRouter([bulk, quality])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "curate"}],
+                profile=ThinkingLevel.DEEP,
+                caller="continuity.curator",
+            )
+
+            self.assertEqual(response.content, "bulk")
+
+        asyncio.run(run())
+
+    def test_rpd_exhaustion_is_retryable_on_fallback_route(self):
+        async def run():
+            quality = FakeRouteClient(
+                "quality",
+                failures=[ProviderQuotaExhaustedError("20 RPD")],
+                route_profiles=["DEEP"],
+                caller_patterns=["orchestrator.*"],
+            )
+            bulk = FakeRouteClient("bulk", route_profiles=["DEEP"])
+            router = AsyncLLMRouter([quality, bulk])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "summarize"}],
+                profile=ThinkingLevel.DEEP,
+                caller="orchestrator.summary",
+            )
+
+            self.assertEqual(response.content, "bulk")
+            self.assertEqual(
+                bulk.calls[0]["routing_context"]["retry_reason"],
+                "provider_rpd_exhausted",
+            )
+
+        asyncio.run(run())
+
     def test_opus_47_request_uses_top_level_adaptive_thinking(self):
         async def run():
             captured_kwargs = {}
@@ -412,6 +525,48 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(captured_context["analysis_profile"], "QUICK")
 
         asyncio.run(run())
+
+
+class GeminiResponseTests(unittest.TestCase):
+    def test_normalizes_text_thoughts_usage_and_truncation(self):
+        class Part:
+            def __init__(self, text, thought=False):
+                self.text = text
+                self.thought = thought
+
+        class Content:
+            parts = [Part("reasoning", thought=True), Part('{"ok": true}')]
+
+        class Candidate:
+            content = Content()
+            finish_reason = "MAX_TOKENS"
+
+        class Usage:
+            prompt_token_count = 100
+            candidates_token_count = 20
+            thoughts_token_count = 30
+
+        class Response:
+            candidates = [Candidate()]
+            usage_metadata = Usage()
+            model_version = "gemini-3.6-flash"
+
+        result = _normalize_gemini_response(Response(), "configured-model")
+
+        self.assertEqual(result.content, '{"ok": true}')
+        self.assertEqual(result.thinking, "reasoning")
+        self.assertEqual(result.stop_reason, "max_tokens")
+        self.assertEqual(result.usage["thinking_tokens"], 30)
+
+    def test_rate_limiter_enforces_daily_quota(self):
+        limiter = ProviderRateLimiter(
+            requests_per_minute=None,
+            tokens_per_minute=None,
+            requests_per_day=1,
+        )
+        limiter.acquire(1)
+        with self.assertRaises(ProviderQuotaExhaustedError):
+            limiter.acquire(1)
 
 
 if __name__ == "__main__":

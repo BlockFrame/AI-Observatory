@@ -293,7 +293,12 @@ class MainOrchestrator:
         start_time = datetime.now()
 
         # Initialize cost tracking
-        cost_tracker = reset_tracker()
+        tracker_model = (
+            self.provider_config.llm.model
+            if self.provider_config is not None
+            else "claude-4.8-opus-aws"
+        )
+        cost_tracker = reset_tracker(tracker_model)
         cost_tracker.start()
 
         # Initialize phase tracker

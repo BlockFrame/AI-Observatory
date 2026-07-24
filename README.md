@@ -2,7 +2,7 @@
 
 ![Pipeline Banner](assets/pipeline-banner.webp)
 
-> Multi-agent AI news pipeline powered by Claude Opus 4.8 with adaptive thinking
+> Multi-agent AI news pipeline powered by native Gemini models with adaptive thinking
 
 > **Live Site:** [https://news.aatf.ai](https://news.aatf.ai)
 
@@ -34,7 +34,7 @@ Daily AI/ML news briefings curated by specialized agents using adaptive thinking
 
 ## What It Does
 
-A Python-based pipeline that collects AI/ML news from multiple sources, analyzes them using specialized agents with Claude's adaptive thinking, and serves a modern Svelte SPA frontend.
+A Python-based pipeline that collects AI/ML news from multiple sources, analyzes them using specialized agents with provider-aware adaptive thinking, and serves a modern Svelte SPA frontend.
 
 **Key Stats:**
 - **40+ curated RSS/Atom sources** plus Hugging Face Papers and AlphaXiv
@@ -66,14 +66,16 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 
 ### Adaptive Thinking Profiles
 
-For Claude Opus 4.8, these are profiles rather than fixed token budgets. The client sends `thinking: { type: "adaptive", display: "summarized" }` and maps each profile to `output_config.effort`. Manual `budget_tokens` is only used for older Claude models that still support it.
+These are internal pipeline profiles rather than provider token budgets. Native
+Gemini routes map them to `thinking_level`; Claude routes retain their adaptive
+effort or legacy manual-budget mapping.
 
-| Profile | Opus 4.8 Effort | Legacy Manual Budget | Use Case |
-|---------|-----------------|----------------------|----------|
-| QUICK | `high` | 4,096 tokens | Link relevance decisions, item summarization |
-| STANDARD | `xhigh` | 8,192 tokens | Batch analysis, link enrichment |
-| DEEP | `max` | 16,000 tokens | Category ranking, executive summary |
-| ULTRATHINK | `max` | 32,000 tokens | Cross-category topic detection |
+| Profile | Gemini Thinking | Default Route | Use Case |
+|---------|-----------------|---------------|----------|
+| QUICK | `low` | Flash-Lite | Filters, matching, sentiment |
+| STANDARD | `medium` | Flash-Lite | Batch analysis, enrichment |
+| DEEP | `high` | Flash or Flash-Lite by caller | Ranking, executive summary |
+| ULTRATHINK | `high` | Flash | Cross-category topic detection |
 
 ### Agent Architecture
 
@@ -214,6 +216,7 @@ Set these on the publishing repository:
 | Secret | Purpose |
 |--------|---------|
 | `PIPELINE_PROVIDERS_YAML` | Full contents of ignored `config/providers.yaml`; preferred for production because it preserves the exact provider mode and image settings |
+| `GEMINI_API_KEY` | Google AI Studio key used by the native Gemini LLM routes |
 | `ANTHROPIC_API_KEY` | LLM/proxy API key, also used by the fallback generated provider config |
 | `ANTHROPIC_API_BASE` | OpenAI-compatible proxy base URL when used |
 | `TWITTERAPI_IO_KEY` | Optional Twitter/X collection |
@@ -251,27 +254,40 @@ Use `workflow_dispatch` with `commit_outputs=false` to run the full hosted pipel
 
 Every hosted run also uploads a `pipeline-diagnostics` artifact when available. It includes `data/llm_metrics.jsonl` and cost reports, which are useful for comparing model IDs/providers without committing diagnostics to the public site.
 
-### Multi-Provider LLM Routing
+### Profile-Aware LLM Routing
 
-Production can route async LLM calls across multiple Opus 4.8 provider aliases by adding `llm.routes` to the ignored `config/providers.yaml` stored in `PIPELINE_PROVIDERS_YAML`. Routes inherit root `llm` settings unless overridden:
+Production can route async LLM calls by analysis profile and caller. Routes
+inherit root settings unless overridden; RPM, input TPM, and RPD limits are
+enforced in-process:
 
 ```yaml
 llm:
-  mode: "openai-compatible"
-  api_key: "${ANTHROPIC_API_KEY}"
-  base_url: "${ANTHROPIC_API_BASE}"
-  model: "claude-4.8-opus-aws"
+  mode: "gemini"
+  api_key: "${GEMINI_API_KEY}"
+  model: "gemini-3.5-flash-lite"
+  requests_per_minute: 15
+  tokens_per_minute: 250000
+  requests_per_day: 500
   timeout: 600
   routes:
-    - id: "aws"
-      model: "claude-4.8-opus-aws"
-    - id: "gcp"
-      model: "claude-4.8-opus-gcp"
-    - id: "anthropic"
-      model: "claude-4.8-opus-anthropic"
+    - id: "gemini-bulk"
+      model: "gemini-3.5-flash-lite"
+      profiles: ["QUICK", "STANDARD", "DEEP"]
+    - id: "gemini-quality"
+      model: "gemini-3.6-flash"
+      requests_per_minute: 5
+      requests_per_day: 20
+      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      caller_patterns:
+        - "orchestrator.*"
+        - "*_analyzer.reduce_rank"
+        - "link_enricher.*"
 ```
 
-With routes configured, new async LLM calls rotate across providers. Each route gets its own semaphore using `LLM_MAX_CONCURRENT_REQUESTS`, so analyzer/category concurrency is unchanged but LLM capacity scales with the number of configured routes. Retryable transport failures, timeouts, 429s, and 5xx responses retry on a different provider. Prompt/schema/client errors and JSON parse failures do not cross-provider retry.
+Routes with matching caller patterns are preferred over profile-only routes.
+Retryable transport failures, quota exhaustion, 429s, and 5xx responses fail
+over to the next route. Configurations without selectors retain round-robin
+routing.
 
 Hosted diagnostics include provider IDs, provider model IDs, route attempts, fallback source, retry reason, adaptive thinking type, analysis profile, adaptive effort, response token ceiling, queue/active counts, and content block counts. They never include prompt text, API keys, or provider URLs.
 
@@ -307,14 +323,27 @@ cp config/providers.yaml.example config/providers.yaml
 
 ### LLM Provider
 
-Supports three modes:
+Supports four modes:
 
 | Mode | Description | Auth | Thinking Support |
 |------|-------------|------|------------------|
 | `anthropic` (default) | Direct Anthropic API | x-api-key header | Adaptive thinking on Opus 4.8 |
 | `openai-compatible` | LiteLLM, vLLM, or other proxies | Bearer token | Depends on proxy passthrough support |
-
 | `openrouter` | Direct OpenRouter chat/completions API | ****** | Standard chat completions (no Anthropic thinking blocks) |
+| `gemini` | Native Google Gemini API | Google AI Studio API key | Native Gemini thinking levels |
+
+**Native Gemini API:**
+
+```yaml
+llm:
+  mode: "gemini"
+  api_key: "${GEMINI_API_KEY}"
+  model: "gemini-3.5-flash-lite"
+  max_output_tokens: 65536
+  requests_per_minute: 15
+  tokens_per_minute: 250000
+  requests_per_day: 500
+```
 
 **Direct Anthropic API:**
 
@@ -382,6 +411,7 @@ You can reference environment variables in your YAML config using `${VAR_NAME}` 
 
 ```bash
 export ANTHROPIC_API_KEY="your-key-here"
+export GEMINI_API_KEY="your-key-here"
 export GOOGLE_API_KEY="your-key-here"
 export TWITTERAPI_IO_KEY="your-key-here"  # Optional, for Twitter collection
 export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
@@ -389,7 +419,8 @@ export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `ANTHROPIC_API_KEY` | Anthropic API key | Yes |
+| `GEMINI_API_KEY` | Google AI Studio key for native Gemini LLM routes | For `gemini` mode |
+| `ANTHROPIC_API_KEY` | Anthropic API key | For `anthropic` mode |
 | `GOOGLE_API_KEY` | Google AI API key | No (hero images) |
 | `TWITTERAPI_IO_KEY` | TwitterAPI.io key ($0.15/1000 tweets) | No |
 | `SCRAPECREATORS_API_KEY` | ScrapeCreators key for Reddit (~$0.99/1000 calls) | For Reddit |
@@ -482,9 +513,10 @@ Automatically identifies when today's stories continue from previous coverage:
 - **2-day lookback**: Compares against items from the past 2 days
 
 ### Analysis Profiles And Adaptive Thinking
-- QUICK/STANDARD/DEEP/ULTRATHINK are internal AATF analysis profiles, not Anthropic API thinking levels
-- Claude Opus 4.8 uses adaptive thinking plus effort settings, not fixed manual `budget_tokens`
-- Opus 4.8 requests send top-level `thinking: {"type": "adaptive", "display": "summarized"}` plus `output_config.effort`
+- QUICK/STANDARD/DEEP/ULTRATHINK are internal AATF analysis profiles, not provider API values
+- Native Gemini routes map these profiles to low/medium/high `thinking_level`
+- Caller patterns reserve Gemini 3.6 Flash for ranking and cross-category synthesis
+- Claude remains an optional provider with adaptive or legacy manual thinking
 - `LLM_ADAPTIVE_MAX_TOKENS` sets the response output ceiling and is separate from thinking depth
 - Request logs use `analysis_profile`, `adaptive_effort`, and `response_max_tokens` so the internal profile names are not confused with provider thinking levels or manual token budgets
 - QUICK/STANDARD/DEEP/ULTRATHINK remain as internal profile names for callers and older Claude models
@@ -742,15 +774,16 @@ python3 scripts/regenerate_hero.py 2026-01-06 -e "Add a coffee cup to the scene"
 - **Python 3.10+**
 - **Node.js 18+** (for frontend development)
 - **Docker & Docker Compose** (for containerized deployment)
-- **Claude Opus 4.8** (recommended for best analysis quality)
+- **Gemini 3.5 Flash-Lite and Gemini 3.6 Flash** (default analysis routes)
 - **Gemini 3 Pro** (optional, for hero image generation)
 
 ### API Keys
 
 | Service | Required | Cost | Purpose |
 |---------|----------|------|---------|
-| Anthropic API | Yes | Pay-per-token | LLM analysis |
-| Google AI | No | Pay-per-image | Hero images |
+| Google AI Studio | Yes | Quota tier | Native Gemini LLM analysis |
+| Anthropic API | No | Pay-per-token | Optional alternative LLM provider |
+| Google AI images | No | Pay-per-image | Hero images |
 | TwitterAPI.io | No | $0.15/1000 tweets | Twitter collection |
 | Mullvad | No | Subscription | Optional hosted-runner egress proxy |
 

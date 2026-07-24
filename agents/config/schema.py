@@ -7,7 +7,7 @@ class LLMRouteConfig(BaseModel):
     """Optional per-route override for multi-provider LLM routing."""
 
     id: str = Field(..., min_length=1, description="Stable route/provider identifier")
-    mode: Optional[Literal["anthropic", "openai-compatible", "openrouter"]] = Field(
+    mode: Optional[Literal["anthropic", "openai-compatible", "openrouter", "gemini"]] = Field(
         default=None,
         description="Override API mode for this route"
     )
@@ -30,6 +30,29 @@ class LLMRouteConfig(BaseModel):
         default=None,
         ge=0,
         description="Override per-provider async request cap; 0 disables the cap"
+    )
+    requests_per_minute: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Provider RPM quota enforced in-process"
+    )
+    tokens_per_minute: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Provider input-token TPM quota enforced using a conservative estimate"
+    )
+    requests_per_day: Optional[int] = Field(
+        default=None,
+        ge=1,
+        description="Provider RPD quota enforced in-process"
+    )
+    profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = Field(
+        default=None,
+        description="Analysis profiles eligible for this route"
+    )
+    caller_patterns: Optional[List[str]] = Field(
+        default=None,
+        description="Optional fnmatch patterns that callers must match for preferred routing"
     )
 
     @field_validator('api_key')
@@ -70,9 +93,9 @@ class LLMProviderConfig(BaseModel):
         model: Model identifier
         timeout: Request timeout in seconds (1-600)
     """
-    mode: Literal["anthropic", "openai-compatible", "openrouter"] = Field(
+    mode: Literal["anthropic", "openai-compatible", "openrouter", "gemini"] = Field(
         default="anthropic",
-        description="API mode: 'anthropic' for direct API, 'openai-compatible' for proxies"
+        description="API mode: anthropic, openai-compatible, openrouter, or native gemini"
     )
     api_key: str = Field(..., description="API key for authentication")
     base_url: str = Field(
@@ -92,6 +115,9 @@ class LLMProviderConfig(BaseModel):
         default=None,
         description="Optional route list for multi-provider LLM routing"
     )
+    requests_per_minute: Optional[int] = Field(default=None, ge=1)
+    tokens_per_minute: Optional[int] = Field(default=None, ge=1)
+    requests_per_day: Optional[int] = Field(default=None, ge=1)
 
     @field_validator('api_key')
     @classmethod
@@ -119,6 +145,8 @@ class LLMProviderConfig(BaseModel):
         """Validate optional multi-provider route configuration."""
         if self.mode == "openrouter" and self.base_url == "https://api.anthropic.com":
             self.base_url = "https://openrouter.ai/api/v1"
+        if self.mode == "gemini" and self.base_url == "https://api.anthropic.com":
+            self.base_url = "https://generativelanguage.googleapis.com"
         if self.mode != "openrouter" and self.base_url.endswith('/v1'):
             raise ValueError(
                 f"base_url should not include '/v1' suffix for mode '{self.mode}'. "
@@ -147,6 +175,11 @@ class LLMProviderConfig(BaseModel):
                     max_output_tokens=self.max_output_tokens,
                     timeout=self.timeout,
                     max_concurrent_requests=None,
+                    requests_per_minute=self.requests_per_minute,
+                    tokens_per_minute=self.tokens_per_minute,
+                    requests_per_day=self.requests_per_day,
+                    profiles=None,
+                    caller_patterns=None,
                 )
             ]
 
@@ -160,6 +193,11 @@ class LLMProviderConfig(BaseModel):
                 max_output_tokens=route.max_output_tokens or self.max_output_tokens,
                 timeout=route.timeout or self.timeout,
                 max_concurrent_requests=route.max_concurrent_requests,
+                requests_per_minute=route.requests_per_minute or self.requests_per_minute,
+                tokens_per_minute=route.tokens_per_minute or self.tokens_per_minute,
+                requests_per_day=route.requests_per_day or self.requests_per_day,
+                profiles=route.profiles,
+                caller_patterns=route.caller_patterns,
             )
             for route in self.routes
         ]
@@ -169,13 +207,18 @@ class ResolvedLLMRouteConfig(BaseModel):
     """Concrete LLM provider route after inheritance from root llm config."""
 
     id: str
-    mode: Literal["anthropic", "openai-compatible", "openrouter"]
+    mode: Literal["anthropic", "openai-compatible", "openrouter", "gemini"]
     api_key: str
     base_url: str
     model: str
     max_output_tokens: int
     timeout: float
     max_concurrent_requests: Optional[int] = None
+    requests_per_minute: Optional[int] = None
+    tokens_per_minute: Optional[int] = None
+    requests_per_day: Optional[int] = None
+    profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = None
+    caller_patterns: Optional[List[str]] = None
 
     @field_validator('base_url')
     @classmethod

@@ -1,10 +1,11 @@
 """
 Cost Tracker for LLM API Usage
 
-Tracks token usage and calculates costs based on Anthropic pricing.
+Tracks token usage and calculates provider-aware cost estimates.
 Provides detailed statistics for pipeline runs.
 
-Pricing source: https://platform.claude.com/docs/en/about-claude/pricing
+Claude pricing source: https://platform.claude.com/docs/en/about-claude/pricing
+Gemini AI Studio quota-tier calls are reported as a zero-dollar estimate.
 """
 
 import json
@@ -190,12 +191,22 @@ class CostTracker:
         """Calculate cost for a single API call."""
         # Costs are per million tokens
         mtok = 1_000_000
+        model = (record.model or "").lower()
+        if model.startswith("gemini-"):
+            # This project targets the quota-limited Google AI Studio tier.
+            # Keep usage visible without incorrectly applying Claude pricing.
+            input_price = output_price = cache_write_price = cache_hit_price = 0.0
+        else:
+            input_price = self.input_price
+            output_price = self.output_price
+            cache_write_price = self.cache_write_price
+            cache_hit_price = self.cache_hit_price
 
         return CostBreakdown(
-            input_cost=(record.input_tokens / mtok) * self.input_price,
-            output_cost=(record.output_tokens / mtok) * self.output_price,
-            cache_write_cost=(record.cache_creation_tokens / mtok) * self.cache_write_price,
-            cache_hit_cost=(record.cache_read_tokens / mtok) * self.cache_hit_price
+            input_cost=(record.input_tokens / mtok) * input_price,
+            output_cost=(record.output_tokens / mtok) * output_price,
+            cache_write_cost=(record.cache_creation_tokens / mtok) * cache_write_price,
+            cache_hit_cost=(record.cache_read_tokens / mtok) * cache_hit_price
         )
 
     def get_totals(self) -> Dict[str, int]:
@@ -347,9 +358,10 @@ class CostTracker:
 
         lines.extend([
             "",
-            "PRICING (Claude Opus 4.8):",
-            f"  Input:  ${self.input_price:.2f}/MTok",
-            f"  Output: ${self.output_price:.2f}/MTok",
+            "PRICING ESTIMATE:",
+            "  Gemini AI Studio quota calls: $0 estimate",
+            f"  Claude fallback input:  ${self.input_price:.2f}/MTok",
+            f"  Claude fallback output: ${self.output_price:.2f}/MTok",
             "=" * 60
         ])
 

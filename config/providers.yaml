@@ -1,19 +1,35 @@
 llm:
-  mode: "openrouter"
-  api_key: "${OPENROUTER_API_KEY}"
-  base_url: "https://openrouter.ai/api/v1"
-  model: "nvidia/nemotron-3-ultra-550b-a55b:free"
-  max_output_tokens: 16384
+  mode: "gemini"
+  api_key: "${GEMINI_API_KEY}"
+  model: "gemini-3.5-flash-lite"
+  max_output_tokens: 65536
   timeout: 600
+  requests_per_minute: 15
+  tokens_per_minute: 250000
+  requests_per_day: 500
   routes:
-    - id: "primary"
-      mode: "openrouter"
-      model: "nvidia/nemotron-3-ultra-550b-a55b:free"
-      max_concurrent_requests: 3
-    - id: "free-router-fallback"
-      mode: "openrouter"
-      model: "openrouter/free"
+    - id: "gemini-bulk"
+      mode: "gemini"
+      model: "gemini-3.5-flash-lite"
+      max_output_tokens: 65536
+      max_concurrent_requests: 6
+      requests_per_minute: 15
+      tokens_per_minute: 250000
+      requests_per_day: 500
+      profiles: ["QUICK", "STANDARD", "DEEP"]
+    - id: "gemini-quality"
+      mode: "gemini"
+      model: "gemini-3.6-flash"
+      max_output_tokens: 65536
       max_concurrent_requests: 2
+      requests_per_minute: 5
+      tokens_per_minute: 250000
+      requests_per_day: 20
+      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      caller_patterns:
+        - "orchestrator.*"
+        - "*_analyzer.reduce_rank"
+        - "link_enricher.*"
 
 # image section disabled - no GOOGLE_API_KEY configured
 # To enable hero image generation, add GOOGLE_API_KEY secret and uncomment:

@@ -14,6 +14,9 @@ import json
 import logging
 import time
 import asyncio
+import fnmatch
+import threading
+from collections import deque
 from contextlib import suppress
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -23,6 +26,8 @@ from enum import IntEnum
 
 import httpx
 import anthropic
+from google import genai
+from google.genai import types as genai_types
 
 from .cost_tracker import get_tracker
 
@@ -115,10 +120,116 @@ THINKING_LEVEL_NAMES = {
 }
 
 OPENROUTER_DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
+GEMINI_DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com"
+
+GEMINI_PROFILE_TO_THINKING = {
+    ThinkingLevel.QUICK: "low",
+    ThinkingLevel.STANDARD: "medium",
+    ThinkingLevel.DEEP: "high",
+    ThinkingLevel.ULTRATHINK: "high",
+}
 
 
 def _uses_openrouter(mode: str) -> bool:
     return mode == "openrouter"
+
+
+def _uses_gemini(mode: str) -> bool:
+    return mode == "gemini"
+
+
+class ProviderQuotaExhaustedError(RuntimeError):
+    """Raised when an in-process provider RPD quota has been exhausted."""
+
+
+class ProviderRateLimiter:
+    """Shared process-local RPM, input-TPM, and RPD limiter for one model."""
+
+    def __init__(
+        self,
+        requests_per_minute: Optional[int],
+        tokens_per_minute: Optional[int],
+        requests_per_day: Optional[int],
+    ):
+        self.requests_per_minute = requests_per_minute
+        self.tokens_per_minute = tokens_per_minute
+        self.requests_per_day = requests_per_day
+        self._lock = threading.Lock()
+        self._request_times = deque()
+        self._token_events = deque()
+        self._day = datetime.now(timezone.utc).date()
+        self._daily_requests = 0
+
+    def acquire(self, estimated_input_tokens: int) -> None:
+        while True:
+            wait_seconds = 0.0
+            now = time.monotonic()
+            utc_day = datetime.now(timezone.utc).date()
+            with self._lock:
+                if utc_day != self._day:
+                    self._day = utc_day
+                    self._daily_requests = 0
+
+                cutoff = now - 60.0
+                while self._request_times and self._request_times[0] <= cutoff:
+                    self._request_times.popleft()
+                while self._token_events and self._token_events[0][0] <= cutoff:
+                    self._token_events.popleft()
+
+                if (
+                    self.requests_per_day is not None
+                    and self._daily_requests >= self.requests_per_day
+                ):
+                    raise ProviderQuotaExhaustedError(
+                        f"Daily request quota exhausted ({self.requests_per_day} RPD)"
+                    )
+
+                if (
+                    self.requests_per_minute is not None
+                    and len(self._request_times) >= self.requests_per_minute
+                ):
+                    wait_seconds = max(wait_seconds, self._request_times[0] + 60.0 - now)
+
+                minute_tokens = sum(tokens for _, tokens in self._token_events)
+                if (
+                    self.tokens_per_minute is not None
+                    and minute_tokens + estimated_input_tokens > self.tokens_per_minute
+                    and self._token_events
+                ):
+                    wait_seconds = max(wait_seconds, self._token_events[0][0] + 60.0 - now)
+
+                if wait_seconds <= 0:
+                    self._request_times.append(now)
+                    self._token_events.append((now, estimated_input_tokens))
+                    self._daily_requests += 1
+                    return
+
+            time.sleep(max(wait_seconds, 0.05))
+
+
+_RATE_LIMITERS: Dict[Tuple[str, str, str], ProviderRateLimiter] = {}
+_RATE_LIMITERS_LOCK = threading.Lock()
+
+
+def _get_rate_limiter(
+    mode: str,
+    base_url: str,
+    model: str,
+    requests_per_minute: Optional[int],
+    tokens_per_minute: Optional[int],
+    requests_per_day: Optional[int],
+) -> ProviderRateLimiter:
+    key = (mode, base_url, model)
+    with _RATE_LIMITERS_LOCK:
+        limiter = _RATE_LIMITERS.get(key)
+        if limiter is None:
+            limiter = ProviderRateLimiter(
+                requests_per_minute,
+                tokens_per_minute,
+                requests_per_day,
+            )
+            _RATE_LIMITERS[key] = limiter
+        return limiter
 
 
 @dataclass
@@ -225,6 +336,73 @@ def _normalize_openrouter_response(response_json: Dict[str, Any]) -> ProviderRes
     )
 
 
+def _build_gemini_contents(messages: List[Dict[str, Any]]) -> List[genai_types.Content]:
+    contents = []
+    for message in messages:
+        role = "model" if message.get("role") == "assistant" else "user"
+        contents.append(
+            genai_types.Content(
+                role=role,
+                parts=[
+                    genai_types.Part.from_text(
+                        text=_coerce_message_content(message.get("content", ""))
+                    )
+                ],
+            )
+        )
+    return contents
+
+
+def _gemini_finish_reason(response: Any) -> Optional[str]:
+    candidates = getattr(response, "candidates", None) or []
+    if not candidates:
+        return None
+    finish_reason = getattr(candidates[0], "finish_reason", None)
+    value = getattr(finish_reason, "value", finish_reason)
+    normalized = str(value or "").upper()
+    if "MAX_TOKENS" in normalized:
+        return "max_tokens"
+    if normalized:
+        return "stop"
+    return None
+
+
+def _normalize_gemini_response(response: Any, configured_model: str) -> 'LLMResponse':
+    text_blocks = []
+    thinking_blocks = []
+    candidates = getattr(response, "candidates", None) or []
+    parts = []
+    if candidates:
+        content = getattr(candidates[0], "content", None)
+        parts = getattr(content, "parts", None) or []
+
+    for part in parts:
+        text = getattr(part, "text", None)
+        if not text:
+            continue
+        if getattr(part, "thought", False):
+            thinking_blocks.append(text)
+        else:
+            text_blocks.append(text)
+
+    usage_metadata = getattr(response, "usage_metadata", None)
+    usage = {
+        "input_tokens": int(getattr(usage_metadata, "prompt_token_count", 0) or 0),
+        "output_tokens": int(getattr(usage_metadata, "candidates_token_count", 0) or 0),
+        "thinking_tokens": int(getattr(usage_metadata, "thoughts_token_count", 0) or 0),
+    }
+    model = getattr(response, "model_version", None) or configured_model
+    return LLMResponse(
+        content="\n".join(text_blocks),
+        thinking="\n\n".join(thinking_blocks) if thinking_blocks else None,
+        usage=usage,
+        model=model,
+        stop_reason=_gemini_finish_reason(response),
+        thinking_type="adaptive",
+        thinking_block_count=len(thinking_blocks),
+    )
+
+
 def _content_char_count(content: Any) -> int:
     """Estimate request content size without logging the raw content."""
     if content is None:
@@ -310,7 +488,10 @@ class AnthropicClient:
         model: Optional[str] = None,
         timeout: float = 600.0,
         mode: str = "anthropic",
-        max_output_tokens: Optional[int] = None
+        max_output_tokens: Optional[int] = None,
+        requests_per_minute: Optional[int] = None,
+        tokens_per_minute: Optional[int] = None,
+        requests_per_day: Optional[int] = None,
     ):
         """
         Initialize the Anthropic client.
@@ -325,9 +506,19 @@ class AnthropicClient:
             max_output_tokens: Maximum output tokens the model/proxy supports.
                              Defaults to DEFAULT_MODEL_MAX_TOKENS (128000).
         """
-        default_api_key_env = 'OPENROUTER_API_KEY' if mode == "openrouter" else 'ANTHROPIC_API_KEY'
-        default_base_url = OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter" else None
+        default_api_key_env = (
+            'OPENROUTER_API_KEY' if mode == "openrouter"
+            else 'GEMINI_API_KEY' if mode == "gemini"
+            else 'ANTHROPIC_API_KEY'
+        )
+        default_base_url = (
+            OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter"
+            else GEMINI_DEFAULT_BASE_URL if mode == "gemini"
+            else None
+        )
         self.api_key = api_key or os.environ.get(default_api_key_env)
+        if mode == "gemini" and not self.api_key:
+            self.api_key = os.environ.get("GOOGLE_API_KEY")
         self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE') or default_base_url
         self.model = model or os.environ.get('ANTHROPIC_MODEL', 'claude-4.8-opus-aws')
         self.timeout = _env_float("LLM_TIMEOUT_SECONDS", timeout, minimum=1.0)
@@ -339,6 +530,17 @@ class AnthropicClient:
         )
         self.trust_env_proxy = _env_bool("LLM_TRUST_ENV_PROXY", False)
         self.max_retries = _env_int("LLM_MAX_RETRIES", 2, minimum=0)
+        self.requests_per_minute = requests_per_minute
+        self.tokens_per_minute = tokens_per_minute
+        self.requests_per_day = requests_per_day
+        self._rate_limiter = _get_rate_limiter(
+            self.mode,
+            self.base_url or "",
+            self.model,
+            self.requests_per_minute,
+            self.tokens_per_minute,
+            self.requests_per_day,
+        )
 
         if not self.api_key:
             raise ValueError(f"{default_api_key_env} environment variable or api_key parameter required")
@@ -350,22 +552,30 @@ class AnthropicClient:
             auth = ApiKeyAuth(self.api_key)
         elif self.mode in {"openai-compatible", "openrouter"}:
             auth = BearerAuth(self.api_key)
+        elif self.mode == "gemini":
+            auth = None
         else:
             raise ValueError(
-                f"Unknown mode: {self.mode}. Expected 'anthropic', 'openai-compatible', or 'openrouter'."
+                f"Unknown mode: {self.mode}. Expected anthropic, openai-compatible, "
+                "openrouter, or gemini."
             )
 
-        # Create httpx client with mode-appropriate auth
-        self._http_client = httpx.Client(
-            auth=auth,
-            timeout=httpx.Timeout(self.timeout),
-            trust_env=self.trust_env_proxy
-        )
+        self._http_client = None
+        if not _uses_gemini(self.mode):
+            self._http_client = httpx.Client(
+                auth=auth,
+                timeout=httpx.Timeout(self.timeout),
+                trust_env=self.trust_env_proxy
+            )
 
-        # Create Anthropic client with custom http client unless we're talking
-        # to OpenRouter's OpenAI-compatible chat/completions API directly.
         self._client = None
-        if not _uses_openrouter(self.mode):
+        self._gemini_client = None
+        if _uses_gemini(self.mode):
+            self._gemini_client = genai.Client(
+                api_key=self.api_key,
+                http_options=genai_types.HttpOptions(timeout=int(self.timeout * 1000)),
+            )
+        elif not _uses_openrouter(self.mode):
             self._client = anthropic.Anthropic(
                 base_url=self.base_url,
                 api_key=self.api_key,  # SDK sends this as x-api-key header
@@ -396,8 +606,41 @@ class AnthropicClient:
             model=config.model,
             timeout=config.timeout,
             mode=config.mode,
-            max_output_tokens=getattr(config, 'max_output_tokens', DEFAULT_MODEL_MAX_TOKENS)
+            max_output_tokens=getattr(config, 'max_output_tokens', DEFAULT_MODEL_MAX_TOKENS),
+            requests_per_minute=getattr(config, 'requests_per_minute', None),
+            tokens_per_minute=getattr(config, 'tokens_per_minute', None),
+            requests_per_day=getattr(config, 'requests_per_day', None),
         )
+
+    def _create_gemini_completion(
+        self,
+        *,
+        messages: List[Dict[str, Any]],
+        system: Optional[str],
+        max_tokens: int,
+        temperature: Optional[float],
+        thinking_level: str,
+    ) -> LLMResponse:
+        estimated_input_tokens = max(
+            1,
+            (_messages_char_count(messages) + _content_char_count(system) + 3) // 4,
+        )
+        self._rate_limiter.acquire(estimated_input_tokens)
+        config = genai_types.GenerateContentConfig(
+            system_instruction=system,
+            max_output_tokens=max_tokens,
+            temperature=temperature,
+            thinking_config=genai_types.ThinkingConfig(
+                thinking_level=thinking_level,
+                include_thoughts=True,
+            ),
+        )
+        response = self._gemini_client.models.generate_content(
+            model=self.model,
+            contents=_build_gemini_contents(messages),
+            config=config,
+        )
+        return _normalize_gemini_response(response, self.model)
 
     def _create_openrouter_completion(
         self,
@@ -441,6 +684,19 @@ class AnthropicClient:
         Returns:
             LLMResponse with content and no returned thinking text.
         """
+        if _uses_gemini(self.mode):
+            response = self._create_gemini_completion(
+                messages=messages,
+                system=system,
+                max_tokens=min(max_tokens, self.max_output_tokens),
+                temperature=temperature,
+                thinking_level="minimal",
+            )
+            response.thinking = None
+            response.analysis_profile = "plain"
+            response.adaptive_effort = "minimal"
+            return response
+
         if _uses_openrouter(self.mode):
             response = self._create_openrouter_completion(
                 messages=messages,
@@ -538,6 +794,21 @@ class AnthropicClient:
         """
         requested_profile = profile if profile is not None else budget_tokens
         profile_name = THINKING_LEVEL_NAMES.get(requested_profile, str(requested_profile))
+
+        if _uses_gemini(self.mode):
+            thinking_level = GEMINI_PROFILE_TO_THINKING.get(requested_profile, "medium")
+            if max_tokens is None:
+                max_tokens = self.max_output_tokens
+            response = self._create_gemini_completion(
+                messages=messages,
+                system=system,
+                max_tokens=min(max_tokens, self.max_output_tokens),
+                temperature=temperature,
+                thinking_level=thinking_level,
+            )
+            response.analysis_profile = profile_name
+            response.adaptive_effort = thinking_level
+            return response
 
         if _uses_openrouter(self.mode):
             if max_tokens is None:
@@ -740,7 +1011,10 @@ class AnthropicClient:
 
     def close(self):
         """Close the HTTP client."""
-        self._http_client.close()
+        if self._http_client is not None:
+            self._http_client.close()
+        if self._gemini_client is not None and hasattr(self._gemini_client, "close"):
+            self._gemini_client.close()
 
     def __enter__(self):
         return self
@@ -769,11 +1043,26 @@ class AsyncAnthropicClient:
         max_output_tokens: Optional[int] = None,
         provider_id: Optional[str] = None,
         max_concurrent_requests: Optional[int] = None,
-        max_retries: Optional[int] = None
+        max_retries: Optional[int] = None,
+        requests_per_minute: Optional[int] = None,
+        tokens_per_minute: Optional[int] = None,
+        requests_per_day: Optional[int] = None,
+        route_profiles: Optional[List[str]] = None,
+        caller_patterns: Optional[List[str]] = None,
     ):
-        default_api_key_env = 'OPENROUTER_API_KEY' if mode == "openrouter" else 'ANTHROPIC_API_KEY'
-        default_base_url = OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter" else None
+        default_api_key_env = (
+            'OPENROUTER_API_KEY' if mode == "openrouter"
+            else 'GEMINI_API_KEY' if mode == "gemini"
+            else 'ANTHROPIC_API_KEY'
+        )
+        default_base_url = (
+            OPENROUTER_DEFAULT_BASE_URL if mode == "openrouter"
+            else GEMINI_DEFAULT_BASE_URL if mode == "gemini"
+            else None
+        )
         self.api_key = api_key or os.environ.get(default_api_key_env)
+        if mode == "gemini" and not self.api_key:
+            self.api_key = os.environ.get("GOOGLE_API_KEY")
         self.base_url = base_url or os.environ.get('ANTHROPIC_API_BASE') or default_base_url
         self.model = model or os.environ.get('ANTHROPIC_MODEL', 'claude-4.8-opus-aws')
         self.provider_id = provider_id or self.model
@@ -794,6 +1083,19 @@ class AsyncAnthropicClient:
             max_retries
             if max_retries is not None
             else _env_int("LLM_MAX_RETRIES", 2, minimum=0)
+        )
+        self.requests_per_minute = requests_per_minute
+        self.tokens_per_minute = tokens_per_minute
+        self.requests_per_day = requests_per_day
+        self.route_profiles = set(route_profiles or [])
+        self.caller_patterns = list(caller_patterns or [])
+        self._rate_limiter = _get_rate_limiter(
+            self.mode,
+            self.base_url or "",
+            self.model,
+            self.requests_per_minute,
+            self.tokens_per_minute,
+            self.requests_per_day,
         )
         self.log_requests = _env_bool("LLM_LOG_REQUESTS", True)
         self.heartbeat_seconds = _env_float("LLM_HEARTBEAT_SECONDS", 60.0, minimum=0.0)
@@ -819,22 +1121,30 @@ class AsyncAnthropicClient:
             auth = ApiKeyAuth(self.api_key)
         elif self.mode in {"openai-compatible", "openrouter"}:
             auth = BearerAuth(self.api_key)
+        elif self.mode == "gemini":
+            auth = None
         else:
             raise ValueError(
-                f"Unknown mode: {self.mode}. Expected 'anthropic', 'openai-compatible', or 'openrouter'."
+                f"Unknown mode: {self.mode}. Expected anthropic, openai-compatible, "
+                "openrouter, or gemini."
             )
 
-        # Create async httpx client with mode-appropriate auth
-        self._http_client = httpx.AsyncClient(
-            auth=auth,
-            timeout=httpx.Timeout(self.timeout),
-            trust_env=self.trust_env_proxy
-        )
+        self._http_client = None
+        if not _uses_gemini(self.mode):
+            self._http_client = httpx.AsyncClient(
+                auth=auth,
+                timeout=httpx.Timeout(self.timeout),
+                trust_env=self.trust_env_proxy
+            )
 
-        # Create async Anthropic client unless this route targets OpenRouter's
-        # native OpenAI-compatible chat/completions API.
         self._client = None
-        if not _uses_openrouter(self.mode):
+        self._gemini_client = None
+        if _uses_gemini(self.mode):
+            self._gemini_client = genai.Client(
+                api_key=self.api_key,
+                http_options=genai_types.HttpOptions(timeout=int(self.timeout * 1000)),
+            )
+        elif not _uses_openrouter(self.mode):
             self._client = anthropic.AsyncAnthropic(
                 base_url=self.base_url,
                 api_key=self.api_key,  # SDK sends this as x-api-key header
@@ -848,6 +1158,9 @@ class AsyncAnthropicClient:
             f"timeout={self.timeout}s, sdk_max_retries={self.max_retries}, "
             f"heartbeat_seconds={self.heartbeat_seconds}, "
             f"max_concurrent_requests={self.max_concurrent_requests or 'unlimited'}, "
+            f"rpm={self.requests_per_minute or 'unlimited'}, "
+            f"tpm={self.tokens_per_minute or 'unlimited'}, "
+            f"rpd={self.requests_per_day or 'unlimited'}, "
             f"trust_env_proxy={self.trust_env_proxy}, request_logging={self.log_requests}, "
             f"metrics_path={self.metrics_path or 'disabled'}"
         )
@@ -1208,7 +1521,10 @@ class AsyncAnthropicClient:
             model=config.model,
             timeout=config.timeout,
             mode=config.mode,
-            max_output_tokens=getattr(config, 'max_output_tokens', DEFAULT_MODEL_MAX_TOKENS)
+            max_output_tokens=getattr(config, 'max_output_tokens', DEFAULT_MODEL_MAX_TOKENS),
+            requests_per_minute=getattr(config, 'requests_per_minute', None),
+            tokens_per_minute=getattr(config, 'tokens_per_minute', None),
+            requests_per_day=getattr(config, 'requests_per_day', None),
         )
 
     @classmethod
@@ -1228,7 +1544,67 @@ class AsyncAnthropicClient:
             provider_id=config.id,
             max_concurrent_requests=config.max_concurrent_requests,
             max_retries=max_retries,
+            requests_per_minute=config.requests_per_minute,
+            tokens_per_minute=config.tokens_per_minute,
+            requests_per_day=config.requests_per_day,
+            route_profiles=config.profiles,
+            caller_patterns=config.caller_patterns,
         )
+
+    async def _create_gemini_completion(
+        self,
+        *,
+        messages: List[Dict[str, Any]],
+        system: Optional[str],
+        max_tokens: int,
+        temperature: Optional[float],
+        thinking_level: str,
+        request_context: Dict[str, Any],
+    ) -> LLMResponse:
+        estimated_input_tokens = max(
+            1,
+            (_messages_char_count(messages) + _content_char_count(system) + 3) // 4,
+        )
+        await asyncio.to_thread(self._rate_limiter.acquire, estimated_input_tokens)
+
+        async def invoke():
+            return await self._gemini_client.aio.models.generate_content(
+                model=self.model,
+                contents=_build_gemini_contents(messages),
+                config=genai_types.GenerateContentConfig(
+                    system_instruction=system,
+                    max_output_tokens=max_tokens,
+                    temperature=temperature,
+                    thinking_config=genai_types.ThinkingConfig(
+                        thinking_level=thinking_level,
+                        include_thoughts=True,
+                    ),
+                ),
+            )
+
+        started_at = time.time()
+        logger.info(
+            "Gemini start %s estimated_input_tokens=%s",
+            self._format_request_context(request_context),
+            estimated_input_tokens,
+        )
+        if self._request_semaphore is None:
+            raw_response = await invoke()
+        else:
+            async with self._request_semaphore:
+                raw_response = await invoke()
+        response = _normalize_gemini_response(raw_response, self.model)
+        logger.info(
+            "Gemini done %s duration=%.1fs input_tokens=%s output_tokens=%s "
+            "thinking_tokens=%s stop_reason=%s",
+            self._format_request_context(request_context),
+            time.time() - started_at,
+            response.usage.get("input_tokens", 0),
+            response.usage.get("output_tokens", 0),
+            response.usage.get("thinking_tokens", 0),
+            response.stop_reason,
+        )
+        return response
 
     async def call_with_thinking(
         self,
@@ -1252,6 +1628,49 @@ class AsyncAnthropicClient:
         """
         requested_profile = profile if profile is not None else budget_tokens
         profile_name = THINKING_LEVEL_NAMES.get(requested_profile, str(requested_profile))
+
+        if _uses_gemini(self.mode):
+            thinking_level = GEMINI_PROFILE_TO_THINKING.get(requested_profile, "medium")
+            if max_tokens is None:
+                max_tokens = self.max_output_tokens
+            max_tokens = min(max_tokens, self.max_output_tokens)
+            request_context = {
+                "caller": caller or "async_gemini_call_with_thinking",
+                "kind": "gemini_native",
+                "provider_id": self.provider_id,
+                "provider_model": self.model,
+                "thinking_type": "adaptive",
+                "analysis_profile": profile_name,
+                "adaptive_effort": thinking_level,
+                "response_max_tokens": max_tokens,
+                "message_count": len(messages),
+                "message_chars": _messages_char_count(messages),
+                "system_chars": _content_char_count(system),
+            }
+            if routing_context:
+                request_context.update(routing_context)
+            started_at = time.time()
+            response = await self._create_gemini_completion(
+                messages=messages,
+                system=system,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                thinking_level=thinking_level,
+                request_context=request_context,
+            )
+            response.analysis_profile = profile_name
+            response.adaptive_effort = thinking_level
+            get_tracker().record_call(
+                caller=caller or "async_gemini_call_with_thinking",
+                usage=response.usage,
+                thinking_level=None,
+                duration_seconds=time.time() - started_at,
+                model=response.model,
+                provider_id=self.provider_id,
+                analysis_profile=profile_name,
+                adaptive_effort=thinking_level,
+            )
+            return response
 
         if _uses_openrouter(self.mode):
             if max_tokens is None:
@@ -1467,6 +1886,47 @@ class AsyncAnthropicClient:
         routing_context: Optional[Dict[str, Any]] = None
     ) -> LLMResponse:
         """Async plain call; Opus 4.8+ still uses adaptive thinking metadata."""
+        if _uses_gemini(self.mode):
+            max_tokens = min(max_tokens, self.max_output_tokens)
+            request_context = {
+                "caller": caller or "async_gemini_call",
+                "kind": "gemini_native",
+                "provider_id": self.provider_id,
+                "provider_model": self.model,
+                "thinking_type": "adaptive",
+                "analysis_profile": "plain",
+                "adaptive_effort": "minimal",
+                "response_max_tokens": max_tokens,
+                "message_count": len(messages),
+                "message_chars": _messages_char_count(messages),
+                "system_chars": _content_char_count(system),
+            }
+            if routing_context:
+                request_context.update(routing_context)
+            started_at = time.time()
+            response = await self._create_gemini_completion(
+                messages=messages,
+                system=system,
+                max_tokens=max_tokens,
+                temperature=temperature,
+                thinking_level="minimal",
+                request_context=request_context,
+            )
+            response.thinking = None
+            response.analysis_profile = "plain"
+            response.adaptive_effort = "minimal"
+            get_tracker().record_call(
+                caller=caller or "async_gemini_call",
+                usage=response.usage,
+                thinking_level=None,
+                duration_seconds=time.time() - started_at,
+                model=response.model,
+                provider_id=self.provider_id,
+                analysis_profile="plain",
+                adaptive_effort="minimal",
+            )
+            return response
+
         if _uses_openrouter(self.mode):
             start_time = time.time()
             request_context = {
@@ -1634,7 +2094,10 @@ class AsyncAnthropicClient:
 
     async def close(self):
         """Close the async HTTP client."""
-        await self._http_client.aclose()
+        if self._http_client is not None:
+            await self._http_client.aclose()
+        if self._gemini_client is not None and hasattr(self._gemini_client, "close"):
+            self._gemini_client.close()
 
     async def __aenter__(self):
         return self
@@ -1696,6 +2159,36 @@ class AsyncLLMRouter:
             for offset in range(len(self.clients))
         ]
 
+    def _ordered_clients_for_call(
+        self,
+        start_index: int,
+        caller: Optional[str],
+        profile_name: Optional[str],
+    ) -> List[AsyncAnthropicClient]:
+        rotated = self._ordered_clients(start_index)
+        scored = []
+        deferred = []
+        for position, client in enumerate(rotated):
+            route_profiles = getattr(client, "route_profiles", set())
+            caller_patterns = getattr(client, "caller_patterns", [])
+            if route_profiles and profile_name not in route_profiles:
+                deferred.append(client)
+                continue
+            caller_match = (
+                any(fnmatch.fnmatch(caller or "", pattern) for pattern in caller_patterns)
+                if caller_patterns
+                else False
+            )
+            if caller_patterns and not caller_match:
+                deferred.append(client)
+                continue
+            score = (2 if caller_match else 0) + (1 if route_profiles else 0)
+            scored.append((score, position, client))
+
+        scored.sort(key=lambda item: (-item[0], item[1]))
+        preferred = [client for _, _, client in scored]
+        return preferred + [client for client in deferred if client not in preferred]
+
     @staticmethod
     def _retry_reason(error: Exception) -> Optional[str]:
         """Return retry reason for transient provider failures."""
@@ -1709,8 +2202,12 @@ class AsyncLLMRouter:
             return type(error).__name__
         if isinstance(error, OpenRouterResponseError):
             return "invalid_openrouter_response"
+        if isinstance(error, ProviderQuotaExhaustedError):
+            return "provider_rpd_exhausted"
 
         status_code = getattr(error, "status_code", None)
+        if status_code is None:
+            status_code = getattr(error, "code", None)
         response = getattr(error, "response", None)
         if status_code is None and response is not None:
             status_code = getattr(response, "status_code", None)
@@ -1728,11 +2225,21 @@ class AsyncLLMRouter:
         call_kwargs: Dict[str, Any],
     ) -> LLMResponse:
         start_index = await self._next_start_index()
+        caller = call_kwargs.get("caller")
+        profile = call_kwargs.get("profile")
+        if profile is None and method_name == "call_with_thinking":
+            profile = call_kwargs.get("budget_tokens", ThinkingLevel.STANDARD)
+        profile_name = (
+            THINKING_LEVEL_NAMES.get(profile, str(profile))
+            if profile is not None
+            else "plain"
+        )
         fallback_from = None
         retry_reason = None
         last_error = None
 
-        for attempt, client in enumerate(self._ordered_clients(start_index), start=1):
+        ordered_clients = self._ordered_clients_for_call(start_index, caller, profile_name)
+        for attempt, client in enumerate(ordered_clients, start=1):
             routing_context = {
                 "attempt": attempt,
                 "fallback_from": fallback_from,

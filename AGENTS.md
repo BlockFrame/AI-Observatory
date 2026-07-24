@@ -4,7 +4,7 @@ This file provides guidance to Codex (Codex.ai/code) when working with code in t
 
 ## Project Overview
 
-AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, Hugging Face Papers, AlphaXiv, Twitter, Reddit, Bluesky, Mastodon), analyzes them using Claude Opus 4.8 with adaptive thinking, and serves a modern Svelte SPA frontend with AATF branding.
+AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, Hugging Face Papers, AlphaXiv, Twitter, Reddit, Bluesky, Mastodon), analyzes them using profile-routed native Gemini models by default (with Anthropic/OpenRouter retained as alternatives), and serves a modern Svelte SPA frontend with AATF branding.
 
 **Testing:** The user always runs tests themselves. Do not run the pipeline or tests unless explicitly asked.
 
@@ -116,7 +116,7 @@ Phase 7: Search Corpus Update (client-built MiniSearch index)
 ```
 agents/
 ├── __init__.py
-├── llm_client.py              # Anthropic client with adaptive/manual thinking profiles
+├── llm_client.py              # Gemini/Anthropic/OpenRouter clients and profile-aware router
 ├── base.py                    # Base classes (BaseGatherer, BaseAnalyzer)
 ├── orchestrator.py            # Main coordinator
 ├── link_enricher.py           # Adds internal links to summaries
@@ -164,7 +164,7 @@ frontend/                       # Svelte SPA frontend
 ### Key Files
 - `run_pipeline.py` - Async entry point using MainOrchestrator
 - `agents/orchestrator.py` - Main coordinator for all agents
-- `agents/llm_client.py` - Anthropic SDK with adaptive/manual thinking profiles
+- `agents/llm_client.py` - Native Gemini plus Anthropic/OpenRouter adapters, quota limiting, and profile-aware routing
 - `agents/link_enricher.py` - Adds internal links to summaries using LLM
 - `agents/cost_tracker.py` - Tracks LLM API usage and costs
 - `agents/ecosystem_context.py` - Model release tracking for LLM grounding
@@ -182,6 +182,7 @@ frontend/                       # Svelte SPA frontend
 
 ### External Dependencies
 - **Anthropic SDK** - Direct Claude API with adaptive thinking support (Bearer auth)
+- **Google GenAI SDK** - Native Gemini text/image access and thinking-level support
 - **TwitterAPI.io** - Twitter/X data collection ($0.15/1000 tweets)
 - **ScrapeCreators API** - Reddit data collection (~$0.99/1000 calls; 1 call = 1 credit). Replaces the dead free Reddit `.json` endpoint; unblocks Reddit server-side. Requires `SCRAPECREATORS_API_KEY`.
 - **Bluesky Public API** - Free, no auth required
@@ -194,6 +195,7 @@ frontend/                       # Svelte SPA frontend
 ANTHROPIC_API_BASE    # Anthropic API endpoint (no /v1 suffix)
 ANTHROPIC_API_KEY     # Bearer token for authentication
 ANTHROPIC_MODEL       # Legacy single-provider model name (default: claude-4.8-opus-aws)
+GEMINI_API_KEY        # Google AI Studio key for native Gemini LLM routes
 TWITTERAPI_IO_KEY     # TwitterAPI.io API key
 SCRAPECREATORS_API_KEY # ScrapeCreators API key for Reddit collection (required for Reddit data)
 SCRAPECREATORS_BASE   # ScrapeCreators base URL (default: https://api.scrapecreators.com)
@@ -236,22 +238,28 @@ TZ                    # Timezone (default: America/New_York)
 
 ## Adaptive Thinking Profiles
 
-The pipeline uses internal AATF analysis profiles that map to Claude Opus 4.8 adaptive `output_config.effort`. QUICK/STANDARD/DEEP/ULTRATHINK are not provider thinking levels for Opus 4.8. `LLM_ADAPTIVE_MAX_TOKENS` controls the response output ceiling separately; `budget_tokens` is only used for older Claude models that still support manual thinking.
+The pipeline uses internal AATF analysis profiles. Native Gemini routes map them
+to low/medium/high `thinking_level`; optional Claude routes map them to adaptive
+effort or legacy manual budgets. Route caller patterns can override profile-only
+selection for scarce quality-model quotas.
 
-| Component | Profile | Opus 4.8 Effort |
-|-----------|---------|-----------------|
-| Link relevance check | QUICK | high |
-| Item summarization | QUICK | high |
-| Category theme detection | STANDARD | xhigh |
-| Item ranking | DEEP | max |
-| Cross-category topics | ULTRATHINK | max |
-| Executive summary | DEEP | max |
-| Link enrichment | STANDARD | xhigh |
-| Ecosystem enrichment | STANDARD | xhigh |
+| Component | Profile | Default Gemini Route |
+|-----------|---------|----------------------|
+| Link relevance check | QUICK | Flash-Lite / low |
+| Item summarization | QUICK | Flash-Lite / low |
+| Category theme detection | STANDARD | Flash-Lite / medium |
+| Item ranking | DEEP | Flash / high |
+| Cross-category topics | ULTRATHINK | Flash / high |
+| Executive summary | DEEP | Flash / high |
+| Link enrichment | STANDARD | Flash / medium |
+| Ecosystem enrichment | STANDARD | Flash-Lite / medium |
 
 ## Multi-Provider LLM Routing
 
-`config/providers.yaml` can define `llm.routes` for async LLM calls. Routes inherit root `llm` settings unless overridden, and new async calls rotate across routes. `LLM_MAX_CONCURRENT_REQUESTS` is applied per route, so three routes at the default cap of 8 allow up to 24 active LLM requests while analyzer/category concurrency remains controlled by `ANALYZER_MAX_CONCURRENT_BATCHES`.
+`config/providers.yaml` can define `llm.routes` for async LLM calls. Routes
+inherit root settings, may select `profiles` and `caller_patterns`, and can
+enforce `requests_per_minute`, `tokens_per_minute`, and `requests_per_day`.
+Configurations without selectors retain round-robin behavior.
 
 Retryable transport failures, timeouts, 429s, and 5xx responses retry on a different route. Prompt/schema/client errors and JSON parse failures do not cross-provider retry. Hosted diagnostics include provider IDs, provider model IDs, route attempts, fallback source, retry reason, `thinking_type`, `analysis_profile`, `adaptive_effort`, `response_max_tokens`, queue/active counts, and content block counts; they must stay secret-safe and prompt-free.
 

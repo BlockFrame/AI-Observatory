@@ -53,6 +53,7 @@ jobs:
       ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
       ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-4.8-opus-aws' }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -181,24 +182,40 @@ jobs:
         run: |
           set -euo pipefail
           # Write providers.yaml with secrets injected directly by GitHub Actions
-          # ${{ secrets.OPENROUTER_API_KEY }} is substituted at workflow parse time
+          # ${{ secrets.GEMINI_API_KEY }} is substituted at workflow parse time
           cat > config/providers.yaml << 'YAML_EOF'
           llm:
-            mode: "openrouter"
-            api_key: "${{ secrets.OPENROUTER_API_KEY }}"
-            base_url: "https://openrouter.ai/api/v1"
-            model: "nvidia/nemotron-3-ultra-550b-a55b:free"
-            max_output_tokens: 16384
+            mode: "gemini"
+            api_key: "${{ secrets.GEMINI_API_KEY }}"
+            model: "gemini-3.5-flash-lite"
+            max_output_tokens: 65536
             timeout: 600
+            requests_per_minute: 15
+            tokens_per_minute: 250000
+            requests_per_day: 500
             routes:
-              - id: "primary"
-                mode: "openrouter"
-                model: "nvidia/nemotron-3-ultra-550b-a55b:free"
-                max_concurrent_requests: 3
-              - id: "free-router-fallback"
-                mode: "openrouter"
-                model: "openrouter/free"
+              - id: "gemini-bulk"
+                mode: "gemini"
+                model: "gemini-3.5-flash-lite"
+                max_output_tokens: 65536
+                max_concurrent_requests: 6
+                requests_per_minute: 15
+                tokens_per_minute: 250000
+                requests_per_day: 500
+                profiles: ["QUICK", "STANDARD", "DEEP"]
+              - id: "gemini-quality"
+                mode: "gemini"
+                model: "gemini-3.6-flash"
+                max_output_tokens: 65536
                 max_concurrent_requests: 2
+                requests_per_minute: 5
+                tokens_per_minute: 250000
+                requests_per_day: 20
+                profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+                caller_patterns:
+                  - "orchestrator.*"
+                  - "*_analyzer.reduce_rank"
+                  - "link_enricher.*"
 
           pipeline:
             base_url: "${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}"
@@ -214,7 +231,7 @@ jobs:
           "
           echo "providers.yaml written with injected credentials."
           if grep -q '^\s*api_key: ""' config/providers.yaml; then
-            echo "ERROR: OPENROUTER_API_KEY secret is empty - set it in GitHub repo secrets." >&2
+            echo "ERROR: GEMINI_API_KEY secret is empty - set it in GitHub repo secrets." >&2
             exit 1
           fi
 
