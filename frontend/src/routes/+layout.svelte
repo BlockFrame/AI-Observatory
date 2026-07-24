@@ -32,9 +32,7 @@
 				<a href="/?category=social" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Social Media</span>
 				</a>
-				<a href="/?category=reddit" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=reddit') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
-					<span class="text-[13px] font-medium tracking-[0.02em]">Reddit Discussions</span>
-				</a>
+
                 <a href="/?category=github_trending" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=github_trending') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
                     <span class="text-[13px] font-medium tracking-[0.02em]">GitHub Trending</span>
                 </a>
