@@ -70,6 +70,8 @@ class TopTopic:
     category_breakdown: Dict[str, int]  # category -> item count
     representative_items: List[str]  # Item IDs from each category
     importance: float  # 0-100
+    business_implication: str = ""
+    trend_velocity: str = ""
 
 
 @dataclass
@@ -1105,8 +1107,10 @@ For each cross-category topic, provide:
    - DO NOT include any markdown links or URLs
    - Write factual claims that reference specific sources by name
    - Links will be added automatically in a later processing step
-3. Which categories it appears in and roughly how many items
-4. An importance score (0-100)
+3. A business implication (business_implication) explaining the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).
+4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Fading").
+5. Which categories it appears in and roughly how many items
+6. An importance score (0-100)
 
 IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name (e.g., "Google announced...", "A Stanford paper found...") but do NOT include URLs or markdown link syntax.
 
@@ -1120,6 +1124,8 @@ Return your analysis as JSON:
     {{
       "name": "Topic Name",
       "description": "Plain text description referencing sources by name without any links.",
+      "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
+      "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
       "categories": {{"news": 5, "papers": 2, "social": 10, "reddit": 3}},
       "importance": 85
     }}

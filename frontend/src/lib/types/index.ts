@@ -43,6 +43,8 @@ export interface TopTopic {
 	name: string;
 	description: string;
 	description_html: string;
+	business_implication?: string;
+	trend_velocity?: string;
 	category_breakdown: Record<Category, number>;
 	representative_items: string[];
 	importance: number;

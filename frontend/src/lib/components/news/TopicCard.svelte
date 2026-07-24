@@ -138,13 +138,29 @@
 	</div>
 
 	<div class="mb-5 pr-12">
-		<p class="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
-			Top Topic
-		</p>
+		<div class="flex items-center gap-2 mb-3">
+			<p class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary">
+				Top Topic
+			</p>
+			{#if topic.trend_velocity}
+				<span class="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+					{topic.trend_velocity}
+				</span>
+			{/if}
+		</div>
 		<h3 class="text-2xl font-extrabold leading-tight tracking-[-0.015em] text-white">
 			{topic.name}
 		</h3>
 	</div>
+
+	{#if topic.business_implication}
+		<div class="mb-5 rounded-xl border border-primary/20 bg-primary/5 p-4">
+			<p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary">Business Impact</p>
+			<p class="text-sm leading-relaxed text-white/90">
+				{topic.business_implication}
+			</p>
+		</div>
+	{/if}
 
 	<ul class="flex flex-1 flex-col gap-5 pr-2">
 		{#each bullets as bullet}

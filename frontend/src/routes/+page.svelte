@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { goto, afterNavigate } from '$app/navigation';
 	import { tick } from 'svelte';
+	import { fly, fade, scale } from 'svelte/transition';
 	import { currentDate, isLoading as storeLoading, resolveLatestDate } from '$lib/stores/dateStore';
 	import { loadDaySummary, loadCategoryData, preloadAdjacentDates } from '$lib/services/dataLoader';
 	import { parseDate } from '$lib/services/dateUtils';
@@ -303,30 +304,54 @@
 		{/if}
 	{:else if summary}
 		<!-- Overview View -->
-		<!-- Custom Hero Section with Logo -->
-		<section class="relative h-[500px] rounded-xl overflow-hidden mb-gutter group border border-white/10">
-			<ShaderBackground className="opacity-40" />
-			<div class="absolute inset-0 bg-gradient-to-br from-background/70 via-surface-container/60 to-background/90"></div>
-			<div class="absolute inset-0 flex flex-col justify-end p-10">
-				<!-- Live Indicator -->
-				<div class="flex items-center gap-2 mb-4">
-					<span class="flex h-3 w-3 rounded-full bg-secondary pulse-live"></span>
-					<span class="font-label-caps text-label-caps text-secondary">LIVE INTELLIGENCE STREAM</span>
-				</div>
+		<!-- Avant-Garde Hero Section with Motion Design -->
+		<section class="relative h-[500px] sm:h-[600px] rounded-xl overflow-hidden mb-gutter group border border-white/5 bg-background">
+			<ShaderBackground className="opacity-30 mix-blend-screen" />
+			<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+			<div class="absolute inset-0 flex flex-col justify-center px-12 md:px-20 z-10">
 				
-				<!-- Title with Logo -->
-				<div class="flex items-center gap-4 mb-4">
-					<img src="/logo.png" alt="AI Observatory" class="w-12 h-12 rounded-lg" />
-					<div>
-						<h1 class="font-headline-xl text-headline-xl text-on-background leading-tight">AI Observatory</h1>
-						<p class="font-body-sm text-body-sm text-on-surface-variant">Live Intelligence Feed</p>
+				<!-- Animated Logo -->
+				<div 
+					class="mb-8"
+					in:scale={{ duration: 1200, delay: 100, opacity: 0, start: 0.9 }}
+				>
+					<div class="relative inline-block group">
+						<!-- Glow Effect -->
+						<div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-pulse"></div>
+						<img src="/logo.png" alt="AI Observatory" class="relative w-20 h-20 sm:w-28 sm:h-28 rounded-2xl shadow-2xl shadow-primary/20 ring-1 ring-white/10" />
 					</div>
 				</div>
 				
-				<!-- Description -->
-				<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
-					Powered by Claude Opus 3.5. Real-time synthesized monitoring of {summary.total_items_analyzed} global neural developments, research breakthroughs, and social velocity metrics.
-				</p>
+				<!-- Title -->
+				<div class="overflow-hidden">
+					<h1 
+						class="font-headline-xl text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/40 drop-shadow-sm pb-2"
+						in:fly={{ y: 50, duration: 1000, delay: 300 }}
+					>
+						AI Observatory
+					</h1>
+				</div>
+
+				<div class="overflow-hidden mt-6 flex flex-col sm:flex-row sm:items-center gap-4">
+					<p 
+						class="font-body-lg text-xl sm:text-2xl font-bold tracking-tight text-primary/90"
+						in:fly={{ y: 20, duration: 800, delay: 500 }}
+					>
+						Intelligence Feed
+					</p>
+					<!-- Divider -->
+					<div 
+						class="hidden sm:block h-1 w-1 rounded-full bg-white/20"
+						in:fade={{ duration: 500, delay: 700 }}
+					></div>
+					<!-- Description -->
+					<p 
+						class="font-body-md text-sm sm:text-base text-on-surface-variant max-w-xl leading-relaxed"
+						in:fly={{ y: 20, duration: 800, delay: 600 }}
+					>
+						Real-time synthesized monitoring of <strong class="text-white">{summary.total_items_analyzed}</strong> global neural developments, research breakthroughs, and social velocity metrics.
+					</p>
+				</div>
 			</div>
 		</section>
 

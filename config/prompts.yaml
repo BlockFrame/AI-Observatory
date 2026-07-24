@@ -672,8 +672,10 @@ orchestration:
        - Synthesize what happened across categories (news, research, open-source repos, community signals).
        - Explain the **strategic and technical insight** for an AI Director (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or technical trade-offs).
        - Reference key sources, institutions, or repositories by name (e.g., "Google announced...", "A Stanford paper demonstrated...", "The koala73/worldmonitor repo emerged as...")
-    3. Which categories it appears in and roughly how many items: {"news": N, "research": N, "social": N, "github_trending": N}
-    4. An importance score (0-100)
+    3. A business implication (business_implication) explaining the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).
+    4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Fading").
+    5. Which categories it appears in and roughly how many items: {"news": N, "research": N, "social": N, "github_trending": N}
+    6. An importance score (0-100)
 
     IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name, but do NOT include URLs or markdown link syntax. Links will be added automatically in a post-processing step.
 
@@ -687,6 +689,8 @@ orchestration:
         {
           "name": "Topic Name",
           "description": "Plain text description with strategic insights and source references without any links.",
+          "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
+          "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
           "categories": {"news": 5, "research": 2, "social": 10, "github_trending": 4},
           "importance": 88
         }
@@ -709,27 +713,17 @@ orchestration:
 
     FORMAT YOUR SUMMARY LIKE THIS:
 
-    #### Top Story
-    2-3 sentences synthesizing the single most important development of the day, explaining what happened and its strategic impact for an AI Director.
+    #### The Bottom Line
+    A single paragraph (2-3 sentences max) synthesizing the macro-trend of the day and its overall business/strategic impact for an AI Director.
 
-    #### Key Developments
-    - **[Company/Product Name]**: Concise description of what happened and its practical/strategic implications (1-2 sentences)
-    - **[Company/Product Name]**: Concise strategic description (1-2 sentences)
-    - (Include 3-5 bullet points covering the primary news announcements and frontier product updates)
+    #### Strategic Shifts
+    - **[Trend/Development]**: Focus on what is changing strategically or technologically, rather than just reciting news events. (1-2 sentences)
+    - **[Trend/Development]**: (1-2 sentences explaining the shift)
+    - (Include 2-4 bullet points covering the primary shifts in the landscape)
 
-    #### Open-Source & GitHub Trending Repositories
-    - **[Repo/Tool Name]**: Explanation of the open-source tool, its category/purpose, and why it matters for developer architecture or agentic workflows (1-2 sentences)
-    - (Include 2-4 bullet points highlighting the top breakout GitHub repositories)
-
-    #### Research Highlights & Technical Insights
-    - **[Paper/Model Name]** ([Institution/Lab]): Technical insight explaining the breakthrough, key metrics (e.g., **3x inference speedup**, **+15% benchmark gain**), and why it matters for model design or deployment (1-2 sentences)
-    - (Include 2-3 bullet points analyzing the top research papers - omit section if no research items today)
-
-    #### Safety & Regulation
-    - Brief bullet points on any safety, ethics, or regulatory news (omit section if none)
-
-    #### Looking Ahead
-    1-2 sentences on forward-looking strategic implications for AI leaders and engineering decisions.
+    #### Signals to Watch
+    - **[Signal/Indicator]**: Early indicators, regulatory movements, or open-source momentum to monitor for future impact. (1-2 sentences)
+    - (Include 2-3 bullet points)
 
     FORMATTING RULES:
     - Target audience: AI Director / VP of AI needing strategic clarity, technical depth, and actionable insights.
