@@ -31,7 +31,6 @@ from agents.config import load_config, ProviderConfig
 from agents.config.prompts import load_prompts, PromptAccessor
 from generators.json_generator import JSONGenerator
 from generators.search_indexer import SearchIndexer
-from generators.feed_generator import FeedGenerator
 from generators.llms_generator import generate_ai_index_json, generate_llms_txt
 from generators.markdown_export import generate_digest_markdown
 from agents.delivery.telegram import format_daily_report, send_report
@@ -139,18 +138,7 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
         json_generator = JSONGenerator(web_dir)
         json_generator.generate_from_orchestrator_result(result_dict)
 
-        # Generate RSS/Atom feeds
-        logger.info("=" * 60)
-        logger.info("PHASE 6.5: RSS FEED GENERATION")
-        logger.info("=" * 60)
 
-        pipeline_config = provider_config.get_pipeline_config()
-        feed_generator = FeedGenerator(
-            web_dir,
-            rolling_window_days=7,
-            base_url=pipeline_config.base_url
-        )
-        feed_generator.generate_feeds()
 
         # Update search index
         logger.info("=" * 60)

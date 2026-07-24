@@ -62,7 +62,7 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 | **4.5. Link Enrichment** | Inject internal links to referenced items | STANDARD |
 | **4.6. Ecosystem Enrichment** | Auto-detect new model releases from news | STANDARD |
 | **4.7. Hero Image** | Generate branded banner with Gemini 3 Pro | - |
-| **5-7. Output** | JSON data generation + RSS feeds + MiniSearch corpus (client-built index) | - |
+| **5-7. Output** | JSON data generation + MiniSearch corpus (client-built index) | - |
 
 ### Adaptive Thinking Profiles
 
@@ -295,7 +295,7 @@ Hosted diagnostics include provider IDs, provider model IDs, route attempts, fal
 
 The daily commit includes persistent generated site and grounding outputs:
 
-- `web/data/**` for the frontend, search index, feeds, and hero images
+- `web/data/**` for the frontend, search index, and hero images
 - `config/model_releases.yaml` for curated and auto-detected model release facts
 - `config/ecosystem_context.yaml` as the last successful OpenRouter-enriched grounding cache
 
@@ -564,14 +564,29 @@ Each pipeline run tracks collection status per source:
 ### Daily Hero Image
 Each report includes a generated hero image featuring the AATF skunk mascot in a scene representing the day's top stories, created via Gemini 3 Pro.
 
-### RSS Feeds
-Multiple Atom 1.0 feeds for different use cases:
-- **Main Feed** - Executive summary + top 5 items per category
-- **Daily Briefing** - Executive summaries only with hero image
-- **Category Feeds** - News, Research, Social, Reddit separately
-- **Summary Feeds** - All category summaries
-- Summary entries keep the AATF briefing URL as the first `rel="alternate"` and `rel="canonical"` link; the representative external source remains as a secondary alternate plus `rel="via"` for Feedly compatibility
-- Summary entries include both `<summary type="html">` and `<content type="html">` with the same publisher-provided HTML so full-content readers do not need to fetch the linked page
+### AI Observatory MCP Server
+
+The project includes an **MCP (Model Context Protocol)** server that exposes the daily aggregated intelligence to any compatible AI assistant (like Claude Desktop). This transforms the Observatory's JSON data into an active vector knowledge base.
+
+**Available MCP Tools:**
+- `list_available_dates`: Retrieves all dates with available analysis.
+- `get_daily_summary(date)`: Retrieves the executive summary and top topics for a given date.
+- `search_intelligence(query)`: Performs keyword searches across all historical executive summaries and top topics.
+
+**How to connect Claude Desktop:**
+1. Install dependencies: `pip install -r mcp_requirements.txt`
+2. Add the server to your `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "ai-observatory": {
+      "command": "python",
+      "args": ["/absolute/path/to/ai-news-aggregator/mcp_server.py"]
+    }
+  }
+}
+```
+3. Restart Claude Desktop and you will see the new tools available (hammer icon).
 
 ---
 
@@ -595,7 +610,6 @@ ai-news-aggregator/
 ├── generators/
 │   ├── json_generator.py      # JSON data for SPA frontend
 │   ├── search_indexer.py      # MiniSearch corpus builder
-│   ├── feed_generator.py      # Atom RSS feeds
 │   └── hero_generator.py      # Daily hero image with skunk mascot
 ├── frontend/                  # Svelte SPA
 │   ├── src/

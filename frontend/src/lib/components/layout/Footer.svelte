@@ -23,7 +23,6 @@
 				<span>AATF - AI Acceleration Task Force</span>
 				<span>&copy; {currentYear}</span>
 				<a href="/about" class="hover:text-white transition-colors">[About]</a>
-				<a href="/feeds" class="hover:text-white transition-colors">[RSS]</a>
 			</div>
 		</div>
 
