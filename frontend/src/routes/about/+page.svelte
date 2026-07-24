@@ -18,7 +18,7 @@
 				helping you stay current with the fast-moving world of artificial intelligence.
 			</p>
 			<p>
-				This project is a custom fork of the excellent <a href="https://github.com/flyryan/ai-news-aggregator" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">AI News Aggregator</a> created by the TrendAI AATF. 
+				This project is a custom fork of the excellent AI News Aggregator created by the <a href="https://www.trendmicro.com/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">TrendAI AATF</a>. 
 				While we maintain the robust underlying multi-agent logic of the original architecture, this instance introduces deep customizations: 
 				we have tailored the data sources, integrated continuous analysis of <strong>GitHub Repositories</strong>, 
 				and entirely redesigned the information representation to focus on strategic insights, business implications, and trend velocity.
@@ -28,7 +28,7 @@
 				to gather, analyze, and synthesize content from diverse sources into coherent daily reports.
 			</p>
 			<p>
-				You can explore the source code of this fork on <a href="https://github.com/BlockFrame/AI-Observatory" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.
+				Originally developed as an internal tool, it is now open-sourced so others can run their own instances or contribute improvements. You can explore the source code on <a href="https://github.com/BlockFrame/AI-Observatory" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.
 			</p>
 		</div>
 	</section>
@@ -39,16 +39,61 @@
 			How It Works
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
-			<figure class="my-6">
-				<img
-					src="/assets/about-hero.jpg"
-					alt="Conceptual visualization of the AI Observatory data pipeline"
-					class="w-full rounded-2xl shadow-xl border border-white/5"
-				/>
-				<figcaption class="text-center text-sm text-trend-gray-500 dark:text-trend-gray-500 mt-3">
-					Conceptual visualization of the AI Observatory data pipeline
-				</figcaption>
-			</figure>
+			<div class="my-8 p-6 bg-surface-variant/30 rounded-2xl border border-white/5 overflow-x-auto">
+				<div class="flex items-center min-w-[600px] justify-between gap-2 text-sm">
+					<!-- Data Sources -->
+					<div class="flex flex-col gap-2 w-32">
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">News & RSS</div>
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">Research</div>
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">Social</div>
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">GitHub</div>
+					</div>
+					
+					<!-- Arrow -->
+					<div class="text-primary/50 text-xl font-bold">➔</div>
+
+					<!-- Gatherers -->
+					<div class="flex flex-col items-center gap-1">
+						<div class="w-32 px-3 py-4 bg-surface rounded-xl border border-primary/20 text-center shadow-lg shadow-primary/5">
+							<div class="font-bold text-primary mb-1">Gatherers</div>
+							<div class="text-xs text-on-surface-variant">Parallel Collection</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-primary/50 text-xl font-bold">➔</div>
+
+					<!-- Analyzers -->
+					<div class="flex flex-col items-center gap-1">
+						<div class="w-32 px-3 py-4 bg-surface rounded-xl border border-primary/20 text-center shadow-lg shadow-primary/5">
+							<div class="font-bold text-primary mb-1">Analyzers</div>
+							<div class="text-xs text-on-surface-variant">Adaptive Thinking</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-primary/50 text-xl font-bold">➔</div>
+
+					<!-- Orchestrator -->
+					<div class="flex flex-col items-center gap-1">
+						<div class="w-36 px-3 py-4 bg-primary/10 rounded-xl border border-primary/40 text-center shadow-[0_0_20px_rgba(var(--color-primary),0.15)] relative overflow-hidden">
+							<div class="absolute -inset-4 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
+							<div class="relative z-10 font-bold text-primary mb-1">Orchestrator</div>
+							<div class="relative z-10 text-xs text-on-surface-variant">Cross-topic Synth</div>
+						</div>
+					</div>
+
+					<!-- Arrow -->
+					<div class="text-primary/50 text-xl font-bold">➔</div>
+
+					<!-- Output -->
+					<div class="flex flex-col gap-2 w-32">
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">Daily Briefing</div>
+						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">MCP Server</div>
+					</div>
+				</div>
+				<div class="text-center text-xs text-on-surface-variant mt-6">AI Observatory Pipeline Architecture</div>
+			</div>
 			<p>Each day, the pipeline runs through several phases:</p>
 			<ol>
 				<li>
