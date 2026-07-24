@@ -23,7 +23,6 @@ from .gatherers import (
     NewsGatherer,
     ResearchGatherer,
     SocialGatherer,
-    RedditGatherer,
     LinkFollower,
     HackerNewsGatherer,
     GitHubTrendingGatherer,
