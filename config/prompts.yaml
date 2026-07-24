@@ -233,7 +233,7 @@ analysis:
 
     # Available variables: ${analysis_summary}
     ranking: |
-      Rank the top 10 most important AI news stories.
+      Rank the top 10 most important AI news stories and synthesize an executive news briefing for an AI Director.
 
       Analysis results:
       ${analysis_summary}
@@ -241,33 +241,34 @@ analysis:
       Ranking criteria (in order of importance):
       1. FRONTIER SIGNIFICANCE: Does this advance the state of AI?
       2. INDUSTRY IMPACT: Will this affect how AI is built or used?
-      3. NEWS VALUE: Is this breaking news or major announcement?
-      4. SOURCE QUALITY: Is this from a reliable source with direct information?
+      3. STRATEGIC RELEVANCE: Why should an AI Director or VP of AI care?
+      4. NEWS VALUE: Is this breaking news or major announcement?
+      5. SOURCE QUALITY: Is this from a reliable source with direct information?
 
       Return your ranking as JSON:
       ```json
       {
         "top_10": ["id1", "id2", ...],
-        "category_summary": "Structured summary using markdown formatting (see rules below)"
+        "category_summary": "Structured executive summary using markdown formatting (see rules below)"
       }
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Use **bold** for company names, product names, model names, and key numbers
-      - Use bullet points (- ) for lists of related developments
-      - Group similar items together by theme
-      - Keep sentences concise (under 30 words each)
-      - Maximum 2-3 short paragraphs OR equivalent bullet content
-      - Write in factual, professional tone
+      - Tailored for an AI Director: do NOT produce a simple flat bulleted list. Provide executive-level strategic insights.
+      - Start with an Executive Lead Paragraph (2-3 sentences) highlighting the single most critical breakthrough or market movement today.
+      - Group key developments into strategic domain themes (e.g., Model Releases & Frontier Capabilities, Enterprise Infrastructure & Hardware, AI Governance & Strategic Shifts).
+      - For each key story, explain *what happened* AND *why it matters strategically* for AI strategy, products, or technology choices.
+      - Use **bold** for company names (**OpenAI**, **Anthropic**, **Nvidia**, **Google**), model/product names (**GPT-5**, **Claude 3.7**, **Gemini**), and key numbers/funding amounts (**$500M**, **10x cost reduction**).
+      - Write in an authoritative, clear, and insight-driven executive tone.
 
       Example format:
-      "**Nvidia** dominated AI infrastructure news with six new chip announcements. **Jensen Huang** confirmed Vera Rubin chips are in full production with promised cost reductions for training and inference.
+      "**Nvidia** and **OpenAI** dominated today's frontier AI news with major hardware and model scaling announcements. **Jensen Huang** confirmed Vera Rubin architectures are in volume production, signaling a projected 5x improvement in inference economics.
 
-      - **Google DeepMind** and **Boston Dynamics** announced Gemini integration into Atlas robots
-      - **Cosmos Reason 2** brings advanced reasoning to physical AI applications
-      - **xAI** faces safety concerns after Grok was found generating problematic content"
+      - **Google DeepMind**: Announced native multimodal reasoning integration into Enterprise Workspace, competing directly with Claude's artifact environment and lowering integration barriers for corporate workflows.
+      - **Anthropic**: Released updated safety benchmarks and API caching features, reducing prompt latency by **40%** for enterprise RAG pipelines.
+      - **Mistral AI**: Unveiled new open-weights model targeting edge deployment with native function calling."
 
-      The summary should read like a professional briefing, focusing on what matters for people following frontier AI.
+      The summary should read like a strategic briefing for an AI Director.
 
   # -------------------------
   # RESEARCH ANALYZER
