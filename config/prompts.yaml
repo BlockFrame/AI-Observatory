@@ -378,21 +378,20 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Use **bold** for model names, architecture names, benchmark names, and key metrics
-      - Use bullet points (- ) for lists of related papers or findings
-      - Group similar items together by theme (e.g., efficiency, safety, multimodal)
-      - Keep sentences concise (under 30 words each)
-      - Maximum 2-3 short paragraphs OR equivalent bullet content
-      - Write in factual, technical tone
+      - Tailored for an AI Director / Research Leader: do NOT just list paper titles or links. Provide actionable technical and strategic insights.
+      - For each paper/finding, explain *what was achieved* AND *why it matters practically* (e.g., 3x inference efficiency, novel training paradigm, SOTA reasoning improvement, reduced compute footprint).
+      - Group items by research themes (e.g., Reasoning & Efficiency, Multimodal Systems, Alignment & Safety, Synthetic Data & Training).
+      - Use **bold** for paper/model names, architecture names, key metrics (e.g., **3.2x faster**, **+15% benchmark gain**), and lab/institution names.
+      - Keep sentences concise, authoritative, and deeply insightful.
 
       Example format:
-      "Today's research highlights advances in multimodal architectures and reasoning efficiency. **NextFlow** achieves orders-of-magnitude faster image generation through a novel hybrid prediction strategy.
+      "Today's research focuses on reasoning efficiency and scaling laws for smaller models. **Google DeepMind** and **Stanford** demonstrated that strategic data curation allows compact models to outperform larger predecessors.
 
-      - **Falcon-H1R** demonstrates that **7B-parameter** models can match **2-7x larger** models through careful data curation
-      - Streaming hallucination detection introduces treating hallucinations as evolving latent states
-      - **DatBench** exposes fundamental flaws in current VLM benchmarks"
+      - **Falcon-H1R** (**TII**): Proves that a **7B-parameter** model can match **2-7x larger** architectures by combining synthetic reasoning traces with dynamic pruning, lowering deployment costs for edge agents.
+      - **NextFlow** (**MIT**): Introduces hybrid flow-matching prediction, achieving **4x faster image generation** without fidelity loss.
+      - **DatBench**: Exposes evaluation bias in current VLM benchmarks, establishing new standards for multimodal grounding."
 
-      The summary should read like a technical briefing for researchers and practitioners.
+      The summary should read like a strategic research briefing for an AI Director.
 
   # -------------------------
   # SOCIAL ANALYZER
@@ -703,19 +702,24 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    Write a high-level strategic executive summary of today's AI news and open-source landscape tailored for an AI Director.
+    Write a high-level strategic executive summary of today's AI news, research breakthroughs, and open-source landscape tailored for an AI Director.
 
     ${context}
 
     FORMAT YOUR SUMMARY LIKE THIS:
 
     #### Strategic Overview
-    2-3 sentences synthesizing the overarching technological shifts, architectural trends, and ecosystem momentum of the day.
+    2-3 sentences synthesizing the overarching technological shifts, architectural trends, research breakthroughs, and ecosystem momentum of the day.
 
     #### Key Developments & Frontier Repositories
     - **[Company/Product/Repo Name]**: Strategic impact description emphasizing technical innovation, ecosystem relevance, or enterprise applicability (1-2 sentences)
     - **[Company/Product/Repo Name]**: Strategic impact description (1-2 sentences)
-    - (Include 4-6 bullet points covering major model/product releases and breakout GitHub trending repositories)
+    - (Include 3-5 bullet points covering major model/product releases and breakout GitHub trending repositories)
+
+    #### Research Breakthroughs & Technical Insights
+    - **[Paper/Model Name]** ([Institution/Lab]): Technical insight explaining what was achieved, key performance metrics (e.g., **3x inference efficiency**, **+12% reasoning SOTA**), and why it matters strategically for enterprise AI or future model design (1-2 sentences)
+    - **[Paper/Model Name]** ([Institution/Lab]): Strategic research insight (1-2 sentences)
+    - (Include 2-4 bullet points analyzing key research papers and breakthroughs - skip section if no research items today)
 
     #### Architecture, Tooling & Open-Source Insights
     - Provide analytical insights on trending open-source tools, agentic frameworks, and developer infrastructure (highlighting breakout GitHub repos, their category/purpose, and why they matter strategically)
@@ -725,8 +729,9 @@ orchestration:
 
     FORMATTING RULES:
     - Target audience: AI Director / VP of AI needing strategic clarity rather than a basic news list
+    - For research papers: NEVER just list paper titles or links. Explain the technical breakthrough, core metrics, and strategic value for AI engineering.
     - Explicitly highlight breakout GitHub repositories and open-source tools, explaining *what type* of tools they are and *why* they matter strategically
-    - Use **bold** for company names (OpenAI, Google, Anthropic), product names, GitHub repositories, model names, and key numbers/stats
+    - Use **bold** for company names (OpenAI, Google, Anthropic), product names, GitHub repositories, research paper/model names, and key numbers/stats
     - Use #### for section headers and - for bullet points
     - Write in an authoritative, analytical, and professional tone - no generic fluff or hype
 
