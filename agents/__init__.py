@@ -16,12 +16,11 @@ from .gatherers import (
     NewsGatherer,
     ResearchGatherer,
     SocialGatherer,
-    RedditGatherer,
     LinkFollower,
     HackerNewsGatherer,
     GitHubTrendingGatherer,
 )
-from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, RedditAnalyzer
+from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTrendingAnalyzer
 
 __all__ = [
     # LLM Client
@@ -46,7 +45,6 @@ __all__ = [
     'NewsGatherer',
     'ResearchGatherer',
     'SocialGatherer',
-    'RedditGatherer',
     'LinkFollower',
     'HackerNewsGatherer',
     'GitHubTrendingGatherer',
@@ -54,5 +52,5 @@ __all__ = [
     'NewsAnalyzer',
     'ResearchAnalyzer',
     'SocialAnalyzer',
-    'RedditAnalyzer',
+    'GitHubTrendingAnalyzer',
 ]
