@@ -132,6 +132,6 @@ class HackerNewsGatherer(BaseGatherer):
             if not existing or int(story.get("score") or 0) > int(existing.get("score") or 0):
                 dedup[sid] = story
         items = [self._to_collected_item(story) for story in dedup.values()]
-        items = [item for item in items if self.is_in_date_range(datetime.fromisoformat(item.published))]
+        items = [item for item in items if self.is_in_date_range(datetime.fromisoformat(item.published).replace(tzinfo=None))]
         logger.info(f"HackerNews gatherer collected {len(items)} items")
         return items
