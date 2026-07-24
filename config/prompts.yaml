@@ -703,47 +703,39 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    Write a structured executive summary of today's AI news using markdown formatting.
+    Write a high-level strategic executive summary of today's AI news and open-source landscape tailored for an AI Director.
 
     ${context}
 
     FORMAT YOUR SUMMARY LIKE THIS:
 
-    #### Top Story
-    One sentence about the most important development of the day.
+    #### Strategic Overview
+    2-3 sentences synthesizing the overarching technological shifts, architectural trends, and ecosystem momentum of the day.
 
-    #### Key Developments
-    - **[Company/Product Name]**: Brief description of what happened (1 sentence)
-    - **[Company/Product Name]**: Brief description (1 sentence)
-    - (Include 3-5 bullet points for the main developments)
+    #### Key Developments & Frontier Repositories
+    - **[Company/Product/Repo Name]**: Strategic impact description emphasizing technical innovation, ecosystem relevance, or enterprise applicability (1-2 sentences)
+    - **[Company/Product/Repo Name]**: Strategic impact description (1-2 sentences)
+    - (Include 4-6 bullet points covering major model/product releases and breakout GitHub trending repositories)
 
-    #### Safety & Regulation
-    - Brief bullet points on any safety, ethics, or regulatory news (omit section if none)
+    #### Architecture, Tooling & Open-Source Insights
+    - Provide analytical insights on trending open-source tools, agentic frameworks, and developer infrastructure (highlighting breakout GitHub repos, their category/purpose, and why they matter strategically)
 
-    #### Research Highlights
-    - Brief bullet points on notable research or papers (omit section if none)
-
-    #### Looking Ahead
-    One sentence on forward-looking implications or what to watch.
+    #### Looking Ahead & Leadership Implications
+    1-2 sentences on forward-looking strategic implications for AI leaders and engineering decisions.
 
     FORMATTING RULES:
-    - Use **bold** for company names (OpenAI, Google, Anthropic), product names (GPT-4, Claude, Gemini), model names, and key numbers/stats
-    - Use #### for section headers
-    - Use - for bullet points
-    - Keep each bullet to 1-2 sentences maximum
-    - Only include sections that have relevant content today (skip empty sections)
-    - Write in factual, professional tone - no hype or speculation
-    - Do NOT use phrases like "significant developments", "noteworthy", or "thought leaders"
+    - Target audience: AI Director / VP of AI needing strategic clarity rather than a basic news list
+    - Explicitly highlight breakout GitHub repositories and open-source tools, explaining *what type* of tools they are and *why* they matter strategically
+    - Use **bold** for company names (OpenAI, Google, Anthropic), product names, GitHub repositories, model names, and key numbers/stats
+    - Use #### for section headers and - for bullet points
+    - Write in an authoritative, analytical, and professional tone - no generic fluff or hype
 
     CRITICAL - AVOID REPETITION:
     - Review the PREVIOUS DAYS' COVERAGE section above carefully
     - If a story was already a headline/top story in previous days, do NOT present it as breaking news again
     - For ongoing stories, frame as "continuing developments" or focus on what's genuinely NEW today
-    - Prioritize genuinely new stories over rehashing recent headlines
-    - If today's biggest news was already yesterday's headline, find the next most important NEW development
-    - Model launches that were headlines 2-3 days ago should not be presented as "just launched" again
 
-    The summary should help a busy professional quickly scan and understand what's NEW in AI today.
+    The summary should provide actionable executive-level insights for an AI Director.
 
 # -----------------------------------------------------------------------------
 # POST-PROCESSING PHASE

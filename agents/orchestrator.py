@@ -859,9 +859,9 @@ class MainOrchestrator:
                 return name, [], str(e)
 
         phase1_tasks = [
-            gather_category('research'),
-            gather_category('reddit'),
-            gather_category('social')
+            gather_category(name)
+            for name in ['research', 'social', 'reddit']
+            if name in self.gatherers
         ]
         phase1_results = await asyncio.gather(*phase1_tasks)
 
