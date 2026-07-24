@@ -1,0 +1,1281 @@
+{
+  "date": "2026-07-11",
+  "coverage_date": "2026-07-10",
+  "coverage_start": "2026-07-10T00:00:00",
+  "coverage_end": "2026-07-10T23:59:59.999999",
+  "executive_summary": "#### Top Story\n**Deutsche Telekom** has entered a major strategic partnership with **OpenAI** to deeply integrate frontier models into its core telecommunications operations, signaling an enterprise pivot from isolated AI pilots to structural operational rewiring. Simultaneously, enterprise AI strategies are shifting from physical GPU procurement toward software-level throughput optimization to sustain continuous **GPT-5.6** agentic workflows. For AI Directors, this marks a shift where workflow integration, state persistence, and dynamic model routing supersede raw compute acquisition as primary scaling bottlenecks.\n\n#### Key Developments\n- **Deutsche Telekom**: [Partnered with OpenAI](/?date=2026-07-11&category=news#item-e081fa7d582a) to embed frontier language models directly into telecom network operations, customer support architecture, and enterprise pipelines.\n- **GPT-5.6 Enterprise Integration**: Operational analysis indicates enterprise knowledge work is [shifting from prompt-response calls](/?date=2026-07-11&category=news#item-8f705a21827f) to continuous, multi-hour iterative task loops.\n- **Compute Optimization Strategy**: Industry bottlenecks have [transitioned from hardware acquisition](/?date=2026-07-11&category=news#item-18b528890695) to maximizing inference throughput, prioritizing intelligent load balancing and software optimization over raw chip orders.\n- **Sakana AI**: [Launched the AI Picbreeder Experiment](/?date=2026-07-11&category=social#item-e1e3719f133e), pairing vision-language models with evolutionary search algorithms (CPPN-NEAT) to drive open-ended computational art generation.\n\n#### Open-Source & GitHub Trending Repositories\n- **RuView**: [Converts commodity WiFi signals](/?date=2026-07-11&category=github_trending#item-a1c350c43f8c) into non-visual spatial tracking data, enabling physical AI and ambient tracking without camera privacy concerns or visual dependencies.\n- **OmniRoute**: A dynamic routing framework designed to [bypass compute bottlenecks](/?date=2026-07-11&category=github_trending#item-79030ad727e1) by load-balancing LLM inference calls across multiple model providers.\n- **ego-lite**: A lightweight agent infrastructure tool [providing state preservation](/?date=2026-07-11&category=github_trending#item-daddc919f43d) and tooling for persistent web-based agent automation.\n\n#### Research Highlights & Technical Insights\n- **Proactive Memory Agent**: Introduces a [plug-and-play sidecar architecture](/?date=2026-07-11&category=research#item-cb3eab03ba91) that dynamically manages working memory to eliminate context rot and policy decay during long-horizon agent tasks.\n- **Persona Cartography**: [Maps Big-5 OCEAN personality traits](/?date=2026-07-11&category=research#item-a6984c400a1d) directly into **LoRA** weight space, enabling precise, deterministic behavioral steering without prompt engineering.\n- **Jacobian Lens for VLMs**: Mechanistic analysis revealed that **LLaVA** [internal representations accurately register](/?date=2026-07-11&category=research#item-d73dcad2102b) missing objects even when decoding outputs produce visual hallucinations.\n- **HydroShear** (**Amazon** / **University of Michigan**): Built a [physics-based tactile shear force simulator](/?date=2026-07-11&category=research#item-9a03ca04febd) that effectively bridges the sim-to-real transfer gap for dexterous robotic manipulation.\n\n#### Looking Ahead\nAs enterprise workflows adopt multi-hour agentic execution, technical leaders should focus engineering investments on sidecar memory management, weight-space behavioral controls, and dynamic inference routing to prevent context degradation and compute cost expansion.",
+  "executive_summary_html": "<h4>Top Story</h4>\n<p><strong>Deutsche Telekom</strong> has entered a major strategic partnership with <strong>OpenAI</strong> to deeply integrate frontier models into its core telecommunications operations, signaling an enterprise pivot from isolated AI pilots to structural operational rewiring. Simultaneously, enterprise AI strategies are shifting from physical GPU procurement toward software-level throughput optimization to sustain continuous <strong>GPT-5.6</strong> agentic workflows. For AI Directors, this marks a shift where workflow integration, state persistence, and dynamic model routing supersede raw compute acquisition as primary scaling bottlenecks.</p>\n<h4>Key Developments</h4>\n<ul>\n<li><strong>Deutsche Telekom</strong>: <a href=\"/?date=2026-07-11&amp;category=news#item-e081fa7d582a\" class=\"internal-link\" rel=\"noopener noreferrer\">Partnered with OpenAI</a> to embed frontier language models directly into telecom network operations, customer support architecture, and enterprise pipelines.</li>\n<li><strong>GPT-5.6 Enterprise Integration</strong>: Operational analysis indicates enterprise knowledge work is <a href=\"/?date=2026-07-11&amp;category=news#item-8f705a21827f\" class=\"internal-link\" rel=\"noopener noreferrer\">shifting from prompt-response calls</a> to continuous, multi-hour iterative task loops.</li>\n<li><strong>Compute Optimization Strategy</strong>: Industry bottlenecks have <a href=\"/?date=2026-07-11&amp;category=news#item-18b528890695\" class=\"internal-link\" rel=\"noopener noreferrer\">transitioned from hardware acquisition</a> to maximizing inference throughput, prioritizing intelligent load balancing and software optimization over raw chip orders.</li>\n<li><strong>Sakana AI</strong>: <a href=\"/?date=2026-07-11&amp;category=social#item-e1e3719f133e\" class=\"internal-link\" rel=\"noopener noreferrer\">Launched the AI Picbreeder Experiment</a>, pairing vision-language models with evolutionary search algorithms (CPPN-NEAT) to drive open-ended computational art generation.</li>\n</ul>\n<h4>Open-Source &amp; GitHub Trending Repositories</h4>\n<ul>\n<li><strong>RuView</strong>: <a href=\"/?date=2026-07-11&amp;category=github_trending#item-a1c350c43f8c\" class=\"internal-link\" rel=\"noopener noreferrer\">Converts commodity WiFi signals</a> into non-visual spatial tracking data, enabling physical AI and ambient tracking without camera privacy concerns or visual dependencies.</li>\n<li><strong>OmniRoute</strong>: A dynamic routing framework designed to <a href=\"/?date=2026-07-11&amp;category=github_trending#item-79030ad727e1\" class=\"internal-link\" rel=\"noopener noreferrer\">bypass compute bottlenecks</a> by load-balancing LLM inference calls across multiple model providers.</li>\n<li><strong>ego-lite</strong>: A lightweight agent infrastructure tool <a href=\"/?date=2026-07-11&amp;category=github_trending#item-daddc919f43d\" class=\"internal-link\" rel=\"noopener noreferrer\">providing state preservation</a> and tooling for persistent web-based agent automation.</li>\n</ul>\n<h4>Research Highlights &amp; Technical Insights</h4>\n<ul>\n<li><strong>Proactive Memory Agent</strong>: Introduces a <a href=\"/?date=2026-07-11&amp;category=research#item-cb3eab03ba91\" class=\"internal-link\" rel=\"noopener noreferrer\">plug-and-play sidecar architecture</a> that dynamically manages working memory to eliminate context rot and policy decay during long-horizon agent tasks.</li>\n<li><strong>Persona Cartography</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-a6984c400a1d\" class=\"internal-link\" rel=\"noopener noreferrer\">Maps Big-5 OCEAN personality traits</a> directly into <strong>LoRA</strong> weight space, enabling precise, deterministic behavioral steering without prompt engineering.</li>\n<li><strong>Jacobian Lens for VLMs</strong>: Mechanistic analysis revealed that <strong>LLaVA</strong> <a href=\"/?date=2026-07-11&amp;category=research#item-d73dcad2102b\" class=\"internal-link\" rel=\"noopener noreferrer\">internal representations accurately register</a> missing objects even when decoding outputs produce visual hallucinations.</li>\n<li><strong>HydroShear</strong> (<strong>Amazon</strong> / <strong>University of Michigan</strong>): Built a <a href=\"/?date=2026-07-11&amp;category=research#item-9a03ca04febd\" class=\"internal-link\" rel=\"noopener noreferrer\">physics-based tactile shear force simulator</a> that effectively bridges the sim-to-real transfer gap for dexterous robotic manipulation.</li>\n</ul>\n<h4>Looking Ahead</h4>\n<p>As enterprise workflows adopt multi-hour agentic execution, technical leaders should focus engineering investments on sidecar memory management, weight-space behavioral controls, and dynamic inference routing to prevent context degradation and compute cost expansion.</p>",
+  "top_topics": [
+    {
+      "name": "Enterprise Agentic Adaptation & Compute Efficiency",
+      "description": "Enterprise AI strategy is pivoting from aggressive hardware procurement toward [software-level inference optimization](/?date=2026-07-11&category=news#item-18b528890695) and operational rewiring. Strategic initiatives like Deutsche Telekom's [integration with OpenAI](/?date=2026-07-11&category=news#item-e081fa7d582a) highlight how organizations are adapting workflows around [continuous GPT-5.6 agentic loops](/?date=2026-07-11&category=news#item-8f705a21827f), while open-source tools like OmniRoute [address compute bottlenecks](/?date=2026-07-11&category=github_trending#item-79030ad727e1) through dynamic routing across model providers.",
+      "description_html": "Enterprise AI strategy is pivoting from aggressive hardware procurement toward <a href=\"/?date=2026-07-11&amp;category=news#item-18b528890695\" class=\"internal-link\" rel=\"noopener noreferrer\">software-level inference optimization</a> and operational rewiring. Strategic initiatives like Deutsche Telekom's <a href=\"/?date=2026-07-11&amp;category=news#item-e081fa7d582a\" class=\"internal-link\" rel=\"noopener noreferrer\">integration with OpenAI</a> highlight how organizations are adapting workflows around <a href=\"/?date=2026-07-11&amp;category=news#item-8f705a21827f\" class=\"internal-link\" rel=\"noopener noreferrer\">continuous GPT-5.6 agentic loops</a>, while open-source tools like OmniRoute <a href=\"/?date=2026-07-11&amp;category=github_trending#item-79030ad727e1\" class=\"internal-link\" rel=\"noopener noreferrer\">address compute bottlenecks</a> through dynamic routing across model providers.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 0,
+        "social": 0,
+        "github_trending": 1
+      },
+      "representative_items": [],
+      "importance": 92
+    },
+    {
+      "name": "Long-Horizon Agent Execution & Context Persistence",
+      "description": "Researchers and developers are resolving state decay and context limits in autonomous agents performing extended multi-step tasks. Recent research introduced the [Proactive Memory Agent sidecar](/?date=2026-07-11&category=research#item-cb3eab03ba91) alongside [Jet-Long dynamic context extension](/?date=2026-07-11&category=research#item-91a17172f802), while repositories like [ego-lite](/?date=2026-07-11&category=github_trending#item-daddc919f43d) and [pi](/?date=2026-07-11&category=github_trending#item-7f4b77e91802) supply state preservation and tooling for web-based agent automation. These combined advances enable enterprise teams to deploy low-latency, long-running agentic workflows without context decay.",
+      "description_html": "Researchers and developers are resolving state decay and context limits in autonomous agents performing extended multi-step tasks. Recent research introduced the <a href=\"/?date=2026-07-11&amp;category=research#item-cb3eab03ba91\" class=\"internal-link\" rel=\"noopener noreferrer\">Proactive Memory Agent sidecar</a> alongside <a href=\"/?date=2026-07-11&amp;category=research#item-91a17172f802\" class=\"internal-link\" rel=\"noopener noreferrer\">Jet-Long dynamic context extension</a>, while repositories like <a href=\"/?date=2026-07-11&amp;category=github_trending#item-daddc919f43d\" class=\"internal-link\" rel=\"noopener noreferrer\">ego-lite</a> and <a href=\"/?date=2026-07-11&amp;category=github_trending#item-7f4b77e91802\" class=\"internal-link\" rel=\"noopener noreferrer\">pi</a> supply state preservation and tooling for web-based agent automation. These combined advances enable enterprise teams to deploy low-latency, long-running agentic workflows without context decay.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "github_trending": 3
+      },
+      "representative_items": [],
+      "importance": 89
+    },
+    {
+      "name": "Mechanistic Diagnostics & Weight-Space Steering",
+      "description": "Advanced diagnostic techniques are exposing internal model representations and transforming fine-tuning control. A study [applying the Jacobian Lens](/?date=2026-07-11&category=research#item-d73dcad2102b) to LLaVA vision-language models revealed that internal states accurately track missing objects even during visual decoding hallucinations, while Persona Cartography [demonstrated deterministic Big-5 trait steering](/?date=2026-07-11&category=research#item-a6984c400a1d) directly inside LoRA weight space.",
+      "description_html": "Advanced diagnostic techniques are exposing internal model representations and transforming fine-tuning control. A study <a href=\"/?date=2026-07-11&amp;category=research#item-d73dcad2102b\" class=\"internal-link\" rel=\"noopener noreferrer\">applying the Jacobian Lens</a> to LLaVA vision-language models revealed that internal states accurately track missing objects even during visual decoding hallucinations, while Persona Cartography <a href=\"/?date=2026-07-11&amp;category=research#item-a6984c400a1d\" class=\"internal-link\" rel=\"noopener noreferrer\">demonstrated deterministic Big-5 trait steering</a> directly inside LoRA weight space.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 3,
+        "social": 0,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 86
+    },
+    {
+      "name": "Real-Time Multimodal Video & Frame Reasoning",
+      "description": "Multimodal media generation is shifting toward low-latency execution and structured temporal reasoning. The Vidu S1 architecture [brings real-time, voice-controlled character video synthesis](/?date=2026-07-11&category=research#item-7f78d1208c1c) to consumer hardware, while the OpenCoF Chain-of-Frame framework [embeds explicit step-by-step reasoning](/?date=2026-07-11&category=research#item-2342b5bf3561) into diffusion models. For product teams, this dramatically lowers infrastructure costs for interactive media while providing visual consistency guardrails.",
+      "description_html": "Multimodal media generation is shifting toward low-latency execution and structured temporal reasoning. The Vidu S1 architecture <a href=\"/?date=2026-07-11&amp;category=research#item-7f78d1208c1c\" class=\"internal-link\" rel=\"noopener noreferrer\">brings real-time, voice-controlled character video synthesis</a> to consumer hardware, while the OpenCoF Chain-of-Frame framework <a href=\"/?date=2026-07-11&amp;category=research#item-2342b5bf3561\" class=\"internal-link\" rel=\"noopener noreferrer\">embeds explicit step-by-step reasoning</a> into diffusion models. For product teams, this dramatically lowers infrastructure costs for interactive media while providing visual consistency guardrails.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 84
+    },
+    {
+      "name": "Non-Visual Physical AI & Ambient Sensing",
+      "description": "Robotics and ambient computing are evolving beyond vision-centric perception toward tactile and RF spatial intelligence. Amazon and the University of Michigan [unveiled HydroShear to resolve](/?date=2026-07-11&category=research#item-9a03ca04febd) sim-to-real physics modeling for tactile shear forces, while the open-source RuView repository [converts commodity WiFi signals](/?date=2026-07-11&category=github_trending#item-a1c350c43f8c) into non-visual spatial tracking. These techniques enable robust physical AI operation without camera privacy or environmental lighting dependencies.",
+      "description_html": "Robotics and ambient computing are evolving beyond vision-centric perception toward tactile and RF spatial intelligence. Amazon and the University of Michigan <a href=\"/?date=2026-07-11&amp;category=research#item-9a03ca04febd\" class=\"internal-link\" rel=\"noopener noreferrer\">unveiled HydroShear to resolve</a> sim-to-real physics modeling for tactile shear forces, while the open-source RuView repository <a href=\"/?date=2026-07-11&amp;category=github_trending#item-a1c350c43f8c\" class=\"internal-link\" rel=\"noopener noreferrer\">converts commodity WiFi signals</a> into non-visual spatial tracking. These techniques enable robust physical AI operation without camera privacy or environmental lighting dependencies.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 1,
+        "social": 0,
+        "github_trending": 1
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "Evolutionary Search & Open-Ended Multi-Modal Discovery",
+      "description": "Frontier AI research is integrating classic open-ended algorithms with modern language and vision models to automate creative exploration. Sakana AI highlighted this trend with the [release of the AI Picbreeder Experiment](/?date=2026-07-11&category=social#item-e1e3719f133e), utilizing vision-language agents and CPPN-NEAT concepts for computational art generation. Parallel research into [Unbounded Positive Asymmetric Optimization](/?date=2026-07-11&category=research#item-6a23ad0cca43) provides the theoretical groundwork for stable reinforcement learning across complex search spaces.",
+      "description_html": "Frontier AI research is integrating classic open-ended algorithms with modern language and vision models to automate creative exploration. Sakana AI highlighted this trend with the <a href=\"/?date=2026-07-11&amp;category=social#item-e1e3719f133e\" class=\"internal-link\" rel=\"noopener noreferrer\">release of the AI Picbreeder Experiment</a>, utilizing vision-language agents and CPPN-NEAT concepts for computational art generation. Parallel research into <a href=\"/?date=2026-07-11&amp;category=research#item-6a23ad0cca43\" class=\"internal-link\" rel=\"noopener noreferrer\">Unbounded Positive Asymmetric Optimization</a> provides the theoretical groundwork for stable reinforcement learning across complex search spaces.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 1,
+        "social": 3,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 80
+    }
+  ],
+  "total_items_collected": 97,
+  "total_items_analyzed": 97,
+  "collection_status": {
+    "overall": "partial",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 11,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 46,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 4,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "hackernews",
+        "display_name": "Hackernews",
+        "status": "failed",
+        "count": 0,
+        "error": "can't compare offset-naive and offset-aware datetimes"
+      },
+      {
+        "name": "github_trending",
+        "display_name": "Github_trending",
+        "status": "success",
+        "count": 41,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 3,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "success",
+        "count": 1,
+        "error": null
+      }
+    ],
+    "warnings": [
+      "Hackernews collection failed: can't compare offset-naive and offset-aware datetimes"
+    ]
+  },
+  "hero_image_url": null,
+  "hero_image_prompt": null,
+  "generated_at": "2026-07-24T15:05:21.647748",
+  "categories": {
+    "news": {
+      "count": 6,
+      "category_summary": "Enterprise AI strategy is undergoing a pivotal shift from raw compute acquisition toward deep operational integration and software-level efficiency. **OpenAI**'s enterprise expansion with major operators like **Deutsche Telekom** and the organizational adaptation to **GPT-5.6** highlight how frontier capabilities are actively restructuring knowledge work and telecommunications infrastructure.\n\n### Enterprise Transformation & Knowledge Work\n- **Deutsche Telekom**: Formed a [major strategic partnership](/?date=2026-07-11&category=news#item-e081fa7d582a) with **OpenAI** to integrate frontier language models deeply into its telecom operations, customer support architecture, and internal workflows. *Strategic Relevance*: Signals a transition from isolated AI pilot projects to core operational rewiring at enterprise scale, setting a blueprint for telecom operators to automate complex service pipelines.\n- **GPT-5.6 Workflows**: Early impact analysis of **OpenAI**'s **GPT-5.6** [underscores a fundamental evolution](/?date=2026-07-11&category=news#item-8f705a21827f) in knowledge work, moving from discrete prompt-response interactions to continuous, iterative task loops. *Strategic Relevance*: AI leaders must realign workforce tooling and management models around agentic loops and continuous execution to fully capture productivity dividends.\n\n### Compute Strategy & Operational Efficiency\n- **Compute Utilization Bottlenecks**: Analysis indicates the primary operational constraint for enterprise AI is [shifting from physical hardware acquisition](/?date=2026-07-11&category=news#item-18b528890695) to optimizing and maximizing throughput on existing compute infrastructure. *Strategic Relevance*: Enterprise technology investments must prioritize software optimization, efficient inference pipelines, and intelligent workload routing over aggressive chip procurement alone.",
+      "category_summary_html": "<p>Enterprise AI strategy is undergoing a pivotal shift from raw compute acquisition toward deep operational integration and software-level efficiency. <strong>OpenAI</strong>'s enterprise expansion with major operators like <strong>Deutsche Telekom</strong> and the organizational adaptation to <strong>GPT-5.6</strong> highlight how frontier capabilities are actively restructuring knowledge work and telecommunications infrastructure.</p>\n<h3>Enterprise Transformation &amp; Knowledge Work</h3>\n<ul>\n<li><strong>Deutsche Telekom</strong>: Formed a <a href=\"/?date=2026-07-11&amp;category=news#item-e081fa7d582a\" class=\"internal-link\" rel=\"noopener noreferrer\">major strategic partnership</a> with <strong>OpenAI</strong> to integrate frontier language models deeply into its telecom operations, customer support architecture, and internal workflows. *Strategic Relevance*: Signals a transition from isolated AI pilot projects to core operational rewiring at enterprise scale, setting a blueprint for telecom operators to automate complex service pipelines.</li>\n<li><strong>GPT-5.6 Workflows</strong>: Early impact analysis of <strong>OpenAI</strong>'s <strong>GPT-5.6</strong> <a href=\"/?date=2026-07-11&amp;category=news#item-8f705a21827f\" class=\"internal-link\" rel=\"noopener noreferrer\">underscores a fundamental evolution</a> in knowledge work, moving from discrete prompt-response interactions to continuous, iterative task loops. *Strategic Relevance*: AI leaders must realign workforce tooling and management models around agentic loops and continuous execution to fully capture productivity dividends.</li>\n</ul>\n<h3>Compute Strategy &amp; Operational Efficiency</h3>\n<ul>\n<li><strong>Compute Utilization Bottlenecks</strong>: Analysis indicates the primary operational constraint for enterprise AI is <a href=\"/?date=2026-07-11&amp;category=news#item-18b528890695\" class=\"internal-link\" rel=\"noopener noreferrer\">shifting from physical hardware acquisition</a> to optimizing and maximizing throughput on existing compute infrastructure. *Strategic Relevance*: Enterprise technology investments must prioritize software optimization, efficient inference pipelines, and intelligent workload routing over aggressive chip procurement alone.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "Enterprise Adoption & Transformation",
+          "description": "Real-world integrations and case studies of frontier AI reshaping large organizations like Deutsche Telekom and knowledge work broadly.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Agentic AI & Optimization",
+          "description": "Practical challenges, instruction tuning, and multi-agent coordination required to make AI agents effective workers and code reviewers.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 70.0
+        },
+        {
+          "name": "Infrastructure & Compute Strategy",
+          "description": "Shifting focus from chip acquisition to efficient compute utilization and operational optimization.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 60.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "e081fa7d582a",
+          "title": "How Deutsche Telekom is rewiring telecommunications with AI",
+          "content": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
+          "url": "https://openai.com/index/deutsche-telekom",
+          "author": "Unknown",
+          "published": "2026-07-10T07:00:00",
+          "source": "OpenAI News",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Outlines Deutsche Telekom's strategic partnership with OpenAI to transform its telecommunications operations, customer service, and internal workflows.",
+          "importance_score": 75.0,
+          "reasoning": "A major enterprise case study demonstrating deep operational integration of frontier language models in legacy industries.",
+          "themes": [
+            "Enterprise Adoption",
+            "LLMs"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://openai.com/news/rss.xml",
+            "raw_summary": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
+            "interest_score": 4.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Outlines Deutsche Telekom's strategic partnership with OpenAI to transform its telecommunications operations, customer service, and internal workflows.</p>",
+          "content_html": "<p>How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.</p>"
+        },
+        {
+          "id": "8f705a21827f",
+          "title": "How GPT-5.6 Changes Knowledge Work",
+          "content": "in Chain of ThoughtMidjourney/Every illustration.Don’t do your work. Tend your loop.Click here to read the full postWant the full text of all articles in RSS? Become a subscriber, or learn more.",
+          "url": "https://every.to/chain-of-thought/how-gpt-5-6-changes-knowledge-work",
+          "author": "Dan Shipper / Chain of Thought",
+          "published": "2026-07-10T15:37:39",
+          "source": "Chain of Thought",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Analyzes the practical impacts of OpenAI's recent GPT-5.6 model generation on modern knowledge work and iterative task loops.",
+          "importance_score": 65.0,
+          "reasoning": "Thoughtful commentary on productivity shifts resulting from recent frontier model deployments.",
+          "themes": [
+            "Enterprise Adoption",
+            "LLMs"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://every.to/chain-of-thought/feed",
+            "raw_summary": "<p><em>in Chain of Thought</em></p><figure><img alt=\"\" src=\"https://d24ovhgu8s7341.cloudfront.net/uploads/post/cover/4336/aa8d15060453259e-Tend.jpg\" /><figcaption>Midjourney/Every illustration.</figcaption></figure><p>Don’t do your work. Tend your loop.</p><p><em><a href=\"https://every.to/chain-of-thought/how-gpt-5-6-changes-knowledge-work\">Click here</a> to read the full post</em></p><p>Want the full text of all articles in RSS? <a href=\"https://every.to/subscribe\">Become a subscriber</a>, or <",
+            "interest_score": 6.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Analyzes the practical impacts of OpenAI's recent GPT-5.6 model generation on modern knowledge work and iterative task loops.</p>",
+          "content_html": "<p>in Chain of ThoughtMidjourney/Every illustration.Don’t do your work. Tend your loop.Click here to read the full postWant the full text of all articles in RSS? Become a subscriber, or learn more.</p>"
+        },
+        {
+          "id": "18b528890695",
+          "title": "Prompt: AI's Next Challenge Is Making Better Use of Compute",
+          "content": "After years spent racing to secure AI chips and computing power, enterprise leaders are discovering that getting access to infrastructure might be easier than using it effectively.",
+          "url": "https://aibusiness.com/generative-ai/prompt-ai-s-next-challenge-making-better-use-compute",
+          "author": "Liz Hughes",
+          "published": "2026-07-10T14:07:22",
+          "source": "aibusiness",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Highlights a shifting enterprise bottleneck from acquiring physical AI infrastructure and chips to effectively leveraging and optimizing available compute.",
+          "importance_score": 60.0,
+          "reasoning": "Provides valuable macro-level perspective on enterprise AI strategy and infrastructure hurdles.",
+          "themes": [
+            "Infrastructure & Compute",
+            "Enterprise Adoption"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://aibusiness.com/rss.xml",
+            "raw_summary": "After years spent racing to secure AI chips and computing power, enterprise leaders are discovering that getting access to infrastructure might be easier than using it effectively.",
+            "interest_score": 5.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Highlights a shifting enterprise bottleneck from acquiring physical AI infrastructure and chips to effectively leveraging and optimizing available compute.</p>",
+          "content_html": "<p>After years spent racing to secure AI chips and computing power, enterprise leaders are discovering that getting access to infrastructure might be easier than using it effectively.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 46,
+      "category_summary": "Today's research highlights advances in long-horizon agent execution, real-time multimodal synthesis, and mechanistic diagnostics for VLM reliability. Key breakthroughs focus on parameter-efficient post-training optimization, physics-based tactile simulation for robotics, and weight-space trait control.\n\n### Agentic Systems & Context Scaling\n- **Proactive Memory Agent**: [Introduces a plug-and-play sidecar architecture](/?date=2026-07-11&category=research#item-cb3eab03ba91) that dynamically manages working memory to prevent context rot and behavioral decay during long-horizon tasks, maintaining policy stability across extended execution loops.\n- **Jet-Long**: [Achieves zero-shot long-context extension](/?date=2026-07-11&category=research#item-91a17172f802) using **Dynamic Bifocal RoPE** and adaptive rescaling, maintaining high retrieval fidelity without incurring re-training compute costs.\n\n### Reinforcement Learning & Post-Training\n- **UP (Unbounded Positive Asymmetric Optimization)**: [Solves the exploration-stability dilemma](/?date=2026-07-11&category=research#item-6a23ad0cca43) in post-training RL for LLMs, encouraging continuous exploration without risking policy collapse or degradation.\n- **Value Generalisation & Correction**: [Demonstrates an RL alignment paradigm](/?date=2026-07-11&category=research#item-b9a7644ff2b2) where agents autonomously detect and adjust out-of-distribution reward estimation errors, paving the way for self-correcting autonomous agents.\n\n### Multimodal Synthesis & Temporal Reasoning\n- **Vidu S1**: [Delivers real-time interactive video generation](/?date=2026-07-11&category=research#item-7f78d1208c1c) with voice-controlled character animation and infinite-length streaming on **consumer hardware**, substantially lowering inference cost boundaries.\n- **OpenCoF**: Introduces the **Chain-of-Frame** framework paired with a **17K temporal dataset**, [embedding explicit step-by-step reasoning](/?date=2026-07-11&category=research#item-2342b5bf3561) directly into diffusion pipelines to enforce visual consistency.\n\n### Interpretability, Safety & Diagnostics\n- **Jacobian Lens for VLMs**: Applies diagnostic tools to **LLaVA** models, revealing that [internal representations often accurately register object absence](/?date=2026-07-11&category=research#item-d73dcad2102b) even when decoding leads to visual hallucinations.\n- **Natural Language Autoencoders Analysis**: [Exposes a key vulnerability](/?date=2026-07-11&category=research#item-25785cb640d5) in interpretability workflows by showing that NLAs achieve high activation reconstruction metrics regardless of initialization sanity, urging stricter benchmark standards.\n- **Persona Cartography**: [Maps Big-5 OCEAN traits directly](/?date=2026-07-11&category=research#item-a6984c400a1d) into LoRA weight space, enabling precise, deterministic behavioral steering without requiring additional prompt engineering or model fine-tuning.\n\n### Physical AI & Robotics\n- **HydroShear** (**Amazon** / **University of Michigan**): [Establishes a physics-based tactile shear force simulator](/?date=2026-07-11&category=research#item-9a03ca04febd), bridging a critical sim-to-real transfer gap for dexterous robotic manipulation.",
+      "category_summary_html": "<p>Today's research highlights advances in long-horizon agent execution, real-time multimodal synthesis, and mechanistic diagnostics for VLM reliability. Key breakthroughs focus on parameter-efficient post-training optimization, physics-based tactile simulation for robotics, and weight-space trait control.</p>\n<h3>Agentic Systems &amp; Context Scaling</h3>\n<ul>\n<li><strong>Proactive Memory Agent</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-cb3eab03ba91\" class=\"internal-link\" rel=\"noopener noreferrer\">Introduces a plug-and-play sidecar architecture</a> that dynamically manages working memory to prevent context rot and behavioral decay during long-horizon tasks, maintaining policy stability across extended execution loops.</li>\n<li><strong>Jet-Long</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-91a17172f802\" class=\"internal-link\" rel=\"noopener noreferrer\">Achieves zero-shot long-context extension</a> using <strong>Dynamic Bifocal RoPE</strong> and adaptive rescaling, maintaining high retrieval fidelity without incurring re-training compute costs.</li>\n</ul>\n<h3>Reinforcement Learning &amp; Post-Training</h3>\n<ul>\n<li><strong>UP (Unbounded Positive Asymmetric Optimization)</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-6a23ad0cca43\" class=\"internal-link\" rel=\"noopener noreferrer\">Solves the exploration-stability dilemma</a> in post-training RL for LLMs, encouraging continuous exploration without risking policy collapse or degradation.</li>\n<li><strong>Value Generalisation &amp; Correction</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-b9a7644ff2b2\" class=\"internal-link\" rel=\"noopener noreferrer\">Demonstrates an RL alignment paradigm</a> where agents autonomously detect and adjust out-of-distribution reward estimation errors, paving the way for self-correcting autonomous agents.</li>\n</ul>\n<h3>Multimodal Synthesis &amp; Temporal Reasoning</h3>\n<ul>\n<li><strong>Vidu S1</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-7f78d1208c1c\" class=\"internal-link\" rel=\"noopener noreferrer\">Delivers real-time interactive video generation</a> with voice-controlled character animation and infinite-length streaming on <strong>consumer hardware</strong>, substantially lowering inference cost boundaries.</li>\n<li><strong>OpenCoF</strong>: Introduces the <strong>Chain-of-Frame</strong> framework paired with a <strong>17K temporal dataset</strong>, <a href=\"/?date=2026-07-11&amp;category=research#item-2342b5bf3561\" class=\"internal-link\" rel=\"noopener noreferrer\">embedding explicit step-by-step reasoning</a> directly into diffusion pipelines to enforce visual consistency.</li>\n</ul>\n<h3>Interpretability, Safety &amp; Diagnostics</h3>\n<ul>\n<li><strong>Jacobian Lens for VLMs</strong>: Applies diagnostic tools to <strong>LLaVA</strong> models, revealing that <a href=\"/?date=2026-07-11&amp;category=research#item-d73dcad2102b\" class=\"internal-link\" rel=\"noopener noreferrer\">internal representations often accurately register object absence</a> even when decoding leads to visual hallucinations.</li>\n<li><strong>Natural Language Autoencoders Analysis</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-25785cb640d5\" class=\"internal-link\" rel=\"noopener noreferrer\">Exposes a key vulnerability</a> in interpretability workflows by showing that NLAs achieve high activation reconstruction metrics regardless of initialization sanity, urging stricter benchmark standards.</li>\n<li><strong>Persona Cartography</strong>: <a href=\"/?date=2026-07-11&amp;category=research#item-a6984c400a1d\" class=\"internal-link\" rel=\"noopener noreferrer\">Maps Big-5 OCEAN traits directly</a> into LoRA weight space, enabling precise, deterministic behavioral steering without requiring additional prompt engineering or model fine-tuning.</li>\n</ul>\n<h3>Physical AI &amp; Robotics</h3>\n<ul>\n<li><strong>HydroShear</strong> (<strong>Amazon</strong> / <strong>University of Michigan</strong>): <a href=\"/?date=2026-07-11&amp;category=research#item-9a03ca04febd\" class=\"internal-link\" rel=\"noopener noreferrer\">Establishes a physics-based tactile shear force simulator</a>, bridging a critical sim-to-real transfer gap for dexterous robotic manipulation.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "AI Safety, Alignment & Policy",
+          "description": "Long-term governance frameworks, geopolitical control scenarios, value generalisation in RL, historical safety trajectories, and policy critiques.",
+          "item_count": 16,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Mechanistic Interpretability & Diagnostics",
+          "description": "Inner-workings analysis of transformers, weight-space persona mapping, natural language autoencoders, Jacobian lens VLM studies, and evaluation pipeline failure modes.",
+          "item_count": 11,
+          "example_items": [],
+          "importance": 84.0
+        },
+        {
+          "name": "Video Generation & Understanding",
+          "description": "Research on real-time interactive video synthesis, temporal reasoning, event-based reconstruction, and diagnostic benchmarking of multimodal video models.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Agents, Robotics & Domain Applications",
+          "description": "Proactive agents, long-horizon memory management, robotic tactile simulation, specialized domain generation (drug discovery, quantum, audio), and optimization techniques.",
+          "item_count": 13,
+          "example_items": [],
+          "importance": 81.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "cb3eab03ba91",
+          "title": "Remember When It Matters: Proactive Memory Agent for Long-Horizon Agents",
+          "content": "In long-horizon tasks, decision-relevant state is often scattered across an expanding trajectory, while the action agent must surface it and act. As trajectories grow, task requirements, environment facts, prior attempts, diagnoses, and open subgoals can be buried in the context window or pushed beyond it, failing to influence decisions when needed. We call this failure mode \"behavioral state decay\". We study memory as an active intervention mechanism rather than passive retrieval. A separate memory agent runs alongside an unmodified action agent, updating a structured memory bank from the recent trajectory and deciding whether to inject a memory-grounded reminder or remain silent. The module is plug-and-play with frontier action agents and existing agent harnesses. Across Terminal-Bench 2.0 and τ^2-Bench, it improves pass@1 for both weaker and stronger action agents, with gains of +8.3 pp on Terminal-Bench and +6.8 pp on τ^2-Bench. Ablations show that selective intervention outperforms passive bank exposure, always-on injection, advisor-only guidance, and general retrieval. As an early step toward open-weight memory policies, we train Qwen3.5-27B on SETA using SFT and GRPO, improving validation reward and achieving partial transfer to Terminal-Bench.",
+          "url": "https://huggingface.co/papers/2607.08716",
+          "author": "Yifan Wu, Lizhu Zhang, Yuhang Zhou, Mingyi Wang, Bo Peng, Serena Li, Xiangjun Fan, Zhuokai Zhao",
+          "published": "2026-07-10T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "Proactive Memory Agent introduces a plug-and-play memory module that runs alongside action agents to prevent behavioral state decay during long-horizon tasks. It actively manages structured memory banks to maintain context relevance.",
+          "importance_score": 86.0,
+          "reasoning": "Directly tackles context rot and memory degradation in extended agentic workflows.",
+          "themes": [
+            "Agents, Robotics & Domain Applications"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.08716",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.08716"
+            },
+            "huggingface": {
+              "upvotes": 15,
+              "selected_at": "2026-07-10T00:00:00.000Z",
+              "paper_published_at": "2026-07-09T00:00:00.000Z",
+              "github_repo": "https://github.com/yifannnwu/proactive-memory-agent"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Proactive Memory Agent introduces a plug-and-play memory module that runs alongside action agents to prevent behavioral state decay during long-horizon tasks. It actively manages structured memory banks to maintain context relevance.</p>",
+          "content_html": "<p>In long-horizon tasks, decision-relevant state is often scattered across an expanding trajectory, while the action agent must surface it and act. As trajectories grow, task requirements, environment facts, prior attempts, diagnoses, and open subgoals can be buried in the context window or pushed beyond it, failing to influence decisions when needed. We call this failure mode \"behavioral state decay\". We study memory as an active intervention mechanism rather than passive retrieval. A separate memory agent runs alongside an unmodified action agent, updating a structured memory bank from the recent trajectory and deciding whether to inject a memory-grounded reminder or remain silent. The module is plug-and-play with frontier action agents and existing agent harnesses. Across Terminal-Bench 2.0 and τ^2-Bench, it improves pass@1 for both weaker and stronger action agents, with gains of +8.3 pp on Terminal-Bench and +6.8 pp on τ^2-Bench. Ablations show that selective intervention outperforms passive bank exposure, always-on injection, advisor-only guidance, and general retrieval. As an early step toward open-weight memory policies, we train Qwen3.5-27B on SETA using SFT and GRPO, improving validation reward and achieving partial transfer to Terminal-Bench.</p>"
+        },
+        {
+          "id": "7f78d1208c1c",
+          "title": "Vidu S1: A Real-Time Interactive Video Generation Model",
+          "content": "Vidu S1 is a real-time interactive video generation model that supports voice-controlled digital character animation with infinite-length output and high frame rate on consumer hardware.",
+          "url": "https://huggingface.co/papers/2607.03118",
+          "author": "Jintao Zhang, Kai Jiang, Jintao Chen, Xu Wang, Yang Luo, Yuji Wang, Dechuang Chen, Jungang Li, Chengyang Ye, Marco Chen, Hongzhou Zhu, Min Zhao, Yuxuan Jiang, Zhengkun Huang, Chendong Xiang, Kaiwen Zheng, Haoxu Wang, Xiaohang Wang, Qi Jia, Xin Chen, Yimin Chen, Youhe Jiang, Fangcheng Fu, Zhijie Deng, Fan Bao, Jianfei Chen, Jun Zhu",
+          "published": "2026-07-10T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [
+            "TurboDiffusion",
+            "TurboServe",
+            "real-time video generation",
+            "voice control",
+            "digital characters",
+            "infinite-length video",
+            "frame rate",
+            "consumer GPUs"
+          ],
+          "summary": "Vidu S1 introduces real-time interactive video generation with voice-controlled character animation and infinite-length output on consumer hardware. This work advances efficient streaming architectures for generative video.",
+          "importance_score": 85.0,
+          "reasoning": "High practical value for real-time creative workflows and democratization of video generation on consumer hardware.",
+          "themes": [
+            "Video Generation & Understanding"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.03118",
+            "category_name": "TurboDiffusion, TurboServe, real-time video generation",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.03118"
+            },
+            "huggingface": {
+              "upvotes": 139,
+              "selected_at": "2026-07-10T00:00:00.000Z",
+              "paper_published_at": "2026-07-03T00:00:00.000Z",
+              "github_repo": "https://github.com/shengshu-ai/Vidu-S1"
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Vidu S1 introduces real-time interactive video generation with voice-controlled character animation and infinite-length output on consumer hardware. This work advances efficient streaming architectures for generative video.</p>",
+          "content_html": "<p>Vidu S1 is a real-time interactive video generation model that supports voice-controlled digital character animation with infinite-length output and high frame rate on consumer hardware.</p>"
+        },
+        {
+          "id": "b9a7644ff2b2",
+          "title": "Value generalisation: value correction",
+          "content": "Git Repo here.I firmly believe that value generalisation[1]is the key to AI Alignment. That, indeed, it is necessary and almost sufficient for alignment.But I won't be arguing that grand point today; instead, I'll focus on a specific RL example of an agent that displays value correction: it realises its current reward function is (probably) incorrect, and acts to correct it.Thus there are:The initial situation, in distribution, where the human displays how to maximise the true reward.The out of distribution situation where the agent finds a hack to exploit its reward function estimate, and turns against what we wanted it to do.The value error detection stage where the agent realises that its reward function estimate is probably incorrect.The value correction stage where the agent corrects its reward function back to the original true reward.In this post, all the methods presented will by syntactic: the agent is not assumed to have any understanding of the situations and the key features are not identified to it.The game of human lifeIntroducing a new, very simple, game called \"Humans[2]\". Humans, fleeing danger, enter the screen from the left. The objective is to save them by moving them off the right of the screen.But there are obstacles on the way, and the humans will mill about if they are blocked.And they will shortly expire if they can't get out of the screen quickly.There are two command: drill ('d') and explode ('e'). Drill does... what, you want to know about explode? Well, if the player presses 'e', the rightmost human will explode, knocking away two obstacle blocks in front of them and behind them -- but also killing themselves and any humans nearby.This is almost never a good solution; to remind the player of the mistake, a large frowny face will appear to drive the disapproval home.Much more reasonably, if the player presses 'd', the rightmost human will drill the obstacle just in front of them (better time it so that they're facing the right way). Enoug...",
+          "url": "https://www.lesswrong.com/posts/iPyJfD9Jyxj6Jfdws/value-generalisation-value-correction",
+          "author": "Stuart_Armstrong",
+          "published": "2026-07-10T03:56:04.145000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Demonstrates a reinforcement learning example of value correction where an agent detects an error in its reward function estimate out-of-distribution and acts to correct it back to the true reward.",
+          "importance_score": 85.0,
+          "reasoning": "Advances core RL alignment research concerning value generalisation and autonomous error correction.",
+          "themes": [
+            "AI Safety, Alignment & Policy"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "iPyJfD9Jyxj6Jfdws",
+            "slug": "value-generalisation-value-correction",
+            "base_score": 25,
+            "vote_count": 7,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Demonstrates a reinforcement learning example of value correction where an agent detects an error in its reward function estimate out-of-distribution and acts to correct it back to the true reward.</p>",
+          "content_html": "<p>Git Repo here.I firmly believe that value generalisation[1]is the key to AI Alignment. That, indeed, it is necessary and almost sufficient for alignment.But I won't be arguing that grand point today; instead, I'll focus on a specific RL example of an agent that displays value correction: it realises its current reward function is (probably) incorrect, and acts to correct it.Thus there are:The initial situation, in distribution, where the human displays how to maximise the true reward.The out of distribution situation where the agent finds a hack to exploit its reward function estimate, and turns against what we wanted it to do.The value error detection stage where the agent realises that its reward function estimate is probably incorrect.The value correction stage where the agent corrects its reward function back to the original true reward.In this post, all the methods presented will by syntactic: the agent is not assumed to have any understanding of the situations and the key features are not identified to it.The game of human lifeIntroducing a new, very simple, game called \"Humans[2]\". Humans, fleeing danger, enter the screen from the left. The objective is to save them by moving them off the right of the screen.But there are obstacles on the way, and the humans will mill about if they are blocked.And they will shortly expire if they can't get out of the screen quickly.There are two command: drill ('d') and explode ('e'). Drill does... what, you want to know about explode? Well, if the player presses 'e', the rightmost human will explode, knocking away two obstacle blocks in front of them and behind them -- but also killing themselves and any humans nearby.This is almost never a good solution; to remind the player of the mistake, a large frowny face will appear to drive the disapproval home.Much more reasonably, if the player presses 'd', the rightmost human will drill the obstacle just in front of them (better time it so that they're facing the right way). Enoug...</p>"
+        },
+        {
+          "id": "d73dcad2102b",
+          "title": "Reading into VLM hallucinations using the Jacobian lens",
+          "content": "Reading and editing the visual workspace of a vision-language model.Vision-language models hallucinate: ask one whether some object is in a picture and it will happily say yes whether it's there or not. Why is this?Using Anthropic's recent J-lens method I found that LLaVA-1.5-7B's internal state seems to register that the object is absent. The exact same evidence that the yes/no question ignores produces almost perfect answers when posed as a choice instead (\"is this a lamp or a dog?\").Perhaps then the hallucination can be shown to be a product of the question format and a failure to pull up things that the model already knows. The knowledge of the image turns out to be readable (and editable) inside the model using Anthropic's J-lens. TL;DRI took Anthropic's new J-lens method from their \"global workspace in language models\" paper and pointed it across the vision/text boundary of a vision-language model, LLaVA-1.5-7B.The Jacobian (J)-lens: The J-lens asks \"if I nudge this layer, which words become more likely to come out now or later?\", averaged over many inputs. What it picks up is content the model reliably carries toward its output regardless of context. This is the paper's stand-in for \"things the model could say out loud,\" which it then shows behave like a shared global workspace.Ask \"Is there a lamp in this image?\" about images with no lamp, and the model says yes every single time (39/39). But read its internal state (workspace) and the suggested lamp has a workspace signal about an order of magnitude weaker than any object the model actually saw. It would seem the model's workspace holds the correct objects much higher (lower rank, stronger signal) and the hallucinated ones far lower (higher rank, weaker signal). Ask the same model \"is this a lamp or a dog?\" and it gets it right 77/78 times. 75/78 by exact match, effectively 77/78 crediting 'Dalmatian' as a dog; one genuine error, a phone called a car.The visual content is readable, but can also be manipulat...",
+          "url": "https://www.lesswrong.com/posts/T3u6Hctes6vkawsib/reading-into-vlm-hallucinations-using-the-jacobian-lens",
+          "author": "Hawrani",
+          "published": "2026-07-09T20:31:48.557000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Applies Anthropic's Jacobian lens to vision-language models (LLaVA) and discovers that internal states often register object absence even when the model hallucinates a affirmative response due to question formatting.",
+          "importance_score": 85.0,
+          "reasoning": "Illuminates the mechanistic origins of VLM hallucinations across the vision-text boundary.",
+          "themes": [
+            "Mechanistic Interpretability & Diagnostics"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "T3u6Hctes6vkawsib",
+            "slug": "reading-into-vlm-hallucinations-using-the-jacobian-lens",
+            "base_score": 8,
+            "vote_count": 3,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Applies Anthropic's Jacobian lens to vision-language models (LLaVA) and discovers that internal states often register object absence even when the model hallucinates a affirmative response due to question formatting.</p>",
+          "content_html": "<p>Reading and editing the visual workspace of a vision-language model.Vision-language models hallucinate: ask one whether some object is in a picture and it will happily say yes whether it's there or not. Why is this?Using Anthropic's recent J-lens method I found that LLaVA-1.5-7B's internal state seems to register that the object is absent. The exact same evidence that the yes/no question ignores produces almost perfect answers when posed as a choice instead (\"is this a lamp or a dog?\").Perhaps then the hallucination can be shown to be a product of the question format and a failure to pull up things that the model already knows. The knowledge of the image turns out to be readable (and editable) inside the model using Anthropic's J-lens. TL;DRI took Anthropic's new J-lens method from their \"global workspace in language models\" paper and pointed it across the vision/text boundary of a vision-language model, LLaVA-1.5-7B.The Jacobian (J)-lens: The J-lens asks \"if I nudge this layer, which words become more likely to come out now or later?\", averaged over many inputs. What it picks up is content the model reliably carries toward its output regardless of context. This is the paper's stand-in for \"things the model could say out loud,\" which it then shows behave like a shared global workspace.Ask \"Is there a lamp in this image?\" about images with no lamp, and the model says yes every single time (39/39). But read its internal state (workspace) and the suggested lamp has a workspace signal about an order of magnitude weaker than any object the model actually saw. It would seem the model's workspace holds the correct objects much higher (lower rank, stronger signal) and the hallucinated ones far lower (higher rank, weaker signal). Ask the same model \"is this a lamp or a dog?\" and it gets it right 77/78 times. 75/78 by exact match, effectively 77/78 crediting 'Dalmatian' as a dog; one genuine error, a phone called a car.The visual content is readable, but can also be manipulat...</p>"
+        },
+        {
+          "id": "6a23ad0cca43",
+          "title": "UP: Unbounded Positive Asymmetric Optimization for Breaking the Exploration-Stability Dilemma",
+          "content": "Reinforcement learning frameworks for large language models face exploration-stability trade-offs, which are addressed through a novel universal objective called Unbounded Positive Asymmetric Optimization that enables stable training with enhanced exploration capabilities.",
+          "url": "https://huggingface.co/papers/2607.06987",
+          "author": "Chongyu Fan, Pengfei Liu, Jingjia Huang, Sijia Liu, Yi Lin",
+          "published": "2026-07-10T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [
+            "reinforcement learning",
+            "importance sampling",
+            "exploration-stability dilemma",
+            "policy update budget",
+            "probability capacity",
+            "conservative clipping",
+            "stop-gradient operator",
+            "asymmetric optimization",
+            "token-level optimization",
+            "sequence-level optimization",
+            "GRPO",
+            "DAPO",
+            "GSPO"
+          ],
+          "summary": "Unbounded Positive Asymmetric Optimization (UP) is a novel reinforcement learning objective designed to resolve the exploration-stability dilemma in LLMs. It enables stable training while enhancing exploration capabilities.",
+          "importance_score": 84.0,
+          "reasoning": "Addresses a core optimization challenge in post-training reinforcement learning for LLMs.",
+          "themes": [
+            "Agents, Robotics & Domain Applications"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.06987",
+            "category_name": "reinforcement learning, importance sampling, exploration-stability dilemma",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.06987"
+            },
+            "huggingface": {
+              "upvotes": 9,
+              "selected_at": "2026-07-10T00:00:00.000Z",
+              "paper_published_at": "2026-07-08T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Unbounded Positive Asymmetric Optimization (UP) is a novel reinforcement learning objective designed to resolve the exploration-stability dilemma in LLMs. It enables stable training while enhancing exploration capabilities.</p>",
+          "content_html": "<p>Reinforcement learning frameworks for large language models face exploration-stability trade-offs, which are addressed through a novel universal objective called Unbounded Positive Asymmetric Optimization that enables stable training with enhanced exploration capabilities.</p>"
+        },
+        {
+          "id": "25785cb640d5",
+          "title": "How robust are natural language autoencoders to initialization?",
+          "content": "Natural language autoencoders are meant to take in an LLM's activation vector and describe in plain text what the model is thinking. However, its training data collection involves asking Claude to guess what a model might be thinking. How robust are NLAs to these guesses? We change Claude's guesses in various ways and measure the impact on the NLA's statements as well as on reconstruction accuracy. We show that Qwen2.5-7B NLAs have some robustness to irrelevant statements and prevailing sentiments in Claude's guesses. However, if an NLA is initialized with entirely implausible statements, it can nevertheless achieve nearly the same reconstruction accuracy as plausible-initialized NLAs while emitting 99.3% implausible statements. RL does train implausible-initialized NLAs to be slightly more plausible (increasing from 0.08% to 0.7%). But the plausibility of plausible-initialized NLAs decreases from 21% at initialization to 7.6% at the end of training. If our results scale, they cast doubt on the usefulness of NLAs. Produced as part of the&nbsp;MATS program&nbsp;in the summer 2026 cohort of&nbsp;team shard. Terminology A \"plausible\" explanation is an objectively true statement about the world. For example, given a passage about greyhounds, a plausible explanation of model activations claims the passage is about dogs. \"Plausible-initialized\" NLAs are initialized normally using Claude's guesses. \"Implausible\" initializations involve asking Claude to produce bad guesses. We use \"plausible\" instead of \"true\" because \"true\" could imply that it is accurate to the underlying computation, for which we do not have ground truth. Similarly, an \"implausible\" guess (e.g. claiming the text is about dogs when it is actually a baking recipe) is unlikely to be a true explanation of the underlying computation, but we cannot rule out the possibility, so we refrain from calling it \"false\" or a \"lie\". Introduction Slava Chalnev and a team at Anthropic (Fraser-Taliente et al. 2026) recentl...",
+          "url": "https://www.lesswrong.com/posts/LQXWiF8PyJ5ojNsEv/how-robust-are-natural-language-autoencoders-to",
+          "author": "michaelzhang",
+          "published": "2026-07-09T20:40:02.648000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Investigates natural language autoencoders (NLAs) for LLM activations and finds that initialization with entirely implausible statements achieves similar reconstruction accuracy while emitting mostly garbage explanations, casting doubt on NLA reliability.",
+          "importance_score": 84.0,
+          "reasoning": "Crucial cautionary findings regarding the reliability and fidelity of internal state interpretation tools.",
+          "themes": [
+            "Mechanistic Interpretability & Diagnostics"
+          ],
+          "sentiment": "negative",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "LQXWiF8PyJ5ojNsEv",
+            "slug": "how-robust-are-natural-language-autoencoders-to",
+            "base_score": 81,
+            "vote_count": 30,
+            "sentiment": "negative"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Investigates natural language autoencoders (NLAs) for LLM activations and finds that initialization with entirely implausible statements achieves similar reconstruction accuracy while emitting mostly garbage explanations, casting doubt on NLA reliability.</p>",
+          "content_html": "<p>Natural language autoencoders are meant to take in an LLM's activation vector and describe in plain text what the model is thinking. However, its training data collection involves asking Claude to guess what a model might be thinking. How robust are NLAs to these guesses? We change Claude's guesses in various ways and measure the impact on the NLA's statements as well as on reconstruction accuracy. We show that Qwen2.5-7B NLAs have some robustness to irrelevant statements and prevailing sentiments in Claude's guesses. However, if an NLA is initialized with entirely implausible statements, it can nevertheless achieve nearly the same reconstruction accuracy as plausible-initialized NLAs while emitting 99.3% implausible statements. RL does train implausible-initialized NLAs to be slightly more plausible (increasing from 0.08% to 0.7%). But the plausibility of plausible-initialized NLAs decreases from 21% at initialization to 7.6% at the end of training. If our results scale, they cast doubt on the usefulness of NLAs. Produced as part of the&nbsp;MATS program&nbsp;in the summer 2026 cohort of&nbsp;team shard. Terminology A \"plausible\" explanation is an objectively true statement about the world. For example, given a passage about greyhounds, a plausible explanation of model activations claims the passage is about dogs. \"Plausible-initialized\" NLAs are initialized normally using Claude's guesses. \"Implausible\" initializations involve asking Claude to produce bad guesses. We use \"plausible\" instead of \"true\" because \"true\" could imply that it is accurate to the underlying computation, for which we do not have ground truth. Similarly, an \"implausible\" guess (e.g. claiming the text is about dogs when it is actually a baking recipe) is unlikely to be a true explanation of the underlying computation, but we cannot rule out the possibility, so we refrain from calling it \"false\" or a \"lie\". Introduction Slava Chalnev and a team at Anthropic (Fraser-Taliente et al. 2026) recentl...</p>"
+        },
+        {
+          "id": "9a03ca04febd",
+          "title": "Amazon and University of Michigan give robots a sense of touch",
+          "content": "From warehouse automation to surgical assistance, many real-world applications depend on robots performing delicate, contact-intensive tasks. Often missing in these situations is the sense of touch: robots need to feel the forces on their fingertips to manipulate objects effectively. Despite years of effort, robust and scalable solutions to this problem remain out of reach, especially in industrial settings. One approach has been to use vision-based tactile sensors, in which cameras embedded in soft fingertips capture contact geometry. Researchers have used this approach to estimate object shape and pose, but computing the forces that correlate most with manipulation capabilities remains a challenge. Modeling tactile shear — the forces that arise when an object slides or rotates against a sensor — is crucial for building robots that can grasp objects, use tools, and perform complex manipulation skills. Our solution, HydroShear, gives simulators the ability to accurately model tactile forces, enabling robots to learn dexterous, contact-rich manipulation policies entirely in simulation. These policies transfer seamlessly to the real world with no modification, achieving a 93 percent average success rate across four challenging tasks. Bridging the tactile reality gap Simulators for robot locomotion have found success in real-world applications because physics engines model rigid body dynamics and proprioceptive sensing well. But subtle tactile forces and shear feedback are notoriously difficult to simulate accurately. This has made it nearly impossible for tactile sensors trained on simulators through reinforcement learning to succeed when deployed on real robots. Existing tactile simulators face a fundamental trade-off. Physics-based methods like finite-element methods accurately model contact forces but are too slow for training reinforcement learning policies at scale. Faster approximations, on the other hand, oversimplify how forces build up and change during contact. They miss critical events like the moment a gripped object begins to slide or the way a soft sensor deforms over time. Modeling touch with fidelity and speed HydroShear’s key innovation is to add new capabilities to an existing physics simulation technique known as hydroelastic contact models. Called path-dependent force tracking, this approach accurately tracks how forces accumulate over a soft sensor membrane during a physical interaction. Rather than computing forces based only on instantaneous contact, HydroShear remembers the motion history of the object as it moves across the sensor. More concretely, when a robot grasps an object and moves it, different points on the object's surface come into contact with the sensor at different times. HydroShear tracks each of these contact points individually, computing how the soft elastomer deforms as the object moves. It then converts these deformations into realistic force fields, accounting for friction, slipping, and the elastomer's material properties. The simulator handles full 3-D motion — tilting and rolling as well as in-plane sliding — which is essential for dexterous manipulation. It's also GPU parallelizable, enabling efficient large-scale policy training. We calibrate HydroShear by collecting controlled real-world data with a robot arm and vision-based GelSight Mini tactile sensors. The calibration isolates four key parameters: how forces dissipate across the sensor surface, how tangential and normal forces build up, and the friction coefficient between the object and the elastomer. This systematic approach ensures that the simulator accurately reproduces real tactile feedback. Validation: From simulation to real robots We evaluated HydroShear on four contact-rich manipulation tasks, each highlighting different challenges. In all tasks, the robot perceives touch and proprioception (joint positions and gripper state) and has no access to object poses. Peg insertion: The robot grasps a cylindrical peg at an unknown orientation and must insert it into a tight socket. Because the grasp pose varies with each trial, the robot must use tactile feedback alone to detect and correct alignment errors during insertion. Bin packing: The robot inserts a cube into a target slot within a crowded bin. Neighboring cubes partially block the slot, so the robot must push through multiobject contact while sensing forces from multiple directions simultaneously. Book shelving: The robot inserts a book laterally into a shelf, with gravity pulling perpendicular to the insertion direction. The book is larger than the fingertip, producing broad contact patches that make it difficult to localize the object from touch alone. Drawer pulling: The robot pulls open a drawer while external-force perturbations are applied at random times. The robot must detect when the handle begins to slip and tighten its grip just enough to maintain hold without crushing it. We trained reinforcement learning policies entirely in simulation using HydroShear, then deployed them on a real Franka robot with GelSight Mini sensors without any modification or fine tuning. HydroShear achieved a 93% average success rate across all four tasks. We compared against two strong baselines: TacSL, which uses simplified force approximations, and FOTS, a recent learning-based method. TacSL achieved only 34% success, while FOTS reached 58 to 61%. The performance gap underscores the importance of accurate tactile shear simulation. Interestingly, the performance difference correlates directly with simulation fidelity. On tasks like peg insertion, where precise force feedback is critical, HydroShear's advantage is most pronounced. On drawer pulling, which requires detecting and reacting to slippage, HydroShear's path-dependent force tracking proves essential. Faster and less expensive Accurate tactile simulation unlocks a powerful recipe for robot learning: train policies entirely in simulation, then deploy them on real robots. This approach is dramatically faster and cheaper than learning from real-world interactions, which can damage sensors and require extensive trial and error. For warehouse automation, the approach is particularly valuable. Tasks like bin packing, sorting, and careful handling require robots to feel their way through complex interactions. HydroShear enables robots to learn such skills without extensive real-world data collection. While HydroShear yields strong results when coupled with vision-based tactile sensors like GelSight, the underlying principles could extend to other tactile modalities. We're also exploring how higher-resolution sensor simulations and more-complex object geometries could further improve performance.",
+          "url": "https://www.amazon.science/blog/amazon-and-university-of-michigan-give-robots-a-sense-of-touch",
+          "author": "Unknown",
+          "published": "2026-07-10T13:13:31",
+          "source": "Amazon Science homepage",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Amazon and University of Michigan introduce HydroShear, a simulation method for modeling tactile shear forces that enables robots to learn dexterous manipulation policies entirely in simulation with zero-shot real-world transfer.",
+          "importance_score": 84.0,
+          "reasoning": "Significant robotics advance solving the sim-to-real tactile sensing bottleneck.",
+          "themes": [
+            "Agents, Robotics & Domain Applications"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://www.amazon.science/index.rss",
+            "raw_summary": "HydroShear, a new physics-based simulator, teaches robots how to use their sense of touch to perform complex manipulation tasks, in a way that transfers seamlessly to the real world.",
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Amazon and University of Michigan introduce HydroShear, a simulation method for modeling tactile shear forces that enables robots to learn dexterous manipulation policies entirely in simulation with zero-shot real-world transfer.</p>",
+          "content_html": "<p>From warehouse automation to surgical assistance, many real-world applications depend on robots performing delicate, contact-intensive tasks. Often missing in these situations is the sense of touch: robots need to feel the forces on their fingertips to manipulate objects effectively. Despite years of effort, robust and scalable solutions to this problem remain out of reach, especially in industrial settings. One approach has been to use vision-based tactile sensors, in which cameras embedded in soft fingertips capture contact geometry. Researchers have used this approach to estimate object shape and pose, but computing the forces that correlate most with manipulation capabilities remains a challenge. Modeling tactile shear — the forces that arise when an object slides or rotates against a sensor — is crucial for building robots that can grasp objects, use tools, and perform complex manipulation skills. Our solution, HydroShear, gives simulators the ability to accurately model tactile forces, enabling robots to learn dexterous, contact-rich manipulation policies entirely in simulation. These policies transfer seamlessly to the real world with no modification, achieving a 93 percent average success rate across four challenging tasks. Bridging the tactile reality gap Simulators for robot locomotion have found success in real-world applications because physics engines model rigid body dynamics and proprioceptive sensing well. But subtle tactile forces and shear feedback are notoriously difficult to simulate accurately. This has made it nearly impossible for tactile sensors trained on simulators through reinforcement learning to succeed when deployed on real robots. Existing tactile simulators face a fundamental trade-off. Physics-based methods like finite-element methods accurately model contact forces but are too slow for training reinforcement learning policies at scale. Faster approximations, on the other hand, oversimplify how forces build up and change during contact. They miss critical events like the moment a gripped object begins to slide or the way a soft sensor deforms over time. Modeling touch with fidelity and speed HydroShear’s key innovation is to add new capabilities to an existing physics simulation technique known as hydroelastic contact models. Called path-dependent force tracking, this approach accurately tracks how forces accumulate over a soft sensor membrane during a physical interaction. Rather than computing forces based only on instantaneous contact, HydroShear remembers the motion history of the object as it moves across the sensor. More concretely, when a robot grasps an object and moves it, different points on the object's surface come into contact with the sensor at different times. HydroShear tracks each of these contact points individually, computing how the soft elastomer deforms as the object moves. It then converts these deformations into realistic force fields, accounting for friction, slipping, and the elastomer's material properties. The simulator handles full 3-D motion — tilting and rolling as well as in-plane sliding — which is essential for dexterous manipulation. It's also GPU parallelizable, enabling efficient large-scale policy training. We calibrate HydroShear by collecting controlled real-world data with a robot arm and vision-based GelSight Mini tactile sensors. The calibration isolates four key parameters: how forces dissipate across the sensor surface, how tangential and normal forces build up, and the friction coefficient between the object and the elastomer. This systematic approach ensures that the simulator accurately reproduces real tactile feedback. Validation: From simulation to real robots We evaluated HydroShear on four contact-rich manipulation tasks, each highlighting different challenges. In all tasks, the robot perceives touch and proprioception (joint positions and gripper state) and has no access to object poses. Peg insertion: The robot grasps a cylindrical peg at an unknown orientation and must insert it into a tight socket. Because the grasp pose varies with each trial, the robot must use tactile feedback alone to detect and correct alignment errors during insertion. Bin packing: The robot inserts a cube into a target slot within a crowded bin. Neighboring cubes partially block the slot, so the robot must push through multiobject contact while sensing forces from multiple directions simultaneously. Book shelving: The robot inserts a book laterally into a shelf, with gravity pulling perpendicular to the insertion direction. The book is larger than the fingertip, producing broad contact patches that make it difficult to localize the object from touch alone. Drawer pulling: The robot pulls open a drawer while external-force perturbations are applied at random times. The robot must detect when the handle begins to slip and tighten its grip just enough to maintain hold without crushing it. We trained reinforcement learning policies entirely in simulation using HydroShear, then deployed them on a real Franka robot with GelSight Mini sensors without any modification or fine tuning. HydroShear achieved a 93% average success rate across all four tasks. We compared against two strong baselines: TacSL, which uses simplified force approximations, and FOTS, a recent learning-based method. TacSL achieved only 34% success, while FOTS reached 58 to 61%. The performance gap underscores the importance of accurate tactile shear simulation. Interestingly, the performance difference correlates directly with simulation fidelity. On tasks like peg insertion, where precise force feedback is critical, HydroShear's advantage is most pronounced. On drawer pulling, which requires detecting and reacting to slippage, HydroShear's path-dependent force tracking proves essential. Faster and less expensive Accurate tactile simulation unlocks a powerful recipe for robot learning: train policies entirely in simulation, then deploy them on real robots. This approach is dramatically faster and cheaper than learning from real-world interactions, which can damage sensors and require extensive trial and error. For warehouse automation, the approach is particularly valuable. Tasks like bin packing, sorting, and careful handling require robots to feel their way through complex interactions. HydroShear enables robots to learn such skills without extensive real-world data collection. While HydroShear yields strong results when coupled with vision-based tactile sensors like GelSight, the underlying principles could extend to other tactile modalities. We're also exploring how higher-resolution sensor simulations and more-complex object geometries could further improve performance.</p>"
+        },
+        {
+          "id": "91a17172f802",
+          "title": "Jet-Long: Efficient Long-Context Extension with Dynamic Bifocal RoPE",
+          "content": "A novel zero-shot method called Jet-Long enables efficient long-context processing for large language models by dynamically adapting rescaling factors and utilizing a bifocal attention mechanism that maintains high performance across varying sequence lengths.",
+          "url": "https://huggingface.co/papers/2607.07740",
+          "author": "Haozhan Tang, Zerui Wang, Yuxian Gu, Song Han, Han Cai",
+          "published": "2026-07-10T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [
+            "LLMs",
+            "long-context applications",
+            "retrieval-augmented generation",
+            "agentic workflows",
+            "zero-shot context extension",
+            "RoPE-faithful window",
+            "long-range window",
+            "attention merge",
+            "RoPE correction rotation",
+            "bifocal construction",
+            "CuTe kernel",
+            "FA2",
+            "FA4",
+            "H100",
+            "Hopper",
+            "RULER",
+            "HELMET-RAG",
+            "PG-19 perplexity",
+            "hybrid attention architectures",
+            "Jet-Nemotron"
+          ],
+          "summary": "Jet-Long is a zero-shot long-context extension method for LLMs using dynamic rescaling factors and a bifocal attention mechanism. It maintains high retrieval and processing performance across varying sequence lengths.",
+          "importance_score": 83.0,
+          "reasoning": "Offers an efficient, training-free solution to long-context scaling bottlenecks.",
+          "themes": [
+            "Mechanistic Interpretability & Diagnostics"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.07740",
+            "category_name": "LLMs, long-context applications, retrieval-augmented generation",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.07740"
+            },
+            "huggingface": {
+              "upvotes": 24,
+              "selected_at": "2026-07-10T00:00:00.000Z",
+              "paper_published_at": "2026-07-08T00:00:00.000Z",
+              "github_repo": "https://github.com/jet-ai-projects/jet-long"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Jet-Long is a zero-shot long-context extension method for LLMs using dynamic rescaling factors and a bifocal attention mechanism. It maintains high retrieval and processing performance across varying sequence lengths.</p>",
+          "content_html": "<p>A novel zero-shot method called Jet-Long enables efficient long-context processing for large language models by dynamically adapting rescaling factors and utilizing a bifocal attention mechanism that maintains high performance across varying sequence lengths.</p>"
+        },
+        {
+          "id": "a6984c400a1d",
+          "title": "Persona Cartography: Charting Language Model Personality Traits in Weight Space",
+          "content": "This post summarises the paper Persona Cartography: Charting Language Model Personality Traits in Weight Space.Paper | GitHub | HuggingFaceTL;DRUnderstanding and controlling the character of LLMs is important for safety, as we want our models to be good by disposition.We use a modified Open Character Training pipeline for instilling Big-5 OCEAN personality traits in LLMs across a range of families and sizes (Llama 3.1/Qwen3/Gemma3 sizes 4B-32B).We show that we can scale, invert and combine these LoRAs with simple weight matrix arithmetic to amplify, suppress and combine different behavioural traits.We show how these can be used to mitigate some common LLM pathologies.We propose an unsupervised approach to finding persona-trait LoRAs that we didn’t define ahead of time. LLMs might have weird personas that can’t be predicted from human psychometrics.Figure 1. Overview of the experimental setup and methodology. (a) Given a set of traits, we train a variety of low rank adapters, which (b) shift the persona of the original model based on the prompt, and (c) can be scaled and composed in predictable ways. (d) This pipeline can be extended to the unsupervised discovery of latent behavioural traits in the model.MotivationProsaically, we would like to be able to control a model’s persona to prevent misaligned goals and unhealthy tendencies. Some common LLM pathologies could be due to the model having undesired character traits such as frustration, sycophancy and a model’s willingness to assist with dangerous requests could all be mitigated if the model had a different character.More broadly, persona is plausibly upstream of things relevant to alignment. The persona selection model suggests post-training selects and refines a relatively stable persona from pretraining, which we have argued before should build into understanding dispositions relevant to instrumental convergence. That is, understanding character well may help us distinguish sticky or hardened values from rolepl...",
+          "url": "https://www.lesswrong.com/posts/Rkvto5BLofzuDefyB/persona-cartography-charting-language-model-personality",
+          "author": "antonghawthorne",
+          "published": "2026-07-10T14:54:56.528000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Persona Cartography maps language model personality traits in weight space by training Big-5 OCEAN LoRAs across various model sizes. It demonstrates that adapters can be scaled, inverted, and composed via arithmetic.",
+          "importance_score": 83.0,
+          "reasoning": "Provides an elegant method for controlling and steering model personality traits via weight space manipulation.",
+          "themes": [
+            "Mechanistic Interpretability & Diagnostics"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "Rkvto5BLofzuDefyB",
+            "slug": "persona-cartography-charting-language-model-personality",
+            "base_score": 42,
+            "vote_count": 16,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Persona Cartography maps language model personality traits in weight space by training Big-5 OCEAN LoRAs across various model sizes. It demonstrates that adapters can be scaled, inverted, and composed via arithmetic.</p>",
+          "content_html": "<p>This post summarises the paper Persona Cartography: Charting Language Model Personality Traits in Weight Space.Paper | GitHub | HuggingFaceTL;DRUnderstanding and controlling the character of LLMs is important for safety, as we want our models to be good by disposition.We use a modified Open Character Training pipeline for instilling Big-5 OCEAN personality traits in LLMs across a range of families and sizes (Llama 3.1/Qwen3/Gemma3 sizes 4B-32B).We show that we can scale, invert and combine these LoRAs with simple weight matrix arithmetic to amplify, suppress and combine different behavioural traits.We show how these can be used to mitigate some common LLM pathologies.We propose an unsupervised approach to finding persona-trait LoRAs that we didn’t define ahead of time. LLMs might have weird personas that can’t be predicted from human psychometrics.Figure 1. Overview of the experimental setup and methodology. (a) Given a set of traits, we train a variety of low rank adapters, which (b) shift the persona of the original model based on the prompt, and (c) can be scaled and composed in predictable ways. (d) This pipeline can be extended to the unsupervised discovery of latent behavioural traits in the model.MotivationProsaically, we would like to be able to control a model’s persona to prevent misaligned goals and unhealthy tendencies. Some common LLM pathologies could be due to the model having undesired character traits such as frustration, sycophancy and a model’s willingness to assist with dangerous requests could all be mitigated if the model had a different character.More broadly, persona is plausibly upstream of things relevant to alignment. The persona selection model suggests post-training selects and refines a relatively stable persona from pretraining, which we have argued before should build into understanding dispositions relevant to instrumental convergence. That is, understanding character well may help us distinguish sticky or hardened values from rolepl...</p>"
+        },
+        {
+          "id": "2342b5bf3561",
+          "title": "OpenCoF: Learning to Reason Through Video Generation",
+          "content": "OpenCoF framework introduces a reasoning video dataset and model that improve temporal reasoning through diverse supervision and explicit reasoning tokens for visual and textual cues.",
+          "url": "https://huggingface.co/papers/2607.08763",
+          "author": "Xinyan Chen, Ziyu Guo, Renrui Zhang, Dongzhi Jiang, Hongsheng Li",
+          "published": "2026-07-10T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [
+            "Chain-of-Frame",
+            "video generation models",
+            "OpenCoF-17K dataset",
+            "Wan-CoF model",
+            "temporal supervision",
+            "visual reasoning tokens",
+            "textual reasoning tokens",
+            "video reasoning benchmarks",
+            "attention analysis",
+            "denoising steps"
+          ],
+          "summary": "OpenCoF introduces the Chain-of-Frame framework and a 17K dataset to improve temporal reasoning in video generation models through explicit reasoning tokens and diverse supervision. It links video synthesis with structured reasoning.",
+          "importance_score": 82.0,
+          "reasoning": "Innovative integration of explicit reasoning steps into video generation architectures.",
+          "themes": [
+            "Video Generation & Understanding"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.08763",
+            "category_name": "Chain-of-Frame, video generation models, OpenCoF-17K dataset",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.08763"
+            },
+            "huggingface": {
+              "upvotes": 28,
+              "selected_at": "2026-07-10T00:00:00.000Z",
+              "paper_published_at": "2026-07-09T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>OpenCoF introduces the Chain-of-Frame framework and a 17K dataset to improve temporal reasoning in video generation models through explicit reasoning tokens and diverse supervision. It links video synthesis with structured reasoning.</p>",
+          "content_html": "<p>OpenCoF framework introduces a reasoning video dataset and model that improve temporal reasoning through diverse supervision and explicit reasoning tokens for visual and textual cues.</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 4,
+      "category_summary": "Discussions today focused on computational creativity and open-ended evolutionary search algorithms. **Sakana AI** released a modern [AI Picbreeder experiment](/?date=2026-07-11&category=social#item-e1e3719f133e) combining classic algorithms with contemporary AI.\n\n- **David Ha** announced the **AI Picbreeder Experiment**, [demonstrating interactive evolutionary art](/?date=2026-07-11&category=social#item-e1e3719f133e) generation\n- Researchers explored [combining vision-language models](/?date=2026-07-11&category=social#item-84f58e507688) with **frontier LLM agents** for open-ended exploration and modeling human creativity\n- Community members reflected on the history of neural network art, [referencing early systems](/?date=2026-07-11&category=social#item-663e26561764) like **CPPN-NEAT**",
+      "category_summary_html": "<p>Discussions today focused on computational creativity and open-ended evolutionary search algorithms. <strong>Sakana AI</strong> released a modern <a href=\"/?date=2026-07-11&amp;category=social#item-e1e3719f133e\" class=\"internal-link\" rel=\"noopener noreferrer\">AI Picbreeder experiment</a> combining classic algorithms with contemporary AI.</p>\n<ul>\n<li><strong>David Ha</strong> announced the <strong>AI Picbreeder Experiment</strong>, <a href=\"/?date=2026-07-11&amp;category=social#item-e1e3719f133e\" class=\"internal-link\" rel=\"noopener noreferrer\">demonstrating interactive evolutionary art</a> generation</li>\n<li>Researchers explored <a href=\"/?date=2026-07-11&amp;category=social#item-84f58e507688\" class=\"internal-link\" rel=\"noopener noreferrer\">combining vision-language models</a> with <strong>frontier LLM agents</strong> for open-ended exploration and modeling human creativity</li>\n<li>Community members reflected on the history of neural network art, <a href=\"/?date=2026-07-11&amp;category=social#item-663e26561764\" class=\"internal-link\" rel=\"noopener noreferrer\">referencing early systems</a> like <strong>CPPN-NEAT</strong></li>\n</ul>",
+      "themes": [
+        {
+          "name": "Open-Ended Exploration & AI Creativity",
+          "description": "Discussions and releases surrounding the use of modern vision-language models, agents, and historical concepts like Picbreeder to explore computational creativity and open-ended algorithms.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 80.0
+        },
+        {
+          "name": "Personal & Off-Topic",
+          "description": "Non-technical personal anecdotes and media shares.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 10.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "84f58e507688",
+          "title": "Today, things have come full circle.\n\nWe are now trying to use modern VLMs and frontier LLM agents w...",
+          "content": "Today, things have come full circle.\n\nWe are now trying to use modern VLMs and frontier LLM agents within open-ended exploration algorithms. We want to see if we can finally computationally derive the underlying mechanics of human creativity: serendipity, memory, exploration, and novelty search.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqcfms7sdk2d",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-10T14:52:58.655000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Discussion on integrating modern vision-language models and frontier LLM agents into open-ended exploration algorithms to model human creativity.",
+          "importance_score": 80.0,
+          "reasoning": "Offers interesting conceptual insights into combining VLMs with evolutionary and open-ended search mechanisms.",
+          "themes": [
+            "Open-Ended Exploration & AI Creativity"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqcfms7sdk2d",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 7,
+              "reposts": 0,
+              "replies": 2,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Discussion on integrating modern vision-language models and frontier LLM agents into open-ended exploration algorithms to model human creativity.</p>",
+          "content_html": "<p>Today, things have come full circle.</p>\n<p>We are now trying to use modern VLMs and frontier LLM agents within open-ended exploration algorithms. We want to see if we can finally computationally derive the underlying mechanics of human creativity: serendipity, memory, exploration, and novelty search.</p>"
+        },
+        {
+          "id": "e1e3719f133e",
+          "title": "Dive into our new AI Picbreeder Experiment here:\npub.sakana.ai/picbreeder-v...",
+          "content": "Dive into our new AI Picbreeder Experiment here:\npub.sakana.ai/picbreeder-v...",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqcfn3xb522d",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-10T14:53:08.861000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "David Ha shares a link to a new AI Picbreeder experiment released by Sakana AI.",
+          "importance_score": 75.0,
+          "reasoning": "Authored by a prominent AI researcher showcasing a practical new experimental release from Sakana AI.",
+          "themes": [
+            "Open-Ended Exploration & AI Creativity"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqcfn3xb522d",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 6,
+              "reposts": 1,
+              "replies": 0,
+              "quotes": 1
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>David Ha shares a link to a new AI Picbreeder experiment released by Sakana AI.</p>",
+          "content_html": "<p>Dive into our new AI Picbreeder Experiment here:</p>\n<p>pub.sakana.ai/picbreeder-v...</p>"
+        },
+        {
+          "id": "663e26561764",
+          "title": "One of my first journeys in neural networks started over a decade ago with implementing CPPN-NEAT! B...",
+          "content": "One of my first journeys in neural networks started over a decade ago with implementing CPPN-NEAT! Back then, I built a clone of ‘Picbreeder’ not only to study the mechanics of neural nets, but to explore the human creativity process itself, and generate some cool abstract art.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqcfkrhpp22d",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-10T14:51:50.757000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Historical reflection on early neural network experiments using CPPN-NEAT and Picbreeder to study abstract art and cognitive processes.",
+          "importance_score": 70.0,
+          "reasoning": "Provides valuable historical context and personal background on the evolution of neural network art generation.",
+          "themes": [
+            "Open-Ended Exploration & AI Creativity"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqcfkrhpp22d",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 29,
+              "reposts": 1,
+              "replies": 2,
+              "quotes": 0
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Historical reflection on early neural network experiments using CPPN-NEAT and Picbreeder to study abstract art and cognitive processes.</p>",
+          "content_html": "<p>One of my first journeys in neural networks started over a decade ago with implementing CPPN-NEAT! Back then, I built a clone of ‘Picbreeder’ not only to study the mechanics of neural nets, but to explore the human creativity process itself, and generate some cool abstract art.</p>"
+        },
+        {
+          "id": "2a30b39dcb2d",
+          "title": "Setting up a business bank account in the UK for self-employment has this playing in my head:https:/...",
+          "content": "Setting up a business bank account in the UK for self-employment has this playing in my head:https://www.youtube.com/watch?v=CsIBPTTqreM#NP #NowPlaying",
+          "url": "https://mastodon.social/@Gargron/116895001433553958",
+          "author": "@Gargron@mastodon.social",
+          "published": "2026-07-10T09:36:09.347000",
+          "source": "Mastodon (mastodon.social)",
+          "source_type": "mastodon",
+          "tags": [],
+          "summary": "A personal post sharing a music link while setting up a business bank account.",
+          "importance_score": 10.0,
+          "reasoning": "Completely off-topic personal tangent unrelated to AI/ML research or developments.",
+          "themes": [
+            "Personal & Off-Topic"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "116895001433553958",
+            "instance": "mastodon.social",
+            "author_display_name": "Eugen Rochko",
+            "engagement": {
+              "favourites": 43,
+              "reblogs": 6,
+              "replies": 7
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>A personal post sharing a music link while setting up a business bank account.</p>",
+          "content_html": "<p>Setting up a business bank account in the UK for self-employment has this playing in my head:https://www.youtube.com/watch?v=CsIBPTTqreM#NP #NowPlaying</p>"
+        }
+      ]
+    },
+    "github_trending": {
+      "count": 41,
+      "category_summary": "Today’s open-source momentum centers heavily on [autonomous agent tooling](/?date=2026-07-11&category=github_trending#item-7f4b77e91802) and robust developer infrastructure, marking a critical maturation in how developers [deploy and orchestrate LLMs](/?date=2026-07-11&category=github_trending#item-4962f279dd51)",
+      "category_summary_html": "<p>Today’s open-source momentum centers heavily on <a href=\"/?date=2026-07-11&amp;category=github_trending#item-7f4b77e91802\" class=\"internal-link\" rel=\"noopener noreferrer\">autonomous agent tooling</a> and robust developer infrastructure, marking a critical maturation in how developers <a href=\"/?date=2026-07-11&amp;category=github_trending#item-4962f279dd51\" class=\"internal-link\" rel=\"noopener noreferrer\">deploy and orchestrate LLMs</a></p>",
+      "themes": [
+        {
+          "name": "Agentic Automation & Web Tools",
+          "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+          "item_count": 12,
+          "example_items": [
+            "096cb92f6d28",
+            "8f21689f9359",
+            "12163a308fca"
+          ],
+          "importance": 88.0
+        },
+        {
+          "name": "Local LLM & Inference Infrastructure",
+          "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+          "item_count": 3,
+          "example_items": [
+            "096cb92f6d28",
+            "8f21689f9359",
+            "12163a308fca"
+          ],
+          "importance": 85.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "096cb92f6d28",
+          "title": "[GitHub Trending] block/buzz: A hive mind communication platform",
+          "content": "GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 3,274",
+          "url": "https://github.com/block/buzz",
+          "author": "block",
+          "published": "2026-07-24T18:54:57.972653+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (3,274 stars today): GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 3,274",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (3,274 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "3,274",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.972653+00:00",
+            "hn_score": 3274,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (3,274 stars today): GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 3,274</p>",
+          "content_html": "<p>GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 3,274</p>"
+        },
+        {
+          "id": "8f21689f9359",
+          "title": "[GitHub Trending] koala73/worldmonitor: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+          "content": "GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 2,194",
+          "url": "https://github.com/koala73/worldmonitor",
+          "author": "koala73",
+          "published": "2026-07-24T18:54:57.972984+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (2,194 stars today): GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 2,194",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (2,194 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "2,194",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.972984+00:00",
+            "hn_score": 2194,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (2,194 stars today): GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 2,194</p>",
+          "content_html": "<p>GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 2,194</p>"
+        },
+        {
+          "id": "12163a308fca",
+          "title": "[GitHub Trending] Automattic/harper: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered",
+          "content": "GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 877",
+          "url": "https://github.com/Automattic/harper",
+          "author": "Automattic",
+          "published": "2026-07-24T18:54:57.974222+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (877 stars today): GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 877",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (877 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "877",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.974222+00:00",
+            "hn_score": 877,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (877 stars today): GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 877</p>",
+          "content_html": "<p>GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 877</p>"
+        },
+        {
+          "id": "daddc919f43d",
+          "title": "[GitHub Trending] citrolabs/ego-lite: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
+          "content": "GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 884",
+          "url": "https://github.com/citrolabs/ego-lite",
+          "author": "citrolabs",
+          "published": "2026-07-24T18:54:57.974903+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source JavaScript repository (884 stars today): GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 884",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (884 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "JavaScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "884",
+            "language": "JavaScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.974903+00:00",
+            "hn_score": 884,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source JavaScript repository (884 stars today): GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 884</p>",
+          "content_html": "<p>GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 884</p>"
+        },
+        {
+          "id": "a1c350c43f8c",
+          "title": "[GitHub Trending] ruvnet/RuView: π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+          "content": "GitHub Repository: ruvnet/RuView\nDescription: π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.\nLanguage: Rust\nStars Today: 1,021",
+          "url": "https://github.com/ruvnet/RuView",
+          "author": "ruvnet",
+          "published": "2026-07-24T18:54:57.975526+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (1,021 stars today): GitHub Repository: ruvnet/RuView\nDescription: π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.\nLanguage: Rust\nStars Today: 1,021",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,021 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,021",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.975526+00:00",
+            "hn_score": 1021,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (1,021 stars today): GitHub Repository: ruvnet/RuView</p>\n<p>Description: π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.</p>\n<p>Language: Rust</p>\n<p>Stars Today: 1,021</p>",
+          "content_html": "<p>GitHub Repository: ruvnet/RuView</p>\n<p>Description: π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.</p>\n<p>Language: Rust</p>\n<p>Stars Today: 1,021</p>"
+        },
+        {
+          "id": "e0c58594c75a",
+          "title": "[GitHub Trending] mattpocock/skills: Skills for Real Engineers. Straight from my .agents directory.",
+          "content": "GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 2,224",
+          "url": "https://github.com/mattpocock/skills",
+          "author": "mattpocock",
+          "published": "2026-07-24T18:54:57.976586+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (2,224 stars today): GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 2,224",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (2,224 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "2,224",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.976586+00:00",
+            "hn_score": 2224,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (2,224 stars today): GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 2,224</p>",
+          "content_html": "<p>GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 2,224</p>"
+        },
+        {
+          "id": "79030ad727e1",
+          "title": "[GitHub Trending] diegosouzapw/OmniRoute: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+          "content": "GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,843",
+          "url": "https://github.com/diegosouzapw/OmniRoute",
+          "author": "diegosouzapw",
+          "published": "2026-07-24T18:54:57.977332+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,843 stars today): GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,843",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,843 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,843",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.977332+00:00",
+            "hn_score": 1843,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,843 stars today): GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,843</p>",
+          "content_html": "<p>GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,843</p>"
+        },
+        {
+          "id": "7f4b77e91802",
+          "title": "[GitHub Trending] earendil-works/pi: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+          "content": "GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 787",
+          "url": "https://github.com/earendil-works/pi",
+          "author": "earendil-works",
+          "published": "2026-07-24T18:55:00.327134+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (787 stars today): GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 787",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (787 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "787",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:55:00.327134+00:00",
+            "hn_score": 787,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (787 stars today): GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 787</p>",
+          "content_html": "<p>GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 787</p>"
+        },
+        {
+          "id": "300995badbac",
+          "title": "[GitHub Trending] ComposioHQ/awesome-claude-skills: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
+          "content": "GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 662",
+          "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+          "author": "ComposioHQ",
+          "published": "2026-07-24T18:54:57.973287+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (662 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 662",
+          "importance_score": 93,
+          "reasoning": "High community velocity on GitHub Trending (662 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "662",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.973287+00:00",
+            "hn_score": 662,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (662 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 662</p>",
+          "content_html": "<p>GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 662</p>"
+        },
+        {
+          "id": "74dec1c09de8",
+          "title": "[GitHub Trending] Lordog/dive-into-llms: 《动手学大模型Dive into LLMs》系列编程实践教程",
+          "content": "GitHub Repository: Lordog/dive-into-llms\nDescription: 《动手学大模型Dive into LLMs》系列编程实践教程\nLanguage: Jupyter Notebook\nStars Today: 654",
+          "url": "https://github.com/Lordog/dive-into-llms",
+          "author": "Lordog",
+          "published": "2026-07-24T18:54:57.976916+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Jupyter Notebook repository (654 stars today): GitHub Repository: Lordog/dive-into-llms\nDescription: 《动手学大模型Dive into LLMs》系列编程实践教程\nLanguage: Jupyter Notebook\nStars Today: 654",
+          "importance_score": 92,
+          "reasoning": "High community velocity on GitHub Trending (654 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Jupyter Notebook"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "654",
+            "language": "Jupyter Notebook",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-24T18:54:57.976916+00:00",
+            "hn_score": 654,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Jupyter Notebook repository (654 stars today): GitHub Repository: Lordog/dive-into-llms</p>\n<p>Description: 《动手学大模型Dive into LLMs》系列编程实践教程</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 654</p>",
+          "content_html": "<p>GitHub Repository: Lordog/dive-into-llms</p>\n<p>Description: 《动手学大模型Dive into LLMs》系列编程实践教程</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 654</p>"
+        }
+      ]
+    }
+  }
+}
