@@ -185,7 +185,7 @@
 
 	<!-- Category Summary Feeds -->
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-		{#each ['news', 'research', 'social', 'reddit'] as key}
+		{#each ['news', 'research', 'social'] as key}
 			{@const feed = summaryFeeds[key as keyof typeof summaryFeeds]}
 			{@const color = getCategoryColor(key)}
 			<a
@@ -220,7 +220,7 @@
 	</p>
 
 	<div class="space-y-4">
-		{#each ['news', 'research', 'social', 'reddit'] as category}
+		{#each ['news', 'research', 'social'] as category}
 			{@const feed = feeds[category as keyof typeof feeds]}
 			{@const color = getCategoryColor(category)}
 			{#if 'variants' in feed}

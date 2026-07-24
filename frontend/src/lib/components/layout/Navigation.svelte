@@ -3,7 +3,7 @@
 	import { browser } from '$app/environment';
 	import { CATEGORY_CONFIG, type Category } from '$lib/types';
 
-	const categories: Category[] = ['news', 'research', 'social', 'reddit', 'github_trending'];
+	const categories: Category[] = ['news', 'research', 'social', 'github_trending'];
 
 	// Guard searchParams access for prerendering compatibility
 	$: pathname = $page.url.pathname;

@@ -25,7 +25,7 @@
 	let activeLoadId = 0;
 	let lastHandledRouteKey = '';
 
-	const validCategories: Category[] = ['news', 'research', 'social', 'reddit', 'github_trending'];
+	const validCategories: Category[] = ['news', 'research', 'social', 'github_trending'];
 
 	// Read query params
 	$: dateParam = $page.url.searchParams.get('date');

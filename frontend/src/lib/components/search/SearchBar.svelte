@@ -20,7 +20,7 @@
 	let selectedIndex = -1;
 	let inputElement: HTMLInputElement;
 
-	const categories: (Category | '')[] = ['', 'news', 'research', 'social', 'reddit', 'github_trending'];
+	const categories: (Category | '')[] = ['', 'news', 'research', 'social', 'github_trending'];
 
 	// Initialize search on mount
 	onMount(async () => {

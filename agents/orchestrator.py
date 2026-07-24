@@ -187,12 +187,6 @@ class MainOrchestrator:
                 data_dir=data_dir,
                 lookback_hours=lookback_hours,
                 target_date=self.target_date
-            ),
-            'reddit': RedditGatherer(
-                config_dir=config_dir,
-                data_dir=data_dir,
-                lookback_hours=lookback_hours,
-                target_date=self.target_date
             )
         }
         self.hackernews_gatherer = HackerNewsGatherer(
@@ -240,15 +234,6 @@ class MainOrchestrator:
                 prompt_accessor=prompt_accessor
             ),
             'social': SocialAnalyzer(
-                llm_client=self.llm_client,
-                async_client=self.async_client,
-                data_dir=data_dir,
-                config_dir=config_dir,
-                target_date=self.target_date,
-                web_dir=web_dir,
-                prompt_accessor=prompt_accessor
-            ),
-            'reddit': RedditAnalyzer(
                 llm_client=self.llm_client,
                 async_client=self.async_client,
                 data_dir=data_dir,
