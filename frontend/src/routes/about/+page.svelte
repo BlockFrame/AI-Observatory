@@ -14,7 +14,7 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>AI Observatory</strong> delivers strategic daily briefings on AI/ML developments,
+				<strong>AI Observatory</strong> is a solution of the <a href="https://www.wiredframe.xyz/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a> that delivers strategic daily briefings on AI/ML developments,
 				helping you stay current with the fast-moving world of artificial intelligence.
 			</p>
 			<p>
