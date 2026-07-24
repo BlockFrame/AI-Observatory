@@ -28,7 +28,7 @@ from .gatherers import (
     HackerNewsGatherer,
     GitHubTrendingGatherer,
 )
-from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, RedditAnalyzer
+from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTrendingAnalyzer
 from .cost_tracker import get_tracker, reset_tracker
 from .link_enricher import LinkEnricher
 from .ecosystem_context import EcosystemContextManager
@@ -234,6 +234,15 @@ class MainOrchestrator:
                 prompt_accessor=prompt_accessor
             ),
             'social': SocialAnalyzer(
+                llm_client=self.llm_client,
+                async_client=self.async_client,
+                data_dir=data_dir,
+                config_dir=config_dir,
+                target_date=self.target_date,
+                web_dir=web_dir,
+                prompt_accessor=prompt_accessor
+            ),
+            'github_trending': GitHubTrendingAnalyzer(
                 llm_client=self.llm_client,
                 async_client=self.async_client,
                 data_dir=data_dir,
@@ -911,11 +920,13 @@ class MainOrchestrator:
             collection_status['github_trending'] = {'status': 'failed', 'count': 0, 'error': str(e)}
             logger.warning(f"    GitHubTrending gatherer failed: {e}")
 
-        if results.get('news'):
+        if results.get('news') is not None and hn_items:
             results['news'].extend(hn_items)
-            results['news'].extend(gh_items)
             results['news'] = deduplicate_items(results['news'])
             collection_status['news']['count'] = len(results['news'])
+
+        # Store github_trending as its own distinct category
+        results['github_trending'] = gh_items
 
         return results, collection_status
 
@@ -986,7 +997,7 @@ class MainOrchestrator:
                 grounding_context=self.grounding_context,
                 prompt_accessor=self.prompt_accessor
             ),
-            'reddit': RedditAnalyzer(
+            'github_trending': GitHubTrendingAnalyzer(
                 llm_client=self.llm_client,
                 async_client=self.async_client,
                 data_dir=self.data_dir,

@@ -8,11 +8,11 @@ and producing a CategoryReport.
 from .news_analyzer import NewsAnalyzer
 from .research_analyzer import ResearchAnalyzer
 from .social_analyzer import SocialAnalyzer
-from .reddit_analyzer import RedditAnalyzer
+from .github_trending_analyzer import GitHubTrendingAnalyzer
 
 __all__ = [
     'NewsAnalyzer',
     'ResearchAnalyzer',
     'SocialAnalyzer',
-    'RedditAnalyzer',
+    'GitHubTrendingAnalyzer',
 ]
