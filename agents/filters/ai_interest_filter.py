@@ -43,7 +43,7 @@ class AIInterestFilter:
                 messages=[{"role": "user", "content": prompt}],
                 profile=ThinkingLevel.QUICK,
                 caller="filters.ai_interest",
-                max_tokens=32,
+                max_tokens=256,
             )
         except Exception as exc:
             logger.warning(f"AI interest scoring failed for {item.id}: {exc}")

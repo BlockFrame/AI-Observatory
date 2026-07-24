@@ -24,11 +24,12 @@ async def _score_item(async_client, title: str, summary: str) -> str:
             messages=[{"role": "user", "content": prompt}],
             profile=ThinkingLevel.QUICK,
             caller="analysis.sentiment",
-            max_tokens=16,
+            max_tokens=256,
         )
     except Exception:
         return "neutral"
-    label = (response.content or "").strip().lower().split()[0]
+    words = (response.content or "").strip().lower().split()
+    label = words[0] if words else "neutral"
     return label if label in VALID_SENTIMENTS else "neutral"
 
 

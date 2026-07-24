@@ -38,11 +38,11 @@ class SemanticDeduplicator:
                 messages=[{"role": "user", "content": prompt}],
                 profile=ThinkingLevel.QUICK,
                 caller="filters.semantic_dedup",
-                max_tokens=16,
+                max_tokens=256,
             )
         except Exception:
             return False
-        return response.content.strip().upper().startswith("YES")
+        return (response.content or "").strip().upper().startswith("YES")
 
     @staticmethod
     def _has_common_significant_words(title_a: str, title_b: str) -> bool:
