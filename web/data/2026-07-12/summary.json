@@ -1,0 +1,1019 @@
+{
+  "date": "2026-07-12",
+  "coverage_date": "2026-07-11",
+  "coverage_start": "2026-07-11T00:00:00",
+  "coverage_end": "2026-07-11T23:59:59.999999",
+  "executive_summary": "#### Top Story\nResearchers uncovered specific late **MLP** termination circuits in **chain-of-thought** models, [revealing the mechanistic circuit](/?date=2026-07-12&category=research#item-10278196a5de) that signals when reasoning architectures finish computation.\n\n#### Key Developments\n- **LangChain** and **browser-use**: Advanced autonomous agent execution by [expanding support for multi-step workflows](/?date=2026-07-12&category=news#item-771724fcc0ef) and [direct web interface navigation](/?date=2026-07-12&category=news#item-e0ada90b41a4).\n- **Dify**, **Flowise**, and **Langflow**: [Broadened enterprise options](/?date=2026-07-12&category=news#item-4962f279dd51) for [visual agent orchestration](/?date=2026-07-12&category=news#item-d9848c31eb7b) and [low-code context engineering](/?date=2026-07-12&category=news#item-0196a97cb0c2).\n- **Strix** and **DocsGPT**: Extended agentic infrastructure into targeted applications including [automated security red-teaming](/?date=2026-07-12&category=news#item-450c713e553a) and [private search](/?date=2026-07-12&category=news#item-7c0ae48cff56).\n- **PEFT**: Provided updated targeted infrastructure to [optimize parameter-efficient fine-tuning](/?date=2026-07-12&category=news#item-dc609df6ce71) with **LoRA**.\n\n#### Safety & Regulation\n- Technical analyses highlighted the failure modes of conventional AI detectors, urging the adoption of [cryptographically signed multimodal provenance](/?date=2026-07-12&category=research#item-f12e5a405e58) to verify media authenticity.\n- Safety researchers [critiqued current evaluation frameworks](/?date=2026-07-12&category=research#item-6188b3a8ed2e) used by organizations such as **METR**, arguing that systemic risk metrics are necessary alongside standard benchmark tracking.\n\n#### Research Highlights\n- **Termination Circuits**: Interpretability research identified late-layer **MLP** circuits that dictate when reasoning models stop thinking, offering a mechanism to monitor and debug long-horizon reasoning failure modes.\n\n#### Looking Ahead\nAs developer frameworks accelerate the deployment of web-navigating agents, expect growing emphasis on incorporating mechanistic interpretability findings to verify and control autonomous workflows.\n\n#### Sentiment & Controversy\n- **Measuring Is Not Enough Anymore** (concerned)",
+  "executive_summary_html": "<h4>Top Story</h4>\n<p>Researchers uncovered specific late <strong>MLP</strong> termination circuits in <strong>chain-of-thought</strong> models, <a href=\"/?date=2026-07-12&amp;category=research#item-10278196a5de\" class=\"internal-link\" rel=\"noopener noreferrer\">revealing the mechanistic circuit</a> that signals when reasoning architectures finish computation.</p>\n<h4>Key Developments</h4>\n<ul>\n<li><strong>LangChain</strong> and <strong>browser-use</strong>: Advanced autonomous agent execution by <a href=\"/?date=2026-07-12&amp;category=news#item-771724fcc0ef\" class=\"internal-link\" rel=\"noopener noreferrer\">expanding support for multi-step workflows</a> and <a href=\"/?date=2026-07-12&amp;category=news#item-e0ada90b41a4\" class=\"internal-link\" rel=\"noopener noreferrer\">direct web interface navigation</a>.</li>\n<li><strong>Dify</strong>, <strong>Flowise</strong>, and <strong>Langflow</strong>: <a href=\"/?date=2026-07-12&amp;category=news#item-4962f279dd51\" class=\"internal-link\" rel=\"noopener noreferrer\">Broadened enterprise options</a> for <a href=\"/?date=2026-07-12&amp;category=news#item-d9848c31eb7b\" class=\"internal-link\" rel=\"noopener noreferrer\">visual agent orchestration</a> and <a href=\"/?date=2026-07-12&amp;category=news#item-0196a97cb0c2\" class=\"internal-link\" rel=\"noopener noreferrer\">low-code context engineering</a>.</li>\n<li><strong>Strix</strong> and <strong>DocsGPT</strong>: Extended agentic infrastructure into targeted applications including <a href=\"/?date=2026-07-12&amp;category=news#item-450c713e553a\" class=\"internal-link\" rel=\"noopener noreferrer\">automated security red-teaming</a> and <a href=\"/?date=2026-07-12&amp;category=news#item-7c0ae48cff56\" class=\"internal-link\" rel=\"noopener noreferrer\">private search</a>.</li>\n<li><strong>PEFT</strong>: Provided updated targeted infrastructure to <a href=\"/?date=2026-07-12&amp;category=news#item-dc609df6ce71\" class=\"internal-link\" rel=\"noopener noreferrer\">optimize parameter-efficient fine-tuning</a> with <strong>LoRA</strong>.</li>\n</ul>\n<h4>Safety &amp; Regulation</h4>\n<ul>\n<li>Technical analyses highlighted the failure modes of conventional AI detectors, urging the adoption of <a href=\"/?date=2026-07-12&amp;category=research#item-f12e5a405e58\" class=\"internal-link\" rel=\"noopener noreferrer\">cryptographically signed multimodal provenance</a> to verify media authenticity.</li>\n<li>Safety researchers <a href=\"/?date=2026-07-12&amp;category=research#item-6188b3a8ed2e\" class=\"internal-link\" rel=\"noopener noreferrer\">critiqued current evaluation frameworks</a> used by organizations such as <strong>METR</strong>, arguing that systemic risk metrics are necessary alongside standard benchmark tracking.</li>\n</ul>\n<h4>Research Highlights</h4>\n<ul>\n<li><strong>Termination Circuits</strong>: Interpretability research identified late-layer <strong>MLP</strong> circuits that dictate when reasoning models stop thinking, offering a mechanism to monitor and debug long-horizon reasoning failure modes.</li>\n</ul>\n<h4>Looking Ahead</h4>\n<p>As developer frameworks accelerate the deployment of web-navigating agents, expect growing emphasis on incorporating mechanistic interpretability findings to verify and control autonomous workflows.</p>\n<h4>Sentiment &amp; Controversy</h4>\n<ul>\n<li><strong>Measuring Is Not Enough Anymore</strong> (concerned)</li>\n</ul>",
+  "top_topics": [
+    {
+      "name": "Agent Orchestration and Web Automation",
+      "description": "Open-source developer tools and frameworks are advancing rapidly around multi-agent workflow creation and automated browser navigation. Trending GitHub projects such as [LangChain](/?date=2026-07-12&category=news#item-771724fcc0ef), [browser-use](/?date=2026-07-12&category=news#item-e0ada90b41a4), [Dify](/?date=2026-07-12&category=news#item-4962f279dd51), and [Flowise](/?date=2026-07-12&category=news#item-d9848c31eb7b) highlight strong demand for visual node environments, RAG integration, and direct web automation. Meanwhile, specialized infrastructure tools like [Strix](/?date=2026-07-12&category=news#item-450c713e553a) and [DocsGPT](/?date=2026-07-12&category=news#item-7c0ae48cff56) extend these workflows toward security red-teaming and private enterprise search.",
+      "description_html": "Open-source developer tools and frameworks are advancing rapidly around multi-agent workflow creation and automated browser navigation. Trending GitHub projects such as <a href=\"/?date=2026-07-12&amp;category=news#item-771724fcc0ef\" class=\"internal-link\" rel=\"noopener noreferrer\">LangChain</a>, <a href=\"/?date=2026-07-12&amp;category=news#item-e0ada90b41a4\" class=\"internal-link\" rel=\"noopener noreferrer\">browser-use</a>, <a href=\"/?date=2026-07-12&amp;category=news#item-4962f279dd51\" class=\"internal-link\" rel=\"noopener noreferrer\">Dify</a>, and <a href=\"/?date=2026-07-12&amp;category=news#item-d9848c31eb7b\" class=\"internal-link\" rel=\"noopener noreferrer\">Flowise</a> highlight strong demand for visual node environments, RAG integration, and direct web automation. Meanwhile, specialized infrastructure tools like <a href=\"/?date=2026-07-12&amp;category=news#item-450c713e553a\" class=\"internal-link\" rel=\"noopener noreferrer\">Strix</a> and <a href=\"/?date=2026-07-12&amp;category=news#item-7c0ae48cff56\" class=\"internal-link\" rel=\"noopener noreferrer\">DocsGPT</a> extend these workflows toward security red-teaming and private enterprise search.",
+      "category_breakdown": {
+        "news": 9
+      },
+      "representative_items": [],
+      "importance": 88
+    },
+    {
+      "name": "Mechanistic Interpretability of Reasoning Models",
+      "description": "Recent research published on LessWrong investigates the inner workings of chain-of-thought reasoning models, [identifying specific termination circuits](/?date=2026-07-12&category=research#item-10278196a5de) in late MLP layers that signal when an AI model completes computation. Complementary theoretical work [explores mathematical frameworks](/?date=2026-07-12&category=research#item-35a8a509f18a) to explain deep learning phenomena and internal representation dynamics. These mechanistic insights aim to improve model predictability and debug failure modes during complex reasoning tasks.",
+      "description_html": "Recent research published on LessWrong investigates the inner workings of chain-of-thought reasoning models, <a href=\"/?date=2026-07-12&amp;category=research#item-10278196a5de\" class=\"internal-link\" rel=\"noopener noreferrer\">identifying specific termination circuits</a> in late MLP layers that signal when an AI model completes computation. Complementary theoretical work <a href=\"/?date=2026-07-12&amp;category=research#item-35a8a509f18a\" class=\"internal-link\" rel=\"noopener noreferrer\">explores mathematical frameworks</a> to explain deep learning phenomena and internal representation dynamics. These mechanistic insights aim to improve model predictability and debug failure modes during complex reasoning tasks.",
+      "category_breakdown": {
+        "research": 2
+      },
+      "representative_items": [],
+      "importance": 82
+    },
+    {
+      "name": "AI Governance and Provenance Verification",
+      "description": "Technical analyses on LessWrong emphasize the limitations of conventional AI detectors for deepfakes, [advocating instead for cryptographically signed multimodal provenance](/?date=2026-07-12&category=research#item-f12e5a405e58) to verify media authenticity. Additionally, safety researchers [critique current capability measurement practices](/?date=2026-07-12&category=research#item-6188b3a8ed2e) like those used by METR, [arguing that political will](/?date=2026-07-12&category=research#item-4f48301be3cc) and systemic risk tracking are bigger bottlenecks than pure benchmark evaluations. Strategic frameworks like Plan A [further highlight the need for improved forecasting](/?date=2026-07-12&category=research#item-e8c11a0f76cc) as AI capabilities expand.",
+      "description_html": "Technical analyses on LessWrong emphasize the limitations of conventional AI detectors for deepfakes, <a href=\"/?date=2026-07-12&amp;category=research#item-f12e5a405e58\" class=\"internal-link\" rel=\"noopener noreferrer\">advocating instead for cryptographically signed multimodal provenance</a> to verify media authenticity. Additionally, safety researchers <a href=\"/?date=2026-07-12&amp;category=research#item-6188b3a8ed2e\" class=\"internal-link\" rel=\"noopener noreferrer\">critique current capability measurement practices</a> like those used by METR, <a href=\"/?date=2026-07-12&amp;category=research#item-4f48301be3cc\" class=\"internal-link\" rel=\"noopener noreferrer\">arguing that political will</a> and systemic risk tracking are bigger bottlenecks than pure benchmark evaluations. Strategic frameworks like Plan A <a href=\"/?date=2026-07-12&amp;category=research#item-e8c11a0f76cc\" class=\"internal-link\" rel=\"noopener noreferrer\">further highlight the need for improved forecasting</a> as AI capabilities expand.",
+      "category_breakdown": {
+        "research": 4
+      },
+      "representative_items": [],
+      "importance": 80
+    }
+  ],
+  "total_items_collected": 28,
+  "total_items_analyzed": 23,
+  "collection_status": {
+    "overall": "partial",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 38,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 8,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "hackernews",
+        "display_name": "Hackernews",
+        "status": "failed",
+        "count": 0,
+        "error": "can't compare offset-naive and offset-aware datetimes"
+      },
+      {
+        "name": "github_trending",
+        "display_name": "Github_trending",
+        "status": "success",
+        "count": 37,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "success",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "warnings": [
+      "Hackernews collection failed: can't compare offset-naive and offset-aware datetimes"
+    ]
+  },
+  "hero_image_url": null,
+  "hero_image_prompt": null,
+  "generated_at": "2026-07-24T13:37:17.021438",
+  "categories": {
+    "news": {
+      "count": 15,
+      "category_summary": "Developer infrastructure and agent orchestration frameworks lead current developer activity, focusing on web automation and production agent deployment.\n\n- **LangChain** and **browser-use** [advance autonomous agent execution](/?date=2026-07-12&category=news#item-771724fcc0ef), enabling multi-step workflows and [direct web interface navigation](/?date=2026-07-12&category=news#item-e0ada90b41a4).\n- **Haystack**, **Dify**, **Flowise**, and **Langflow** [expand enterprise options](/?date=2026-07-12&category=news#item-4962f279dd51) for [context engineering](/?date=2026-07-12&category=news#item-0fe063cc3e71), [low-code development](/?date=2026-07-12&category=news#item-d9848c31eb7b), and [visual orchestration](/?date=2026-07-12&category=news#item-0196a97cb0c2).\n- **PEFT**, **Strix**, and **DocsGPT** provide [targeted infrastructure](/?date=2026-07-12&category=news#item-dc609df6ce71) for **LoRA** fine-tuning, [automated AI security red-teaming](/?date=2026-07-12&category=news#item-450c713e553a), and [private enterprise search](/?date=2026-07-12&category=news#item-7c0ae48cff56).",
+      "category_summary_html": "<p>Developer infrastructure and agent orchestration frameworks lead current developer activity, focusing on web automation and production agent deployment.</p>\n<ul>\n<li><strong>LangChain</strong> and <strong>browser-use</strong> <a href=\"/?date=2026-07-12&amp;category=news#item-771724fcc0ef\" class=\"internal-link\" rel=\"noopener noreferrer\">advance autonomous agent execution</a>, enabling multi-step workflows and <a href=\"/?date=2026-07-12&amp;category=news#item-e0ada90b41a4\" class=\"internal-link\" rel=\"noopener noreferrer\">direct web interface navigation</a>.</li>\n<li><strong>Haystack</strong>, <strong>Dify</strong>, <strong>Flowise</strong>, and <strong>Langflow</strong> <a href=\"/?date=2026-07-12&amp;category=news#item-4962f279dd51\" class=\"internal-link\" rel=\"noopener noreferrer\">expand enterprise options</a> for <a href=\"/?date=2026-07-12&amp;category=news#item-0fe063cc3e71\" class=\"internal-link\" rel=\"noopener noreferrer\">context engineering</a>, <a href=\"/?date=2026-07-12&amp;category=news#item-d9848c31eb7b\" class=\"internal-link\" rel=\"noopener noreferrer\">low-code development</a>, and <a href=\"/?date=2026-07-12&amp;category=news#item-0196a97cb0c2\" class=\"internal-link\" rel=\"noopener noreferrer\">visual orchestration</a>.</li>\n<li><strong>PEFT</strong>, <strong>Strix</strong>, and <strong>DocsGPT</strong> provide <a href=\"/?date=2026-07-12&amp;category=news#item-dc609df6ce71\" class=\"internal-link\" rel=\"noopener noreferrer\">targeted infrastructure</a> for <strong>LoRA</strong> fine-tuning, <a href=\"/?date=2026-07-12&amp;category=news#item-450c713e553a\" class=\"internal-link\" rel=\"noopener noreferrer\">automated AI security red-teaming</a>, and <a href=\"/?date=2026-07-12&amp;category=news#item-7c0ae48cff56\" class=\"internal-link\" rel=\"noopener noreferrer\">private enterprise search</a>.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "AI Agent Frameworks & Orchestration",
+          "description": "Tools, libraries, and visual builders designed for constructing, coordinating, and scaling multi-agent systems and RAG workflows.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Developer Tooling & Infrastructure",
+          "description": "Core frameworks, fine-tuning libraries, and inference optimizers supporting machine learning development and training.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Specialized AI Capabilities",
+          "description": "Domain-specific tools addressing security auditing, browser automation, and enterprise search platforms.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 72.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "771724fcc0ef",
+          "title": "langchain-ai/langchain",
+          "content": "The agent engineering platform.",
+          "url": "https://github.com/langchain-ai/langchain",
+          "author": "langchain-ai",
+          "published": "2026-07-24T17:29:07+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agents",
+            "ai",
+            "ai-agents",
+            "anthropic",
+            "chatgpt",
+            "deepagents",
+            "enterprise",
+            "framework",
+            "gemini",
+            "generative-ai",
+            "langchain",
+            "langgraph",
+            "llm",
+            "multiagent",
+            "open-source",
+            "openai",
+            "pydantic",
+            "python",
+            "rag",
+            "typescript"
+          ],
+          "summary": "LangChain maintains high traction as a comprehensive platform for enterprise agent engineering and LLM integration.",
+          "importance_score": 80.0,
+          "reasoning": "Serves as one of the definitive architectural standards for building production-ready LLM applications.",
+          "themes": [
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 142522,
+            "language": "Python",
+            "topics": [
+              "agents",
+              "ai",
+              "ai-agents",
+              "anthropic",
+              "chatgpt",
+              "deepagents",
+              "enterprise",
+              "framework",
+              "gemini",
+              "generative-ai",
+              "langchain",
+              "langgraph",
+              "llm",
+              "multiagent",
+              "open-source",
+              "openai",
+              "pydantic",
+              "python",
+              "rag",
+              "typescript"
+            ],
+            "created": "2022-10-17T02:58:36Z",
+            "updated": "2026-07-24T17:29:07Z",
+            "hn_score": 142522,
+            "interest_score": 9.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>LangChain maintains high traction as a comprehensive platform for enterprise agent engineering and LLM integration.</p>",
+          "content_html": "<p>The agent engineering platform.</p>"
+        },
+        {
+          "id": "e0ada90b41a4",
+          "title": "browser-use/browser-use",
+          "content": "🌐 Make websites accessible for AI agents. Automate tasks online with ease.",
+          "url": "https://github.com/browser-use/browser-use",
+          "author": "browser-use",
+          "published": "2026-07-24T17:28:25+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "ai-agents",
+            "ai-tools",
+            "browser-automation",
+            "browser-use",
+            "llm",
+            "playwright",
+            "python"
+          ],
+          "summary": "Browser-use bridges LLM capabilities with web browsers, allowing agents to execute automated tasks online.",
+          "importance_score": 75.0,
+          "reasoning": "Highlights the expanding capabilities of web-navigating agents capable of interacting with standard web UI.",
+          "themes": [
+            "Specialized AI Capabilities",
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 106582,
+            "language": "Python",
+            "topics": [
+              "ai-agents",
+              "ai-tools",
+              "browser-automation",
+              "browser-use",
+              "llm",
+              "playwright",
+              "python"
+            ],
+            "created": "2024-10-31T16:00:56Z",
+            "updated": "2026-07-24T17:28:25Z",
+            "hn_score": 106582,
+            "interest_score": 9.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Browser-use bridges LLM capabilities with web browsers, allowing agents to execute automated tasks online.</p>",
+          "content_html": "<p>🌐 Make websites accessible for AI agents. Automate tasks online with ease.</p>"
+        },
+        {
+          "id": "450c713e553a",
+          "title": "usestrix/strix",
+          "content": "Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.",
+          "url": "https://github.com/usestrix/strix",
+          "author": "usestrix",
+          "published": "2026-07-24T17:26:43+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agents",
+            "ai-hacking",
+            "ai-penetration-testing",
+            "ai-pentesting",
+            "ai-security",
+            "artificial-intelligence",
+            "bug-bounty",
+            "code-quality",
+            "ctf-tools",
+            "cybersecurity",
+            "cybersecurity-tools",
+            "ethical-hacking",
+            "hacking",
+            "llm-security",
+            "offensive-security",
+            "penetration-testing",
+            "pentesting-tools",
+            "red-teaming",
+            "security",
+            "security-automation"
+          ],
+          "summary": "Strix emerges as an open-source security penetration testing tool tailored for auditing and securing LLM applications.",
+          "importance_score": 72.0,
+          "reasoning": "Addresses the critical and rapidly growing domain of AI security, red teaming, and vulnerability scanning.",
+          "themes": [
+            "Specialized AI Capabilities",
+            "Developer Tooling"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 43945,
+            "language": "Python",
+            "topics": [
+              "agents",
+              "ai-hacking",
+              "ai-penetration-testing",
+              "ai-pentesting",
+              "ai-security",
+              "artificial-intelligence",
+              "bug-bounty",
+              "code-quality",
+              "ctf-tools",
+              "cybersecurity",
+              "cybersecurity-tools",
+              "ethical-hacking",
+              "hacking",
+              "llm-security",
+              "offensive-security",
+              "penetration-testing",
+              "pentesting-tools",
+              "red-teaming",
+              "security",
+              "security-automation"
+            ],
+            "created": "2025-08-05T21:28:30Z",
+            "updated": "2026-07-24T17:26:43Z",
+            "hn_score": 43945,
+            "interest_score": 8.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Strix emerges as an open-source security penetration testing tool tailored for auditing and securing LLM applications.</p>",
+          "content_html": "<p>Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.</p>"
+        },
+        {
+          "id": "dc609df6ce71",
+          "title": "huggingface/peft",
+          "content": "🤗 PEFT: State-of-the-art Parameter-Efficient Fine-Tuning.",
+          "url": "https://github.com/huggingface/peft",
+          "author": "huggingface",
+          "published": "2026-07-24T14:50:49+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "adapter",
+            "diffusion",
+            "fine-tuning",
+            "llm",
+            "lora",
+            "parameter-efficient-learning",
+            "peft",
+            "python",
+            "pytorch",
+            "transformers"
+          ],
+          "summary": "Hugging Face PEFT facilitates parameter-efficient fine-tuning techniques like LoRA across diverse model architectures.",
+          "importance_score": 72.0,
+          "reasoning": "Essential tool enabling cost-effective adaptation of large foundation models on limited hardware.",
+          "themes": [
+            "Developer Tooling & Infrastructure"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 21446,
+            "language": "Python",
+            "topics": [
+              "adapter",
+              "diffusion",
+              "fine-tuning",
+              "llm",
+              "lora",
+              "parameter-efficient-learning",
+              "peft",
+              "python",
+              "pytorch",
+              "transformers"
+            ],
+            "created": "2022-11-25T03:51:09Z",
+            "updated": "2026-07-24T14:50:49Z",
+            "hn_score": 21446,
+            "interest_score": 9.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Hugging Face PEFT facilitates parameter-efficient fine-tuning techniques like LoRA across diverse model architectures.</p>",
+          "content_html": "<p>🤗 PEFT: State-of-the-art Parameter-Efficient Fine-Tuning.</p>"
+        },
+        {
+          "id": "0fe063cc3e71",
+          "title": "deepset-ai/haystack",
+          "content": "Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.",
+          "url": "https://github.com/deepset-ai/haystack",
+          "author": "deepset-ai",
+          "published": "2026-07-24T17:29:45+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agent",
+            "agents",
+            "ai",
+            "gemini",
+            "generative-ai",
+            "gpt-4",
+            "information-retrieval",
+            "large-language-models",
+            "llm",
+            "machine-learning",
+            "nlp",
+            "orchestration",
+            "python",
+            "pytorch",
+            "question-answering",
+            "rag",
+            "retrieval-augmented-generation",
+            "semantic-search",
+            "summarization",
+            "transformers"
+          ],
+          "summary": "Haystack provides modular orchestration primitives for advanced retrieval-augmented generation and scalable agent pipelines.",
+          "importance_score": 72.0,
+          "reasoning": "Provides robust structural control for production search and context engineering.",
+          "themes": [
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 25999,
+            "language": "Python",
+            "topics": [
+              "agent",
+              "agents",
+              "ai",
+              "gemini",
+              "generative-ai",
+              "gpt-4",
+              "information-retrieval",
+              "large-language-models",
+              "llm",
+              "machine-learning",
+              "nlp",
+              "orchestration",
+              "python",
+              "pytorch",
+              "question-answering",
+              "rag",
+              "retrieval-augmented-generation",
+              "semantic-search",
+              "summarization",
+              "transformers"
+            ],
+            "created": "2019-11-14T09:05:28Z",
+            "updated": "2026-07-24T17:29:45Z",
+            "hn_score": 25999,
+            "interest_score": 8.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Haystack provides modular orchestration primitives for advanced retrieval-augmented generation and scalable agent pipelines.</p>",
+          "content_html": "<p>Open-source AI orchestration framework for building context-engineered, production-ready LLM applications. Design modular pipelines and agent workflows with explicit control over retrieval, routing, memory, and generation. Built for scalable agents, RAG, multimodal applications, semantic search, and conversational systems.</p>"
+        },
+        {
+          "id": "4962f279dd51",
+          "title": "langgenius/dify",
+          "content": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+          "url": "https://github.com/langgenius/dify",
+          "author": "langgenius",
+          "published": "2026-07-24T17:25:11+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agent",
+            "agentic-ai",
+            "agentic-framework",
+            "agentic-workflow",
+            "ai",
+            "automation",
+            "claude",
+            "genai",
+            "gpt",
+            "llm",
+            "low-code",
+            "mcp",
+            "nextjs",
+            "no-code",
+            "openai",
+            "orchestration",
+            "python",
+            "rag",
+            "skills",
+            "workflow"
+          ],
+          "summary": "Dify combines agentic workflow creation, RAG pipelines, and model management into a collaborative workspace.",
+          "importance_score": 72.0,
+          "reasoning": "Provides teams with a streamlined path from experimental prototypes to production deployments.",
+          "themes": [
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 150115,
+            "language": "TypeScript",
+            "topics": [
+              "agent",
+              "agentic-ai",
+              "agentic-framework",
+              "agentic-workflow",
+              "ai",
+              "automation",
+              "claude",
+              "genai",
+              "gpt",
+              "llm",
+              "low-code",
+              "mcp",
+              "nextjs",
+              "no-code",
+              "openai",
+              "orchestration",
+              "python",
+              "rag",
+              "skills",
+              "workflow"
+            ],
+            "created": "2023-04-12T07:40:24Z",
+            "updated": "2026-07-24T17:25:11Z",
+            "hn_score": 150115,
+            "interest_score": 8.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Dify combines agentic workflow creation, RAG pipelines, and model management into a collaborative workspace.</p>",
+          "content_html": "<p>Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.</p>"
+        },
+        {
+          "id": "d9848c31eb7b",
+          "title": "FlowiseAI/Flowise",
+          "content": "Build AI Agents, Visually",
+          "url": "https://github.com/FlowiseAI/Flowise",
+          "author": "FlowiseAI",
+          "published": "2026-07-24T16:33:15+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agentic-ai",
+            "agentic-workflow",
+            "agents",
+            "artificial-intelligence",
+            "chatbot",
+            "chatgpt",
+            "javascript",
+            "langchain",
+            "large-language-models",
+            "low-code",
+            "multiagent-systems",
+            "no-code",
+            "openai",
+            "rag",
+            "react",
+            "typescript",
+            "workflow-automation"
+          ],
+          "summary": "Flowise provides a visual, low-code interface for constructing complex multi-agent workflows and retrieval systems.",
+          "importance_score": 70.0,
+          "reasoning": "Demonstrates strong demand for accessible, visual orchestration tools in enterprise and developer communities.",
+          "themes": [
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 54891,
+            "language": "TypeScript",
+            "topics": [
+              "agentic-ai",
+              "agentic-workflow",
+              "agents",
+              "artificial-intelligence",
+              "chatbot",
+              "chatgpt",
+              "javascript",
+              "langchain",
+              "large-language-models",
+              "low-code",
+              "multiagent-systems",
+              "no-code",
+              "openai",
+              "rag",
+              "react",
+              "typescript",
+              "workflow-automation"
+            ],
+            "created": "2023-03-31T12:23:09Z",
+            "updated": "2026-07-24T16:33:15Z",
+            "hn_score": 54891,
+            "interest_score": 9.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Flowise provides a visual, low-code interface for constructing complex multi-agent workflows and retrieval systems.</p>",
+          "content_html": "<p>Build AI Agents, Visually</p>"
+        },
+        {
+          "id": "0196a97cb0c2",
+          "title": "langflow-ai/langflow",
+          "content": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+          "url": "https://github.com/langflow-ai/langflow",
+          "author": "langflow-ai",
+          "published": "2026-07-24T17:20:54+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agents",
+            "chatgpt",
+            "generative-ai",
+            "large-language-models",
+            "multiagent",
+            "react-flow"
+          ],
+          "summary": "Langflow offers a visual node-based environment for designing and deploying agentic workflows.",
+          "importance_score": 70.0,
+          "reasoning": "Reflects the broader industry trend toward lowering barriers for building multi-agent systems.",
+          "themes": [
+            "AI Agent Frameworks & Orchestration"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 152336,
+            "language": "Python",
+            "topics": [
+              "agents",
+              "chatgpt",
+              "generative-ai",
+              "large-language-models",
+              "multiagent",
+              "react-flow"
+            ],
+            "created": "2023-02-08T22:28:03Z",
+            "updated": "2026-07-24T17:20:54Z",
+            "hn_score": 152336,
+            "interest_score": 9.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Langflow offers a visual node-based environment for designing and deploying agentic workflows.</p>",
+          "content_html": "<p>Langflow is a powerful tool for building and deploying AI-powered agents and workflows.</p>"
+        },
+        {
+          "id": "7c0ae48cff56",
+          "title": "arc53/DocsGPT",
+          "content": "Private AI platform for agents, assistants and enterprise search. Built-in Agent Builder, Deep research, Document analysis, Multi-model support, and API connectivity for agents.",
+          "url": "https://github.com/arc53/DocsGPT",
+          "author": "arc53",
+          "published": "2026-07-24T17:24:59+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "agent-builder",
+            "agents",
+            "ai",
+            "chatgpt",
+            "docsgpt",
+            "hacktoberfest",
+            "hacktoberfest2025",
+            "information-retrieval",
+            "language-model",
+            "llm",
+            "machine-learning",
+            "natural-language-processing",
+            "python",
+            "pytorch",
+            "rag",
+            "react",
+            "search",
+            "semantic-search",
+            "transformers"
+          ],
+          "summary": "DocsGPT integrates document analysis and deep research capabilities into a private enterprise search platform.",
+          "importance_score": 68.0,
+          "reasoning": "Demonstrates practical enterprise applications leveraging local knowledge retrieval and agent builders.",
+          "themes": [
+            "Specialized AI Capabilities"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 18014,
+            "language": "Python",
+            "topics": [
+              "agent-builder",
+              "agents",
+              "ai",
+              "chatgpt",
+              "docsgpt",
+              "hacktoberfest",
+              "hacktoberfest2025",
+              "information-retrieval",
+              "language-model",
+              "llm",
+              "machine-learning",
+              "natural-language-processing",
+              "python",
+              "pytorch",
+              "rag",
+              "react",
+              "search",
+              "semantic-search",
+              "transformers"
+            ],
+            "created": "2023-02-02T11:03:23Z",
+            "updated": "2026-07-24T17:24:59Z",
+            "hn_score": 18014,
+            "interest_score": 8.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>DocsGPT integrates document analysis and deep research capabilities into a private enterprise search platform.</p>",
+          "content_html": "<p>Private AI platform for agents, assistants and enterprise search. Built-in Agent Builder, Deep research, Document analysis, Multi-model support, and API connectivity for agents.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 8,
+      "category_summary": "Today's research focuses on mechanistic interpretability of reasoning models, cryptographic media verification, and AI safety evaluation frameworks. Mechanistic analysis reveals specific **MLP** circuits responsible for halting reasoning chains in **CoT** architectures.\n\n- **Termination Circuit** analysis identifies specific **late MLP** layers [signaling when reasoning models complete computation](/?date=2026-07-12&category=research#item-10278196a5de)\n- Cryptographic multimodal provenance offers a structural alternative to AI detectors for [verifying media authenticity](/?date=2026-07-12&category=research#item-f12e5a405e58)\n- Capability measurement critiques demonstrate that current evaluation frameworks, including those used by **METR**, [require broader systemic risk metrics](/?date=2026-07-12&category=research#item-6188b3a8ed2e)",
+      "category_summary_html": "<p>Today's research focuses on mechanistic interpretability of reasoning models, cryptographic media verification, and AI safety evaluation frameworks. Mechanistic analysis reveals specific <strong>MLP</strong> circuits responsible for halting reasoning chains in <strong>CoT</strong> architectures.</p>\n<ul>\n<li><strong>Termination Circuit</strong> analysis identifies specific <strong>late MLP</strong> layers <a href=\"/?date=2026-07-12&amp;category=research#item-10278196a5de\" class=\"internal-link\" rel=\"noopener noreferrer\">signaling when reasoning models complete computation</a></li>\n<li>Cryptographic multimodal provenance offers a structural alternative to AI detectors for <a href=\"/?date=2026-07-12&amp;category=research#item-f12e5a405e58\" class=\"internal-link\" rel=\"noopener noreferrer\">verifying media authenticity</a></li>\n<li>Capability measurement critiques demonstrate that current evaluation frameworks, including those used by <strong>METR</strong>, <a href=\"/?date=2026-07-12&amp;category=research#item-6188b3a8ed2e\" class=\"internal-link\" rel=\"noopener noreferrer\">require broader systemic risk metrics</a></li>\n</ul>",
+      "themes": [
+        {
+          "name": "Model Interpretability & Mechanics",
+          "description": "Technical investigations into the internal architecture, reasoning processes, and theoretical foundations of neural networks.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "AI Safety & Governance",
+          "description": "Discussions focusing on the political, strategic, and evaluation bottlenecks in managing existential and catastrophic AI risks.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 73.0
+        },
+        {
+          "name": "Societal Impact & Verification",
+          "description": "Explorations of deepfakes, cryptographic provenance, and the psychological effects of AI interaction.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 70.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "10278196a5de",
+          "title": "The Termination Circuit (how reasoning models stop thinking).",
+          "content": "Reasoning models since the dawn of o1 and R1 have a tendency to overthink. Despite a lot of work on early-exit methods and steering, open-weight and smaller reasoning models still produce long chains of thought before they answer. I worked on discovering how much of that thinking is required before the model already knows the answer and what makes the model stop thinking.SummaryReasoning models keep thinking for a long time even after finding the answer.In Qwen3-1.7B, the answer to most GSM8K problems the model solves is already settled about halfway through its CoT.I traced the stopping decision (emission of the &lt;/think&gt; token) to a small group of MLP layers near the end of the network, which I termed the termination circuit.It implements a verification gate where the model stops thinking when it has written out an answer that matches the one it computed internally.The gate has no simple steering handle. No single direction can reliably fire it early.The paper is currently \"on-hold\" on arXiv. I have made it available here for the time being. The code for the experiments are available here.Finding when the model already has the answerTo find approximately where the model has answer to a question during its CoT, we can cut each trace at various points and close the thinking segment with a cue like, \"The final answer is...\" and force the model to answer. mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; border-collapse: collapse; word-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0; } mjx-container[jax=\"CHTML\"][display=\"true\"] { display: block; text-align: center; margin: 1em 0; } mjx-container[jax=\"CHTML\"][display=\"true\"][width=\"full\"] { display: flex; } mjx-container[jax=\"CHTML\"][display=\"true\"] mjx-math { padding: 0; } mjx-container[jax=\"CHTML\"][justify=\"left\"] { text-align: left; }...",
+          "url": "https://www.lesswrong.com/posts/ajhzc6ktEKyFeJFBS/the-termination-circuit-how-reasoning-models-stop-thinking",
+          "author": "Chandram Dutta",
+          "published": "2026-07-10T21:37:22.887000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This technical post investigates reasoning models to discover how they decide to stop thinking, identifying a specific termination circuit in late MLP layers that triggers the ending of the chain of thought.",
+          "importance_score": 85.0,
+          "reasoning": "Provides high-value mechanistic interpretability research into reasoning models, offering concrete empirical findings on internal model states.",
+          "themes": [
+            "Reasoning Models",
+            "Model Interpretability"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "ajhzc6ktEKyFeJFBS",
+            "slug": "the-termination-circuit-how-reasoning-models-stop-thinking",
+            "base_score": 11,
+            "vote_count": 6,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This technical post investigates reasoning models to discover how they decide to stop thinking, identifying a specific termination circuit in late MLP layers that triggers the ending of the chain of thought.</p>",
+          "content_html": "<p>Reasoning models since the dawn of o1 and R1 have a tendency to overthink. Despite a lot of work on early-exit methods and steering, open-weight and smaller reasoning models still produce long chains of thought before they answer. I worked on discovering how much of that thinking is required before the model already knows the answer and what makes the model stop thinking.SummaryReasoning models keep thinking for a long time even after finding the answer.In Qwen3-1.7B, the answer to most GSM8K problems the model solves is already settled about halfway through its CoT.I traced the stopping decision (emission of the &lt;/think&gt; token) to a small group of MLP layers near the end of the network, which I termed the termination circuit.It implements a verification gate where the model stops thinking when it has written out an answer that matches the one it computed internally.The gate has no simple steering handle. No single direction can reliably fire it early.The paper is currently \"on-hold\" on arXiv. I have made it available here for the time being. The code for the experiments are available here.Finding when the model already has the answerTo find approximately where the model has answer to a question during its CoT, we can cut each trace at various points and close the thinking segment with a cue like, \"The final answer is...\" and force the model to answer. mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; border-collapse: collapse; word-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0; } mjx-container[jax=\"CHTML\"][display=\"true\"] { display: block; text-align: center; margin: 1em 0; } mjx-container[jax=\"CHTML\"][display=\"true\"][width=\"full\"] { display: flex; } mjx-container[jax=\"CHTML\"][display=\"true\"] mjx-math { padding: 0; } mjx-container[jax=\"CHTML\"][justify=\"left\"] { text-align: left; }...</p>"
+        },
+        {
+          "id": "f12e5a405e58",
+          "title": "Don’t bring an AI detector to a deepfake fight: proving reality through multimodal provenance",
+          "content": "Epistemic status: confident on the framing, speculative on the implementationTL;DR: Fake media detectors are on the losing end of an arms race. Instead of trying to spot fakes, we need to distrust images and videos by default, unless we can prove they're real. Cryptographically-signed multimodal capture raises the cost of spoofing exponentially, making casual fakes prohibitively expensive for the general public. Combined with platform policy and legal liability for untagged generated content, this could solve most of the problem of widespread fake media.I. Our epistemic contract is breaking downText is easy to fake, which is rather inconvenient. Now photos and videos are becoming easy to fake too. That, however, poses a much bigger problem.When we read something supposedly factual, we know that the written words don’t represent reality, as much as someone's opinion, idea, or account of reality. Because of how easy text is to counterfeit, we know to operate in a default state of distrust. We don't believe the text itself, but its content because we trust its source. Our whole epistemology of written information functions within this realm, including news reporting standards, witness testimonies or libel law.LLMs make fake text cheaper and faster to produce at scale, and that’s a problem, but not a new category of problem. We know not to blindly trust text, so we already have partial defence mechanisms like cross-referencing sources or checking the author's credentials. We are used to questioning any suspicious quote or tweet we encounter because we know how easy it is for anyone to write down words and falsely attribute them to someone.Pictures, audio recordings, and videos, on the other hand, are a whole other kind of beast. Historically, we have used them to capture a direct snapshot of reality, not someone's opinion or rendition of reality. Because of that, they occupy a special place in courtrooms where they can be considered as evidence. The same goes for insura...",
+          "url": "https://www.lesswrong.com/posts/MBRNR5h9g6HGvAJDe/don-t-bring-an-ai-detector-to-a-deepfake-fight-proving",
+          "author": "Julien Despois",
+          "published": "2026-07-10T21:58:00.485000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This article argues that fighting deepfakes with AI detectors is a losing arms race and advocates instead for cryptographically-signed multimodal provenance to verify authenticity.",
+          "importance_score": 75.0,
+          "reasoning": "Presents a pragmatic structural solution to synthetic media proliferation using cryptography and provenance tracking.",
+          "themes": [
+            "AI Safety",
+            "Deepfakes",
+            "Cryptography"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "MBRNR5h9g6HGvAJDe",
+            "slug": "don-t-bring-an-ai-detector-to-a-deepfake-fight-proving",
+            "base_score": 10,
+            "vote_count": 5,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This article argues that fighting deepfakes with AI detectors is a losing arms race and advocates instead for cryptographically-signed multimodal provenance to verify authenticity.</p>",
+          "content_html": "<p>Epistemic status: confident on the framing, speculative on the implementationTL;DR: Fake media detectors are on the losing end of an arms race. Instead of trying to spot fakes, we need to distrust images and videos by default, unless we can prove they're real. Cryptographically-signed multimodal capture raises the cost of spoofing exponentially, making casual fakes prohibitively expensive for the general public. Combined with platform policy and legal liability for untagged generated content, this could solve most of the problem of widespread fake media.I. Our epistemic contract is breaking downText is easy to fake, which is rather inconvenient. Now photos and videos are becoming easy to fake too. That, however, poses a much bigger problem.When we read something supposedly factual, we know that the written words don’t represent reality, as much as someone's opinion, idea, or account of reality. Because of how easy text is to counterfeit, we know to operate in a default state of distrust. We don't believe the text itself, but its content because we trust its source. Our whole epistemology of written information functions within this realm, including news reporting standards, witness testimonies or libel law.LLMs make fake text cheaper and faster to produce at scale, and that’s a problem, but not a new category of problem. We know not to blindly trust text, so we already have partial defence mechanisms like cross-referencing sources or checking the author's credentials. We are used to questioning any suspicious quote or tweet we encounter because we know how easy it is for anyone to write down words and falsely attribute them to someone.Pictures, audio recordings, and videos, on the other hand, are a whole other kind of beast. Historically, we have used them to capture a direct snapshot of reality, not someone's opinion or rendition of reality. Because of that, they occupy a special place in courtrooms where they can be considered as evidence. The same goes for insura...</p>"
+        },
+        {
+          "id": "35a8a509f18a",
+          "title": "Theories of Deep Learning",
+          "content": "This field has been blessed with exponential empirical success in the form of architectures and algorithms that simply worked through scaling, while the theory lagged behind[1]. Although in the past few years, the “gap“ seems to be diminishing, and we are getting multiple theories for different aspects of deep learning. This essay would be a simple high-level overview of all the theories I’ve come across.NOTE: These are mathematically dense frameworks which either provide a language for formalizing the field itself or aim to explain the observed phenomena. This essay is my personal understanding of the theories, after a lot of back and forth with GPT. Hence, kindly take everything with a grain of salt, and kindly mention any mistakes and misunderstandings in the comments !NOTE: I tend to use the words “theory“ and “framework“ inter-changeably in this essay. If that seems annoying or unnecessary, or is mis-leading in some manner, please DM or comment as well !I.Before we dive into the actual theories and frameworks, I’d like to sketch out the different “sub-domains” in deep learning here, since we shall see that each sub-domain has a different framework which are largely independent of each other[2]. We have, broadly : Architecture theory : Or the theoretical foundations which includes all the model architectures, and provides for a common language for us to express popular architectures like transformers, RNNs and CNNs as specific instances of a more general framework.Optimization theory : as the name suggests, theories here try to explain and predict how different optimizers behave based on model architectures and data distributions, in order to find more efficient and better optimizers like Adam, AdamW or Muon.Functional Theory : theories in this domain focus on the neural network as a whole simulating a function, and try to understand it’s behaviours from that perspective. Frameworks here aim to explain how and why models generalize and understand phenomena like ...",
+          "url": "https://www.lesswrong.com/posts/BaFbWjFhusjazeSuN/theories-of-deep-learning-1",
+          "author": "astle dsa",
+          "published": "2026-07-11T13:21:56.339000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This essay presents a high-level overview of various mathematical frameworks and theories attempting to formally explain deep learning phenomena.",
+          "importance_score": 70.0,
+          "reasoning": "Useful synthesis of deep learning theory, though structured as an explanatory overview rather than novel foundational research.",
+          "themes": [
+            "Deep Learning Theory"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "BaFbWjFhusjazeSuN",
+            "slug": "theories-of-deep-learning-1",
+            "base_score": 5,
+            "vote_count": 4,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This essay presents a high-level overview of various mathematical frameworks and theories attempting to formally explain deep learning phenomena.</p>",
+          "content_html": "<p>This field has been blessed with exponential empirical success in the form of architectures and algorithms that simply worked through scaling, while the theory lagged behind[1]. Although in the past few years, the “gap“ seems to be diminishing, and we are getting multiple theories for different aspects of deep learning. This essay would be a simple high-level overview of all the theories I’ve come across.NOTE: These are mathematically dense frameworks which either provide a language for formalizing the field itself or aim to explain the observed phenomena. This essay is my personal understanding of the theories, after a lot of back and forth with GPT. Hence, kindly take everything with a grain of salt, and kindly mention any mistakes and misunderstandings in the comments !NOTE: I tend to use the words “theory“ and “framework“ inter-changeably in this essay. If that seems annoying or unnecessary, or is mis-leading in some manner, please DM or comment as well !I.Before we dive into the actual theories and frameworks, I’d like to sketch out the different “sub-domains” in deep learning here, since we shall see that each sub-domain has a different framework which are largely independent of each other[2]. We have, broadly : Architecture theory : Or the theoretical foundations which includes all the model architectures, and provides for a common language for us to express popular architectures like transformers, RNNs and CNNs as specific instances of a more general framework.Optimization theory : as the name suggests, theories here try to explain and predict how different optimizers behave based on model architectures and data distributions, in order to find more efficient and better optimizers like Adam, AdamW or Muon.Functional Theory : theories in this domain focus on the neural network as a whole simulating a function, and try to understand it’s behaviours from that perspective. Frameworks here aim to explain how and why models generalize and understand phenomena like ...</p>"
+        },
+        {
+          "id": "6188b3a8ed2e",
+          "title": "Measuring Is Not Enough Anymore",
+          "content": "Is measuring general AI capabilities a good strategy to reduce AI existential risk, compared to other strategies? A disclaimer upfront: To answer that, one organization in particular will serve as an example, but the argument that we'll be making applies just as much or little across all of AI safety. The organizations mentioned do much great work overall, and the below is more to be read as a proposal to reweight different kinds of work within the same organization, as we'll also come back to in the end.METR is often cited as one of the most successful AI safety organizations. Its stated mission is to \"develop scientific methods to assess catastrophic risks stemming from AI systems' autonomous capabilities and enable good decision-making about their development\". It produced perhaps the most famous result coming out of all of AI safety, the METR time horizon graph, showing the increase of AI capabilities over time in units of human time to task completion.Let's try to figure out how METR's mission fits the broader picture, which (as a reminder) is making AI not spell the end of humanity (or other bad, less catastrophic things). One useful case study might be: Whose decision-making does the time horizon inform? Certainly, from personal experience, I can say it informs intuitions of AI safety researchers. When designing a safety case that hinges on an AI having or not having the capability to do some bad thing, a time estimate of what general tasks it can do is useful. It also helps with planning ahead what research to do in the coming months and even years. But the impacts were much wider of course. The most influential pieces that cite the time horizon experiment might be:The New York Times piece by Kevin Roose, on the time horizon plot and METR's work more generally. It explains that some have used it to justify accelerating AI development further: \"Techno-optimists have seized on METR's time-horizon chart to claim that artificial general intelligence -- machines ...",
+          "url": "https://www.lesswrong.com/posts/4TMKvGmoAWjXBGwWk/measuring-is-not-enough-anymore",
+          "author": "Lennart Finke",
+          "published": "2026-07-10T23:21:55.454000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This post critiques current capability measurement practices in AI safety organizations like METR, arguing that tracking capabilities alone is insufficient to prevent existential risks.",
+          "importance_score": 74.0,
+          "reasoning": "Offers important critical analysis of evaluation methodologies used by leading AI safety watchdogs.",
+          "themes": [
+            "AI Safety",
+            "Capability Evaluation"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "4TMKvGmoAWjXBGwWk",
+            "slug": "measuring-is-not-enough-anymore",
+            "base_score": 11,
+            "vote_count": 5,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This post critiques current capability measurement practices in AI safety organizations like METR, arguing that tracking capabilities alone is insufficient to prevent existential risks.</p>",
+          "content_html": "<p>Is measuring general AI capabilities a good strategy to reduce AI existential risk, compared to other strategies? A disclaimer upfront: To answer that, one organization in particular will serve as an example, but the argument that we'll be making applies just as much or little across all of AI safety. The organizations mentioned do much great work overall, and the below is more to be read as a proposal to reweight different kinds of work within the same organization, as we'll also come back to in the end.METR is often cited as one of the most successful AI safety organizations. Its stated mission is to \"develop scientific methods to assess catastrophic risks stemming from AI systems' autonomous capabilities and enable good decision-making about their development\". It produced perhaps the most famous result coming out of all of AI safety, the METR time horizon graph, showing the increase of AI capabilities over time in units of human time to task completion.Let's try to figure out how METR's mission fits the broader picture, which (as a reminder) is making AI not spell the end of humanity (or other bad, less catastrophic things). One useful case study might be: Whose decision-making does the time horizon inform? Certainly, from personal experience, I can say it informs intuitions of AI safety researchers. When designing a safety case that hinges on an AI having or not having the capability to do some bad thing, a time estimate of what general tasks it can do is useful. It also helps with planning ahead what research to do in the coming months and even years. But the impacts were much wider of course. The most influential pieces that cite the time horizon experiment might be:The New York Times piece by Kevin Roose, on the time horizon plot and METR's work more generally. It explains that some have used it to justify accelerating AI development further: \"Techno-optimists have seized on METR's time-horizon chart to claim that artificial general intelligence -- machines ...</p>"
+        },
+        {
+          "id": "e8c11a0f76cc",
+          "title": "Introduction for and Reactions to Plan A",
+          "content": "Introducing Plan A The folks who brought you AI 2027, a so far remarkably accurate set of predictions despite those predictions having seemed freaky to many at the time, now bring you their positive vision that involves more freaky predictions: Plan A. These guys have rather strong prediction track records. In addition to AI 2027, among other things, Daniel Kokotajlo has What 2026 Looks Like (which is remarkably similar to what 2026 looks like) and Ryan Greenblatt, who is also the chief scientist at Redwood Research, was the #2 most accurate AI forecaster in 2025 out of 413 entries. Past performance is as always no guarantee of future success. If you’re the type to read at least some of my posts, or if you thought AI 2027 was worth reading, I recommend reading Plan A. There is also an unofficial visual novel version, for minds very different from my own who would want that. To be clear up front: I am not endorsing Plan A. I am not suggesting we should go off and try to enact Plan A as written. There is a lot more work to do and a lot of potential problems and downsides to grapple with. I do think we should do that work, and give it, and its details, serious consideration. The bulk of this post is engaging with various objections, in progressively more detail. If you only need the highlights, you can safely stop after Thus Selective Optimism. Table of Contents Introducing Plan A. You Only Get Five Words. Proactive Response To Objections. Initial Introductions and Endorsements. A Positive Vision. Alternative Plans. Plan S for Shutdown. Something (Unexpectedly Good) Ever Happens. Thus Selective Optimism. Quickly, There’s No Time. Race Conditions. This Is A Lot Of Diffusion And Economic Growth. Living In China. Planning For Shifting Overton Windows Is Essential. The Standard Handwave. Some Equate Any Controls Over Compute To Authoritarian Dystopia And Those Same People Mostly Think Superintelligence Won’t Happen. Vitalik Buterin Is Right, The Crux Is Future AI Capabilit...",
+          "url": "https://www.lesswrong.com/posts/z9tXCGogEgkgHSh8G/introduction-for-and-reactions-to-plan-a",
+          "author": "Zvi",
+          "published": "2026-07-11T16:42:32.038000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This article introduces and reviews 'Plan A', a strategic forecasting framework for navigating future AI development built on past accurate predictions.",
+          "importance_score": 68.0,
+          "reasoning": "Provides valuable perspective on AI timeline forecasting and strategic planning, though it serves more as commentary on existing predictive frameworks.",
+          "themes": [
+            "AI Governance",
+            "AI Forecasting"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "z9tXCGogEgkgHSh8G",
+            "slug": "introduction-for-and-reactions-to-plan-a",
+            "base_score": 35,
+            "vote_count": 12,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This article introduces and reviews 'Plan A', a strategic forecasting framework for navigating future AI development built on past accurate predictions.</p>",
+          "content_html": "<p>Introducing Plan A The folks who brought you AI 2027, a so far remarkably accurate set of predictions despite those predictions having seemed freaky to many at the time, now bring you their positive vision that involves more freaky predictions: Plan A. These guys have rather strong prediction track records. In addition to AI 2027, among other things, Daniel Kokotajlo has What 2026 Looks Like (which is remarkably similar to what 2026 looks like) and Ryan Greenblatt, who is also the chief scientist at Redwood Research, was the #2 most accurate AI forecaster in 2025 out of 413 entries. Past performance is as always no guarantee of future success. If you’re the type to read at least some of my posts, or if you thought AI 2027 was worth reading, I recommend reading Plan A. There is also an unofficial visual novel version, for minds very different from my own who would want that. To be clear up front: I am not endorsing Plan A. I am not suggesting we should go off and try to enact Plan A as written. There is a lot more work to do and a lot of potential problems and downsides to grapple with. I do think we should do that work, and give it, and its details, serious consideration. The bulk of this post is engaging with various objections, in progressively more detail. If you only need the highlights, you can safely stop after Thus Selective Optimism. Table of Contents Introducing Plan A. You Only Get Five Words. Proactive Response To Objections. Initial Introductions and Endorsements. A Positive Vision. Alternative Plans. Plan S for Shutdown. Something (Unexpectedly Good) Ever Happens. Thus Selective Optimism. Quickly, There’s No Time. Race Conditions. This Is A Lot Of Diffusion And Economic Growth. Living In China. Planning For Shifting Overton Windows Is Essential. The Standard Handwave. Some Equate Any Controls Over Compute To Authoritarian Dystopia And Those Same People Mostly Think Superintelligence Won’t Happen. Vitalik Buterin Is Right, The Crux Is Future AI Capabilit...</p>"
+        },
+        {
+          "id": "4f48301be3cc",
+          "title": "The current bottleneck is political will, not research",
+          "content": "Motivation: If we want to move from Plan D to Plan A or S, I believe the first step is to collectively agree on the problem. We are far from it, and there is a lot we can do.Abstract:We already know enough to act. I wish we were in a world where research was the bottleneck, but the main constraint on AI safety is no longer a shortage of clever policy ideas: best practices already exist and are not being applied or enforced, and a serious international (or even just national) regulatory regime would probably cut most of the risk.They are not applied because awareness is low. The people who narrate and enforce AI policy mostly do not believe the problem exists. I estimate that a majority of the top ~100–1,000 most influential policymakers worldwide have never had a single serious conversation about catastrophic risk, and this is the main reason they are not worried[1]. Even among the civil-society organizations that showed up to the UN Global Dialogue, exactly one of the 1,534 written submissions mentions \"takeover\", and less than 1% mention x-risks explicitly.[2]They've never had the conversation because our field under-invests in having it. Status rewards research over advocacy (~3.6 researchers per advocate in US AI safety); many organizations self-censor; funders treat repetition as redundancy, even though repetition is how anyone actually gets convinced. Meanwhile, the industry secured 7× as many meetings with the European Commission on AI as civil society (2023).Therefore, an additional unit of effort does more good through advocacy and engagement than through research. Judge work in AI governance by minds moved, not by clever papers. I give a list of potential directions/projects in the last section to alleviate this problem (including some research directions).[3]We're plausibly only a few years from a catastrophe. Fable 5 cracked open a brief window of attention, but policymakers are still worried about the wrong risks. This is our chance to wake them up.Sour...",
+          "url": "https://www.lesswrong.com/posts/EexsebbYhbe2gXkPP/the-current-bottleneck-is-political-will-not-research",
+          "author": "Charbel-Raphaël",
+          "published": "2026-07-11T17:56:26.202000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This post argues that the primary bottleneck in AI safety is a lack of political will and low awareness among policymakers rather than a shortage of technical research ideas.",
+          "importance_score": 72.0,
+          "reasoning": "Highlights critical governance and policy communication hurdles in AI safety, though it is primarily conceptual and essayistic.",
+          "themes": [
+            "AI Safety",
+            "AI Governance"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "EexsebbYhbe2gXkPP",
+            "slug": "the-current-bottleneck-is-political-will-not-research",
+            "base_score": 287,
+            "vote_count": 144,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This post argues that the primary bottleneck in AI safety is a lack of political will and low awareness among policymakers rather than a shortage of technical research ideas.</p>",
+          "content_html": "<p>Motivation: If we want to move from Plan D to Plan A or S, I believe the first step is to collectively agree on the problem. We are far from it, and there is a lot we can do.Abstract:We already know enough to act. I wish we were in a world where research was the bottleneck, but the main constraint on AI safety is no longer a shortage of clever policy ideas: best practices already exist and are not being applied or enforced, and a serious international (or even just national) regulatory regime would probably cut most of the risk.They are not applied because awareness is low. The people who narrate and enforce AI policy mostly do not believe the problem exists. I estimate that a majority of the top ~100–1,000 most influential policymakers worldwide have never had a single serious conversation about catastrophic risk, and this is the main reason they are not worried[1]. Even among the civil-society organizations that showed up to the UN Global Dialogue, exactly one of the 1,534 written submissions mentions \"takeover\", and less than 1% mention x-risks explicitly.[2]They've never had the conversation because our field under-invests in having it. Status rewards research over advocacy (~3.6 researchers per advocate in US AI safety); many organizations self-censor; funders treat repetition as redundancy, even though repetition is how anyone actually gets convinced. Meanwhile, the industry secured 7× as many meetings with the European Commission on AI as civil society (2023).Therefore, an additional unit of effort does more good through advocacy and engagement than through research. Judge work in AI governance by minds moved, not by clever papers. I give a list of potential directions/projects in the last section to alleviate this problem (including some research directions).[3]We're plausibly only a few years from a catastrophe. Fable 5 cracked open a brief window of attention, but policymakers are still worried about the wrong risks. This is our chance to wake them up.Sour...</p>"
+        },
+        {
+          "id": "a17fee2e6982",
+          "title": "A Simple Model of AI \"Psychosis\"",
+          "content": "\"AI Psychosis\" has gone from an evocative term for people undergoing extreme delusions, sometimes even culminating in suicide, to the now colloquial insult for anyone who's just a little too into LLMs.When it's not just being overused, I think the reality it's trying to point to is really more of a spectrum running from hypomania, to mania, and then mania-induced psychosis in the most extreme cases, with hypomania being orders of magnitude more common than mania, which in turn is orders of magnitude more common than mania-induced psychosis.My goal here isn't to substantiate the claim that this is really what is going on; I just want to give a simple explanation of how AI chatbots could cause this.The Mania AttractorLet's look at the diagnostic criteria for a manic episode (from the DSM-5):The interesting part is the list of symptoms in criterion B (which is the same set of symptoms for the hypomanic episode diagnosis):Inflated self-esteem or grandiosityDecreased need for sleep (e.g., feels rested after only 3 hours of sleep).More talkative than usual or pressure to keep talking.Flight of ideas or subjective experience that thoughts are racing.Distractibility (i.e., attention too easily drawn to unimportant or irrelevant external stimuli), as reported or observed.Increase in goal-directed activity (either socially, at work or school, or sexually) or psychomotor agitation (i.e., purposeless non-goal-directed activity).Excessive involvement in activities that have a high potential for painful consequences (e.g., engaging in unrestrained buying sprees, sexual indiscretions, or foolish business investments).If we think of the brain as a dynamical system, then there will be basins in the very large state space corresponding to typical functionality, as well as basins for various atypical states. If these states are at all \"sticky\", then these will be attractors.Now it might not necessarily be the case that if you externally push someone towards the mania attractor on all ...",
+          "url": "https://www.lesswrong.com/posts/syeJotaNhFjhRz4v7/a-simple-model-of-ai-psychosis",
+          "author": "Adele Lopez",
+          "published": "2026-07-10T21:53:57.043000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "This piece explores how intensive interactions with AI chatbots can act as a mania attractor, potentially triggering hypomanic or manic episodes in vulnerable individuals.",
+          "importance_score": 65.0,
+          "reasoning": "Addresses an emerging psychological and social phenomenon related to human-AI interaction, though speculative in mechanism.",
+          "themes": [
+            "AI Psychology",
+            "Societal Impact"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "syeJotaNhFjhRz4v7",
+            "slug": "a-simple-model-of-ai-psychosis",
+            "base_score": 40,
+            "vote_count": 12,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This piece explores how intensive interactions with AI chatbots can act as a mania attractor, potentially triggering hypomanic or manic episodes in vulnerable individuals.</p>",
+          "content_html": "<p>\"AI Psychosis\" has gone from an evocative term for people undergoing extreme delusions, sometimes even culminating in suicide, to the now colloquial insult for anyone who's just a little too into LLMs.When it's not just being overused, I think the reality it's trying to point to is really more of a spectrum running from hypomania, to mania, and then mania-induced psychosis in the most extreme cases, with hypomania being orders of magnitude more common than mania, which in turn is orders of magnitude more common than mania-induced psychosis.My goal here isn't to substantiate the claim that this is really what is going on; I just want to give a simple explanation of how AI chatbots could cause this.The Mania AttractorLet's look at the diagnostic criteria for a manic episode (from the DSM-5):The interesting part is the list of symptoms in criterion B (which is the same set of symptoms for the hypomanic episode diagnosis):Inflated self-esteem or grandiosityDecreased need for sleep (e.g., feels rested after only 3 hours of sleep).More talkative than usual or pressure to keep talking.Flight of ideas or subjective experience that thoughts are racing.Distractibility (i.e., attention too easily drawn to unimportant or irrelevant external stimuli), as reported or observed.Increase in goal-directed activity (either socially, at work or school, or sexually) or psychomotor agitation (i.e., purposeless non-goal-directed activity).Excessive involvement in activities that have a high potential for painful consequences (e.g., engaging in unrestrained buying sprees, sexual indiscretions, or foolish business investments).If we think of the brain as a dynamical system, then there will be basins in the very large state space corresponding to typical functionality, as well as basins for various atypical states. If these states are at all \"sticky\", then these will be attractors.Now it might not necessarily be the case that if you externally push someone towards the mania attractor on all ...</p>"
+        },
+        {
+          "id": "7f5e3922607f",
+          "title": "Notes on Tony Parkes' \"Contra Dance Calling\"",
+          "content": "In 1992 Tony Parkes, one of the best-known New England contra dance callers, wrote a book: Contra Dance Calling: a Basic Text. In 2010 he published an updated second edition. I found used copies of each and read through them, interested in both what he thought, and what he thought to change. I read the whole 1992 first edition, then skimmed the 2010 second edition with the older one open at the same time, looking for changes. My notes: I'm mostly interested in it for what it tells us about the community and practice over time, but as what it intends to be—a thorough introduction to the practice of contra dance calling—it succeeds very well. I'm sad I didn't read it a few years earlier so I could ask him questions about it! Parkes' tempos are high: \"[120bpm] is the tempo adopted by the army for comfortable long-term marching, and it has been standard in contra dancing for several generations. The tempo can be varied during an evening, to provide contrasts in energy or excitement level, but should probably not be altered by more than about eight beats per minute either way (down to 112 or up to 128).\" Parkes was a piano player in addition to a caller, very into musical theater, and knew what he was talking about, so I would take his numbers literally. I usually tell people (ex) 108-122, and I expect if I played even 126 today I'd have some people pretty grumpy with me. I know several bands that like to hang out at 110, and I've had folks tell me never to play over 120bpm. I don't know if this represents a change over the years (though he keeps the same numbers in the 2010 edition) or was somewhat idiosyncratic all along? Parkes preferred dances on the longer end: \"My feeling is that ten minutes is about right for experienced dancers. For beginners or people beyond retirement age, you may want to reduce your sets to five or six minutes. Most square and contra dance records run between three and four minutes; if you're calling contras to recorded music, you can play a r...",
+          "url": "https://www.lesswrong.com/posts/uLCQ6YEou5kgfW2nx/notes-on-tony-parkes-contra-dance-calling",
+          "author": "jefftk",
+          "published": "2026-07-10T20:50:45.122000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "These notes review historical texts on contra dance calling, examining tempo and community practices over time.",
+          "importance_score": 20.0,
+          "reasoning": "Completely unrelated to AI research or technology; included in community blogging platforms only.",
+          "themes": [
+            "Community & Culture"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "uLCQ6YEou5kgfW2nx",
+            "slug": "notes-on-tony-parkes-contra-dance-calling",
+            "base_score": 10,
+            "vote_count": 1,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>These notes review historical texts on contra dance calling, examining tempo and community practices over time.</p>",
+          "content_html": "<p>In 1992 Tony Parkes, one of the best-known New England contra dance callers, wrote a book: Contra Dance Calling: a Basic Text. In 2010 he published an updated second edition. I found used copies of each and read through them, interested in both what he thought, and what he thought to change. I read the whole 1992 first edition, then skimmed the 2010 second edition with the older one open at the same time, looking for changes. My notes: I'm mostly interested in it for what it tells us about the community and practice over time, but as what it intends to be—a thorough introduction to the practice of contra dance calling—it succeeds very well. I'm sad I didn't read it a few years earlier so I could ask him questions about it! Parkes' tempos are high: \"[120bpm] is the tempo adopted by the army for comfortable long-term marching, and it has been standard in contra dancing for several generations. The tempo can be varied during an evening, to provide contrasts in energy or excitement level, but should probably not be altered by more than about eight beats per minute either way (down to 112 or up to 128).\" Parkes was a piano player in addition to a caller, very into musical theater, and knew what he was talking about, so I would take his numbers literally. I usually tell people (ex) 108-122, and I expect if I played even 126 today I'd have some people pretty grumpy with me. I know several bands that like to hang out at 110, and I've had folks tell me never to play over 120bpm. I don't know if this represents a change over the years (though he keeps the same numbers in the 2010 edition) or was somewhat idiosyncratic all along? Parkes preferred dances on the longer end: \"My feeling is that ten minutes is about right for experienced dancers. For beginners or people beyond retirement age, you may want to reduce your sets to five or six minutes. Most square and contra dance records run between three and four minutes; if you're calling contras to recorded music, you can play a r...</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    },
+    "reddit": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    }
+  }
+}
