@@ -14,21 +14,21 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>AATF AI News Aggregator</strong> delivers daily briefings on AI/ML developments,
+				<strong>AI Observatory</strong> delivers strategic daily briefings on AI/ML developments,
 				helping you stay current with the fast-moving world of artificial intelligence.
 			</p>
 			<p>
-				Built by the <a href="https://www.trendmicro.com/" target="_blank" rel="noopener noreferrer" class="text-trend-red hover:underline font-semibold">TrendAI</a> <strong>AI Acceleration Task Force (AATF)</strong>, this project was created
-				to make sense of the overwhelming volume of AI news published daily across research papers,
-				news outlets, and social media.
+				This project is a custom fork of the excellent <a href="https://github.com/flyryan/ai-news-aggregator" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">AI News Aggregator</a> created by the TrendAI AATF. 
+				While we maintain the robust underlying multi-agent logic of the original architecture, this instance introduces deep customizations: 
+				we have tailored the data sources, integrated continuous analysis of <strong>GitHub Repositories</strong>, 
+				and entirely redesigned the information representation to focus on strategic insights, business implications, and trend velocity.
 			</p>
 			<p>
-				The aggregator uses a multi-agent pipeline powered by Claude Opus 4.8 with adaptive thinking
+				The aggregator uses a multi-agent pipeline powered by native AI models with adaptive thinking
 				to gather, analyze, and synthesize content from diverse sources into coherent daily reports.
 			</p>
 			<p>
-				Originally developed as an internal tool to keep our team informed, we've open-sourced
-				it so others can run their own instances or contribute improvements.
+				You can explore the source code of this fork on <a href="https://github.com/BlockFrame/AI-Observatory" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.
 			</p>
 		</div>
 	</section>
@@ -41,12 +41,12 @@
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<figure class="my-6">
 				<img
-					src="/assets/agent-architecture.webp"
-					alt="Agent architecture diagram showing data sources flowing through gatherers and analyzers to the orchestrator"
-					class="w-full rounded-lg shadow-md"
+					src="/assets/about-hero.jpg"
+					alt="Conceptual visualization of the AI Observatory data pipeline"
+					class="w-full rounded-2xl shadow-xl border border-white/5"
 				/>
-				<figcaption class="text-center text-sm text-trend-gray-500 dark:text-trend-gray-500 mt-2">
-					Multi-agent pipeline architecture
+				<figcaption class="text-center text-sm text-trend-gray-500 dark:text-trend-gray-500 mt-3">
+					Conceptual visualization of the AI Observatory data pipeline
 				</figcaption>
 			</figure>
 			<p>Each day, the pipeline runs through several phases:</p>
@@ -90,14 +90,13 @@
 				</h2>
 				<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 					<p>
-						<strong>All summaries and analysis on this site are AI-generated</strong> using
-						Claude Opus 4.8 from Anthropic. The content is produced entirely by automated processes
-						without human editorial review.
+						<strong>All summaries and analysis on this site are AI-generated</strong>. 
+						The content is produced entirely by automated processes without human editorial review, 
+						leveraging state-of-the-art models for data synthesis.
 					</p>
 					<p>
-						The pipeline uses Claude Opus 4.8 <strong>adaptive thinking</strong> for complex
-						analysis tasks like cross-category topic detection and executive summaries. On Opus 4.8,
-						this is guided by effort settings rather than fixed manual token budgets.
+						The pipeline uses <strong>adaptive thinking</strong> for complex analysis tasks like 
+						cross-category topic detection, business implication extraction, and executive summaries.
 					</p>
 					<p>
 						<strong>While we strive for accuracy, AI can and does make errors.</strong> These may include:
