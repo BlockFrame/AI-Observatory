@@ -661,23 +661,24 @@ analysis:
 orchestration:
   # Available variables: ${context}
   topic_detection: |
-    Analyze the following category reports from today's AI news collection and identify the TOP 6 cross-category topics that appear across multiple categories. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
+    Analyze the following category reports from today's AI news, research, social media, and GitHub trending collection, and identify the TOP 6 cross-category topics that represent the most significant strategic developments today.
 
     ${context}
 
-    For each cross-category topic, provide:
-    1. A concise name (2-5 words)
-    2. A description (2-3 sentences) as PLAIN TEXT without any links
-       - DO NOT include any markdown links or URLs
-       - Write factual claims that reference specific sources by name
-       - Links will be added automatically in a later processing step
-    3. Which categories it appears in and roughly how many items
+    For each top topic, provide:
+    1. A concise, authoritative name (2-5 words)
+    2. A rich, high-insight description (2-4 sentences) written as PLAIN TEXT without any links:
+       - DO NOT include any markdown links or URLs.
+       - Synthesize what happened across categories (news, research, open-source repos, community signals).
+       - Explicitly explain the **strategic and technical insight** for an AI Director (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or technical trade-offs).
+       - Reference key sources, institutions, or repositories by name (e.g., "Google announced...", "A Stanford paper demonstrated...", "The koala73/worldmonitor repo emerged as...")
+    3. Category breakdown mapping: {"news": N, "research": N, "social": N, "github_trending": N}
     4. An importance score (0-100)
 
-    IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name (e.g., "Google announced...", "A Stanford paper found...") but do NOT include URLs or markdown link syntax.
+    IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name, but do NOT include URLs or markdown link syntax. Links will be added automatically in a post-processing step.
 
     Example description format:
-    "Google announced a major breakthrough in reasoning models, while researchers at Stanford published findings showing improved benchmark performance. The Reddit community has been actively discussing implications."
+    "Google and Stanford announced major breakthroughs in compact reasoning architectures, while developers on GitHub launched breakout tools for local model orchestration. This shift signals a major industry push toward low-latency, privacy-first edge agents that dramatically reduce cloud API dependencies."
 
     Return your analysis as JSON:
     ```json
@@ -685,63 +686,60 @@ orchestration:
       "topics": [
         {
           "name": "Topic Name",
-          "description": "Plain text description referencing sources by name without any links.",
-          "categories": {"news": 5, "papers": 2, "social": 10, "reddit": 3},
-          "importance": 85
+          "description": "Plain text description with strategic insights and source references without any links.",
+          "categories": {"news": 5, "research": 2, "social": 10, "github_trending": 4},
+          "importance": 88
         }
       ]
     }
     ```
 
-    Focus on genuinely cross-cutting themes representing the day's most significant AI developments.
+    Focus on genuinely cross-cutting themes representing the day's most significant AI developments and strategic insights.
 
     RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a model release):
     - For every model named in a candidate topic, look up the model in the AI ECOSYSTEM GROUNDING section at the top of your system prompt.
-    - If the model's GA date is more than 7 days before the coverage date, do NOT frame the topic as a "release", "launch", "strategic shift", "historically significant move", "major upgrade", or similar. Such items are coverage, tutorials, or follow-up discussion of an existing model — frame the topic accordingly (e.g., "Local inference tooling for GPT-OSS" rather than "Open-Weight Models & Local Inference: a strategic shift").
+    - If the model's GA date is more than 7 days before the coverage date, do NOT frame the topic as a "release" or "launch". Frame it as ongoing development or ecosystem adaptation.
     - A "release" topic must center on a model whose GA date is on or within ~7 days of the coverage date.
-    - Continuation/follow-up topics about a model that was already covered as a release in the prior 1-3 days should be downweighted (importance ≤ 65) unless there is a genuinely new development beyond initial coverage.
 
   # Available variables: ${context}
   executive_summary: |
-    Write a high-level strategic executive summary of today's AI news, research breakthroughs, and open-source landscape tailored for an AI Director.
+    Write a structured, high-level executive summary of today's AI news, research breakthroughs, and open-source landscape tailored for an AI Director, incorporating the clean structural sections of the original briefing framework.
 
     ${context}
 
-    FORMAT YOUR SUMMARY LIKE THIS:
+    FORMAT YOUR SUMMARY EXACTLY LIKE THIS:
 
-    #### Strategic Overview
-    2-3 sentences synthesizing the overarching technological shifts, architectural trends, research breakthroughs, and ecosystem momentum of the day.
+    #### Top Story & Strategic Insight
+    2-3 sentences synthesizing the most important development of the day, explaining what happened and why it matters strategically for an AI Director.
 
-    #### Key Developments & Frontier Repositories
-    - **[Company/Product/Repo Name]**: Strategic impact description emphasizing technical innovation, ecosystem relevance, or enterprise applicability (1-2 sentences)
-    - **[Company/Product/Repo Name]**: Strategic impact description (1-2 sentences)
-    - (Include 3-5 bullet points covering major model/product releases and breakout GitHub trending repositories)
+    #### Key Developments
+    - **[Company/Product Name]**: Concise description of the news and its strategic implications for products or infrastructure (1-2 sentences)
+    - **[Company/Product Name]**: Concise strategic description (1-2 sentences)
+    - (Include 3-5 bullet points covering the primary news announcements and frontier product updates)
 
-    #### Research Breakthroughs & Technical Insights
-    - **[Paper/Model Name]** ([Institution/Lab]): Technical insight explaining what was achieved, key performance metrics (e.g., **3x inference efficiency**, **+12% reasoning SOTA**), and why it matters strategically for enterprise AI or future model design (1-2 sentences)
-    - **[Paper/Model Name]** ([Institution/Lab]): Strategic research insight (1-2 sentences)
-    - (Include 2-4 bullet points analyzing key research papers and breakthroughs - skip section if no research items today)
+    #### Open-Source & GitHub Trending Repositories
+    - **[Repo/Tool Name]**: Explanation of the open-source tool, its category/purpose, and why it matters for developer architecture or agentic workflows (1-2 sentences)
+    - (Include 2-4 bullet points highlighting the top breakout GitHub repositories)
 
-    #### Architecture, Tooling & Open-Source Insights
-    - Provide analytical insights on trending open-source tools, agentic frameworks, and developer infrastructure (highlighting breakout GitHub repos, their category/purpose, and why they matter strategically)
+    #### Research Highlights & Technical Insights
+    - **[Paper/Model Name]** ([Institution/Lab]): Technical insight explaining the breakthrough, key metrics (e.g., **3x inference speedup**, **+15% benchmark gain**), and why it matters for model design or deployment (1-2 sentences)
+    - (Include 2-3 bullet points analyzing the top research papers - omit section if no research items today)
 
     #### Looking Ahead & Leadership Implications
     1-2 sentences on forward-looking strategic implications for AI leaders and engineering decisions.
 
     FORMATTING RULES:
-    - Target audience: AI Director / VP of AI needing strategic clarity rather than a basic news list
-    - For research papers: NEVER just list paper titles or links. Explain the technical breakthrough, core metrics, and strategic value for AI engineering.
-    - Explicitly highlight breakout GitHub repositories and open-source tools, explaining *what type* of tools they are and *why* they matter strategically
-    - Use **bold** for company names (OpenAI, Google, Anthropic), product names, GitHub repositories, research paper/model names, and key numbers/stats
-    - Use #### for section headers and - for bullet points
-    - Write in an authoritative, analytical, and professional tone - no generic fluff or hype
+    - Target audience: AI Director / VP of AI needing strategic clarity, technical depth, and actionable insights.
+    - For research & GitHub repos: NEVER just list titles or URLs. Provide actionable technical insights, metrics, and strategic utility.
+    - Use **bold** for company names, product names, repository names, paper names, model names, and key numbers/stats.
+    - Use #### for section headers and - for bullet points.
+    - Write in an authoritative, clear, and insight-driven executive tone - no hype or generic filler phrases.
 
     CRITICAL - AVOID REPETITION:
-    - Review the PREVIOUS DAYS' COVERAGE section above carefully
-    - If a story was already a headline/top story in previous days, do NOT present it as breaking news again
-    - For ongoing stories, frame as "continuing developments" or focus on what's genuinely NEW today
+    - Review the PREVIOUS DAYS' COVERAGE section above carefully.
+    - If a story was already a headline in previous days, do NOT present it as breaking news again.
 
-    The summary should provide actionable executive-level insights for an AI Director.
+    The summary must serve as a complete, high-value executive briefing for an AI Director.
 
 # -----------------------------------------------------------------------------
 # POST-PROCESSING PHASE
