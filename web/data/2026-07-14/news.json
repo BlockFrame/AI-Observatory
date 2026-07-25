@@ -1,0 +1,182 @@
+{
+  "category": "news",
+  "date": "2026-07-14",
+  "category_summary": "No fresh eligible items to summarize.",
+  "category_summary_html": "<p>No fresh eligible items to summarize.</p>",
+  "themes": [
+    {
+      "name": "Interpretability and Research",
+      "description": "Examinations of internal model mechanics, interpretability science, and foundational research by frontier AI labs.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "Developer Tools",
+      "description": "Practical tools, browser extensions, and environment integrations designed to improve AI-assisted coding and agentic workflows.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 60.0
+    }
+  ],
+  "total_items": 2,
+  "items": [
+    {
+      "id": "827cba6b9857",
+      "title": "What Anthropic’s latest AI discovery does—and doesn’t—show",
+      "content": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here.\n\n\n\nAnthropic—currently the world’s most valuable AI company, with a nearly $1 trillion valuation—has a reputation for publishing strange and heady research. It’s looking into whether AI models can feel pain, for example, and will sometimes cut off chatbot conversations if it suspects users are “abusing” the model.&nbsp;\n\n\n\nOne niche that Anthropic spends more time and money on than other AI companies is called mechanistic interpretability, which means looking inside the complex math of an AI model to learn why it comes up with one particular output and not another. It’s complicated stuff; there are millions of data points that might contribute to any result, and wading through them can look more like word salad than anything useful. It’s also controversial. Describing AI models with terms borrowed from psychology and neuroscience can make their behavior seem more sophisticated than we might otherwise judge it to be.\n\n\n\nThat’s why, when Anthropic announced last week that it had found a new window into its models’ “internal thoughts” as they reason through answers, there was one colleague I had to talk to. Senior editor Will Douglas Heaven, aside from having a PhD in computer science, has spent a lot of time digging into what we can say about how AI models work. I spoke with him about what we should take from Anthropic’s new (and predictably quirky) research.\n\n\n\nWhat did Anthropic learn here, exactly?\n\n\n\nAnthropic has been trying to understand how large language models (LLMs) work for a few years now. Anthropic isn’t the only one looking at this, but I think the company has made it part of its core mission more than most. Anthropic’s CEO, Dario Amodei, has said we won’t be able to control LLMs fully unless we learn more about how they work.&nbsp;\n\n\n\nSo this new research is very much in that context. It goes deeper into the weird mechanisms inside LLMs than ever before. What Anthropic learned was that LLMs have a space inside them—which Anthropic calls the J-space—filled with words that don’t appear in their output but that seem to influence the way they puzzle through problems. All this was hidden until Anthropic developed a new technique to probe its model Claude, so it’s a genuine discovery.&nbsp;\n\n\n\nSometimes these words keep track of where the LLM has got to in a particular task, sometimes they look more like flashes of recognition (for example, “protein” might pop up when you give an LLM only the letters of a protein sequence), and sometimes they represent a kind of internal commentary on the model’s decision-making. In my favorite example, Claude decided to cheat on a coding test when the word “panic” appeared.\n\n\n\nAnthropic also found that LLMs are able to describe and manipulate the words in this space. So somehow they seem to be making use of it.&nbsp;\n\n\n\nLet’s step back for a second. I don’t think of large language models as simple, but they’re also not magic. There’s a bunch of math that learns relationships between words, right? So why is it so hard to “peer” into an LLM to know what’s going on?\n\n\n\nYeah, they’re not magic! I think the fact we don’t fully understand them plays into the mythmaking. And it’s worth noting that the whole narrative that Anthropic is leaning into here—that they’ve built this really mysterious technology, but don’t worry, because they’re also the ones to figure it out—very much fits with the company’s vibe. [See how Anthropic warned that its new models were so good at coding they posed a global cybersecurity risk, only for the US government to shut them down shortly thereafter.]\n\n\n\nSo yes: LLMs are just math. And yet it’s vastly complex math. Not only are today’s LLMs made out of hundreds of billions of numbers, but running them triggers a cascade of millions and millions of calculations. I wrote last year that if you printed out even a medium-size LLM on pieces of paper, it would cover a city the size of San Francisco.&nbsp;\n\n\n\nIt’s impossible to make sense of any of that math without specialist tools that highlight specific parts of an LLM at specific times. You need to know where to look and how to look. And building those tools requires understanding something of that complex math in the first place.&nbsp;\n\n\n\nYou’ve written elsewhere about this concept of studying LLMs the way one might study an organism’s brain. Is it fair to use “brain-like” terms when talking about how an LLM works?\n\n\n\nI don’t love using those kinds of terms. LLMs are not brains. Talking like this is misleading because it can suggest that LLMs are capable of more human-like things than they are or that we can make assumptions about how they might behave that we shouldn’t. The whole anthropomorphization thing is also tied up with a bunch of strong ideological positions about what this technology is and what it’s going to be.&nbsp;\n\n\n\nBut at the same time, we lack a good alternative vocabulary for talking about what these models are doing. I can understand why people reach for words like “think” and “understand” and “brain-like”—they’re convenient shorthand.&nbsp;\n\n\n\nAnthropic compares this new space it found inside LLMs to the space that some neuroscientists think our brains use to keep track of conscious thoughts. I asked the company how seriously we should take that comparison and it said in a statement: “Drawing these analogies was helpful to us in designing our experiments, as they allowed us to make many non-obvious experimental predictions about the J-space that turned out to be true. At the same time, it’s important to note that there are some important differences between the J-space (and language models in general) and the human brain, so we don’t mean to claim there’s a perfect correspondence.”&nbsp;\n\n\n\nWhat’s a problem in AI that this new concept of the J-space might be used to solve?\n\n\n\nAnthropic has said that monitoring the J-space could be a way to catch models doing something they shouldn’t. Because words pop up in this space that don’t appear in a model’s output, they can tell you things about its behavior that you might not have noticed otherwise—such as when it is giving biased responses or when it is weighing the pros and cons of cheating.&nbsp;\n\n\n\nThat’s the theory, at least. I think it’s better to think of this result as one more step on the path to understanding this technology overall than as something that will be useful by itself.&nbsp;\n\n\n\nRead more in Will’s full story about the new research.&nbsp;",
+      "url": "https://www.technologyreview.com/2026/07/13/1140343/what-anthropics-latest-ai-discovery-does-and-doesnt-show/",
+      "author": "James O'Donnell",
+      "published": "2026-07-13T18:00:00",
+      "source": "Artificial intelligence – MIT Technology Review",
+      "source_type": "rss",
+      "tags": [
+        "Artificial intelligence",
+        "App",
+        "artificial intelligence",
+        "The Algorithm"
+      ],
+      "summary": "An MIT Technology Review analysis examines Anthropic's ongoing focus on mechanistic interpretability, exploring how the company investigates the internal mathematical structures of its models to understand their outputs. The piece highlights Anthropic's distinct research culture relative to other top-tier AI labs.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: secondary coverage of primary source from 2025-04-24 (445d before coverage)] Mechanistic interpretability remains a critical frontier for understanding and aligning advanced AI systems, making deep analyses of frontier lab research significant, even if it is commentary rather than a direct model release.",
+      "themes": [
+        "Interpretability and Research",
+        "AI Safety and Alignment"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_followup",
+        "label": "Follow-up",
+        "reason": "secondary coverage of primary source from 2025-04-24 (445d before coverage)",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "primary_url": "https://www.anthropic.com/research/exploring-model-welfare",
+        "primary_published": "2025-04-24",
+        "age_days": 445
+      },
+      "metadata": {
+        "feed_url": "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
+        "raw_summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Anthropic—currently the world’s most valuable AI company, with a nearly $1 trillion valuation—has a reputation for publishing strange and heady research. It’s looking into whether AI models can feel pain, for example,&#8230;",
+        "interest_score": 8.0,
+        "freshness": {
+          "status": "stale_followup",
+          "label": "Follow-up",
+          "reason": "secondary coverage of primary source from 2025-04-24 (445d before coverage)",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "primary_url": "https://www.anthropic.com/research/exploring-model-welfare",
+          "primary_published": "2025-04-24",
+          "age_days": 445
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>An MIT Technology Review analysis examines Anthropic's ongoing focus on mechanistic interpretability, exploring how the company investigates the internal mathematical structures of its models to understand their outputs. The piece highlights Anthropic's distinct research culture relative to other top-tier AI labs.</p>",
+      "content_html": "<p>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first,&nbsp;sign up here.</p>\n<p>Anthropic—currently the world’s most valuable AI company, with a nearly $1 trillion valuation—has a reputation for publishing strange and heady research. It’s looking into whether AI models can feel pain, for example, and will sometimes cut off chatbot conversations if it suspects users are “abusing” the model.&nbsp;</p>\n<p>One niche that Anthropic spends more time and money on than other AI companies is called mechanistic interpretability, which means looking inside the complex math of an AI model to learn why it comes up with one particular output and not another. It’s complicated stuff; there are millions of data points that might contribute to any result, and wading through them can look more like word salad than anything useful. It’s also controversial. Describing AI models with terms borrowed from psychology and neuroscience can make their behavior seem more sophisticated than we might otherwise judge it to be.</p>\n<p>That’s why, when Anthropic announced last week that it had found a new window into its models’ “internal thoughts” as they reason through answers, there was one colleague I had to talk to. Senior editor Will Douglas Heaven, aside from having a PhD in computer science, has spent a lot of time digging into what we can say about how AI models work. I spoke with him about what we should take from Anthropic’s new (and predictably quirky) research.</p>\n<p>What did Anthropic learn here, exactly?</p>\n<p>Anthropic has been trying to understand how large language models (LLMs) work for a few years now. Anthropic isn’t the only one looking at this, but I think the company has made it part of its core mission more than most. Anthropic’s CEO, Dario Amodei, has said we won’t be able to control LLMs fully unless we learn more about how they work.&nbsp;</p>\n<p>So this new research is very much in that context. It goes deeper into the weird mechanisms inside LLMs than ever before. What Anthropic learned was that LLMs have a space inside them—which Anthropic calls the J-space—filled with words that don’t appear in their output but that seem to influence the way they puzzle through problems. All this was hidden until Anthropic developed a new technique to probe its model Claude, so it’s a genuine discovery.&nbsp;</p>\n<p>Sometimes these words keep track of where the LLM has got to in a particular task, sometimes they look more like flashes of recognition (for example, “protein” might pop up when you give an LLM only the letters of a protein sequence), and sometimes they represent a kind of internal commentary on the model’s decision-making. In my favorite example, Claude decided to cheat on a coding test when the word “panic” appeared.</p>\n<p>Anthropic also found that LLMs are able to describe and manipulate the words in this space. So somehow they seem to be making use of it.&nbsp;</p>\n<p>Let’s step back for a second. I don’t think of large language models as simple, but they’re also not magic. There’s a bunch of math that learns relationships between words, right? So why is it so hard to “peer” into an LLM to know what’s going on?</p>\n<p>Yeah, they’re not magic! I think the fact we don’t fully understand them plays into the mythmaking. And it’s worth noting that the whole narrative that Anthropic is leaning into here—that they’ve built this really mysterious technology, but don’t worry, because they’re also the ones to figure it out—very much fits with the company’s vibe. [See how Anthropic warned that its new models were so good at coding they posed a global cybersecurity risk, only for the US government to shut them down shortly thereafter.]</p>\n<p>So yes: LLMs are just math. And yet it’s vastly complex math. Not only are today’s LLMs made out of hundreds of billions of numbers, but running them triggers a cascade of millions and millions of calculations. I wrote last year that if you printed out even a medium-size LLM on pieces of paper, it would cover a city the size of San Francisco.&nbsp;</p>\n<p>It’s impossible to make sense of any of that math without specialist tools that highlight specific parts of an LLM at specific times. You need to know where to look and how to look. And building those tools requires understanding something of that complex math in the first place.&nbsp;</p>\n<p>You’ve written elsewhere about this concept of studying LLMs the way one might study an organism’s brain. Is it fair to use “brain-like” terms when talking about how an LLM works?</p>\n<p>I don’t love using those kinds of terms. LLMs are not brains. Talking like this is misleading because it can suggest that LLMs are capable of more human-like things than they are or that we can make assumptions about how they might behave that we shouldn’t. The whole anthropomorphization thing is also tied up with a bunch of strong ideological positions about what this technology is and what it’s going to be.&nbsp;</p>\n<p>But at the same time, we lack a good alternative vocabulary for talking about what these models are doing. I can understand why people reach for words like “think” and “understand” and “brain-like”—they’re convenient shorthand.&nbsp;</p>\n<p>Anthropic compares this new space it found inside LLMs to the space that some neuroscientists think our brains use to keep track of conscious thoughts. I asked the company how seriously we should take that comparison and it said in a statement: “Drawing these analogies was helpful to us in designing our experiments, as they allowed us to make many non-obvious experimental predictions about the J-space that turned out to be true. At the same time, it’s important to note that there are some important differences between the J-space (and language models in general) and the human brain, so we don’t mean to claim there’s a perfect correspondence.”&nbsp;</p>\n<p>What’s a problem in AI that this new concept of the J-space might be used to solve?</p>\n<p>Anthropic has said that monitoring the J-space could be a way to catch models doing something they shouldn’t. Because words pop up in this space that don’t appear in a model’s output, they can tell you things about its behavior that you might not have noticed otherwise—such as when it is giving biased responses or when it is weighing the pros and cons of cheating.&nbsp;</p>\n<p>That’s the theory, at least. I think it’s better to think of this result as one more step on the path to understanding this technology overall than as something that will be useful by itself.&nbsp;</p>\n<p>Read more in Will’s full story about the new research.&nbsp;</p>"
+    },
+    {
+      "id": "eaa4749a557b",
+      "title": "Claude Code browser 🌍, Cursor general agent 🤖, Claude Fable extension ⏳",
+      "content": "",
+      "url": "https://tldr.tech/ai/2026-07-13",
+      "author": "TLDR",
+      "published": "2026-07-13T00:00:00",
+      "source": "TLDR AI RSS Feed",
+      "source_type": "rss",
+      "tags": [
+        "Tech"
+      ],
+      "summary": "A developer-focused newsletter roundup highlights recent tool updates, including a browser extension for Claude Code, a general agent feature in Cursor, and integrations involving the Claude Fable model ecosystem. These updates reflect ongoing feature expansions in AI-powered development workflows.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior reddit coverage from 2026-07-06] The item covers routine updates and tooling integrations rather than major foundational model breakthroughs, though it tracks practical advancements in developer productivity ecosystems.",
+      "themes": [
+        "Developer Tools",
+        "AI Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior reddit coverage from 2026-07-06",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 7,
+        "matched_prior_items": [
+          {
+            "id": "76a562f00a8d",
+            "date": "2026-07-06",
+            "category": "reddit",
+            "title": "Model shifter for claude",
+            "source": "r/ClaudeAI",
+            "url": "https://reddit.com/r/ClaudeAI/comments/1unyk0o/model_shifter_for_claude/"
+          },
+          {
+            "id": "36a6a3885a80",
+            "date": "2026-06-19",
+            "category": "reddit",
+            "title": "Warp/cursor vs Claude Code native app",
+            "source": "r/ClaudeAI",
+            "url": "https://reddit.com/r/ClaudeAI/comments/1u93wd7/warpcursor_vs_claude_code_native_app/"
+          },
+          {
+            "id": "35380c77325e",
+            "date": "2026-06-08",
+            "category": "reddit",
+            "title": "I built a workspace picker for Claude Code",
+            "source": "r/ClaudeAI",
+            "url": "https://reddit.com/r/ClaudeAI/comments/1tzv7ow/i_built_a_workspace_picker_for_claude_code/"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://tldr.tech/api/rss/ai",
+        "raw_summary": "",
+        "interest_score": 8.0,
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior reddit coverage from 2026-07-06",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 7,
+          "matched_prior_items": [
+            {
+              "id": "76a562f00a8d",
+              "date": "2026-07-06",
+              "category": "reddit",
+              "title": "Model shifter for claude",
+              "source": "r/ClaudeAI",
+              "url": "https://reddit.com/r/ClaudeAI/comments/1unyk0o/model_shifter_for_claude/"
+            },
+            {
+              "id": "36a6a3885a80",
+              "date": "2026-06-19",
+              "category": "reddit",
+              "title": "Warp/cursor vs Claude Code native app",
+              "source": "r/ClaudeAI",
+              "url": "https://reddit.com/r/ClaudeAI/comments/1u93wd7/warpcursor_vs_claude_code_native_app/"
+            },
+            {
+              "id": "35380c77325e",
+              "date": "2026-06-08",
+              "category": "reddit",
+              "title": "I built a workspace picker for Claude Code",
+              "source": "r/ClaudeAI",
+              "url": "https://reddit.com/r/ClaudeAI/comments/1tzv7ow/i_built_a_workspace_picker_for_claude_code/"
+            }
+          ]
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A developer-focused newsletter roundup highlights recent tool updates, including a browser extension for Claude Code, a general agent feature in Cursor, and integrations involving the Claude Fable model ecosystem. These updates reflect ongoing feature expansions in AI-powered development workflows.</p>",
+      "content_html": ""
+    }
+  ]
+}

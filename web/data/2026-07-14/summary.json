@@ -1,0 +1,1357 @@
+{
+  "date": "2026-07-14",
+  "coverage_date": "2026-07-13",
+  "coverage_start": "2026-07-13T00:00:00",
+  "coverage_end": "2026-07-13T23:59:59.999999",
+  "executive_summary": "#### The Bottom Line\nEnterprise AI is pivoting from raw compute expansion toward architectural efficiency, agentic formal verification, and synthetic environment generation. Breakthroughs today demonstrate **Microsoft Research** mathematically verifying production Rust cryptography (**SymCrypt**) via sub-agents, alongside long-context hybrid models like **Soofi S 30B-A3B**. For technical leaders, these developments offer a actionable blueprint to deploy provably secure autonomous workflows while dramatically curbing long-context operational costs.\n\n#### Strategic Shifts\n- **Agentic Formal Code Verification**: **Microsoft Research** demonstrated integrating AI sub-agents with formal verification engines (**Lean**, **Aeneas**) to [mathematically verify production Rust cryptography](/?date=2026-07-14&category=research#item-e60c89e5f278) in **SymCrypt**. This transitions enterprise security from post-hoc empirical testing toward automated, provable correctness.\n- **Hybrid Architecture Scaling**: Foundation model releases like **Soofi S 30B-A3B** combine **Mamba** and **Transformer MoE** designs to activate only **3B parameters** during inference, [drastically cutting compute overhead](/?date=2026-07-14&category=research#item-a5d0bebd45bb). Combined with **Self-Guided Test-Time Training**, this approach [eliminates long-context retrieval degradation](/?date=2026-07-14&category=research#item-b89ab551658d) without requiring expensive model retraining.\n- **Decentralized Swarm Physical AI**: Breakthrough research from **Sakana AI**, **IT University of Copenhagen**, and **Autodesk** [introduced smart cellular bricks](/?date=2026-07-14&category=social#item-2f6fa4018666) using **Neural Cellular Automata** to achieve physical self-repair and shape recognition without a central controller. This represents a paradigm shift toward fault-tolerant edge architectures capable of surviving localized hardware failures.\n- **Agentic Environment and Data Generation**: **MIT CSAIL** introduced **Agentic Playground Generation**, utilizing autonomous LLMs to [construct interactive virtual playgrounds](/?date=2026-07-14&category=research#item-13d963e181b7) that resolve physical simulation data bottlenecks in robotics training. Simultaneously, frameworks like **GenCeption** [convert video diffusion models](/?date=2026-07-14&category=research#item-e956088d6d68) into feed-forward perception backbones for multimodal systems.\n\n#### Signals to Watch\n- **Automated Safety Benchmark Red-Teaming**: Safety frameworks like **Prism** [deploy agentic sub-scaffolds](/?date=2026-07-14&category=research#item-848bed36a14c) to systematically expose structural vulnerabilities and prompt perturbations within standard AI evaluation benchmarks.\n- **Cross-Modal Pretraining Synergies**: New empirical findings in [scalable visual pretraining](/?date=2026-07-14&category=research#item-7c79b730a605) demonstrate that unsupervised visual pretraining directly boosts downstream linguistic reasoning, challenging traditional text-only LLM pretraining strategies.\n- **Stabilized RL Alignment Pipelines**: **Trust Region Policy Distillation** (**TOP-D**) [introduces dynamic proximal teacher baselines](/?date=2026-07-14&category=research#item-82e6c0eebdb9) that eliminate high-variance instability during on-policy distillation, accelerating student model convergence in RLHF.",
+  "executive_summary_html": "<h4>The Bottom Line</h4>\n<p>Enterprise AI is pivoting from raw compute expansion toward architectural efficiency, agentic formal verification, and synthetic environment generation. Breakthroughs today demonstrate <strong>Microsoft Research</strong> mathematically verifying production Rust cryptography (<strong>SymCrypt</strong>) via sub-agents, alongside long-context hybrid models like <strong>Soofi S 30B-A3B</strong>. For technical leaders, these developments offer a actionable blueprint to deploy provably secure autonomous workflows while dramatically curbing long-context operational costs.</p>\n<h4>Strategic Shifts</h4>\n<ul>\n<li><strong>Agentic Formal Code Verification</strong>: <strong>Microsoft Research</strong> demonstrated integrating AI sub-agents with formal verification engines (<strong>Lean</strong>, <strong>Aeneas</strong>) to <a href=\"/?date=2026-07-14&amp;category=research#item-e60c89e5f278\" class=\"internal-link\" rel=\"noopener noreferrer\">mathematically verify production Rust cryptography</a> in <strong>SymCrypt</strong>. This transitions enterprise security from post-hoc empirical testing toward automated, provable correctness.</li>\n<li><strong>Hybrid Architecture Scaling</strong>: Foundation model releases like <strong>Soofi S 30B-A3B</strong> combine <strong>Mamba</strong> and <strong>Transformer MoE</strong> designs to activate only <strong>3B parameters</strong> during inference, <a href=\"/?date=2026-07-14&amp;category=research#item-a5d0bebd45bb\" class=\"internal-link\" rel=\"noopener noreferrer\">drastically cutting compute overhead</a>. Combined with <strong>Self-Guided Test-Time Training</strong>, this approach <a href=\"/?date=2026-07-14&amp;category=research#item-b89ab551658d\" class=\"internal-link\" rel=\"noopener noreferrer\">eliminates long-context retrieval degradation</a> without requiring expensive model retraining.</li>\n<li><strong>Decentralized Swarm Physical AI</strong>: Breakthrough research from <strong>Sakana AI</strong>, <strong>IT University of Copenhagen</strong>, and <strong>Autodesk</strong> <a href=\"/?date=2026-07-14&amp;category=social#item-2f6fa4018666\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced smart cellular bricks</a> using <strong>Neural Cellular Automata</strong> to achieve physical self-repair and shape recognition without a central controller. This represents a paradigm shift toward fault-tolerant edge architectures capable of surviving localized hardware failures.</li>\n<li><strong>Agentic Environment and Data Generation</strong>: <strong>MIT CSAIL</strong> introduced <strong>Agentic Playground Generation</strong>, utilizing autonomous LLMs to <a href=\"/?date=2026-07-14&amp;category=research#item-13d963e181b7\" class=\"internal-link\" rel=\"noopener noreferrer\">construct interactive virtual playgrounds</a> that resolve physical simulation data bottlenecks in robotics training. Simultaneously, frameworks like <strong>GenCeption</strong> <a href=\"/?date=2026-07-14&amp;category=research#item-e956088d6d68\" class=\"internal-link\" rel=\"noopener noreferrer\">convert video diffusion models</a> into feed-forward perception backbones for multimodal systems.</li>\n</ul>\n<h4>Signals to Watch</h4>\n<ul>\n<li><strong>Automated Safety Benchmark Red-Teaming</strong>: Safety frameworks like <strong>Prism</strong> <a href=\"/?date=2026-07-14&amp;category=research#item-848bed36a14c\" class=\"internal-link\" rel=\"noopener noreferrer\">deploy agentic sub-scaffolds</a> to systematically expose structural vulnerabilities and prompt perturbations within standard AI evaluation benchmarks.</li>\n<li><strong>Cross-Modal Pretraining Synergies</strong>: New empirical findings in <a href=\"/?date=2026-07-14&amp;category=research#item-7c79b730a605\" class=\"internal-link\" rel=\"noopener noreferrer\">scalable visual pretraining</a> demonstrate that unsupervised visual pretraining directly boosts downstream linguistic reasoning, challenging traditional text-only LLM pretraining strategies.</li>\n<li><strong>Stabilized RL Alignment Pipelines</strong>: <strong>Trust Region Policy Distillation</strong> (<strong>TOP-D</strong>) <a href=\"/?date=2026-07-14&amp;category=research#item-82e6c0eebdb9\" class=\"internal-link\" rel=\"noopener noreferrer\">introduces dynamic proximal teacher baselines</a> that eliminate high-variance instability during on-policy distillation, accelerating student model convergence in RLHF.</li>\n</ul>",
+  "top_topics": [
+    {
+      "name": "Agent Execution Frameworks and Skill Orchestration",
+      "description": "Open-source projects like ComposioHQ's [awesome-claude-skills](/?date=2026-07-14&category=github_trending#item-300995badbac), obra's [superpowers framework](/?date=2026-07-14&category=github_trending#item-f49502979215), and earendil-works' [pi agent toolkit](/?date=2026-07-14&category=github_trending#item-7f4b77e91802) are standardizing agentic software development and modular skill management. Simultaneously, tooling like citrolabs' [ego-lite provides zero-config browser automation](/?date=2026-07-14&category=github_trending#item-daddc919f43d) by sharing logged-in browser sessions directly with coding agents like Claude Code or Codex. These developments provide enterprise leaders with modular patterns to deploy low-friction autonomous agents across complex web environments and dev pipelines.",
+      "description_html": "Open-source projects like ComposioHQ's <a href=\"/?date=2026-07-14&amp;category=github_trending#item-300995badbac\" class=\"internal-link\" rel=\"noopener noreferrer\">awesome-claude-skills</a>, obra's <a href=\"/?date=2026-07-14&amp;category=github_trending#item-f49502979215\" class=\"internal-link\" rel=\"noopener noreferrer\">superpowers framework</a>, and earendil-works' <a href=\"/?date=2026-07-14&amp;category=github_trending#item-7f4b77e91802\" class=\"internal-link\" rel=\"noopener noreferrer\">pi agent toolkit</a> are standardizing agentic software development and modular skill management. Simultaneously, tooling like citrolabs' <a href=\"/?date=2026-07-14&amp;category=github_trending#item-daddc919f43d\" class=\"internal-link\" rel=\"noopener noreferrer\">ego-lite provides zero-config browser automation</a> by sharing logged-in browser sessions directly with coding agents like Claude Code or Codex. These developments provide enterprise leaders with modular patterns to deploy low-friction autonomous agents across complex web environments and dev pipelines.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 1,
+        "social": 0,
+        "github_trending": 6
+      },
+      "representative_items": [],
+      "importance": 90,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Decentralized Physical AI and Swarm Systems",
+      "description": "Research from Sakana AI, IT University of Copenhagen, and Autodesk in Nature Communications [introduced smart cellular bricks](/?date=2026-07-14&category=social#item-2f6fa4018666) that utilize Neural Cellular Automata for physical consensus, self-repair, and shape recognition without a central controller. Concurrently, open-source projects like the block/buzz repository [are emerging on GitHub](/?date=2026-07-14&category=github_trending#item-096cb92f6d28) to facilitate hive-mind communication models across decentralized hardware. This represents a technical shift from centralized robotics control to resilient, fault-tolerant edge architectures capable of surviving localized module failures.",
+      "description_html": "Research from Sakana AI, IT University of Copenhagen, and Autodesk in Nature Communications <a href=\"/?date=2026-07-14&amp;category=social#item-2f6fa4018666\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced smart cellular bricks</a> that utilize Neural Cellular Automata for physical consensus, self-repair, and shape recognition without a central controller. Concurrently, open-source projects like the block/buzz repository <a href=\"/?date=2026-07-14&amp;category=github_trending#item-096cb92f6d28\" class=\"internal-link\" rel=\"noopener noreferrer\">are emerging on GitHub</a> to facilitate hive-mind communication models across decentralized hardware. This represents a technical shift from centralized robotics control to resilient, fault-tolerant edge architectures capable of surviving localized module failures.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 0,
+        "social": 10,
+        "github_trending": 1
+      },
+      "representative_items": [],
+      "importance": 88,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Hybrid Architecture Scaling and Long-Context Optimization",
+      "description": "The release of Soofi S 30B-A3B [introduces a hybrid Mamba-Transformer](/?date=2026-07-14&category=research#item-a5d0bebd45bb) Mixture-of-Experts foundation model that activates only 3B parameters during inference to maintain long-range state tracking efficiently. In parallel, researchers [introduced self-guided test-time training](/?date=2026-07-14&category=research#item-b89ab551658d) to eliminate retrieval context degradation, while open-source projects like OmniRoute [offer token compression and routing](/?date=2026-07-14&category=github_trending#item-79030ad727e1) for downstream API connections. This combined focus enables high-throughput processing and extended context windows while dramatically curbing compute costs.",
+      "description_html": "The release of Soofi S 30B-A3B <a href=\"/?date=2026-07-14&amp;category=research#item-a5d0bebd45bb\" class=\"internal-link\" rel=\"noopener noreferrer\">introduces a hybrid Mamba-Transformer</a> Mixture-of-Experts foundation model that activates only 3B parameters during inference to maintain long-range state tracking efficiently. In parallel, researchers <a href=\"/?date=2026-07-14&amp;category=research#item-b89ab551658d\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced self-guided test-time training</a> to eliminate retrieval context degradation, while open-source projects like OmniRoute <a href=\"/?date=2026-07-14&amp;category=github_trending#item-79030ad727e1\" class=\"internal-link\" rel=\"noopener noreferrer\">offer token compression and routing</a> for downstream API connections. This combined focus enables high-throughput processing and extended context windows while dramatically curbing compute costs.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "github_trending": 1
+      },
+      "representative_items": [],
+      "importance": 86,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Agentic Formal Verification and Automated Safety Evals",
+      "description": "Microsoft Research demonstrated the integration of AI sub-agents with Lean and Aeneas formal verification engines to [mathematically verify production Rust cryptography](/?date=2026-07-14&category=research#item-e60c89e5f278) in SymCrypt. Alongside this, safety researchers [released Prism, an automated scaffold](/?date=2026-07-14&category=research#item-848bed36a14c) using sub-agents to systematically discover structural vulnerabilities and prompt perturbations in AI evaluation benchmarks. This shifts enterprise AI governance from post-hoc empirical testing toward automated, provable security and robust evaluation standards.",
+      "description_html": "Microsoft Research demonstrated the integration of AI sub-agents with Lean and Aeneas formal verification engines to <a href=\"/?date=2026-07-14&amp;category=research#item-e60c89e5f278\" class=\"internal-link\" rel=\"noopener noreferrer\">mathematically verify production Rust cryptography</a> in SymCrypt. Alongside this, safety researchers <a href=\"/?date=2026-07-14&amp;category=research#item-848bed36a14c\" class=\"internal-link\" rel=\"noopener noreferrer\">released Prism, an automated scaffold</a> using sub-agents to systematically discover structural vulnerabilities and prompt perturbations in AI evaluation benchmarks. This shifts enterprise AI governance from post-hoc empirical testing toward automated, provable security and robust evaluation standards.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 2,
+        "social": 0,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 84,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Agentic Data Generation and Multimodal Pretraining",
+      "description": "MIT CSAIL [introduced agentic playground generation](/?date=2026-07-14&category=research#item-13d963e181b7), where autonomous LLMs construct diverse virtual simulation environments to overcome data bottlenecks in physical robot training. Concurrently, multimodal papers including GenCeption and [scalable visual pretraining studies](/?date=2026-07-14&category=research#item-7c79b730a605) demonstrate that video diffusion models and unsupervised visual pretraining significantly boost downstream visual perception and linguistic reasoning. This shift highlights how generative simulation and visual pretraining are replacing human-curated training sets.",
+      "description_html": "MIT CSAIL <a href=\"/?date=2026-07-14&amp;category=research#item-13d963e181b7\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced agentic playground generation</a>, where autonomous LLMs construct diverse virtual simulation environments to overcome data bottlenecks in physical robot training. Concurrently, multimodal papers including GenCeption and <a href=\"/?date=2026-07-14&amp;category=research#item-7c79b730a605\" class=\"internal-link\" rel=\"noopener noreferrer\">scalable visual pretraining studies</a> demonstrate that video diffusion models and unsupervised visual pretraining significantly boost downstream visual perception and linguistic reasoning. This shift highlights how generative simulation and visual pretraining are replacing human-curated training sets.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 3,
+        "social": 0,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 82,
+      "business_implication": "",
+      "trend_velocity": ""
+    }
+  ],
+  "total_items_collected": 97,
+  "total_items_analyzed": 97,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 11,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 39,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 14,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "hackernews",
+        "display_name": "Hackernews",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "github_trending",
+        "display_name": "Github_trending",
+        "status": "success",
+        "count": 42,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 14,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "success",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "warnings": []
+  },
+  "hero_image_url": null,
+  "hero_image_prompt": null,
+  "generated_at": "2026-07-25T18:07:52.154379",
+  "categories": {
+    "news": {
+      "count": 2,
+      "category_summary": "No fresh eligible items to summarize.",
+      "category_summary_html": "<p>No fresh eligible items to summarize.</p>",
+      "themes": [
+        {
+          "name": "Interpretability and Research",
+          "description": "Examinations of internal model mechanics, interpretability science, and foundational research by frontier AI labs.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 75.0
+        },
+        {
+          "name": "Developer Tools",
+          "description": "Practical tools, browser extensions, and environment integrations designed to improve AI-assisted coding and agentic workflows.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 60.0
+        }
+      ],
+      "top_items": []
+    },
+    "research": {
+      "count": 39,
+      "category_summary": "Today's breakthrough research highlights hybrid architecture scaling, mechanistic insights into model generalization failures, generative video backbones for perception, and agent-driven formal code verification.\n\n### Architecture & Long-Context Adaptability\n- **Soofi S 30B-A3B**: Introduces an open-source **hybrid Mamba-Transformer MoE** foundation model [activating only 3B parameters](/?date=2026-07-14&category=research#item-a5d0bebd45bb) during inference. This enables high-throughput, memory-efficient deployment for open-source European language infrastructure while retaining long-range state tracking.\n- **Self-Guided Test-Time Training**: [Solves context degradation in long-context LLMs](/?date=2026-07-14&category=research#item-b89ab551658d) via instance-specific parameter adaptation at inference time. This significantly restores retrieval and reasoning accuracy across multi-document contexts without requiring expensive model retraining.\n\n### Mechanistic Interpretability & Model Generalization\n- **Knowing-Using Gap Analysis**: [Dissects why fine-tuned models memorize target facts](/?date=2026-07-14&category=research#item-a9e41149f2c8) yet fail downstream reasoning. By mapping activation patching routes, the authors expose core knowledge-routing failures, providing a concrete path to improve post-training dataset construction.\n- **Superposition to Sparse Codes Framework**: [Formalizes a three-step framework to disentangle latent features](/?date=2026-07-14&category=research#item-bc1865717c98) under neural superposition, offering measurable controls for interpretability and feature manipulation in dense neural networks.\n\n### Multimodal Foundations & Perception\n- **GenCeption**: [Repurposes video generative diffusion models](/?date=2026-07-14&category=research#item-e956088d6d68) into feed-forward perception backbones. This bridges generative video modeling and downstream computer vision tasks, establishing a unified foundation for vision-language systems.\n- **Scalable Visual Pretraining for Language Intelligence**: [Empirically challenges text-only pretraining standards](/?date=2026-07-14&category=research#item-7c79b730a605) by demonstrating that unsupervised visual pretraining enhances core linguistic reasoning, unlocking cross-modal pretraining synergies.\n\n### Reinforcement Learning & Agent Systems\n- **Trust Region Policy Distillation** (**TOP-D**): [Eliminates high-variance instability during on-policy distillation](/?date=2026-07-14&category=research#item-82e6c0eebdb9) by dynamically constructing a proximal teacher baseline. This stabilizes student model convergence for RLHF and alignment pipelines.\n- **Agentic Playground Generation** (**MIT CSAIL**): Uses autonomous LLM agents to [generate diverse interactive virtual playgrounds](/?date=2026-07-14&category=research#item-13d963e181b7), directly resolving the physical simulation data bottleneck for embodied robotics training.\n\n### Formal Verification & Safety Infrastructure\n- **SymCrypt Formal Verification** (**Microsoft**): [Integrates AI sub-agents with formal verification tools](/?date=2026-07-14&category=research#item-e60c89e5f278) (**Lean**, **Aeneas**) to verify production Rust cryptographic libraries at scale, achieving provable software security for low-level systems.\n- **Prism**: [Automates safety evaluation research via agentic sub-scaffolds](/?date=2026-07-14&category=research#item-848bed36a14c), identifying prompt-perturbation failure modes and structural vulnerabilities in current benchmark suites.",
+      "category_summary_html": "<p>Today's breakthrough research highlights hybrid architecture scaling, mechanistic insights into model generalization failures, generative video backbones for perception, and agent-driven formal code verification.</p>\n<h3>Architecture &amp; Long-Context Adaptability</h3>\n<ul>\n<li><strong>Soofi S 30B-A3B</strong>: Introduces an open-source <strong>hybrid Mamba-Transformer MoE</strong> foundation model <a href=\"/?date=2026-07-14&amp;category=research#item-a5d0bebd45bb\" class=\"internal-link\" rel=\"noopener noreferrer\">activating only 3B parameters</a> during inference. This enables high-throughput, memory-efficient deployment for open-source European language infrastructure while retaining long-range state tracking.</li>\n<li><strong>Self-Guided Test-Time Training</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-b89ab551658d\" class=\"internal-link\" rel=\"noopener noreferrer\">Solves context degradation in long-context LLMs</a> via instance-specific parameter adaptation at inference time. This significantly restores retrieval and reasoning accuracy across multi-document contexts without requiring expensive model retraining.</li>\n</ul>\n<h3>Mechanistic Interpretability &amp; Model Generalization</h3>\n<ul>\n<li><strong>Knowing-Using Gap Analysis</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-a9e41149f2c8\" class=\"internal-link\" rel=\"noopener noreferrer\">Dissects why fine-tuned models memorize target facts</a> yet fail downstream reasoning. By mapping activation patching routes, the authors expose core knowledge-routing failures, providing a concrete path to improve post-training dataset construction.</li>\n<li><strong>Superposition to Sparse Codes Framework</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-bc1865717c98\" class=\"internal-link\" rel=\"noopener noreferrer\">Formalizes a three-step framework to disentangle latent features</a> under neural superposition, offering measurable controls for interpretability and feature manipulation in dense neural networks.</li>\n</ul>\n<h3>Multimodal Foundations &amp; Perception</h3>\n<ul>\n<li><strong>GenCeption</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-e956088d6d68\" class=\"internal-link\" rel=\"noopener noreferrer\">Repurposes video generative diffusion models</a> into feed-forward perception backbones. This bridges generative video modeling and downstream computer vision tasks, establishing a unified foundation for vision-language systems.</li>\n<li><strong>Scalable Visual Pretraining for Language Intelligence</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-7c79b730a605\" class=\"internal-link\" rel=\"noopener noreferrer\">Empirically challenges text-only pretraining standards</a> by demonstrating that unsupervised visual pretraining enhances core linguistic reasoning, unlocking cross-modal pretraining synergies.</li>\n</ul>\n<h3>Reinforcement Learning &amp; Agent Systems</h3>\n<ul>\n<li><strong>Trust Region Policy Distillation</strong> (<strong>TOP-D</strong>): <a href=\"/?date=2026-07-14&amp;category=research#item-82e6c0eebdb9\" class=\"internal-link\" rel=\"noopener noreferrer\">Eliminates high-variance instability during on-policy distillation</a> by dynamically constructing a proximal teacher baseline. This stabilizes student model convergence for RLHF and alignment pipelines.</li>\n<li><strong>Agentic Playground Generation</strong> (<strong>MIT CSAIL</strong>): Uses autonomous LLM agents to <a href=\"/?date=2026-07-14&amp;category=research#item-13d963e181b7\" class=\"internal-link\" rel=\"noopener noreferrer\">generate diverse interactive virtual playgrounds</a>, directly resolving the physical simulation data bottleneck for embodied robotics training.</li>\n</ul>\n<h3>Formal Verification &amp; Safety Infrastructure</h3>\n<ul>\n<li><strong>SymCrypt Formal Verification</strong> (<strong>Microsoft</strong>): <a href=\"/?date=2026-07-14&amp;category=research#item-e60c89e5f278\" class=\"internal-link\" rel=\"noopener noreferrer\">Integrates AI sub-agents with formal verification tools</a> (<strong>Lean</strong>, <strong>Aeneas</strong>) to verify production Rust cryptographic libraries at scale, achieving provable software security for low-level systems.</li>\n<li><strong>Prism</strong>: <a href=\"/?date=2026-07-14&amp;category=research#item-848bed36a14c\" class=\"internal-link\" rel=\"noopener noreferrer\">Automates safety evaluation research via agentic sub-scaffolds</a>, identifying prompt-perturbation failure modes and structural vulnerabilities in current benchmark suites.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "Language Models & Architectures",
+          "description": "Advances in MoE architectures, hybrid Mamba-Transformer models, and long-context capabilities.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 87.0
+        },
+        {
+          "name": "AI Safety & Alignment",
+          "description": "Research and methodologies focused on steering model behavior, controlling trait entanglements, auditing model risks, and preventing misuse.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Multimodal & Vision Models",
+          "description": "Cross-modal pretraining, video-to-vision backbones, and medical multimodal data scaling.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 84.0
+        },
+        {
+          "name": "Agentic Workflows & Benchmarks",
+          "description": "Evaluation benchmarks, agent reliability engineering, and autonomous agent scaffolding.",
+          "item_count": 5,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Cybersecurity & Threat Analysis",
+          "description": "Studies on defensive clinics, formal verification of cryptographic code, and analysis of offensive AI use.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 80.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "a5d0bebd45bb",
+          "title": "A Sovereign, Open-Source Foundation Model for German and English",
+          "content": "We present Soofi S 30B-A3B, a sovereign, open-source Mixture-of-Experts (MoE) hybrid Mamba Transformer foundation model for German and English. Its hybrid design activates only 3B of 30B parameters per token and keeps the inference cache near-constant as context grows, giving it a decisive throughput advantage over dense models for long-context, high-concurrency deployment. Pretrained on roughly 27 trillion tokens with deliberately up-weighted German, Soofi S matches dense 14 to 27B models on aggregate English and German benchmarks while achieving the best code aggregates in both languages among 17 open base models, and outperforms every European sovereign baseline in our comparison, including ones far larger in active parameters. Among fully open models, Soofi S obtains the highest English and German evaluation scores, ahead of Olmo 3 32B and Apertus 70B. Soofi S was built end-to-end on the German Industrial AI Cloud, a sovereign HPC scale AI infrastructure operated by Deutsche Telekom in Munich. Soofi S will be released under highly permissive, open-access terms: weights, selected intermediate checkpoints, full per-source data accounting, hyperparameters, and training and evaluation code. Where source licenses permit, data-construction artifacts are released under permissive licenses; commercially licensed sources are documented with aggregate statistics and exact mixture accounting.",
+          "url": "https://huggingface.co/papers/2607.09424",
+          "author": "The Soofi-Team, Benedikt Droste, David Fitzek, Ruben Härle, Lukas Helff, Maximilian Idahl, Alex Jude, Abbas Goher Khan, Maurice Kraus, Timm Ruland, Richard Rutmann, Sebastian Sztwiertnia, Markus Frey, Daniil Gurgurov, Jan Pfister, Tom Röhr, Sebastian von Rohrscheidt, Jörg Bienert, Nicolas Flores-Herr, Simon Gottschalk, Andreas Hotho, Kristian Kersting, Joachim Köhler, Alexander Löser, Wolfgang Nejdl, Simon Ostermann, Jan Plogsties, Patrick Putzky, Mehdi Ali, Michael Fromm, Max Lübbering",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "Presents Soofi S 30B-A3B, an open-source hybrid Mamba-Transformer Mixture-of-Experts model optimized for German and English. It activates only 3B parameters per token and maintains near-constant inference cache, outperforming existing European sovereign baselines.",
+          "importance_score": 88.0,
+          "reasoning": "A significant open-source contribution utilizing hybrid Mamba-Transformer architectures for European linguistic sovereignty and efficiency.",
+          "themes": [
+            "Language Models",
+            "Efficient Architectures"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.09424",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.09424"
+            },
+            "huggingface": {
+              "upvotes": 15,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-10T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Presents Soofi S 30B-A3B, an open-source hybrid Mamba-Transformer Mixture-of-Experts model optimized for German and English. It activates only 3B parameters per token and maintains near-constant inference cache, outperforming existing European sovereign baselines.</p>",
+          "content_html": "<p>We present Soofi S 30B-A3B, a sovereign, open-source Mixture-of-Experts (MoE) hybrid Mamba Transformer foundation model for German and English. Its hybrid design activates only 3B of 30B parameters per token and keeps the inference cache near-constant as context grows, giving it a decisive throughput advantage over dense models for long-context, high-concurrency deployment. Pretrained on roughly 27 trillion tokens with deliberately up-weighted German, Soofi S matches dense 14 to 27B models on aggregate English and German benchmarks while achieving the best code aggregates in both languages among 17 open base models, and outperforms every European sovereign baseline in our comparison, including ones far larger in active parameters. Among fully open models, Soofi S obtains the highest English and German evaluation scores, ahead of Olmo 3 32B and Apertus 70B. Soofi S was built end-to-end on the German Industrial AI Cloud, a sovereign HPC scale AI infrastructure operated by Deutsche Telekom in Munich. Soofi S will be released under highly permissive, open-access terms: weights, selected intermediate checkpoints, full per-source data accounting, hyperparameters, and training and evaluation code. Where source licenses permit, data-construction artifacts are released under permissive licenses; commercially licensed sources are documented with aggregate statistics and exact mixture accounting.</p>"
+        },
+        {
+          "id": "a9e41149f2c8",
+          "title": "Towards Mechanistically Understanding Why Memorized Knowledge Fails to Generalize in Large Language Model Finetuning",
+          "content": "Fine-tuning LLMs to inject new knowledge faces a critical challenge: LLMs can quickly memorize new facts, yet fail to use them for downstream reasoning tasks. We formalize this failure as the \\textbf{Knowing--Using Gap}, characterized by an accuracy gap and a temporal lag between memorization and generalization. To understand this phenomenon, we fine-tune LLMs with unseen knowledge and monitor the spatial permeation dynamics of the knowledge internally using a novel intervention technique called self-patching. Self-patching identifies activation locations where relocating representations substantially improves failed generalization cases. These results are consistent with a knowledge-circuit misalignment hypothesis: memorized representations can exist internally but may not be routed to computation-effective layers. To demonstrate the practicality of this diagnostic finding, we design a simple heuristic strategy which recovers 58--75\\% of the oracle headroom in generalization failure. Experiments are done cross-domain for the robustness of this finding.",
+          "url": "https://huggingface.co/papers/2607.08393",
+          "author": "Lu Dai, Ziyang Rao, Yili Wang, Hanqing Wang, Hao Liu, Hui Xiong",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "Investigates the 'Knowing-Using Gap' where fine-tuned LLMs memorize new facts but fail to apply them in downstream reasoning tasks. Using a self-patching intervention technique, the authors trace internal knowledge-circuit misalignments as the root cause.",
+          "importance_score": 86.0,
+          "reasoning": "Provides mechanistic insight into knowledge routing and fine-tuning failures, advancing interpretability research.",
+          "themes": [
+            "Model Interpretability",
+            "Fine-Tuning"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.08393",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.08393"
+            },
+            "huggingface": {
+              "upvotes": 18,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-09T12:17:28.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Investigates the 'Knowing-Using Gap' where fine-tuned LLMs memorize new facts but fail to apply them in downstream reasoning tasks. Using a self-patching intervention technique, the authors trace internal knowledge-circuit misalignments as the root cause.</p>",
+          "content_html": "<p>Fine-tuning LLMs to inject new knowledge faces a critical challenge: LLMs can quickly memorize new facts, yet fail to use them for downstream reasoning tasks. We formalize this failure as the \\textbf{Knowing--Using Gap}, characterized by an accuracy gap and a temporal lag between memorization and generalization. To understand this phenomenon, we fine-tune LLMs with unseen knowledge and monitor the spatial permeation dynamics of the knowledge internally using a novel intervention technique called self-patching. Self-patching identifies activation locations where relocating representations substantially improves failed generalization cases. These results are consistent with a knowledge-circuit misalignment hypothesis: memorized representations can exist internally but may not be routed to computation-effective layers. To demonstrate the practicality of this diagnostic finding, we design a simple heuristic strategy which recovers 58--75\\% of the oracle headroom in generalization failure. Experiments are done cross-domain for the robustness of this finding.</p>"
+        },
+        {
+          "id": "e956088d6d68",
+          "title": "Video Generation Models are General-Purpose Vision Learners",
+          "content": "Driven by next-token prediction, NLP shifted from task-specific models into powerful generalist foundation models. What, then, is the equivalent catalyst needed to achieve a general-purpose model in computer vision? In this paper, we contend that large-scale text-to-video generation serves as a strong pre-training paradigm for computer vision, providing the necessary spatiotemporal priors, vision-language alignment, and scalability required for general visual intelligence. We introduce GenCeption, which leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, capable of performing various vision tasks steered by text instructions. Empirical results demonstrate that GenCeption achieves state-of-the-art performance across a diverse suite of tasks, including depth, surface normal, and camera pose estimation, expression-referring segmentation, and 3D keypoint prediction, often matching or surpassing specialized models (e.g. DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2). Furthermore, the video generative pretrained backbone outperforms alternative pretraining paradigms (e.g., V-JEPA, and Video MAE) under comparable settings. Importantly, GenCeption exhibits preliminary data and model scaling properties along with exceptional data efficiency, where it achieves comparable performance with leading models like D4RT and VGGT-Omega with 7 to 500 less training data. Finally, GenCeption also exhibits intriguing emergent behaviors: a model trained exclusively on synthetic human videos generalizes to real-world footage and out-of-distribution object categories (e.g., animals and robots). These findings suggest that video generation is not merely a synthesis tool, but a foundational path toward generalist vision intelligence for the physical world. Project page: https://genception.github.io",
+          "url": "https://huggingface.co/papers/2607.09024",
+          "author": "Letian Wang, Chuhan Zhang, Rishabh Kabra, Jasper Uijlings, Steven Waslander, Andrew Zisserman, Joao Carreira, Kaiming He, Misha Andriluka, Eduard Gabriel Bazavan, Andrei Zanfir, Cristian Sminchisescu",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "This paper introduces GenCeption, a framework that repurposes video generative diffusion models as feed-forward perception backbones for general computer vision tasks. By treating text-to-video pretraining as a strong catalyst for spatiotemporal and vision-language alignment, the approach achieves state-of-the-art results across diverse vision benchmarks.",
+          "importance_score": 85.0,
+          "reasoning": "Demonstrates a powerful bridge between generative video models and general-purpose perception, highlighting a new paradigm for vision foundation models.",
+          "themes": [
+            "Computer Vision",
+            "Multimodal Models"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.09024",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.09024"
+            },
+            "huggingface": {
+              "upvotes": 84,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-10T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This paper introduces GenCeption, a framework that repurposes video generative diffusion models as feed-forward perception backbones for general computer vision tasks. By treating text-to-video pretraining as a strong catalyst for spatiotemporal and vision-language alignment, the approach achieves state-of-the-art results across diverse vision benchmarks.</p>",
+          "content_html": "<p>Driven by next-token prediction, NLP shifted from task-specific models into powerful generalist foundation models. What, then, is the equivalent catalyst needed to achieve a general-purpose model in computer vision? In this paper, we contend that large-scale text-to-video generation serves as a strong pre-training paradigm for computer vision, providing the necessary spatiotemporal priors, vision-language alignment, and scalability required for general visual intelligence. We introduce GenCeption, which leverages a pre-trained video generative diffusion backbone to define a feed-forward perception model, capable of performing various vision tasks steered by text instructions. Empirical results demonstrate that GenCeption achieves state-of-the-art performance across a diverse suite of tasks, including depth, surface normal, and camera pose estimation, expression-referring segmentation, and 3D keypoint prediction, often matching or surpassing specialized models (e.g. DepthAnything3, SAM3, D4RT, VGGT-Omega, Sapiens, David, Genmo, and Lotus-2). Furthermore, the video generative pretrained backbone outperforms alternative pretraining paradigms (e.g., V-JEPA, and Video MAE) under comparable settings. Importantly, GenCeption exhibits preliminary data and model scaling properties along with exceptional data efficiency, where it achieves comparable performance with leading models like D4RT and VGGT-Omega with 7 to 500 less training data. Finally, GenCeption also exhibits intriguing emergent behaviors: a model trained exclusively on synthetic human videos generalizes to real-world footage and out-of-distribution object categories (e.g., animals and robots). These findings suggest that video generation is not merely a synthesis tool, but a foundational path toward generalist vision intelligence for the physical world. Project page: https://genception.github.io</p>"
+        },
+        {
+          "id": "e60c89e5f278",
+          "title": "Verifying Rust cryptography in SymCrypt, from standards to code",
+          "content": "How Rust, Lean, Aeneas, and AI agents are helping scale formal verification for production cryptographic algorithms At a glance SymCrypt develops new verified cryptography using Rust, Aeneas, and Lean to provide higher security assurance. We prove that their code safely and correctly implements standard algorithms, notably for post-quantum cryptography. We are releasing verified code, specs, properties, and proofs initially for SHA-3 and ML-KEM.&nbsp; Aeneas allows verifying a large subset of Rust code and provides efficient automation in Lean to support the proof effort. Agents allow scaling automation by writing proofs that are independently-verifiable. Introduction and motivation for formal verification Cryptographic code sits at the foundation of modern computing. It protects operating systems, cloud services, firmware, messaging systems, and the protocols that connect them. Small mistakes can have outsized consequences: a single arithmetic slip, missing bounds check, or incorrect state transition can undermine the security of an otherwise sound design. Testing and auditing remain essential, but they are not enough on their own. Cryptographic implementations are often optimized, constant-time, architecture-specific, and deliberately low level. The code that ships rarely looks like the clean algorithm in a standard: it contains reductions, bit manipulations, SIMD intrinsics, carefully shaped loops, and portability layers for many environments. Formal verification addresses this gap by deploying machine-checked proofs instead of relying on testing alone. Rather than merely checking that the code usually behaves correctly, verification implements a precise mathematical specification for all inputs that satisfy the stated preconditions. In June last year, Microsoft announced we would formally verify new algorithms written in Rust in SymCrypt, the cryptographic provider used across products and services including Windows and Azure. New cryptographic implementations are being written in safe Rust, then verified in the Lean (opens in new tab) formal proof framework using the Aeneas (opens in new tab) toolchain. This applies in particular to post-quantum cryptography, which require fast secure implementations of complex algorithms. This combination gives us two layers of assurance: Rust rules out broad classes of memory-safety bugs, while Lean proofs establish functional correctness against formal specifications derived from standards. The result is a new verification methodology for production cryptography: verify code as developers write it, preserve performance-oriented implementation choices, and make the proof process scalable enough to keep up with an evolving codebase. Figure 1. Agents (stochastic, in blue) and tools (algorithmic, in green) for software verification. Human effort focuses on reviewing formalization of standards and main properties. Agents write proofs and intermediate properties. Compilation, code extraction, and proof verification are deterministic, not agentic. Status of verification in SymCrypt We have open sourced a SymCrypt branch (opens in new tab) that includes formal specifications and proofs. This public branch makes the proof artifacts available alongside the Rust algorithm implementations they validate, showing how the methodology applies to production cryptographic code. SymCrypt is not a standalone research prototype; it is Microsoft’s open-source cryptographic library used across products and services including Windows and Azure Linux. This first release includes complete proofs for the Rust ML-KEM and SHA3 code that is being used in insiders builds of Windows today. SymCrypt is extending the same Rust, Lean, and Aeneas-based workflow to more Rust-native algorithms and integrating them into production versions for Windows and Linux, including for instance verified Rust code for, e.g., AES-GCM, FrodoKEM, and ML-DSA. The rest of this post uses this SymCrypt work as a concrete example, starting with how public standards become executable Lean specifications. Turning standards into formal Lean specifications The first step is to formalize what the algorithm is supposed to do. For cryptographic primitives, the source of truth is usually a public standard: a NIST specification, an IETF RFC, or another carefully reviewed algorithm description. In our approach, the Lean specification is designed to stay close to the standard. When the standard describes a loop, an array update, or a mathematical operation, the Lean model follows the same structure wherever possible. This syntactic proximity matters: it makes the formal specification easier to audit because reviewers can compare the standard and the Lean side by side. Lean also lets us write executable specifications. That means we can run the formal model against official test vectors to catch transcription errors, off-by-one mistakes, or misunderstandings of the standard. For algorithms such as ML-KEM, we can go further and prove high-level mathematical properties, such as showing that the formal model of the number-theoretic transform corresponds to the intended operation over the relevant polynomial ring. A representative example is the number-theoretic transform (NTT) from ML-KEM. The standard describes the algorithm as an in-place transformation over 256 coefficients modulo q, with three nested loops that update pairs of coefficients using successive powers of the constant ζ (= 17). Here is a direct translation of the NIST standard in Lean, trying to stick as close as possible to the original syntax: The Lean version deliberately mirrors the structure of the standard: the same loop nest, the same zeta selection, and the same coefficient updates, allowing easy line-by-line human review. At the same time, it is executable and uses mathematical types, so it can be tested against known vectors and connected to higher-level theorems about the NTT’s algebraic meaning. In summary, the Lean specification is a concise, executable, mathematically meaningful model that tracks the standard closely enough to be reviewed by cryptographers and proof engineers alike. Connecting the formal specification to the code Once the specification is formalized, the next challenge is to connect it to the implementation. We do not ask developers to rewrite production cryptographic code in a verification-oriented language, nor do we generate code that product teams must then own. Instead, we verify the Rust code that engineers write, exactly as they write it. Aeneas makes this possible by translating Rust’s mid-level representation into a pure Lean model. Rust’s ownership and borrowing discipline are crucial here. They let Aeneas safely eliminate much of the reasoning about pointer aliasing, liveness, and mutation that makes verification of C-style code so expensive. For example, a Rust function that updates an array in place becomes, in Lean, a function that explicitly takes and returns a functional array. Mutable borrows are translated into value transformations. This preserves the behaviour that matters while presenting proof engineers with a functional model that is far easier to reason about. Once in Lean, the function can be equipped with a theorem that states that it refines a formal specification. In other words, for every input satisfying the required bounds and well-formedness conditions, the implementation function returns the same mathematical result as the standard-derived Lean specification. This style keeps responsibilities cleanly separated. Software engineers continue to write idiomatic, performant Rust. Verification engineers work against generated Lean models and prove theorems about them. The Rust code and the proofs live side by side, but the proof burden does not shape the code into something unnatural. Going back to the NTT example, its Rust implementation is a function fn ntt(&amp;mut [u16; 256]) that uses a mutable borrow to update an array in-place. The Lean translation purifies it into a function ntt : Array U16 256#usize → Result (Array U16 256#usize) that directly outputs the updated array, while wrapping it into a Result type to explicitly capture the fact that Rust functions may panic. In this case, the theorem states that, if the array satisfies a well-formedness invariant (ensuring it represents a valid polynomial), then running the Rust model ntt returns the well-formed representation of the result of the mathematical specification Spec.ntt, modulo conversion from low-level arrays to high-level polynomials. Scaling this to every function in real cryptographic code required substantial automation. Lean’s extensibility lets us build a gradient of automation with tactics for symbolic execution, arithmetic, arrays, and bit-vector reasoning. The experience becomes closer to debugging: automation handles the routine proof obligations, while engineers can inspect and refine the proof when a goal does not close automatically. Supporting intrinsics and multiple architectures Production cryptography cannot ignore hardware. SymCrypt must run across environments ranging from embedded and kernel contexts to cloud services. It also needs to take advantage of platform-specific instructions when they are available, including SIMD intrinsics and architecture-specific optimized paths. A verification story that only works for a portable reference implementation is therefore incomplete. We need to verify the code that actually ships: dispatch logic, optimized routines, and target-specific variants included. The code below is adapted from the ntt_layer&nbsp; function that is internally used by the NTT. This function is compiled differently for x86-64 and aarch64, allowing dynamic dispatch to target-specific or portable implementations. On x86-64, it checks the availability of SSE2 instructions, while on aarch64 it checks for Neon. As rustc’s output is inherently target specific, our toolchain compiles the code several times, one per compilation target for which verification is required, before merging the corresponding models. In effect, this merge operation turns the static dispatch permitted by the cfg attributes in the Rust code into a first layer of dynamic dispatch between x86-64 and aarch64 in the Lean model. Following what the Rust code does, these target specific models then themselves dynamically dispatch to the models of the XMM, Neon, and generic implementations. Intrinsics require a slightly different treatment. Some low-level wrappers, especially those that manipulate raw pointers or expose platform instructions, are modelled by small, carefully reviewed Lean specifications. Others can be modelled using Rust code, which can be tested against hardware reference documentation, then translated and verified. The surrounding safe Rust code is then verified against those models. This keeps the trusted surface narrow while preserving the performance benefits of hardware acceleration. The important point is that verification does not require giving up optimization. The methodology is designed to preserve the complexities of production code &#8211; including intrinsics, dispatch, and platform-specific implementations &#8211; while still proving a single, auditable correctness statement. Reflecting formal guarantees to the code developer Formal verification only scales in an engineering organization if developers can understand what has been proved. It is not enough for a proof to exist in a repository; the guarantee must be visible, reviewable, and synchronized to the code that engineers maintain. To support this, we expose verification results through automatically generated dashboards. These dashboards summarize theorems in developer-facing terms: preconditions, postconditions, covered functions, trusted models, and remaining assumptions. Engineers do not need to open Lean to see what has been verified. For instance, below is the page displayed by the dashboard for our ntt function. Figure 2. Dashboard page for the theorem that shows the Rust function mlkem.ntt correctly implements the NTT specified in the NIST standard. The specification clearly presents the theorem statement included in the Lean formal development: it separates the function input and preconditions from the post-condition by putting them above a horizontal line, and use fully qualified names with links to navigate to Rust and Lean definitions. This feedback loop is especially useful for reviewing assumptions around intrinsics, target-specific code, and boundary conditions. A cryptographic developer can for example check whether the theorem fully captures what they expect their code to guarantee, and notice a formal statement is too weak, or a precondition is wrong. The dashboards also aligns verification with continuous development. As Rust code changes, Lean models and proofs can be regenerated and replayed. When a proof breaks, that failure becomes a signal: either the implementation changed in a way that needs a proof update, or the change has exposed a real discrepancy with the specification. This turns formal verification from a one-time research artifact into part of the engineering workflow. Agentic proofs The final ingredient is automation beyond traditional tactics: AI agents. Lean is well suited to this because proofs are machine-checked by a small trusted kernel. An agent may propose a proof script, but Lean independently verifies whether the proof is valid. We use agents in two places. First, they help translate standards into Lean specifications. Because the resulting specification is executable, aligned to the original standard, tested against official vectors, supported by mathematical theorems, and much simpler than an implementation, it can be thoroughly audited even when an agent helped draft it. Second, agents help write and maintain proofs. With the right libraries, tactics, examples, and documentation, agents can handle large amounts of proof work: unfolding generated models, applying specifications for helper functions, discharging arithmetic obligations, and repairing proofs after refactors. This is particularly powerful because the Rust code and Lean proofs are separated. Agents do not need to annotate or modify the production Rust implementation to make a proof go through. They operate on the proof side, and the result is accepted only if Lean validates it and the final theorem states the desired guarantee without introducing unreviewed assumptions. In practice, this changes the economics of verification. Work that previously required months of specialist effort can be accelerated dramatically. The proof engineer’s role shifts from writing every proof by hand to designing specifications, curating automation, reviewing theorem statements, and steering agents to complete their proofs. Conclusion Verified cryptography has often faced a difficult trade-off: the strongest guarantees came from specialized toolchains, generated code, and workflows that were hard for product teams to adopt. Rust, Lean, Aeneas, and agentic proof automation let us revisit that tradeoff. By verifying Rust as written, deriving auditable specifications from standards, supporting optimized multi-architecture implementations, and reflecting proof results back to developers, formal verification can become part of normal cryptographic engineering rather than an after-the-fact research exercise. That is the long-term promise: cryptographic code that remains fast, portable, maintainable, and developer-owned, while carrying machine-checked evidence that it implements the standards it is meant to realize. Opens in a new tabThe post Verifying Rust cryptography in SymCrypt, from standards to code appeared first on Microsoft Research.",
+          "url": "https://www.microsoft.com/en-us/research/blog/verifying-rust-cryptography-in-symcrypt-from-standards-to-code/",
+          "author": "Son Ho, Cédric Fournet, Antoine Delignat-Lavaud, Samuel Lee, Jason Fisher, Jessica Krynitsky",
+          "published": "2026-07-13T12:00:00",
+          "source": "Microsoft Research Blog - Microsoft Research",
+          "source_type": "research_blog",
+          "tags": [
+            "Research Blog"
+          ],
+          "summary": "Explores how Microsoft uses Rust, Aeneas, Lean, and AI agents to scale formal verification for production cryptographic algorithms, releasing verified code for SHA-3 and ML-KEM.",
+          "importance_score": 85.0,
+          "reasoning": "Demonstrates practical integration of AI agents and formal verification tools to secure critical cryptographic code.",
+          "themes": [
+            "Formal Verification",
+            "Software Security"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://www.microsoft.com/en-us/research/blog/feed/",
+            "raw_summary": "<p>Cryptographic code supports vital protections in modern computing systems. Learn how a new method helps verify code as developers write it while preserving speed and adaptability as it gets implemented and evolves.</p>\n<p>The post <a href=\"https://www.microsoft.com/en-us/research/blog/verifying-rust-cryptography-in-symcrypt-from-standards-to-code/\">Verifying Rust cryptography in SymCrypt, from standards to code</a> appeared first on <a href=\"https://www.microsoft.com/en-us/research\">Microsoft",
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Explores how Microsoft uses Rust, Aeneas, Lean, and AI agents to scale formal verification for production cryptographic algorithms, releasing verified code for SHA-3 and ML-KEM.</p>",
+          "content_html": "<p>How Rust, Lean, Aeneas, and AI agents are helping scale formal verification for production cryptographic algorithms At a glance SymCrypt develops new verified cryptography using Rust, Aeneas, and Lean to provide higher security assurance. We prove that their code safely and correctly implements standard algorithms, notably for post-quantum cryptography. We are releasing verified code, specs, properties, and proofs initially for SHA-3 and ML-KEM.&nbsp; Aeneas allows verifying a large subset of Rust code and provides efficient automation in Lean to support the proof effort. Agents allow scaling automation by writing proofs that are independently-verifiable. Introduction and motivation for formal verification Cryptographic code sits at the foundation of modern computing. It protects operating systems, cloud services, firmware, messaging systems, and the protocols that connect them. Small mistakes can have outsized consequences: a single arithmetic slip, missing bounds check, or incorrect state transition can undermine the security of an otherwise sound design. Testing and auditing remain essential, but they are not enough on their own. Cryptographic implementations are often optimized, constant-time, architecture-specific, and deliberately low level. The code that ships rarely looks like the clean algorithm in a standard: it contains reductions, bit manipulations, SIMD intrinsics, carefully shaped loops, and portability layers for many environments. Formal verification addresses this gap by deploying machine-checked proofs instead of relying on testing alone. Rather than merely checking that the code usually behaves correctly, verification implements a precise mathematical specification for all inputs that satisfy the stated preconditions. In June last year, Microsoft announced we would formally verify new algorithms written in Rust in SymCrypt, the cryptographic provider used across products and services including Windows and Azure. New cryptographic implementations are being written in safe Rust, then verified in the Lean (opens in new tab) formal proof framework using the Aeneas (opens in new tab) toolchain. This applies in particular to post-quantum cryptography, which require fast secure implementations of complex algorithms. This combination gives us two layers of assurance: Rust rules out broad classes of memory-safety bugs, while Lean proofs establish functional correctness against formal specifications derived from standards. The result is a new verification methodology for production cryptography: verify code as developers write it, preserve performance-oriented implementation choices, and make the proof process scalable enough to keep up with an evolving codebase. Figure 1. Agents (stochastic, in blue) and tools (algorithmic, in green) for software verification. Human effort focuses on reviewing formalization of standards and main properties. Agents write proofs and intermediate properties. Compilation, code extraction, and proof verification are deterministic, not agentic. Status of verification in SymCrypt We have open sourced a SymCrypt branch (opens in new tab) that includes formal specifications and proofs. This public branch makes the proof artifacts available alongside the Rust algorithm implementations they validate, showing how the methodology applies to production cryptographic code. SymCrypt is not a standalone research prototype; it is Microsoft’s open-source cryptographic library used across products and services including Windows and Azure Linux. This first release includes complete proofs for the Rust ML-KEM and SHA3 code that is being used in insiders builds of Windows today. SymCrypt is extending the same Rust, Lean, and Aeneas-based workflow to more Rust-native algorithms and integrating them into production versions for Windows and Linux, including for instance verified Rust code for, e.g., AES-GCM, FrodoKEM, and ML-DSA. The rest of this post uses this SymCrypt work as a concrete example, starting with how public standards become executable Lean specifications. Turning standards into formal Lean specifications The first step is to formalize what the algorithm is supposed to do. For cryptographic primitives, the source of truth is usually a public standard: a NIST specification, an IETF RFC, or another carefully reviewed algorithm description. In our approach, the Lean specification is designed to stay close to the standard. When the standard describes a loop, an array update, or a mathematical operation, the Lean model follows the same structure wherever possible. This syntactic proximity matters: it makes the formal specification easier to audit because reviewers can compare the standard and the Lean side by side. Lean also lets us write executable specifications. That means we can run the formal model against official test vectors to catch transcription errors, off-by-one mistakes, or misunderstandings of the standard. For algorithms such as ML-KEM, we can go further and prove high-level mathematical properties, such as showing that the formal model of the number-theoretic transform corresponds to the intended operation over the relevant polynomial ring. A representative example is the number-theoretic transform (NTT) from ML-KEM. The standard describes the algorithm as an in-place transformation over 256 coefficients modulo q, with three nested loops that update pairs of coefficients using successive powers of the constant ζ (= 17). Here is a direct translation of the NIST standard in Lean, trying to stick as close as possible to the original syntax: The Lean version deliberately mirrors the structure of the standard: the same loop nest, the same zeta selection, and the same coefficient updates, allowing easy line-by-line human review. At the same time, it is executable and uses mathematical types, so it can be tested against known vectors and connected to higher-level theorems about the NTT’s algebraic meaning. In summary, the Lean specification is a concise, executable, mathematically meaningful model that tracks the standard closely enough to be reviewed by cryptographers and proof engineers alike. Connecting the formal specification to the code Once the specification is formalized, the next challenge is to connect it to the implementation. We do not ask developers to rewrite production cryptographic code in a verification-oriented language, nor do we generate code that product teams must then own. Instead, we verify the Rust code that engineers write, exactly as they write it. Aeneas makes this possible by translating Rust’s mid-level representation into a pure Lean model. Rust’s ownership and borrowing discipline are crucial here. They let Aeneas safely eliminate much of the reasoning about pointer aliasing, liveness, and mutation that makes verification of C-style code so expensive. For example, a Rust function that updates an array in place becomes, in Lean, a function that explicitly takes and returns a functional array. Mutable borrows are translated into value transformations. This preserves the behaviour that matters while presenting proof engineers with a functional model that is far easier to reason about. Once in Lean, the function can be equipped with a theorem that states that it refines a formal specification. In other words, for every input satisfying the required bounds and well-formedness conditions, the implementation function returns the same mathematical result as the standard-derived Lean specification. This style keeps responsibilities cleanly separated. Software engineers continue to write idiomatic, performant Rust. Verification engineers work against generated Lean models and prove theorems about them. The Rust code and the proofs live side by side, but the proof burden does not shape the code into something unnatural. Going back to the NTT example, its Rust implementation is a function fn ntt(&amp;mut [u16; 256]) that uses a mutable borrow to update an array in-place. The Lean translation purifies it into a function ntt : Array U16 256#usize → Result (Array U16 256#usize) that directly outputs the updated array, while wrapping it into a Result type to explicitly capture the fact that Rust functions may panic. In this case, the theorem states that, if the array satisfies a well-formedness invariant (ensuring it represents a valid polynomial), then running the Rust model ntt returns the well-formed representation of the result of the mathematical specification Spec.ntt, modulo conversion from low-level arrays to high-level polynomials. Scaling this to every function in real cryptographic code required substantial automation. Lean’s extensibility lets us build a gradient of automation with tactics for symbolic execution, arithmetic, arrays, and bit-vector reasoning. The experience becomes closer to debugging: automation handles the routine proof obligations, while engineers can inspect and refine the proof when a goal does not close automatically. Supporting intrinsics and multiple architectures Production cryptography cannot ignore hardware. SymCrypt must run across environments ranging from embedded and kernel contexts to cloud services. It also needs to take advantage of platform-specific instructions when they are available, including SIMD intrinsics and architecture-specific optimized paths. A verification story that only works for a portable reference implementation is therefore incomplete. We need to verify the code that actually ships: dispatch logic, optimized routines, and target-specific variants included. The code below is adapted from the ntt_layer&nbsp; function that is internally used by the NTT. This function is compiled differently for x86-64 and aarch64, allowing dynamic dispatch to target-specific or portable implementations. On x86-64, it checks the availability of SSE2 instructions, while on aarch64 it checks for Neon. As rustc’s output is inherently target specific, our toolchain compiles the code several times, one per compilation target for which verification is required, before merging the corresponding models. In effect, this merge operation turns the static dispatch permitted by the cfg attributes in the Rust code into a first layer of dynamic dispatch between x86-64 and aarch64 in the Lean model. Following what the Rust code does, these target specific models then themselves dynamically dispatch to the models of the XMM, Neon, and generic implementations. Intrinsics require a slightly different treatment. Some low-level wrappers, especially those that manipulate raw pointers or expose platform instructions, are modelled by small, carefully reviewed Lean specifications. Others can be modelled using Rust code, which can be tested against hardware reference documentation, then translated and verified. The surrounding safe Rust code is then verified against those models. This keeps the trusted surface narrow while preserving the performance benefits of hardware acceleration. The important point is that verification does not require giving up optimization. The methodology is designed to preserve the complexities of production code – including intrinsics, dispatch, and platform-specific implementations – while still proving a single, auditable correctness statement. Reflecting formal guarantees to the code developer Formal verification only scales in an engineering organization if developers can understand what has been proved. It is not enough for a proof to exist in a repository; the guarantee must be visible, reviewable, and synchronized to the code that engineers maintain. To support this, we expose verification results through automatically generated dashboards. These dashboards summarize theorems in developer-facing terms: preconditions, postconditions, covered functions, trusted models, and remaining assumptions. Engineers do not need to open Lean to see what has been verified. For instance, below is the page displayed by the dashboard for our ntt function. Figure 2. Dashboard page for the theorem that shows the Rust function mlkem.ntt correctly implements the NTT specified in the NIST standard. The specification clearly presents the theorem statement included in the Lean formal development: it separates the function input and preconditions from the post-condition by putting them above a horizontal line, and use fully qualified names with links to navigate to Rust and Lean definitions. This feedback loop is especially useful for reviewing assumptions around intrinsics, target-specific code, and boundary conditions. A cryptographic developer can for example check whether the theorem fully captures what they expect their code to guarantee, and notice a formal statement is too weak, or a precondition is wrong. The dashboards also aligns verification with continuous development. As Rust code changes, Lean models and proofs can be regenerated and replayed. When a proof breaks, that failure becomes a signal: either the implementation changed in a way that needs a proof update, or the change has exposed a real discrepancy with the specification. This turns formal verification from a one-time research artifact into part of the engineering workflow. Agentic proofs The final ingredient is automation beyond traditional tactics: AI agents. Lean is well suited to this because proofs are machine-checked by a small trusted kernel. An agent may propose a proof script, but Lean independently verifies whether the proof is valid. We use agents in two places. First, they help translate standards into Lean specifications. Because the resulting specification is executable, aligned to the original standard, tested against official vectors, supported by mathematical theorems, and much simpler than an implementation, it can be thoroughly audited even when an agent helped draft it. Second, agents help write and maintain proofs. With the right libraries, tactics, examples, and documentation, agents can handle large amounts of proof work: unfolding generated models, applying specifications for helper functions, discharging arithmetic obligations, and repairing proofs after refactors. This is particularly powerful because the Rust code and Lean proofs are separated. Agents do not need to annotate or modify the production Rust implementation to make a proof go through. They operate on the proof side, and the result is accepted only if Lean validates it and the final theorem states the desired guarantee without introducing unreviewed assumptions. In practice, this changes the economics of verification. Work that previously required months of specialist effort can be accelerated dramatically. The proof engineer’s role shifts from writing every proof by hand to designing specifications, curating automation, reviewing theorem statements, and steering agents to complete their proofs. Conclusion Verified cryptography has often faced a difficult trade-off: the strongest guarantees came from specialized toolchains, generated code, and workflows that were hard for product teams to adopt. Rust, Lean, Aeneas, and agentic proof automation let us revisit that tradeoff. By verifying Rust as written, deriving auditable specifications from standards, supporting optimized multi-architecture implementations, and reflecting proof results back to developers, formal verification can become part of normal cryptographic engineering rather than an after-the-fact research exercise. That is the long-term promise: cryptographic code that remains fast, portable, maintainable, and developer-owned, while carrying machine-checked evidence that it implements the standards it is meant to realize. Opens in a new tabThe post Verifying Rust cryptography in SymCrypt, from standards to code appeared first on Microsoft Research.</p>"
+        },
+        {
+          "id": "82e6c0eebdb9",
+          "title": "Trust Region Policy Distillation",
+          "content": "Big goals are hard to achieve all at once; breaking them into small steps is wiser. We present Trust Region Policy Distillation (TOP-D), which transforms the notoriously unstable, high-variance On-Policy Distillation (OPD) into a stable training paradigm by dynamically constructing a proximal teacher. Theoretically, we establish a rigorous framework demonstrating that TOP-D inherently controls gradient variance. By providing a formal global convergence analysis alongside a monotonic improvement bound, we mathematically formalize the reliability and stability of the overall training dynamics. Empirically, TOP-D dramatically enhances training stability, sample efficiency, and final performance on mathematical reasoning tasks. More importantly, TOP-D introduces zero additional computational overhead, positioning itself as a promising alternative to the well-established OPD paradigm.",
+          "url": "https://huggingface.co/papers/2607.04751",
+          "author": "Zhengpeng Xie, Li Lyna Zhang, Zeke Xie, Mao Yang",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "The authors introduce Trust Region Policy Distillation (TOP-D) to stabilize on-policy distillation by dynamically constructing a proximal teacher. The method provides formal global convergence bounds and monotonic improvement guarantees while adding zero computational overhead.",
+          "importance_score": 84.0,
+          "reasoning": "Tackles the high-variance instability of on-policy distillation with strong mathematical rigor and practical efficiency gains.",
+          "themes": [
+            "Reinforcement Learning",
+            "Model Alignment"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.04751",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.04751"
+            },
+            "huggingface": {
+              "upvotes": 34,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-06T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>The authors introduce Trust Region Policy Distillation (TOP-D) to stabilize on-policy distillation by dynamically constructing a proximal teacher. The method provides formal global convergence bounds and monotonic improvement guarantees while adding zero computational overhead.</p>",
+          "content_html": "<p>Big goals are hard to achieve all at once; breaking them into small steps is wiser. We present Trust Region Policy Distillation (TOP-D), which transforms the notoriously unstable, high-variance On-Policy Distillation (OPD) into a stable training paradigm by dynamically constructing a proximal teacher. Theoretically, we establish a rigorous framework demonstrating that TOP-D inherently controls gradient variance. By providing a formal global convergence analysis alongside a monotonic improvement bound, we mathematically formalize the reliability and stability of the overall training dynamics. Empirically, TOP-D dramatically enhances training stability, sample efficiency, and final performance on mathematical reasoning tasks. More importantly, TOP-D introduces zero additional computational overhead, positioning itself as a promising alternative to the well-established OPD paradigm.</p>"
+        },
+        {
+          "id": "b89ab551658d",
+          "title": "Self-Guided Test-Time Training for Long-Context LLMs",
+          "content": "Long-context processing has become increasingly important for large language models (LLMs), but simply extending the context window does not guarantee effective utilization of long inputs. As input length grows, accuracy often degrades, indicating that models still struggle to identify and use the evidence most relevant to a question. A promising way to improve long-context utilization is test-time training (TTT), which treats the test context as a training example for instance-specific parameter adaptation. However, applying TTT to the entire long context is prohibitively expensive, while adapting on randomly sampled spans introduces severe noise. Because most spans in a long context are irrelevant to the specific question, training on them may even degrade the base model's performance. Our preliminary study shows that TTT is highly sensitive to training-span quality: on LongBench-v2, TTT on randomly sampled spans hurts performance, whereas TTT on oracle spans substantially improves it. Motivated by this, we propose a simple method, Self-Guided TTT (S-TTT): before adaptation, the model identifies the evidence spans it should learn from, and the standard language-modeling training objective is applied only to those selected spans. On two challenging long-context reasoning benchmarks, LongBench-v2 and LongBench-Pro, S-TTT improves accuracy for both Qwen3-4B-Thinking-2507 and Llama-3.1-8B-Instruct, achieving up to a 15% relative improvement.",
+          "url": "https://huggingface.co/papers/2607.09415",
+          "author": "Xinyu Zhu, Zhe Xu, Xiaohan Wei, Yunchen Pu, Fei Tian, Chonglin Sun, Kaushik Rangadurai, Hua Zhi, Frank Shyu, Sandeep Pandey, Luke Simon, Yu Meng, Xi Liu",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "This research addresses accuracy degradation in long-context LLMs by introducing a self-guided test-time training method for instance-specific parameter adaptation. By filtering irrelevant spans, it enables efficient adaptation without degrading the base model.",
+          "importance_score": 83.0,
+          "reasoning": "Offers a scalable solution to the long-context utilization problem by using targeted test-time training.",
+          "themes": [
+            "Language Models",
+            "Context Scaling"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.09415",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.09415"
+            },
+            "huggingface": {
+              "upvotes": 19,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-10T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This research addresses accuracy degradation in long-context LLMs by introducing a self-guided test-time training method for instance-specific parameter adaptation. By filtering irrelevant spans, it enables efficient adaptation without degrading the base model.</p>",
+          "content_html": "<p>Long-context processing has become increasingly important for large language models (LLMs), but simply extending the context window does not guarantee effective utilization of long inputs. As input length grows, accuracy often degrades, indicating that models still struggle to identify and use the evidence most relevant to a question. A promising way to improve long-context utilization is test-time training (TTT), which treats the test context as a training example for instance-specific parameter adaptation. However, applying TTT to the entire long context is prohibitively expensive, while adapting on randomly sampled spans introduces severe noise. Because most spans in a long context are irrelevant to the specific question, training on them may even degrade the base model's performance. Our preliminary study shows that TTT is highly sensitive to training-span quality: on LongBench-v2, TTT on randomly sampled spans hurts performance, whereas TTT on oracle spans substantially improves it. Motivated by this, we propose a simple method, Self-Guided TTT (S-TTT): before adaptation, the model identifies the evidence spans it should learn from, and the standard language-modeling training objective is applied only to those selected spans. On two challenging long-context reasoning benchmarks, LongBench-v2 and LongBench-Pro, S-TTT improves accuracy for both Qwen3-4B-Thinking-2507 and Llama-3.1-8B-Instruct, achieving up to a 15% relative improvement.</p>"
+        },
+        {
+          "id": "7c79b730a605",
+          "title": "Scalable Visual Pretraining for Language Intelligence",
+          "content": "The rapid progress of large foundation models has been driven predominantly by pretraining on large-scale text corpora. However, many forms of knowledge are conveyed through visual representations, where figures, typeset equations, and page layouts carry rich information that cannot be faithfully or completely captured by text alone. Yet current pretraining approaches discard these visual cues by converting visually rich sources, such as documents and web pages, into plain text for learning language intelligence. This paper challenges the default assumption that language models must be trained on text-only representations and shows that Visual Pretraining is a scalable learner for foundation model intelligence. To this end, we conduct a systematic study of unsupervised visual pretraining paradigms that directly leverage visual documents without text extraction. Across multiple backbones and benchmarks, visual pretraining on the same underlying corpora consistently outperforms text-only pretraining, offering an efficient pathway to scalable language intelligence.",
+          "url": "https://huggingface.co/papers/2607.09657",
+          "author": "Yiming Zhang, Zhonghan Zhao, Wenwei Zhang, Haiteng Zhao, Tianyang Lin, Yunhua Zhou, Demin Song, Kuikun Liu, Haochen Ye, Haian Huang, Yuzhe Gu, Haijun Lv, Qipeng Guo, Bin Liu, Gaoang Wang, Kai Chen",
+          "published": "2026-07-13T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "This study challenges the standard text-only pretraining assumption by systematically evaluating unsupervised visual pretraining for language models. It demonstrates that retaining rich visual cues like document layouts and equations significantly enhances foundation model language intelligence.",
+          "importance_score": 82.0,
+          "reasoning": "Challenges fundamental assumptions about text-only pretraining pipelines, offering empirical backing for multimodal pretraining strategies.",
+          "themes": [
+            "Language Models",
+            "Multimodal Models"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.09657",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.09657"
+            },
+            "huggingface": {
+              "upvotes": 56,
+              "selected_at": "2026-07-13T00:00:00.000Z",
+              "paper_published_at": "2026-07-10T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This study challenges the standard text-only pretraining assumption by systematically evaluating unsupervised visual pretraining for language models. It demonstrates that retaining rich visual cues like document layouts and equations significantly enhances foundation model language intelligence.</p>",
+          "content_html": "<p>The rapid progress of large foundation models has been driven predominantly by pretraining on large-scale text corpora. However, many forms of knowledge are conveyed through visual representations, where figures, typeset equations, and page layouts carry rich information that cannot be faithfully or completely captured by text alone. Yet current pretraining approaches discard these visual cues by converting visually rich sources, such as documents and web pages, into plain text for learning language intelligence. This paper challenges the default assumption that language models must be trained on text-only representations and shows that Visual Pretraining is a scalable learner for foundation model intelligence. To this end, we conduct a systematic study of unsupervised visual pretraining paradigms that directly leverage visual documents without text extraction. Across multiple backbones and benchmarks, visual pretraining on the same underlying corpora consistently outperforms text-only pretraining, offering an efficient pathway to scalable language intelligence.</p>"
+        },
+        {
+          "id": "bc1865717c98",
+          "title": "A unifying framework from neural superposition to sparse interpretable codes",
+          "content": "Nature Machine Intelligence, Published online: 14 July 2026; doi:10.1038/s42256-026-01259-zKindt et al. present a unifying framework for superposition in neural networks. Their three-step approach clarifies how latent features can be identified, disentangled and assessed.",
+          "url": "https://www.nature.com/articles/s42256-026-01259-z",
+          "author": "Nina Miolane",
+          "published": "2026-07-13T20:00:00",
+          "source": "Nature Machine Intelligence",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Presents a unifying three-step framework by Kindt et al. to identify, disentangle, and assess latent features in neural network superposition.",
+          "importance_score": 82.0,
+          "reasoning": "Advances interpretability theory by formalizing neural superposition and sparse feature identification.",
+          "themes": [
+            "Model Interpretability",
+            "Neural Networks"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://www.nature.com/natmachintell.rss",
+            "raw_summary": "<p>Nature Machine Intelligence, Published online: 14 July 2026; <a href=\"https://www.nature.com/articles/s42256-026-01259-z\">doi:10.1038/s42256-026-01259-z</a></p>Kindt et al. present a unifying framework for superposition in neural networks. Their three-step approach clarifies how latent features can be identified, disentangled and assessed.",
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Presents a unifying three-step framework by Kindt et al. to identify, disentangle, and assess latent features in neural network superposition.</p>",
+          "content_html": "<p>Nature Machine Intelligence, Published online: 14 July 2026; doi:10.1038/s42256-026-01259-zKindt et al. present a unifying framework for superposition in neural networks. Their three-step approach clarifies how latent features can be identified, disentangled and assessed.</p>"
+        },
+        {
+          "id": "13d963e181b7",
+          "title": "AI agents create virtual playgrounds to help robots get crucial training data",
+          "content": "Robots walking down the street, surrounded by astounded onlookers, is an increasingly common sight. But these machines aren’t yet the do-it-all assistants you’d want working in a kitchen or factory, and a major bottleneck is data. Much like humans, robots learn best by experience. The challenge is that it’s labor-intensive and time-consuming to physically teach these machines so many actions across different settings.&nbsp;“One natural idea is to use simulation as a training ground. While there has been significant progress over the last few years in the physics engines that power robotics simulators, one of the remaining challenges has been creating sufficiently rich and diverse simulation content to capture the complexity of the real world,” says Russ Tedrake, the Toyota Professor of Electrical Engineering and Computer Science (EECS), Aeronautics and Astronautics, and Mechanical Engineering at MIT, and a principal investigator at MIT’s Computer Science and Artificial Intelligence Laboratory (CSAIL).It turns out that AI agents, or semi-autonomous programs that “think” and complete well-defined tasks, could help produce the lifelike virtual settings that robots need. The new “SceneSmith” system developed by researchers at MIT CSAIL and Toyota Research Institute uses three agents to piece together the objects, walls, and overall look of a 3D scene. Its recreations of indoor spaces such as restaurants, bedrooms, and hotels are more realistic and detailed than prior systems, helping robots practice skills and try out different ways of doing tasks before they’re powered on. In turn, engineers save time on real-world testing.The agents have a sense of how everyday places are supposed to look because they each call on a multi-modal system called a vision-language model (VLM), specifically the state-of-the-art VLM&nbsp;GPT-5.2. It’s trained on lots of text and images from the internet to handle more visual prompts. This advanced model gives each agent a sort of spatial knowledge: First, a “designer” agent generates the elements of a scene, then a “critic” advises whether it looks realistic, and finally, an “orchestrator” manages their back-and-forth, deciding when the design is done. Once the three VLMs wrap up their creative collaboration, the scene is ready to load directly into physics simulation software.“We’ve found that the system can construct 3D scenes the way a human designer would,” says MIT EECS PhD student Nicholas Pfaff, a CSAIL researcher and a lead author on a&nbsp;paper with Tedrake presenting the work. “We made over 1,300 scenes using a leading VLM that has internet-scale priors, and it made insanely creative and diverse arrangements. I hadn’t taught the system to do that in the prompts; it just improvised.”Talk to my agentThanks to VLM agents, you can ask SceneSmith to do things like “generate a garage with a car, a workbench, tires stacked in the corner, and a ladder against the wall,” and get a virtual playground rich with objects a robot can tinker with. These rooms are decorated with up to six times more items per scene than prior methods, making them great for helping robots learn skills such as putting a cup in the sink, placing fruit on plates, and moving a soda can from a shelf to a table.With so many rich virtual environments handy, you can evaluate whether your robot is ready for deployment without so much trial and error in the physical world. The researchers tested out different action plans (also called “policies”) in SceneSmith’s digital worlds, generating 100 unique spaces in the process. A VLM agent evaluated each attempt, and it found the robot’s plans were faulty, with the machine often failing at its chores. Humans agreed with the model’s verdicts over 99 percent of the time, which could help roboticists weed out flawed approaches in simulation before a robot moves in the real world.But how realistic are these virtual worlds, really? It can be difficult to prove outright, so the researchers approached the question from several angles. The most telling test: they dropped a pretrained robot policy — an AI controller trained largely on real-world data, which had never seen a SceneSmith scene — into the generated environments. In one test, users told the system to “take the apple from the bowl and place it onto the cutting board,” and the simulated robot did exactly that. If the scenes didn’t closely resemble the real settings the policy had learned from, it simply wouldn’t have worked.&nbsp;The team also teleoperated robots through the virtual spaces, guiding them to open cabinets, put away bottles, and navigate between rooms. Their experiments revealed that the environments hold up under sustained physical interaction, expanding beyond visual inspection.Behind the scenesThe agents that SceneSmith uses each have a well-defined role in the generative process, fleshing out scenes in stages. They essentially create a floor plan and bring it to life.&nbsp;Let’s say you wanted to create a scene similar to the first floor of a house. The “designer” VLM would start with a general layout, which the “critic” reviews, and then the “orchestrator” signs off. The agents repeat this approach for each step: adding furniture, placing objects on walls and then ceilings, and finally, dropping in objects that robots can manipulate. For example, the VLMs can add cabinets that the robots can open and close — an articulated item, which prior baselines didn’t often have.At each stage, the second VLM ensures the scene is practical, advising that a bathtub is removed from a living room, for example. The third VLM ensures a high-quality scene is generated, even taking the design process a few turns back if the visuals aren’t up to par. Once the three VLMs wrap up their creative collaboration, the mechanics of the physical world are added via simulation software.With a sound understanding of how rooms should look, where objects should be placed, and real-world physics, SceneSmith has a noticeable edge over prior methods. Compared to scene-generation baselines such as&nbsp;“HSM” and&nbsp;“Holodeck,” SceneSmith made environments with more objects, including a private office, a pottery store, and even a Minecraft-themed gaming room.SceneSmith was also a favorite among over 200 users. They found the system’s visuals to be more realistic over 90 percent of the time. They also observed that, generally speaking, it followed prompts more closely than other approaches did. In other words, it was the best at generating the virtual playgrounds users actually wanted to see.A system of many talentsRealism, diversity, and richness are all strong suits for SceneSmith, even when it comes to generating individual 3D objects. You can prompt it to create a rolling serving cart, and it’ll make a 2D image that it then turns into a detailed model with physical properties like mass, friction, and inertia.Such a detailed process does come with a speed trade-off, though. It can take multiple hours to produce a single scene because the agents are creating and closely scrutinizing each object. With more computing power, the system could see dramatic increases in efficiency. CSAIL engineers are also hoping to expand to deformable objects (like sponges), should extensive 3D libraries become available.“SceneSmith represents a significant advance in this regard by providing an agentic framework for generating simulation-ready indoor environments just from a simple text prompt,” says Jeremy Binagia, an applied scientist at Amazon Robotics who wasn’t involved in the research. “It advances the state of the art in several ways, including pushing the limits of the density of objects in the simulated environment, ensuring that all of the objects are physically accurate (versus just being visually realistic), and creating assets that are not constrained to a fixed library, since they can be generated via text-to-3D.”Pfaff and Tedrake wrote the paper with Thomas Cohn SM ’24, an MIT PhD student and CSAIL researcher; and Toyota Research Institute roboticists Sergey Zakharov and Rick Cory SM ’08, PhD ’10. Their work was supported, in part, by Amazon, the U.S. Office of Naval Research, the Toyota Research Institute, and the U.S. National Science Foundation.The team presented their findings as a spotlight at last week’s International Conference on Machine Learning.&nbsp;",
+          "url": "https://news.mit.edu/2026/ai-agents-create-virtual-playgrounds-to-help-robots-get-crucial-training-data-0713",
+          "author": "Alex Shipps | MIT CSAIL",
+          "published": "2026-07-13T14:50:00",
+          "source": "MIT News - Artificial intelligence",
+          "source_type": "research_blog",
+          "tags": [
+            "Research",
+            "Robotics",
+            "Artificial intelligence",
+            "Simulation",
+            "Computer science and technology",
+            "Machine learning",
+            "3-D",
+            "Electrical engineering and computer science (EECS)",
+            "Computer Science and Artificial Intelligence Laboratory (CSAIL)",
+            "MIT Schwarzman College of Computing",
+            "School of Engineering",
+            "National Science Foundation (NSF)"
+          ],
+          "summary": "Describes MIT CSAIL research using AI agents to automatically generate rich virtual playground environments to supply crucial and diverse training data for robots.",
+          "importance_score": 81.0,
+          "reasoning": "Addresses the robotics data bottleneck by utilizing autonomous agents for simulation environment generation.",
+          "themes": [
+            "Robotics",
+            "Simulation"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
+            "raw_summary": "“SceneSmith” system uses collaborative AI agents to create realistic 3D environments of places like kitchens, hotels, and living rooms, where robots can simulate everyday chores.",
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Describes MIT CSAIL research using AI agents to automatically generate rich virtual playground environments to supply crucial and diverse training data for robots.</p>",
+          "content_html": "<p>Robots walking down the street, surrounded by astounded onlookers, is an increasingly common sight. But these machines aren’t yet the do-it-all assistants you’d want working in a kitchen or factory, and a major bottleneck is data. Much like humans, robots learn best by experience. The challenge is that it’s labor-intensive and time-consuming to physically teach these machines so many actions across different settings.&nbsp;“One natural idea is to use simulation as a training ground. While there has been significant progress over the last few years in the physics engines that power robotics simulators, one of the remaining challenges has been creating sufficiently rich and diverse simulation content to capture the complexity of the real world,” says Russ Tedrake, the Toyota Professor of Electrical Engineering and Computer Science (EECS), Aeronautics and Astronautics, and Mechanical Engineering at MIT, and a principal investigator at MIT’s Computer Science and Artificial Intelligence Laboratory (CSAIL).It turns out that AI agents, or semi-autonomous programs that “think” and complete well-defined tasks, could help produce the lifelike virtual settings that robots need. The new “SceneSmith” system developed by researchers at MIT CSAIL and Toyota Research Institute uses three agents to piece together the objects, walls, and overall look of a 3D scene. Its recreations of indoor spaces such as restaurants, bedrooms, and hotels are more realistic and detailed than prior systems, helping robots practice skills and try out different ways of doing tasks before they’re powered on. In turn, engineers save time on real-world testing.The agents have a sense of how everyday places are supposed to look because they each call on a multi-modal system called a vision-language model (VLM), specifically the state-of-the-art VLM&nbsp;GPT-5.2. It’s trained on lots of text and images from the internet to handle more visual prompts. This advanced model gives each agent a sort of spatial knowledge: First, a “designer” agent generates the elements of a scene, then a “critic” advises whether it looks realistic, and finally, an “orchestrator” manages their back-and-forth, deciding when the design is done. Once the three VLMs wrap up their creative collaboration, the scene is ready to load directly into physics simulation software.“We’ve found that the system can construct 3D scenes the way a human designer would,” says MIT EECS PhD student Nicholas Pfaff, a CSAIL researcher and a lead author on a&nbsp;paper with Tedrake presenting the work. “We made over 1,300 scenes using a leading VLM that has internet-scale priors, and it made insanely creative and diverse arrangements. I hadn’t taught the system to do that in the prompts; it just improvised.”Talk to my agentThanks to VLM agents, you can ask SceneSmith to do things like “generate a garage with a car, a workbench, tires stacked in the corner, and a ladder against the wall,” and get a virtual playground rich with objects a robot can tinker with. These rooms are decorated with up to six times more items per scene than prior methods, making them great for helping robots learn skills such as putting a cup in the sink, placing fruit on plates, and moving a soda can from a shelf to a table.With so many rich virtual environments handy, you can evaluate whether your robot is ready for deployment without so much trial and error in the physical world. The researchers tested out different action plans (also called “policies”) in SceneSmith’s digital worlds, generating 100 unique spaces in the process. A VLM agent evaluated each attempt, and it found the robot’s plans were faulty, with the machine often failing at its chores. Humans agreed with the model’s verdicts over 99 percent of the time, which could help roboticists weed out flawed approaches in simulation before a robot moves in the real world.But how realistic are these virtual worlds, really? It can be difficult to prove outright, so the researchers approached the question from several angles. The most telling test: they dropped a pretrained robot policy — an AI controller trained largely on real-world data, which had never seen a SceneSmith scene — into the generated environments. In one test, users told the system to “take the apple from the bowl and place it onto the cutting board,” and the simulated robot did exactly that. If the scenes didn’t closely resemble the real settings the policy had learned from, it simply wouldn’t have worked.&nbsp;The team also teleoperated robots through the virtual spaces, guiding them to open cabinets, put away bottles, and navigate between rooms. Their experiments revealed that the environments hold up under sustained physical interaction, expanding beyond visual inspection.Behind the scenesThe agents that SceneSmith uses each have a well-defined role in the generative process, fleshing out scenes in stages. They essentially create a floor plan and bring it to life.&nbsp;Let’s say you wanted to create a scene similar to the first floor of a house. The “designer” VLM would start with a general layout, which the “critic” reviews, and then the “orchestrator” signs off. The agents repeat this approach for each step: adding furniture, placing objects on walls and then ceilings, and finally, dropping in objects that robots can manipulate. For example, the VLMs can add cabinets that the robots can open and close — an articulated item, which prior baselines didn’t often have.At each stage, the second VLM ensures the scene is practical, advising that a bathtub is removed from a living room, for example. The third VLM ensures a high-quality scene is generated, even taking the design process a few turns back if the visuals aren’t up to par. Once the three VLMs wrap up their creative collaboration, the mechanics of the physical world are added via simulation software.With a sound understanding of how rooms should look, where objects should be placed, and real-world physics, SceneSmith has a noticeable edge over prior methods. Compared to scene-generation baselines such as&nbsp;“HSM” and&nbsp;“Holodeck,” SceneSmith made environments with more objects, including a private office, a pottery store, and even a Minecraft-themed gaming room.SceneSmith was also a favorite among over 200 users. They found the system’s visuals to be more realistic over 90 percent of the time. They also observed that, generally speaking, it followed prompts more closely than other approaches did. In other words, it was the best at generating the virtual playgrounds users actually wanted to see.A system of many talentsRealism, diversity, and richness are all strong suits for SceneSmith, even when it comes to generating individual 3D objects. You can prompt it to create a rolling serving cart, and it’ll make a 2D image that it then turns into a detailed model with physical properties like mass, friction, and inertia.Such a detailed process does come with a speed trade-off, though. It can take multiple hours to produce a single scene because the agents are creating and closely scrutinizing each object. With more computing power, the system could see dramatic increases in efficiency. CSAIL engineers are also hoping to expand to deformable objects (like sponges), should extensive 3D libraries become available.“SceneSmith represents a significant advance in this regard by providing an agentic framework for generating simulation-ready indoor environments just from a simple text prompt,” says Jeremy Binagia, an applied scientist at Amazon Robotics who wasn’t involved in the research. “It advances the state of the art in several ways, including pushing the limits of the density of objects in the simulated environment, ensuring that all of the objects are physically accurate (versus just being visually realistic), and creating assets that are not constrained to a fixed library, since they can be generated via text-to-3D.”Pfaff and Tedrake wrote the paper with Thomas Cohn SM ’24, an MIT PhD student and CSAIL researcher; and Toyota Research Institute roboticists Sergey Zakharov and Rick Cory SM ’08, PhD ’10. Their work was supported, in part, by Amazon, the U.S. Office of Naval Research, the Toyota Research Institute, and the U.S. National Science Foundation.The team presented their findings as a spotlight at last week’s International Conference on Machine Learning.&nbsp;</p>"
+        },
+        {
+          "id": "848bed36a14c",
+          "title": "Prism: Automating Science-of-Evals Research",
+          "content": "tl;dr – we present [Prism], a scaffold for automating science-of-evals research: work that makes the evaluation the primary object of study. The scaffold provides Claude Code with sub-agents and resources for carrying out scientifically rigorous investigations into eval dynamics and, by extension, model behaviours.We talk through an autonomous Prism run on the Agentic Misalignment setting which demonstrates how minor perturbations to GPT-4.1's prompt cause the model to adopt more indirect methods of blackmail (e.g. telling a trusted ally to blackmail on their behalf). Moreover, the eval's built-in scorers fail to track this kind of misbehaviour, only acknowledging a blackmail attempt if the model mentions the leverage directly in an email to the blackmail victim. This autonomous investigation thus demonstrates one way in which the eval fails to measure what it claims.This project is ongoing, so please reach out with questions and feedback. We would be excited to see you use Prism in new settings! See the [FAQ] section for our responses to common questions.This work was done by Louis Thomson during MATS 9.0 (+ 9.1) under the mentorship of Victoria Krakovna. Special thanks to Fred Bruford for support throughout.Prism in action: identifying a flaw in the Agentic Misalignment eval's built-in scorersIntroductionPrism[1] is a scaffold for automating science-of-evals research[2], built on top of Claude Code and Inspect. It provides a central Orchestrator agent (the Claude Code session that conducts the investigation) with three dedicated sub-agents, structural constraints to improve scientific rigour, and resources about evaluation science.Prism can be used to answer questions about evaluation dynamics, like:\"How does feature X in this evaluation setting impact model behaviours?\"\"Can you identify any confounds that mean this eval isn't measuring what it claims to measure?\"... or about stress-testing explanations for observed model behaviours, like:\"Is our current interpret...",
+          "url": "https://www.lesswrong.com/posts/wq5PfGiHvnx6XipDi/prism-automating-science-of-evals-research",
+          "author": "LAThomson",
+          "published": "2026-07-13T12:30:21.422000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Presents Prism, an automated research scaffold for evaluating model behaviors and eval dynamics using sub-agents. Demonstrates how subtle prompt perturbations cause models to bypass traditional eval metrics.",
+          "importance_score": 82.0,
+          "reasoning": "Automates the 'science of evals' to uncover vulnerabilities and failure modes in safety benchmarks.",
+          "themes": [
+            "AI Safety",
+            "Evaluation Research"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "wq5PfGiHvnx6XipDi",
+            "slug": "prism-automating-science-of-evals-research",
+            "base_score": 46,
+            "vote_count": 26,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Presents Prism, an automated research scaffold for evaluating model behaviors and eval dynamics using sub-agents. Demonstrates how subtle prompt perturbations cause models to bypass traditional eval metrics.</p>",
+          "content_html": "<p>tl;dr – we present [Prism], a scaffold for automating science-of-evals research: work that makes the evaluation the primary object of study. The scaffold provides Claude Code with sub-agents and resources for carrying out scientifically rigorous investigations into eval dynamics and, by extension, model behaviours.We talk through an autonomous Prism run on the Agentic Misalignment setting which demonstrates how minor perturbations to GPT-4.1's prompt cause the model to adopt more indirect methods of blackmail (e.g. telling a trusted ally to blackmail on their behalf). Moreover, the eval's built-in scorers fail to track this kind of misbehaviour, only acknowledging a blackmail attempt if the model mentions the leverage directly in an email to the blackmail victim. This autonomous investigation thus demonstrates one way in which the eval fails to measure what it claims.This project is ongoing, so please reach out with questions and feedback. We would be excited to see you use Prism in new settings! See the [FAQ] section for our responses to common questions.This work was done by Louis Thomson during MATS 9.0 (+ 9.1) under the mentorship of Victoria Krakovna. Special thanks to Fred Bruford for support throughout.Prism in action: identifying a flaw in the Agentic Misalignment eval's built-in scorersIntroductionPrism[1] is a scaffold for automating science-of-evals research[2], built on top of Claude Code and Inspect. It provides a central Orchestrator agent (the Claude Code session that conducts the investigation) with three dedicated sub-agents, structural constraints to improve scientific rigour, and resources about evaluation science.Prism can be used to answer questions about evaluation dynamics, like:\"How does feature X in this evaluation setting impact model behaviours?\"\"Can you identify any confounds that mean this eval isn't measuring what it claims to measure?\"... or about stress-testing explanations for observed model behaviours, like:\"Is our current interpret...</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 14,
+      "category_summary": "Discussions centered on breakthrough research in **Physical AI** and decentralization. **Sakana AI**, **IT University of Copenhagen**, and **Autodesk** [published findings on smart cellular bricks](/?date=2026-07-14&category=social#item-2f6fa4018666) achieving collective intelligence.\n\n- **David Ha** [highlighted that AI spans beyond traditional LLMs](/?date=2026-07-14&category=social#item-d07be4da33fa) into decentralized physical systems\n- Threads [explored neural cellular automata architecture](/?date=2026-07-14&category=social#item-d1a72908cf25) enabling fault tolerance and biological morphogenesis in hardware bricks",
+      "category_summary_html": "<p>Discussions centered on breakthrough research in <strong>Physical AI</strong> and decentralization. <strong>Sakana AI</strong>, <strong>IT University of Copenhagen</strong>, and <strong>Autodesk</strong> <a href=\"/?date=2026-07-14&amp;category=social#item-2f6fa4018666\" class=\"internal-link\" rel=\"noopener noreferrer\">published findings on smart cellular bricks</a> achieving collective intelligence.</p>\n<ul>\n<li><strong>David Ha</strong> <a href=\"/?date=2026-07-14&amp;category=social#item-d07be4da33fa\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighted that AI spans beyond traditional LLMs</a> into decentralized physical systems</li>\n<li>Threads <a href=\"/?date=2026-07-14&amp;category=social#item-d1a72908cf25\" class=\"internal-link\" rel=\"noopener noreferrer\">explored neural cellular automata architecture</a> enabling fault tolerance and biological morphogenesis in hardware bricks</li>\n</ul>",
+      "themes": [],
+      "top_items": [
+        {
+          "id": "2f6fa4018666",
+          "title": "How do physical systems achieve collective intelligence and self-repair without a central brain?\n\nA ...",
+          "content": "How do physical systems achieve collective intelligence and self-repair without a central brain?\n\nA new paper published in Nature Communications from Sakana AI, IT University of Copenhagen, Autodesk, presents a beautiful realization of biologically inspired robotics: Smart Cellular Bricks.\n\nThread 🧵",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm3gk3e22k",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:37:10.345000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Announces a new Nature Communications paper from Sakana AI, IT University of Copenhagen, and Autodesk on Smart Cellular Bricks.",
+          "importance_score": 88.0,
+          "reasoning": "High-engagement announcement of major peer-reviewed research from top labs in Physical AI.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Academic Research"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm3gk3e22k",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 70,
+              "reposts": 16,
+              "replies": 3,
+              "quotes": 2
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Announces a new Nature Communications paper from Sakana AI, IT University of Copenhagen, and Autodesk on Smart Cellular Bricks.</p>",
+          "content_html": "<p>How do physical systems achieve collective intelligence and self-repair without a central brain?</p>\n<p>A new paper published in Nature Communications from Sakana AI, IT University of Copenhagen, Autodesk, presents a beautiful realization of biologically inspired robotics: Smart Cellular Bricks.</p>\n<p>Thread 🧵</p>"
+        },
+        {
+          "id": "2390e818d4fe",
+          "title": "Read the full open-access paper:\nwww.nature.com/articles/s41...\n\nBlog:\nsakana.ai/smart-cellul...\n\nCo...",
+          "content": "Read the full open-access paper:\nwww.nature.com/articles/s41...\n\nBlog:\nsakana.ai/smart-cellul...\n\nCongratulations to the team on this achievement!",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjmbqk5ws2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:40:42.160000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Provides links to the open-access Nature paper and official blog post detailing the smart cellular bricks research.",
+          "importance_score": 85.0,
+          "reasoning": "Direct link to primary research source material from a major lab collaboration.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Academic Research"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjmbqk5ws2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 10,
+              "reposts": 2,
+              "replies": 0,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Provides links to the open-access Nature paper and official blog post detailing the smart cellular bricks research.</p>",
+          "content_html": "<p>Read the full open-access paper:</p>\n<p>www.nature.com/articles/s41...</p>\n<p>Blog:</p>\n<p>sakana.ai/smart-cellul...</p>\n<p>Congratulations to the team on this achievement!</p>"
+        },
+        {
+          "id": "062a5b3a9111",
+          "title": "2/ Emergent Biological Morphogens:\n\nHow does a block know it is part of a chair, not a table? The ne...",
+          "content": "2/ Emergent Biological Morphogens:\n\nHow does a block know it is part of a chair, not a table? The network’s internal memory automatically learns to establish continuous gradients across the structure. This beautifully mirrors how biological morphogens give positional info to developing cells.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm5hyewk2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:38:18.971000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Draws parallels between the network's internal memory gradients and biological morphogens in developing cells.",
+          "importance_score": 82.0,
+          "reasoning": "Fascinating conceptual connection between artificial neural networks and developmental biology.",
+          "themes": [
+            "Biological Inspiration",
+            "Morphogenesis"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm5hyewk2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Draws parallels between the network's internal memory gradients and biological morphogens in developing cells.</p>",
+          "content_html": "<p>2/ Emergent Biological Morphogens:</p>\n<p>How does a block know it is part of a chair, not a table? The network’s internal memory automatically learns to establish continuous gradients across the structure. This beautifully mirrors how biological morphogens give positional info to developing cells.</p>"
+        },
+        {
+          "id": "d1a72908cf25",
+          "title": "1/ NCA-based Architecture:\n\nModular robots usually rely on central processors. This system flips tha...",
+          "content": "1/ NCA-based Architecture:\n\nModular robots usually rely on central processors. This system flips that paradigm. Every block independently runs the exact same neural network on local microcontrollers. With no master plan or global coordinates, they communicate only with immediate neighbors.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm4uwlb22p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:37:58.989000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Contrasts traditional centralized modular robots with this decentralized NCA-based architecture running local microcontrollers.",
+          "importance_score": 82.0,
+          "reasoning": "Clearly defines the architectural paradigm shift away from central processors.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Neural Cellular Automata"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm4uwlb22p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Contrasts traditional centralized modular robots with this decentralized NCA-based architecture running local microcontrollers.</p>",
+          "content_html": "<p>1/ NCA-based Architecture:</p>\n<p>Modular robots usually rely on central processors. This system flips that paradigm. Every block independently runs the exact same neural network on local microcontrollers. With no master plan or global coordinates, they communicate only with immediate neighbors.</p>"
+        },
+        {
+          "id": "2cc02b36c929",
+          "title": "This work represents the first successful physical realization of large-scale, decentralized 3D self...",
+          "content": "This work represents the first successful physical realization of large-scale, decentralized 3D self-recognition and damage detection. By moving away from centralized control, this method paves the way for highly adaptive smart materials and resilient robotics that can survive and repair themselves.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjmav4f322p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:40:13.397000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Summarizes the significance of the work as the first physical realization of decentralized 3D self-recognition and damage detection.",
+          "importance_score": 80.0,
+          "reasoning": "Highlights the core technological breakthrough and its implications for resilient robotics.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Decentralized Systems"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjmav4f322p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 5,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Summarizes the significance of the work as the first physical realization of decentralized 3D self-recognition and damage detection.</p>",
+          "content_html": "<p>This work represents the first successful physical realization of large-scale, decentralized 3D self-recognition and damage detection. By moving away from centralized control, this method paves the way for highly adaptive smart materials and resilient robotics that can survive and repair themselves.</p>"
+        },
+        {
+          "id": "8c70c3d28385",
+          "title": "I believe this is a significant piece of research, bridging collective intelligence and Physical AI.",
+          "content": "I believe this is a significant piece of research, bridging collective intelligence and Physical AI.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm7stx522p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:39:37.469000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Frames the research as a crucial bridge between collective intelligence and Physical AI.",
+          "importance_score": 78.0,
+          "reasoning": "Provides high-level conceptual framing for the breakthrough.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Collective Intelligence"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm7stx522p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Frames the research as a crucial bridge between collective intelligence and Physical AI.</p>",
+          "content_html": "<p>I believe this is a significant piece of research, bridging collective intelligence and Physical AI.</p>"
+        },
+        {
+          "id": "0f908c22091e",
+          "title": "4/ Fault Tolerance and Autonomous Damage Recovery:\n\nHardware fails in the real world. This system ea...",
+          "content": "4/ Fault Tolerance and Autonomous Damage Recovery:\n\nHardware fails in the real world. This system easily tolerates up to 15% module failure without losing accuracy. By predicting spatial damage directions, the cells pinpointed missing components with 95% accuracy.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm6zvv2c2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:39:11.318000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Outlines fault tolerance metrics, showing the system tolerates up to 15% module failure with high spatial accuracy.",
+          "importance_score": 78.0,
+          "reasoning": "Provides concrete performance and robustness data from physical testing.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Fault Tolerance"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm6zvv2c2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 7,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Outlines fault tolerance metrics, showing the system tolerates up to 15% module failure with high spatial accuracy.</p>",
+          "content_html": "<p>4/ Fault Tolerance and Autonomous Damage Recovery:</p>\n<p>Hardware fails in the real world. This system easily tolerates up to 15% module failure without losing accuracy. By predicting spatial damage directions, the cells pinpointed missing components with 95% accuracy.</p>"
+        },
+        {
+          "id": "f6062fd6bdce",
+          "title": "The team built a system of physical 3D cubic units that can collectively infer their global shape an...",
+          "content": "The team built a system of physical 3D cubic units that can collectively infer their global shape and autonomously guide their own damage recovery using purely local interactions.\n\nHere is a deep dive into the paper’s key contributions:",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm4dtcks2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:37:41.056000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Introduces the core mechanism of cubic units inferring global shape and damage recovery via local interactions.",
+          "importance_score": 78.0,
+          "reasoning": "Sets up the technical deep dive into the research paper.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Collective Intelligence"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm4dtcks2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 1
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Introduces the core mechanism of cubic units inferring global shape and damage recovery via local interactions.</p>",
+          "content_html": "<p>The team built a system of physical 3D cubic units that can collectively infer their global shape and autonomously guide their own damage recovery using purely local interactions.</p>\n<p>Here is a deep dive into the paper’s key contributions:</p>"
+        },
+        {
+          "id": "3327fa678719",
+          "title": "They actively use these local signals to guide a self-repair process, regenerating back into the int...",
+          "content": "They actively use these local signals to guide a self-repair process, regenerating back into the intended morphology.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm76amis2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:39:15.863000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Explains how modules use local signals for self-repair and regeneration into intended morphologies.",
+          "importance_score": 76.0,
+          "reasoning": "Details the biological inspiration and self-healing mechanism of the robotic bricks.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Biological Inspiration"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm76amis2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 6,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Explains how modules use local signals for self-repair and regeneration into intended morphologies.</p>",
+          "content_html": "<p>They actively use these local signals to guide a self-repair process, regenerating back into the intended morphology.</p>"
+        },
+        {
+          "id": "5f089f64308b",
+          "title": "By passing continuous state vectors, hundreds of bricks achieve global consensus on their shape in u...",
+          "content": "By passing continuous state vectors, hundreds of bricks achieve global consensus on their shape in under 3 minutes.",
+          "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mqjm52bymc2p",
+          "author": "@hardmaru.bsky.social",
+          "published": "2026-07-13T11:38:04.606000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Notes that hundreds of bricks achieve global consensus on shape in under 3 minutes via continuous state vectors.",
+          "importance_score": 76.0,
+          "reasoning": "Provides quantitative performance metrics regarding convergence speed.",
+          "themes": [
+            "Physical AI & Robotics",
+            "Decentralized Systems"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mqjm52bymc2p",
+            "author_display_name": "hardmaru",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Notes that hundreds of bricks achieve global consensus on shape in under 3 minutes via continuous state vectors.</p>",
+          "content_html": "<p>By passing continuous state vectors, hundreds of bricks achieve global consensus on their shape in under 3 minutes.</p>"
+        }
+      ]
+    },
+    "github_trending": {
+      "count": 42,
+      "category_summary": "**OmniRoute** [launched a free MIT AI gateway](/?date=2026-07-14&category=github_trending#item-79030ad727e1), offering multi-provider failovers and aggressive token compression (RTK+Caveman) that slashes overhead",
+      "category_summary_html": "<p><strong>OmniRoute</strong> <a href=\"/?date=2026-07-14&amp;category=github_trending#item-79030ad727e1\" class=\"internal-link\" rel=\"noopener noreferrer\">launched a free MIT AI gateway</a>, offering multi-provider failovers and aggressive token compression (RTK+Caveman) that slashes overhead</p>",
+      "themes": [
+        {
+          "name": "Agentic Automation & Web Tools",
+          "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+          "item_count": 11,
+          "example_items": [
+            "096cb92f6d28",
+            "daddc919f43d",
+            "316d8061b9c2"
+          ],
+          "importance": 88.0
+        },
+        {
+          "name": "Local LLM & Inference Infrastructure",
+          "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+          "item_count": 2,
+          "example_items": [
+            "096cb92f6d28",
+            "daddc919f43d",
+            "316d8061b9c2"
+          ],
+          "importance": 85.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "096cb92f6d28",
+          "title": "[GitHub Trending] block/buzz: A hive mind communication platform",
+          "content": "GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 2,506",
+          "url": "https://github.com/block/buzz",
+          "author": "block",
+          "published": "2026-07-25T21:58:19.426616+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 2,506",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (2,506 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "2,506",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.426616+00:00",
+            "hn_score": 2506,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 2,506</p>",
+          "content_html": "<p>GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 2,506</p>"
+        },
+        {
+          "id": "daddc919f43d",
+          "title": "[GitHub Trending] citrolabs/ego-lite: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
+          "content": "GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 986",
+          "url": "https://github.com/citrolabs/ego-lite",
+          "author": "citrolabs",
+          "published": "2026-07-25T21:58:19.427373+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 986",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (986 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "JavaScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "986",
+            "language": "JavaScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.427373+00:00",
+            "hn_score": 986,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 986</p>",
+          "content_html": "<p>GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 986</p>"
+        },
+        {
+          "id": "316d8061b9c2",
+          "title": "[GitHub Trending] permissionlesstech/bitchat: bluetooth mesh chat, IRC vibes",
+          "content": "GitHub Repository: permissionlesstech/bitchat\nDescription: bluetooth mesh chat, IRC vibes\nLanguage: Swift\nStars Today: 1,695",
+          "url": "https://github.com/permissionlesstech/bitchat",
+          "author": "permissionlesstech",
+          "published": "2026-07-25T21:58:19.429699+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Swift repository (1,695 stars today): GitHub Repository: permissionlesstech/bitchat\nDescription: bluetooth mesh chat, IRC vibes\nLanguage: Swift\nStars Today: 1,695",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,695 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Swift"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,695",
+            "language": "Swift",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.429699+00:00",
+            "hn_score": 1695,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Swift repository (1,695 stars today): GitHub Repository: permissionlesstech/bitchat</p>\n<p>Description: bluetooth mesh chat, IRC vibes</p>\n<p>Language: Swift</p>\n<p>Stars Today: 1,695</p>",
+          "content_html": "<p>GitHub Repository: permissionlesstech/bitchat</p>\n<p>Description: bluetooth mesh chat, IRC vibes</p>\n<p>Language: Swift</p>\n<p>Stars Today: 1,695</p>"
+        },
+        {
+          "id": "e0c58594c75a",
+          "title": "[GitHub Trending] mattpocock/skills: Skills for Real Engineers. Straight from my .agents directory.",
+          "content": "GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 1,743",
+          "url": "https://github.com/mattpocock/skills",
+          "author": "mattpocock",
+          "published": "2026-07-25T21:58:19.430050+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (1,743 stars today): GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 1,743",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,743 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,743",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.430050+00:00",
+            "hn_score": 1743,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (1,743 stars today): GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 1,743</p>",
+          "content_html": "<p>GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 1,743</p>"
+        },
+        {
+          "id": "79030ad727e1",
+          "title": "[GitHub Trending] diegosouzapw/OmniRoute: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+          "content": "GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,442",
+          "url": "https://github.com/diegosouzapw/OmniRoute",
+          "author": "diegosouzapw",
+          "published": "2026-07-25T21:58:21.289306+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,442 stars today): GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,442",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,442 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,442",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:21.289306+00:00",
+            "hn_score": 1442,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,442 stars today): GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,442</p>",
+          "content_html": "<p>GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,442</p>"
+        },
+        {
+          "id": "8f21689f9359",
+          "title": "[GitHub Trending] koala73/worldmonitor: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+          "content": "GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 1,146",
+          "url": "https://github.com/koala73/worldmonitor",
+          "author": "koala73",
+          "published": "2026-07-25T21:58:21.290558+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,146 stars today): GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 1,146",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,146 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,146",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:21.290558+00:00",
+            "hn_score": 1146,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,146 stars today): GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,146</p>",
+          "content_html": "<p>GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,146</p>"
+        },
+        {
+          "id": "300995badbac",
+          "title": "[GitHub Trending] ComposioHQ/awesome-claude-skills: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
+          "content": "GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 574",
+          "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+          "author": "ComposioHQ",
+          "published": "2026-07-25T21:58:19.427687+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (574 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 574",
+          "importance_score": 88,
+          "reasoning": "High community velocity on GitHub Trending (574 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "574",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.427687+00:00",
+            "hn_score": 574,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (574 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 574</p>",
+          "content_html": "<p>GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 574</p>"
+        },
+        {
+          "id": "7f4b77e91802",
+          "title": "[GitHub Trending] earendil-works/pi: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+          "content": "GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 523",
+          "url": "https://github.com/earendil-works/pi",
+          "author": "earendil-works",
+          "published": "2026-07-25T21:58:21.290249+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (523 stars today): GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 523",
+          "importance_score": 86,
+          "reasoning": "High community velocity on GitHub Trending (523 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "523",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:21.290249+00:00",
+            "hn_score": 523,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (523 stars today): GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 523</p>",
+          "content_html": "<p>GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 523</p>"
+        },
+        {
+          "id": "12163a308fca",
+          "title": "[GitHub Trending] Automattic/harper: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered",
+          "content": "GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 503",
+          "url": "https://github.com/Automattic/harper",
+          "author": "Automattic",
+          "published": "2026-07-25T21:58:19.428323+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (503 stars today): GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 503",
+          "importance_score": 85,
+          "reasoning": "High community velocity on GitHub Trending (503 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "503",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.428323+00:00",
+            "hn_score": 503,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (503 stars today): GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 503</p>",
+          "content_html": "<p>GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 503</p>"
+        },
+        {
+          "id": "f49502979215",
+          "title": "[GitHub Trending] obra/superpowers: An agentic skills framework & software development methodology that works.",
+          "content": "GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 507",
+          "url": "https://github.com/obra/superpowers",
+          "author": "obra",
+          "published": "2026-07-25T21:58:19.429066+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (507 stars today): GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 507",
+          "importance_score": 85,
+          "reasoning": "High community velocity on GitHub Trending (507 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "507",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T21:58:19.429066+00:00",
+            "hn_score": 507,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (507 stars today): GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 507</p>",
+          "content_html": "<p>GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 507</p>"
+        }
+      ]
+    }
+  }
+}
