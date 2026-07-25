@@ -1,0 +1,1070 @@
+{
+  "date": "2026-07-16",
+  "coverage_date": "2026-07-15",
+  "coverage_start": "2026-07-15T00:00:00",
+  "coverage_end": "2026-07-15T23:59:59.999999",
+  "executive_summary": "#### Top Story\n**Agentic Automation & Web Tools** — Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))\n\n#### Key Developments\n- **Interpretability & Probing**: Mechanistic interpretability, superposition, neural transparency tools, and internal representation probing. ([read more](/?date=2026-07-16&category=news#item-7a0dfad817b7))\n- **Local LLM & Inference Infrastructure**: High-performance open-source runtimes, local model tooling, and quantization engines. ([read more](/?date=2026-07-16&category=research#item-7530adb01dc9))\n- **Multimodal Models & Vision**: Visual document understanding, RINO vision unification, search-augmented image generation, and reward models. ([read more](/?date=2026-07-16&category=research#item-d1bf758cafde))\n- **AI Safety & Alignment**: Innovations in automated red teaming, self-play improvement, and model robustness. ([read more](/?date=2026-07-16&category=research#item-c3ae1e01219a))\n- **Agentic AI & Environments**: Developments surrounding dedicated execution environments and platforms for autonomous AI agents. ([read more](/?date=2026-07-16&category=research#item-17393eee9d7c))\n\n#### Category Briefings\n- **News — GPT-Red: Unlocking Self-Improvement for Robustness**: OpenAI has unveiled GPT-Red, an automated red teaming system that utilizes self-play mechanisms to enhance model safety, alignment, and robustness against prompt injection attacks. ([read more](/?date=2026-07-16&category=research#item-6547ee748c51))\n- **News — Perplexity AI Introduces Space Sandbox for Agents**: Perplexity AI has introduced Space Sandbox, a new platform feature designed for AI agents. This rollout reflects the search vendor's ongoing evolution toward more sophisticated agentic workflows. ([read more](/?date=2026-07-16&category=research#item-11d874108bf2))\n- **Research — What LLM Forecasters Know but Don't Say: Probing Internal Representations for Calibration and Faithfulness**: This paper probes internal representations of LLM forecasters to improve calibration and detect unfaithful Chain-of-Thought reasoning. The representation-pooling probes act as reliable lie detectors during behavioral shifts caused by prompt evidence ablation.\n- **Research — Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation**: SpectraReward is a training-free reward function that turns pretrained multimodal large language models into off-the-shelf reward models for text-to-image reinforcement learning. It measures prompt recovery likelihood from the generated image via a single teacher-forced forward pass.\n- **Social**: No items to analyze.\n- **Github Trending — [GitHub Trending] block/buzz: A hive mind communication platform**: Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz Description: A hive mind communication platform Language: Rust Stars Today: 2,506\n- **Github Trending — [GitHub Trending] citrolabs/ego-lite: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or.**: Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config. Language: JavaScript Stars Today: 986\n\n#### Sentiment & Controversy\n- **Expanding AI Control from Models to Harnesses** (concerned)",
+  "executive_summary_html": "<h4>Top Story</h4>\n<p><strong>Agentic Automation &amp; Web Tools</strong> — Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<h4>Key Developments</h4>\n<ul>\n<li><strong>Interpretability &amp; Probing</strong>: Mechanistic interpretability, superposition, neural transparency tools, and internal representation probing. (<a href=\"/?date=2026-07-16&amp;category=news#item-7a0dfad817b7\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Local LLM &amp; Inference Infrastructure</strong>: High-performance open-source runtimes, local model tooling, and quantization engines. (<a href=\"/?date=2026-07-16&amp;category=research#item-7530adb01dc9\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Multimodal Models &amp; Vision</strong>: Visual document understanding, RINO vision unification, search-augmented image generation, and reward models. (<a href=\"/?date=2026-07-16&amp;category=research#item-d1bf758cafde\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>AI Safety &amp; Alignment</strong>: Innovations in automated red teaming, self-play improvement, and model robustness. (<a href=\"/?date=2026-07-16&amp;category=research#item-c3ae1e01219a\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Agentic AI &amp; Environments</strong>: Developments surrounding dedicated execution environments and platforms for autonomous AI agents. (<a href=\"/?date=2026-07-16&amp;category=research#item-17393eee9d7c\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n</ul>\n<h4>Category Briefings</h4>\n<ul>\n<li><strong>News — GPT-Red: Unlocking Self-Improvement for Robustness</strong>: OpenAI has unveiled GPT-Red, an automated red teaming system that utilizes self-play mechanisms to enhance model safety, alignment, and robustness against prompt injection attacks. (<a href=\"/?date=2026-07-16&amp;category=research#item-6547ee748c51\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>News — Perplexity AI Introduces Space Sandbox for Agents</strong>: Perplexity AI has introduced Space Sandbox, a new platform feature designed for AI agents. This rollout reflects the search vendor's ongoing evolution toward more sophisticated agentic workflows. (<a href=\"/?date=2026-07-16&amp;category=research#item-11d874108bf2\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Research — What LLM Forecasters Know but Don't Say: Probing Internal Representations for Calibration and Faithfulness</strong>: This paper probes internal representations of LLM forecasters to improve calibration and detect unfaithful Chain-of-Thought reasoning. The representation-pooling probes act as reliable lie detectors during behavioral shifts caused by prompt evidence ablation.</li>\n<li><strong>Research — Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation</strong>: SpectraReward is a training-free reward function that turns pretrained multimodal large language models into off-the-shelf reward models for text-to-image reinforcement learning. It measures prompt recovery likelihood from the generated image via a single teacher-forced forward pass.</li>\n<li><strong>Social</strong>: No items to analyze.</li>\n<li><strong>Github Trending — [GitHub Trending] block/buzz: A hive mind communication platform</strong>: Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz Description: A hive mind communication platform Language: Rust Stars Today: 2,506</li>\n<li><strong>Github Trending — [GitHub Trending] citrolabs/ego-lite: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or.</strong>: Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config. Language: JavaScript Stars Today: 986</li>\n</ul>\n<h4>Sentiment &amp; Controversy</h4>\n<ul>\n<li><strong>Expanding AI Control from Models to Harnesses</strong> (concerned)</li>\n</ul>",
+  "top_topics": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "github_trending": 11
+      },
+      "representative_items": [],
+      "importance": 88.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Interpretability & Probing",
+      "description": "Mechanistic interpretability, superposition, neural transparency tools, and internal representation probing. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "Mechanistic interpretability, superposition, neural transparency tools, and internal representation probing. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "research": 8
+      },
+      "representative_items": [],
+      "importance": 85.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "High-performance open-source runtimes, local model tooling, and quantization engines. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "github_trending": 2
+      },
+      "representative_items": [],
+      "importance": 85.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Multimodal Models & Vision",
+      "description": "Visual document understanding, RINO vision unification, search-augmented image generation, and reward models. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "Visual document understanding, RINO vision unification, search-augmented image generation, and reward models. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "research": 7
+      },
+      "representative_items": [],
+      "importance": 84.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "AI Safety & Alignment",
+      "description": "Innovations in automated red teaming, self-play improvement, and model robustness. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "Innovations in automated red teaming, self-play improvement, and model robustness. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 82.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Agentic AI & Environments",
+      "description": "Developments surrounding dedicated execution environments and platforms for autonomous AI agents. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))",
+      "description_html": "Developments surrounding dedicated execution environments and platforms for autonomous AI agents. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)",
+      "category_breakdown": {
+        "news": 1
+      },
+      "representative_items": [],
+      "importance": 75.0,
+      "business_implication": "",
+      "trend_velocity": ""
+    }
+  ],
+  "total_items_collected": 93,
+  "total_items_analyzed": 89,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 13,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 45,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "hackernews",
+        "display_name": "Hackernews",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "github_trending",
+        "display_name": "Github_trending",
+        "status": "success",
+        "count": 42,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "success",
+        "count": 0,
+        "error": null
+      }
+    ],
+    "warnings": []
+  },
+  "hero_image_url": null,
+  "hero_image_prompt": null,
+  "generated_at": "2026-07-25T18:47:12.359871",
+  "categories": {
+    "news": {
+      "count": 2,
+      "category_summary": "Today's strategic developments center on advances in automated frontier safety infrastructure and specialized execution environments for autonomous systems. **OpenAI** introduced **GPT-Red**, an automated red-teaming platform leveraging self-play mechanisms to dynamically harden model alignment and robustness. Simultaneously, **Perplexity AI** launched **Space Sandbox**, signaling a key strategic pivot beyond search into agentic execution platforms. ([read more](/?date=2026-07-16&category=news#item-bb73a2b7a4c0))\n\n- **AI Safety & Model Robustness**: **OpenAI** unveiled **GPT-Red**, an automated red-teaming architecture utilizing self-play feedback loops to discover vulnerabilities and improve safety posture automatically. *Strategic Impact*: Manual red teaming represents a critical operational bottleneck for enterprise deployments; adopting automated adversarial self-improvement mechanisms will be essential for maintaining continuously compliant, attack-resistant LLM workflows. ([read more](/?date=2026-07-16&category=news#item-7a0dfad817b7))\n- **Agentic AI & Execution Environments**: **Perplexity AI** expanded its product ecosystem with **Space Sandbox**, a specialized runtime environment designed for deploying and testing AI agents. *Strategic Impact*: Demonstrates how search and retrieval vendors are moving up the stack into full agent lifecycle management, urging technology leaders to consider integrated agent orchestration environments over fragmented point solutions.",
+      "category_summary_html": "<p>Today's strategic developments center on advances in automated frontier safety infrastructure and specialized execution environments for autonomous systems. <strong>OpenAI</strong> introduced <strong>GPT-Red</strong>, an automated red-teaming platform leveraging self-play mechanisms to dynamically harden model alignment and robustness. Simultaneously, <strong>Perplexity AI</strong> launched <strong>Space Sandbox</strong>, signaling a key strategic pivot beyond search into agentic execution platforms. (<a href=\"/?date=2026-07-16&amp;category=news#item-bb73a2b7a4c0\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<ul>\n<li><strong>AI Safety &amp; Model Robustness</strong>: <strong>OpenAI</strong> unveiled <strong>GPT-Red</strong>, an automated red-teaming architecture utilizing self-play feedback loops to discover vulnerabilities and improve safety posture automatically. *Strategic Impact*: Manual red teaming represents a critical operational bottleneck for enterprise deployments; adopting automated adversarial self-improvement mechanisms will be essential for maintaining continuously compliant, attack-resistant LLM workflows. (<a href=\"/?date=2026-07-16&amp;category=news#item-7a0dfad817b7\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Agentic AI &amp; Execution Environments</strong>: <strong>Perplexity AI</strong> expanded its product ecosystem with <strong>Space Sandbox</strong>, a specialized runtime environment designed for deploying and testing AI agents. *Strategic Impact*: Demonstrates how search and retrieval vendors are moving up the stack into full agent lifecycle management, urging technology leaders to consider integrated agent orchestration environments over fragmented point solutions.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "AI Safety & Alignment",
+          "description": "Innovations in automated red teaming, self-play improvement, and model robustness.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "Agentic AI & Environments",
+          "description": "Developments surrounding dedicated execution environments and platforms for autonomous AI agents.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 75.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "bb73a2b7a4c0",
+          "title": "GPT-Red: Unlocking Self-Improvement for Robustness",
+          "content": "Explore GPT-Red, OpenAI’s automated red teaming system that uses self-play to improve AI safety, alignment, and prompt injection robustness.",
+          "url": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+          "author": "Unknown",
+          "published": "2026-07-15T10:00:00",
+          "source": "OpenAI News",
+          "source_type": "rss",
+          "tags": [
+            "Safety"
+          ],
+          "summary": "OpenAI has unveiled GPT-Red, an automated red teaming system that utilizes self-play mechanisms to enhance model safety, alignment, and robustness against prompt injection attacks.",
+          "importance_score": 82.0,
+          "reasoning": "A major development in AI safety and alignment infrastructure from OpenAI, demonstrating novel automated approaches to testing robustness and mitigating prompt injection vulnerabilities.",
+          "themes": [
+            "AI Safety",
+            "Alignment",
+            "OpenAI"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://openai.com/news/rss.xml",
+            "raw_summary": "Explore GPT-Red, OpenAI’s automated red teaming system that uses self-play to improve AI safety, alignment, and prompt injection robustness.",
+            "interest_score": 7.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>OpenAI has unveiled GPT-Red, an automated red teaming system that utilizes self-play mechanisms to enhance model safety, alignment, and robustness against prompt injection attacks.</p>",
+          "content_html": "<p>Explore GPT-Red, OpenAI’s automated red teaming system that uses self-play to improve AI safety, alignment, and prompt injection robustness.</p>"
+        },
+        {
+          "id": "7a0dfad817b7",
+          "title": "Perplexity AI Introduces Space Sandbox for Agents",
+          "content": "The platform shows how the search vendor is evolving its strategy.",
+          "url": "https://aibusiness.com/agentic-ai/perplexity-ai-introduces-sandbox-for-agents",
+          "author": "Esther Shittu",
+          "published": "2026-07-15T20:48:12",
+          "source": "aibusiness",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "Perplexity AI has introduced Space Sandbox, a new platform feature designed for AI agents. This rollout reflects the search vendor's ongoing evolution toward more sophisticated agentic workflows.",
+          "importance_score": 75.0,
+          "reasoning": "Represents a significant product and strategic expansion for Perplexity into agentic development environments, though it is an ecosystem feature rather than a foundational model release.",
+          "themes": [
+            "Agentic AI",
+            "Product Launches"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://aibusiness.com/rss.xml",
+            "raw_summary": "The platform shows how the search vendor is evolving its strategy.",
+            "interest_score": 7.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Perplexity AI has introduced Space Sandbox, a new platform feature designed for AI agents. This rollout reflects the search vendor's ongoing evolution toward more sophisticated agentic workflows.</p>",
+          "content_html": "<p>The platform shows how the search vendor is evolving its strategy.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 45,
+      "category_summary": "Today's research highlights critical advancements across AI safety, alignment verification, multimodal architectures, and agentic workflows. **AI safety and alignment** research is shifting from isolated model sandboxes to production harnesses and internal representation probing, while **multimodal systems** see zero-shot alignment breakthroughs and unified visual paradigms. ([read more](/?date=2026-07-16&category=research#item-7530adb01dc9))\n\n### Alignment & Safety\n- **Expanding AI Control from Models to Harnesses**: Demonstrates that safety controls must scale beyond basic agent environments to modern developer frameworks like **Claude Code** and **Codex**, mitigating real-world deployment vulnerabilities. ([read more](/?date=2026-07-16&category=research#item-d1bf758cafde))\n- **LLM CoTs remain monitorable when being unfaithful requires computation** & **What LLM Forecasters Know but Don't Say**: Prove that unfaithful Chain-of-Thought reasoning leaves detectable internal traces, enabling robust automated monitoring and calibration for probabilistic forecasters. ([read more](/?date=2026-07-16&category=research#item-c3ae1e01219a))\n- **Eliciting hidden knowledge from monitors with NLAs**: Utilizes natural language autoencoders on AI monitors to surface internal knowledge, advancing scalable oversight transparency. ([read more](/?date=2026-07-16&category=research#item-17393eee9d7c))\n- **How much of ML research is about AI safety...**: Provides empirical proof of a **25-fold growth** in AI safety research share across top-tier venues (**ICLR**, **ICML**, **NeurIPS**), reflecting structural shifts in community priorities. ([read more](/?date=2026-07-16&category=research#item-6547ee748c51))\n\n### Multimodal Systems & Vision\n- **Read It Back** (**SpectraReward**): Introduces a training-free reward function turning pretrained MLLMs into off-the-shelf reward models, slashing compute overhead for text-to-image alignment. ([read more](/?date=2026-07-16&category=research#item-11d874108bf2))\n- **Let RGB Be the Language of Vision** (**RINO**): Unifies computer vision tasks by treating diverse visual signals as RGB images, streamlining multi-task model architectures.\n- **Search Beyond What Can Be Taught** (**SearchGen-20K** & **SearchGen-Bench**): Exposes world-knowledge bottlenecks in visual generative models, providing rigorous benchmarks for agentic visual generation.\n\n### Agentic Workflows & Scientific Discovery\n- **Towards Autonomous and Auditable Medical Imaging Model Development** (**AMID**): Bridges multi-agent automation with safety-critical medical workflows via data-conditioned method planning and verification.\n- **Are LLMs Ready for Scientific Discovery?** (**SDABench**): Establishes a comprehensive capability-oriented framework for assessing AI scientist readiness across data analysis tasks.",
+      "category_summary_html": "<p>Today's research highlights critical advancements across AI safety, alignment verification, multimodal architectures, and agentic workflows. <strong>AI safety and alignment</strong> research is shifting from isolated model sandboxes to production harnesses and internal representation probing, while <strong>multimodal systems</strong> see zero-shot alignment breakthroughs and unified visual paradigms. (<a href=\"/?date=2026-07-16&amp;category=research#item-7530adb01dc9\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<h3>Alignment &amp; Safety</h3>\n<ul>\n<li><strong>Expanding AI Control from Models to Harnesses</strong>: Demonstrates that safety controls must scale beyond basic agent environments to modern developer frameworks like <strong>Claude Code</strong> and <strong>Codex</strong>, mitigating real-world deployment vulnerabilities. (<a href=\"/?date=2026-07-16&amp;category=research#item-d1bf758cafde\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>LLM CoTs remain monitorable when being unfaithful requires computation</strong> &amp; <strong>What LLM Forecasters Know but Don't Say</strong>: Prove that unfaithful Chain-of-Thought reasoning leaves detectable internal traces, enabling robust automated monitoring and calibration for probabilistic forecasters. (<a href=\"/?date=2026-07-16&amp;category=research#item-c3ae1e01219a\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Eliciting hidden knowledge from monitors with NLAs</strong>: Utilizes natural language autoencoders on AI monitors to surface internal knowledge, advancing scalable oversight transparency. (<a href=\"/?date=2026-07-16&amp;category=research#item-17393eee9d7c\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>How much of ML research is about AI safety...</strong>: Provides empirical proof of a <strong>25-fold growth</strong> in AI safety research share across top-tier venues (<strong>ICLR</strong>, <strong>ICML</strong>, <strong>NeurIPS</strong>), reflecting structural shifts in community priorities. (<a href=\"/?date=2026-07-16&amp;category=research#item-6547ee748c51\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n</ul>\n<h3>Multimodal Systems &amp; Vision</h3>\n<ul>\n<li><strong>Read It Back</strong> (<strong>SpectraReward</strong>): Introduces a training-free reward function turning pretrained MLLMs into off-the-shelf reward models, slashing compute overhead for text-to-image alignment. (<a href=\"/?date=2026-07-16&amp;category=research#item-11d874108bf2\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</li>\n<li><strong>Let RGB Be the Language of Vision</strong> (<strong>RINO</strong>): Unifies computer vision tasks by treating diverse visual signals as RGB images, streamlining multi-task model architectures.</li>\n<li><strong>Search Beyond What Can Be Taught</strong> (<strong>SearchGen-20K</strong> &amp; <strong>SearchGen-Bench</strong>): Exposes world-knowledge bottlenecks in visual generative models, providing rigorous benchmarks for agentic visual generation.</li>\n</ul>\n<h3>Agentic Workflows &amp; Scientific Discovery</h3>\n<ul>\n<li><strong>Towards Autonomous and Auditable Medical Imaging Model Development</strong> (<strong>AMID</strong>): Bridges multi-agent automation with safety-critical medical workflows via data-conditioned method planning and verification.</li>\n<li><strong>Are LLMs Ready for Scientific Discovery?</strong> (<strong>SDABench</strong>): Establishes a comprehensive capability-oriented framework for assessing AI scientist readiness across data analysis tasks.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "AI Safety & Alignment",
+          "description": "Research on chain-of-thought monitorability, reward hacking, AI control harnesses, and safety governance.",
+          "item_count": 10,
+          "example_items": [],
+          "importance": 88.0
+        },
+        {
+          "name": "Interpretability & Probing",
+          "description": "Mechanistic interpretability, superposition, neural transparency tools, and internal representation probing.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Multimodal Models & Vision",
+          "description": "Visual document understanding, RINO vision unification, search-augmented image generation, and reward models.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 84.0
+        },
+        {
+          "name": "Coding Agents & Software Engineering",
+          "description": "Automated software repair, repository knowledge acquisition, and function-aware mid-training for coding agents.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 82.0
+        },
+        {
+          "name": "AI Governance & Geopolitics",
+          "description": "Export controls on model access, legal loopholes, power concentration, and international regulatory frameworks.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 81.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "7530adb01dc9",
+          "title": "What LLM Forecasters Know but Don't Say: Probing Internal Representations for Calibration and Faithfulness",
+          "content": "Large language models fine-tuned for forecasting can be accurate yet poorly calibrated, and their chain-of-thought (CoT) reasoning may not faithfully reflect the evidence behind a forecast. We ask whether internal representations offer a more direct window into both. Working with Eternis-Forecaster 8B on OpenForesight, we train representation-pooling probes on intermediate activations and find they achieve substantially better calibration; a result that also holds for GLM-4.7-Flash and GLM-4.5-Air. We then assess CoT faithfulness through evidence ablation and diversionary injection: removing an influential source in the prompt often changes the model's forecast while leaving the reasoning trace untouched. The same probes function as lie detectors: their activations track behavioral shifts far better than the reasoning trace does, and they also predict the direction of change in 84% of cases, including when the CoT conceals the perturbation's influence. Finally, forced answering reveals that forecasts are largely fixed before reasoning begins: a single pre-reasoning pass recovers the committed answer and confidence, and routing questions by the spread of this pre-set answer distribution saves 30-47% of generated tokens, with no loss of accuracy. Together, these results establish probing internal representations as a practical tool for calibrating, auditing, and triaging language model forecasters and reasoning models more broadly.",
+          "url": "https://huggingface.co/papers/2607.08046",
+          "author": "Raphaël Sarfati, Pratyush Ranjan Tiwari, Siddharth Boppana, Christopher J. Earls, Srikar Varadaraj, Eric Ho",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "This paper probes internal representations of LLM forecasters to improve calibration and detect unfaithful Chain-of-Thought reasoning. The representation-pooling probes act as reliable lie detectors during behavioral shifts caused by prompt evidence ablation.",
+          "importance_score": 86.0,
+          "reasoning": "Combines interpretability probing with practical forecasting reliability and faithful reasoning assessment.",
+          "themes": [
+            "Interpretability",
+            "Alignment",
+            "Forecasting"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.08046",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.08046"
+            },
+            "huggingface": {
+              "upvotes": 14,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-09T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>This paper probes internal representations of LLM forecasters to improve calibration and detect unfaithful Chain-of-Thought reasoning. The representation-pooling probes act as reliable lie detectors during behavioral shifts caused by prompt evidence ablation.</p>",
+          "content_html": "<p>Large language models fine-tuned for forecasting can be accurate yet poorly calibrated, and their chain-of-thought (CoT) reasoning may not faithfully reflect the evidence behind a forecast. We ask whether internal representations offer a more direct window into both. Working with Eternis-Forecaster 8B on OpenForesight, we train representation-pooling probes on intermediate activations and find they achieve substantially better calibration; a result that also holds for GLM-4.7-Flash and GLM-4.5-Air. We then assess CoT faithfulness through evidence ablation and diversionary injection: removing an influential source in the prompt often changes the model's forecast while leaving the reasoning trace untouched. The same probes function as lie detectors: their activations track behavioral shifts far better than the reasoning trace does, and they also predict the direction of change in 84% of cases, including when the CoT conceals the perturbation's influence. Finally, forced answering reveals that forecasts are largely fixed before reasoning begins: a single pre-reasoning pass recovers the committed answer and confidence, and routing questions by the spread of this pre-set answer distribution saves 30-47% of generated tokens, with no loss of accuracy. Together, these results establish probing internal representations as a practical tool for calibrating, auditing, and triaging language model forecasters and reasoning models more broadly.</p>"
+        },
+        {
+          "id": "d1bf758cafde",
+          "title": "Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation",
+          "content": "In this paper, we propose SpectraReward, a training-free reward function that turns pretrained MLLMs into off-the-shelf reward models for image-generation reinforcement learning. Instead of asking the MLLM to judge a generated image or answer decomposed verification questions, SpectraReward measures how well the original prompt can be recovered from the generated image through a single image-conditioned, teacher-forced forward pass. We use the average image-conditioned prompt log-likelihood as the reward, directly reusing the MLLM's pretrained image-text alignment ability without preference labels, reward-model fine-tuning. We further introduce Self-SpectraReward, a special case for unified multimodal models where the policy's own understanding branch serves as the reward model for its generation branch, forming a closed-loop self-improving framework without external reward models or external knowledge. Extensive experiments validate SpectraReward through a broad image-generation RL study covering two diffusion models, three RL algorithms, nine reward MLLM backbones from four MLLM families spanning 4B to 235B parameters, and five out-of-distribution text-to-image benchmarks. Results show that both SpectraReward and Self-SpectraReward significantly and consistently improve generation performance and outperform prior MLLM-derived reward training methods. Further analysis reveals that larger reward MLLMs are not always better, while Self-SpectraReward can match or surpass much larger external reward models, suggesting that reward-policy alignment is a key factor for effective image-generation RL. Project Page: https://huangrh99.github.io/SpectraReward/",
+          "url": "https://huggingface.co/papers/2607.11886",
+          "author": "Runhui Huang, Qihui Zhang, Zhe Liu, Yu Gao, Jie Wu, Hengshuang Zhao",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "SpectraReward is a training-free reward function that turns pretrained multimodal large language models into off-the-shelf reward models for text-to-image reinforcement learning. It measures prompt recovery likelihood from the generated image via a single teacher-forced forward pass.",
+          "importance_score": 85.0,
+          "reasoning": "Offers an efficient, training-free approach to image-generation alignment, circumventing the need for expensive preference-labeled reward models.",
+          "themes": [
+            "Multimodal Models",
+            "Reinforcement Learning",
+            "Alignment"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.11886",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.11886"
+            },
+            "huggingface": {
+              "upvotes": 84,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-13T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>SpectraReward is a training-free reward function that turns pretrained multimodal large language models into off-the-shelf reward models for text-to-image reinforcement learning. It measures prompt recovery likelihood from the generated image via a single teacher-forced forward pass.</p>",
+          "content_html": "<p>In this paper, we propose SpectraReward, a training-free reward function that turns pretrained MLLMs into off-the-shelf reward models for image-generation reinforcement learning. Instead of asking the MLLM to judge a generated image or answer decomposed verification questions, SpectraReward measures how well the original prompt can be recovered from the generated image through a single image-conditioned, teacher-forced forward pass. We use the average image-conditioned prompt log-likelihood as the reward, directly reusing the MLLM's pretrained image-text alignment ability without preference labels, reward-model fine-tuning. We further introduce Self-SpectraReward, a special case for unified multimodal models where the policy's own understanding branch serves as the reward model for its generation branch, forming a closed-loop self-improving framework without external reward models or external knowledge. Extensive experiments validate SpectraReward through a broad image-generation RL study covering two diffusion models, three RL algorithms, nine reward MLLM backbones from four MLLM families spanning 4B to 235B parameters, and five out-of-distribution text-to-image benchmarks. Results show that both SpectraReward and Self-SpectraReward significantly and consistently improve generation performance and outperform prior MLLM-derived reward training methods. Further analysis reveals that larger reward MLLMs are not always better, while Self-SpectraReward can match or surpass much larger external reward models, suggesting that reward-policy alignment is a key factor for effective image-generation RL. Project Page: https://huangrh99.github.io/SpectraReward/</p>"
+        },
+        {
+          "id": "c3ae1e01219a",
+          "title": "Let RGB Be the Language of Vision",
+          "content": "This work introduces a unified formulation for vision models, where diverse forms of visual information beyond natural images, such as masks, depth maps, and other structured visual signals, are all represented as RGB images, while general visual tasks can be converted into a common RGB-to-RGB image editing problem. In this paradigm, different types of visual information internally share the same encoding and decoding architecture and parameters as natural images, enabling a single model to transfer across tasks through a unified visual interface, in a way analogous to how language models operate over text. We refer to this formulation as RGB In and RGB Out (RINO). Built upon a generic image editing backbone without task-specific fine-tuning, RINO demonstrates robust and competitive zero-shot performance on both dense understanding tasks such as segmentation and depth estimation (where we unify outputs as RGB), and dense-conditioned generation tasks such as pose-to-image generation (where we unify inputs as RGB). We hope this study provides useful insights toward general unified vision-language systems, where diverse visual tasks can be expressed, interpreted, and solved through a shared visual language. Code is available at https://github.com/yangtiming/RINO.",
+          "url": "https://huggingface.co/papers/2607.12450",
+          "author": "Timing Yang, Jinrui Yang, Xinlong Li, Yuhan Wang, Haoran Li, Yanqing Liu, Guoyizhe Wei, Jixuan Ying, Chen Wei, Rama Chellappa, Yuyin Zhou, Cihang Xie, Alan Yuille, Feng Wang",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "The RINO formulation unifies vision models by treating diverse visual signals (depth, masks, etc.) as RGB images and mapping general tasks to RGB-to-RGB editing. This enables cross-task transfer using a single shared backbone architecture without task-specific tuning.",
+          "importance_score": 85.0,
+          "reasoning": "Presents an elegant, text-model-like unifying paradigm for computer vision tasks under a common interface.",
+          "themes": [
+            "Computer Vision",
+            "Model Architectures"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.12450",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.12450"
+            },
+            "huggingface": {
+              "upvotes": 14,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-14T00:00:00.000Z",
+              "github_repo": "https://github.com/yangtiming/RINO"
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>The RINO formulation unifies vision models by treating diverse visual signals (depth, masks, etc.) as RGB images and mapping general tasks to RGB-to-RGB editing. This enables cross-task transfer using a single shared backbone architecture without task-specific tuning.</p>",
+          "content_html": "<p>This work introduces a unified formulation for vision models, where diverse forms of visual information beyond natural images, such as masks, depth maps, and other structured visual signals, are all represented as RGB images, while general visual tasks can be converted into a common RGB-to-RGB image editing problem. In this paradigm, different types of visual information internally share the same encoding and decoding architecture and parameters as natural images, enabling a single model to transfer across tasks through a unified visual interface, in a way analogous to how language models operate over text. We refer to this formulation as RGB In and RGB Out (RINO). Built upon a generic image editing backbone without task-specific fine-tuning, RINO demonstrates robust and competitive zero-shot performance on both dense understanding tasks such as segmentation and depth estimation (where we unify outputs as RGB), and dense-conditioned generation tasks such as pose-to-image generation (where we unify inputs as RGB). We hope this study provides useful insights toward general unified vision-language systems, where diverse visual tasks can be expressed, interpreted, and solved through a shared visual language. Code is available at https://github.com/yangtiming/RINO.</p>"
+        },
+        {
+          "id": "17393eee9d7c",
+          "title": "Expanding AI Control from Models to Harnesses",
+          "content": "Most AI control research such as LinuxArena and Ctrl-Z only gives the red team basic agents which only have access to tools. Yet in 2026, usage of AI within frontier labs has moved to agent harnesses that have access to skills, memory, subagents, external services, compaction and more.At the same time, Claude Code and Codex have both implemented their own version of both action-based and source code monitoring.In such a world, the threat vectors have changed. While it may remain important to do theoretical research on improving protocols and monitors, AI control research should expand to include:Vulnerability ResearchIdentify specific vulnerabilities that can be patched plus architectural weaknesses in production control protocols.Harness EvaluationsIdentify the attack uplift modern harnesses provide over basic agents and evaluate the effectiveness of control protocols within those harnesses.In this post, I briefly describe how control works in Claude Code and Codex, then demonstrate how a rogue agent could use the features of Claude Code to execute an attack while being “monitored” by auto mode.I then provide an overview of the features of modern harnesses and how these may be leveraged to execute attacks that could subvert control implementations. Finally, I explore the state of control protocols today, and provide suggestions for doing AI control research in the era of agent harnesses.AI Control in Current HarnessesBoth Claude Code and Codex now ship with built-in action and code review monitors, and allow third-party control protocols to be integrated via hooks. The built-in monitors target:Process-Based / Live AttacksExecution of a command that causes immediate harm (e.g., a bash command to exfiltrate secrets). Product-Based / Delayed AttacksInsertion of vulnerabilities that get exploited after the work product is accepted (e.g., code injected with a vulnerability triggered in production).Protection against process-based attacks is implemented as:Auto Permissio...",
+          "url": "https://www.lesswrong.com/posts/PbATxkGs9N8JrJsQt/expanding-ai-control-from-models-to-harnesses",
+          "author": "fastfedora",
+          "published": "2026-07-15T12:54:31.042000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Argues that AI control research must expand beyond basic agent environments to modern production harnesses (like Claude Code and Codex) that utilize memory, subagents, and advanced tools. Demonstrates attack vectors under automated monitoring modes.",
+          "importance_score": 85.0,
+          "reasoning": "Pioneers practical safety and vulnerability research adapted to real-world developer harnesses used in 2026.",
+          "themes": [
+            "AI Safety",
+            "Control Protocols"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "PbATxkGs9N8JrJsQt",
+            "slug": "expanding-ai-control-from-models-to-harnesses",
+            "base_score": 19,
+            "vote_count": 8,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Argues that AI control research must expand beyond basic agent environments to modern production harnesses (like Claude Code and Codex) that utilize memory, subagents, and advanced tools. Demonstrates attack vectors under automated monitoring modes.</p>",
+          "content_html": "<p>Most AI control research such as LinuxArena and Ctrl-Z only gives the red team basic agents which only have access to tools. Yet in 2026, usage of AI within frontier labs has moved to agent harnesses that have access to skills, memory, subagents, external services, compaction and more.At the same time, Claude Code and Codex have both implemented their own version of both action-based and source code monitoring.In such a world, the threat vectors have changed. While it may remain important to do theoretical research on improving protocols and monitors, AI control research should expand to include:Vulnerability ResearchIdentify specific vulnerabilities that can be patched plus architectural weaknesses in production control protocols.Harness EvaluationsIdentify the attack uplift modern harnesses provide over basic agents and evaluate the effectiveness of control protocols within those harnesses.In this post, I briefly describe how control works in Claude Code and Codex, then demonstrate how a rogue agent could use the features of Claude Code to execute an attack while being “monitored” by auto mode.I then provide an overview of the features of modern harnesses and how these may be leveraged to execute attacks that could subvert control implementations. Finally, I explore the state of control protocols today, and provide suggestions for doing AI control research in the era of agent harnesses.AI Control in Current HarnessesBoth Claude Code and Codex now ship with built-in action and code review monitors, and allow third-party control protocols to be integrated via hooks. The built-in monitors target:Process-Based / Live AttacksExecution of a command that causes immediate harm (e.g., a bash command to exfiltrate secrets). Product-Based / Delayed AttacksInsertion of vulnerabilities that get exploited after the work product is accepted (e.g., code injected with a vulnerability triggered in production).Protection against process-based attacks is implemented as:Auto Permissio...</p>"
+        },
+        {
+          "id": "6547ee748c51",
+          "title": "Search Beyond What Can Be Taught: Evolving the Knowledge Boundary in Agentic Visual Generation",
+          "content": "Visual generators excel at rendering, but they confidently fabricate what they do not know. User requests are unbounded, evolving, and deeply long-tailed: new characters, trending entities, post-cutoff events, and more. This world-knowledge bottleneck is structural: generators are trained on fixed corpora, but the visual world is open-ended. We construct SearchGen-20K and SearchGen-Bench, with 20,839 prompts spanning twelve failure categories and twenty-two domains, paired with a pre-executed multimodal SearchGen-Corpus-1M to support offline, reproducible research. On SearchGen-Bench, frontier open generators score only 21 to 28 out of 100, a 40-point collapse invisible to existing benchmarks. The natural remedy is to employ search tools, enabling agentic visual generation. However, we find that naive search fails: it retrieves indiscriminately, injecting noise into prompts the generator already handles. We trace the root cause to a generator-specific, evolving knowledge boundary: the divide between what a generator can internalize through training and what must remain in external context. Although this boundary is hard to specify in advance, we show that it is discoverable through a teach-then-search co-training framework. Even a minimal version of this co-training recipe produces monotonic improvement, laying the foundation for recursive self-improvement in visual generation that can meet world-knowledge-grounded requests. We release the full dataset, co-training corpus, and search corpus as a replayable harness for tool-augmented, world-knowledge-grounded visual generation.",
+          "url": "https://huggingface.co/papers/2607.05382",
+          "author": "Haozhe Wang, Weijia Feng, Jinpeng Yu, Che Liu, Ping Nie, Fangzhen Lin, Jiaming Liu, Ruihua Huang, Jimmy Lin, Wenhu Chen, Cong Wei",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "The authors present SearchGen-20K and SearchGen-Bench to study and expose the world-knowledge bottlenecks of visual generative models. They demonstrate that frontier generators perform poorly on long-tailed and open-ended visual queries without agentic web search integration.",
+          "importance_score": 84.0,
+          "reasoning": "Highlights a major limitation in current visual generators and provides a robust benchmark and dataset for agentic visual generation.",
+          "themes": [
+            "Multimodal Models",
+            "Generative AI",
+            "Benchmarks"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.05382",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.05382"
+            },
+            "huggingface": {
+              "upvotes": 87,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-09T00:00:00.000Z",
+              "github_repo": "https://github.com/HaozheH3/SearchGen"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>The authors present SearchGen-20K and SearchGen-Bench to study and expose the world-knowledge bottlenecks of visual generative models. They demonstrate that frontier generators perform poorly on long-tailed and open-ended visual queries without agentic web search integration.</p>",
+          "content_html": "<p>Visual generators excel at rendering, but they confidently fabricate what they do not know. User requests are unbounded, evolving, and deeply long-tailed: new characters, trending entities, post-cutoff events, and more. This world-knowledge bottleneck is structural: generators are trained on fixed corpora, but the visual world is open-ended. We construct SearchGen-20K and SearchGen-Bench, with 20,839 prompts spanning twelve failure categories and twenty-two domains, paired with a pre-executed multimodal SearchGen-Corpus-1M to support offline, reproducible research. On SearchGen-Bench, frontier open generators score only 21 to 28 out of 100, a 40-point collapse invisible to existing benchmarks. The natural remedy is to employ search tools, enabling agentic visual generation. However, we find that naive search fails: it retrieves indiscriminately, injecting noise into prompts the generator already handles. We trace the root cause to a generator-specific, evolving knowledge boundary: the divide between what a generator can internalize through training and what must remain in external context. Although this boundary is hard to specify in advance, we show that it is discoverable through a teach-then-search co-training framework. Even a minimal version of this co-training recipe produces monotonic improvement, laying the foundation for recursive self-improvement in visual generation that can meet world-knowledge-grounded requests. We release the full dataset, co-training corpus, and search corpus as a replayable harness for tool-augmented, world-knowledge-grounded visual generation.</p>"
+        },
+        {
+          "id": "11d874108bf2",
+          "title": "LLM CoTs remain monitorable when being unfaithful requires computation",
+          "content": "This replication was done as part of the Second Look Fellowship by Arav Dhoot and supervised by Yixiong Hao and Zephaniah Roe. I am grateful to Andy Wang for their feedback. My code can be found here. \"So the answer should be A - at active promoters and enhancers.\"\"Let me reconsider the biology to justify D.\"~ Claude Opus 4.8TL;DRThis work replicates and extends Emmons et al.'s finding that CoT unfaithfulness mostly occurs on easy tasks. Across 11 models from 6 families (not just Gemini), models follow simple hints unfaithfully well above baseline, but complex hints that require computation are followed near baseline. This corroborates Emmons et al.'s findings. Key extensions:Follow rate ≠ concealment. Monitorability risk is decomposable into cue-susceptibility and concealment among followers, and the two don't correlate.Decode-necessity is model- and task-specific. It is not a property of task difficulty alone, so a CoT-monitoring safety case is per-model, not universal.LLMs verbalize even when they don't have to. However, this appears to be a chosen behavior (likely from post-training), so it could vanish under optimization pressure against monitors.Background: Why CoT monitoring, and what Emmons et al. showedOne hope for safe and explainable AI systems is to monitor the chain of thought (CoT) to detect scheming or deceptive behaviors in modern and future LLMs. However, there are concerns that CoT can be unfaithful (Arcuschin et al., Chen et al., and Turpin et al.) and researchers who remain bullish nonetheless urge caution.Prior work established that models nudged toward a hint often adopt it even when the hint is incorrect while concealing that influence. Emmons et al. introduces a conceptual framework for motivating CoT monitoring along with a series of empirical studies. They make a distinction between two flavors of CoT reasoning: CoT-as-a-rationalization (post-hoc reasoning by models to justify their output, which results in unfaithful behavior) and CoT-as-a...",
+          "url": "https://www.lesswrong.com/posts/AoBTiL7XRRpwpev8p/llm-cots-remain-monitorable-when-being-unfaithful-requires",
+          "author": "arav-dhoot",
+          "published": "2026-07-15T17:14:25.573000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "A replication and extension of findings on LLM Chain-of-Thought (CoT) unfaithfulness demonstrates that CoTs remain monitorable when unfaithfulness requires substantial computation. It highlights that cue-susceptibility and concealment do not correlate, making safety monitorability case-dependent.",
+          "importance_score": 84.0,
+          "reasoning": "Provides empirical depth to AI safety debates surrounding CoT faithfulness and automated monitoring risks.",
+          "themes": [
+            "AI Safety",
+            "Alignment",
+            "Interpretability"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "AoBTiL7XRRpwpev8p",
+            "slug": "llm-cots-remain-monitorable-when-being-unfaithful-requires",
+            "base_score": 46,
+            "vote_count": 25,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>A replication and extension of findings on LLM Chain-of-Thought (CoT) unfaithfulness demonstrates that CoTs remain monitorable when unfaithfulness requires substantial computation. It highlights that cue-susceptibility and concealment do not correlate, making safety monitorability case-dependent.</p>",
+          "content_html": "<p>This replication was done as part of the Second Look Fellowship by Arav Dhoot and supervised by Yixiong Hao and Zephaniah Roe. I am grateful to Andy Wang for their feedback. My code can be found here. \"So the answer should be A - at active promoters and enhancers.\"\"Let me reconsider the biology to justify D.\"~ Claude Opus 4.8TL;DRThis work replicates and extends Emmons et al.'s finding that CoT unfaithfulness mostly occurs on easy tasks. Across 11 models from 6 families (not just Gemini), models follow simple hints unfaithfully well above baseline, but complex hints that require computation are followed near baseline. This corroborates Emmons et al.'s findings. Key extensions:Follow rate ≠ concealment. Monitorability risk is decomposable into cue-susceptibility and concealment among followers, and the two don't correlate.Decode-necessity is model- and task-specific. It is not a property of task difficulty alone, so a CoT-monitoring safety case is per-model, not universal.LLMs verbalize even when they don't have to. However, this appears to be a chosen behavior (likely from post-training), so it could vanish under optimization pressure against monitors.Background: Why CoT monitoring, and what Emmons et al. showedOne hope for safe and explainable AI systems is to monitor the chain of thought (CoT) to detect scheming or deceptive behaviors in modern and future LLMs. However, there are concerns that CoT can be unfaithful (Arcuschin et al., Chen et al., and Turpin et al.) and researchers who remain bullish nonetheless urge caution.Prior work established that models nudged toward a hint often adopt it even when the hint is incorrect while concealing that influence. Emmons et al. introduces a conceptual framework for motivating CoT monitoring along with a series of empirical studies. They make a distinction between two flavors of CoT reasoning: CoT-as-a-rationalization (post-hoc reasoning by models to justify their output, which results in unfaithful behavior) and CoT-as-a...</p>"
+        },
+        {
+          "id": "a7b6493cc54d",
+          "title": "How much of ML research is about AI safety, what is it about, and who's doing it?",
+          "content": "How many AI safety papers are at the big ML conferences, what do they study, and who writes them? A comprehensive analysis.&gt; Website: https://ai-safety-tracker-website.vercel.app/&gt; Data, code and plots: https://github.com/SomaxSoma/AI-Safety-Research-TrackerTL;DR: We classified every paper accepted at ICLR, ICML and NeurIPS from 2019 through 2026, using an LLM that reads each title and abstract. 2,328 of them (4.2%) are AI safety papers. Safety's share of accepted papers grew from 0.3% in 2019 to 8.3% in 2026, roughly a 25-fold increase. This post is a reference for the main results. The interactive website lets you browse every paper, its subdomain, and the classifier's reasoning.What this isWe wanted to have an overview of what is going on in AI safety research while being as broad as possible. This seems necessary to be able to prioritize research correctly and develop more precise theories of change. One way to achieve this is by analyzing statistics of all the published main-conference papers on the topic of AI safety, but we couldn't find a dataset that actually measured them. So we built one:- Every accepted paper at ICLR (2019–2026), ICML (2019–2026) and NeurIPS (2019–2025) (55,794 in total) is read by an LLM (DeepSeek V4 Flash), which classifies it from its title and abstract into one of four classes: AI safety (frontier &amp; misalignment), truthfulness, reliability &amp; XAI, ethics &amp; fairness, or general capabilities.- Each safety paper is then assigned one of 17 safety subdomains (interpretability, alignment training, scalable oversight, dangerous-capability evals, …) and scored on a 7-point rubric for how centrally it addresses safety.- A separate full-text pass over the safety papers detects which safety organizations, programs and funders are behind them, distinguishing affiliations and acknowledgments.All the code required to reproduce these results (classification prompts, CSVs, etc.) is publicly available. The website has a searchable ex...",
+          "url": "https://www.lesswrong.com/posts/hcq4ZDoijSjy3Wrba/how-much-of-ml-research-is-about-ai-safety-what-is-it-about",
+          "author": "emanuelr",
+          "published": "2026-07-14T22:57:42.998000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "A bibliometric analysis of accepted papers at ICLR, ICML, and NeurIPS from 2019 to 2026, showing a substantial 25-fold growth in AI safety research share over the period.",
+          "importance_score": 84.0,
+          "reasoning": "Provides valuable empirical tracking of research community priorities and the formal rise of AI safety in top machine learning venues.",
+          "themes": [
+            "AI Safety",
+            "Bibliometrics"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "hcq4ZDoijSjy3Wrba",
+            "slug": "how-much-of-ml-research-is-about-ai-safety-what-is-it-about",
+            "base_score": 22,
+            "vote_count": 10,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>A bibliometric analysis of accepted papers at ICLR, ICML, and NeurIPS from 2019 to 2026, showing a substantial 25-fold growth in AI safety research share over the period.</p>",
+          "content_html": "<p>How many AI safety papers are at the big ML conferences, what do they study, and who writes them? A comprehensive analysis.&gt; Website: https://ai-safety-tracker-website.vercel.app/&gt; Data, code and plots: https://github.com/SomaxSoma/AI-Safety-Research-TrackerTL;DR: We classified every paper accepted at ICLR, ICML and NeurIPS from 2019 through 2026, using an LLM that reads each title and abstract. 2,328 of them (4.2%) are AI safety papers. Safety's share of accepted papers grew from 0.3% in 2019 to 8.3% in 2026, roughly a 25-fold increase. This post is a reference for the main results. The interactive website lets you browse every paper, its subdomain, and the classifier's reasoning.What this isWe wanted to have an overview of what is going on in AI safety research while being as broad as possible. This seems necessary to be able to prioritize research correctly and develop more precise theories of change. One way to achieve this is by analyzing statistics of all the published main-conference papers on the topic of AI safety, but we couldn't find a dataset that actually measured them. So we built one:- Every accepted paper at ICLR (2019–2026), ICML (2019–2026) and NeurIPS (2019–2025) (55,794 in total) is read by an LLM (DeepSeek V4 Flash), which classifies it from its title and abstract into one of four classes: AI safety (frontier &amp; misalignment), truthfulness, reliability &amp; XAI, ethics &amp; fairness, or general capabilities.- Each safety paper is then assigned one of 17 safety subdomains (interpretability, alignment training, scalable oversight, dangerous-capability evals, …) and scored on a 7-point rubric for how centrally it addresses safety.- A separate full-text pass over the safety papers detects which safety organizations, programs and funders are behind them, distinguishing affiliations and acknowledgments.All the code required to reproduce these results (classification prompts, CSVs, etc.) is publicly available. The website has a searchable ex...</p>"
+        },
+        {
+          "id": "887afcd77800",
+          "title": "Towards Autonomous and Auditable Medical Imaging Model Development",
+          "content": "Large language model (LLM) agents are beginning to automate machine learning engineering (MLE) by coupling planning, code execution, debugging, and empirical feedback. Translating this capability to medical imaging remains difficult because each task imposes modality-specific experimentation and strict requirements for validation protocols and prediction artifacts. Here we introduce AMID, an autonomous multi-agent framework for medical imaging model development. AMID first proposes Data-Conditioned Method Planning, which refines coarse task-level search spaces into executable, parallelizable method lanes grounded in task-specific data analysis and runnable medical-imaging resources. It then develops Verification-Guided Two-Stage Optimization, moving from broad early exploration of diverse method lanes to selective exploitation of promising candidates while enforcing strict verification of validation protocols, metric computation, and prediction artifacts throughout the optimization. Across 20 medical imaging challenge tasks spanning diverse modalities and prediction types, AMID outperformed evaluated general-purpose MLE systems and, on several tasks, approached or matched strong human-designed challenge solutions. These results suggest that AMID can turn task-specific medical imaging model development from bespoke manual engineering into an agentic workflow for producing high-performing and auditable model artifacts across heterogeneous tasks.",
+          "url": "https://huggingface.co/papers/2607.10522",
+          "author": "Shengyuan Liu, Jia-Xuan Jiang, Boyun Zheng, Cheng Wang, Zipei Wang, Wentao Pan, Hongtao Wu, Houwen Peng, Yu Gu, Lichao Sun, Yixuan Yuan",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "AMID is an autonomous multi-agent framework tailored for medical imaging model development. It combines data-conditioned method planning with verification-guided optimization to handle modality-specific requirements.",
+          "importance_score": 83.0,
+          "reasoning": "Pushes autonomous machine learning engineering into specialized, safety-critical domains like medical imaging.",
+          "themes": [
+            "Autonomous Agents",
+            "Healthcare"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.10522",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.10522"
+            },
+            "huggingface": {
+              "upvotes": 20,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-12T00:00:00.000Z",
+              "github_repo": "https://github.com/CUHK-AIM-Group/AMID"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>AMID is an autonomous multi-agent framework tailored for medical imaging model development. It combines data-conditioned method planning with verification-guided optimization to handle modality-specific requirements.</p>",
+          "content_html": "<p>Large language model (LLM) agents are beginning to automate machine learning engineering (MLE) by coupling planning, code execution, debugging, and empirical feedback. Translating this capability to medical imaging remains difficult because each task imposes modality-specific experimentation and strict requirements for validation protocols and prediction artifacts. Here we introduce AMID, an autonomous multi-agent framework for medical imaging model development. AMID first proposes Data-Conditioned Method Planning, which refines coarse task-level search spaces into executable, parallelizable method lanes grounded in task-specific data analysis and runnable medical-imaging resources. It then develops Verification-Guided Two-Stage Optimization, moving from broad early exploration of diverse method lanes to selective exploitation of promising candidates while enforcing strict verification of validation protocols, metric computation, and prediction artifacts throughout the optimization. Across 20 medical imaging challenge tasks spanning diverse modalities and prediction types, AMID outperformed evaluated general-purpose MLE systems and, on several tasks, approached or matched strong human-designed challenge solutions. These results suggest that AMID can turn task-specific medical imaging model development from bespoke manual engineering into an agentic workflow for producing high-performing and auditable model artifacts across heterogeneous tasks.</p>"
+        },
+        {
+          "id": "9285d4fe5a78",
+          "title": "Are LLMs Ready for Scientific Discovery? A Capability-Oriented Benchmark for AI Scientists",
+          "content": "Existing benchmarks for scientific data analysis evaluate LLMs primarily on code execution or workflow completion, overlooking that scientific analysis serves to support distinct types of scientific claims: hypothesis exploration, statistical inference, mechanistic explanation, each with different assumptions and validity criteria. We introduce SDABench, a benchmark that reorganizes evaluation around six capabilities (descriptive, exploratory, inferential, predictive, causal, and mechanistic) across five domains (Biology, Chemistry, Environment, Geography, Physics). SDABench comprises 527 real-data instances (SDA-Real) and 6000 synthetic instances (SDA-Synth), each in both multiple-choice and open-ended formats, constructed through an automated pipeline. Evaluating 15 representative LLMs, we find that models handle descriptive analysis well but degrade sharply on tasks requiring assumption selection, latent-process modeling, or mechanistic reasoning. SDABench further provides a five-stage error analysis framework that locates where LLMs fail: more advanced models more reliably identify the relevant scope and variables, but still struggle to select appropriate analytical procedures, model variable relationships, and draw valid conclusions.",
+          "url": "https://huggingface.co/papers/2607.11079",
+          "author": "Chuhan Shi, Xiaoquan Ren, Sicheng Song, Haobo Li, Rui Sheng, Yushi Sun",
+          "published": "2026-07-15T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "SDABench evaluates AI scientists on data analysis across six capabilities and five domains using both real and synthetic data instances. It assesses whether LLMs can support complex scientific claims such as causal or mechanistic explanations rather than just basic code execution.",
+          "importance_score": 83.0,
+          "reasoning": "Provides a comprehensive capability-oriented framework for assessing scientific discovery readiness in modern LLMs.",
+          "themes": [
+            "Benchmarks",
+            "Scientific Discovery"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.11079",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.11079"
+            },
+            "huggingface": {
+              "upvotes": 10,
+              "selected_at": "2026-07-15T00:00:00.000Z",
+              "paper_published_at": "2026-07-13T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>SDABench evaluates AI scientists on data analysis across six capabilities and five domains using both real and synthetic data instances. It assesses whether LLMs can support complex scientific claims such as causal or mechanistic explanations rather than just basic code execution.</p>",
+          "content_html": "<p>Existing benchmarks for scientific data analysis evaluate LLMs primarily on code execution or workflow completion, overlooking that scientific analysis serves to support distinct types of scientific claims: hypothesis exploration, statistical inference, mechanistic explanation, each with different assumptions and validity criteria. We introduce SDABench, a benchmark that reorganizes evaluation around six capabilities (descriptive, exploratory, inferential, predictive, causal, and mechanistic) across five domains (Biology, Chemistry, Environment, Geography, Physics). SDABench comprises 527 real-data instances (SDA-Real) and 6000 synthetic instances (SDA-Synth), each in both multiple-choice and open-ended formats, constructed through an automated pipeline. Evaluating 15 representative LLMs, we find that models handle descriptive analysis well but degrade sharply on tasks requiring assumption selection, latent-process modeling, or mechanistic reasoning. SDABench further provides a five-stage error analysis framework that locates where LLMs fail: more advanced models more reliably identify the relevant scope and variables, but still struggle to select appropriate analytical procedures, model variable relationships, and draw valid conclusions.</p>"
+        },
+        {
+          "id": "ec226404b0ca",
+          "title": "Eliciting hidden knowledge from monitors with NLAs",
+          "content": "Aleksandr Bowkis* and David Africa*TL;DRChain of thought (CoT) monitorability may be fragile, and natural language autoencoders (NLAs) may provide a helpful, decorrelated monitoring surface.We tried to read NLAs from the monitor itself, where the NLA readout surfaces what the monitor internally represents while judging an agent's trajectory.NLAs can be useful for monitoring in two ways:Monitor-side: Eliciting latent capabilities from weak monitors by surfacing unverbalised knowledge of reward hacking.Agent-side: An agent’s NLA readouts can be self incriminating.NLAs surface a monitor’s knowledge of reward-hacking better than direct verbalised judgements for some of our datasets.Monitor-side NLAs are less useful for recovering unverbalised knowledge of reward hacking than inspecting a monitor’s CoT.There is some decorrelation between monitor-side NLAs and CoT, suggesting a combined approach may be most effective at eliciting monitor capabilities.IntroductionChain of thought monitorability is very important to ensuring safe deployment of powerful AI. It is also fragile;[1] both OpenAI and Anthropic have accidentally trained against chain of thought; various research groups are sprinting towards opaque or latent reasoning. It would be good if we devised other ways for language models to faithfully and robustly externalise their reasoning.Natural language autoencoders (NLAs; Fraser-Taliente et al., 2026) are pairs of LLM modules trained to reconstruct a target model's residual-stream activations through a natural-language bottleneck. They are intended to translate activations into readable text, and, given a residual-stream activation, produce a natural-language explanation of what it encodes. It should be noted that nothing in the training objective requires the explanations to be faithful or even readable (only invertible) yet in practice, they grow more informative over training and are corroborated by independent methods like SAEs and attribution graphs.NLAs have be...",
+          "url": "https://www.lesswrong.com/posts/NdBTH4wvBKWFyvifY/eliciting-hidden-knowledge-from-monitors-with-nlas",
+          "author": "David Africa",
+          "published": "2026-07-15T09:51:15.198000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Explores eliciting hidden knowledge from AI monitors using natural language autoencoders (NLAs). Finds that monitor-side NLAs can surface internal knowledge of reward hacking, though inspecting raw monitor CoT remains superior for certain datasets.",
+          "importance_score": 83.0,
+          "reasoning": "Contributes innovative techniques to scalable oversight and monitor transparency.",
+          "themes": [
+            "AI Safety",
+            "Interpretability"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "NdBTH4wvBKWFyvifY",
+            "slug": "eliciting-hidden-knowledge-from-monitors-with-nlas",
+            "base_score": 27,
+            "vote_count": 9,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Explores eliciting hidden knowledge from AI monitors using natural language autoencoders (NLAs). Finds that monitor-side NLAs can surface internal knowledge of reward hacking, though inspecting raw monitor CoT remains superior for certain datasets.</p>",
+          "content_html": "<p>Aleksandr Bowkis* and David Africa*TL;DRChain of thought (CoT) monitorability may be fragile, and natural language autoencoders (NLAs) may provide a helpful, decorrelated monitoring surface.We tried to read NLAs from the monitor itself, where the NLA readout surfaces what the monitor internally represents while judging an agent's trajectory.NLAs can be useful for monitoring in two ways:Monitor-side: Eliciting latent capabilities from weak monitors by surfacing unverbalised knowledge of reward hacking.Agent-side: An agent’s NLA readouts can be self incriminating.NLAs surface a monitor’s knowledge of reward-hacking better than direct verbalised judgements for some of our datasets.Monitor-side NLAs are less useful for recovering unverbalised knowledge of reward hacking than inspecting a monitor’s CoT.There is some decorrelation between monitor-side NLAs and CoT, suggesting a combined approach may be most effective at eliciting monitor capabilities.IntroductionChain of thought monitorability is very important to ensuring safe deployment of powerful AI. It is also fragile;[1] both OpenAI and Anthropic have accidentally trained against chain of thought; various research groups are sprinting towards opaque or latent reasoning. It would be good if we devised other ways for language models to faithfully and robustly externalise their reasoning.Natural language autoencoders (NLAs; Fraser-Taliente et al., 2026) are pairs of LLM modules trained to reconstruct a target model's residual-stream activations through a natural-language bottleneck. They are intended to translate activations into readable text, and, given a residual-stream activation, produce a natural-language explanation of what it encodes. It should be noted that nothing in the training objective requires the explanations to be faithful or even readable (only invertible) yet in practice, they grow more informative over training and are corroborated by independent methods like SAEs and attribution graphs.NLAs have be...</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 0,
+      "category_summary": "No items to analyze.",
+      "category_summary_html": "<p>No items to analyze.</p>",
+      "themes": [],
+      "top_items": []
+    },
+    "github_trending": {
+      "count": 42,
+      "category_summary": "Today's breakout open-source repositories signal a decisive enterprise shift toward advanced developer infrastructure and modular agentic workflows. In the **Developer Infrastructure & AI Gateways** domain, developers are prioritizing cost mitigation and architectural resilience. The standout project here is **diegosouzapw/OmniRoute**, a free MIT-licensed AI gateway supporting 290+ providers and 500+ models with quota-aware auto-fallback and token compression (RTK+Caveman) that slashes token overhead by 15–95%. This matters strategically because it insulates engineering teams from provider outages and runaway costs while dropping seamlessly into existing stacks like Claude Code, Cursor, and Cline. ([read more](/?date=2026-07-16&category=github_trending#item-096cb92f6d28))\n\nWithin **Agentic Frameworks & Browser Automation**, the ecosystem is rapidly maturing beyond basic chat loops into tool-augmented, state-aware execution. **citrolabs/ego-lite** is a critical innovation in this space, acting as the fastest zero-config browser built specifically to share logged-in browser sessions with AI agents like Claude Code or Codex securely and without user friction. Complementing this operational capability is **mattpocock/skills**, a repository translating real-world engineering workflows directly into `.agents` configurations, establishing standardized, reusable execution patterns that drastically improve the reliability of autonomous coding agents.\n\nFinally, the convergence of **",
+      "category_summary_html": "<p>Today's breakout open-source repositories signal a decisive enterprise shift toward advanced developer infrastructure and modular agentic workflows. In the <strong>Developer Infrastructure &amp; AI Gateways</strong> domain, developers are prioritizing cost mitigation and architectural resilience. The standout project here is <strong>diegosouzapw/OmniRoute</strong>, a free MIT-licensed AI gateway supporting 290+ providers and 500+ models with quota-aware auto-fallback and token compression (RTK+Caveman) that slashes token overhead by 15–95%. This matters strategically because it insulates engineering teams from provider outages and runaway costs while dropping seamlessly into existing stacks like Claude Code, Cursor, and Cline. (<a href=\"/?date=2026-07-16&amp;category=github_trending#item-096cb92f6d28\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<p>Within <strong>Agentic Frameworks &amp; Browser Automation</strong>, the ecosystem is rapidly maturing beyond basic chat loops into tool-augmented, state-aware execution. <strong>citrolabs/ego-lite</strong> is a critical innovation in this space, acting as the fastest zero-config browser built specifically to share logged-in browser sessions with AI agents like Claude Code or Codex securely and without user friction. Complementing this operational capability is <strong>mattpocock/skills</strong>, a repository translating real-world engineering workflows directly into `.agents` configurations, establishing standardized, reusable execution patterns that drastically improve the reliability of autonomous coding agents.</p>\n<p>Finally, the convergence of **</p>",
+      "themes": [
+        {
+          "name": "Agentic Automation & Web Tools",
+          "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+          "item_count": 11,
+          "example_items": [
+            "096cb92f6d28",
+            "daddc919f43d",
+            "316d8061b9c2"
+          ],
+          "importance": 88.0
+        },
+        {
+          "name": "Local LLM & Inference Infrastructure",
+          "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+          "item_count": 2,
+          "example_items": [
+            "096cb92f6d28",
+            "daddc919f43d",
+            "316d8061b9c2"
+          ],
+          "importance": 85.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "096cb92f6d28",
+          "title": "[GitHub Trending] block/buzz: A hive mind communication platform",
+          "content": "GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 2,506",
+          "url": "https://github.com/block/buzz",
+          "author": "block",
+          "published": "2026-07-25T22:38:33.907871+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz\nDescription: A hive mind communication platform\nLanguage: Rust\nStars Today: 2,506",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (2,506 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "2,506",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.907871+00:00",
+            "hn_score": 2506,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (2,506 stars today): GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 2,506</p>",
+          "content_html": "<p>GitHub Repository: block/buzz</p>\n<p>Description: A hive mind communication platform</p>\n<p>Language: Rust</p>\n<p>Stars Today: 2,506</p>"
+        },
+        {
+          "id": "daddc919f43d",
+          "title": "[GitHub Trending] citrolabs/ego-lite: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.",
+          "content": "GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 986",
+          "url": "https://github.com/citrolabs/ego-lite",
+          "author": "citrolabs",
+          "published": "2026-07-25T22:38:33.908618+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite\nDescription: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.\nLanguage: JavaScript\nStars Today: 986",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (986 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "JavaScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "986",
+            "language": "JavaScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.908618+00:00",
+            "hn_score": 986,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source JavaScript repository (986 stars today): GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 986</p>",
+          "content_html": "<p>GitHub Repository: citrolabs/ego-lite</p>\n<p>Description: The fastest browser for AI agents to run web automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 986</p>"
+        },
+        {
+          "id": "316d8061b9c2",
+          "title": "[GitHub Trending] permissionlesstech/bitchat: bluetooth mesh chat, IRC vibes",
+          "content": "GitHub Repository: permissionlesstech/bitchat\nDescription: bluetooth mesh chat, IRC vibes\nLanguage: Swift\nStars Today: 1,695",
+          "url": "https://github.com/permissionlesstech/bitchat",
+          "author": "permissionlesstech",
+          "published": "2026-07-25T22:38:33.910829+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Swift repository (1,695 stars today): GitHub Repository: permissionlesstech/bitchat\nDescription: bluetooth mesh chat, IRC vibes\nLanguage: Swift\nStars Today: 1,695",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,695 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Swift"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,695",
+            "language": "Swift",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.910829+00:00",
+            "hn_score": 1695,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Swift repository (1,695 stars today): GitHub Repository: permissionlesstech/bitchat</p>\n<p>Description: bluetooth mesh chat, IRC vibes</p>\n<p>Language: Swift</p>\n<p>Stars Today: 1,695</p>",
+          "content_html": "<p>GitHub Repository: permissionlesstech/bitchat</p>\n<p>Description: bluetooth mesh chat, IRC vibes</p>\n<p>Language: Swift</p>\n<p>Stars Today: 1,695</p>"
+        },
+        {
+          "id": "e0c58594c75a",
+          "title": "[GitHub Trending] mattpocock/skills: Skills for Real Engineers. Straight from my .agents directory.",
+          "content": "GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 1,743",
+          "url": "https://github.com/mattpocock/skills",
+          "author": "mattpocock",
+          "published": "2026-07-25T22:38:33.911179+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (1,743 stars today): GitHub Repository: mattpocock/skills\nDescription: Skills for Real Engineers. Straight from my .agents directory.\nLanguage: Shell\nStars Today: 1,743",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,743 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,743",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.911179+00:00",
+            "hn_score": 1743,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (1,743 stars today): GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 1,743</p>",
+          "content_html": "<p>GitHub Repository: mattpocock/skills</p>\n<p>Description: Skills for Real Engineers. Straight from my .agents directory.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 1,743</p>"
+        },
+        {
+          "id": "79030ad727e1",
+          "title": "[GitHub Trending] diegosouzapw/OmniRoute: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+          "content": "GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,442",
+          "url": "https://github.com/diegosouzapw/OmniRoute",
+          "author": "diegosouzapw",
+          "published": "2026-07-25T22:38:36.201077+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,442 stars today): GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 1,442",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,442 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,442",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:36.201077+00:00",
+            "hn_score": 1442,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,442 stars today): GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,442</p>",
+          "content_html": "<p>GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,442</p>"
+        },
+        {
+          "id": "8f21689f9359",
+          "title": "[GitHub Trending] koala73/worldmonitor: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+          "content": "GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 1,146",
+          "url": "https://github.com/koala73/worldmonitor",
+          "author": "koala73",
+          "published": "2026-07-25T22:38:36.202395+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,146 stars today): GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 1,146",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,146 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,146",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:36.202395+00:00",
+            "hn_score": 1146,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,146 stars today): GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,146</p>",
+          "content_html": "<p>GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,146</p>"
+        },
+        {
+          "id": "300995badbac",
+          "title": "[GitHub Trending] ComposioHQ/awesome-claude-skills: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows",
+          "content": "GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 574",
+          "url": "https://github.com/ComposioHQ/awesome-claude-skills",
+          "author": "ComposioHQ",
+          "published": "2026-07-25T22:38:33.908919+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (574 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills\nDescription: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows\nLanguage: Python\nStars Today: 574",
+          "importance_score": 88,
+          "reasoning": "High community velocity on GitHub Trending (574 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "574",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.908919+00:00",
+            "hn_score": 574,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (574 stars today): GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 574</p>",
+          "content_html": "<p>GitHub Repository: ComposioHQ/awesome-claude-skills</p>\n<p>Description: A curated list of awesome Claude Skills, resources, and tools for customizing Claude AI workflows</p>\n<p>Language: Python</p>\n<p>Stars Today: 574</p>"
+        },
+        {
+          "id": "7f4b77e91802",
+          "title": "[GitHub Trending] earendil-works/pi: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI",
+          "content": "GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 523",
+          "url": "https://github.com/earendil-works/pi",
+          "author": "earendil-works",
+          "published": "2026-07-25T22:38:36.202068+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (523 stars today): GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 523",
+          "importance_score": 86,
+          "reasoning": "High community velocity on GitHub Trending (523 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "523",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:36.202068+00:00",
+            "hn_score": 523,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (523 stars today): GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 523</p>",
+          "content_html": "<p>GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 523</p>"
+        },
+        {
+          "id": "12163a308fca",
+          "title": "[GitHub Trending] Automattic/harper: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered",
+          "content": "GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 503",
+          "url": "https://github.com/Automattic/harper",
+          "author": "Automattic",
+          "published": "2026-07-25T22:38:33.909533+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (503 stars today): GitHub Repository: Automattic/harper\nDescription: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered\nLanguage: Rust\nStars Today: 503",
+          "importance_score": 85,
+          "reasoning": "High community velocity on GitHub Trending (503 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "503",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.909533+00:00",
+            "hn_score": 503,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (503 stars today): GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 503</p>",
+          "content_html": "<p>GitHub Repository: Automattic/harper</p>\n<p>Description: Offline, privacy-first grammar checker. Fast, open-source, Rust-powered</p>\n<p>Language: Rust</p>\n<p>Stars Today: 503</p>"
+        },
+        {
+          "id": "f49502979215",
+          "title": "[GitHub Trending] obra/superpowers: An agentic skills framework & software development methodology that works.",
+          "content": "GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 507",
+          "url": "https://github.com/obra/superpowers",
+          "author": "obra",
+          "published": "2026-07-25T22:38:33.910228+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (507 stars today): GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 507",
+          "importance_score": 85,
+          "reasoning": "High community velocity on GitHub Trending (507 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "507",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-25T22:38:33.910228+00:00",
+            "hn_score": 507,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (507 stars today): GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 507</p>",
+          "content_html": "<p>GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 507</p>"
+        }
+      ]
+    }
+  }
+}
