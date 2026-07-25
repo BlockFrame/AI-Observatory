@@ -36,12 +36,12 @@ class NewsAnalyzer(BaseAnalyzer):
     """Analyzes news articles with extended thinking and map-reduce batching."""
 
     # Batch analysis prompt for map phase (used after filtering)
-    BATCH_ANALYSIS_PROMPT = """You are an AI news analyst covering the frontier of artificial intelligence.
+    BATCH_ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
 Analyze these AI news articles (batch {batch_index} of {total_batches}).
 
 For each article, provide:
 1. A concise summary (2-3 sentences) focusing on what's new/significant
-2. An importance score (0-100) based on FRONTIER AI significance
+2. An importance score (0-100) based on AI/ML significance
 3. Brief reasoning for the score
 4. Relevant themes
 
@@ -62,50 +62,47 @@ Return your analysis as valid JSON only:
 ```
 JSON validity rules: escape double quotes/backslashes/newlines inside string values; do not copy source text verbatim; avoid quotation marks inside summaries/reasoning unless escaped.
 
-Prioritize: model releases, breakthrough capabilities, major product launches, significant funding (>$100M), AI policy news, open source releases, safety developments.
-Deprioritize: routine updates, minor features, opinion pieces, rehashed coverage."""
+Prioritize: model releases, breakthroughs, major product launches, investments, applied AI, open source, safety, and policy.
+Deprioritize: routine updates, minor features, non-AI tech news."""
 
-    # LLM filter for frontier AI relevance
-    FILTER_PROMPT = """You are filtering news articles for a FRONTIER AI newsletter.
+    # LLM filter for AI relevance
+    FILTER_PROMPT = """You are filtering news articles for an AI and Machine Learning newsletter.
 
 Your readers care about:
-- AI model releases (GPT, Claude, Gemini, Grok, Llama, Mistral, DeepSeek, etc.)
-- AI company news (OpenAI, Anthropic, Google AI, xAI, Meta AI, etc.)
-- AI products, tools, and capabilities
-- AI research breakthroughs and papers
-- AI safety, ethics, and alignment
-- AI regulation and policy
-- AI infrastructure (chips, training clusters)
+- AI model releases and updates (GPT, Claude, Gemini, Llama, Mistral, DeepSeek, etc.)
+- AI company and startup news (OpenAI, Anthropic, Google, startups, etc.)
+- AI applications, products, and tools (including enterprise, consumer, open source)
+- AI research breakthroughs, papers, and algorithms
+- AI safety, ethics, alignment, and regulation
+- AI infrastructure (chips, data centers, training clusters)
+- Applied AI in various sectors (healthcare, robotics, marketing, coding, etc.)
 
 Your readers do NOT care about:
 - Space/astronomy (SpaceX satellites, planets)
-- General health news (unless AI diagnosis/treatment)
-- Tech job market news
-- University/education news (unless AI research)
-- Government electronics/manufacturing (unless AI-specific)
-- Generic "AI in marketing" fluff pieces
+- Generic tech news completely unrelated to AI or Data
+- General health/job market news without an AI angle
 
 Articles:
 {items_context}
 
-Return the IDs of articles relevant to frontier AI:
+Return the IDs of articles relevant to AI and Machine Learning:
 ```json
 {{"ai_article_ids": ["{example_id}", ...]}}
 ```
 
-Be inclusive of AI safety issues, controversies, and negative news about AI companies - these are still frontier AI news."""
+Be inclusive of AI safety issues, controversies, applied AI tools, and startups."""
 
     # Combined analysis + ranking prompt for small batches (< 75 items)
-    COMBINED_ANALYSIS_PROMPT = """You are an AI news analyst covering the frontier of artificial intelligence.
+    COMBINED_ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
 
 Analyze these {count} AI news articles and rank the top 10 most important.
 
 For each article, provide:
 1. A concise summary (2-3 sentences) focusing on what's new/significant
-2. An importance score (0-100) based on FRONTIER AI significance:
+2. An importance score (0-100) based on AI/ML significance:
    - 90-100: Major model releases, breakthrough announcements, industry-shaking news
-   - 70-89: Significant product launches, notable research, important company news
-   - 50-69: Interesting developments, useful tools, incremental progress
+   - 70-89: Significant product launches, notable research, important company news, big investments
+   - 50-69: Interesting developments, useful tools, applied AI, incremental progress
    - Below 50: Minor updates, routine news
 3. Brief reasoning for the score
 4. Relevant themes
@@ -153,14 +150,16 @@ CATEGORY SUMMARY FORMATTING RULES:
 - Maximum 2-3 short paragraphs OR equivalent bullet content
 - Write in factual, professional tone"""
 
-    ANALYSIS_PROMPT = """You are an AI news analyst covering the frontier of artificial intelligence.
+    ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
 
-Analyze these AI news articles. For each, provide:
+Analyze these {count} AI news articles and rank the top 10 most important.
+
+For each article, provide:
 1. A concise summary (2-3 sentences) focusing on what's new/significant
-2. An importance score (0-100) based on FRONTIER AI significance:
+2. An importance score (0-100) based on AI/ML significance:
    - 90-100: Major model releases, breakthrough announcements, industry-shaking news
-   - 70-89: Significant product launches, notable research, important company news
-   - 50-69: Interesting developments, useful tools, incremental progress
+   - 70-89: Significant product launches, notable research, important company news, big investments
+   - 50-69: Interesting developments, useful tools, applied AI, incremental progress
    - Below 50: Minor updates, routine news
 3. Brief reasoning for the score
 4. Relevant themes
