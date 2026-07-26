@@ -1,0 +1,274 @@
+{
+  "category": "social",
+  "date": "2026-07-26",
+  "category_summary": "AI benchmarking experiments and developer tooling updates led community discussions today. **Ethan Mollick** showcased AI models autonomously generating executable benchmarks, while major Python linting updates surfaced widespread code quality insights.\n\n- **Ethan Mollick** [detailed an experiment](/?date=2026-07-26&category=social#item-8876aa277c52) using **Sol** to create **BenchBenchBenchBenchBench (BBBBB)**, an AI-authored benchmark suite, alongside [open-source transit game code](/?date=2026-07-26&category=social#item-fdeba3b7cfdb)\n- **Simon Willison** highlighted **Astral's Ruff 0.16.0** release, noting how its expanded default rules [surfaced thousands of new warnings](/?date=2026-07-26&category=social#item-09a25dc8f9d9) in existing Python codebases",
+  "category_summary_html": "<p>AI benchmarking experiments and developer tooling updates led community discussions today. <strong>Ethan Mollick</strong> showcased AI models autonomously generating executable benchmarks, while major Python linting updates surfaced widespread code quality insights.</p>\n<ul>\n<li><strong>Ethan Mollick</strong> <a href=\"/?date=2026-07-26&amp;category=social#item-8876aa277c52\" class=\"internal-link\" rel=\"noopener noreferrer\">detailed an experiment</a> using <strong>Sol</strong> to create <strong>BenchBenchBenchBenchBench (BBBBB)</strong>, an AI-authored benchmark suite, alongside <a href=\"/?date=2026-07-26&amp;category=social#item-fdeba3b7cfdb\" class=\"internal-link\" rel=\"noopener noreferrer\">open-source transit game code</a></li>\n<li><strong>Simon Willison</strong> highlighted <strong>Astral's Ruff 0.16.0</strong> release, noting how its expanded default rules <a href=\"/?date=2026-07-26&amp;category=social#item-09a25dc8f9d9\" class=\"internal-link\" rel=\"noopener noreferrer\">surfaced thousands of new warnings</a> in existing Python codebases</li>\n</ul>",
+  "themes": [
+    {
+      "name": "AI Experimentation",
+      "description": "Discussions and practical tests regarding AI model capabilities, agent setups, and self-referential benchmarking.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Software Development",
+      "description": "Sharing of code repositories, simulations, and developer productivity tooling updates.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 7,
+  "items": [
+    {
+      "id": "8876aa277c52",
+      "title": "Ha! It did it: \"We introduce BenchBenchBenchBenchBench (BBBBB), an executable benchmark of AI-author...",
+      "content": "Ha! It did it: \"We introduce BenchBenchBenchBenchBench (BBBBB), an executable benchmark of AI-authored conformance suites for benchmark-evaluation metrics\"\n\nI really thought it would treat \"now do benchbenchbenchbenchbench\" as a joke, but Sol actually did reasonable experiments.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrh2i2vwds2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-25T04:41:59.156000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage from [yesterday](/?date=2026-07-25&category=social#item-caabcef90229), Ethan Mollick shares an experiment where the Sol model successfully generated an executable benchmark of AI-authored conformance suites called BBBBB.",
+      "importance_score": 70.0,
+      "reasoning": "Authored by a prominent AI commentator detailing a fascinating autonomous generation test involving complex prompt execution.",
+      "themes": [
+        "AI Experimentation",
+        "Benchmarking"
+      ],
+      "sentiment": "positive",
+      "continuation": {
+        "original_item_id": "caabcef90229",
+        "original_date": "2026-07-25",
+        "original_category": "social",
+        "original_title": "As a joke I prompted Codex \"Build and run BenchBench, a benchmark of now good ai is at creating benc...",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from yesterday"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrh2i2vwds2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 54,
+          "reposts": 4,
+          "replies": 1,
+          "quotes": 2
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-07-25&amp;category=social#item-caabcef90229\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, Ethan Mollick shares an experiment where the Sol model successfully generated an executable benchmark of AI-authored conformance suites called BBBBB.</p>",
+      "content_html": "<p>Ha! It did it: \"We introduce BenchBenchBenchBenchBench (BBBBB), an executable benchmark of AI-authored conformance suites for benchmark-evaluation metrics\"</p>\n<p>I really thought it would treat \"now do benchbenchbenchbenchbench\" as a joke, but Sol actually did reasonable experiments.</p>"
+    },
+    {
+      "id": "09a25dc8f9d9",
+      "title": "Ruff 0.16.0 - Astral's fast Python linter - came out a few days ago and increased the number of defa...",
+      "content": "Ruff 0.16.0 - Astral's fast Python linter - came out a few days ago and increased the number of default-enabled rules from 59 to 413, which highlighted all sorts of problems across my projects (1618 in sqlite-utils alone) simonwillison.net/2026/Jul/25/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mriy5j5l322j",
+      "author": "@simonwillison.net",
+      "published": "2026-07-25T23:05:36.981000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Simon Willison discusses the release of Ruff 0.16.0, noting how its jump from 59 to 413 default-enabled rules surfaced thousands of warnings in existing projects.",
+      "importance_score": 65.0,
+      "reasoning": "Provides practical insights from a respected developer on major updates to essential Python tooling.",
+      "themes": [
+        "Software Development",
+        "Developer Tooling"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mriy5j5l322j",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 63,
+          "reposts": 6,
+          "replies": 5,
+          "quotes": 2
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Simon Willison discusses the release of Ruff 0.16.0, noting how its jump from 59 to 413 default-enabled rules surfaced thousands of warnings in existing projects.</p>",
+      "content_html": "<p>Ruff 0.16.0 - Astral's fast Python linter - came out a few days ago and increased the number of default-enabled rules from 59 to 413, which highlighted all sorts of problems across my projects (1618 in sqlite-utils alone) simonwillison.net/2026/Jul/25/...</p>"
+    },
+    {
+      "id": "fdeba3b7cfdb",
+      "title": "Here's the game code, MIT license if you want to edit or change anything \"A mass transit simulator f...",
+      "content": "Here's the game code, MIT license if you want to edit or change anything \"A mass transit simulator for an age of doom\": github.com/emollick/per...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrgymo632s2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-25T04:08:46.080000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick shares open-source MIT-licensed code for a mass transit simulator game on GitHub.",
+      "importance_score": 45.0,
+      "reasoning": "Creative side-project and code sharing from a well-known researcher.",
+      "themes": [
+        "Software Development"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrgymo632s2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 12,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick shares open-source MIT-licensed code for a mass transit simulator game on GitHub.</p>",
+      "content_html": "<p>Here's the game code, MIT license if you want to edit or change anything \"A mass transit simulator for an age of doom\": github.com/emollick/per...</p>"
+    },
+    {
+      "id": "ab3a7d476f13",
+      "title": "Here you go: github.com/emollick/ben...",
+      "content": "Here you go: github.com/emollick/ben...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrgqgform224",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-25T01:42:05.929000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage from [yesterday](/?date=2026-07-25&category=social#item-caabcef90229), Ethan Mollick shares a GitHub link containing the repository for his benchmark experiment.",
+      "importance_score": 40.0,
+      "reasoning": "Follow-up artifact sharing accompanying his AI benchmarking experiments.",
+      "themes": [
+        "AI Experimentation"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "caabcef90229",
+        "original_date": "2026-07-25",
+        "original_category": "social",
+        "original_title": "As a joke I prompted Codex \"Build and run BenchBench, a benchmark of now good ai is at creating benc...",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from yesterday"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrgqgform224",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 11,
+          "reposts": 1,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-07-25&amp;category=social#item-caabcef90229\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, Ethan Mollick shares a GitHub link containing the repository for his benchmark experiment.</p>",
+      "content_html": "<p>Here you go: github.com/emollick/ben...</p>"
+    },
+    {
+      "id": "afb42f1cffbc",
+      "title": "I gave it access to open router, cost under a dollar",
+      "content": "I gave it access to open router, cost under a dollar",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrh4ud53fs2v",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-25T05:24:37.916000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick mentions giving an AI model access to OpenRouter for under a dollar, setting up a larger experiment.",
+      "importance_score": 35.0,
+      "reasoning": "A brief post hinting at an ongoing experiment, lacking full context on its own.",
+      "themes": [
+        "AI Experimentation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrh4ud53fs2v",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 1,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick mentions giving an AI model access to OpenRouter for under a dollar, setting up a larger experiment.</p>",
+      "content_html": "<p>I gave it access to open router, cost under a dollar</p>"
+    },
+    {
+      "id": "e3e704d9c1bf",
+      "title": "What does the laughing cow know?",
+      "content": "What does the laughing cow know?",
+      "url": "https://mastodon.social/@Gargron/116980975226017316",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-25T14:00:25.311000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "Gargron posts a casual, humorous question on Mastodon.",
+      "importance_score": 10.0,
+      "reasoning": "Off-topic casual social media post with no AI or technical relevance.",
+      "themes": [
+        "Social/General"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "116980975226017316",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 24,
+          "reblogs": 5,
+          "replies": 17
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Gargron posts a casual, humorous question on Mastodon.</p>",
+      "content_html": "<p>What does the laughing cow know?</p>"
+    },
+    {
+      "id": "c1486b939b5f",
+      "title": "Is the #Plushtodon made of marshmallow, or the marshmallow made of #Plushtodon?",
+      "content": "Is the #Plushtodon made of marshmallow, or the marshmallow made of #Plushtodon?",
+      "url": "https://mastodon.social/@Gargron/116980222529903625",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-25T10:49:00.129000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "Gargron posts a lighthearted joke about Plushtodon and marshmallows.",
+      "importance_score": 10.0,
+      "reasoning": "Off-topic casual social media post with no AI or technical relevance.",
+      "themes": [
+        "Social/General"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "116980222529903625",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 165,
+          "reblogs": 54,
+          "replies": 15
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Gargron posts a lighthearted joke about Plushtodon and marshmallows.</p>",
+      "content_html": "<p>Is the #Plushtodon made of marshmallow, or the marshmallow made of #Plushtodon?</p>"
+    }
+  ]
+}
