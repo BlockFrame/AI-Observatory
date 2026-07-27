@@ -1,0 +1,483 @@
+{
+  "category": "social",
+  "date": "2026-07-27",
+  "category_summary": "Discussions today focused on model release velocity, governance philosophies, and practical agentic workflows.\n\n- **Ethan Mollick** [highlighted the accelerating pace](/?date=2026-07-27&category=social#item-4aa9951f7414) of frontier releases forcing rapid updates to usage frameworks.\n- Discussions on **AI governance** contrasted **OpenAI** [researcher perspectives](/?date=2026-07-27&category=social#item-64b88d9d123a) on **existential risk** with **open-source** community views on **power concentration**.\n- Developers highlighted [practical workflows using](/?date=2026-07-27&category=social#item-ceb578d815db) **Claude Code**, [embedding chat transcripts directly into](/?date=2026-07-27&category=social#item-e00596040a4d) **Git commits**, and [building complete applications like](/?date=2026-07-27&category=social#item-e24856b71c9a) **Cezanne**.",
+  "category_summary_html": "<p>Discussions today focused on model release velocity, governance philosophies, and practical agentic workflows.</p>\n<ul>\n<li><strong>Ethan Mollick</strong> <a href=\"/?date=2026-07-27&amp;category=social#item-4aa9951f7414\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighted the accelerating pace</a> of frontier releases forcing rapid updates to usage frameworks.</li>\n<li>Discussions on <strong>AI governance</strong> contrasted <strong>OpenAI</strong> <a href=\"/?date=2026-07-27&amp;category=social#item-64b88d9d123a\" class=\"internal-link\" rel=\"noopener noreferrer\">researcher perspectives</a> on <strong>existential risk</strong> with <strong>open-source</strong> community views on <strong>power concentration</strong>.</li>\n<li>Developers highlighted <a href=\"/?date=2026-07-27&amp;category=social#item-ceb578d815db\" class=\"internal-link\" rel=\"noopener noreferrer\">practical workflows using</a> <strong>Claude Code</strong>, <a href=\"/?date=2026-07-27&amp;category=social#item-e00596040a4d\" class=\"internal-link\" rel=\"noopener noreferrer\">embedding chat transcripts directly into</a> <strong>Git commits</strong>, and <a href=\"/?date=2026-07-27&amp;category=social#item-e24856b71c9a\" class=\"internal-link\" rel=\"noopener noreferrer\">building complete applications like</a> <strong>Cezanne</strong>.</li>\n</ul>",
+  "themes": [
+    {
+      "name": "Model Releases & Ecosystem Dynamics",
+      "description": "Observations on the accelerating pace of frontier model updates, such as Claude Opus 5 and Codex features.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "AI Governance & Safety",
+      "description": "Discussions surrounding existential risk, safety perceptions, concentration of power, and ideological divides between open-weights advocates and lab insiders.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "AI-Assisted Development",
+      "description": "Practical applications, coding workflows, agentic tool integrations, and transparent commit practices using modern LLMs.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "General / Philosophy",
+      "description": "Broad historical perspectives on technological change and unrelated casual commentary.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 30.0
+    }
+  ],
+  "total_items": 12,
+  "items": [
+    {
+      "id": "4aa9951f7414",
+      "title": "I've already had to update the guide to which AI models to use that I wrote on Thursday to include O...",
+      "content": "I've already had to update the guide to which AI models to use that I wrote on Thursday to include Opus 5 and Codex's voice mode, both of which are significant & launched on Friday. Keeping up is challenging, even if you are following this stuff closely. www.oneusefulthing.org/p/an-opinion...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrl7ovnk2c2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T20:25:56.182000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-26&category=news#item-01e3d81d9863) coverage, Discussion on the rapid pace of frontier model releases, highlighting the challenge of keeping usage guides updated following recent launches like Claude Opus 5 and Codex voice features.",
+      "importance_score": 75.0,
+      "reasoning": "High relevance due to commentary from a prominent AI educator tracking ecosystem velocity and fresh model releases.",
+      "themes": [
+        "Model Releases & Ecosystem Dynamics"
+      ],
+      "sentiment": "concerned",
+      "continuation": {
+        "original_item_id": "01e3d81d9863",
+        "original_date": "2026-07-26",
+        "original_category": "news",
+        "original_title": "Opus 5 may have solved browser-based prompt injection, the biggest security flaw haunting AI agents",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrl7ovnk2c2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 63,
+          "reposts": 9,
+          "replies": 3,
+          "quotes": 2
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-26&amp;category=news#item-01e3d81d9863\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Discussion on the rapid pace of frontier model releases, highlighting the challenge of keeping usage guides updated following recent launches like Claude Opus 5 and Codex voice features.</p>",
+      "content_html": "<p>I've already had to update the guide to which AI models to use that I wrote on Thursday to include Opus 5 and Codex's voice mode, both of which are significant &amp; launched on Friday. Keeping up is challenging, even if you are following this stuff closely. www.oneusefulthing.org/p/an-opinion...</p>"
+    },
+    {
+      "id": "e3c7e93190fe",
+      "title": "I think most people, when talking about open weights AI models, don’t deeply believe in the vision o...",
+      "content": "I think most people, when talking about open weights AI models, don’t deeply believe in the vision of AGI/ASI that lab insiders tend to believe in. Like they don’t expect AI to really present grave semi-autonomous biosecurity or other similar risks. Whether this view is right or not, no one knows",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrjrj3m37k2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T06:39:28.975000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Analysis of how open weights AI proponents and frontier lab insiders differ in their expectations of AGI, ASI, and biosecurity risks.",
+      "importance_score": 70.0,
+      "reasoning": "Thought-provoking discussion on the ideological divide between open-source advocates and frontier lab safety researchers.",
+      "themes": [
+        "AI Governance & Safety"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrjrj3m37k2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 117,
+          "reposts": 12,
+          "replies": 9,
+          "quotes": 8
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Analysis of how open weights AI proponents and frontier lab insiders differ in their expectations of AGI, ASI, and biosecurity risks.</p>",
+      "content_html": "<p>I think most people, when talking about open weights AI models, don’t deeply believe in the vision of AGI/ASI that lab insiders tend to believe in. Like they don’t expect AI to really present grave semi-autonomous biosecurity or other similar risks. Whether this view is right or not, no one knows</p>"
+    },
+    {
+      "id": "e24856b71c9a",
+      "title": "A year later, Fable builds me a version of the Cezanne city builder game. The AI came up with the id...",
+      "content": "A year later, Fable builds me a version of the Cezanne city builder game. The AI came up with the idea of an impressionist city builder where you paint with gestures & the town grows around it, with neighborhoods acquiring characters as they evolve.\n\nPlay with it here: cezanne-city.netlify.app",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrjq7gfbas2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T06:16:11",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage from [[yesterday](/?date=2026-07-26&category=social#item-fdeba3b7cfdb)](/?date=2026-07-26&category=social#item-fdeba3b7cfdb), Demonstration of an impressionist city builder game ('Cezanne') conceived and built with AI over a year.",
+      "importance_score": 65.0,
+      "reasoning": "Engaging creative application showcase illustrating long-term AI-assisted software and concept generation.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "positive",
+      "continuation": {
+        "original_item_id": "fdeba3b7cfdb",
+        "original_date": "2026-07-26",
+        "original_category": "social",
+        "original_title": "Here's the game code, MIT license if you want to edit or change anything \"A mass transit simulator f...",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from [yesterday](/?date=2026-07-26&category=social#item-fdeba3b7cfdb)"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrjq7gfbas2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 120,
+          "reposts": 13,
+          "replies": 5,
+          "quotes": 1
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-07-26&amp;category=social#item-fdeba3b7cfdb\" class=\"internal-link\" rel=\"noopener noreferrer\">[yesterday</a>](/?date=2026-07-26&amp;category=social#item-fdeba3b7cfdb), Demonstration of an impressionist city builder game ('Cezanne') conceived and built with AI over a year.</p>",
+      "content_html": "<p>A year later, Fable builds me a version of the Cezanne city builder game. The AI came up with the idea of an impressionist city builder where you paint with gestures &amp; the town grows around it, with neighborhoods acquiring characters as they evolve.</p>\n<p>Play with it here: cezanne-city.netlify.app</p>"
+    },
+    {
+      "id": "64b88d9d123a",
+      "title": "Roon is a researcher at OpenAI.\n\nIf you don’t believe that these risks are real, then you probably b...",
+      "content": "Roon is a researcher at OpenAI.\n\nIf you don’t believe that these risks are real, then you probably believe that the people in the labs discussing them are intentionally spreading FUD for purely commercial reasons and making up risks to keep their high margins via regulation.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrjrjyrhes2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T06:39:59.560000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-26&category=news#item-ea99b4dd9aae) coverage, Commentary on OpenAI researcher perspectives regarding existential AI risks versus public skepticism of commercial motives.",
+      "importance_score": 60.0,
+      "reasoning": "Highlights the credibility gap and differing viewpoints between lab insiders and the broader public regarding AI safety.",
+      "themes": [
+        "AI Governance & Safety"
+      ],
+      "sentiment": "concerned",
+      "continuation": {
+        "original_item_id": "ea99b4dd9aae",
+        "original_date": "2026-07-26",
+        "original_category": "news",
+        "original_title": "Why the OpenAI Agent Broke Into Hugging Face: Reward Hacking, Not Malice, Explained for Engineers",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrjrjyrhes2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 39,
+          "reposts": 2,
+          "replies": 8,
+          "quotes": 0
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-26&amp;category=news#item-ea99b4dd9aae\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Commentary on OpenAI researcher perspectives regarding existential AI risks versus public skepticism of commercial motives.</p>",
+      "content_html": "<p>Roon is a researcher at OpenAI.</p>\n<p>If you don’t believe that these risks are real, then you probably believe that the people in the labs discussing them are intentionally spreading FUD for purely commercial reasons and making up risks to keep their high margins via regulation.</p>"
+    },
+    {
+      "id": "d5cf54c42c6d",
+      "title": "I agree, and think I did a bad job on the second post’s phrasing: yes, there are many reasons you be...",
+      "content": "I agree, and think I did a bad job on the second post’s phrasing: yes, there are many reasons you believe roon & company are incorrect, such as your concern that concentration of power is a bigger risk than AI misuse. I was not trying to imply a single option.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrkm6hiaqk25",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T14:36:43.362000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Clarification on varying arguments concerning AI safety, distinguishing power concentration concerns from strict misuse risks.",
+      "importance_score": 55.0,
+      "reasoning": "Contributes to ongoing discourse on AI governance nuances and risk prioritization among researchers.",
+      "themes": [
+        "AI Governance & Safety"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrkm6hiaqk25",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 15,
+          "reposts": 1,
+          "replies": 3,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Clarification on varying arguments concerning AI safety, distinguishing power concentration concerns from strict misuse risks.</p>",
+      "content_html": "<p>I agree, and think I did a bad job on the second post’s phrasing: yes, there are many reasons you believe roon &amp; company are incorrect, such as your concern that concentration of power is a bigger risk than AI misuse. I was not trying to imply a single option.</p>"
+    },
+    {
+      "id": "ceb578d815db",
+      "title": "Fugu-Ultra now works with Claude Code 🐡",
+      "content": "Fugu-Ultra now works with Claude Code 🐡",
+      "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mrjjjeli3c2r",
+      "author": "@hardmaru.bsky.social",
+      "published": "2026-07-26T04:16:28.457000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage from [[yesterday](/?date=2026-07-25&category=social#item-f740889da759)](/?date=2026-07-25&category=social#item-f740889da759), Developer announcement that Fugu-Ultra now integrates with Claude Code.",
+      "importance_score": 50.0,
+      "reasoning": "Useful developer update from a recognized researcher regarding coding tools, though with modest engagement.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "positive",
+      "continuation": {
+        "original_item_id": "f740889da759",
+        "original_date": "2026-07-25",
+        "original_category": "social",
+        "original_title": "Our team just shipped Fugu-Ultra v1.1! 🐡\n\nBy dynamically orchestrating the latest frontier models, w...",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from [yesterday](/?date=2026-07-25&category=social#item-f740889da759)"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:7chsbgw6o6oh5oiglpgc3467/app.bsky.feed.post/3mrjjjeli3c2r",
+        "author_display_name": "hardmaru",
+        "engagement": {
+          "likes": 31,
+          "reposts": 4,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-07-25&amp;category=social#item-f740889da759\" class=\"internal-link\" rel=\"noopener noreferrer\">[yesterday</a>](/?date=2026-07-25&amp;category=social#item-f740889da759), Developer announcement that Fugu-Ultra now integrates with Claude Code.</p>",
+      "content_html": "<p>Fugu-Ultra now works with Claude Code 🐡</p>"
+    },
+    {
+      "id": "e00596040a4d",
+      "title": "I've deliberately shared hundreds of chats like that one - I frequently link to them from my commit ...",
+      "content": "I've deliberately shared hundreds of chats like that one - I frequently link to them from my commit messages",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrjetgq3722y",
+      "author": "@simonwillison.net",
+      "published": "2026-07-26T02:52:37.541000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage, Practice of embedding AI chat transcripts directly into software commit messages for reproducibility and context.",
+      "importance_score": 50.0,
+      "reasoning": "Valuable methodology tip for transparent AI-assisted software engineering.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "1b812ebe4a25",
+        "original_date": "unknown",
+        "original_category": "unknown",
+        "original_title": "unknown",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrjetgq3722y",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 0,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage, Practice of embedding AI chat transcripts directly into software commit messages for reproducibility and context.</p>",
+      "content_html": "<p>I've deliberately shared hundreds of chats like that one - I frequently link to them from my commit messages</p>"
+    },
+    {
+      "id": "3d49298e4973",
+      "title": "For the better part of 20,000 centuries of human history, not much happened. We spent almost all of ...",
+      "content": "For the better part of 20,000 centuries of human history, not much happened. We spent almost all of those making slightly different variations of one tool, we only figured out the metal thing after 19,940 centuries.\n\nAnd stuff really took off 2 centuries ago. That we can sort of keep up is amazing.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrlabaqgpk2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T20:36:11.790000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Reflections on the exponential acceleration of human technological development and tool-making over millennia.",
+      "importance_score": 45.0,
+      "reasoning": "Broad philosophical observation on tech history with moderate engagement, lacking specific technical insights.",
+      "themes": [
+        "General / Philosophy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrlabaqgpk2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 140,
+          "reposts": 9,
+          "replies": 4,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reflections on the exponential acceleration of human technological development and tool-making over millennia.</p>",
+      "content_html": "<p>For the better part of 20,000 centuries of human history, not much happened. We spent almost all of those making slightly different variations of one tool, we only figured out the metal thing after 19,940 centuries.</p>\n<p>And stuff really took off 2 centuries ago. That we can sort of keep up is amazing.</p>"
+    },
+    {
+      "id": "1b812ebe4a25",
+      "title": "That one is from this commit github.com/simonw/tools... - I used it to build tools.simonwillison.net...",
+      "content": "That one is from this commit github.com/simonw/tools... - I used it to build tools.simonwillison.net/datasette-io...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrjewixpus2y",
+      "author": "@simonwillison.net",
+      "published": "2026-07-26T02:54:20.551000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Continuing our coverage, Technical commit reference demonstrating the creation of developer tools using AI.",
+      "importance_score": 45.0,
+      "reasoning": "Concrete practitioner example of building tools with LLMs, though low standalone engagement.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "1b812ebe4a25",
+        "original_date": "unknown",
+        "original_category": "unknown",
+        "original_title": "unknown",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrjewixpus2y",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 0,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage, Technical commit reference demonstrating the creation of developer tools using AI.</p>",
+      "content_html": "<p>That one is from this commit github.com/simonw/tools... - I used it to build tools.simonwillison.net/datasette-io...</p>"
+    },
+    {
+      "id": "6ae4dbeffb6b",
+      "title": "It took me maybe 30 minutes between the prompt and feedback, it took the AI a couple hours. Everythi...",
+      "content": "It took me maybe 30 minutes between the prompt and feedback, it took the AI a couple hours. Everything is in the repo.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrl7qugpyk2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T20:27:02.018000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Anecdote detailing the short human prompt time versus long AI execution time in a repository build.",
+      "importance_score": 40.0,
+      "reasoning": "Brief project update demonstrating agentic coding workflows, but lacks standalone depth.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrl7qugpyk2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 1,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Anecdote detailing the short human prompt time versus long AI execution time in a repository build.</p>",
+      "content_html": "<p>It took me maybe 30 minutes between the prompt and feedback, it took the AI a couple hours. Everything is in the repo.</p>"
+    },
+    {
+      "id": "497b19ee8d81",
+      "title": "Here it is open source, if you want to adapt or modify: github.com/emollick/cez...",
+      "content": "Here it is open source, if you want to adapt or modify: github.com/emollick/cez...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrkmx5lcec2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-26T14:50:31.838000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Sharing an open source repository link for an AI-assisted project.",
+      "importance_score": 40.0,
+      "reasoning": "Practical repository link supporting previous workflow claims, moderate utility for developers.",
+      "themes": [
+        "AI-Assisted Development"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrkmx5lcec2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 13,
+          "reposts": 1,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Sharing an open source repository link for an AI-assisted project.</p>",
+      "content_html": "<p>Here it is open source, if you want to adapt or modify: github.com/emollick/cez...</p>"
+    },
+    {
+      "id": "c718bb140aff",
+      "title": "The giant red SUV really took me out from the movie being set in England. Having been on country sid...",
+      "content": "The giant red SUV really took me out from the movie being set in England. Having been on country side roads here that thing wouldn’t fit anywhere. The neon sign on the police station was a wild choice too.",
+      "url": "https://mastodon.social/@Gargron/116988836378462541",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-26T23:19:36.968000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "Casual critique of unrealistic set design choices in a movie set in England.",
+      "importance_score": 10.0,
+      "reasoning": "Completely off-topic personal commentary unrelated to artificial intelligence or machine learning.",
+      "themes": [
+        "General / Philosophy"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "116988836378462541",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 39,
+          "reblogs": 4,
+          "replies": 6
+        },
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Casual critique of unrealistic set design choices in a movie set in England.</p>",
+      "content_html": "<p>The giant red SUV really took me out from the movie being set in England. Having been on country side roads here that thing wouldn’t fit anywhere. The neon sign on the police station was a wild choice too.</p>"
+    }
+  ]
+}
