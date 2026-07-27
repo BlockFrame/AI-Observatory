@@ -335,10 +335,13 @@ The summary should read like a professional briefing, focusing on what matters f
     def _has_ai_keywords(self, item: CollectedItem) -> bool:
         """Quickly identify likely AI articles without substring false positives."""
         text = f"{item.title} {item.content}".lower()
-        return any(
-            re.search(rf"(?<!\w){re.escape(keyword)}(?!\w)", text)
-            for keyword in self.AI_KEYWORDS
-        )
+        for keyword in self.AI_KEYWORDS:
+            # (?<![a-z]) prevents matching inside words (e.g. 'trail' for 'ai', 'egypt' for 'gpt')
+            # s? allows for simple plurals like 'llms', 'gpts'
+            # (?![a-z]) ensures the word doesn't continue with more letters
+            if re.search(rf"(?<![a-z]){re.escape(keyword)}s?(?![a-z])", text):
+                return True
+        return False
 
     def _truncate_id(self, full_id: str) -> str:
         """Truncate ID to first 16 chars for display."""
