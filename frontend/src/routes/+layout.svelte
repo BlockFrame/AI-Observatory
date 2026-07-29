@@ -61,7 +61,7 @@
 	<header class="fixed right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md transition-all duration-300 {isSidebarOpen ? 'left-64' : 'left-0'}">
 		<div class="flex h-16 items-center px-4 md:px-8 gap-4">
 			<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
-				<span class="material-symbols-outlined">{isSidebarOpen ? 'menu_open' : 'menu'}</span>
+				<span class="material-symbols-outlined text-[22px]">{isSidebarOpen ? 'left_panel_close' : 'left_panel_open'}</span>
 			</button>
 			<div class="flex items-center">
 				<div class="w-64 md:w-80">

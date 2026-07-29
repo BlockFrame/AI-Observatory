@@ -20,7 +20,7 @@
 
     onMount(async () => {
         try {
-            const res = await fetch('/data/tools.json');
+            const res = await fetch('/data/tools.json?v=' + Date.now());
             if (res.ok) {
                 tools = await res.json();
             }
