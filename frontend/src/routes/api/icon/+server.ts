@@ -8,10 +8,9 @@ export const GET: RequestHandler = async ({ url }) => {
     }
 
     try {
-        // We use DuckDuckGo favicons as they are extremely fast and reliable,
-        // and we fetch it server-side to completely bypass client adblockers
-        // and tracking protection systems.
-        const iconUrl = `https://external-content.duckduckgo.com/ip3/${domain}.ico`;
+        // We use Google Favicons as the primary source because it has the largest and most accurate index of real logos.
+        // Fetching it server-side completely bypasses client adblockers and tracking protection.
+        const iconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
         const response = await fetch(iconUrl);
 
         if (!response.ok) {
