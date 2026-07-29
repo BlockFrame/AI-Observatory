@@ -2,11 +2,17 @@
 	import { page } from '$app/stores';
 	import SearchBar from '$lib/components/search/SearchBar.svelte';
 	import '../app.css';
+
+	let isSidebarOpen = true;
+
+	function toggleSidebar() {
+		isSidebarOpen = !isSidebarOpen;
+	}
 </script>
 
 <div class="min-h-screen bg-[#0b1426] text-on-surface">
 	<!-- Sidebar -->
-	<aside class="fixed left-0 top-0 z-40 h-screen w-64 overflow-hidden border-r border-white/10 bg-[#0c1322]/80 shadow-2xl backdrop-blur-xl">
+	<aside class="fixed left-0 top-0 z-40 h-screen overflow-hidden border-r border-white/10 bg-[#0c1322]/80 shadow-2xl backdrop-blur-xl transition-all duration-300 {isSidebarOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full'}">
 		<div class="flex h-full flex-col px-4 py-6">
 			<div class="mb-8 flex items-center gap-2 px-2">
 				<img src="/logo.png" alt="AI Observatory Logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
@@ -52,10 +58,13 @@
 	</aside>
 
 	<!-- Header -->
-	<header class="fixed left-64 right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md">
-		<div class="flex h-16 items-center px-8">
+	<header class="fixed right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md transition-all duration-300 {isSidebarOpen ? 'left-64' : 'left-0'}">
+		<div class="flex h-16 items-center px-4 md:px-8 gap-4">
+			<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
+				<span class="material-symbols-outlined">{isSidebarOpen ? 'menu_open' : 'menu'}</span>
+			</button>
 			<div class="flex items-center">
-				<div class="w-80">
+				<div class="w-64 md:w-80">
 					<SearchBar placeholder="Search..." />
 				</div>
 			</div>
@@ -63,7 +72,7 @@
 	</header>
 
 	<!-- Main Content -->
-	<main class="ml-64 min-h-screen px-8 pt-24">
+	<main class="min-h-screen px-4 md:px-8 pt-24 transition-all duration-300 {isSidebarOpen ? 'ml-64' : 'ml-0'}">
 		<slot />
 	</main>
 
