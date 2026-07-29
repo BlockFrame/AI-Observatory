@@ -2,6 +2,9 @@
 	import { page } from '$app/stores';
 	import SearchBar from '$lib/components/search/SearchBar.svelte';
 	import '../app.css';
+	import { inject } from '@vercel/analytics';
+	
+	inject();
 
 	let isSidebarOpen = true;
 
