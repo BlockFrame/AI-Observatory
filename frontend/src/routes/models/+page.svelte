@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { fade, slide } from 'svelte/transition';
+    import { slugify } from '$lib/utils/slugify';
 
     interface Model {
         name: string;
@@ -226,9 +227,7 @@
                 <div class="flex-1 overflow-y-auto p-4 md:p-6 space-y-3">
                     {#each visibleModels as tool}
                         <a 
-                            href={tool.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
+                            href="/models/{slugify(tool.name)}" 
                             class="flex items-start gap-4 p-4 rounded-xl bg-[#0c1322] border border-[#2b3655] hover:border-[#9aa6ff] hover:bg-[#111d33] hover:shadow-lg transition-all duration-200 group"
                         >
                             <div class="w-[52px] h-[52px] shrink-0 bg-[#1b2437] rounded-lg flex items-center justify-center overflow-hidden border border-[#2b3655] shadow-inner p-1">
