@@ -14,14 +14,6 @@
 	<!-- Sidebar -->
 	<aside class="fixed left-0 top-0 z-40 h-screen overflow-hidden border-r border-white/10 bg-[#0c1322]/80 shadow-2xl backdrop-blur-xl transition-all duration-300 {isSidebarOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full'}">
 		<div class="flex h-full flex-col px-4 py-6">
-			<div class="mb-8 flex items-center gap-2 px-2">
-				<img src="/logo.png" alt="AI Observatory Logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
-				<div class="min-w-0 max-w-[165px] overflow-hidden">
-					<h1 class="truncate text-[15px] font-semibold tracking-[0.02em] text-[#00e0bb]">
-						AI Observatory <span class="text-[11px] font-medium uppercase tracking-[0.12em] text-[#8e94ae]">v2.4</span>
-					</h1>
-				</div>
-			</div>
 
 			<nav class="flex-1">
 				<p class="mb-3 px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[#8e94ae]">Navigation</p>
@@ -59,17 +51,28 @@
 
 	<!-- Header -->
 	<header class="fixed right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md transition-all duration-300 {isSidebarOpen ? 'left-64' : 'left-0'}">
-		<div class="flex h-16 items-center px-4 md:px-8 gap-4">
-			<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
-				{#if isSidebarOpen}
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
-				{:else}
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
-				{/if}
-			</button>
-			<div class="flex items-center">
-				<div class="w-64 md:w-80">
-					<SearchBar placeholder="Search..." />
+		<div class="flex h-16 items-center justify-between px-4 md:px-8 gap-4">
+			<div class="flex items-center gap-4">
+				<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
+					{#if isSidebarOpen}
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
+					{:else}
+						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
+					{/if}
+				</button>
+				<div class="flex items-center">
+					<div class="w-64 md:w-80">
+						<SearchBar placeholder="Search..." />
+					</div>
+				</div>
+			</div>
+
+			<div class="flex items-center gap-2">
+				<img src="/logo.png" alt="AI Observatory Logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
+				<div class="min-w-0 overflow-hidden hidden sm:block">
+					<h1 class="truncate text-[15px] font-semibold tracking-[0.02em] text-[#00e0bb]">
+						AI Observatory <span class="text-[11px] font-medium uppercase tracking-[0.12em] text-[#8e94ae]">v2.4</span>
+					</h1>
 				</div>
 			</div>
 		</div>
