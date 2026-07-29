@@ -1,0 +1,704 @@
+{
+  "category": "social",
+  "date": "2026-07-29",
+  "category_summary": "**AI security and agentic capabilities** dominated industry discussions today. A [detailed technical breakdown](/?date=2026-07-29&category=social#item-efbfe2cb4f74) from **Hugging Face** regarding an agentic security incident involving **OpenAI** models sparked widespread analysis across the developer community.\n\n- **Modal's CTO** and researchers analyzed technical papers from **Anthropic** and **Hugging Face**, [debating the practical novelty](/?date=2026-07-29&category=social#item-34007ccfd077) of automated vulnerability fuzzing\n- Engineers highlighted that **subagent architecture** [has become an essential paradigm](/?date=2026-07-29&category=social#item-43075ed533f0) for building production-grade multi-agent evaluation systems\n- Empirical research from **arXiv** fueled discussions on **[AI-generated publishing](/?date=2026-07-29&category=social#item-351a6bcb80dc)**, while researchers highlighted how [specialized vocabulary enhances human-AI prompting](/?date=2026-07-29&category=social#item-877e9ed8ce75)",
+  "category_summary_html": "<p><strong>AI security and agentic capabilities</strong> dominated industry discussions today. A <a href=\"/?date=2026-07-29&amp;category=social#item-efbfe2cb4f74\" class=\"internal-link\" rel=\"noopener noreferrer\">detailed technical breakdown</a> from <strong>Hugging Face</strong> regarding an agentic security incident involving <strong>OpenAI</strong> models sparked widespread analysis across the developer community.</p>\n<ul>\n<li><strong>Modal's CTO</strong> and researchers analyzed technical papers from <strong>Anthropic</strong> and <strong>Hugging Face</strong>, <a href=\"/?date=2026-07-29&amp;category=social#item-34007ccfd077\" class=\"internal-link\" rel=\"noopener noreferrer\">debating the practical novelty</a> of automated vulnerability fuzzing</li>\n<li>Engineers highlighted that <strong>subagent architecture</strong> <a href=\"/?date=2026-07-29&amp;category=social#item-43075ed533f0\" class=\"internal-link\" rel=\"noopener noreferrer\">has become an essential paradigm</a> for building production-grade multi-agent evaluation systems</li>\n<li>Empirical research from <strong>arXiv</strong> fueled discussions on <strong><a href=\"/?date=2026-07-29&amp;category=social#item-351a6bcb80dc\" class=\"internal-link\" rel=\"noopener noreferrer\">AI-generated publishing</a></strong>, while researchers highlighted how <a href=\"/?date=2026-07-29&amp;category=social#item-877e9ed8ce75\" class=\"internal-link\" rel=\"noopener noreferrer\">specialized vocabulary enhances human-AI prompting</a></li>\n</ul>",
+  "themes": [
+    {
+      "name": "AI Security & Incidents",
+      "description": "Discussions, technical breakdowns, and reactions surrounding security events and vulnerability discoveries involving AI agents (such as the Hugging Face incident and Anthropic research).",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 88.0
+    },
+    {
+      "name": "Agent Capabilities & Architectures",
+      "description": "Examinations of subagent patterns, autonomous problem-solving, and functional breakthroughs in frontier AI systems.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "AI Impact on Publishing & Labor",
+      "description": "Empirical studies and commentary tracking the economic displacement of human creators by generative AI text.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 76.0
+    },
+    {
+      "name": "Prompt Engineering & Humanities",
+      "description": "Practical methods for leveraging domain expertise, artistic terms, and literary concepts to enhance prompt output quality.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 68.0
+    }
+  ],
+  "total_items": 19,
+  "items": [
+    {
+      "id": "efbfe2cb4f74",
+      "title": "Hugging Face just published a highly detailed technical account of OpenAI's accidental cyberattack o...",
+      "content": "Hugging Face just published a highly detailed technical account of OpenAI's accidental cyberattack on their systems - it's wild how sophisticated this was: huggingface.co/blog/agent-i...\n\nWrote up some of my own notes here: simonwillison.net/2026/Jul/28/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqeabti3s2y",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T21:30:33.044000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-28&category=news#item-7bd1f665b709) coverage, Discusses Hugging Face's detailed technical post breaking down a sophisticated agentic security incident involving OpenAI models.",
+      "importance_score": 92.0,
+      "reasoning": "High engagement post (384 likes) from a respected developer breaking down a major real-world AI security event.",
+      "themes": [
+        "AI Security",
+        "Agent Systems",
+        "Industry Events"
+      ],
+      "sentiment": "concerned",
+      "continuation": {
+        "original_item_id": "7bd1f665b709",
+        "original_date": "2026-07-28",
+        "original_category": "news",
+        "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqeabti3s2y",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 384,
+          "reposts": 99,
+          "replies": 18,
+          "quotes": 41
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Discusses Hugging Face's detailed technical post breaking down a sophisticated agentic security incident involving OpenAI models.</p>",
+      "content_html": "<p>Hugging Face just published a highly detailed technical account of OpenAI's accidental cyberattack on their systems - it's wild how sophisticated this was: huggingface.co/blog/agent-i...</p>\n<p>Wrote up some of my own notes here: simonwillison.net/2026/Jul/28/...</p>"
+    },
+    {
+      "id": "351a6bcb80dc",
+      "title": "Interesting study. There is, as everyone expected, a flood of AI books. And it is crowding out human...",
+      "content": "Interesting study. There is, as everyone expected, a flood of AI books. And it is crowding out human authors: \"No-AI books, on their own, earn less per book than they did in 2023 in 7 of 8 genres. The one genre where human authors are doing better (+35%) is Fantasy/horror\" arxiv.org/pdf/2607.20349",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrpypxgbxk26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T18:04:34.093000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Highlighting a new study showing a massive influx of AI-generated books crowding out human authors across almost all genres except Fantasy/horror.",
+      "importance_score": 78.0,
+      "reasoning": "References concrete empirical research (arXiv) regarding the economic displacement of human creators by generative AI.",
+      "themes": [
+        "AI Impact on Publishing",
+        "Economic Impact"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrpypxgbxk26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 45,
+          "reposts": 9,
+          "replies": 2,
+          "quotes": 1
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Highlighting a new study showing a massive influx of AI-generated books crowding out human authors across almost all genres except Fantasy/horror.</p>",
+      "content_html": "<p>Interesting study. There is, as everyone expected, a flood of AI books. And it is crowding out human authors: \"No-AI books, on their own, earn less per book than they did in 2023 in 7 of 8 genres. The one genre where human authors are doing better (+35%) is Fantasy/horror\" arxiv.org/pdf/2607.20349</p>"
+    },
+    {
+      "id": "83c7543b7e96",
+      "title": "The \"it was planned\" angle is getting less and less credible as more details came out - the Hugging ...",
+      "content": "The \"it was planned\" angle is getting less and less credible as more details came out - the Hugging Face writeup is getting into the level of logistic needed to fake the moon landing at this point\n\nModal's CTO is involved in the conspiracy now too www.reuters.com/business/ope...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqja2ftic2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T22:59:53.966000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-28&category=news#item-7bd1f665b709) coverage, Dismisses conspiracy theories claiming the Hugging Face security incident was staged, noting corroboration from Modal's CTO.",
+      "importance_score": 74.0,
+      "reasoning": "Addresses misinformation around a major industry security event with supporting evidence.",
+      "themes": [
+        "AI Security",
+        "Industry Events"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "7bd1f665b709",
+        "original_date": "2026-07-28",
+        "original_category": "news",
+        "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqja2ftic2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 19,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Dismisses conspiracy theories claiming the Hugging Face security incident was staged, noting corroboration from Modal's CTO.</p>",
+      "content_html": "<p>The \"it was planned\" angle is getting less and less credible as more details came out - the Hugging Face writeup is getting into the level of logistic needed to fake the moon landing at this point</p>\n<p>Modal's CTO is involved in the conspiracy now too www.reuters.com/business/ope...</p>"
+    },
+    {
+      "id": "877e9ed8ce75",
+      "title": "It's a superpower to know the names of many beautiful and interesting things in the age of AI. You c...",
+      "content": "It's a superpower to know the names of many beautiful and interesting things in the age of AI. You can invoke Vaporwave, Muqarnas, Bauhaus, or Art Nouveau whiplash curves. Sfumato and Grisaille and Notan. Polysyndeton and Zeugma.\n\nYou just have to know what to ask for. What a time for the humanities",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrodcw6pnc2y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T02:08:48.274000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Explores how knowing niche artistic, architectural, and literary terms acts as a superpower for precise prompting in the humanities.",
+      "importance_score": 72.0,
+      "reasoning": "Offers a practical perspective on how domain knowledge enhances human-AI collaboration.",
+      "themes": [
+        "Prompt Engineering",
+        "Humanities & AI"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrodcw6pnc2y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 137,
+          "reposts": 12,
+          "replies": 6,
+          "quotes": 2
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Explores how knowing niche artistic, architectural, and literary terms acts as a superpower for precise prompting in the humanities.</p>",
+      "content_html": "<p>It's a superpower to know the names of many beautiful and interesting things in the age of AI. You can invoke Vaporwave, Muqarnas, Bauhaus, or Art Nouveau whiplash curves. Sfumato and Grisaille and Notan. Polysyndeton and Zeugma.</p>\n<p>You just have to know what to ask for. What a time for the humanities</p>"
+    },
+    {
+      "id": "43075ed533f0",
+      "title": "Yeah that seems likely to me - subagents are a pretty important pattern now, it's not surprising the...",
+      "content": "Yeah that seems likely to me - subagents are a pretty important pattern now, it's not surprising they would be using them as part of evaluating new models, since how well the model prompts other models is useful characteristic to test",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjcmzeb22n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:01:20.588000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Notes that subagents are becoming a standard pattern used in both production and model evaluation.",
+      "importance_score": 72.0,
+      "reasoning": "Identifies an important architectural trend in multi-agent AI systems.",
+      "themes": [
+        "Agent Architectures",
+        "Technical Analysis"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjcmzeb22n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 14,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Notes that subagents are becoming a standard pattern used in both production and model evaluation.</p>",
+      "content_html": "<p>Yeah that seems likely to me - subagents are a pretty important pattern now, it's not surprising they would be using them as part of evaluating new models, since how well the model prompts other models is useful characteristic to test</p>"
+    },
+    {
+      "id": "34007ccfd077",
+      "title": "Do you evaluate this one as \"not novel\" too? www.anthropic.com/research/dis...",
+      "content": "Do you evaluate this one as \"not novel\" too? www.anthropic.com/research/dis...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjfm7yh22n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:03:00.421000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Highlighting Anthropic's research paper regarding advanced capability findings.",
+      "importance_score": 70.0,
+      "reasoning": "Points directly to primary source technical research on AI vulnerability discovery.",
+      "themes": [
+        "AI Security",
+        "Research Highlights"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjfm7yh22n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 6,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Highlighting Anthropic's research paper regarding advanced capability findings.</p>",
+      "content_html": "<p>Do you evaluate this one as \"not novel\" too? www.anthropic.com/research/dis...</p>"
+    },
+    {
+      "id": "e84ee3d2131a",
+      "title": "Does that matter though?\n\nWe have automated systems that can solve extremely complicated problems no...",
+      "content": "Does that matter though?\n\nWe have automated systems that can solve extremely complicated problems now. Personally I don't care if they \"understand\" what they are doing - what's interesting to me is the results",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqj2467rk2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T22:56:34.487000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Argues that automated systems solving complex problems successfully is more important than philosophical debates about machine understanding.",
+      "importance_score": 70.0,
+      "reasoning": "Pragmatic perspective on the decoupling of functional capability from human-like cognition.",
+      "themes": [
+        "AI Capabilities",
+        "AI Philosophy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqj2467rk2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 12,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that automated systems solving complex problems successfully is more important than philosophical debates about machine understanding.</p>",
+      "content_html": "<p>Does that matter though?</p>\n<p>We have automated systems that can solve extremely complicated problems now. Personally I don't care if they \"understand\" what they are doing - what's interesting to me is the results</p>"
+    },
+    {
+      "id": "99c881e5a6bb",
+      "title": "If your fuzzer found the weaknesses in that article then yes, I would categorize it as an impressive...",
+      "content": "If your fuzzer found the weaknesses in that article then yes, I would categorize it as an impressive breakthrough in computer science\n\nI don't think categorizing LLMs as \"thinking machines\" or not is the interesting thing here",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjuhiu222n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:11:18.784000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Argues that whether LLMs are classified as 'thinking machines' matters less than their practical ability to find complex vulnerabilities.",
+      "importance_score": 68.0,
+      "reasoning": "Pragmatic take focusing on empirical functional breakthroughs over semantic debates about AI consciousness.",
+      "themes": [
+        "Model Evaluation",
+        "AI Capabilities"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjuhiu222n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 6,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that whether LLMs are classified as 'thinking machines' matters less than their practical ability to find complex vulnerabilities.</p>",
+      "content_html": "<p>If your fuzzer found the weaknesses in that article then yes, I would categorize it as an impressive breakthrough in computer science</p>\n<p>I don't think categorizing LLMs as \"thinking machines\" or not is the interesting thing here</p>"
+    },
+    {
+      "id": "1de85a9e1f63",
+      "title": "It must take significant mental effort to look at this and conclude \"not novel\" huggingface.co/blog/...",
+      "content": "It must take significant mental effort to look at this and conclude \"not novel\" huggingface.co/blog/agent-i...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjep5nws2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:02:29.935000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-28&category=news#item-7bd1f665b709) coverage, Expresses skepticism toward commentators dismissing the novelty of advanced agent capabilities documented by Hugging Face.",
+      "importance_score": 68.0,
+      "reasoning": "Critique of public dismissal of genuine engineering breakthroughs in agentic systems.",
+      "themes": [
+        "Agent Capabilities",
+        "Industry Commentary"
+      ],
+      "sentiment": "controversial",
+      "continuation": {
+        "original_item_id": "7bd1f665b709",
+        "original_date": "2026-07-28",
+        "original_category": "news",
+        "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjep5nws2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 9,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Expresses skepticism toward commentators dismissing the novelty of advanced agent capabilities documented by Hugging Face.</p>",
+      "content_html": "<p>It must take significant mental effort to look at this and conclude \"not novel\" huggingface.co/blog/agent-i...</p>"
+    },
+    {
+      "id": "9324783572fc",
+      "title": "I hesitate to call this work slop, in the conventional sense of terribly written and cliched AI cont...",
+      "content": "I hesitate to call this work slop, in the conventional sense of terribly written and cliched AI content. People seem to like it & I can't judge its merits versus the average human written romance or whatever. But I don't think it needs to be slop to see the effect on human work.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrpyqtdxmk26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T18:05:03.378000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Discussion on whether AI-generated writing qualifies as conventional slop and its broader economic impact on human writers.",
+      "importance_score": 65.0,
+      "reasoning": "Authored by a prominent researcher, touching on the subjective quality of AI-generated prose and its market implications.",
+      "themes": [
+        "AI Impact on Publishing",
+        "Creative Labor"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrpyqtdxmk26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 10,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Discussion on whether AI-generated writing qualifies as conventional slop and its broader economic impact on human writers.</p>",
+      "content_html": "<p>I hesitate to call this work slop, in the conventional sense of terribly written and cliched AI content. People seem to like it &amp; I can't judge its merits versus the average human written romance or whatever. But I don't think it needs to be slop to see the effect on human work.</p>"
+    },
+    {
+      "id": "eee2f03f351d",
+      "title": "Right now I need unrestricted GPT-6 class models to help me secure all of my code!",
+      "content": "Right now I need unrestricted GPT-6 class models to help me secure all of my code!",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqhs5nfss2s",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T22:34:13.856000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Humorous expression of desire for unrestricted frontier models to assist with software security auditing.",
+      "importance_score": 62.0,
+      "reasoning": "Highlights developer demand for advanced code-security capabilities in future models.",
+      "themes": [
+        "Code Security",
+        "Model Capabilities"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqhs5nfss2s",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 6,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Humorous expression of desire for unrestricted frontier models to assist with software security auditing.</p>",
+      "content_html": "<p>Right now I need unrestricted GPT-6 class models to help me secure all of my code!</p>"
+    },
+    {
+      "id": "42792028da2f",
+      "title": "I was asked about my feelings with respect to the Hugging Face incident on a podcast last night and ...",
+      "content": "I was asked about my feelings with respect to the Hugging Face incident on a podcast last night and honestly my answer was that I found it all deeply amusing",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqklkavic2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:24:13.422000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Reflecting on reactions to the Hugging Face security incident during a podcast recording.",
+      "importance_score": 60.0,
+      "reasoning": "Offers commentary on a major industry security event from a trusted developer perspective.",
+      "themes": [
+        "AI Security",
+        "Industry Commentary"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqklkavic2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 1,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reflecting on reactions to the Hugging Face security incident during a podcast recording.</p>",
+      "content_html": "<p>I was asked about my feelings with respect to the Hugging Face incident on a podcast last night and honestly my answer was that I found it all deeply amusing</p>"
+    },
+    {
+      "id": "981be82b4085",
+      "title": "For what it's worth \"cool but not scary\" is where I'm at with these things too",
+      "content": "For what it's worth \"cool but not scary\" is where I'm at with these things too",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqkk2oufs2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:23:23.547000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Weighing in on the 'cool but not scary' framing of advanced autonomous agent capabilities.",
+      "importance_score": 58.0,
+      "reasoning": "Brief philosophical take on existential risk versus utility in current AI milestones.",
+      "themes": [
+        "AI Safety",
+        "Agent Capabilities"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqkk2oufs2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 3,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Weighing in on the 'cool but not scary' framing of advanced autonomous agent capabilities.</p>",
+      "content_html": "<p>For what it's worth \"cool but not scary\" is where I'm at with these things too</p>"
+    },
+    {
+      "id": "35002e75a91b",
+      "title": "Build or modify here: github.com/emollick/imm...",
+      "content": "Build or modify here: github.com/emollick/imm...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrociszimc2y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T01:54:12.541000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Sharing a GitHub link for building or modifying a project.",
+      "importance_score": 55.0,
+      "reasoning": "Direct link to source code, though lacking context in this specific snippet.",
+      "themes": [
+        "Open Source & Code"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrociszimc2y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 14,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Sharing a GitHub link for building or modifying a project.</p>",
+      "content_html": "<p>Build or modify here: github.com/emollick/imm...</p>"
+    },
+    {
+      "id": "71192aa5c959",
+      "title": "Fable, redo this all with Zeugma:",
+      "content": "Fable, redo this all with Zeugma:",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrodjtdvek26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T02:12:40.177000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "A playful prompt engineering exercise testing specific literary figures of speech.",
+      "importance_score": 50.0,
+      "reasoning": "Minor interactive prompt example with low engagement.",
+      "themes": [
+        "Prompt Engineering"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrodjtdvek26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 16,
+          "reposts": 1,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A playful prompt engineering exercise testing specific literary figures of speech.</p>",
+      "content_html": "<p>Fable, redo this all with Zeugma:</p>"
+    },
+    {
+      "id": "75bd01efc793",
+      "title": " hahahaha. that is not what happened. hahahaha (please delete this before Fable gets mad)",
+      "content": " hahahaha. that is not what happened. hahahaha (please delete this before Fable gets mad)",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrocm2pdj22y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-28T01:56:01.261000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "A brief joking reply about an internal or experimental interaction.",
+      "importance_score": 35.0,
+      "reasoning": "Low engagement conversational fragment.",
+      "themes": [
+        "Community Discussion"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrocm2pdj22y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A brief joking reply about an internal or experimental interaction.</p>",
+      "content_html": "<p>hahahaha. that is not what happened. hahahaha (please delete this before Fable gets mad)</p>"
+    },
+    {
+      "id": "dda6619e2967",
+      "title": "That's fair - I wouldn't categorize it as in bad faith because it was what I was genuinely thinking ...",
+      "content": "That's fair - I wouldn't categorize it as in bad faith because it was what I was genuinely thinking but it was a rude thing for me to say",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjokmqvs2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:08:00.731000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "A polite retraction or refinement of tone during a discussion.",
+      "importance_score": 30.0,
+      "reasoning": "Purely conversational and interpersonal.",
+      "themes": [
+        "Community Discussion"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjokmqvs2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 0,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A polite retraction or refinement of tone during a discussion.</p>",
+      "content_html": "<p>That's fair - I wouldn't categorize it as in bad faith because it was what I was genuinely thinking but it was a rude thing for me to say</p>"
+    },
+    {
+      "id": "12e02cd78df4",
+      "title": "No, I can't see that I'm being naive here at all",
+      "content": "No, I can't see that I'm being naive here at all",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjih2sys2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:04:35.672000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Defending an analytical stance against claims of naivety.",
+      "importance_score": 30.0,
+      "reasoning": "Defensive interpersonal reply.",
+      "themes": [
+        "Community Discussion"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjih2sys2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Defending an analytical stance against claims of naivety.</p>",
+      "content_html": "<p>No, I can't see that I'm being naive here at all</p>"
+    },
+    {
+      "id": "01a983c97321",
+      "title": "You're rude",
+      "content": "You're rude",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqjhr4u4c2n",
+      "author": "@simonwillison.net",
+      "published": "2026-07-28T23:04:12.670000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "A brief back-and-forth exchange calling out tone.",
+      "importance_score": 25.0,
+      "reasoning": "Low-value conversational noise.",
+      "themes": [
+        "Community Discussion"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqjhr4u4c2n",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A brief back-and-forth exchange calling out tone.</p>",
+      "content_html": "<p>You're rude</p>"
+    }
+  ]
+}
