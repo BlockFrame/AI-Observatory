@@ -89,12 +89,12 @@
             if (parsedUrl.hostname === 'github.com') {
                 const parts = parsedUrl.pathname.split('/').filter(Boolean);
                 if (parts.length >= 1) {
-                    return `https://github.com/${parts[0]}.png?size=64`;
+                    return `https://unavatar.io/github/${parts[0]}`;
                 }
             }
-            return `https://www.google.com/s2/favicons?domain=${parsedUrl.hostname}&sz=64`;
+            return `https://unavatar.io/${parsedUrl.hostname}`;
         } catch (e) {
-            return `https://www.google.com/s2/favicons?domain=example.com&sz=64`;
+            return `https://unavatar.io/example.com`;
         }
     }
 
@@ -205,7 +205,7 @@
                             class="flex items-start gap-4 p-4 rounded-xl bg-[#0c1322] border border-[#2b3655] hover:border-[#9aa6ff] hover:bg-[#111d33] hover:shadow-lg transition-all duration-200 group"
                         >
                             <div class="w-[52px] h-[52px] shrink-0 bg-[#1b2437] rounded-lg flex items-center justify-center overflow-hidden border border-[#2b3655] shadow-inner">
-                                <img src={getLogoUrl(tool.url)} alt={tool.name} class="w-full h-full object-cover" on:error={handleImageError} />
+                                <img src={getLogoUrl(tool.url)} alt={tool.name} loading="lazy" decoding="async" class="w-full h-full object-cover bg-white" on:error={handleImageError} />
                             </div>
                             <div class="flex-1 min-w-0 pt-0.5">
                                 <div class="flex justify-between items-start mb-1">
