@@ -3,3 +3,4 @@
 // to attempt server-side rendering which fails because these pages
 // fetch data client-side in onMount().
 export const ssr = false;
+export const prerender = true;
