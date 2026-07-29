@@ -89,6 +89,8 @@
     }
 
     :global(.scraped-content ul.inf-x-list > li) {
+        list-style: none !important;
+        list-style-type: none !important;
         background: #0c1322;
         border: 1px solid #2b3655;
         border-radius: 0.75rem;
@@ -96,6 +98,13 @@
         transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
         display: flex;
         flex-direction: column;
+    }
+
+    /* Forcefully hide Tailwind prose bullet points */
+    :global(.scraped-content ul.inf-x-list > li::marker),
+    :global(.scraped-content ul.inf-x-list > li::before) {
+        content: none !important;
+        display: none !important;
     }
 
     :global(.scraped-content ul.inf-x-list > li:hover) {
