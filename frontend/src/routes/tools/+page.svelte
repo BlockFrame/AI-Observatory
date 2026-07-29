@@ -105,9 +105,21 @@
     function getLogoUrl(url: string) {
         try {
             const domain = new URL(url).hostname;
-            return `/api/icon?domain=${domain}`;
+            const safe = domain.replace(/\./g, '_').replace(/:/g, '_').replace(/\//g, '_');
+            return `/icons/${safe}.png`;
         } catch {
-            return `/api/icon?domain=example.com`;
+            return `/icons/example_com.png`;
+        }
+    }
+
+    function handleImageError(event: Event) {
+        const target = event.target as HTMLImageElement;
+        // Try SVG fallback (letter icon)
+        if (target.src.endsWith('.png')) {
+            target.src = target.src.replace('.png', '.svg');
+        } else {
+            // Ultimate fallback: hide the broken image
+            target.style.display = 'none';
         }
     }
 </script>
@@ -213,7 +225,7 @@
                             class="flex items-start gap-4 p-4 rounded-xl bg-[#0c1322] border border-[#2b3655] hover:border-[#9aa6ff] hover:bg-[#111d33] hover:shadow-lg transition-all duration-200 group"
                         >
                             <div class="w-[52px] h-[52px] shrink-0 bg-[#1b2437] rounded-lg flex items-center justify-center overflow-hidden border border-[#2b3655] shadow-inner">
-                                <img src={getLogoUrl(tool.url)} alt={tool.name} loading="lazy" decoding="async" class="w-full h-full object-cover bg-white" />
+                                <img src={getLogoUrl(tool.url)} alt={tool.name} loading="lazy" decoding="async" class="w-full h-full object-cover bg-white" on:error={handleImageError} />
                             </div>
                             <div class="flex-1 min-w-0 pt-0.5">
                                 <div class="flex justify-between items-start mb-1">
