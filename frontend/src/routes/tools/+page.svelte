@@ -31,7 +31,14 @@
         }
     });
 
-    $: searchLower = searchQuery.toLowerCase();
+    $: searchLower = searchQuery.toLowerCase().trim();
+    
+    let previousSearch = '';
+    $: if (searchLower !== previousSearch) {
+        selectedCategory = null;
+        selectedSubcategory = null;
+        previousSearch = searchLower;
+    }
     
     // Filter globally based on search query
     $: allFilteredTools = tools.filter(t => 
@@ -49,11 +56,18 @@
         });
         categories = Array.from(catMap.entries()).map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name));
         
-        // Auto-select first category if current is invalid
-        if (categories.length > 0 && (!selectedCategory || !categories.find(c => c.name === selectedCategory))) {
-            selectedCategory = categories[0].name;
-        } else if (categories.length === 0) {
-            selectedCategory = null;
+        // Auto-select first category if current is invalid (only when not searching)
+        if (searchLower === '') {
+            if (categories.length > 0 && (!selectedCategory || !categories.find(c => c.name === selectedCategory))) {
+                selectedCategory = categories[0].name;
+            } else if (categories.length === 0) {
+                selectedCategory = null;
+            }
+        } else {
+            // When searching, if the selected category is no longer valid, clear it
+            if (selectedCategory && !categories.find(c => c.name === selectedCategory)) {
+                selectedCategory = null;
+            }
         }
     }
 
@@ -68,11 +82,13 @@
             });
             subcategories = Array.from(subMap.entries()).map(([name, count]) => ({ name, count })).sort((a, b) => a.name.localeCompare(b.name));
             
-            // Auto-select first subcategory
-            if (subcategories.length > 0 && (!selectedSubcategory || !subcategories.find(s => s.name === selectedSubcategory))) {
-                selectedSubcategory = subcategories[0].name;
-            } else if (subcategories.length === 0) {
-                selectedSubcategory = null;
+            // Auto-select first subcategory (only if a category is strictly selected)
+            if (searchLower === '' || selectedCategory) {
+                if (subcategories.length > 0 && (!selectedSubcategory || !subcategories.find(s => s.name === selectedSubcategory))) {
+                    selectedSubcategory = subcategories[0].name;
+                } else if (subcategories.length === 0) {
+                    selectedSubcategory = null;
+                }
             }
         } else {
             subcategories = [];
@@ -81,7 +97,10 @@
     }
 
     // Final tools to render in Col 3
-    $: visibleTools = allFilteredTools.filter(t => (t.category || 'General') === selectedCategory && (t.subcategory || 'General') === selectedSubcategory);
+    $: visibleTools = allFilteredTools.filter(t => 
+        (!selectedCategory || (t.category || 'General') === selectedCategory) && 
+        (!selectedSubcategory || (t.subcategory || 'General') === selectedSubcategory)
+    );
 
     function getLogoUrl(url: string) {
         try {
@@ -191,8 +210,8 @@
             <div class="flex-1 flex flex-col bg-[#0b1426]/80">
                 <div class="p-4 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md shrink-0 flex items-center justify-between">
                     <div>
-                        <h2 class="text-lg font-bold text-white">{selectedSubcategory || 'Tools'}</h2>
-                        <p class="text-[13px] text-[#8e94ae] mt-0.5">{selectedCategory} • {visibleTools.length} tools</p>
+                        <h2 class="text-lg font-bold text-white">{selectedSubcategory || (searchLower ? 'Search Results' : 'Tools')}</h2>
+                        <p class="text-[13px] text-[#8e94ae] mt-0.5">{selectedCategory || (searchLower ? 'All Categories' : '')} {#if selectedCategory}•{/if} {visibleTools.length} tools</p>
                     </div>
                 </div>
                 
@@ -210,7 +229,7 @@
                             <div class="flex-1 min-w-0 pt-0.5">
                                 <div class="flex justify-between items-start mb-1">
                                     <h3 class="text-base font-semibold text-white group-hover:text-[#9aa6ff] transition-colors truncate pr-4">{tool.name}</h3>
-                                    <span class="material-symbols-outlined text-[#8e94ae] text-[18px] group-hover:text-[#9aa6ff] transition-colors opacity-0 group-hover:opacity-100">open_in_new</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#8e94ae] group-hover:text-[#9aa6ff] transition-colors opacity-0 group-hover:opacity-100 mt-0.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                                 </div>
                                 <p class="text-[13.5px] text-[#b2b8cf] leading-relaxed line-clamp-2">{tool.description}</p>
                             </div>
