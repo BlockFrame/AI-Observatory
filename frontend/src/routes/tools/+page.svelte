@@ -104,16 +104,10 @@
 
     function getLogoUrl(url: string) {
         try {
-            const parsedUrl = new URL(url);
-            if (parsedUrl.hostname === 'github.com') {
-                const parts = parsedUrl.pathname.split('/').filter(Boolean);
-                if (parts.length >= 1) {
-                    return `https://unavatar.io/github/${parts[0]}`;
-                }
-            }
-            return `https://unavatar.io/${parsedUrl.hostname}`;
-        } catch (e) {
-            return `https://unavatar.io/example.com`;
+            const domain = new URL(url).hostname;
+            return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+        } catch {
+            return `https://www.google.com/s2/favicons?domain=example.com&sz=128`;
         }
     }
 
