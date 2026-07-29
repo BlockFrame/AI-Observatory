@@ -1,6 +1,16 @@
 <script lang="ts">
+    import { onMount } from 'svelte';
     export let data: any;
     let { htmlContent } = data;
+
+    onMount(() => {
+        // Open all links in the scraped content in a new tab
+        const links = document.querySelectorAll('.scraped-content a');
+        links.forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+    });
 </script>
 
 <svelte:head>
