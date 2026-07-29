@@ -105,9 +105,9 @@
     function getLogoUrl(url: string) {
         try {
             const domain = new URL(url).hostname;
-            return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+            return `https://icon.horse/icon/${domain}`;
         } catch {
-            return `https://www.google.com/s2/favicons?domain=example.com&sz=128`;
+            return `https://icon.horse/icon/example.com`;
         }
     }
 

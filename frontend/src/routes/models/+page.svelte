@@ -124,9 +124,9 @@
 
     function getLogoUrl(model: Model) {
         if (model.category && domainMap[model.category]) {
-            return `https://www.google.com/s2/favicons?domain=${domainMap[model.category]}&sz=128`;
+            return `https://icon.horse/icon/${domainMap[model.category]}`;
         }
-        return `https://www.google.com/s2/favicons?domain=example.com&sz=128`;
+        return `https://icon.horse/icon/example.com`;
     }
 
     function handleImageError(event: Event) {
