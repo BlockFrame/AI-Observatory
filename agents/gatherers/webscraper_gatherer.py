@@ -155,6 +155,10 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
 
         # Process sequentially to respect rate limits and not overload LLM
         for url in urls:
+            # Interpolate date if needed (e.g. for TLDR AI: https://ai.tldr.tech/p/{DATE}-tldr-ai)
+            if "{DATE}" in url:
+                url = url.replace("{DATE}", self.coverage_date)
+                
             logger.info(f"Scraping {url}...")
             html = await self._fetch_html(url)
             
