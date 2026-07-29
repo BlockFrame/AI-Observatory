@@ -105,28 +105,21 @@
     );
 
     const domainMap: Record<string, string> = {
-        'OpenAI': 'openai.com',
         'Anthropic': 'anthropic.com',
+        'OpenAI': 'openai.com',
         'Google': 'google.com',
         'Meta': 'meta.com',
-        'Mistral AI': 'mistral.ai',
-        'Cohere': 'cohere.com',
         'DeepSeek': 'deepseek.com',
         'Alibaba (Qwen)': 'alibabagroup.com',
-        'Databricks': 'databricks.com',
-        'Microsoft': 'microsoft.com',
-        'AI21 Labs': 'ai21.com',
-        'Amazon': 'amazon.com',
-        'Apple': 'apple.com',
-        'xAI': 'x.ai',
-        'Inflection': 'inflection.ai',
-        'Together AI': 'together.ai',
-        '01.AI': '01.ai',
-        'Zhipu AI': 'zhipuai.cn',
-        'NVIDIA': 'nvidia.com',
-        'Snowflake': 'snowflake.com',
-        'Upstage': 'upstage.ai',
-        'Adept': 'adept.ai'
+        'Moonshot AI (Kimi)': 'moonshot.cn',
+        'Z.ai (Zhipu / GLM)': 'zhipuai.cn',
+        'xAI (Grok)': 'x.ai',
+        'Mistral AI': 'mistral.ai',
+        'Cohere': 'cohere.com',
+        'MiniMax': 'minimaxi.com',
+        'ByteDance': 'bytedance.com',
+        'Tencent': 'tencent.com',
+        'Thinking Machines Lab': 'thinkingmachines.com'
     };
 
     function getLogoUrl(model: Model) {
