@@ -25,6 +25,7 @@ class WebScraperGatherer(BaseGatherer):
         self.sources_file = Path(self.config_dir) / 'web_scraper_sources.txt'
         self.llm_client = llm_client or AnthropicClient()
         self.prompt_accessor = prompt_accessor
+        self.collection_status: Dict[str, Dict[str, Any]] = {}
         
         # We only want one latest article per site per run
         self.max_articles_per_site = 1
@@ -152,30 +153,46 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
 
         logger.info(f"Starting WebScraperGatherer for {len(urls)} URLs")
         all_items = []
+        self.collection_status = {url: {'status': 'pending', 'count': 0, 'error': None} for url in urls}
 
         # Process sequentially to respect rate limits and not overload LLM
         for url in urls:
+            original_url = url
             # Interpolate date if needed (e.g. for TLDR AI: https://ai.tldr.tech/p/{DATE}-tldr-ai)
             if "{DATE}" in url:
                 url = url.replace("{DATE}", self.coverage_date)
                 
-            logger.info(f"Scraping {url}...")
-            html = await self._fetch_html(url)
+            logger.info(f"Scraping {original_url}...")
             
-            if not html:
-                continue
+            try:
+                html = await self._fetch_html(url)
                 
-            clean_text = self._clean_html(html)
-            if len(clean_text) < 100:
-                logger.warning(f"Text too short after cleaning for {url}")
-                continue
-                
-            item = await self._extract_news_with_llm(url, clean_text)
-            if item:
-                logger.info(f"Found article: {item.title}")
-                all_items.append(item)
-            else:
-                logger.warning(f"Could not extract article from {url}")
+                if not html:
+                    self.collection_status[original_url]['status'] = 'failed'
+                    self.collection_status[original_url]['error'] = 'Failed to fetch HTML'
+                    continue
+                    
+                clean_text = self._clean_html(html)
+                if len(clean_text) < 100:
+                    self.collection_status[original_url]['status'] = 'failed'
+                    self.collection_status[original_url]['error'] = 'Text too short after cleaning'
+                    logger.warning(f"Text too short after cleaning for {url}")
+                    continue
+                    
+                item = await self._extract_news_with_llm(url, clean_text)
+                if item:
+                    logger.info(f"Found article: {item.title}")
+                    all_items.append(item)
+                    self.collection_status[original_url]['status'] = 'success'
+                    self.collection_status[original_url]['count'] = 1
+                else:
+                    logger.warning(f"Could not extract article from {url}")
+                    self.collection_status[original_url]['status'] = 'failed'
+                    self.collection_status[original_url]['error'] = 'Could not extract article or outside date range'
+            except Exception as e:
+                logger.error(f"Error scraping {original_url}: {e}")
+                self.collection_status[original_url]['status'] = 'failed'
+                self.collection_status[original_url]['error'] = str(e)
                 
             # Sleep briefly to avoid aggressive scraping
             await asyncio.sleep(1)
@@ -184,3 +201,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
         unique_items = deduplicate_items(all_items)
         logger.info(f"WebScraperGatherer completed: {len(unique_items)} items found")
         return unique_items
+
+    def get_collection_status(self) -> Dict[str, Dict[str, Any]]:
+        """Return the per-url status of the collection."""
+        return self.collection_status

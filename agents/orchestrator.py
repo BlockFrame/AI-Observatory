@@ -26,6 +26,7 @@ from .gatherers import (
     LinkFollower,
     HackerNewsGatherer,
     GitHubTrendingGatherer,
+    WebScraperGatherer,
 )
 from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTrendingAnalyzer
 from .cost_tracker import get_tracker, reset_tracker
@@ -188,6 +189,14 @@ class MainOrchestrator:
                 data_dir=data_dir,
                 lookback_hours=lookback_hours,
                 target_date=self.target_date
+            ),
+            'web_scraper': WebScraperGatherer(
+                config_dir=config_dir,
+                data_dir=data_dir,
+                lookback_hours=lookback_hours,
+                target_date=self.target_date,
+                llm_client=self.llm_client,
+                prompt_accessor=prompt_accessor
             )
         }
         self.hackernews_gatherer = HackerNewsGatherer(
@@ -870,7 +879,7 @@ class MainOrchestrator:
 
         phase1_tasks = [
             gather_category(name)
-            for name in ['research', 'social', 'reddit']
+            for name in ['research', 'social', 'reddit', 'web_scraper']
             if name in self.gatherers
         ]
         phase1_results = await asyncio.gather(*phase1_tasks)
@@ -888,6 +897,13 @@ class MainOrchestrator:
             social_platform_status = social_gatherer.get_collection_status()
             for platform, status in social_platform_status.items():
                 collection_status[f'social_{platform}'] = status
+                
+        # Capture web_scraper per-url status
+        web_scraper = self.gatherers.get('web_scraper')
+        if web_scraper and hasattr(web_scraper, 'get_collection_status'):
+            scraper_status = web_scraper.get_collection_status()
+            for url, status in scraper_status.items():
+                collection_status[url] = status
 
         # Phase 2: Run news gatherer with social posts for link following
         logger.info("  Phase 2: Gathering news with link following...")
@@ -923,6 +939,11 @@ class MainOrchestrator:
 
         if results.get('news') is not None and hn_items:
             results['news'].extend(hn_items)
+            
+        if results.get('news') is not None and results.get('web_scraper'):
+            results['news'].extend(results['web_scraper'])
+            
+        if results.get('news') is not None:
             results['news'] = deduplicate_items(results['news'])
             collection_status['news']['count'] = len(results['news'])
 
