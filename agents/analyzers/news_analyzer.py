@@ -244,15 +244,22 @@ The summary should read like a professional briefing, focusing on what matters f
 
     # Keywords for fast pre-filtering
     AI_KEYWORDS = {
-        'ai', 'artificial intelligence', 'machine learning', 'ml', 'llm',
+        'ai', 'artificial intelligence', 'machine learning', 'ml', 'llm', 'slm',
+        'large language model', 'small language model',
         'gpt', 'claude', 'gemini', 'grok', 'llama', 'mistral', 'openai',
         'anthropic', 'deepmind', 'meta ai', 'chatbot', 'neural network',
         'deep learning', 'transformer', 'language model', 'stable diffusion',
         'midjourney', 'dall-e', 'copilot', 'chatgpt', 'bard', 'perplexity',
         'hugging face', 'huggingface', 'rlhf', 'embedding', 'agi',
         'superintelligence', 'multimodal', 'reasoning model', 'foundation model',
-        'frontier model', 'xai', 'cohere', 'deepseek', 'qwen', 'phi-', 'phi 3',
-        'phi 4', 'nvidia ai', 'agentic', 'ai agent', 'mcp server'
+        'frontier model', 'xai', 'cohere', 'deepseek', 'qwen', 'phi', 'phi-', 'phi 3',
+        'phi 4', 'nvidia ai', 'agentic', 'ai agent', 'mcp server',
+        'rag', 'retrieval augmented generation', 'vector database', 'vectordb',
+        'pinecone', 'weaviate', 'qdrant', 'milvus', 'chromadb', 'pgvector',
+        'langchain', 'llamaindex', 'langgraph', 'crewai', 'autogen', 'smolagents',
+        'pydantic ai', 'swarm', 'langflow', 'n8n', 'fine-tuning', 'lora', 'peft',
+        'gguf', 'ollama', 'vllm', 'tensorrt', 'cursor', 'windsurf', 'devin',
+        'cline', 'lovable', 'bolt.new', 'v0'
     }
 
     def __init__(
