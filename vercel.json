@@ -2,6 +2,8 @@
   "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "web",
   "installCommand": "npm install",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "env": {
     "VERCEL": "true"
   },
