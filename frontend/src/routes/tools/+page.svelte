@@ -104,8 +104,14 @@
 
     function getLogoUrl(url: string) {
         try {
-            const domain = new URL(url).hostname;
-            const safe = domain.replace(/\./g, '_').replace(/:/g, '_').replace(/\//g, '_');
+            const parsed = new URL(url);
+            const hostname = parsed.hostname;
+            if (hostname === 'github.com') {
+                const parts = parsed.pathname.replace(/^\//, '').split('/');
+                const org = parts[0];
+                if (org) return `/icons/github_com__${org}.png`;
+            }
+            const safe = hostname.replace(/\./g, '_').replace(/:/g, '_').replace(/\//g, '_');
             return `/icons/${safe}.png`;
         } catch {
             return `/icons/example_com.png`;

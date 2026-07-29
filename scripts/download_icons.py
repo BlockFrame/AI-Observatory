@@ -98,11 +98,49 @@ def generate_letter_icon(letter: str, output_path: str):
     return svg_path
 
 
+def download_github_avatar(org: str, output_path: str) -> bool:
+    """Download GitHub org/user avatar."""
+    url = f'https://github.com/{org}.png?size=128'
+    try:
+        req = urllib.request.Request(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+        })
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = response.read()
+            if len(data) > 500:  # GitHub avatars are typically large
+                with open(output_path, 'wb') as f:
+                    f.write(data)
+                return True
+    except Exception as e:
+        print(f'  [WARN] GitHub avatar failed for {org}: {e}')
+    return False
+
+
+def get_icon_key(url: str) -> str:
+    """Get the icon key for a tool URL.
+    
+    For GitHub URLs: returns 'github_com__{org}' (double underscore separator)
+    For other URLs: returns the domain with dots replaced by underscores
+    """
+    try:
+        parsed = urlparse(url)
+        hostname = parsed.hostname or ''
+        if hostname == 'github.com':
+            parts = parsed.path.strip('/').split('/')
+            org = parts[0] if parts else ''
+            if org:
+                return f'github_com__{org}'
+        return hostname.replace('.', '_').replace(':', '_').replace('/', '_')
+    except:
+        return 'example_com'
+
+
 def main():
     os.makedirs(ICONS_DIR, exist_ok=True)
 
-    # Collect all unique domains
-    domains = set()
+    # Collect regular domains and GitHub orgs separately
+    regular_domains = set()
+    github_orgs = set()
 
     # From tools
     if os.path.exists(TOOLS_JSON):
@@ -110,48 +148,81 @@ def main():
             tools = json.load(f)
         for tool in tools:
             try:
-                hostname = urlparse(tool['url']).hostname
-                if hostname:
-                    domains.add(hostname)
+                parsed = urlparse(tool['url'])
+                hostname = parsed.hostname
+                if not hostname:
+                    continue
+                if hostname == 'github.com':
+                    parts = parsed.path.strip('/').split('/')
+                    org = parts[0] if parts else None
+                    if org:
+                        github_orgs.add(org)
+                else:
+                    regular_domains.add(hostname)
             except:
                 pass
-        print(f'Tools: {len(tools)} entries, {len(domains)} unique domains so far')
+        print(f'Tools: {len(tools)} entries')
+        print(f'  Regular domains: {len(regular_domains)}')
+        print(f'  GitHub orgs: {len(github_orgs)}')
 
     # From models domain map
     for maker, domain in MODEL_DOMAINS.items():
-        domains.add(domain)
+        regular_domains.add(domain)
     
-    print(f'Total unique domains to fetch: {len(domains)}')
+    total = len(regular_domains) + len(github_orgs)
+    print(f'Total to fetch: {total} ({len(regular_domains)} domains + {len(github_orgs)} GitHub orgs)')
 
-    # Download each one
     success = 0
     failed = 0
     skipped = 0
-    
-    sorted_domains = sorted(domains)
-    for i, domain in enumerate(sorted_domains):
+    idx = 0
+
+    # Download regular domain favicons
+    for domain in sorted(regular_domains):
+        idx += 1
         filename = domain_to_filename(domain)
         output_path = os.path.join(ICONS_DIR, filename)
         svg_fallback = output_path.replace('.png', '.svg')
         
-        # Skip if already downloaded
         if os.path.exists(output_path) or os.path.exists(svg_fallback):
             skipped += 1
             continue
         
-        print(f'[{i+1}/{len(sorted_domains)}] Downloading {domain}...')
+        print(f'[{idx}/{total}] Downloading {domain}...')
         
         if download_favicon(domain, output_path):
             success += 1
         else:
-            # Generate letter fallback
             letter = domain[0]
             generated = generate_letter_icon(letter, output_path)
             print(f'  -> Generated letter icon: {os.path.basename(generated)}')
             failed += 1
         
-        # Small delay to be polite to Google
-        if (i + 1) % 20 == 0:
+        if idx % 20 == 0:
+            time.sleep(1)
+
+    # Download GitHub org avatars
+    for org in sorted(github_orgs):
+        idx += 1
+        filename = f'github_com__{org}.png'
+        output_path = os.path.join(ICONS_DIR, filename)
+        svg_fallback = output_path.replace('.png', '.svg')
+        
+        if os.path.exists(output_path) or os.path.exists(svg_fallback):
+            skipped += 1
+            continue
+        
+        print(f'[{idx}/{total}] Downloading GitHub avatar: {org}...')
+        
+        if download_github_avatar(org, output_path):
+            success += 1
+        else:
+            letter = org[0]
+            generated = generate_letter_icon(letter, output_path)
+            print(f'  -> Generated letter icon: {os.path.basename(generated)}')
+            failed += 1
+        
+        if idx % 20 == 0:
             time.sleep(1)
 
     print(f'\nDone! Success: {success}, Letter fallback: {failed}, Skipped (cached): {skipped}')
@@ -160,3 +231,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
