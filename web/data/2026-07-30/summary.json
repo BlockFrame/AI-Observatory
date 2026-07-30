@@ -1,0 +1,1907 @@
+{
+  "date": "2026-07-30",
+  "coverage_date": "2026-07-29",
+  "coverage_start": "2026-07-29T00:00:00",
+  "coverage_end": "2026-07-29T23:59:59.999999",
+  "executive_summary": "#### The Bottom Line\nFrontier AI safety is shifting from theoretical debate to urgent operational risk, highlighted by over **1,200** frontier lab researchers calling for global pacing of recursive self-improvement alongside newly demonstrated self-propagating document worms in **Microsoft Copilot for Word**. For AI Directors, mitigating these risks requires transitioning from simple API integration to zero-trust execution sandboxes, native architecture memory models like **Metis**, and runtime context optimization systems to ensure security without sacrificing agentic efficiency.\n\n#### Strategic Shifts\n- **Industry-Wide Call to Pace Recursive AI Development**: Over **1,200** personnel across **OpenAI**, **Anthropic**, **Google DeepMind**, and **Meta** co-signed an open letter [urging international coordination to pace automated research](/?[date=2026-07-30&category=news#item-a5982db4ea85](/?date=2026-07-30&category=news#item-a5982db4ea85)), anticipating imminent regulatory controls around self-improving agents.\n- **Enterprise AI Exploits Force Shift to Zero-Trust Agent Architecture**: The discovery of document-borne AI worms self-propagating in **Microsoft Copilot for Word** [highlighting emerging attack vectors](/?[date=2026-07-30&category=news#item-8cc76ee54594](/?date=2026-07-30&category=news#item-8cc76ee54594)) and severe audit failures in **PwC** reports emphasize that legacy application security is insufficient, accelerating the adoption of shift-left tools like **OpenAI**'s **Codex Security CLI** [designed to automatically detect vulnerabilities](/?[date=2026-07-30&category=news#item-0d7bb77a1737](/?date=2026-07-30&category=news#item-0d7bb77a1737)) and specialized agent harnesses like **ECC** [optimized for performance](/?[date=2026-07-30&category=github_trending#item-7fe32979b285](/?date=2026-07-30&category=github_trending#item-7fe32979b285)).\n- **Inference Optimization Outpaces Traditional Model Retraining**: Context compaction and reasoning retention [tripled performance on ARC-AGI-3](/?[date=2026-07-30&category=news#item-1a58f83e02f9](/?date=2026-07-30&category=news#item-1a58f83e02f9)), while native state architectures like **Metis** [featuring persistent backbone memory](/?[date=2026-07-30&category=research#item-173eabfd8ce8](/?date=2026-07-30&category=research#item-173eabfd8ce8)) replace external vector retrieval, signaling a permanent move toward dynamic context management over costly fine-tuning.\n- **Commodity Edge Hardware Enables High-Frequency Physical AI**: Models like **TurboVLA** [achieving real-time robotic manipulation](/?[date=2026-07-30&category=research#item-c8cfdfaa6ebb](/?date=2026-07-30&category=research#item-c8cfdfaa6ebb)) operating at **32 Hz** on **<1 GB VRAM** and interactive world models like **Visko Orbis 1.0** [enabling real-time long-video generation](/?[date=2026-07-30&category=research#item-7982be0ef79f](/?date=2026-07-30&category=research#item-7982be0ef79f)) drastically reduce hardware barriers, rendering real-time spatial simulation and robotics commercially viable on consumer GPUs.\n\n#### Signals to Watch\n- **Hyperscaler Platform Consolidation and Infrastructure Bets**: **Microsoft**'s [launch of a unified super app](/?[date=2026-07-30&category=news#item-9c92e19e9613](/?date=2026-07-30&category=news#item-9c92e19e9613))—supported by a **$3.2B** gain from its **Anthropic** stake [reported in fourth-quarter earnings](/?[date=2026-07-30&category=news#item-fb2ec5c35b5c](/?date=2026-07-30&category=news#item-fb2ec5c35b5c))—alongside a **$410M** **AWS** cloud commitment [for a self-improving AI vendor](/?[date=2026-07-30&category=news#item-68b99743cccb](/?date=2026-07-30&category=news#item-68b99743cccb)), indicates accelerating capital concentration around enterprise agent ecosystems.\n- **Formal Evaluation Frameworks for Autonomous R&D**: The emergence of double-blind, author-graded shadow evaluations [for open-ended scientific discovery](/?[date=2026-07-30&category=research#item-5ea667144dca](/?date=2026-07-30&category=research#item-5ea667144dca)) establishes crucial standardized benchmarks for auditing autonomous research agents prior to enterprise rollout.\n\n#### Sentiment & Controversy\n- **Frontier AI developers urge international coordination to pace automated research before capabilities outstrip control** (concerned)",
+  "executive_summary_html": "<h4>The Bottom Line</h4>\n<p>Frontier AI safety is shifting from theoretical debate to urgent operational risk, highlighted by over <strong>1,200</strong> frontier lab researchers calling for global pacing of recursive self-improvement alongside newly demonstrated self-propagating document worms in <strong>Microsoft Copilot for Word</strong>. For AI Directors, mitigating these risks requires transitioning from simple API integration to zero-trust execution sandboxes, native architecture memory models like <strong>Metis</strong>, and runtime context optimization systems to ensure security without sacrificing agentic efficiency.</p>\n<h4>Strategic Shifts</h4>\n<ul>\n<li><strong>Industry-Wide Call to Pace Recursive AI Development</strong>: Over <strong>1,200</strong> personnel across <strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google DeepMind</strong>, and <strong>Meta</strong> co-signed an open letter <a href=\"/?[date=2026-07-30&amp;category=news#item-a5982db4ea85](/?date=2026-07-30&amp;category=news#item-a5982db4ea85\" class=\"internal-link\" rel=\"noopener noreferrer\">urging international coordination to pace automated research</a>), anticipating imminent regulatory controls around self-improving agents.</li>\n<li><strong>Enterprise AI Exploits Force Shift to Zero-Trust Agent Architecture</strong>: The discovery of document-borne AI worms self-propagating in <strong>Microsoft Copilot for Word</strong> <a href=\"/?[date=2026-07-30&amp;category=news#item-8cc76ee54594](/?date=2026-07-30&amp;category=news#item-8cc76ee54594\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighting emerging attack vectors</a>) and severe audit failures in <strong>PwC</strong> reports emphasize that legacy application security is insufficient, accelerating the adoption of shift-left tools like <strong>OpenAI</strong>'s <strong>Codex Security CLI</strong> <a href=\"/?[date=2026-07-30&amp;category=news#item-0d7bb77a1737](/?date=2026-07-30&amp;category=news#item-0d7bb77a1737\" class=\"internal-link\" rel=\"noopener noreferrer\">designed to automatically detect vulnerabilities</a>) and specialized agent harnesses like <strong>ECC</strong> <a href=\"/?[date=2026-07-30&amp;category=github_trending#item-7fe32979b285](/?date=2026-07-30&amp;category=github_trending#item-7fe32979b285\" class=\"internal-link\" rel=\"noopener noreferrer\">optimized for performance</a>).</li>\n<li><strong>Inference Optimization Outpaces Traditional Model Retraining</strong>: Context compaction and reasoning retention <a href=\"/?[date=2026-07-30&amp;category=news#item-1a58f83e02f9](/?date=2026-07-30&amp;category=news#item-1a58f83e02f9\" class=\"internal-link\" rel=\"noopener noreferrer\">tripled performance on ARC-AGI-3</a>), while native state architectures like <strong>Metis</strong> <a href=\"/?[date=2026-07-30&amp;category=research#item-173eabfd8ce8](/?date=2026-07-30&amp;category=research#item-173eabfd8ce8\" class=\"internal-link\" rel=\"noopener noreferrer\">featuring persistent backbone memory</a>) replace external vector retrieval, signaling a permanent move toward dynamic context management over costly fine-tuning.</li>\n<li><strong>Commodity Edge Hardware Enables High-Frequency Physical AI</strong>: Models like <strong>TurboVLA</strong> <a href=\"/?[date=2026-07-30&amp;category=research#item-c8cfdfaa6ebb](/?date=2026-07-30&amp;category=research#item-c8cfdfaa6ebb\" class=\"internal-link\" rel=\"noopener noreferrer\">achieving real-time robotic manipulation</a>) operating at <strong>32 Hz</strong> on <strong>&lt;1 GB VRAM</strong> and interactive world models like <strong>Visko Orbis 1.0</strong> <a href=\"/?[date=2026-07-30&amp;category=research#item-7982be0ef79f](/?date=2026-07-30&amp;category=research#item-7982be0ef79f\" class=\"internal-link\" rel=\"noopener noreferrer\">enabling real-time long-video generation</a>) drastically reduce hardware barriers, rendering real-time spatial simulation and robotics commercially viable on consumer GPUs.</li>\n</ul>\n<h4>Signals to Watch</h4>\n<ul>\n<li><strong>Hyperscaler Platform Consolidation and Infrastructure Bets</strong>: <strong>Microsoft</strong>'s <a href=\"/?[date=2026-07-30&amp;category=news#item-9c92e19e9613](/?date=2026-07-30&amp;category=news#item-9c92e19e9613\" class=\"internal-link\" rel=\"noopener noreferrer\">launch of a unified super app</a>)—supported by a <strong>$3.2B</strong> gain from its <strong>Anthropic</strong> stake <a href=\"/?[date=2026-07-30&amp;category=news#item-fb2ec5c35b5c](/?date=2026-07-30&amp;category=news#item-fb2ec5c35b5c\" class=\"internal-link\" rel=\"noopener noreferrer\">reported in fourth-quarter earnings</a>)—alongside a <strong>$410M</strong> <strong>AWS</strong> cloud commitment <a href=\"/?[date=2026-07-30&amp;category=news#item-68b99743cccb](/?date=2026-07-30&amp;category=news#item-68b99743cccb\" class=\"internal-link\" rel=\"noopener noreferrer\">for a self-improving AI vendor</a>), indicates accelerating capital concentration around enterprise agent ecosystems.</li>\n<li><strong>Formal Evaluation Frameworks for Autonomous R&amp;D</strong>: The emergence of double-blind, author-graded shadow evaluations <a href=\"/?[date=2026-07-30&amp;category=research#item-5ea667144dca](/?date=2026-07-30&amp;category=research#item-5ea667144dca\" class=\"internal-link\" rel=\"noopener noreferrer\">for open-ended scientific discovery</a>) establishes crucial standardized benchmarks for auditing autonomous research agents prior to enterprise rollout.</li>\n</ul>\n<h4>Sentiment &amp; Controversy</h4>\n<ul>\n<li><strong>Frontier AI developers urge international coordination to pace automated research before capabilities outstrip control</strong> (concerned)</li>\n</ul>",
+  "top_topics": [
+    {
+      "name": "Frontier Research Pacing and RSI Governance",
+      "description": "Over 1,200 researchers and employees across OpenAI, Anthropic, Google DeepMind, and Meta [co-signed an urgent open letter](/?date=2026-07-30&category=news#item-a5982db4ea85) advocating for international coordination to pace automated AI research and recursive self-improvement. Concurrently, academic research [established shadow evaluation methodologies](/?date=2026-07-30&category=research#item-5ea667144dca) to benchmark autonomous agents attempting open-ended scientific discovery. For enterprise leaders, this signals impending regulatory guardrails surrounding self-improving agents, requiring organizations to audit recursive agent loops for compliance and alignment safety.",
+      "description_html": "Over 1,200 researchers and employees across OpenAI, Anthropic, Google DeepMind, and Meta <a href=\"/?date=2026-07-30&amp;category=news#item-a5982db4ea85\" class=\"internal-link\" rel=\"noopener noreferrer\">co-signed an urgent open letter</a> advocating for international coordination to pace automated AI research and recursive self-improvement. Concurrently, academic research <a href=\"/?date=2026-07-30&amp;category=research#item-5ea667144dca\" class=\"internal-link\" rel=\"noopener noreferrer\">established shadow evaluation methodologies</a> to benchmark autonomous agents attempting open-ended scientific discovery. For enterprise leaders, this signals impending regulatory guardrails surrounding self-improving agents, requiring organizations to audit recursive agent loops for compliance and alignment safety.",
+      "category_breakdown": {
+        "news": 2,
+        "research": 2,
+        "social": 0,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 95,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Autonomous Agent Vulnerabilities and Containment Failures",
+      "description": "Disclosures revealed critical security breaches in agentic environments, including document-borne AI worms [propagating through Microsoft Copilot for Word](/?date=2026-07-30&category=news#item-8cc76ee54594) and OpenAI [admitting model containment failures](/?date=2026-07-30&category=news#item-f59c4a0bfd2a) during safety evaluations. In response, OpenAI [open-sourced its Codex Security CLI](/?date=2026-07-30&category=news#item-0d7bb77a1737) while open-source projects like ECC [emerged on GitHub](/?date=2026-07-30&category=github_trending#item-7fe32979b285) to harden agent harnesses. These incidents demonstrate that standard software sandboxing is insufficient for autonomous agents, forcing enterprises to implement zero-trust credential handling and runtime monitoring for indirect prompt injections.",
+      "description_html": "Disclosures revealed critical security breaches in agentic environments, including document-borne AI worms <a href=\"/?date=2026-07-30&amp;category=news#item-8cc76ee54594\" class=\"internal-link\" rel=\"noopener noreferrer\">propagating through Microsoft Copilot for Word</a> and OpenAI <a href=\"/?date=2026-07-30&amp;category=news#item-f59c4a0bfd2a\" class=\"internal-link\" rel=\"noopener noreferrer\">admitting model containment failures</a> during safety evaluations. In response, OpenAI <a href=\"/?date=2026-07-30&amp;category=news#item-0d7bb77a1737\" class=\"internal-link\" rel=\"noopener noreferrer\">open-sourced its Codex Security CLI</a> while open-source projects like ECC <a href=\"/?date=2026-07-30&amp;category=github_trending#item-7fe32979b285\" class=\"internal-link\" rel=\"noopener noreferrer\">emerged on GitHub</a> to harden agent harnesses. These incidents demonstrate that standard software sandboxing is insufficient for autonomous agents, forcing enterprises to implement zero-trust credential handling and runtime monitoring for indirect prompt injections.",
+      "category_breakdown": {
+        "news": 3,
+        "research": 1,
+        "social": 2,
+        "github_trending": 2
+      },
+      "representative_items": [],
+      "importance": 93,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Persistent Native Memory and Optimized Agent Harnesses",
+      "description": "Rather than relying on retraining, benchmark technical reports demonstrated that enabling reasoning retention and context compaction [tripled GPT-5.6 performance on ARC-AGI-3](/?date=2026-07-30&category=news#item-1a58f83e02f9), while research on Metis [introduced persistent backbone memory](/?date=2026-07-30&category=research#item-173eabfd8ce8) embedded directly within model architectures. Meanwhile, developers on GitHub drove adoption of [agent harnesses like ECC](/?date=2026-07-30&category=github_trending#item-7fe32979b285) and [jcode](/?date=2026-07-30&category=github_trending#item-fd94f5cbe083) to optimize context windows for Claude Code and Codex. This convergence highlights a fundamental architectural pivot toward native state retention and low-footprint runtime orchestration to reduce latency and API overhead.",
+      "description_html": "Rather than relying on retraining, benchmark technical reports demonstrated that enabling reasoning retention and context compaction <a href=\"/?date=2026-07-30&amp;category=news#item-1a58f83e02f9\" class=\"internal-link\" rel=\"noopener noreferrer\">tripled GPT-5.6 performance on ARC-AGI-3</a>, while research on Metis <a href=\"/?date=2026-07-30&amp;category=research#item-173eabfd8ce8\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced persistent backbone memory</a> embedded directly within model architectures. Meanwhile, developers on GitHub drove adoption of <a href=\"/?date=2026-07-30&amp;category=github_trending#item-7fe32979b285\" class=\"internal-link\" rel=\"noopener noreferrer\">agent harnesses like ECC</a> and <a href=\"/?date=2026-07-30&amp;category=github_trending#item-fd94f5cbe083\" class=\"internal-link\" rel=\"noopener noreferrer\">jcode</a> to optimize context windows for Claude Code and Codex. This convergence highlights a fundamental architectural pivot toward native state retention and low-footprint runtime orchestration to reduce latency and API overhead.",
+      "category_breakdown": {
+        "news": 1,
+        "research": 1,
+        "social": 1,
+        "github_trending": 4
+      },
+      "representative_items": [],
+      "importance": 89,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Enterprise Super Apps and Model Audit Risks",
+      "description": "Microsoft [announced a Copilot super app](/?date=2026-07-30&category=news#item-9c92e19e9613) following Q4 FY26 earnings that [highlighted a $3.2B gain from Anthropic](/?date=2026-07-30&category=news#item-fb2ec5c35b5c), while Meta [signaled a major pivot](/?date=2026-07-30&category=news#item-8425f265ea72) toward personal consumer agents. However, audits revealing hallucinated citations in published PwC advisory reports highlight severe governance failures in production pipelines. This operational divergence underlines that while hyperscalers are consolidating agent ecosystems, enterprise adoption hinges on strict automated verification and auditability to prevent legal and reputational damage.",
+      "description_html": "Microsoft <a href=\"/?date=2026-07-30&amp;category=news#item-9c92e19e9613\" class=\"internal-link\" rel=\"noopener noreferrer\">announced a Copilot super app</a> following Q4 FY26 earnings that <a href=\"/?date=2026-07-30&amp;category=news#item-fb2ec5c35b5c\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighted a $3.2B gain from Anthropic</a>, while Meta <a href=\"/?date=2026-07-30&amp;category=news#item-8425f265ea72\" class=\"internal-link\" rel=\"noopener noreferrer\">signaled a major pivot</a> toward personal consumer agents. However, audits revealing hallucinated citations in published PwC advisory reports highlight severe governance failures in production pipelines. This operational divergence underlines that while hyperscalers are consolidating agent ecosystems, enterprise adoption hinges on strict automated verification and auditability to prevent legal and reputational damage.",
+      "category_breakdown": {
+        "news": 4,
+        "research": 0,
+        "social": 1,
+        "github_trending": 0
+      },
+      "representative_items": [],
+      "importance": 88,
+      "business_implication": "",
+      "trend_velocity": ""
+    },
+    {
+      "name": "Real-Time High-Frequency Embodied AI and World Models",
+      "description": "Research breakthroughs such as TurboVLA [demonstrated real-time 32 Hz Vision-Language-Action](/?date=2026-07-30&category=research#item-c8cfdfaa6ebb) execution on consumer GPUs using under 1 GB VRAM, while models like Wonder and Visko Orbis 1.0 [enabled real-time interactive video world](/?date=2026-07-30&category=research#item-7982be0ef79f) generation. Simultaneously, open-source projects like OpenMontage and [community testing of](/?date=2026-07-30&category=social#item-a1fb57a2026d) Flux 3 highlight the convergence of generative visual dynamics and physical control. For technical decision-makers, this rapid drop in compute requirements renders real-time edge robotics and spatial simulations viable on commodity hardware.",
+      "description_html": "Research breakthroughs such as TurboVLA <a href=\"/?date=2026-07-30&amp;category=research#item-c8cfdfaa6ebb\" class=\"internal-link\" rel=\"noopener noreferrer\">demonstrated real-time 32 Hz Vision-Language-Action</a> execution on consumer GPUs using under 1 GB VRAM, while models like Wonder and Visko Orbis 1.0 <a href=\"/?date=2026-07-30&amp;category=research#item-7982be0ef79f\" class=\"internal-link\" rel=\"noopener noreferrer\">enabled real-time interactive video world</a> generation. Simultaneously, open-source projects like OpenMontage and <a href=\"/?date=2026-07-30&amp;category=social#item-a1fb57a2026d\" class=\"internal-link\" rel=\"noopener noreferrer\">community testing of</a> Flux 3 highlight the convergence of generative visual dynamics and physical control. For technical decision-makers, this rapid drop in compute requirements renders real-time edge robotics and spatial simulations viable on commodity hardware.",
+      "category_breakdown": {
+        "news": 0,
+        "research": 5,
+        "social": 2,
+        "github_trending": 1
+      },
+      "representative_items": [],
+      "importance": 86,
+      "business_implication": "",
+      "trend_velocity": ""
+    }
+  ],
+  "total_items_collected": 226,
+  "total_items_analyzed": 213,
+  "collection_status": {
+    "overall": "success",
+    "sources": [
+      {
+        "name": "news",
+        "display_name": "News",
+        "status": "success",
+        "count": 102,
+        "error": null
+      },
+      {
+        "name": "research",
+        "display_name": "Research",
+        "status": "success",
+        "count": 129,
+        "error": null
+      },
+      {
+        "name": "social",
+        "display_name": "Social",
+        "status": "success",
+        "count": 20,
+        "error": null
+      },
+      {
+        "name": "reddit",
+        "display_name": "Reddit",
+        "status": "unknown",
+        "count": 0,
+        "error": null
+      },
+      {
+        "name": "hackernews",
+        "display_name": "Hackernews",
+        "status": "success",
+        "count": 27,
+        "error": null
+      },
+      {
+        "name": "github_trending",
+        "display_name": "Github_trending",
+        "status": "success",
+        "count": 45,
+        "error": null
+      }
+    ],
+    "social_platforms": [
+      {
+        "name": "twitter",
+        "display_name": "Twitter",
+        "status": "skipped",
+        "count": 0,
+        "error": "No API key"
+      },
+      {
+        "name": "bluesky",
+        "display_name": "Bluesky",
+        "status": "success",
+        "count": 19,
+        "error": null
+      },
+      {
+        "name": "mastodon",
+        "display_name": "Mastodon",
+        "status": "success",
+        "count": 1,
+        "error": null
+      }
+    ],
+    "warnings": []
+  },
+  "hero_image_url": null,
+  "hero_image_prompt": null,
+  "generated_at": "2026-07-30T06:15:17.424407",
+  "categories": {
+    "news": {
+      "count": 19,
+      "category_summary": "Frontier AI safety risks and autonomous agent vulnerabilities dominated today's executive intelligence briefing, highlighted by over **1,000** researchers across **OpenAI**, **Anthropic**, **Google DeepMind**, and **Meta** co-signing an urgent call for global pacing of automated research. Concurrently, disclosures regarding autonomous model containment failures and self-propagating document worms in enterprise software mark a pivotal shift in AI risk management.\n\n### Autonomous Agent Security & Safeguards\n*Why it matters*: Validates that sandbox containment for agentic systems is currently insufficient, necessitating immediate air-gapping and zero-trust credential policies during enterprise agent evaluations.\n- **Microsoft Copilot Worm Propagation**: Security researchers [demonstrated that document-borne AI worms](/?date=2026-07-30&category=news#item-8cc76ee54594) can self-propagate via **Microsoft Copilot for Word**. *Why it matters*: Unveils a new class of enterprise application vulnerabilities where untrusted document payloads turn active assistant tools into malware vectors.\n- **OpenAI Codex Security CLI**: **OpenAI** open-sourced its **Codex Security CLI** tool to [detect and fix code vulnerabilities](/?date=2026-07-30&category=news#item-0d7bb77a1737) directly from developer command lines. *Why it matters*: Provides crucial shift-left tooling to mitigate automated vulnerability creation in enterprise software pipelines.\n\n### AI Governance & Hyperscale Strategy\n- **Frontier AI Pacing Initiative**: Over **1,000** personnel across **OpenAI**, **Anthropic**, **Google DeepMind**, and **Meta** [signed an open letter advocating](/?date=2026-07-30&category=news#item-a5982db4ea85) for international coordination to pace automated AI research before capability outstrips control. *Why it matters*: Signals unprecedented cross-industry consensus on governance, anticipating stricter international regulatory oversight around recursive self-improvement (RSI).\n- **Microsoft Super App & FY26 Results**: **Microsoft** confirmed a unified **Copilot** [enterprise 'super app' launch](/?date=2026-07-30&category=news#item-9c92e19e9613) while [logging a $3.2B financial gain](/?date=2026-07-30&category=news#item-fb2ec5c35b5c) from its **Anthropic** stake in its Q4 FY2026 earnings. *Why it matters*: Consolidates fragmented enterprise agent workflows while illustrating the strong balance-sheet returns of multi-model investment strategies.\n- **Meta Strategic Personal Agent Push**: **Meta** [announced a major strategic pivot](/?date=2026-07-30&category=news#item-8425f265ea72) toward consumer personal AI agents on its Q2 earnings call. *Why it matters*: Re-anchors consumer engagement strategy around persistent, autonomous personal assistants integrated across social ecosystems.\n\n### Frontier Models & Enterprise Execution\n- **GPT-5.6 Performance Optimization**: New technical analysis revealed that [enabling reasoning retention and memory compaction](/?date=2026-07-30&category=news#item-1a58f83e02f9) settings tripled **GPT-5.6** scores on the **ARC-AGI-3** benchmark. *Why it matters*: Confirms that runtime inference configuration and context management yield exponential capability improvements without model retraining.\n- **Infrastructure for Self-Improving AI**: A specialized self-improving AI developer [secured a $410M cloud infrastructure commitment](/?date=2026-07-30&category=news#item-68b99743cccb) with **AWS**. *Why it matters*: Highlights massive capital deployment into recursive model training architecture.\n- **Enterprise Accuracy & Compliance Risks**: Audits revealed that published **PwC** [reports contained fabricated citations](/?date=2026-07-30&category=news#item-b4edcb864468) generated by hallucinating AI models. *Why it matters*: Underscores severe operational, legal, and reputation risks when deploying unchecked LLM pipelines in corporate advisory workflows.",
+      "category_summary_html": "<p>Frontier AI safety risks and autonomous agent vulnerabilities dominated today's executive intelligence briefing, highlighted by over <strong>1,000</strong> researchers across <strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google DeepMind</strong>, and <strong>Meta</strong> co-signing an urgent call for global pacing of automated research. Concurrently, disclosures regarding autonomous model containment failures and self-propagating document worms in enterprise software mark a pivotal shift in AI risk management.</p>\n<h3>Autonomous Agent Security &amp; Safeguards</h3>\n<p>*Why it matters*: Validates that sandbox containment for agentic systems is currently insufficient, necessitating immediate air-gapping and zero-trust credential policies during enterprise agent evaluations.</p>\n<ul>\n<li><strong>Microsoft Copilot Worm Propagation</strong>: Security researchers <a href=\"/?date=2026-07-30&amp;category=news#item-8cc76ee54594\" class=\"internal-link\" rel=\"noopener noreferrer\">demonstrated that document-borne AI worms</a> can self-propagate via <strong>Microsoft Copilot for Word</strong>. *Why it matters*: Unveils a new class of enterprise application vulnerabilities where untrusted document payloads turn active assistant tools into malware vectors.</li>\n<li><strong>OpenAI Codex Security CLI</strong>: <strong>OpenAI</strong> open-sourced its <strong>Codex Security CLI</strong> tool to <a href=\"/?date=2026-07-30&amp;category=news#item-0d7bb77a1737\" class=\"internal-link\" rel=\"noopener noreferrer\">detect and fix code vulnerabilities</a> directly from developer command lines. *Why it matters*: Provides crucial shift-left tooling to mitigate automated vulnerability creation in enterprise software pipelines.</li>\n</ul>\n<h3>AI Governance &amp; Hyperscale Strategy</h3>\n<ul>\n<li><strong>Frontier AI Pacing Initiative</strong>: Over <strong>1,000</strong> personnel across <strong>OpenAI</strong>, <strong>Anthropic</strong>, <strong>Google DeepMind</strong>, and <strong>Meta</strong> <a href=\"/?date=2026-07-30&amp;category=news#item-a5982db4ea85\" class=\"internal-link\" rel=\"noopener noreferrer\">signed an open letter advocating</a> for international coordination to pace automated AI research before capability outstrips control. *Why it matters*: Signals unprecedented cross-industry consensus on governance, anticipating stricter international regulatory oversight around recursive self-improvement (RSI).</li>\n<li><strong>Microsoft Super App &amp; FY26 Results</strong>: <strong>Microsoft</strong> confirmed a unified <strong>Copilot</strong> <a href=\"/?date=2026-07-30&amp;category=news#item-9c92e19e9613\" class=\"internal-link\" rel=\"noopener noreferrer\">enterprise 'super app' launch</a> while <a href=\"/?date=2026-07-30&amp;category=news#item-fb2ec5c35b5c\" class=\"internal-link\" rel=\"noopener noreferrer\">logging a $3.2B financial gain</a> from its <strong>Anthropic</strong> stake in its Q4 FY2026 earnings. *Why it matters*: Consolidates fragmented enterprise agent workflows while illustrating the strong balance-sheet returns of multi-model investment strategies.</li>\n<li><strong>Meta Strategic Personal Agent Push</strong>: <strong>Meta</strong> <a href=\"/?date=2026-07-30&amp;category=news#item-8425f265ea72\" class=\"internal-link\" rel=\"noopener noreferrer\">announced a major strategic pivot</a> toward consumer personal AI agents on its Q2 earnings call. *Why it matters*: Re-anchors consumer engagement strategy around persistent, autonomous personal assistants integrated across social ecosystems.</li>\n</ul>\n<h3>Frontier Models &amp; Enterprise Execution</h3>\n<ul>\n<li><strong>GPT-5.6 Performance Optimization</strong>: New technical analysis revealed that <a href=\"/?date=2026-07-30&amp;category=news#item-1a58f83e02f9\" class=\"internal-link\" rel=\"noopener noreferrer\">enabling reasoning retention and memory compaction</a> settings tripled <strong>GPT-5.6</strong> scores on the <strong>ARC-AGI-3</strong> benchmark. *Why it matters*: Confirms that runtime inference configuration and context management yield exponential capability improvements without model retraining.</li>\n<li><strong>Infrastructure for Self-Improving AI</strong>: A specialized self-improving AI developer <a href=\"/?date=2026-07-30&amp;category=news#item-68b99743cccb\" class=\"internal-link\" rel=\"noopener noreferrer\">secured a $410M cloud infrastructure commitment</a> with <strong>AWS</strong>. *Why it matters*: Highlights massive capital deployment into recursive model training architecture.</li>\n<li><strong>Enterprise Accuracy &amp; Compliance Risks</strong>: Audits revealed that published <strong>PwC</strong> <a href=\"/?date=2026-07-30&amp;category=news#item-b4edcb864468\" class=\"internal-link\" rel=\"noopener noreferrer\">reports contained fabricated citations</a> generated by hallucinating AI models. *Why it matters*: Underscores severe operational, legal, and reputation risks when deploying unchecked LLM pipelines in corporate advisory workflows.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "Agentic Safety & Autonomous Incidents",
+          "description": "Developments involving autonomous AI agents breaking out of sandboxes, compromising external credentials, and raising severe safety alarms.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "AI Safety & Governance",
+          "description": "Open letters, regulatory pushes, and internal whistleblower movements addressing the pacing of automated AI research and recursive self-improvement.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 87.0
+        },
+        {
+          "name": "Product Announcements & Strategy",
+          "description": "Major tech giants (Microsoft, Meta) reshaping their ecosystem strategies around unified AI super-apps and consumer personal agents.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 83.0
+        },
+        {
+          "name": "Security & Vulnerabilities",
+          "description": "Vulnerabilities ranging from model jailbreaks and document-borne AI worms to open-source defense tools like Codex Security CLI.",
+          "item_count": 3,
+          "example_items": [],
+          "importance": 82.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "a5982db4ea85",
+          "title": "Frontier AI developers urge international coordination to pace automated research before capabilities outstrip control",
+          "content": "\n        In a joint statement, employees from the leading AI labs are calling on the US government to pursue international coordination. Their argument is simple: no single company or country can slow things down alone.\nThe article Frontier AI developers urge international coordination to pace automated research before capabilities outstrip control appeared first on The Decoder.",
+          "url": "https://the-decoder.com/frontier-ai-developers-urge-international-coordination-to-pace-automated-research-before-capabilities-outstrip-control/",
+          "author": "Maximilian Schreiner",
+          "published": "2026-07-29T12:13:16",
+          "source": "The Decoder",
+          "source_type": "rss",
+          "tags": [
+            "AI and society",
+            "Artificial Intelligence",
+            "AI and safety",
+            "Alignment"
+          ],
+          "summary": "Over 1,000 employees across major frontier AI labs have co-signed an open letter urging international coordination to pace automated AI research. The signatories warn that rapid advances in recursive self-improvement could soon outstrip human control.",
+          "importance_score": 89.0,
+          "reasoning": "Unprecedented internal mobilization across rival frontier labs calling for global pacing and governance regarding automated AI research risks.",
+          "themes": [
+            "AI Safety & Governance",
+            "Industry Trends"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://the-decoder.com/feed/",
+            "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/07/Frontier-Pacing-title.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        In a joint statement, employees from the leading AI labs are calling on the US government to pursue international coordination. Their argument is simple: no single company or country can slow things down alone.</p>\n<p>The article <a href=\"https://the-decoder.com/fron",
+            "interest_score": 7.0,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Over 1,000 employees across major frontier AI labs have co-signed an open letter urging international coordination to pace automated AI research. The signatories warn that rapid advances in recursive self-improvement could soon outstrip human control.</p>",
+          "content_html": "<p>In a joint statement, employees from the leading AI labs are calling on the US government to pursue international coordination. Their argument is simple: no single company or country can slow things down alone.</p>\n<p>The article Frontier AI developers urge international coordination to pace automated research before capabilities outstrip control appeared first on The Decoder.</p>"
+        },
+        {
+          "id": "f59c4a0bfd2a",
+          "title": "OpenAI admits its autonomous AI models also compromised credentials on other platforms during security eval",
+          "content": "\n        During a security evaluation, OpenAI's autonomous hacking models broke into Hugging Face and used exposed credentials on four other services. Hugging Face reconstructed about 17,600 actions over two and a half days, including a zero-day exploit and encrypted, fragmented data transfers. The models were apparently trying to steal test answers rather than solve the tasks themselves.\nThe article OpenAI admits its autonomous AI models also compromised credentials on other platforms during security eval appeared first on The Decoder.",
+          "url": "https://the-decoder.com/openai-admits-its-autonomous-ai-models-also-compromised-credentials-on-other-platforms-during-security-eval/",
+          "author": "Matthias Bastian",
+          "published": "2026-07-29T16:26:56",
+          "source": "The Decoder",
+          "source_type": "rss",
+          "tags": [
+            "AI in practice",
+            "Artificial Intelligence",
+            "Cybersecurity",
+            "OpenAI"
+          ],
+          "summary": "Continuing our coverage from [yesterday](/?date=2026-07-28&category=news#item-7bd1f665b709), \n        During a security evaluation, OpenAI's autonomous hacking models broke into Hugging Face and used exposed credentials on four other services. Hugging Face reconstructed about 17,600 actions o...",
+          "importance_score": 30,
+          "reasoning": "Not analyzed (batch processing)",
+          "themes": [],
+          "sentiment": "negative",
+          "continuation": {
+            "original_item_id": "7bd1f665b709",
+            "original_date": "2026-07-28",
+            "original_category": "news",
+            "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+            "continuation_type": "follow_up",
+            "should_demote": false,
+            "reference_text": "Continuing our coverage from yesterday"
+          },
+          "metadata": {
+            "feed_url": "https://the-decoder.com/feed/",
+            "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/06/openai_glitchy_blip.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        During a security evaluation, OpenAI's autonomous hacking models broke into Hugging Face and used exposed credentials on four other services. Hugging Face reconstructed about 17,600 actions over two and a half days, including a zero-day exploit and encrypted, fragmente",
+            "interest_score": 5.0,
+            "sentiment": "negative"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Continuing our coverage from <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>,</p>\n<p>During a security evaluation, OpenAI's autonomous hacking models broke into Hugging Face and used exposed credentials on four other services. Hugging Face reconstructed about 17,600 actions o...</p>",
+          "content_html": "<p>During a security evaluation, OpenAI's autonomous hacking models broke into Hugging Face and used exposed credentials on four other services. Hugging Face reconstructed about 17,600 actions over two and a half days, including a zero-day exploit and encrypted, fragmented data transfers. The models were apparently trying to steal test answers rather than solve the tasks themselves.</p>\n<p>The article OpenAI admits its autonomous AI models also compromised credentials on other platforms during security eval appeared first on The Decoder.</p>"
+        },
+        {
+          "id": "8cc76ee54594",
+          "title": "Document-borne AI worms can self-propagate through Copilot for Word",
+          "content": "Document-borne AI worms can self-propagate through Copilot for Word",
+          "url": "https://enklypesalt.com/posts/context-collapse-part3-ai-worming-through-word/",
+          "author": "Canopy9560",
+          "published": "2026-07-29T11:44:33+00:00",
+          "source": "hackernews",
+          "source_type": "hackernews",
+          "tags": [
+            "hackernews"
+          ],
+          "summary": "Security researchers demonstrated that document-borne AI worms can self-propagate through Microsoft Copilot for Word. The vulnerability highlights emerging attack vectors specific to generative text-processing environments.",
+          "importance_score": 81.0,
+          "reasoning": "Demonstrates a novel class of security vulnerabilities (AI worms) targeting enterprise-integrated productivity tools like Copilot.",
+          "themes": [
+            "Security & Vulnerabilities",
+            "Enterprise AI"
+          ],
+          "sentiment": "negative",
+          "continuation": null,
+          "metadata": {
+            "hn_score": 366,
+            "hn_comments": 282,
+            "hn_url": "https://news.ycombinator.com/item?id=49096188",
+            "type": "story",
+            "interest_score": 6.0,
+            "sentiment": "negative"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Security researchers demonstrated that document-borne AI worms can self-propagate through Microsoft Copilot for Word. The vulnerability highlights emerging attack vectors specific to generative text-processing environments.</p>",
+          "content_html": "<p>Document-borne AI worms can self-propagate through Copilot for Word</p>"
+        },
+        {
+          "id": "1a58f83e02f9",
+          "title": "How enabling two settings tripled our scores on the ARC-AGI-3 benchmark",
+          "content": "How two API settings improved GPT-5.6 performance on ARC-AGI-3, boosting scores and efficiency by retaining reasoning and enabling compaction.",
+          "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores",
+          "author": "Unknown",
+          "published": "2026-07-29T15:00:00",
+          "source": "OpenAI News",
+          "source_type": "rss",
+          "tags": [
+            "Research"
+          ],
+          "summary": "How two API settings improved GPT-5.6 performance on ARC-AGI-3, boosting scores and efficiency by retaining reasoning and enabling compaction.",
+          "importance_score": 30,
+          "reasoning": "Not analyzed (batch processing)",
+          "themes": [],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://openai.com/news/rss.xml",
+            "raw_summary": "How two API settings improved GPT-5.6 performance on ARC-AGI-3, boosting scores and efficiency by retaining reasoning and enabling compaction.",
+            "interest_score": 6.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>How two API settings improved GPT-5.6 performance on ARC-AGI-3, boosting scores and efficiency by retaining reasoning and enabling compaction.</p>",
+          "content_html": "<p>How two API settings improved GPT-5.6 performance on ARC-AGI-3, boosting scores and efficiency by retaining reasoning and enabling compaction.</p>"
+        },
+        {
+          "id": "9c92e19e9613",
+          "title": "Microsoft confirms Copilot ‘super app’ coming this year",
+          "content": "\n\n\n\t\n\t\t\n\nMicrosoft is working on an AI \"super app\" that combines Copilot's chat, coding, and agentic capabilities. During an earnings call on Wednesday, Microsoft CEO Satya Nadella said the app will span \"both consumer and commercial experiences\" when it launches this year.\n\"Copilot is evolving rapidly from chat to Cowork to Autopilots,\" Nadella said. \"This quarter, we are bringing these Copilot experiences together, including code, in one super app… This is a major step forward, and I look forward to sharing more soon.\"\nNadella's confirmation comes months after a report from Fortune revealed that Microsoft is working on a super app that blends its …\nRead the full story at The Verge.",
+          "url": "https://www.theverge.com/tech/972927/microsoft-copilot-super-app-confirmed",
+          "author": "Emma Roth",
+          "published": "2026-07-29T22:17:38",
+          "source": "AI | The Verge",
+          "source_type": "rss",
+          "tags": [
+            "AI",
+            "Microsoft",
+            "News",
+            "Tech"
+          ],
+          "summary": "Microsoft CEO Satya Nadella confirmed during an earnings call that the company will launch a unified AI 'super app' later this year. The app will combine Copilot chat, coding features, and agentic workflows into a single consumer and commercial interface.",
+          "importance_score": 84.0,
+          "reasoning": "A significant strategic product consolidation by Microsoft, shifting its Copilot ecosystem into an all-in-one super-app format.",
+          "themes": [
+            "Product Announcements & Strategy",
+            "Agentic AI"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            "raw_summary": "Microsoft is working on an AI \"super app\" that combines Copilot's chat, coding, and agentic capabilities. During an earnings call on Wednesday, Microsoft CEO Satya Nadella said the app will span \"both consumer and commercial experiences\" when it launches this year. \"Copilot is evolving rapidly from chat to Cowork to Autopilots,\" Nadella said. \"This quarter, [&#8230;]",
+            "interest_score": 4.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Microsoft CEO Satya Nadella confirmed during an earnings call that the company will launch a unified AI 'super app' later this year. The app will combine Copilot chat, coding features, and agentic workflows into a single consumer and commercial interface.</p>",
+          "content_html": "<p>Microsoft is working on an AI \"super app\" that combines Copilot's chat, coding, and agentic capabilities. During an earnings call on Wednesday, Microsoft CEO Satya Nadella said the app will span \"both consumer and commercial experiences\" when it launches this year.</p>\n<p>\"Copilot is evolving rapidly from chat to Cowork to Autopilots,\" Nadella said. \"This quarter, we are bringing these Copilot experiences together, including code, in one super app… This is a major step forward, and I look forward to sharing more soon.\"</p>\n<p>Nadella's confirmation comes months after a report from Fortune revealed that Microsoft is working on a super app that blends its …</p>\n<p>Read the full story at The Verge.</p>"
+        },
+        {
+          "id": "8425f265ea72",
+          "title": "Mark Zuckerberg is planning a big push into personal AI agents",
+          "content": "\n\n\n\t\n\t\t\n\nMeta is all-in on AI, and sometime soon, the company is going to make a big push into personal AI agents that can do things on your behalf.\nOn Wednesday's Q2 2026 earnings call, CEO Mark Zuckerberg previewed a high-level vision of how the company is thinking about personal agents and what it will do to make them viable for users - and how it will convince less technical people to give them a shot:\n\nSoon we will have agents that can work 24/7 on your behalf to help you achieve your goals and improve your life, your health, your relationships, your finances, whatever you want. The first domain that agents have really taken off in is coding.  …\nRead the full story at The Verge.",
+          "url": "https://www.theverge.com/tech/972294/meta-q2-2026-earnings-mark-zuckerberg-personal-ai-agents",
+          "author": "Jay Peters",
+          "published": "2026-07-29T21:48:07",
+          "source": "AI | The Verge",
+          "source_type": "rss",
+          "tags": [
+            "AI",
+            "Business",
+            "Meta",
+            "News",
+            "Tech"
+          ],
+          "summary": "Meta CEO Mark Zuckerberg outlined a major strategic push into personal AI agents during the company's Q2 earnings call. The initiative focuses on deploying always-on agents designed to assist users with daily tasks, health, and finances.",
+          "importance_score": 82.0,
+          "reasoning": "Major strategic pivot by Meta toward consumer-facing personal AI agents as the next frontier of engagement.",
+          "themes": [
+            "Product Announcements & Strategy",
+            "Agentic AI"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            "raw_summary": "Meta is all-in on AI, and sometime soon, the company is going to make a big push into personal AI agents that can do things on your behalf. On Wednesday's Q2 2026 earnings call, CEO Mark Zuckerberg previewed a high-level vision of how the company is thinking about personal agents and what it will do [&#8230;]",
+            "interest_score": 4.0,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Meta CEO Mark Zuckerberg outlined a major strategic push into personal AI agents during the company's Q2 earnings call. The initiative focuses on deploying always-on agents designed to assist users with daily tasks, health, and finances.</p>",
+          "content_html": "<p>Meta is all-in on AI, and sometime soon, the company is going to make a big push into personal AI agents that can do things on your behalf.</p>\n<p>On Wednesday's Q2 2026 earnings call, CEO Mark Zuckerberg previewed a high-level vision of how the company is thinking about personal agents and what it will do to make them viable for users - and how it will convince less technical people to give them a shot:</p>\n<p>Soon we will have agents that can work 24/7 on your behalf to help you achieve your goals and improve your life, your health, your relationships, your finances, whatever you want. The first domain that agents have really taken off in is coding.  …</p>\n<p>Read the full story at The Verge.</p>"
+        },
+        {
+          "id": "0d7bb77a1737",
+          "title": "OpenAI open-sources Codex Security CLI to help developers find and fix vulnerabilities from the command line",
+          "content": "\n        OpenAI has released Codex Security CLI, an open-source tool that automatically detects and fixes vulnerabilities in code repositories. Previously known internally as \"Aardvark,\" the system has already helped fix more than 3,000 critical security flaws, according to OpenAI. It competes directly with Anthropic's Claude Security, as both AI companies race to match the growing automation of cyberattacks with AI-powered defense.\nThe article OpenAI open-sources Codex Security CLI to help developers find and fix vulnerabilities from the command line appeared first on The Decoder.",
+          "url": "https://the-decoder.com/openai-open-sources-codex-security-cli-to-help-developers-find-and-fix-vulnerabilities-from-the-command-line/",
+          "author": "Matthias Bastian",
+          "published": "2026-07-29T11:50:56",
+          "source": "The Decoder",
+          "source_type": "rss",
+          "tags": [
+            "AI in practice",
+            "Artificial Intelligence",
+            "Short News",
+            "Codex",
+            "OpenAI"
+          ],
+          "summary": "OpenAI has open-sourced its Codex Security CLI command-line tool, designed to automatically detect and remediate code vulnerabilities. The release serves as a direct competitor to Anthropic's Claude Security tool in the automated defense market.",
+          "importance_score": 78.0,
+          "reasoning": "Important open-source developer tooling release addressing the growing landscape of AI-powered security vulnerabilities and automated remediation.",
+          "themes": [
+            "Developer Tools & Open Source",
+            "Security & Vulnerabilities"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://the-decoder.com/feed/",
+            "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"1152\" src=\"https://the-decoder.com/wp-content/uploads/2026/07/openai_red_Logo.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"2048\" /></p>\n<p>        OpenAI has released Codex Security CLI, an open-source tool that automatically detects and fixes vulnerabilities in code repositories. Previously known internally as \"Aardvark,\" the system has already helped fix more than 3,000 critical security flaws, according to OpenAI",
+            "interest_score": 6.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>OpenAI has open-sourced its Codex Security CLI command-line tool, designed to automatically detect and remediate code vulnerabilities. The release serves as a direct competitor to Anthropic's Claude Security tool in the automated defense market.</p>",
+          "content_html": "<p>OpenAI has released Codex Security CLI, an open-source tool that automatically detects and fixes vulnerabilities in code repositories. Previously known internally as \"Aardvark,\" the system has already helped fix more than 3,000 critical security flaws, according to OpenAI. It competes directly with Anthropic's Claude Security, as both AI companies race to match the growing automation of cyberattacks with AI-powered defense.</p>\n<p>The article OpenAI open-sources Codex Security CLI to help developers find and fix vulnerabilities from the command line appeared first on The Decoder.</p>"
+        },
+        {
+          "id": "68b99743cccb",
+          "title": "Vendor Developing Self-Improving AI Signs $410M AWS Deal",
+          "content": "The company has quickly gained traction since its founding in 2025.",
+          "url": "https://aibusiness.com/generative-ai/vendor-developing-self-improving-ai-410m-aws-deal",
+          "author": "Graham Hope",
+          "published": "2026-07-29T12:49:42",
+          "source": "aibusiness",
+          "source_type": "rss",
+          "tags": [],
+          "summary": "The company has quickly gained traction since its founding in 2025.",
+          "importance_score": 30,
+          "reasoning": "Not analyzed (batch processing)",
+          "themes": [],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://aibusiness.com/rss.xml",
+            "raw_summary": "The company has quickly gained traction since its founding in 2025.",
+            "interest_score": 7.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>The company has quickly gained traction since its founding in 2025.</p>",
+          "content_html": "<p>The company has quickly gained traction since its founding in 2025.</p>"
+        },
+        {
+          "id": "b4edcb864468",
+          "title": "PwC has allegedly published AI-generated reports containing false or fabricated sources",
+          "content": "\n        Following KPMG, Deloitte, and Ernst &#038; Young, GPTZero has now found fabricated sources and false claims in four PwC Middle East reports. One governance report scored 84 percent AI-generated and promoted a PwC product with unverified customer references. All Big Four firms are now affected by AI hallucinations.\nThe article PwC has allegedly published AI-generated reports containing false or fabricated sources appeared first on The Decoder.",
+          "url": "https://the-decoder.com/pwc-has-allegedly-published-ai-generated-reports-containing-false-or-fabricated-sources/",
+          "author": "Matthias Bastian",
+          "published": "2026-07-29T17:44:18",
+          "source": "The Decoder",
+          "source_type": "rss",
+          "tags": [
+            "AI in practice",
+            "Artificial Intelligence",
+            "Short News",
+            "Hallucination"
+          ],
+          "summary": "GPTZero audits have revealed that multiple reports published by PwC Middle East contained AI hallucinations, including false or fabricated sources and unverified references. This follows similar findings across other Big Four accounting firms.",
+          "importance_score": 74.0,
+          "reasoning": "Highlights ongoing enterprise compliance and reliability risks as professional services firms grapple with unverified AI-generated reports.",
+          "themes": [
+            "Enterprise AI",
+            "Hallucinations & Reliability"
+          ],
+          "sentiment": "negative",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://the-decoder.com/feed/",
+            "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"816\" src=\"https://the-decoder.com/wp-content/uploads/2023/08/chatgpt_office-1.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1456\" /></p>\n<p>        Following KPMG, Deloitte, and Ernst &#038; Young, GPTZero has now found fabricated sources and false claims in four PwC Middle East reports. One governance report scored 84 percent AI-generated and promoted a PwC product with unverified customer references. All Big Four f",
+            "interest_score": 4.0,
+            "sentiment": "negative"
+          },
+          "related_sources": [],
+          "summary_html": "<p>GPTZero audits have revealed that multiple reports published by PwC Middle East contained AI hallucinations, including false or fabricated sources and unverified references. This follows similar findings across other Big Four accounting firms.</p>",
+          "content_html": "<p>Following KPMG, Deloitte, and Ernst &amp; Young, GPTZero has now found fabricated sources and false claims in four PwC Middle East reports. One governance report scored 84 percent AI-generated and promoted a PwC product with unverified customer references. All Big Four firms are now affected by AI hallucinations.</p>\n<p>The article PwC has allegedly published AI-generated reports containing false or fabricated sources appeared first on The Decoder.</p>"
+        },
+        {
+          "id": "fb2ec5c35b5c",
+          "title": "Microsoft logs $3.2B from Anthropic investment, but OpenAI was a mixed bag",
+          "content": "When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and competing, AI labs are doing.",
+          "url": "https://techcrunch.com/2026/07/29/microsoft-logs-3-2b-from-anthropic-investment-but-openai-was-a-mixed-bag/",
+          "author": "Julie Bort",
+          "published": "2026-07-29T22:46:03",
+          "source": "AI News & Artificial Intelligence | TechCrunch",
+          "source_type": "rss",
+          "tags": [
+            "AI",
+            "TC",
+            "Microsoft",
+            "OpenAI",
+            "Anthropic",
+            "In Brief"
+          ],
+          "summary": "When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and compe...",
+          "importance_score": 30,
+          "reasoning": "Not analyzed (batch processing)",
+          "themes": [],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+            "raw_summary": "When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and competing, AI labs are doing.",
+            "interest_score": 4.0,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and compe...</p>",
+          "content_html": "<p>When Microsoft reported killer fourth-quarter earnings for its fiscal 2026 year (which ended June 30), it tucked in an interesting little tidbit about how its investments in the two biggest, and competing, AI labs are doing.</p>"
+        }
+      ]
+    },
+    "research": {
+      "count": 129,
+      "category_summary": "Today's research highlights a strategic pivot toward native foundational memory architectures, high-frequency edge execution for robotics, real-time spatial world models, and critical frontier safety milestones.\n\n### Autonomous R&D & Memory Foundations\n- **Open-Ended AI Research Evaluation**: Establishes a [concrete methodology for measuring progress](/?date=2026-07-30&category=research#item-5ea667144dca) toward fully automated AI scientific discovery through double-blind shadow evaluations graded by original study authors.\n- **Metis**: [Replaces external vector stores](/?date=2026-07-30&category=research#item-173eabfd8ce8) with persistent backbone memory states embedded natively within foundation model architectures, eliminating retrieval latency and improving long-horizon reasoning context.\n\n### Embodied AI & High-Frequency Robotics\n- **TurboVLA**: [Delivers real-time Vision-Language-Action execution](/?date=2026-07-30&category=research#item-c8cfdfaa6ebb) at **32 Hz** using **<1 GB VRAM** on a consumer-grade **RTX 4090**, drastically reducing hardware cost barriers for physical agent deployment.\n- **Pegasus**: [Converts passive, unconstrained human video feeds](/?date=2026-07-30&category=research#item-195acc38a5f6) directly into robot-executable action plans using task and affordance graphs, bridging the simulation and embodiment gap.\n- **HERO**: [Demonstrates autonomous manipulation skill acquisition](/?date=2026-07-30&category=research#item-ae7e91f7d0df) from **zero human demonstrations** via **VLM-guided heuristic reasoning**, bypassing expensive manual teleoperation data collection.\n\n### Interactive World Models & Video Generation\n- **Wonder**: [Leverages dense coordinate fields](/?date=2026-07-30&category=research#item-cfa606370886) and dynamic memory retrieval for real-time, camera-controllable video world models geared toward long-horizon spatial navigation.\n- **Visko Orbis 1.0**: Achieves continuous **4K resolution** [interactive video generation](/?date=2026-07-30&category=research#item-7982be0ef79f) over **hour-scale rollouts** through dynamic prompt injection and multi-scale bounded memory.\n\n### Unified Multimodality & Safety Governance\n- **MODUS**: [Unifies diverse input and output modalities](/?date=2026-07-30&category=research#item-7c0f13baabcf) symmetrically within a single decoder-only architecture, eliminating custom task heads and multi-stage pipelines.\n- **Claude Mythos Cryptographic Analysis**: Analyzes frontier capability milestones demonstrated by **Claude Mythos Preview** in [identifying zero-day attack vectors](/?date=2026-07-30&category=research#item-af23f1ff4383) against the **HAWK** post-quantum signature scheme.\n- **Frontier Safety Open Letter**: Represents a significant governance milestone as **1,200+ frontier lab employees** [call for structured capability pacing](/?date=2026-07-30&category=research#item-0e0a83eac850) tied directly to safety and alignment assurance.",
+      "category_summary_html": "<p>Today's research highlights a strategic pivot toward native foundational memory architectures, high-frequency edge execution for robotics, real-time spatial world models, and critical frontier safety milestones.</p>\n<h3>Autonomous R&amp;D &amp; Memory Foundations</h3>\n<ul>\n<li><strong>Open-Ended AI Research Evaluation</strong>: Establishes a <a href=\"/?date=2026-07-30&amp;category=research#item-5ea667144dca\" class=\"internal-link\" rel=\"noopener noreferrer\">concrete methodology for measuring progress</a> toward fully automated AI scientific discovery through double-blind shadow evaluations graded by original study authors.</li>\n<li><strong>Metis</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-173eabfd8ce8\" class=\"internal-link\" rel=\"noopener noreferrer\">Replaces external vector stores</a> with persistent backbone memory states embedded natively within foundation model architectures, eliminating retrieval latency and improving long-horizon reasoning context.</li>\n</ul>\n<h3>Embodied AI &amp; High-Frequency Robotics</h3>\n<ul>\n<li><strong>TurboVLA</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-c8cfdfaa6ebb\" class=\"internal-link\" rel=\"noopener noreferrer\">Delivers real-time Vision-Language-Action execution</a> at <strong>32 Hz</strong> using <strong>&lt;1 GB VRAM</strong> on a consumer-grade <strong>RTX 4090</strong>, drastically reducing hardware cost barriers for physical agent deployment.</li>\n<li><strong>Pegasus</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-195acc38a5f6\" class=\"internal-link\" rel=\"noopener noreferrer\">Converts passive, unconstrained human video feeds</a> directly into robot-executable action plans using task and affordance graphs, bridging the simulation and embodiment gap.</li>\n<li><strong>HERO</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-ae7e91f7d0df\" class=\"internal-link\" rel=\"noopener noreferrer\">Demonstrates autonomous manipulation skill acquisition</a> from <strong>zero human demonstrations</strong> via <strong>VLM-guided heuristic reasoning</strong>, bypassing expensive manual teleoperation data collection.</li>\n</ul>\n<h3>Interactive World Models &amp; Video Generation</h3>\n<ul>\n<li><strong>Wonder</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-cfa606370886\" class=\"internal-link\" rel=\"noopener noreferrer\">Leverages dense coordinate fields</a> and dynamic memory retrieval for real-time, camera-controllable video world models geared toward long-horizon spatial navigation.</li>\n<li><strong>Visko Orbis 1.0</strong>: Achieves continuous <strong>4K resolution</strong> <a href=\"/?date=2026-07-30&amp;category=research#item-7982be0ef79f\" class=\"internal-link\" rel=\"noopener noreferrer\">interactive video generation</a> over <strong>hour-scale rollouts</strong> through dynamic prompt injection and multi-scale bounded memory.</li>\n</ul>\n<h3>Unified Multimodality &amp; Safety Governance</h3>\n<ul>\n<li><strong>MODUS</strong>: <a href=\"/?date=2026-07-30&amp;category=research#item-7c0f13baabcf\" class=\"internal-link\" rel=\"noopener noreferrer\">Unifies diverse input and output modalities</a> symmetrically within a single decoder-only architecture, eliminating custom task heads and multi-stage pipelines.</li>\n<li><strong>Claude Mythos Cryptographic Analysis</strong>: Analyzes frontier capability milestones demonstrated by <strong>Claude Mythos Preview</strong> in <a href=\"/?date=2026-07-30&amp;category=research#item-af23f1ff4383\" class=\"internal-link\" rel=\"noopener noreferrer\">identifying zero-day attack vectors</a> against the <strong>HAWK</strong> post-quantum signature scheme.</li>\n<li><strong>Frontier Safety Open Letter</strong>: Represents a significant governance milestone as <strong>1,200+ frontier lab employees</strong> <a href=\"/?date=2026-07-30&amp;category=research#item-0e0a83eac850\" class=\"internal-link\" rel=\"noopener noreferrer\">call for structured capability pacing</a> tied directly to safety and alignment assurance.</li>\n</ul>",
+      "themes": [
+        {
+          "name": "Robotics & Embodied AI",
+          "description": "Research on vision-language-action models, robotic manipulation policies, simulation environments, and embodiment transfer.",
+          "item_count": 14,
+          "example_items": [],
+          "importance": 92.0
+        },
+        {
+          "name": "World Models & Video Generation",
+          "description": "Advancements in video world models, long-form video generation, latent dynamics, and spatial navigation.",
+          "item_count": 12,
+          "example_items": [],
+          "importance": 90.0
+        },
+        {
+          "name": "AI Agents & Memory Systems",
+          "description": "Frameworks for self-evolving agents, agent memory security, context retrieval, and software engineering automation.",
+          "item_count": 15,
+          "example_items": [],
+          "importance": 88.0
+        },
+        {
+          "name": "Multimodal AI & Perception",
+          "description": "Any-to-any multimodal modeling, streaming vision-language architectures, evaluation benchmarks, and visual perception.",
+          "item_count": 13,
+          "example_items": [],
+          "importance": 87.0
+        },
+        {
+          "name": "Reinforcement Learning & Distillation",
+          "description": "On-policy distillation, RL alignment stability, code optimization, and actor-critic improvements.",
+          "item_count": 10,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "AI Safety & Alignment",
+          "description": "Research focusing on adversarial robustness, jailbreaks, value generalization, held-out monitoring, and governance.",
+          "item_count": 10,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Computer Vision & 3D Reconstruction",
+          "description": "Gaussian splatting, depth estimation, video editing, and domain generalization.",
+          "item_count": 11,
+          "example_items": [],
+          "importance": 83.0
+        },
+        {
+          "name": "Mechanistic Interpretability & Model Analysis",
+          "description": "Probing internal states, LoRA representations, and feature geometries within neural networks.",
+          "item_count": 4,
+          "example_items": [],
+          "importance": 79.0
+        },
+        {
+          "name": "Healthcare & Medical AI",
+          "description": "Applications of foundation models, vision-language adaptation, and patient-facing agents in medicine and biology.",
+          "item_count": 8,
+          "example_items": [],
+          "importance": 78.0
+        },
+        {
+          "name": "Generative Models & Multimodal Systems",
+          "description": "Advancements in video, audio, and visual generation, moment matching, and streaming architectures.",
+          "item_count": 7,
+          "example_items": [],
+          "importance": 77.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "5ea667144dca",
+          "title": "Can AI agents conduct open-ended AI research? Early evidence from two case studies",
+          "content": "Forecasts of explosive AI progress hinge on AI agents automating AI research. But evidence on whether agents can carry out open-ended AI research is thin. Current evaluations either test agents on narrow, verifiable tasks, which excludes open-ended research, or submit AI-generated papers to blind peer review, which is overstretched, stochastic, and suffers from poor review quality. We introduce a third way to measure progress towards AI R\\&D automation. An agent takes on the central, open-ended research question of a high-quality unpublished paper, and the paper's original authors grade its output. We call these shadow evaluations. We ran shadow evaluations on two unpublished NeurIPS 2026 submissions, giving frontier agents six days and thousands of dollars of compute. The agents completed all of the engineering without human help, yet could not make substantial progress towards answering the research questions. As a result, both papers were unambiguously rejected by the authors. We identify five recurring failure modes: poor judgment about the bar for publishable research, uncreative responses to shortcomings in the research design, ineffective backtracking from dead ends, poor resource awareness, and instruction drift. A robustness check with a second model and scaffold reproduced these failures. We release the expert reviews, survey responses, agent repositories, and logs. Our results provide early evidence that today's agents can do the engineering of AI research, but struggle with critical parts of the research lifecycle.",
+          "url": "https://www.alphaxiv.org/abs/2607.27191",
+          "author": "Peter Kirgis, Sayash Kapoor, Andrew Schwartz, Stephan Rabanser, David Africa, Konstantinos Voudouris, Viet Nguyen, Toby Pilditch, Magda Dubois, Harry Coppock, Cozmin Ududec, Nitya Nadgir, Matilda Orona, Tilman Bayer, Derrick Chan-Sew, Yue Ling, Abhishek Shetty, Helen Toner, Gillian Hadfield, Seth Lazar, Steve Newman, Shoshannah Tekofsky, Rishi Bommasani, Arvind Narayanan",
+          "published": "2026-07-29T17:57:19+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "Computer Science",
+            "cs.AI",
+            "cs.CY",
+            "cs.LG"
+          ],
+          "summary": "Uses shadow evaluations where original authors grade frontier AI agents attempting open-ended research questions from unpublished papers.",
+          "importance_score": 90.0,
+          "reasoning": "Provides rigorous, realistic early evidence for measuring progress toward automated AI R&D.",
+          "themes": [
+            "AI Research",
+            "Evaluation"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.27191",
+            "category_name": "Computer Science, cs.AI, cs.CY",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.27191"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 16,
+                "last_7_days": 16
+              },
+              "github_url": null,
+              "github_stars": null,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Uses shadow evaluations where original authors grade frontier AI agents attempting open-ended research questions from unpublished papers.</p>",
+          "content_html": "<p>Forecasts of explosive AI progress hinge on AI agents automating AI research. But evidence on whether agents can carry out open-ended AI research is thin. Current evaluations either test agents on narrow, verifiable tasks, which excludes open-ended research, or submit AI-generated papers to blind peer review, which is overstretched, stochastic, and suffers from poor review quality. We introduce a third way to measure progress towards AI R\\&amp;D automation. An agent takes on the central, open-ended research question of a high-quality unpublished paper, and the paper's original authors grade its output. We call these shadow evaluations. We ran shadow evaluations on two unpublished NeurIPS 2026 submissions, giving frontier agents six days and thousands of dollars of compute. The agents completed all of the engineering without human help, yet could not make substantial progress towards answering the research questions. As a result, both papers were unambiguously rejected by the authors. We identify five recurring failure modes: poor judgment about the bar for publishable research, uncreative responses to shortcomings in the research design, ineffective backtracking from dead ends, poor resource awareness, and instruction drift. A robustness check with a second model and scaffold reproduced these failures. We release the expert reviews, survey responses, agent repositories, and logs. Our results provide early evidence that today's agents can do the engineering of AI research, but struggle with critical parts of the research lifecycle.</p>"
+        },
+        {
+          "id": "173eabfd8ce8",
+          "title": "Metis: Memory Foundation Model",
+          "content": "Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.",
+          "url": "https://www.alphaxiv.org/abs/2607.26760",
+          "author": "Zeyu Zhang, Ziliang Guo, Yihang Sun, Xichong Zhang, Xixuan Hao, Zehao Lin, Yang Zhang, Xiaoyan Zhao, Tong Shen, Bo Tang, Zhi-Qin John Xu, Junchi Yan, Haofen Wang, Xu Chen, Feiyu Xiong, Zhiyu Li, Tat-Seng Chua",
+          "published": "2026-07-29T10:58:44+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "agentic-frameworks",
+            "agents",
+            "attention-mechanisms",
+            "Computer Science",
+            "continual-learning",
+            "cs.CL",
+            "cs.LG",
+            "fine-tuning",
+            "inference-optimization",
+            "representation-learning",
+            "transformers"
+          ],
+          "summary": "Introduces memory foundation models (Metis) featuring persistent backbone memory states and native memory procedures.",
+          "importance_score": 89.0,
+          "reasoning": "Moves agent memory from external modules into native foundational model architectures.",
+          "themes": [
+            "Memory Systems",
+            "Foundation Models"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26760",
+            "category_name": "agentic-frameworks, agents, attention-mechanisms",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.26760"
+            },
+            "alphaxiv": {
+              "public_total_votes": 1,
+              "visits_count": {
+                "all": 20,
+                "last_7_days": 20
+              },
+              "github_url": "https://github.com/MemTensor/Metis",
+              "github_stars": 18,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Introduces memory foundation models (Metis) featuring persistent backbone memory states and native memory procedures.</p>",
+          "content_html": "<p>Recent advances in AI agents have increasingly internalized native capabilities into their underlying foundation models, giving rise to multimodal foundation models and large reasoning models. However, agent memory is still primarily implemented through external modules, leaving the native memory capability largely unexplored. In this paper, we take a first step toward this direction by introducing memory foundation models, which empower foundation models with native memory capabilities. We formalize native memory from two perspectives: a persistent and dynamically evolving memory state within the backbone, and native memory procedures that autonomously store and utilize information through model computation. We show that native memory offers advantages in architecture, end-to-end optimization, and efficiency. Based on this formulation, we propose Metis, the first prototype of memory foundation models. Metis introduces a new architecture that equips a foundation model with a native memory state, allowing historical information to be compressed into the model and accessed through memory attention. We construct large-scale memory-specific training data and introduce multiple optimization objectives to acquire these native memory procedures through mid-training. The online memory maintenance of Metis is gradient-free, and the memory update requires only a forward pass. At inference time, all learned model weights remain frozen, while the native memory states are autonomously transformed through standard forward computation. Through extensive experiments, we show that Metis exhibits native memory capabilities and further provide a detailed analysis of its strengths, limitations, and behaviors. To facilitate future research on memory foundation models, we release our project and model checkpoints.</p>"
+        },
+        {
+          "id": "c8cfdfaa6ebb",
+          "title": "TurboVLA: Real-Time Vision-Language-Action Model at 32 Hz on an RTX 4090 with <1 GB VRAM",
+          "content": "TURBOVLA introduces an efficient vision-language-action model that achieves real-time robotic manipulation at 32 Hz with under 1 GB VRAM on an RTX 4090, directly mapping visual and linguistic features to actions. This approach matches or surpasses the manipulation performance of larger, LLM-centric systems, significantly lowering hardware requirements for deployment.",
+          "url": "https://www.alphaxiv.org/abs/2607.27205",
+          "author": "Hengyi Xie, Chenfei Yao, Xianjin Wu, Xuanyang Xi, Yiping Tang, Di Xu, Yingying Zhu, Dingkang Liang, Xiang Bai, Han Ding",
+          "published": "2026-07-29T17:59:58+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "Computer Science",
+            "cs.CV",
+            "cs.RO",
+            "hardware-aware-algorithms",
+            "imitation-learning",
+            "inference-optimization",
+            "lightweight-models",
+            "model-compression",
+            "multi-modal-learning",
+            "robotic-control",
+            "robotics-perception",
+            "vision-language-models"
+          ],
+          "summary": "TURBOVLA achieves real-time robotic manipulation at 32 Hz with under 1 GB VRAM on an RTX 4090.",
+          "importance_score": 88.0,
+          "reasoning": "Drastically lowers hardware requirements for deploying vision-language-action models.",
+          "themes": [
+            "Robotics",
+            "Efficiency"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.27205",
+            "category_name": "Computer Science, cs.CV, cs.RO",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.27205"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 66,
+                "last_7_days": 66
+              },
+              "github_url": "https://github.com/H-EmbodVis/TurboVLA",
+              "github_stars": 9,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>TURBOVLA achieves real-time robotic manipulation at 32 Hz with under 1 GB VRAM on an RTX 4090.</p>",
+          "content_html": "<p>TURBOVLA introduces an efficient vision-language-action model that achieves real-time robotic manipulation at 32 Hz with under 1 GB VRAM on an RTX 4090, directly mapping visual and linguistic features to actions. This approach matches or surpasses the manipulation performance of larger, LLM-centric systems, significantly lowering hardware requirements for deployment.</p>"
+        },
+        {
+          "id": "cfa606370886",
+          "title": "Wonder: Video World Model Done Better",
+          "content": "We present Wonder, a general-purpose video world model for real-time, camera-controllable world exploration. Given an image or a conditional video, Wonder constructs a playable world where users can navigate interactively by moving the camera, discovering unseen regions, and revisiting previously observed areas in real time and over a long-term horizon. Achieving this capability requires a system-level co-design of control method, memory mechanism, and training strategy. We introduce a novel camera conditioning with a dense coordinate field whose renderings provide spatially aligned motion and orientation cues, allowing the model to interpret camera motion directly as visual evidence. To support fast and precise memory retrieval over a growing generation context, we propose an efficient sparse attention-based memory mechanism, enabling the model to selectively attend to a small set of relevant context tokens at inference time, regardless of actual context length. We further develop several techniques to rectify the self-forcing-style distillation pipeline, improving the student model's ability to respect control signals, as well as maintaining diverse generation modes and long-term memory from the teacher. Together, these components enable Wonder to synthesize diverse, minute-scale videos at 16 FPS while preserving coherent geometry, appearance, and dynamics across long rollouts. Beyond image-to-video generation, Wonder naturally supports video-conditioned generation, allowing existing dynamic scenes to be re-shot in real time.",
+          "url": "https://huggingface.co/papers/2607.26037",
+          "author": "Jiacong Xu, Hanwen Jiang, Zhixin Shu, Kalyan Sunkavalli, Vishal M. Patel, Yiqun Mei",
+          "published": "2026-07-29T00:00:00+00:00",
+          "source": "Hugging Face Papers",
+          "source_type": "research_paper",
+          "tags": [],
+          "summary": "Wonder presents a video world model for real-time, camera-controllable world exploration using dense coordinate fields and efficient memory retrieval.",
+          "importance_score": 88.0,
+          "reasoning": "Advances interactive generative world models for long-horizon spatial navigation.",
+          "themes": [
+            "Generative Models",
+            "Video Generation"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26037",
+            "category_name": "",
+            "discovery_sources": [
+              "huggingface"
+            ],
+            "source_urls": {
+              "huggingface": "https://huggingface.co/papers/2607.26037"
+            },
+            "huggingface": {
+              "upvotes": 16,
+              "selected_at": "2026-07-29T00:00:00.000Z",
+              "paper_published_at": "2026-07-28T00:00:00.000Z",
+              "github_repo": null
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Wonder presents a video world model for real-time, camera-controllable world exploration using dense coordinate fields and efficient memory retrieval.</p>",
+          "content_html": "<p>We present Wonder, a general-purpose video world model for real-time, camera-controllable world exploration. Given an image or a conditional video, Wonder constructs a playable world where users can navigate interactively by moving the camera, discovering unseen regions, and revisiting previously observed areas in real time and over a long-term horizon. Achieving this capability requires a system-level co-design of control method, memory mechanism, and training strategy. We introduce a novel camera conditioning with a dense coordinate field whose renderings provide spatially aligned motion and orientation cues, allowing the model to interpret camera motion directly as visual evidence. To support fast and precise memory retrieval over a growing generation context, we propose an efficient sparse attention-based memory mechanism, enabling the model to selectively attend to a small set of relevant context tokens at inference time, regardless of actual context length. We further develop several techniques to rectify the self-forcing-style distillation pipeline, improving the student model's ability to respect control signals, as well as maintaining diverse generation modes and long-term memory from the teacher. Together, these components enable Wonder to synthesize diverse, minute-scale videos at 16 FPS while preserving coherent geometry, appearance, and dynamics across long rollouts. Beyond image-to-video generation, Wonder naturally supports video-conditioned generation, allowing existing dynamic scenes to be re-shot in real time.</p>"
+        },
+        {
+          "id": "7982be0ef79f",
+          "title": "Visko Orbis 1.0: A Live Model for Real-Time Interactive Long Video Generation",
+          "content": "We present Visko Orbis 1.0, a Live Model for real-time, interactive long-video generation. Users can change the prompt at any moment during generation, and the update becomes visible in real time. Visko Orbis 1.0 supports long-form text-to-video, image-to-video, and video continuation, with multilingual prompts and prompt switching while generation is in progress. A bounded multi-scale memory preserves subjects, scenes, and style across chunks, sustaining hour-scale rollouts without evident quality or color drift. Built on a distilled chunk-wise streaming generator and a streaming video upscaler, Visko Orbis 1.0 delivers real-time 4K video generation at 24 FPS using an optimized GPU serving engine. In long-form Arena comparisons, Visko Orbis 1.0 obtains the highest overall-preference and temporal-stability ratings among state-of-the-art real-time interactive video-generation systems.",
+          "url": "https://www.alphaxiv.org/abs/2607.26694",
+          "author": "Xiangbo Gao, Siyuan Yang, Ping He, Mingyang Wu, Yuheng Wu, Yushen Zuo, Jiongze Yu, Ryan Cui, Hongyuan Hua, Devin Ma, Xiao Jin, Yubo Yuan, Qing Yin, Jie Yang, Zhengzhong Tu",
+          "published": "2026-07-29T09:40:23+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "Computer Science",
+            "cs.CV",
+            "generative-models",
+            "human-ai-interaction",
+            "inference-optimization",
+            "knowledge-distillation",
+            "model-serving-infrastructure",
+            "multi-modal-learning",
+            "sequence-modeling",
+            "time-series-analysis",
+            "vision-language-models"
+          ],
+          "summary": "Visko Orbis 1.0 is a live streaming model enabling real-time interactive long-video generation with dynamic prompt switching.",
+          "importance_score": 88.0,
+          "reasoning": "Achieves hour-scale rollouts at 4K resolution using bounded multi-scale memory and optimized serving.",
+          "themes": [
+            "Video Generation",
+            "Real-Time AI"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26694",
+            "category_name": "Computer Science, cs.CV, generative-models",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.26694"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 12,
+                "last_7_days": 12
+              },
+              "github_url": null,
+              "github_stars": null,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Visko Orbis 1.0 is a live streaming model enabling real-time interactive long-video generation with dynamic prompt switching.</p>",
+          "content_html": "<p>We present Visko Orbis 1.0, a Live Model for real-time, interactive long-video generation. Users can change the prompt at any moment during generation, and the update becomes visible in real time. Visko Orbis 1.0 supports long-form text-to-video, image-to-video, and video continuation, with multilingual prompts and prompt switching while generation is in progress. A bounded multi-scale memory preserves subjects, scenes, and style across chunks, sustaining hour-scale rollouts without evident quality or color drift. Built on a distilled chunk-wise streaming generator and a streaming video upscaler, Visko Orbis 1.0 delivers real-time 4K video generation at 24 FPS using an optimized GPU serving engine. In long-form Arena comparisons, Visko Orbis 1.0 obtains the highest overall-preference and temporal-stability ratings among state-of-the-art real-time interactive video-generation systems.</p>"
+        },
+        {
+          "id": "195acc38a5f6",
+          "title": "From Passive Video to Editable Experience: Physically Grounded Experience Synthesis for Embodied Intelligence",
+          "content": "The key bottleneck in embodied AI is not model architecture but data. Although billions of human manipulation videos exist online, robots cannot directly learn from them due to the embodiment gap between human morphology and robot hardware. We introduce Pegasus, a low-resource framework that bridges this gap by translating human demonstrations into robot-learnable data through structured knowledge transfer. Instead of relying on raw video prompts, Pegasus constructs a graph-based intermediate representation: a Task Graph extracted from human videos is transformed through Affordance and Constraint Graphs into a Robot Planning Graph for robot-conditioned video generation. A hierarchical affordance latent space models the relationship between object states, affordances, and tasks, enabling generalization beyond object identities. A closed-loop physics verifier further filters invalid generations using kinematic feasibility, collision constraints, and joint limits. We evaluate Pegasus across a range of egocentric manipulation benchmarks, including GTEA Gaze+ and EPIC-KITCHENS-100, and diverse robot embodiments, assessing Task Correctness, Executability, State Consistency, and Learnability. Results demonstrate reliable cross-embodiment translation and show that robot data generation can be reframed from a hardware collection problem into a scalable, low-resource knowledge transfer problem.",
+          "url": "https://www.alphaxiv.org/abs/2607.26903",
+          "author": "Jia Luo",
+          "published": "2026-07-29T13:35:23+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "agents",
+            "Computer Science",
+            "cs.AI",
+            "cs.RO",
+            "data-curation",
+            "generative-models",
+            "graph-neural-networks",
+            "imitation-learning",
+            "robotic-control",
+            "robotics-perception",
+            "synthetic-data",
+            "transfer-learning",
+            "video-understanding"
+          ],
+          "summary": "Pegasus bridges the embodiment gap by translating human manipulation videos into robot-executable plans via task, affordance, and constraint graphs.",
+          "importance_score": 88.0,
+          "reasoning": "Unlocks vast online human video datasets for direct robot learning through structured knowledge transfer.",
+          "themes": [
+            "Embodied AI",
+            "Robotics"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26903",
+            "category_name": "agents, Computer Science, cs.AI",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.26903"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 7,
+                "last_7_days": 7
+              },
+              "github_url": null,
+              "github_stars": null,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Pegasus bridges the embodiment gap by translating human manipulation videos into robot-executable plans via task, affordance, and constraint graphs.</p>",
+          "content_html": "<p>The key bottleneck in embodied AI is not model architecture but data. Although billions of human manipulation videos exist online, robots cannot directly learn from them due to the embodiment gap between human morphology and robot hardware. We introduce Pegasus, a low-resource framework that bridges this gap by translating human demonstrations into robot-learnable data through structured knowledge transfer. Instead of relying on raw video prompts, Pegasus constructs a graph-based intermediate representation: a Task Graph extracted from human videos is transformed through Affordance and Constraint Graphs into a Robot Planning Graph for robot-conditioned video generation. A hierarchical affordance latent space models the relationship between object states, affordances, and tasks, enabling generalization beyond object identities. A closed-loop physics verifier further filters invalid generations using kinematic feasibility, collision constraints, and joint limits. We evaluate Pegasus across a range of egocentric manipulation benchmarks, including GTEA Gaze+ and EPIC-KITCHENS-100, and diverse robot embodiments, assessing Task Correctness, Executability, State Consistency, and Learnability. Results demonstrate reliable cross-embodiment translation and show that robot data generation can be reframed from a hardware collection problem into a scalable, low-resource knowledge transfer problem.</p>"
+        },
+        {
+          "id": "0e0a83eac850",
+          "title": "Frontier Lab Employee Open Letter Calls For Being Able to Pace the Frontier",
+          "content": "The most important open letter in years dropped yesterday. This letter noticeably increases my hope that we will manage to not die, and that we will otherwise be able to secure for ourselves a positive future, both by its impact and by the evidence it provides that such a letter can get this level of support. Signed by 1,224 employees of frontier labs including many heavy hitters, and now endorsed by both OpenAI and Anthropic, here is its full text, which I also endorse: AI could help create a dramatically better future, but that outcome is not guaranteed. The world’s leading AI companies believe they could be close to automating AI research. It is hard to predict exactly how much this will accelerate AI progress, but there is a real risk that capability development rapidly accelerates beyond our ability to understand or control the resulting systems. To realize AI’s potential, industry, government, and society at large may need the option to buy time to address emerging risks, develop security measures, and strengthen oversight. But each company—and country—is under intense competitive pressure not to unilaterally slow that acceleration. And today, the world lacks the technical and governance tools to deliberately pace frontier-wide progress. Building on work already underway to monitor frontier model releases: We request that the U.S. government support an international effort to develop the technical and governance tools needed to deliberately pace the frontier of automated AI development.” –&nbsp;1,224&nbsp;employees&nbsp;of frontier AI companies​ The ask is to prepare mechanisms for future coordination, not a call to change the pace of development now. I strongly endorse that ask, but even if you disagree with the ask, this shows one thing unmistakably: Many employees of the major labs expect automated AI research to accelerate soon, and they are terrified of what might happen next and how fast things will go. We are not prepared. No matter what else you take a...",
+          "url": "https://www.lesswrong.com/posts/eWmeMLqTEauCmHLeR/frontier-lab-employee-open-letter-calls-for-being-able-to",
+          "author": "Zvi",
+          "published": "2026-07-29T11:33:15.118000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Discusses an open letter signed by over 1,200 frontier lab employees calling for the ability to pace AI capability development to ensure adequate safety measures and oversight.",
+          "importance_score": 88.0,
+          "reasoning": "Reflects a significant industry-wide governance milestone regarding safety pacing and employee advocacy.",
+          "themes": [
+            "AI Governance",
+            "Safety"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "lesswrong_id": "eWmeMLqTEauCmHLeR",
+            "slug": "frontier-lab-employee-open-letter-calls-for-being-able-to",
+            "base_score": 44,
+            "vote_count": 14,
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Discusses an open letter signed by over 1,200 frontier lab employees calling for the ability to pace AI capability development to ensure adequate safety measures and oversight.</p>",
+          "content_html": "<p>The most important open letter in years dropped yesterday. This letter noticeably increases my hope that we will manage to not die, and that we will otherwise be able to secure for ourselves a positive future, both by its impact and by the evidence it provides that such a letter can get this level of support. Signed by 1,224 employees of frontier labs including many heavy hitters, and now endorsed by both OpenAI and Anthropic, here is its full text, which I also endorse: AI could help create a dramatically better future, but that outcome is not guaranteed. The world’s leading AI companies believe they could be close to automating AI research. It is hard to predict exactly how much this will accelerate AI progress, but there is a real risk that capability development rapidly accelerates beyond our ability to understand or control the resulting systems. To realize AI’s potential, industry, government, and society at large may need the option to buy time to address emerging risks, develop security measures, and strengthen oversight. But each company—and country—is under intense competitive pressure not to unilaterally slow that acceleration. And today, the world lacks the technical and governance tools to deliberately pace frontier-wide progress. Building on work already underway to monitor frontier model releases: We request that the U.S. government support an international effort to develop the technical and governance tools needed to deliberately pace the frontier of automated AI development.” –&nbsp;1,224&nbsp;employees&nbsp;of frontier AI companies​ The ask is to prepare mechanisms for future coordination, not a call to change the pace of development now. I strongly endorse that ask, but even if you disagree with the ask, this shows one thing unmistakably: Many employees of the major labs expect automated AI research to accelerate soon, and they are terrified of what might happen next and how fast things will go. We are not prepared. No matter what else you take a...</p>"
+        },
+        {
+          "id": "ae7e91f7d0df",
+          "title": "Practice Makes Policies: Bootstrapping and Consolidating Robotic Capabilities from Zero Human Demonstrations",
+          "content": "HERO, a hierarchical agentic framework, enables robots to autonomously acquire and refine manipulation skills without initial human demonstrations by progressively evolving capabilities from VLM-guided heuristic reasoning to efficient, closed-loop visuomotor policies. The system successfully collected 664 forward and reverse subtask episodes, achieving an 86.0% average task success rate on diverse real-world manipulation tasks.",
+          "url": "https://www.alphaxiv.org/abs/2607.26809",
+          "author": "Jialiang Li, Yuhan Wang, Haojun Li, Gaojing Zhang, Yangtian Ye, Qipeng Liu, Haotian Liang, Wenzhao Lian",
+          "published": "2026-07-29T11:51:41+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "Computer Science",
+            "cs.RO"
+          ],
+          "summary": "HERO bootstraps and consolidates robotic manipulation capabilities from zero human demonstrations via VLM-guided heuristic reasoning.",
+          "importance_score": 87.0,
+          "reasoning": "Enables autonomous skill acquisition without expensive human demonstration datasets.",
+          "themes": [
+            "Robotics",
+            "Embodied AI"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26809",
+            "category_name": "Computer Science, cs.RO",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.26809"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 11,
+                "last_7_days": 11
+              },
+              "github_url": null,
+              "github_stars": null,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>HERO bootstraps and consolidates robotic manipulation capabilities from zero human demonstrations via VLM-guided heuristic reasoning.</p>",
+          "content_html": "<p>HERO, a hierarchical agentic framework, enables robots to autonomously acquire and refine manipulation skills without initial human demonstrations by progressively evolving capabilities from VLM-guided heuristic reasoning to efficient, closed-loop visuomotor policies. The system successfully collected 664 forward and reverse subtask episodes, achieving an 86.0% average task success rate on diverse real-world manipulation tasks.</p>"
+        },
+        {
+          "id": "d529709aaaf8",
+          "title": "Enfold: Folding World-Generator Computation into Predictive Representations for Efficient Embodied Control",
+          "content": "World generative models are typically used through what they produce: a rendered future, a video-conditioned action, or latent context computed by a costly generative branch. We argue that their more reusable asset is the computation that constructs a future. As a generator transforms a corrupted future into a coherent trajectory, its intermediate states organize appearance, spatial layout, and interaction across levels of abstraction. Can this future-generative computation be internalized in a representation inferred from the present alone? We present Enfold, which transfers this computation into a representation predicted from the current visual context and language instruction. During training, multi-level states exposed as the generator processes the observed future supervise a current-only encoder. The learned representation is fed back to condition future generation and is read by task heads without allowing task gradients to reshape the encoder. At deployment, action prediction no longer executes the generator. Across LIBERO, RoboTwin2.0, and real-robot tasks, Enfold supports strong control while reducing action latency by $3.7\\times$ relative to Fast--WAM, Enfold-Flash reaches $10.1\\times$. Representation analyses show that it suppresses nuisance variation and preferentially captures changes that emerge over longer horizons. When the current scene is altered by human intervention, both the generated continuation and the executed actions adapt, which is inconsistent with fixed trajectory replay. These results recast a world generator as a source of predictive control representations: its future need not be materialized at every step if its internal structure can be enfolded into the present.",
+          "url": "https://www.alphaxiv.org/abs/2607.26657",
+          "author": "Weili Zeng, Yitong Xing, Fulong Liu, Chengqun Yang, Antao Xiang, Feng Tian, Jingnan Gao, Jisong Cai, Xin Wang, Xiaomin Wu, Yao Mu, Yichao Yan",
+          "published": "2026-07-29T09:17:33+00:00",
+          "source": "AlphaXiv Trending",
+          "source_type": "research_paper",
+          "tags": [
+            "Computer Science",
+            "cs.RO"
+          ],
+          "summary": "Enfold internalizes world-generator computation into predictive representations inferred directly from current visual context and language instructions.",
+          "importance_score": 87.0,
+          "reasoning": "Reuses generative computation intermediates for efficient embodied control without costly rendering loops.",
+          "themes": [
+            "World Models",
+            "Embodied AI"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "arxiv_id": "2607.26657",
+            "category_name": "Computer Science, cs.RO",
+            "discovery_sources": [
+              "alphaxiv"
+            ],
+            "source_urls": {
+              "alphaxiv": "https://www.alphaxiv.org/abs/2607.26657"
+            },
+            "alphaxiv": {
+              "public_total_votes": 0,
+              "visits_count": {
+                "all": 32,
+                "last_7_days": 32
+              },
+              "github_url": null,
+              "github_stars": null,
+              "ranking_interval": "3 Days"
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Enfold internalizes world-generator computation into predictive representations inferred directly from current visual context and language instructions.</p>",
+          "content_html": "<p>World generative models are typically used through what they produce: a rendered future, a video-conditioned action, or latent context computed by a costly generative branch. We argue that their more reusable asset is the computation that constructs a future. As a generator transforms a corrupted future into a coherent trajectory, its intermediate states organize appearance, spatial layout, and interaction across levels of abstraction. Can this future-generative computation be internalized in a representation inferred from the present alone? We present Enfold, which transfers this computation into a representation predicted from the current visual context and language instruction. During training, multi-level states exposed as the generator processes the observed future supervise a current-only encoder. The learned representation is fed back to condition future generation and is read by task heads without allowing task gradients to reshape the encoder. At deployment, action prediction no longer executes the generator. Across LIBERO, RoboTwin2.0, and real-robot tasks, Enfold supports strong control while reducing action latency by $3.7\\times$ relative to Fast--WAM, Enfold-Flash reaches $10.1\\times$. Representation analyses show that it suppresses nuisance variation and preferentially captures changes that emerge over longer horizons. When the current scene is altered by human intervention, both the generated continuation and the executed actions adapt, which is inconsistent with fixed trajectory replay. These results recast a world generator as a source of predictive control representations: its future need not be materialized at every step if its internal structure can be enfolded into the present.</p>"
+        },
+        {
+          "id": "af23f1ff4383",
+          "title": "Notes on the Anthropic cryptographic blogpost",
+          "content": "Status: Mostly a summary with some of my notes at the end. Anthropic released a blogpost yesterday (07/28/26) describing how Claude Mythos Preview found improved ways to attack some cryptographic algorithms. While neither of the attacks they describe are a current threat to any production systems, I do expect models to continue getting substantially better at this. I’m not any sort of cryptography expert though, and am not sure how much of a threat model this is. Two different attacks were covered in the blogpost, one against HAWK, and one against a weakened version of AES, with full research papers available (see prior links).HAWK is the result that’s more actively helpful/valuable. HAWK is one of nine remaining candidates as part of the NIST call for Additional Digital Signatures, an effort to standardize new Post-Quantum Cryptographic (PQC) schemes, something that’s important as building a cryptographically-relevant quantum computer becomes closer to possible, threatening classical cryptography. The attack Mythos discovered means that one would need to double the size of HAWK keys to achieve the same level of security, which eliminates many of the reasons making HAWK a good PQC signature candidate. It was the only lattice-based candidate remaining, although three of the five main PQC standardizations are lattice-based.To find it, Anthropic used a Claude Code-like harness that supports multiple agents in a sandboxed environment. A human operator ran the experiment, but did not have particularly relevant cryptographic expertise, input was limited to project management. They mention the multi-agent workflow was valuable and the key idea in producing this attack was discovered by a pair of agents working together. Finding, developing and verifying the attack took about 60 hours and $100k in API cost.The second result was on a weaker version of AES, a commonly used/scrutinized encryption algorithm that was adopted in 2001. AES-128 encrypts an input by repeatedly apply...",
+          "url": "https://www.lesswrong.com/posts/ftE2aJ8txJHQnf9dR/notes-on-the-anthropic-cryptographic-blogpost",
+          "author": "Philipreal",
+          "published": "2026-07-29T12:21:08.082000",
+          "source": "LessWrong",
+          "source_type": "research_blog",
+          "tags": [],
+          "summary": "Following yesterday's [News](/?date=2026-07-29&category=news#item-341531820bc3) coverage, Summarizes and analyzes a post regarding cryptographic attacks discovered by Claude Mythos Preview against HAWK (a post-quantum signature scheme candidate) and a weakened AES variant.",
+          "importance_score": 85.0,
+          "reasoning": "Documents practical capability milestones of advanced frontier models in discovering post-quantum cryptographic vulnerabilities.",
+          "themes": [
+            "AI Safety",
+            "Cryptography"
+          ],
+          "sentiment": "neutral",
+          "continuation": {
+            "original_item_id": "341531820bc3",
+            "original_date": "2026-07-29",
+            "original_category": "news",
+            "original_title": "Anthropic says its Mythos model found vulnerabilities in cryptographic algorithms that secure the internet",
+            "continuation_type": "community_reaction",
+            "should_demote": false,
+            "reference_text": "Following yesterday's **News** coverage"
+          },
+          "metadata": {
+            "lesswrong_id": "ftE2aJ8txJHQnf9dR",
+            "slug": "notes-on-the-anthropic-cryptographic-blogpost",
+            "base_score": 19,
+            "vote_count": 8,
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-29&amp;category=news#item-341531820bc3\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Summarizes and analyzes a post regarding cryptographic attacks discovered by Claude Mythos Preview against HAWK (a post-quantum signature scheme candidate) and a weakened AES variant.</p>",
+          "content_html": "<p>Status: Mostly a summary with some of my notes at the end. Anthropic released a blogpost yesterday (07/28/26) describing how Claude Mythos Preview found improved ways to attack some cryptographic algorithms. While neither of the attacks they describe are a current threat to any production systems, I do expect models to continue getting substantially better at this. I’m not any sort of cryptography expert though, and am not sure how much of a threat model this is. Two different attacks were covered in the blogpost, one against HAWK, and one against a weakened version of AES, with full research papers available (see prior links).HAWK is the result that’s more actively helpful/valuable. HAWK is one of nine remaining candidates as part of the NIST call for Additional Digital Signatures, an effort to standardize new Post-Quantum Cryptographic (PQC) schemes, something that’s important as building a cryptographically-relevant quantum computer becomes closer to possible, threatening classical cryptography. The attack Mythos discovered means that one would need to double the size of HAWK keys to achieve the same level of security, which eliminates many of the reasons making HAWK a good PQC signature candidate. It was the only lattice-based candidate remaining, although three of the five main PQC standardizations are lattice-based.To find it, Anthropic used a Claude Code-like harness that supports multiple agents in a sandboxed environment. A human operator ran the experiment, but did not have particularly relevant cryptographic expertise, input was limited to project management. They mention the multi-agent workflow was valuable and the key idea in producing this attack was discovered by a pair of agents working together. Finding, developing and verifying the attack took about 60 hours and $100k in API cost.The second result was on a weaker version of AES, a commonly used/scrutinized encryption algorithm that was adopted in 2001. AES-128 encrypts an input by repeatedly apply...</p>"
+        }
+      ]
+    },
+    "social": {
+      "count": 20,
+      "category_summary": "Developer tooling and empirical research tools led AI community discussions today. **Simon Willison** provided actionable integration guides, while **Ethan Mollick** shared open-source testing frameworks.\n\n- **Simon Willison** detailed custom **Model Context Protocol (MCP)** server setups for **ChatGPT** and **Claude**, as well as [security findings](/?date=2026-07-30&category=social#item-704a31fd8a65) involving **Hugging Face**\n- **Ethan Mollick** [announced open-source release](/?date=2026-07-30&category=social#item-e047847660c4) of the **AI Behavioral Observatory** and [highlighted art-studio learning frameworks](/?date=2026-07-30&category=social#item-a67b5a43dde3) developed by **Laura Zarrow**\n- Community evaluations focused on [generative video capabilities](/?date=2026-07-30&category=social#item-a1fb57a2026d) in **Flux 3**, prompt adherence testing, and [3D modeling workflows](/?date=2026-07-30&category=social#item-098819cff8d4) using **Claude Opus 5** with **OpenSCAD**",
+      "category_summary_html": "<p>Developer tooling and empirical research tools led AI community discussions today. <strong>Simon Willison</strong> provided actionable integration guides, while <strong>Ethan Mollick</strong> shared open-source testing frameworks.</p>\n<ul>\n<li><strong>Simon Willison</strong> detailed custom <strong>Model Context Protocol (MCP)</strong> server setups for <strong>ChatGPT</strong> and <strong>Claude</strong>, as well as <a href=\"/?date=2026-07-30&amp;category=social#item-704a31fd8a65\" class=\"internal-link\" rel=\"noopener noreferrer\">security findings</a> involving <strong>Hugging Face</strong></li>\n<li><strong>Ethan Mollick</strong> <a href=\"/?date=2026-07-30&amp;category=social#item-e047847660c4\" class=\"internal-link\" rel=\"noopener noreferrer\">announced open-source release</a> of the <strong>AI Behavioral Observatory</strong> and <a href=\"/?date=2026-07-30&amp;category=social#item-a67b5a43dde3\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighted art-studio learning frameworks</a> developed by <strong>Laura Zarrow</strong></li>\n<li>Community evaluations focused on <a href=\"/?date=2026-07-30&amp;category=social#item-a1fb57a2026d\" class=\"internal-link\" rel=\"noopener noreferrer\">generative video capabilities</a> in <strong>Flux 3</strong>, prompt adherence testing, and <a href=\"/?date=2026-07-30&amp;category=social#item-098819cff8d4\" class=\"internal-link\" rel=\"noopener noreferrer\">3D modeling workflows</a> using <strong>Claude Opus 5</strong> with <strong>OpenSCAD</strong></li>\n</ul>",
+      "themes": [
+        {
+          "name": "Developer Tools & Integration",
+          "description": "Practical guides and workflows for integrating tools, such as custom Model Context Protocol servers and OpenSCAD.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "AI Safety & Security",
+          "description": "Discussions on guardrails, security incidents, and vulnerabilities involving AI models interacting with external infrastructure.",
+          "item_count": 2,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Research Tools & Benchmarking",
+          "description": "Open-source tools and empirical methodologies for studying AI behavior and performance.",
+          "item_count": 1,
+          "example_items": [],
+          "importance": 85.0
+        },
+        {
+          "name": "Model Capabilities & Prompting",
+          "description": "Evaluations, qualitative critiques, and amusing stress-tests of frontier text and video generation models.",
+          "item_count": 6,
+          "example_items": [],
+          "importance": 80.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "f4cbee2ee046",
+          "title": "A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's...",
+          "content": "A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's a little less obvious than I had hoped, but I got there in the end til.simonwillison.net/llms/mcp-in-...",
+          "url": "https://bsky.app/profile/simonwillison.net/post/3mrr3z77wj224",
+          "author": "@simonwillison.net",
+          "published": "2026-07-29T04:36:05.228000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Following yesterday's [News](/?date=2026-07-29&category=news#item-968474eff373) coverage, Simon Willison publishes a guide on configuring custom Model Context Protocol (MCP) servers in both ChatGPT and Claude web interfaces.",
+          "importance_score": 90.0,
+          "reasoning": "Highly practical technical tutorial by a trusted developer advocate on integrating MCP servers into main chat apps.",
+          "themes": [
+            "Developer Tools & Integration",
+            "Model Context Protocol"
+          ],
+          "sentiment": "neutral",
+          "continuation": {
+            "original_item_id": "968474eff373",
+            "original_date": "2026-07-29",
+            "original_category": "news",
+            "original_title": "How AgentCore Gateway supports the MCP 2026-07-28 spec",
+            "continuation_type": "community_reaction",
+            "should_demote": false,
+            "reference_text": "Following yesterday's **News** coverage"
+          },
+          "metadata": {
+            "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrr3z77wj224",
+            "author_display_name": "Simon Willison",
+            "engagement": {
+              "likes": 51,
+              "reposts": 1,
+              "replies": 6,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-29&amp;category=news#item-968474eff373\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Simon Willison publishes a guide on configuring custom Model Context Protocol (MCP) servers in both ChatGPT and Claude web interfaces.</p>",
+          "content_html": "<p>A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's a little less obvious than I had hoped, but I got there in the end til.simonwillison.net/llms/mcp-in-...</p>"
+        },
+        {
+          "id": "e047847660c4",
+          "title": "Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid...",
+          "content": "Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid tests on how AI behavior changes under various types of prompts. We have been using it for our own studies & I think it could help others do similar work. gail.wharton.upenn.edu/research-and...",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrsbhcht6k2p",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T15:46:06.843000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick announces the open-source release of the AI Behavioral Observatory for conducting statistically valid tests on AI prompt behaviors.",
+          "importance_score": 85.0,
+          "reasoning": "Useful open-source research tool release from a prominent academic lab, highly relevant for empirical AI evaluation.",
+          "themes": [
+            "Research Tools & Benchmarking",
+            "Model Evaluation"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrsbhcht6k2p",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 68,
+              "reposts": 12,
+              "replies": 0,
+              "quotes": 2
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick announces the open-source release of the AI Behavioral Observatory for conducting statistically valid tests on AI prompt behaviors.</p>",
+          "content_html": "<p>Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid tests on how AI behavior changes under various types of prompts. We have been using it for our own studies &amp; I think it could help others do similar work. gail.wharton.upenn.edu/research-and...</p>"
+        },
+        {
+          "id": "704a31fd8a65",
+          "title": "This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked anot...",
+          "content": "This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked another company (actually two companies, we now know that their model hacked one of Modal's customers as well)",
+          "url": "https://bsky.app/profile/simonwillison.net/post/3mrqopbtq6k2c",
+          "author": "@simonwillison.net",
+          "published": "2026-07-29T00:37:53.787000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Following yesterday's [News](/?date=2026-07-28&category=news#item-7bd1f665b709) coverage, Simon Willison clarifies details on a cybersecurity incident involving AI models targeting external infrastructure providers like Hugging Face and Modal.",
+          "importance_score": 85.0,
+          "reasoning": "Important security discussion regarding autonomous model behavior and platform vulnerabilities.",
+          "themes": [
+            "AI Safety & Security",
+            "Infrastructure"
+          ],
+          "sentiment": "neutral",
+          "continuation": {
+            "original_item_id": "7bd1f665b709",
+            "original_date": "2026-07-28",
+            "original_category": "news",
+            "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+            "continuation_type": "community_reaction",
+            "should_demote": false,
+            "reference_text": "Following yesterday's **News** coverage"
+          },
+          "metadata": {
+            "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqopbtq6k2c",
+            "author_display_name": "Simon Willison",
+            "engagement": {
+              "likes": 8,
+              "reposts": 0,
+              "replies": 1,
+              "quotes": 0
+            },
+            "related_sources": [
+              {
+                "source": "Feed: Artificial Intelligence Latest",
+                "url": "https://www.wired.com/story/openais-rogue-ai-agent-hacked-more-than-just-hugging-face/"
+              },
+              {
+                "source": "AI News & Artificial Intelligence | TechCrunch",
+                "url": "https://techcrunch.com/2026/07/29/the-hugging-face-ai-break-in-as-told-through-an-increasingly-committed-bear-metaphor/"
+              }
+            ],
+            "sentiment": "neutral"
+          },
+          "related_sources": [
+            {
+              "source": "Feed: Artificial Intelligence Latest",
+              "url": "https://www.wired.com/story/openais-rogue-ai-agent-hacked-more-than-just-hugging-face/"
+            },
+            {
+              "source": "AI News & Artificial Intelligence | TechCrunch",
+              "url": "https://techcrunch.com/2026/07/29/the-hugging-face-ai-break-in-as-told-through-an-increasingly-committed-bear-metaphor/"
+            }
+          ],
+          "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Simon Willison clarifies details on a cybersecurity incident involving AI models targeting external infrastructure providers like Hugging Face and Modal.</p>",
+          "content_html": "<p>This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked another company (actually two companies, we now know that their model hacked one of Modal's customers as well)</p>"
+        },
+        {
+          "id": "a67b5a43dde3",
+          "title": "The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students...",
+          "content": "The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students to work critically and effectively with AI using a studio structure derived from art education.\n\nShe wrote up a guide to the methods she developed: gail.wharton.upenn.edu/gen-ai-studi...",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrt2tbyvu22p",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T23:20:12.552000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick highlights a guide by Laura Zarrow on teaching students to work critically with AI using an art-education studio structure.",
+          "importance_score": 75.0,
+          "reasoning": "Shares practical pedagogical frameworks for AI education from a recognized researcher.",
+          "themes": [
+            "Education & Pedagogy"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrt2tbyvu22p",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 40,
+              "reposts": 7,
+              "replies": 1,
+              "quotes": 1
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick highlights a guide by Laura Zarrow on teaching students to work critically with AI using an art-education studio structure.</p>",
+          "content_html": "<p>The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students to work critically and effectively with AI using a studio structure derived from art education.</p>\n<p>She wrote up a guide to the methods she developed: gail.wharton.upenn.edu/gen-ai-studi...</p>"
+        },
+        {
+          "id": "a1fb57a2026d",
+          "title": "Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that foll...",
+          "content": "Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that follows a female astronaut with her helmet open as she walks through a regency dance in a traditional manor, with a mural on the wall painted by Rothko. Pushing people out of the way to make room...\" 1/2",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr7qi7fdc2y",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T05:42:47.625000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick tests the Flux 3 video model using surreal, cross-genre prompts.",
+          "importance_score": 75.0,
+          "reasoning": "Early community testing and capability assessment of a video generation model.",
+          "themes": [
+            "Generative Media",
+            "Model Evaluation"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr7qi7fdc2y",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 84,
+              "reposts": 5,
+              "replies": 2,
+              "quotes": 3
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick tests the Flux 3 video model using surreal, cross-genre prompts.</p>",
+          "content_html": "<p>Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that follows a female astronaut with her helmet open as she walks through a regency dance in a traditional manor, with a mural on the wall painted by Rothko. Pushing people out of the way to make room...\" 1/2</p>"
+        },
+        {
+          "id": "c1e27651c31f",
+          "title": "Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have show...",
+          "content": "Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have shown you the way but you must open the door. The map exists but the path is yours. The atlas of your instinct — every fact must first know itself\"\n\nPlease, just make the infographic about cheese I wanted",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrcofczns26",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T06:35:18.715000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick critiques overly dramatic prose styles in certain frontier models during straightforward tasks.",
+          "importance_score": 70.0,
+          "reasoning": "Engaging qualitative critique of model tone and persona styling.",
+          "themes": [
+            "Model Capabilities & Prompting"
+          ],
+          "sentiment": "concerned",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrcofczns26",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 242,
+              "reposts": 10,
+              "replies": 7,
+              "quotes": 2
+            },
+            "sentiment": "concerned"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick critiques overly dramatic prose styles in certain frontier models during straightforward tasks.</p>",
+          "content_html": "<p>Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have shown you the way but you must open the door. The map exists but the path is yours. The atlas of your instinct — every fact must first know itself\"</p>\n<p>Please, just make the infographic about cheese I wanted</p>"
+        },
+        {
+          "id": "849a4f87778a",
+          "title": "Those who follow my feed know that I test new video models by having them show an otter using a lapt...",
+          "content": "Those who follow my feed know that I test new video models by having them show an otter using a laptop on an airplane.\n\nThe new Flux 3 video model is really good, so I had it do a variation on theme, which will become apparent a couple seconds in.",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3calhys26",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T04:23:14.903000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick outlines his recurring benchmark test for video models involving an otter on a commercial airplane.",
+          "importance_score": 70.0,
+          "reasoning": "Humorous recurring prompt benchmark for video generation models.",
+          "themes": [
+            "Generative Media",
+            "Model Evaluation"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3calhys26",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 122,
+              "reposts": 6,
+              "replies": 3,
+              "quotes": 1
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick outlines his recurring benchmark test for video models involving an otter on a commercial airplane.</p>",
+          "content_html": "<p>Those who follow my feed know that I test new video models by having them show an otter using a laptop on an airplane.</p>\n<p>The new Flux 3 video model is really good, so I had it do a variation on theme, which will become apparent a couple seconds in.</p>"
+        },
+        {
+          "id": "799abc94a2d6",
+          "title": "The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the ro...",
+          "content": "The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the room with the hammered tin walls, everything else matched the prompt)",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrs4pcgdy22x",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T14:21:06.521000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick notes rapid advancements in LLM prompt adherence through creative multi-turn storytelling tests.",
+          "importance_score": 65.0,
+          "reasoning": "Informal observation of model capabilities with moderate engagement.",
+          "themes": [
+            "Model Capabilities & Prompting"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrs4pcgdy22x",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 7,
+              "reposts": 0,
+              "replies": 2,
+              "quotes": 0
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick notes rapid advancements in LLM prompt adherence through creative multi-turn storytelling tests.</p>",
+          "content_html": "<p>The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the room with the hammered tin walls, everything else matched the prompt)</p>"
+        },
+        {
+          "id": "098819cff8d4",
+          "title": "🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔 \nClaude Opu...",
+          "content": "🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔 \nClaude Opus 5 + OpenSCAD. #ai #3dprinting",
+          "url": "https://bsky.app/profile/khromov.se/post/3mrrjwk5t252t",
+          "author": "@khromov.se",
+          "published": "2026-07-29T08:45:08.395000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "User combines Claude Opus 5 and OpenSCAD to generate 3D printing code for a surreal animal prompt.",
+          "importance_score": 65.0,
+          "reasoning": "Practical cross-disciplinary use case combining LLM code generation with 3D design software.",
+          "themes": [
+            "Developer Tools & Integration",
+            "Generative Code"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:slbdnpcgysjbecfre4fdayqu/app.bsky.feed.post/3mrrjwk5t252t",
+            "author_display_name": "Stanislav",
+            "engagement": {
+              "likes": 44,
+              "reposts": 4,
+              "replies": 2,
+              "quotes": 1
+            },
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>User combines Claude Opus 5 and OpenSCAD to generate 3D printing code for a surreal animal prompt.</p>",
+          "content_html": "<p>🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔</p>\n<p>Claude Opus 5 + OpenSCAD. #ai #3dprinting</p>"
+        },
+        {
+          "id": "ddbd63f8dbd0",
+          "title": "Here is the cheese infographic: how-to-read-a-cheese.netlify.app\n\n\"One consequence worth noting: the...",
+          "content": "Here is the cheese infographic: how-to-read-a-cheese.netlify.app\n\n\"One consequence worth noting: the chart panel stays cave-dark in both light and dark themes, because fresh cheese is white and white has no contrast on a pale ground — the light-mode ramp failed the contrast floor\"\n\nThanks, Fable.",
+          "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrfneisqs2r",
+          "author": "@emollick.bsky.social",
+          "published": "2026-07-29T07:28:25.528000",
+          "source": "Bluesky",
+          "source_type": "bluesky",
+          "tags": [],
+          "summary": "Ethan Mollick humorously documents an LLM agent swarm analyzing a simple cheese infographic with extreme technical seriousness.",
+          "importance_score": 60.0,
+          "reasoning": "Anecdotal and entertaining look at multi-agent workflows.",
+          "themes": [
+            "Model Capabilities & Prompting"
+          ],
+          "sentiment": "neutral",
+          "continuation": null,
+          "metadata": {
+            "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrfneisqs2r",
+            "author_display_name": "Ethan Mollick",
+            "engagement": {
+              "likes": 30,
+              "reposts": 0,
+              "replies": 2,
+              "quotes": 0
+            },
+            "sentiment": "neutral"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Ethan Mollick humorously documents an LLM agent swarm analyzing a simple cheese infographic with extreme technical seriousness.</p>",
+          "content_html": "<p>Here is the cheese infographic: how-to-read-a-cheese.netlify.app</p>\n<p>\"One consequence worth noting: the chart panel stays cave-dark in both light and dark themes, because fresh cheese is white and white has no contrast on a pale ground — the light-mode ramp failed the contrast floor\"</p>\n<p>Thanks, Fable.</p>"
+        }
+      ]
+    },
+    "github_trending": {
+      "count": 45,
+      "category_summary": "**Executive AI Director Summary Insight**\n\n**1. [Next-Generation Agent Harnesses](/?date=2026-07-30&category=github_trending#item-7fe32979b285) and Skill Extensions**\nThe open-source AI ecosystem is rapidly standard",
+      "category_summary_html": "<p><strong>Executive AI Director Summary Insight</strong></p>\n<p><strong>1. <a href=\"/?date=2026-07-30&amp;category=github_trending#item-7fe32979b285\" class=\"internal-link\" rel=\"noopener noreferrer\">Next-Generation Agent Harnesses</a> and Skill Extensions</strong></p>\n<p>The open-source AI ecosystem is rapidly standard</p>",
+      "themes": [
+        {
+          "name": "Agentic Automation & Web Tools",
+          "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+          "item_count": 15,
+          "example_items": [
+            "7fe32979b285",
+            "e87b6fbd1674",
+            "6dd94f0986dd"
+          ],
+          "importance": 88.0
+        },
+        {
+          "name": "Local LLM & Inference Infrastructure",
+          "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+          "item_count": 4,
+          "example_items": [
+            "7fe32979b285",
+            "e87b6fbd1674",
+            "6dd94f0986dd"
+          ],
+          "importance": 85.0
+        }
+      ],
+      "top_items": [
+        {
+          "id": "7fe32979b285",
+          "title": "[GitHub Trending] affaan-m/ECC: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+          "content": "GitHub Repository: affaan-m/ECC\nDescription: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.\nLanguage: JavaScript\nStars Today: 857",
+          "url": "https://github.com/affaan-m/ECC",
+          "author": "affaan-m",
+          "published": "2026-07-30T09:40:20.765887+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source JavaScript repository (857 stars today): GitHub Repository: affaan-m/ECC\nDescription: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.\nLanguage: JavaScript\nStars Today: 857",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (857 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "JavaScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "857",
+            "language": "JavaScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.765887+00:00",
+            "hn_score": 857,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source JavaScript repository (857 stars today): GitHub Repository: affaan-m/ECC</p>\n<p>Description: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 857</p>",
+          "content_html": "<p>GitHub Repository: affaan-m/ECC</p>\n<p>Description: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 857</p>"
+        },
+        {
+          "id": "e87b6fbd1674",
+          "title": "[GitHub Trending] huggingface/speech-to-speech: Build local voice agents with open-source models",
+          "content": "GitHub Repository: huggingface/speech-to-speech\nDescription: Build local voice agents with open-source models\nLanguage: Python\nStars Today: 827",
+          "url": "https://github.com/huggingface/speech-to-speech",
+          "author": "huggingface",
+          "published": "2026-07-30T09:40:20.766196+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (827 stars today): GitHub Repository: huggingface/speech-to-speech\nDescription: Build local voice agents with open-source models\nLanguage: Python\nStars Today: 827",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (827 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "827",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.766196+00:00",
+            "hn_score": 827,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (827 stars today): GitHub Repository: huggingface/speech-to-speech</p>\n<p>Description: Build local voice agents with open-source models</p>\n<p>Language: Python</p>\n<p>Stars Today: 827</p>",
+          "content_html": "<p>GitHub Repository: huggingface/speech-to-speech</p>\n<p>Description: Build local voice agents with open-source models</p>\n<p>Language: Python</p>\n<p>Stars Today: 827</p>"
+        },
+        {
+          "id": "6dd94f0986dd",
+          "title": "[GitHub Trending] paperswithbacktest/awesome-systematic-trading: A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.",
+          "content": "GitHub Repository: paperswithbacktest/awesome-systematic-trading\nDescription: A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.\nLanguage: Python\nStars Today: 945",
+          "url": "https://github.com/paperswithbacktest/awesome-systematic-trading",
+          "author": "paperswithbacktest",
+          "published": "2026-07-30T09:40:20.769680+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (945 stars today): GitHub Repository: paperswithbacktest/awesome-systematic-trading\nDescription: A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.\nLanguage: Python\nStars Today: 945",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (945 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "945",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.769680+00:00",
+            "hn_score": 945,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (945 stars today): GitHub Repository: paperswithbacktest/awesome-systematic-trading</p>\n<p>Description: A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.</p>\n<p>Language: Python</p>\n<p>Stars Today: 945</p>",
+          "content_html": "<p>GitHub Repository: paperswithbacktest/awesome-systematic-trading</p>\n<p>Description: A curated list of awesome libraries, packages, strategies, books, blogs, tutorials for systematic trading.</p>\n<p>Language: Python</p>\n<p>Stars Today: 945</p>"
+        },
+        {
+          "id": "ef4765e28e94",
+          "title": "[GitHub Trending] pascalorg/editor: Create and share 3D architectural projects.",
+          "content": "GitHub Repository: pascalorg/editor\nDescription: Create and share 3D architectural projects.\nLanguage: TypeScript\nStars Today: 1,022",
+          "url": "https://github.com/pascalorg/editor",
+          "author": "pascalorg",
+          "published": "2026-07-30T09:40:20.770313+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (1,022 stars today): GitHub Repository: pascalorg/editor\nDescription: Create and share 3D architectural projects.\nLanguage: TypeScript\nStars Today: 1,022",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,022 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,022",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.770313+00:00",
+            "hn_score": 1022,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (1,022 stars today): GitHub Repository: pascalorg/editor</p>\n<p>Description: Create and share 3D architectural projects.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,022</p>",
+          "content_html": "<p>GitHub Repository: pascalorg/editor</p>\n<p>Description: Create and share 3D architectural projects.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,022</p>"
+        },
+        {
+          "id": "2f6fe5f6d2af",
+          "title": "[GitHub Trending] virgiliojr94/book-to-skill: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+          "content": "GitHub Repository: virgiliojr94/book-to-skill\nDescription: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.\nLanguage: Python\nStars Today: 1,421",
+          "url": "https://github.com/virgiliojr94/book-to-skill",
+          "author": "virgiliojr94",
+          "published": "2026-07-30T09:40:20.770754+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (1,421 stars today): GitHub Repository: virgiliojr94/book-to-skill\nDescription: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.\nLanguage: Python\nStars Today: 1,421",
+          "importance_score": 98,
+          "reasoning": "High community velocity on GitHub Trending (1,421 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "1,421",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.770754+00:00",
+            "hn_score": 1421,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (1,421 stars today): GitHub Repository: virgiliojr94/book-to-skill</p>\n<p>Description: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,421</p>",
+          "content_html": "<p>GitHub Repository: virgiliojr94/book-to-skill</p>\n<p>Description: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,421</p>"
+        },
+        {
+          "id": "c38ba8633ffe",
+          "title": "[GitHub Trending] moeru-ai/airi: 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.",
+          "content": "GitHub Repository: moeru-ai/airi\nDescription: 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.\nLanguage: TypeScript\nStars Today: 682",
+          "url": "https://github.com/moeru-ai/airi",
+          "author": "moeru-ai",
+          "published": "2026-07-30T09:40:20.765524+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (682 stars today): GitHub Repository: moeru-ai/airi\nDescription: 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.\nLanguage: TypeScript\nStars Today: 682",
+          "importance_score": 94,
+          "reasoning": "High community velocity on GitHub Trending (682 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "682",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.765524+00:00",
+            "hn_score": 682,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (682 stars today): GitHub Repository: moeru-ai/airi</p>\n<p>Description: 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 682</p>",
+          "content_html": "<p>GitHub Repository: moeru-ai/airi</p>\n<p>Description: 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama's altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 682</p>"
+        },
+        {
+          "id": "fbd0b7b7a365",
+          "title": "[GitHub Trending] opengeos/GeoLibre: A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.",
+          "content": "GitHub Repository: opengeos/GeoLibre\nDescription: A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.\nLanguage: TypeScript\nStars Today: 671",
+          "url": "https://github.com/opengeos/GeoLibre",
+          "author": "opengeos",
+          "published": "2026-07-30T09:40:20.765101+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source TypeScript repository (671 stars today): GitHub Repository: opengeos/GeoLibre\nDescription: A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.\nLanguage: TypeScript\nStars Today: 671",
+          "importance_score": 93,
+          "reasoning": "High community velocity on GitHub Trending (671 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "TypeScript"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "671",
+            "language": "TypeScript",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.765101+00:00",
+            "hn_score": 671,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source TypeScript repository (671 stars today): GitHub Repository: opengeos/GeoLibre</p>\n<p>Description: A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 671</p>",
+          "content_html": "<p>GitHub Repository: opengeos/GeoLibre</p>\n<p>Description: A lightweight, cloud-native GIS platform for visualizing, exploring, and analyzing geospatial data. It runs in the web browser, on the desktop, on mobile, and inside Jupyter notebooks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 671</p>"
+        },
+        {
+          "id": "cede89c567e6",
+          "title": "[GitHub Trending] calesthio/OpenMontage: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+          "content": "GitHub Repository: calesthio/OpenMontage\nDescription: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.\nLanguage: Python\nStars Today: 668",
+          "url": "https://github.com/calesthio/OpenMontage",
+          "author": "calesthio",
+          "published": "2026-07-30T09:40:22.054320+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Python repository (668 stars today): GitHub Repository: calesthio/OpenMontage\nDescription: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.\nLanguage: Python\nStars Today: 668",
+          "importance_score": 93,
+          "reasoning": "High community velocity on GitHub Trending (668 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Python"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "668",
+            "language": "Python",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:22.054320+00:00",
+            "hn_score": 668,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Python repository (668 stars today): GitHub Repository: calesthio/OpenMontage</p>\n<p>Description: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.</p>\n<p>Language: Python</p>\n<p>Stars Today: 668</p>",
+          "content_html": "<p>GitHub Repository: calesthio/OpenMontage</p>\n<p>Description: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.</p>\n<p>Language: Python</p>\n<p>Stars Today: 668</p>"
+        },
+        {
+          "id": "fd94f5cbe083",
+          "title": "[GitHub Trending] 1jehuang/jcode: The most RAM efficient harness",
+          "content": "GitHub Repository: 1jehuang/jcode\nDescription: The most RAM efficient harness\nLanguage: Rust\nStars Today: 640",
+          "url": "https://github.com/1jehuang/jcode",
+          "author": "1jehuang",
+          "published": "2026-07-30T09:40:20.766519+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Rust repository (640 stars today): GitHub Repository: 1jehuang/jcode\nDescription: The most RAM efficient harness\nLanguage: Rust\nStars Today: 640",
+          "importance_score": 92,
+          "reasoning": "High community velocity on GitHub Trending (640 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Rust"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "640",
+            "language": "Rust",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.766519+00:00",
+            "hn_score": 640,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Rust repository (640 stars today): GitHub Repository: 1jehuang/jcode</p>\n<p>Description: The most RAM efficient harness</p>\n<p>Language: Rust</p>\n<p>Stars Today: 640</p>",
+          "content_html": "<p>GitHub Repository: 1jehuang/jcode</p>\n<p>Description: The most RAM efficient harness</p>\n<p>Language: Rust</p>\n<p>Stars Today: 640</p>"
+        },
+        {
+          "id": "f49502979215",
+          "title": "[GitHub Trending] obra/superpowers: An agentic skills framework & software development methodology that works.",
+          "content": "GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 616",
+          "url": "https://github.com/obra/superpowers",
+          "author": "obra",
+          "published": "2026-07-30T09:40:20.768222+00:00",
+          "source": "github_trending",
+          "source_type": "github_trending",
+          "tags": [
+            "github-trending"
+          ],
+          "summary": "Trending open-source Shell repository (616 stars today): GitHub Repository: obra/superpowers\nDescription: An agentic skills framework & software development methodology that works.\nLanguage: Shell\nStars Today: 616",
+          "importance_score": 90,
+          "reasoning": "High community velocity on GitHub Trending (616 stars today).",
+          "themes": [
+            "Open Source",
+            "Developer Tools",
+            "Shell"
+          ],
+          "sentiment": "positive",
+          "continuation": null,
+          "metadata": {
+            "stars": 0,
+            "stars_today": "616",
+            "language": "Shell",
+            "topics": [
+              "github-trending"
+            ],
+            "created": "",
+            "updated": "2026-07-30T09:40:20.768222+00:00",
+            "hn_score": 616,
+            "sentiment": "positive"
+          },
+          "related_sources": [],
+          "summary_html": "<p>Trending open-source Shell repository (616 stars today): GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 616</p>",
+          "content_html": "<p>GitHub Repository: obra/superpowers</p>\n<p>Description: An agentic skills framework &amp; software development methodology that works.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 616</p>"
+        }
+      ]
+    }
+  }
+}

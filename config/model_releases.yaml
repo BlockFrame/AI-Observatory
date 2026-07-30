@@ -10,9 +10,18 @@
 #   - Web search verification for specific releases (Codex, etc.)
 #
 # Coverage: November 2025 onwards (post Claude Opus 4.8 knowledge cutoff)
-# Last verified: 2026-07-29
+# Last verified: 2026-07-30
 
 openai:
+  # GPT Transcribe (auto-detected 2026-07-30)
+  GPT Transcribe:
+    ga_date: "2026-07-29"
+    api_date: "unknown"
+  # GPT Live Transcribe (auto-detected 2026-07-30)
+  GPT Live Transcribe:
+    ga_date: "2026-07-29"
+    api_date: "unknown"
+
   # GPT-Live-1 (auto-detected 2026-07-09)
   GPT-Live-1:
     ga_date: "2026-07-08"

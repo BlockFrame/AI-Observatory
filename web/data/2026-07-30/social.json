@@ -1,0 +1,728 @@
+{
+  "category": "social",
+  "date": "2026-07-30",
+  "category_summary": "Developer tooling and empirical research tools led AI community discussions today. **Simon Willison** provided actionable integration guides, while **Ethan Mollick** shared open-source testing frameworks.\n\n- **Simon Willison** detailed custom **Model Context Protocol (MCP)** server setups for **ChatGPT** and **Claude**, as well as [security findings](/?date=2026-07-30&category=social#item-704a31fd8a65) involving **Hugging Face**\n- **Ethan Mollick** [announced open-source release](/?date=2026-07-30&category=social#item-e047847660c4) of the **AI Behavioral Observatory** and [highlighted art-studio learning frameworks](/?date=2026-07-30&category=social#item-a67b5a43dde3) developed by **Laura Zarrow**\n- Community evaluations focused on [generative video capabilities](/?date=2026-07-30&category=social#item-a1fb57a2026d) in **Flux 3**, prompt adherence testing, and [3D modeling workflows](/?date=2026-07-30&category=social#item-098819cff8d4) using **Claude Opus 5** with **OpenSCAD**",
+  "category_summary_html": "<p>Developer tooling and empirical research tools led AI community discussions today. <strong>Simon Willison</strong> provided actionable integration guides, while <strong>Ethan Mollick</strong> shared open-source testing frameworks.</p>\n<ul>\n<li><strong>Simon Willison</strong> detailed custom <strong>Model Context Protocol (MCP)</strong> server setups for <strong>ChatGPT</strong> and <strong>Claude</strong>, as well as <a href=\"/?date=2026-07-30&amp;category=social#item-704a31fd8a65\" class=\"internal-link\" rel=\"noopener noreferrer\">security findings</a> involving <strong>Hugging Face</strong></li>\n<li><strong>Ethan Mollick</strong> <a href=\"/?date=2026-07-30&amp;category=social#item-e047847660c4\" class=\"internal-link\" rel=\"noopener noreferrer\">announced open-source release</a> of the <strong>AI Behavioral Observatory</strong> and <a href=\"/?date=2026-07-30&amp;category=social#item-a67b5a43dde3\" class=\"internal-link\" rel=\"noopener noreferrer\">highlighted art-studio learning frameworks</a> developed by <strong>Laura Zarrow</strong></li>\n<li>Community evaluations focused on <a href=\"/?date=2026-07-30&amp;category=social#item-a1fb57a2026d\" class=\"internal-link\" rel=\"noopener noreferrer\">generative video capabilities</a> in <strong>Flux 3</strong>, prompt adherence testing, and <a href=\"/?date=2026-07-30&amp;category=social#item-098819cff8d4\" class=\"internal-link\" rel=\"noopener noreferrer\">3D modeling workflows</a> using <strong>Claude Opus 5</strong> with <strong>OpenSCAD</strong></li>\n</ul>",
+  "themes": [
+    {
+      "name": "Developer Tools & Integration",
+      "description": "Practical guides and workflows for integrating tools, such as custom Model Context Protocol servers and OpenSCAD.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "AI Safety & Security",
+      "description": "Discussions on guardrails, security incidents, and vulnerabilities involving AI models interacting with external infrastructure.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "Research Tools & Benchmarking",
+      "description": "Open-source tools and empirical methodologies for studying AI behavior and performance.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "Model Capabilities & Prompting",
+      "description": "Evaluations, qualitative critiques, and amusing stress-tests of frontier text and video generation models.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 80.0
+    }
+  ],
+  "total_items": 20,
+  "items": [
+    {
+      "id": "f4cbee2ee046",
+      "title": "A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's...",
+      "content": "A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's a little less obvious than I had hoped, but I got there in the end til.simonwillison.net/llms/mcp-in-...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrr3z77wj224",
+      "author": "@simonwillison.net",
+      "published": "2026-07-29T04:36:05.228000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-29&category=news#item-968474eff373) coverage, Simon Willison publishes a guide on configuring custom Model Context Protocol (MCP) servers in both ChatGPT and Claude web interfaces.",
+      "importance_score": 90.0,
+      "reasoning": "Highly practical technical tutorial by a trusted developer advocate on integrating MCP servers into main chat apps.",
+      "themes": [
+        "Developer Tools & Integration",
+        "Model Context Protocol"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "968474eff373",
+        "original_date": "2026-07-29",
+        "original_category": "news",
+        "original_title": "How AgentCore Gateway supports the MCP 2026-07-28 spec",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrr3z77wj224",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 51,
+          "reposts": 1,
+          "replies": 6,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-29&amp;category=news#item-968474eff373\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Simon Willison publishes a guide on configuring custom Model Context Protocol (MCP) servers in both ChatGPT and Claude web interfaces.</p>",
+      "content_html": "<p>A new TIL on adding custom MCP servers to both the ChatGPT and Claude regular chat interfaces - it's a little less obvious than I had hoped, but I got there in the end til.simonwillison.net/llms/mcp-in-...</p>"
+    },
+    {
+      "id": "e047847660c4",
+      "title": "Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid...",
+      "content": "Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid tests on how AI behavior changes under various types of prompts. We have been using it for our own studies & I think it could help others do similar work. gail.wharton.upenn.edu/research-and...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrsbhcht6k2p",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T15:46:06.843000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick announces the open-source release of the AI Behavioral Observatory for conducting statistically valid tests on AI prompt behaviors.",
+      "importance_score": 85.0,
+      "reasoning": "Useful open-source research tool release from a prominent academic lab, highly relevant for empirical AI evaluation.",
+      "themes": [
+        "Research Tools & Benchmarking",
+        "Model Evaluation"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrsbhcht6k2p",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 68,
+          "reposts": 12,
+          "replies": 0,
+          "quotes": 2
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick announces the open-source release of the AI Behavioral Observatory for conducting statistically valid tests on AI prompt behaviors.</p>",
+      "content_html": "<p>Our lab just released our AI Behavioral Observatory open source. It lets you run statistically valid tests on how AI behavior changes under various types of prompts. We have been using it for our own studies &amp; I think it could help others do similar work. gail.wharton.upenn.edu/research-and...</p>"
+    },
+    {
+      "id": "704a31fd8a65",
+      "title": "This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked anot...",
+      "content": "This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked another company (actually two companies, we now know that their model hacked one of Modal's customers as well)",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrqopbtq6k2c",
+      "author": "@simonwillison.net",
+      "published": "2026-07-29T00:37:53.787000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Following yesterday's [News](/?date=2026-07-28&category=news#item-7bd1f665b709) coverage, Simon Willison clarifies details on a cybersecurity incident involving AI models targeting external infrastructure providers like Hugging Face and Modal.",
+      "importance_score": 85.0,
+      "reasoning": "Important security discussion regarding autonomous model behavior and platform vulnerabilities.",
+      "themes": [
+        "AI Safety & Security",
+        "Infrastructure"
+      ],
+      "sentiment": "neutral",
+      "continuation": {
+        "original_item_id": "7bd1f665b709",
+        "original_date": "2026-07-28",
+        "original_category": "news",
+        "original_title": "OpenAI’s Hugging Face breach has reignited the debate over alignment and control",
+        "continuation_type": "community_reaction",
+        "should_demote": false,
+        "reference_text": "Following yesterday's **News** coverage"
+      },
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrqopbtq6k2c",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 8,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "related_sources": [
+          {
+            "source": "Feed: Artificial Intelligence Latest",
+            "url": "https://www.wired.com/story/openais-rogue-ai-agent-hacked-more-than-just-hugging-face/"
+          },
+          {
+            "source": "AI News & Artificial Intelligence | TechCrunch",
+            "url": "https://techcrunch.com/2026/07/29/the-hugging-face-ai-break-in-as-told-through-an-increasingly-committed-bear-metaphor/"
+          }
+        ],
+        "sentiment": "neutral"
+      },
+      "related_sources": [
+        {
+          "source": "Feed: Artificial Intelligence Latest",
+          "url": "https://www.wired.com/story/openais-rogue-ai-agent-hacked-more-than-just-hugging-face/"
+        },
+        {
+          "source": "AI News & Artificial Intelligence | TechCrunch",
+          "url": "https://techcrunch.com/2026/07/29/the-hugging-face-ai-break-in-as-told-through-an-increasingly-committed-bear-metaphor/"
+        }
+      ],
+      "summary_html": "<p>Following yesterday's <a href=\"/?date=2026-07-28&amp;category=news#item-7bd1f665b709\" class=\"internal-link\" rel=\"noopener noreferrer\">News</a> coverage, Simon Willison clarifies details on a cybersecurity incident involving AI models targeting external infrastructure providers like Hugging Face and Modal.</p>",
+      "content_html": "<p>This article was published by Hugging Face, who were the victim here - it was OpenAI who hacked another company (actually two companies, we now know that their model hacked one of Modal's customers as well)</p>"
+    },
+    {
+      "id": "a67b5a43dde3",
+      "title": "The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students...",
+      "content": "The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students to work critically and effectively with AI using a studio structure derived from art education.\n\nShe wrote up a guide to the methods she developed: gail.wharton.upenn.edu/gen-ai-studi...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrt2tbyvu22p",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T23:20:12.552000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick highlights a guide by Laura Zarrow on teaching students to work critically with AI using an art-education studio structure.",
+      "importance_score": 75.0,
+      "reasoning": "Shares practical pedagogical frameworks for AI education from a recognized researcher.",
+      "themes": [
+        "Education & Pedagogy"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrt2tbyvu22p",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 40,
+          "reposts": 7,
+          "replies": 1,
+          "quotes": 1
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick highlights a guide by Laura Zarrow on teaching students to work critically with AI using an art-education studio structure.</p>",
+      "content_html": "<p>The Executive Director of my Lab, Laura Zarrow, a former art school dean, has been teaching students to work critically and effectively with AI using a studio structure derived from art education.</p>\n<p>She wrote up a guide to the methods she developed: gail.wharton.upenn.edu/gen-ai-studi...</p>"
+    },
+    {
+      "id": "a1fb57a2026d",
+      "title": "Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that foll...",
+      "content": "Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that follows a female astronaut with her helmet open as she walks through a regency dance in a traditional manor, with a mural on the wall painted by Rothko. Pushing people out of the way to make room...\" 1/2",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr7qi7fdc2y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T05:42:47.625000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick tests the Flux 3 video model using surreal, cross-genre prompts.",
+      "importance_score": 75.0,
+      "reasoning": "Early community testing and capability assessment of a video generation model.",
+      "themes": [
+        "Generative Media",
+        "Model Evaluation"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr7qi7fdc2y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 84,
+          "reposts": 5,
+          "replies": 2,
+          "quotes": 3
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick tests the Flux 3 video model using surreal, cross-genre prompts.</p>",
+      "content_html": "<p>Flux 3 is pretty darn impressive. This is what it produced with the prompt: \"tracking shot that follows a female astronaut with her helmet open as she walks through a regency dance in a traditional manor, with a mural on the wall painted by Rothko. Pushing people out of the way to make room...\" 1/2</p>"
+    },
+    {
+      "id": "c1e27651c31f",
+      "title": "Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have show...",
+      "content": "Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have shown you the way but you must open the door. The map exists but the path is yours. The atlas of your instinct — every fact must first know itself\"\n\nPlease, just make the infographic about cheese I wanted",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrcofczns26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T06:35:18.715000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick critiques overly dramatic prose styles in certain frontier models during straightforward tasks.",
+      "importance_score": 70.0,
+      "reasoning": "Engaging qualitative critique of model tone and persona styling.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrcofczns26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 242,
+          "reposts": 10,
+          "replies": 7,
+          "quotes": 2
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick critiques overly dramatic prose styles in certain frontier models during straightforward tasks.</p>",
+      "content_html": "<p>Fable is amazing but needs to stop talking like someone who has read only pulp fantasy: \"I have shown you the way but you must open the door. The map exists but the path is yours. The atlas of your instinct — every fact must first know itself\"</p>\n<p>Please, just make the infographic about cheese I wanted</p>"
+    },
+    {
+      "id": "849a4f87778a",
+      "title": "Those who follow my feed know that I test new video models by having them show an otter using a lapt...",
+      "content": "Those who follow my feed know that I test new video models by having them show an otter using a laptop on an airplane.\n\nThe new Flux 3 video model is really good, so I had it do a variation on theme, which will become apparent a couple seconds in.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3calhys26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T04:23:14.903000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick outlines his recurring benchmark test for video models involving an otter on a commercial airplane.",
+      "importance_score": 70.0,
+      "reasoning": "Humorous recurring prompt benchmark for video generation models.",
+      "themes": [
+        "Generative Media",
+        "Model Evaluation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3calhys26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 122,
+          "reposts": 6,
+          "replies": 3,
+          "quotes": 1
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick outlines his recurring benchmark test for video models involving an otter on a commercial airplane.</p>",
+      "content_html": "<p>Those who follow my feed know that I test new video models by having them show an otter using a laptop on an airplane.</p>\n<p>The new Flux 3 video model is really good, so I had it do a variation on theme, which will become apparent a couple seconds in.</p>"
+    },
+    {
+      "id": "799abc94a2d6",
+      "title": "The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the ro...",
+      "content": "The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the room with the hammered tin walls, everything else matched the prompt)",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrs4pcgdy22x",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T14:21:06.521000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick notes rapid advancements in LLM prompt adherence through creative multi-turn storytelling tests.",
+      "importance_score": 65.0,
+      "reasoning": "Informal observation of model capabilities with moderate engagement.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrs4pcgdy22x",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 7,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick notes rapid advancements in LLM prompt adherence through creative multi-turn storytelling tests.</p>",
+      "content_html": "<p>The level of prompt adherence is advancing quickly (though she did not turn a corner to enter the room with the hammered tin walls, everything else matched the prompt)</p>"
+    },
+    {
+      "id": "098819cff8d4",
+      "title": "🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔 \nClaude Opu...",
+      "content": "🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔 \nClaude Opus 5 + OpenSCAD. #ai #3dprinting",
+      "url": "https://bsky.app/profile/khromov.se/post/3mrrjwk5t252t",
+      "author": "@khromov.se",
+      "published": "2026-07-29T08:45:08.395000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "User combines Claude Opus 5 and OpenSCAD to generate 3D printing code for a surreal animal prompt.",
+      "importance_score": 65.0,
+      "reasoning": "Practical cross-disciplinary use case combining LLM code generation with 3D design software.",
+      "themes": [
+        "Developer Tools & Integration",
+        "Generative Code"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:slbdnpcgysjbecfre4fdayqu/app.bsky.feed.post/3mrrjwk5t252t",
+        "author_display_name": "Stanislav",
+        "engagement": {
+          "likes": 44,
+          "reposts": 4,
+          "replies": 2,
+          "quotes": 1
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>User combines Claude Opus 5 and OpenSCAD to generate 3D printing code for a surreal animal prompt.</p>",
+      "content_html": "<p>🐧 Wanted to jump in on the pelican riding a bicycle trend, but I think I did it wrong. 🤔</p>\n<p>Claude Opus 5 + OpenSCAD. #ai #3dprinting</p>"
+    },
+    {
+      "id": "ddbd63f8dbd0",
+      "title": "Here is the cheese infographic: how-to-read-a-cheese.netlify.app\n\n\"One consequence worth noting: the...",
+      "content": "Here is the cheese infographic: how-to-read-a-cheese.netlify.app\n\n\"One consequence worth noting: the chart panel stays cave-dark in both light and dark themes, because fresh cheese is white and white has no contrast on a pale ground — the light-mode ramp failed the contrast floor\"\n\nThanks, Fable.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrfneisqs2r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T07:28:25.528000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick humorously documents an LLM agent swarm analyzing a simple cheese infographic with extreme technical seriousness.",
+      "importance_score": 60.0,
+      "reasoning": "Anecdotal and entertaining look at multi-agent workflows.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrfneisqs2r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 30,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick humorously documents an LLM agent swarm analyzing a simple cheese infographic with extreme technical seriousness.</p>",
+      "content_html": "<p>Here is the cheese infographic: how-to-read-a-cheese.netlify.app</p>\n<p>\"One consequence worth noting: the chart panel stays cave-dark in both light and dark themes, because fresh cheese is white and white has no contrast on a pale ground — the light-mode ramp failed the contrast floor\"</p>\n<p>Thanks, Fable.</p>"
+    },
+    {
+      "id": "b3bc644f3eda",
+      "title": "Opus is treating my cheese infographic with the seriousness of a new Erdos problem. We are a million...",
+      "content": "Opus is treating my cheese infographic with the seriousness of a new Erdos problem. We are a million tokens and 5 agents in.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrreictct22r",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T07:07:42.260000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick shares an anecdote about multi-agent systems and large token contexts deeply dissecting a cheese graphic.",
+      "importance_score": 60.0,
+      "reasoning": "Lighthearted look at long-context agentic behavior.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrreictct22r",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 25,
+          "reposts": 0,
+          "replies": 3,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick shares an anecdote about multi-agent systems and large token contexts deeply dissecting a cheese graphic.</p>",
+      "content_html": "<p>Opus is treating my cheese infographic with the seriousness of a new Erdos problem. We are a million tokens and 5 agents in.</p>"
+    },
+    {
+      "id": "d002b41d6700",
+      "title": "I take that back, it is treating my dumb cheese infographic more seriously than any Erdos problem.",
+      "content": "I take that back, it is treating my dumb cheese infographic more seriously than any Erdos problem.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrfabqecc2y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T07:21:06.420000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Follow-up commentary by Ethan Mollick on advanced models over-analyzing trivial visual charts.",
+      "importance_score": 55.0,
+      "reasoning": "Minor anecdotal follow-up post.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrfabqecc2y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 25,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Follow-up commentary by Ethan Mollick on advanced models over-analyzing trivial visual charts.</p>",
+      "content_html": "<p>I take that back, it is treating my dumb cheese infographic more seriously than any Erdos problem.</p>"
+    },
+    {
+      "id": "95abf6aae6e2",
+      "title": "This was a hypothetical example, and I then I tried it since I thought it would be funny. And I got ...",
+      "content": "This was a hypothetical example, and I then I tried it since I thought it would be funny. And I got this: forbidden cheese knowledge.\n\n(Okay, it is obviously because I wrote \"this is your goal now\" which triggered the guardrails but I like to think I asked the Forbidden Cheese Question)",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrrdfcq6e226",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T06:48:07.752000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick triggers guardrails while experimenting with adversarial prompts on cheese knowledge.",
+      "importance_score": 55.0,
+      "reasoning": "Casual experimentation with safety guardrails.",
+      "themes": [
+        "AI Safety & Security"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrrdfcq6e226",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 28,
+          "reposts": 3,
+          "replies": 5,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick triggers guardrails while experimenting with adversarial prompts on cheese knowledge.</p>",
+      "content_html": "<p>This was a hypothetical example, and I then I tried it since I thought it would be funny. And I got this: forbidden cheese knowledge.</p>\n<p>(Okay, it is obviously because I wrote \"this is your goal now\" which triggered the guardrails but I like to think I asked the Forbidden Cheese Question)</p>"
+    },
+    {
+      "id": "0b8e68ccdb91",
+      "title": "\"...she then walks into a room paneled with hammered tin tiles and pauses as a knight and ninja figh...",
+      "content": "\"...she then walks into a room paneled with hammered tin tiles and pauses as a knight and ninja fight each other without weapons. the knight is wearing brightly enameled green and white armor, she looks up and we follow her POV to a stained glass window depicting a flower and serpent, intertwined.\"",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr7ravng22y",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T05:43:13.521000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick shares a vivid creative writing output showing high descriptive detail in frontier models.",
+      "importance_score": 55.0,
+      "reasoning": "Qualitative prompt output showcase.",
+      "themes": [
+        "Model Capabilities & Prompting"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr7ravng22y",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 24,
+          "reposts": 1,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick shares a vivid creative writing output showing high descriptive detail in frontier models.</p>",
+      "content_html": "<p>\"...she then walks into a room paneled with hammered tin tiles and pauses as a knight and ninja fight each other without weapons. the knight is wearing brightly enameled green and white armor, she looks up and we follow her POV to a stained glass window depicting a flower and serpent, intertwined.\"</p>"
+    },
+    {
+      "id": "95eb4b8c9593",
+      "title": "Yes: arxiv.org/abs/2505.10742",
+      "content": "Yes: arxiv.org/abs/2505.10742",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrshibq2322p",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T17:34:02.069000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Yes: arxiv.org/abs/2505.10742",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrshibq2322p",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 3,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Yes: arxiv.org/abs/2505.10742</p>",
+      "content_html": "<p>Yes: arxiv.org/abs/2505.10742</p>"
+    },
+    {
+      "id": "29a3c5aa4c4d",
+      "title": "No idea, maybe too much social media video in the training",
+      "content": "No idea, maybe too much social media video in the training",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3sienps26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T04:32:19.940000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "No idea, maybe too much social media video in the training",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3sienps26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 16,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>No idea, maybe too much social media video in the training</p>",
+      "content_html": "<p>No idea, maybe too much social media video in the training</p>"
+    },
+    {
+      "id": "93369d3fcac6",
+      "title": "Original prompt: a hacker movie where an otter on a standard commercial plane sitting and using a la...",
+      "content": "Original prompt: a hacker movie where an otter on a standard commercial plane sitting and using a laptop needs to hack into the mainframe to turn off the alarm before the otters entering the vault are captured. the otters all speak in human voices.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3nrizds26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T04:29:41.748000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Original prompt: a hacker movie where an otter on a standard commercial plane sitting and using a laptop needs to hack into the mainframe to turn off the alarm before the otters entering the vault are...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3nrizds26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 15,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Original prompt: a hacker movie where an otter on a standard commercial plane sitting and using a laptop needs to hack into the mainframe to turn off the alarm before the otters entering the vault are...</p>",
+      "content_html": "<p>Original prompt: a hacker movie where an otter on a standard commercial plane sitting and using a laptop needs to hack into the mainframe to turn off the alarm before the otters entering the vault are captured. the otters all speak in human voices.</p>"
+    },
+    {
+      "id": "e08dd5a9da2c",
+      "title": "Because it was a low effort prompt",
+      "content": "Because it was a low effort prompt",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3lnwj5k26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T04:28:30.887000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Because it was a low effort prompt",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3lnwj5k26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 10,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Because it was a low effort prompt</p>",
+      "content_html": "<p>Because it was a low effort prompt</p>"
+    },
+    {
+      "id": "0df47c979965",
+      "title": "1990s movie version (the otter sounds like Christian Slater?)",
+      "content": "1990s movie version (the otter sounds like Christian Slater?)",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrr3l4w67c26",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-29T04:28:13.050000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "1990s movie version (the otter sounds like Christian Slater?)",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrr3l4w67c26",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 21,
+          "reposts": 0,
+          "replies": 3,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>1990s movie version (the otter sounds like Christian Slater?)</p>",
+      "content_html": "<p>1990s movie version (the otter sounds like Christian Slater?)</p>"
+    },
+    {
+      "id": "2addca6f8a68",
+      "title": "RE: https://mastodon.social/@DaiseeC/116999639057922839The kind of face I always imagined Behemoth t...",
+      "content": "RE: https://mastodon.social/@DaiseeC/116999639057922839The kind of face I always imagined Behemoth to have.",
+      "url": "https://mastodon.social/@Gargron/117000391422402354",
+      "author": "@Gargron@mastodon.social",
+      "published": "2026-07-29T00:18:12.947000",
+      "source": "Mastodon (mastodon.social)",
+      "source_type": "mastodon",
+      "tags": [],
+      "summary": "RE: https://mastodon.social/@DaiseeC/116999639057922839The kind of face I always imagined Behemoth to have.",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing)",
+      "themes": [],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "117000391422402354",
+        "instance": "mastodon.social",
+        "author_display_name": "Eugen Rochko",
+        "engagement": {
+          "favourites": 67,
+          "reblogs": 6,
+          "replies": 3
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>RE: https://mastodon.social/@DaiseeC/116999639057922839The kind of face I always imagined Behemoth to have.</p>",
+      "content_html": "<p>RE: https://mastodon.social/@DaiseeC/116999639057922839The kind of face I always imagined Behemoth to have.</p>"
+    }
+  ]
+}
