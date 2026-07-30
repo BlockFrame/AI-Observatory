@@ -8,7 +8,7 @@ from .news_gatherer import NewsGatherer
 from .research_gatherer import ResearchGatherer
 from .social_gatherer import SocialGatherer
 from .link_follower import LinkFollower
-from .hacker_news import HackerNewsGatherer
+from .hackernews import HackerNewsGatherer
 from .github_trending import GitHubTrendingGatherer
 from .webscraper_gatherer import WebScraperGatherer
 
