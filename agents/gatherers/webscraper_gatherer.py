@@ -5,7 +5,7 @@ import asyncio
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
 from bs4 import BeautifulSoup
 
@@ -108,6 +108,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
                 
             item_id = self.generate_id(article_url)
             
+            pub_date = data.get("date", "")
             try:
                 dt = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
                 if dt.tzinfo is None:
