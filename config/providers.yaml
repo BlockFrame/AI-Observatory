@@ -28,15 +28,13 @@ llm:
       requests_per_day: 500
       profiles: ["QUICK", "STANDARD"]
 
-    - id: "gemini-quality"
-      mode: "gemini"
-      api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.6-flash"
-      max_output_tokens: 65536
-      max_concurrent_requests: 2
-      requests_per_minute: 5
-      tokens_per_minute: 250000
-      requests_per_day: 20
+    - id: "nvidia-deepseek-quality"
+      mode: "openai-compatible"
+      api_key: "${NVIDIA_API_KEY}"
+      base_url: "https://integrate.api.nvidia.com/v1"
+      model: "deepseek-ai/deepseek-v4-pro"
+      max_output_tokens: 16384
+      max_concurrent_requests: 4
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       caller_patterns:
         - "orchestrator.*"
