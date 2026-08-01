@@ -2317,7 +2317,6 @@ class AsyncLLMRouter:
                 "temperature": temperature,
                 "caller": caller,
                 "full_output_budget": full_output_budget,
-                "is_thinking_call": True,
             },
         )
 
