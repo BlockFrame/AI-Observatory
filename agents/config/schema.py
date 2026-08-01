@@ -232,7 +232,7 @@ class ResolvedLLMRouteConfig(BaseModel):
 
     @model_validator(mode='after')
     def validate_mode_specific_base_url(self) -> 'ResolvedLLMRouteConfig':
-        if self.mode != "openrouter" and self.base_url.endswith('/v1'):
+        if self.mode == "anthropic" and self.base_url.endswith('/v1'):
             raise ValueError(
                 f"base_url should not include '/v1' suffix for mode '{self.mode}'. "
                 f"Use '{self.base_url[:-3]}' instead."
