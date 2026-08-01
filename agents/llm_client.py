@@ -1396,8 +1396,12 @@ class AsyncAnthropicClient:
             "messages": _build_openrouter_messages(kwargs["messages"], kwargs.get("system")),
             "max_tokens": kwargs["max_tokens"],
         }
-        if "temperature" in kwargs:
+        if "temperature" in kwargs and kwargs["temperature"] is not None:
             payload["temperature"] = kwargs["temperature"]
+        if "chat_template_kwargs" in kwargs:
+            payload["chat_template_kwargs"] = kwargs["chat_template_kwargs"]
+        elif kwargs.get("is_thinking_call", False):
+            payload["chat_template_kwargs"] = {"thinking": True}
 
         if not self.log_requests:
             response = await self._http_client.post(
@@ -2313,6 +2317,7 @@ class AsyncLLMRouter:
                 "temperature": temperature,
                 "caller": caller,
                 "full_output_budget": full_output_budget,
+                "is_thinking_call": True,
             },
         )
 
