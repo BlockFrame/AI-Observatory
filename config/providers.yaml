@@ -34,7 +34,7 @@ llm:
       mode: "openai-compatible"
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
-      model: "deepseek-ai/deepseek-v4-pro"
+      model: "deepseek-ai/deepseek-r1"
       max_output_tokens: 16384
       max_concurrent_requests: 4
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
