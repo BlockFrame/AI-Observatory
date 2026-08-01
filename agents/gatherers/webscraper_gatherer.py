@@ -70,19 +70,19 @@ class WebScraperGatherer(BaseGatherer):
             logger.error(f"Failed to fetch {url}: {e}")
             return None
 
-    async def _extract_news_with_llm(self, url: str, text: str) -> Optional[CollectedItem]:
-        """Use LLM to extract the most recent news article from text."""
+    async def _extract_news_with_llm(self, url: str, text: str) -> List[CollectedItem]:
+        """Use LLM to extract all relevant news articles from text."""
         
-        system_prompt = """You are an expert web scraper. You will be given the raw text content of a company's news/blog webpage.
-Your job is to identify the SINGLE most recent and important news article, announcement, or blog post listed on the page.
+        system_prompt = """You are an expert web scraper. You will be given the raw text content of a company's news/blog webpage or a newsletter.
+Your job is to identify ALL recent and important news articles, announcements, or blog posts listed on the page.
 
-Return ONLY a JSON object with the following keys:
+Return ONLY a JSON array of objects. Each object must have the following keys:
 - "title": The title of the article.
 - "url": The FULL absolute URL to the article (resolve relative paths if necessary based on the base domain).
 - "date": The publication date in YYYY-MM-DD format (if visible, otherwise output "").
 - "summary": A brief 1-sentence summary of what it's about.
 
-Do not include any other text, markdown formatting, or preamble. Just the JSON object."""
+Do not include any other text, markdown formatting, or preamble. Just the JSON array of objects. If no articles are found, return []"""
 
         user_message = f"Base URL: {url}\n\nWebpage Text:\n{text}"
 
@@ -95,53 +95,66 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
             )
             
             json_str = extract_json_str(response.content)
-            data = json.loads(json_str)
+            data_list = json.loads(json_str)
             
-            if not data.get("title") or not data.get("url"):
-                return None
-                
-            article_url = data["url"]
-            if article_url.startswith('/'):
-                from urllib.parse import urlparse
-                parsed = urlparse(url)
-                article_url = f"{parsed.scheme}://{parsed.netloc}{article_url}"
-                
-            item_id = self.generate_id(article_url)
+            if not isinstance(data_list, list):
+                # Fallback if it returned a single object
+                if isinstance(data_list, dict):
+                    data_list = [data_list]
+                else:
+                    logger.error(f"LLM returned unexpected JSON format for {url}: {data_list}")
+                    return []
+                    
+            extracted_items = []
             
-            pub_date = data.get("date", "")
-            try:
-                dt = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
-                if dt.tzinfo is None:
-                    # Assume UTC if no timezone provided
-                    from datetime import timezone
-                    dt = dt.replace(tzinfo=timezone.utc)
-            except ValueError:
-                # If parsing fails, skip this item as we can't verify its date
-                logger.warning(f"Could not parse date {pub_date} for {url}")
-                return None
+            for data in data_list:
+                if not data.get("title") or not data.get("url"):
+                    continue
+                    
+                article_url = data["url"]
+                if article_url.startswith('/'):
+                    from urllib.parse import urlparse
+                    parsed = urlparse(url)
+                    article_url = f"{parsed.scheme}://{parsed.netloc}{article_url}"
+                    
+                item_id = self.generate_id(article_url)
                 
-            # Filter by date range (ensure it matches the run's coverage date)
-            # self.start_time and self.end_time are timezone-naive in the orchestrator,
-            # so we compare naive datetimes (assuming UTC for simplicity in this context)
-            dt_naive = dt.replace(tzinfo=None)
-            if not (self.start_time <= dt_naive <= self.end_time):
-                logger.info(f"Skipping {url}: article date {dt_naive} is outside coverage window ({self.start_time} to {self.end_time})")
-                return None
-            
-            return CollectedItem(
-                id=item_id,
-                source=url,
-                title=data["title"],
-                url=article_url,
-                content=data.get("summary", ""),
-                pub_date=pub_date,
-                category=self.category,
-                metadata={"scraper_type": "llm_html"}
-            )
+                pub_date = data.get("date", "")
+                try:
+                    dt = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
+                    if dt.tzinfo is None:
+                        # Assume UTC if no timezone provided
+                        from datetime import timezone
+                        dt = dt.replace(tzinfo=timezone.utc)
+                except ValueError:
+                    # If parsing fails, skip this item as we can't verify its date
+                    logger.warning(f"Could not parse date {pub_date} for {article_url}")
+                    continue
+                    
+                # Filter by date range (ensure it matches the run's coverage date)
+                # self.start_time and self.end_time are timezone-naive in the orchestrator,
+                # so we compare naive datetimes (assuming UTC for simplicity in this context)
+                dt_naive = dt.replace(tzinfo=None)
+                if not (self.start_time <= dt_naive <= self.end_time):
+                    logger.info(f"Skipping {article_url}: article date {dt_naive} is outside coverage window ({self.start_time} to {self.end_time})")
+                    continue
+                
+                extracted_items.append(CollectedItem(
+                    id=item_id,
+                    source=url,
+                    title=data["title"],
+                    url=article_url,
+                    content=data.get("summary", ""),
+                    pub_date=pub_date,
+                    category=self.category,
+                    metadata={"scraper_type": "llm_html"}
+                ))
+                
+            return extracted_items
             
         except Exception as e:
             logger.error(f"LLM extraction failed for {url}: {e}")
-            return None
+            return []
 
     async def gather(self) -> List[CollectedItem]:
         """Main gather method."""
@@ -180,16 +193,16 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON o
                     logger.warning(f"Text too short after cleaning for {url}")
                     continue
                     
-                item = await self._extract_news_with_llm(url, clean_text)
-                if item:
-                    logger.info(f"Found article: {item.title}")
-                    all_items.append(item)
+                items = await self._extract_news_with_llm(url, clean_text)
+                if items:
+                    logger.info(f"Found {len(items)} articles from {url}")
+                    all_items.extend(items)
                     self.collection_status[original_url]['status'] = 'success'
-                    self.collection_status[original_url]['count'] = 1
+                    self.collection_status[original_url]['count'] = len(items)
                 else:
-                    logger.warning(f"Could not extract article from {url}")
+                    logger.warning(f"Could not extract any valid articles from {url}")
                     self.collection_status[original_url]['status'] = 'failed'
-                    self.collection_status[original_url]['error'] = 'Could not extract article or outside date range'
+                    self.collection_status[original_url]['error'] = 'Could not extract articles or outside date range'
             except Exception as e:
                 logger.error(f"Error scraping {original_url}: {e}")
                 self.collection_status[original_url]['status'] = 'failed'

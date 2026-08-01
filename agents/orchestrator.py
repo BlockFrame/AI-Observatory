@@ -662,9 +662,6 @@ class MainOrchestrator:
         self._save_result(result)
         phases.end_phase('success')
 
-        # Stop cost tracking
-        cost_tracker.stop()
-
         elapsed = (datetime.now() - start_time).total_seconds()
         logger.info(f"Orchestrator run completed in {elapsed:.1f}s")
         logger.info(f"  - Total collected: {total_collected}")
@@ -674,18 +671,10 @@ class MainOrchestrator:
         # Log collection status summary
         self._log_collection_status(collection_status)
 
-        # Print phase summary before cost report
+        # Print phase summary before returning
         print("\n" + phases.get_summary())
 
-        # Print cost report
-        print("\n" + cost_tracker.get_summary())
-
-        # Save cost report
-        cost_report_path = os.path.join(
-            self.data_dir, 'processed',
-            f"cost_report_{self.target_date}.json"
-        )
-        cost_tracker.save_report(cost_report_path)
+        # Cost tracking is now handled in the finally block of run_pipeline.py
 
         return result
 

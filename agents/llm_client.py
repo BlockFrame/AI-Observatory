@@ -1049,6 +1049,7 @@ class AsyncAnthropicClient:
         requests_per_day: Optional[int] = None,
         route_profiles: Optional[List[str]] = None,
         caller_patterns: Optional[List[str]] = None,
+        fallback_route_id: Optional[str] = None,
     ):
         default_api_key_env = (
             'OPENROUTER_API_KEY' if mode == "openrouter"
@@ -1089,6 +1090,7 @@ class AsyncAnthropicClient:
         self.requests_per_day = requests_per_day
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
+        self.fallback_route_id = fallback_route_id
         self._rate_limiter = _get_rate_limiter(
             self.mode,
             self.base_url or "",
@@ -2253,6 +2255,19 @@ class AsyncLLMRouter:
             except Exception as error:
                 last_error = error
                 reason = self._retry_reason(error)
+                
+                # Check for explicit fallback route on quota exhaustion
+                if getattr(client, "fallback_route_id", None) and reason in ["provider_rpd_exhausted", "http_429"]:
+                    fallback_id = client.fallback_route_id
+                    fallback_client = next((c for c in self.clients if getattr(c, "provider_id", None) == fallback_id), None)
+                    if fallback_client and fallback_client in ordered_clients:
+                        try:
+                            ordered_clients.remove(fallback_client)
+                            ordered_clients.insert(attempt, fallback_client)
+                            logger.warning(f"Route {client.provider_id} saturated. Activating explicit fallback route: {fallback_id}")
+                        except ValueError:
+                            pass
+                
                 if reason is None or attempt >= len(self.clients):
                     raise
 

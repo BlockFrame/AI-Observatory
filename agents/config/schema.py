@@ -46,6 +46,10 @@ class LLMRouteConfig(BaseModel):
         ge=1,
         description="Provider RPD quota enforced in-process"
     )
+    fallback_route_id: Optional[str] = Field(
+        default=None,
+        description="ID of another route to fallback to if this route hits a rate limit (429 / Quota Exhausted)"
+    )
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = Field(
         default=None,
         description="Analysis profiles eligible for this route"
@@ -198,6 +202,7 @@ class LLMProviderConfig(BaseModel):
                 requests_per_day=route.requests_per_day or self.requests_per_day,
                 profiles=route.profiles,
                 caller_patterns=route.caller_patterns,
+                fallback_route_id=route.fallback_route_id,
             )
             for route in self.routes
         ]

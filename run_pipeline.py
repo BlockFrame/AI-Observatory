@@ -127,7 +127,22 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
             actual_resume_from = float(resume_from)
 
         # Run the multi-agent pipeline
-        result = await orchestrator.run(resume_from=actual_resume_from)
+        try:
+            result = await orchestrator.run(resume_from=actual_resume_from)
+        finally:
+            # ALWAYS save cost report, even if pipeline crashes due to API limits
+            from agents.cost_tracker import get_tracker
+            tracker = get_tracker()
+            tracker.stop()
+            
+            # Save into web/data so it gets committed by GitHub Actions
+            target_date_str = target_date if target_date else datetime.now().strftime('%Y-%m-%d')
+            cost_target_dir = os.path.join(web_dir, 'data', target_date_str)
+            os.makedirs(cost_target_dir, exist_ok=True)
+            cost_report_path = os.path.join(cost_target_dir, 'cost_report.json')
+            
+            tracker.save_report(cost_report_path)
+            print("\n" + tracker.get_summary())
 
         # Generate JSON data for SPA frontend
         logger.info("=" * 60)
