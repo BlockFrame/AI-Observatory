@@ -26,6 +26,7 @@ from enum import IntEnum
 
 import httpx
 import anthropic
+import openai
 from google import genai
 from google.genai import types as genai_types
 
@@ -1141,10 +1142,18 @@ class AsyncAnthropicClient:
 
         self._client = None
         self._gemini_client = None
+        self._openai_client = None
         if _uses_gemini(self.mode):
             self._gemini_client = genai.Client(
                 api_key=self.api_key,
                 http_options=genai_types.HttpOptions(timeout=int(self.timeout * 1000)),
+            )
+        elif self.mode == "openai-compatible":
+            self._openai_client = openai.AsyncOpenAI(
+                base_url=self.base_url,
+                api_key=self.api_key,
+                http_client=self._http_client,
+                max_retries=self.max_retries,
             )
         elif not _uses_openrouter(self.mode):
             self._client = anthropic.AsyncAnthropic(
@@ -1462,6 +1471,8 @@ class AsyncAnthropicClient:
         """Create a message under the optional global async LLM concurrency cap."""
         if _uses_openrouter(self.mode):
             return await self._create_openrouter_completion(request_context=request_context, **kwargs)
+        if self.mode == "openai-compatible":
+            return await self._create_openai_completion(request_context=request_context, **kwargs)
         if not self.log_requests:
             if self._request_semaphore is None:
                 return await self._client.messages.create(**kwargs)
@@ -1482,6 +1493,121 @@ class AsyncAnthropicClient:
             wait_seconds = await self._mark_request_started(request_id, request_context, queued_at)
             heartbeat_task = self._start_heartbeat(request_id, request_context, started_at)
             response = await self._client.messages.create(**kwargs)
+            await self._mark_request_finished(
+                request_id,
+                request_context,
+                started_at,
+                wait_seconds,
+                response=response,
+            )
+            return response
+        except BaseException as error:
+            if acquired:
+                await self._mark_request_finished(
+                    request_id,
+                    request_context,
+                    started_at,
+                    wait_seconds if 'wait_seconds' in locals() else 0.0,
+                    error=error,
+                )
+            else:
+                await self._cancel_queued_request(request_id, request_context, queued_at, error)
+            raise
+        finally:
+            if heartbeat_task is not None:
+                heartbeat_task.cancel()
+                with suppress(asyncio.CancelledError):
+                    await heartbeat_task
+            if acquired and self._request_semaphore is not None:
+                self._request_semaphore.release()
+
+    async def _create_openai_completion(
+        self,
+        request_context: Optional[Dict[str, Any]] = None,
+        **kwargs,
+    ) -> ProviderResponse:
+        openai_messages = _build_openrouter_messages(kwargs["messages"], kwargs.get("system"))
+        payload = {
+            "model": kwargs["model"],
+            "messages": openai_messages,
+        }
+        if "max_tokens" in kwargs:
+            payload["max_completion_tokens"] = kwargs["max_tokens"]
+        if "temperature" in kwargs and kwargs["temperature"] is not None:
+            payload["temperature"] = kwargs["temperature"]
+        
+        if not self.log_requests:
+            raw_response = await self._openai_client.chat.completions.create(**payload)
+            choice = raw_response.choices[0]
+            content = choice.message.content or ""
+            thinking_text = None
+            if choice.message.model_extra and "reasoning_content" in choice.message.model_extra:
+                thinking_text = choice.message.model_extra["reasoning_content"]
+            elif "<think>" in content and "</think>" in content:
+                start = content.find("<think>") + len("<think>")
+                end = content.find("</think>")
+                thinking_text = content[start:end].strip()
+                content = content[end + len("</think>"):].strip()
+                
+            blocks = []
+            if thinking_text:
+                blocks.append(ResponseBlock(type="thinking", text=thinking_text, signature=None))
+            blocks.append(ResponseBlock(type="text", text=content))
+            usage = ResponseUsage(
+                input_tokens=raw_response.usage.prompt_tokens if raw_response.usage else 0,
+                output_tokens=raw_response.usage.completion_tokens if raw_response.usage else 0,
+            )
+            return ProviderResponse(
+                content=blocks,
+                usage=usage,
+                model=raw_response.model,
+                stop_reason=choice.finish_reason,
+            )
+
+        queued_at = time.time()
+        request_id, _, _ = await self._register_queued_request(request_context)
+        acquired = False
+        started_at = queued_at
+        heartbeat_task = None
+
+        try:
+            if self._request_semaphore is not None:
+                await self._request_semaphore.acquire()
+            acquired = True
+            started_at = time.time()
+            wait_seconds = await self._mark_request_started(request_id, request_context, queued_at)
+            heartbeat_task = self._start_heartbeat(request_id, request_context, started_at)
+            
+            raw_response = await self._openai_client.chat.completions.create(**payload)
+            
+            choice = raw_response.choices[0]
+            content = choice.message.content or ""
+            
+            thinking_text = None
+            if choice.message.model_extra and "reasoning_content" in choice.message.model_extra:
+                thinking_text = choice.message.model_extra["reasoning_content"]
+            elif "<think>" in content and "</think>" in content:
+                start = content.find("<think>") + len("<think>")
+                end = content.find("</think>")
+                thinking_text = content[start:end].strip()
+                content = content[end + len("</think>"):].strip()
+                
+            blocks = []
+            if thinking_text:
+                blocks.append(ResponseBlock(type="thinking", text=thinking_text, signature=None))
+            blocks.append(ResponseBlock(type="text", text=content))
+            
+            usage = ResponseUsage(
+                input_tokens=raw_response.usage.prompt_tokens if raw_response.usage else 0,
+                output_tokens=raw_response.usage.completion_tokens if raw_response.usage else 0,
+            )
+            response = ProviderResponse(
+                content=blocks,
+                usage=usage,
+                model=raw_response.model,
+                stop_reason=choice.finish_reason,
+            )
+            
             await self._mark_request_finished(
                 request_id,
                 request_context,
@@ -2104,6 +2230,8 @@ class AsyncAnthropicClient:
             await self._http_client.aclose()
         if self._gemini_client is not None and hasattr(self._gemini_client, "close"):
             self._gemini_client.close()
+        if self._openai_client is not None:
+            await self._openai_client.close()
 
     async def __aenter__(self):
         return self

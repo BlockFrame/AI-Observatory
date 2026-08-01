@@ -88,10 +88,10 @@ class LLMProviderConfig(BaseModel):
 
     Supports two modes:
     - anthropic: Direct Anthropic API with x-api-key header authentication
-    - openai-compatible: OpenAI-compatible proxy with Bearer token authentication
+    - openai-compatible: Native OpenAI API /chat/completions with Bearer token authentication
 
     Attributes:
-        mode: API mode - 'anthropic' for direct API, 'openai-compatible' for proxies
+        mode: API mode - 'anthropic' for direct API, 'openai-compatible' for native OpenAI format
         api_key: API key for authentication
         base_url: API base URL (should not include /v1 suffix)
         model: Model identifier
@@ -151,7 +151,7 @@ class LLMProviderConfig(BaseModel):
             self.base_url = "https://openrouter.ai/api/v1"
         if self.mode == "gemini" and self.base_url == "https://api.anthropic.com":
             self.base_url = "https://generativelanguage.googleapis.com"
-        if self.mode != "openrouter" and self.base_url.endswith('/v1'):
+        if self.mode == "anthropic" and self.base_url.endswith('/v1'):
             raise ValueError(
                 f"base_url should not include '/v1' suffix for mode '{self.mode}'. "
                 f"Use '{self.base_url[:-3]}' instead."
