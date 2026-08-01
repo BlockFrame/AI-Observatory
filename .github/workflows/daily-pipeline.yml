@@ -2,11 +2,11 @@ name: Daily Pipeline
 
 on:
   schedule:
-    # GitHub cron is UTC-only. These two entries cover 3 AM America/New_York
+    # GitHub cron is UTC-only. These two entries cover 1 AM America/New_York
     # across daylight saving time; the ET gate below lets only the nominal
-    # 3 AM run continue even when GitHub starts the runner late.
-    - cron: "0 7 * * *"
-    - cron: "0 8 * * *"
+    # 1 AM run continue even when GitHub starts the runner late.
+    - cron: "0 5 * * *"
+    - cron: "0 6 * * *"
   workflow_dispatch:
     inputs:
       target_date:
@@ -35,10 +35,10 @@ concurrency:
   # Only a manual dispatch cancels an in-flight run, so a manual re-run
   # supersedes an overlapping scheduled run instead of double-publishing the
   # same day (see the 2026-07-08 double run). Scheduled runs must NOT cancel
-  # each other: the two DST-backstop crons (0 7 / 0 8) intentionally overlap and
-  # rely on the ET gate below to pick the nominal 3 AM run. A plain
-  # `cancel-in-progress: true` would let the 8 AM UTC cron kill the still-running
-  # 3 AM run, then gate itself out — publishing nothing.
+  # each other: the two DST-backstop crons (0 5 / 0 6) intentionally overlap and
+  # rely on the ET gate below to pick the nominal 1 AM run. A plain
+  # `cancel-in-progress: true` would let the 6 AM UTC cron kill the still-running
+  # 1 AM run, then gate itself out — publishing nothing.
   cancel-in-progress: ${{ github.event_name == 'workflow_dispatch' }}
 
 jobs:
@@ -88,7 +88,7 @@ jobs:
       COMMIT_OUTPUTS: ${{ github.event_name != 'workflow_dispatch' || inputs.commit_outputs }}
 
     steps:
-      - name: Check 3 AM ET schedule gate
+      - name: Check 1 AM ET schedule gate
         id: schedule_gate
         shell: bash
         env:
@@ -130,7 +130,7 @@ jobs:
               tzinfo=timezone.utc,
           )
           nominal_et = nominal_utc.astimezone(ZoneInfo("America/New_York"))
-          should_run = nominal_et.hour == 3 and nominal_et.minute == 0
+          should_run = nominal_et.hour == 1 and nominal_et.minute == 0
 
           print(f"should_run={'true' if should_run else 'false'}")
           print(f"nominal_utc={nominal_utc.strftime('%Y-%m-%dT%H:%M:%SZ')}")
@@ -149,7 +149,7 @@ jobs:
             echo "Actual runner start time was $actual_et."
           else
             echo "should_run=false" >> "$GITHUB_OUTPUT"
-            echo "Scheduled cron '$SCHEDULE_CRON' maps to $nominal_et ($nominal_utc), not 3 AM ET; exiting as a no-op."
+            echo "Scheduled cron '$SCHEDULE_CRON' maps to $nominal_et ($nominal_utc), not 1 AM ET; exiting as a no-op."
             echo "Actual runner start time was $actual_et."
           fi
 

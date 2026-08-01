@@ -91,7 +91,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                 messages=[{"role": "user", "content": user_message}],
                 system=system_prompt,
                 temperature=0.0,
-                max_tokens=300
+                max_tokens=2000
             )
             
             json_str = extract_json_str(response.content)
