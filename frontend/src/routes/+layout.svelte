@@ -7,11 +7,22 @@
 	inject();
 
 	let isSidebarOpen = true;
+	let showScrollTop = false;
 
 	function toggleSidebar() {
 		isSidebarOpen = !isSidebarOpen;
 	}
+
+	function handleScroll() {
+		showScrollTop = window.scrollY > 300;
+	}
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	}
 </script>
+
+<svelte:window on:scroll={handleScroll} />
 
 <div class="min-h-screen bg-[#0b1426] text-on-surface">
 	<!-- Sidebar -->
@@ -91,6 +102,20 @@
 	<main class="min-h-screen px-4 md:px-8 pt-24 transition-all duration-300 {isSidebarOpen ? 'ml-64' : 'ml-0'}">
 		<slot />
 	</main>
+
+	<!-- Scroll To Top Button -->
+	{#if showScrollTop}
+		<button
+			on:click={scrollToTop}
+			class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#111d33]/90 text-[#00e0bb] shadow-xl backdrop-blur-md transition-all duration-300 hover:border-[#00e0bb] hover:bg-[#00e0bb] hover:text-[#0b1426] hover:scale-110 active:scale-95"
+			aria-label="Scroll to top"
+			title="Torna su"
+		>
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+				<path d="m18 15-6-6-6 6"/>
+			</svg>
+		</button>
+	{/if}
 
 </div>
 
