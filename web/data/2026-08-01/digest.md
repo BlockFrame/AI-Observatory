@@ -96,4 +96,4 @@ We talked about accidental cyberattacks, Kimi K3, Golde...](https://bsky.app/pro
 We talked about accidental cyberattacks, Kimi K3, Golden Gate Claude, Zizians, Alameda wild turkey attacks, Soviet Marburg virus research, the Lead-crime h...
 
 ---
-_173 items • 2026-08-01_
+_179 items • 2026-08-01_
