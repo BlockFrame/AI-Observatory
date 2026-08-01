@@ -13,7 +13,7 @@ llm:
       api_key: "${ZHIPU_API_KEY}"
       base_url: "https://open.bigmodel.cn/api/paas/v4/"
       model: "glm-4.7-flash"
-      max_concurrent_requests: 6
+      max_concurrent_requests: 1
       profiles: ["QUICK", "STANDARD"]
       fallback_route_id: "gemini-bulk-fallback"
 
