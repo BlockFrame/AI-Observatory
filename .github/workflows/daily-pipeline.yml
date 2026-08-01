@@ -178,64 +178,16 @@ jobs:
           python -m pip install -r requirements.txt
           python -m playwright install --with-deps chromium
 
-      - name: Write provider configuration
+      - name: Verify API Keys
         if: steps.schedule_gate.outputs.should_run == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          # Write providers.yaml with secrets injected directly by GitHub Actions
-          # ${{ secrets.GEMINI_API_KEY }} is substituted at workflow parse time
-          cat > config/providers.yaml << 'YAML_EOF'
-          llm:
-            mode: "gemini"
-            api_key: "${{ secrets.GEMINI_API_KEY }}"
-            model: "gemini-3.5-flash-lite"
-            max_output_tokens: 65536
-            timeout: 600
-            requests_per_minute: 15
-            tokens_per_minute: 250000
-            requests_per_day: 500
-            routes:
-              - id: "gemini-bulk"
-                mode: "gemini"
-                model: "gemini-3.5-flash-lite"
-                max_output_tokens: 65536
-                max_concurrent_requests: 6
-                requests_per_minute: 15
-                tokens_per_minute: 250000
-                requests_per_day: 500
-                profiles: ["QUICK", "STANDARD", "DEEP"]
-              - id: "gemini-quality"
-                mode: "gemini"
-                model: "gemini-3.6-flash"
-                max_output_tokens: 65536
-                max_concurrent_requests: 2
-                requests_per_minute: 5
-                tokens_per_minute: 250000
-                requests_per_day: 20
-                profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
-                caller_patterns:
-                  - "orchestrator.*"
-                  - "*_analyzer.reduce_rank"
-                  - "link_enricher.*"
-
-          pipeline:
-            base_url: "${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}"
-            lookback_hours: 24
-          YAML_EOF
-          # Strip leading indentation added by heredoc
-          python3 -c "
-          import re
-          with open('config/providers.yaml') as f: txt = f.read()
-          lines = txt.splitlines()
-          indent = min((len(l) - len(l.lstrip()) for l in lines if l.strip()), default=0)
-          with open('config/providers.yaml', 'w') as f: f.write('\n'.join(l[indent:] for l in lines) + '\n')
-          "
-          echo "providers.yaml written with injected credentials."
-          if grep -q '^\s*api_key: ""' config/providers.yaml; then
+          if [[ -z "${GEMINI_API_KEY:-}" ]]; then
             echo "ERROR: GEMINI_API_KEY secret is empty - set it in GitHub repo secrets." >&2
             exit 1
           fi
+          echo "API keys verified."
 
       - name: Start Mullvad tunnel for hosted egress
         if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == '' && env.REDDIT_PROXY_URL == ''
