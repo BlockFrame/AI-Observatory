@@ -1535,6 +1535,14 @@ class AsyncAnthropicClient:
             payload["max_completion_tokens"] = kwargs["max_tokens"]
         if "temperature" in kwargs and kwargs["temperature"] is not None:
             payload["temperature"] = kwargs["temperature"]
+        if "extra_body" in kwargs:
+            payload["extra_body"] = kwargs["extra_body"]
+            
+        # NVIDIA NIM specific flag for DeepSeek reasoning models
+        if "nvidia.com" in self.base_url and "deepseek" in kwargs["model"]:
+            if "thinking" in kwargs and kwargs["thinking"].get("budget_tokens", 0) > 0:
+                payload["extra_body"] = payload.get("extra_body", {})
+                payload["extra_body"]["chat_template_kwargs"] = {"thinking": True}
         
         if not self.log_requests:
             raw_response = await self._openai_client.chat.completions.create(**payload)
