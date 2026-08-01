@@ -1551,7 +1551,7 @@ class AsyncAnthropicClient:
                 
             blocks = []
             if thinking_text:
-                blocks.append(ResponseBlock(type="thinking", text=thinking_text, signature=None))
+                blocks.append(ResponseBlock(type="thinking", thinking=thinking_text))
             blocks.append(ResponseBlock(type="text", text=content))
             usage = ResponseUsage(
                 input_tokens=raw_response.usage.prompt_tokens if raw_response.usage else 0,
@@ -1594,7 +1594,7 @@ class AsyncAnthropicClient:
                 
             blocks = []
             if thinking_text:
-                blocks.append(ResponseBlock(type="thinking", text=thinking_text, signature=None))
+                blocks.append(ResponseBlock(type="thinking", thinking=thinking_text))
             blocks.append(ResponseBlock(type="text", text=content))
             
             usage = ResponseUsage(
