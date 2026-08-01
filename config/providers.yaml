@@ -28,6 +28,7 @@ llm:
       tokens_per_minute: 250000
       requests_per_day: 500
       profiles: ["QUICK", "STANDARD"]
+      fallback_route_id: "nvidia-deepseek-quality"
 
     - id: "nvidia-deepseek-quality"
       mode: "openai-compatible"
