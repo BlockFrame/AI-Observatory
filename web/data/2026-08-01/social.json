@@ -1,0 +1,501 @@
+{
+  "category": "social",
+  "date": "2026-08-01",
+  "category_summary": "Recent developer and academic discussions centered on LLM evaluation frameworks, organizational AI adaptation, and creative generative prototyping.\n\n- **Simon Willison** **[introduced smevals](/?date=2026-08-01&category=social#item-e39d3fc60bc4)** for running lightweight evaluation suites and highlighted tools **[leveraging the stateless Model Context Protocol (MCP)](/?date=2026-08-01&category=social#item-25c7c0ef2303)**.\n- **Ethan Mollick** detailed research from **Procter & Gamble** [showing how AI integration blurs traditional job roles](/?date=2026-08-01&category=social#item-bc2274b0ff19) across enterprises.\n- Additional community attention focused on **[interactive AI design using Fable](/?date=2026-08-01&category=social#item-c0d37803efbb)** and **[technical discussions on Oxide and Friends](/?date=2026-08-01&category=social#item-34425f6251ce)** regarding models like **MoonshotAI's Kimi K3**.",
+  "category_summary_html": "<p>Recent developer and academic discussions centered on LLM evaluation frameworks, organizational AI adaptation, and creative generative prototyping.</p>\n<ul>\n<li><strong>Simon Willison</strong> <strong><a href=\"/?date=2026-08-01&amp;category=social#item-e39d3fc60bc4\" class=\"internal-link\" rel=\"noopener noreferrer\">introduced smevals</a></strong> for running lightweight evaluation suites and highlighted tools <strong><a href=\"/?date=2026-08-01&amp;category=social#item-25c7c0ef2303\" class=\"internal-link\" rel=\"noopener noreferrer\">leveraging the stateless Model Context Protocol (MCP)</a></strong>.</li>\n<li><strong>Ethan Mollick</strong> detailed research from <strong>Procter &amp; Gamble</strong> <a href=\"/?date=2026-08-01&amp;category=social#item-bc2274b0ff19\" class=\"internal-link\" rel=\"noopener noreferrer\">showing how AI integration blurs traditional job roles</a> across enterprises.</li>\n<li>Additional community attention focused on <strong><a href=\"/?date=2026-08-01&amp;category=social#item-c0d37803efbb\" class=\"internal-link\" rel=\"noopener noreferrer\">interactive AI design using Fable</a></strong> and <strong><a href=\"/?date=2026-08-01&amp;category=social#item-34425f6251ce\" class=\"internal-link\" rel=\"noopener noreferrer\">technical discussions on Oxide and Friends</a></strong> regarding models like <strong>MoonshotAI's Kimi K3</strong>.</li>\n</ul>",
+  "themes": [
+    {
+      "name": "AI Development & Evaluation Tools",
+      "description": "Discussions and releases surrounding developer tooling, evaluation harnesses like smevals, and updates to protocols such as stateless MCP.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "AI in the Workplace & Organizational Impact",
+      "description": "Analyses on how generative AI alters corporate structures, blurs traditional job borders, and impacts division of labor.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 80.0
+    },
+    {
+      "name": "Podcasts and Media",
+      "description": "Audio media appearances discussing current trends and multi-faceted technology topics.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Creative AI Experiments",
+      "description": "Artistic and experiential applications of generative tools, such as art-inspired city builders.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    }
+  ],
+  "total_items": 14,
+  "items": [
+    {
+      "id": "25c7c0ef2303",
+      "title": "The new stateless MCP specification has rekindled my interest in MCP, and inspired some new projects...",
+      "content": "The new stateless MCP specification has rekindled my interest in MCP, and inspired some new projects, including mcp-explorer and datasette-mcp simonwillison.net/2026/Jul/31/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mry3ilyu7s2f",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T23:15:26.372000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison explores the new stateless Model Context Protocol (MCP) specification, releasing related tools like mcp-explorer and datasette-mcp.",
+      "importance_score": 85.0,
+      "reasoning": "Technical depth and practical tooling updates from a leading developer advocate regarding protocol standards.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mry3ilyu7s2f",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 56,
+          "reposts": 4,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison explores the new stateless Model Context Protocol (MCP) specification, releasing related tools like mcp-explorer and datasette-mcp.</p>",
+      "content_html": "<p>The new stateless MCP specification has rekindled my interest in MCP, and inspired some new projects, including mcp-explorer and datasette-mcp simonwillison.net/2026/Jul/31/...</p>"
+    },
+    {
+      "id": "e39d3fc60bc4",
+      "title": "I've been working with Prime Radiant building a new tool for running small eval suites against model...",
+      "content": "I've been working with Prime Radiant building a new tool for running small eval suites against models, harnesses, and prompts - it's called \"smevals\", you can try it with \"uvx smevals docs\", and I wrote about it here: primeradiant.com/blog/2026/sm...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxwydoc5k25",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T21:54:45.799000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison introduces 'smevals', a new tool built with Prime Radiant to run small evaluation suites against models, harnesses, and prompts.",
+      "importance_score": 85.0,
+      "reasoning": "Release of a practical developer tool for evaluating LLMs with immediate utility.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxwydoc5k25",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 43,
+          "reposts": 4,
+          "replies": 5,
+          "quotes": 1
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison introduces 'smevals', a new tool built with Prime Radiant to run small evaluation suites against models, harnesses, and prompts.</p>",
+      "content_html": "<p>I've been working with Prime Radiant building a new tool for running small eval suites against models, harnesses, and prompts - it's called \"smevals\", you can try it with \"uvx smevals docs\", and I wrote about it here: primeradiant.com/blog/2026/sm...</p>"
+    },
+    {
+      "id": "bc2274b0ff19",
+      "title": "One big result in our study at Procter & Gamble was that AI blurred the lines between jobs. Now Open...",
+      "content": "One big result in our study at Procter & Gamble was that AI blurred the lines between jobs. Now OpenAI has a similar finding\n\nOrganizational boundaries are becoming porous, the walls thinning. Companies are going to need to think about division of labor in a new way, things are getting chaotic now.",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mry35wfy522w",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-31T23:09:28.186000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Mollick discusses study findings at Procter & Gamble showing AI blurs traditional job boundaries, aligning with recent OpenAI observations.",
+      "importance_score": 80.0,
+      "reasoning": "High-engagement post by an authoritative voice highlighting structural shifts in enterprise labor division due to AI.",
+      "themes": [
+        "AI in the Workplace & Organizational Impact"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mry35wfy522w",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 69,
+          "reposts": 9,
+          "replies": 5,
+          "quotes": 3
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Mollick discusses study findings at Procter &amp; Gamble showing AI blurs traditional job boundaries, aligning with recent OpenAI observations.</p>",
+      "content_html": "<p>One big result in our study at Procter &amp; Gamble was that AI blurred the lines between jobs. Now OpenAI has a similar finding</p>\n<p>Organizational boundaries are becoming porous, the walls thinning. Companies are going to need to think about division of labor in a new way, things are getting chaotic now.</p>"
+    },
+    {
+      "id": "a378b886430c",
+      "title": "This is not optional because not dealing with this change won't make it go away. Plus, this could be...",
+      "content": "This is not optional because not dealing with this change won't make it go away. Plus, this could be a huge boost for both individual satisfaction & firm performance if done properly\n\nOur paper: pubsonline.informs.org/doi/10.1287/...\nOpenAI: openai.com/index/how-ai...",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mry3fwh4sc2w",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-31T23:13:56.661000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Ethan Mollick highlights research on how organizations must adapt to AI workplace changes to boost both satisfaction and performance.",
+      "importance_score": 75.0,
+      "reasoning": "Authored by a prominent AI researcher discussing organizational impacts and empirical studies.",
+      "themes": [
+        "AI in the Workplace & Organizational Impact"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mry3fwh4sc2w",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 12,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Ethan Mollick highlights research on how organizations must adapt to AI workplace changes to boost both satisfaction and performance.</p>",
+      "content_html": "<p>This is not optional because not dealing with this change won't make it go away. Plus, this could be a huge boost for both individual satisfaction &amp; firm performance if done properly</p>\n<p>Our paper: pubsonline.informs.org/doi/10.1287/...</p>\n<p>OpenAI: openai.com/index/how-ai...</p>"
+    },
+    {
+      "id": "34425f6251ce",
+      "title": "I'm on Oxide and Friends podcast this week!\n\nWe talked about accidental cyberattacks, Kimi K3, Golde...",
+      "content": "I'm on Oxide and Friends podcast this week!\n\nWe talked about accidental cyberattacks, Kimi K3, Golden Gate Claude, Zizians, Alameda wild turkey attacks, Soviet Marburg virus research, the Lead-crime hypothesis, and a bunch of other worthy digressions oxide-and-friends.transistor.fm/episodes/the...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxxwdfhxk2o",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T22:11:32.143000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison announces his appearance on the Oxide and Friends podcast discussing diverse topics including Kimi K3, Golden Gate Claude, and historical tech tangents.",
+      "importance_score": 70.0,
+      "reasoning": "Good reach and curation of trending tech topics via an established podcast.",
+      "themes": [
+        "Podcasts and Media"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxxwdfhxk2o",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 26,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison announces his appearance on the Oxide and Friends podcast discussing diverse topics including Kimi K3, Golden Gate Claude, and historical tech tangents.</p>",
+      "content_html": "<p>I'm on Oxide and Friends podcast this week!</p>\n<p>We talked about accidental cyberattacks, Kimi K3, Golden Gate Claude, Zizians, Alameda wild turkey attacks, Soviet Marburg virus research, the Lead-crime hypothesis, and a bunch of other worthy digressions oxide-and-friends.transistor.fm/episodes/the...</p>"
+    },
+    {
+      "id": "c0d37803efbb",
+      "title": "Continuing a trend, I had Fable build a working Rothko-inspired city builder based on the fake AI vi...",
+      "content": "Continuing a trend, I had Fable build a working Rothko-inspired city builder based on the fake AI video I created a year ago. This time, the unique mechanic the AI developed is that you play with margins between colors & forms to grow your city\n\nIts worth a few moments: threshold-city.netlify.app",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mrxhbag5gk2m",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-31T17:13:24.506000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Mollick shares a collaborative experiment using Fable to build a Rothko-inspired city builder featuring color margin mechanics.",
+      "importance_score": 65.0,
+      "reasoning": "Demonstrates creative, interactive application of generative tools for artistic prototyping.",
+      "themes": [
+        "Creative AI Experiments"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mrxhbag5gk2m",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 34,
+          "reposts": 2,
+          "replies": 2,
+          "quotes": 1
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Mollick shares a collaborative experiment using Fable to build a Rothko-inspired city builder featuring color margin mechanics.</p>",
+      "content_html": "<p>Continuing a trend, I had Fable build a working Rothko-inspired city builder based on the fake AI video I created a year ago. This time, the unique mechanic the AI developed is that you play with margins between colors &amp; forms to grow your city</p>\n<p>Its worth a few moments: threshold-city.netlify.app</p>"
+    },
+    {
+      "id": "f1f5d9c2315a",
+      "title": "Here's an example of the kind of report it can produce having run and graded an evaluation suite aga...",
+      "content": "Here's an example of the kind of report it can produce having run and graded an evaluation suite against different models static.simonwillison.net/static/2026/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxx2twmoc25",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T21:56:09.957000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison shares report output examples generated by running evaluation suites across various language models.",
+      "importance_score": 60.0,
+      "reasoning": "Provides tangible examples of model benchmarking workflows.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxx2twmoc25",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 5,
+          "reposts": 1,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison shares report output examples generated by running evaluation suites across various language models.</p>",
+      "content_html": "<p>Here's an example of the kind of report it can produce having run and graded an evaluation suite against different models static.simonwillison.net/static/2026/...</p>"
+    },
+    {
+      "id": "54c68386441b",
+      "title": "It lets you define multiple graders for a project precisely for that reason - it means you can conti...",
+      "content": "It lets you define multiple graders for a project precisely for that reason - it means you can continue to iterate on the graders long after you record the initial evaluation runs",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxxxyhnr22o",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T22:12:27.789000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison explains the utility of defining multiple graders for evaluation projects to allow iterative refinement.",
+      "importance_score": 55.0,
+      "reasoning": "Useful practical tip on evaluation harness design.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxxxyhnr22o",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison explains the utility of defining multiple graders for evaluation projects to allow iterative refinement.</p>",
+      "content_html": "<p>It lets you define multiple graders for a project precisely for that reason - it means you can continue to iterate on the graders long after you record the initial evaluation runs</p>"
+    },
+    {
+      "id": "736042b09fa4",
+      "title": "On of the hardest parts of the project was figuring out the vocabulary! Here's what I settled on",
+      "content": "On of the hardest parts of the project was figuring out the vocabulary! Here's what I settled on",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxy6vyhkk2o",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T22:16:20.073000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison discusses the naming vocabulary challenges encountered during a recent technical project.",
+      "importance_score": 45.0,
+      "reasoning": "Minor developmental behind-the-scenes note.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxy6vyhkk2o",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 16,
+          "reposts": 1,
+          "replies": 3,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison discusses the naming vocabulary challenges encountered during a recent technical project.</p>",
+      "content_html": "<p>On of the hardest parts of the project was figuring out the vocabulary! Here's what I settled on</p>"
+    },
+    {
+      "id": "fdcc22dd8a1a",
+      "title": "More on my own blog as well: simonwillison.net/2026/Jul/31/...",
+      "content": "More on my own blog as well: simonwillison.net/2026/Jul/31/...",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrxwzokp5c25",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T21:55:30.770000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison points followers to his personal blog for expanded details.",
+      "importance_score": 40.0,
+      "reasoning": "Meta-link pointing off-platform.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrxwzokp5c25",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 4,
+          "reposts": 0,
+          "replies": 2,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison points followers to his personal blog for expanded details.</p>",
+      "content_html": "<p>More on my own blog as well: simonwillison.net/2026/Jul/31/...</p>"
+    },
+    {
+      "id": "424225c0fa42",
+      "title": "I've been posting art-inspired city builders",
+      "content": "I've been posting art-inspired city builders",
+      "url": "https://bsky.app/profile/emollick.bsky.social/post/3mry2amd3nc2m",
+      "author": "@emollick.bsky.social",
+      "published": "2026-07-31T22:53:04.530000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Mollick briefly notes posting about art-inspired city builders.",
+      "importance_score": 35.0,
+      "reasoning": "Introductory fragment with low standalone substance.",
+      "themes": [
+        "Creative AI Experiments"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:flxq4uyjfotciovpw3x3fxnu/app.bsky.feed.post/3mry2amd3nc2m",
+        "author_display_name": "Ethan Mollick",
+        "engagement": {
+          "likes": 2,
+          "reposts": 0,
+          "replies": 1,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Mollick briefly notes posting about art-inspired city builders.</p>",
+      "content_html": "<p>I've been posting art-inspired city builders</p>"
+    },
+    {
+      "id": "f0d7f5bd6384",
+      "title": "Yes, they'll both show up in the UI and the terminal report as well",
+      "content": "Yes, they'll both show up in the UI and the terminal report as well",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mry3kpto222f",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T23:16:37.505000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Simon Willison confirms UI and terminal reporting behaviors in a short reply.",
+      "importance_score": 30.0,
+      "reasoning": "Context-free short reply snippet.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mry3kpto222f",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 1,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Simon Willison confirms UI and terminal reporting behaviors in a short reply.</p>",
+      "content_html": "<p>Yes, they'll both show up in the UI and the terminal report as well</p>"
+    },
+    {
+      "id": "976dc74b1e60",
+      "title": "I'm still figuring that out myself! I'll definitely write more as I start to figure out patterns tha...",
+      "content": "I'm still figuring that out myself! I'll definitely write more as I start to figure out patterns that work",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mry3jlw6tk2f",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T23:15:59.839000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison notes he is still exploring workflow patterns.",
+      "importance_score": 30.0,
+      "reasoning": "Conversational side note lacking standalone technical depth.",
+      "themes": [
+        "AI Development & Evaluation Tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mry3jlw6tk2f",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 3,
+          "reposts": 0,
+          "replies": 0,
+          "quotes": 0
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison notes he is still exploring workflow patterns.</p>",
+      "content_html": "<p>I'm still figuring that out myself! I'll definitely write more as I start to figure out patterns that work</p>"
+    },
+    {
+      "id": "a19911b75b7f",
+      "title": "Your infrequent reminder that if you live near the San Francisco Bay Area you should go to Moss Land...",
+      "content": "Your infrequent reminder that if you live near the San Francisco Bay Area you should go to Moss Landing (south of Santa Cruz) and rent kayaks there, because the estuary is full of sea otters and you will encounter dozens of them",
+      "url": "https://bsky.app/profile/simonwillison.net/post/3mrx6kneuhc2i",
+      "author": "@simonwillison.net",
+      "published": "2026-07-31T14:37:36.409000",
+      "source": "Bluesky",
+      "source_type": "bluesky",
+      "tags": [],
+      "summary": "Willison shares a recommendation to visit Moss Landing for sea otter kayaking.",
+      "importance_score": 20.0,
+      "reasoning": "Off-topic personal recommendation.",
+      "themes": [
+        "Off-Topic / Lifestyle"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "platform_id": "at://did:plc:kft6lu4trxowqmter2b6vg6z/app.bsky.feed.post/3mrx6kneuhc2i",
+        "author_display_name": "Simon Willison",
+        "engagement": {
+          "likes": 149,
+          "reposts": 10,
+          "replies": 12,
+          "quotes": 2
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Willison shares a recommendation to visit Moss Landing for sea otter kayaking.</p>",
+      "content_html": "<p>Your infrequent reminder that if you live near the San Francisco Bay Area you should go to Moss Landing (south of Santa Cruz) and rent kayaks there, because the estuary is full of sea otters and you will encounter dozens of them</p>"
+    }
+  ]
+}
