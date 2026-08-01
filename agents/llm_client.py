@@ -1549,8 +1549,8 @@ class AsyncAnthropicClient:
             choice = raw_response.choices[0]
             content = choice.message.content or ""
             thinking_text = None
-            if choice.message.model_extra and "reasoning_content" in choice.message.model_extra:
-                thinking_text = choice.message.model_extra["reasoning_content"]
+            if choice.message.model_extra and ("reasoning_content" in choice.message.model_extra or "reasoning" in choice.message.model_extra):
+                thinking_text = choice.message.model_extra.get("reasoning_content") or choice.message.model_extra.get("reasoning")
             elif "<think>" in content and "</think>" in content:
                 start = content.find("<think>") + len("<think>")
                 end = content.find("</think>")
@@ -1592,8 +1592,8 @@ class AsyncAnthropicClient:
             content = choice.message.content or ""
             
             thinking_text = None
-            if choice.message.model_extra and "reasoning_content" in choice.message.model_extra:
-                thinking_text = choice.message.model_extra["reasoning_content"]
+            if choice.message.model_extra and ("reasoning_content" in choice.message.model_extra or "reasoning" in choice.message.model_extra):
+                thinking_text = choice.message.model_extra.get("reasoning_content") or choice.message.model_extra.get("reasoning")
             elif "<think>" in content and "</think>" in content:
                 start = content.find("<think>") + len("<think>")
                 end = content.find("</think>")
