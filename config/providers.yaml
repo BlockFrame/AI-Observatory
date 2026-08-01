@@ -14,6 +14,7 @@ llm:
       base_url: "https://open.bigmodel.cn/api/paas/v4/"
       model: "glm-4.7-flash"
       max_concurrent_requests: 1
+      requests_per_minute: 10
       profiles: ["QUICK", "STANDARD"]
       fallback_route_id: "gemini-bulk-fallback"
 
