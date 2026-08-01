@@ -1439,7 +1439,17 @@ The summary should help a busy professional quickly scan and understand what's N
         logger.info(f"Saved orchestrator result to {filepath}")
 
     def _log_collection_status(self, collection_status: Dict[str, Dict[str, Any]]):
-        """Log collection status summary with clear indicators."""
+        """Log collection status summary with clear indicators and save endpoint_status.json."""
+        try:
+            target_dir = os.path.join(self.web_dir, 'data', self.target_date)
+            os.makedirs(target_dir, exist_ok=True)
+            status_file = os.path.join(target_dir, 'endpoint_status.json')
+            with open(status_file, 'w', encoding='utf-8') as f:
+                json.dump(collection_status, f, indent=2, ensure_ascii=False)
+            logger.info(f"Saved endpoint collection status to {status_file}")
+        except Exception as e:
+            logger.error(f"Failed to save endpoint status report: {e}")
+
         logger.info("\n" + "=" * 60)
         logger.info("COLLECTION STATUS SUMMARY")
         logger.info("=" * 60)

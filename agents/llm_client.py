@@ -2256,6 +2256,12 @@ class AsyncLLMRouter:
                 last_error = error
                 reason = self._retry_reason(error)
                 
+                base_url_info = getattr(client, "base_url", None) or "default"
+                logger.error(
+                    f"❌ [LLM ENDPOINT FAIL] Route: '{client.provider_id}' | Model: '{client.model}' | "
+                    f"BaseURL: '{base_url_info}' | Error: {type(error).__name__}: {error}"
+                )
+                
                 # Check for explicit fallback route on quota exhaustion
                 if getattr(client, "fallback_route_id", None) and reason in ["provider_rpd_exhausted", "http_429"]:
                     fallback_id = client.fallback_route_id
@@ -2264,7 +2270,7 @@ class AsyncLLMRouter:
                         try:
                             ordered_clients.remove(fallback_client)
                             ordered_clients.insert(attempt, fallback_client)
-                            logger.warning(f"Route {client.provider_id} saturated. Activating explicit fallback route: {fallback_id}")
+                            logger.warning(f"⚡ [ROUTE FALLBACK] Route '{client.provider_id}' saturated. Activating fallback route: '{fallback_id}'")
                         except ValueError:
                             pass
                 
