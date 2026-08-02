@@ -55,7 +55,7 @@
 		</div>
 	{/if}
 
-	<div class="flex flex-1 flex-col pr-2 prose-summary max-w-none text-sm leading-relaxed text-white/90">
+	<div class="flex-1 pr-2 prose-summary max-w-none text-sm leading-relaxed text-white/90">
 		{@html safeHtml(topic.description_html || topic.description)}
 	</div>
 
