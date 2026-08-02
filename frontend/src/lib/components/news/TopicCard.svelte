@@ -1,18 +1,10 @@
 <script lang="ts">
 	import type { TopTopic, Category } from '$lib/types';
 	import { CATEGORY_CONFIG } from '$lib/types';
+	import { safeHtml } from '$lib/services/safeHtml';
 
 	export let topic: TopTopic;
 	export let animationIndex: number = 0;
-
-	type TopicBullet = {
-		label: string;
-		description: string;
-		href?: string;
-		color: string;
-	};
-
-	const BULLET_COLORS = ['#6366f1', '#4edea3', '#ffb3ad'];
 
 	$: categories = Object.entries(topic.category_breakdown || {})
 		.filter(([_, count]) => count > 0)
@@ -21,105 +13,6 @@
 		.sort((a, b) => b[1] - a[1]);
 
 	$: accentColor = categories.length > 0 ? CATEGORY_CONFIG[categories[0][0]].color : '#6366f1';
-	$: bullets = buildTopicBullets(topic);
-
-	function buildTopicBullets(input: TopTopic): TopicBullet[] {
-		const html = input.description_html || '';
-		const text = normalizeWhitespace(stripHtml(html || input.description || ''));
-		const sentences = splitSentences(text);
-		const links = extractLinks(html);
-		const results: TopicBullet[] = [];
-
-		for (let i = 0; i < links.length && results.length < 3; i += 1) {
-			const link = links[i];
-			const sentence = sentences.find((entry) => entry.includes(link.text)) || link.text;
-			const description = cleanupDescription(sentence.replace(link.text, ''));
-			results.push({
-				label: trimLabel(link.text),
-				description: description || `Related development inside ${input.name.toLowerCase()}.`,
-				href: link.href,
-				color: BULLET_COLORS[i % BULLET_COLORS.length]
-			});
-		}
-
-		for (let i = 0; i < sentences.length && results.length < 3; i += 1) {
-			const sentence = sentences[i];
-			if (!sentence || results.some((entry) => sentence.includes(entry.label))) {
-				continue;
-			}
-
-			const label = extractLeadLabel(sentence, input.name);
-			const description = cleanupDescription(sentence.replace(label, ''));
-			results.push({
-				label,
-				description: description || sentence,
-				color: BULLET_COLORS[results.length % BULLET_COLORS.length]
-			});
-		}
-
-		return results.slice(0, 3);
-	}
-
-	function extractLinks(html: string): Array<{ href: string; text: string }> {
-		const matches = [...html.matchAll(/<a[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/gi)];
-		return matches.map((match) => ({
-			href: decodeEntities(match[1]),
-			text: normalizeWhitespace(stripHtml(match[2]))
-		}));
-	}
-
-	function splitSentences(value: string): string[] {
-		return value
-			.split(/(?<=[.!?])\s+(?=[A-Z0-9])/)
-			.map((entry) => normalizeWhitespace(entry))
-			.filter(Boolean);
-	}
-
-	function extractLeadLabel(sentence: string, fallback: string): string {
-		const cleaned = cleanupDescription(sentence);
-		const colonPrefix = cleaned.match(/^([^:]{3,40}):/);
-		if (colonPrefix) {
-			return trimLabel(colonPrefix[1]);
-		}
-
-		const entityMatch = cleaned.match(
-			/\b([A-Z][A-Za-z0-9.+-]*(?:\s+[A-Z0-9][A-Za-z0-9.+-]*){0,2})\b/
-		);
-		if (entityMatch) {
-			return trimLabel(entityMatch[1]);
-		}
-
-		return trimLabel(fallback);
-	}
-
-	function cleanupDescription(value: string): string {
-		return normalizeWhitespace(
-			value
-				.replace(/^[\s:;,\-–—]+/, '')
-				.replace(/[\s:;,\-–—]+$/, '')
-		);
-	}
-
-	function trimLabel(value: string): string {
-		return normalizeWhitespace(value).replace(/[.,;:!?]+$/, '');
-	}
-
-	function stripHtml(value: string): string {
-		return decodeEntities(value.replace(/<[^>]+>/g, ' '));
-	}
-
-	function normalizeWhitespace(value: string): string {
-		return value.replace(/\s+/g, ' ').trim();
-	}
-
-	function decodeEntities(value: string): string {
-		return value
-			.replace(/&amp;/g, '&')
-			.replace(/&quot;/g, '"')
-			.replace(/&#39;/g, "'")
-			.replace(/&lt;/g, '<')
-			.replace(/&gt;/g, '>');
-	}
 </script>
 
 <article
@@ -162,37 +55,13 @@
 		</div>
 	{/if}
 
-	<ul class="flex flex-1 flex-col gap-5 pr-2">
-		{#each bullets as bullet}
-			<li class="flex items-start gap-3">
-				<span
-					class="mt-1.5 h-2.5 w-2.5 flex-shrink-0 rounded-full"
-					style="background-color: {bullet.color}"
-				></span>
-				<div class="min-w-0 space-y-1">
-					{#if bullet.href}
-						<a
-							href={bullet.href}
-							class="text-sm font-extrabold text-white underline decoration-transparent underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
-						>
-							{bullet.label}
-						</a>
-					{:else}
-						<p class="text-sm font-extrabold text-white">
-							{bullet.label}
-						</p>
-					{/if}
-					<p class="text-sm leading-6 text-on-surface-variant/90">
-						{bullet.description}
-					</p>
-				</div>
-			</li>
-		{/each}
-	</ul>
+	<div class="flex flex-1 flex-col pr-2 prose-summary max-w-none text-sm leading-relaxed text-white/90">
+		{@html safeHtml(topic.description_html || topic.description)}
+	</div>
 
 	<div class="mt-5 flex items-center justify-between gap-3 border-t border-white/5 pt-4">
 		<div class="flex flex-wrap gap-2">
-			{#each categories.slice(0, 2) as [category, count]}
+			{#each categories as [category, count]}
 				{@const config = CATEGORY_CONFIG[category]}
 				<span class="material-chip !px-2.5 !py-1 !text-[10px] !uppercase !tracking-[0.14em]">
 					<span class="h-2 w-2 rounded-full" style="background-color: {config.color}"></span>
@@ -202,7 +71,7 @@
 		</div>
 
 		<div
-			class="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[rgba(99,102,241,0.18)] text-[#d9ddff] shadow-[0_10px_30px_rgba(99,102,241,0.18)]"
+			class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-[rgba(99,102,241,0.18)] text-[#d9ddff] shadow-[0_10px_30px_rgba(99,102,241,0.18)]"
 			aria-hidden="true"
 		>
 			<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
