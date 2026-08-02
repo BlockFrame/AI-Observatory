@@ -3,10 +3,12 @@
 	import { formatDate } from '$lib/services/dateUtils';
 	import ThemeToggle from './ThemeToggle.svelte';
 	import SearchBar from '$lib/components/search/SearchBar.svelte';
+	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
 
 	$: dateDisplay = $currentDate ? formatDate($currentDate) : '';
 
 	let showSearch = false;
+	let isFeedbackModalOpen = false;
 </script>
 
 <header class="bg-gradient-to-r from-trend-red to-guardian-red text-white shadow-lg">
@@ -38,6 +40,14 @@
 						{dateDisplay}
 					</a>
 				{/if}
+
+				<button
+					on:click={() => isFeedbackModalOpen = true}
+					class="hidden md:flex items-center gap-2 text-sm text-white/90 hover:text-white bg-white/10 border border-white/10 px-3 py-1.5 rounded-lg hover:bg-white/20 transition-all"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+					Feedback
+				</button>
 
 				<!-- GitHub link -->
 				<a
@@ -92,6 +102,8 @@
 		{/if}
 	</div>
 </header>
+
+<FeedbackModal bind:isOpen={isFeedbackModalOpen} />
 
 <style>
 	.new-badge {
