@@ -165,6 +165,26 @@
 		</div>
 	</section>
 
+	<!-- Community & Directories -->
+	<section class="card mb-8">
+		<h2 class="text-lg font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-4">
+			Directories & Community Feedback
+		</h2>
+		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
+			<p>
+				Beyond the daily news synthesis, the AI Observatory hosts curated directories to help you navigate the ecosystem:
+			</p>
+			<ul>
+				<li><strong>Tools Directory:</strong> A categorized index of the most useful AI applications, frameworks, and developer tools.</li>
+				<li><strong>Models Directory:</strong> A comprehensive taxonomy of foundational models, segmented by architecture and provider.</li>
+				<li><strong>Influencers:</strong> Key voices and researchers in the AI space worth following.</li>
+			</ul>
+			<p>
+				<strong>This platform is community-driven.</strong> You can actively contribute to its growth by using the "Suggest" and "Feedback" buttons found across the site. Whether you want to add a missing model, recommend a tool, or report a bug, your suggestions are sent directly to our development team via GitHub Issues.
+			</p>
+		</div>
+	</section>
+
 	<!-- Open Source -->
 	<section class="card">
 		<h2 class="text-lg font-semibold text-trend-gray-800 dark:text-trend-gray-100 mb-4">
