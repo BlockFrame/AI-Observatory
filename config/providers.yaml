@@ -64,6 +64,30 @@ llm:
       tokens_per_minute: 250000
       requests_per_day: 20
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      fallback_route_id: "gemini-quality-fallback-3.5"
+
+    - id: "gemini-quality-fallback-3.5"
+      mode: "gemini"
+      api_key: "${GEMINI_API_KEY}"
+      model: "gemini-3.5-flash"
+      max_output_tokens: 65536
+      max_concurrent_requests: 3
+      requests_per_minute: 10
+      tokens_per_minute: 250000
+      requests_per_day: 50
+      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      fallback_route_id: "gemini-quality-fallback-3.0"
+
+    - id: "gemini-quality-fallback-3.0"
+      mode: "gemini"
+      api_key: "${GEMINI_API_KEY}"
+      model: "gemini-3-flash"
+      max_output_tokens: 65536
+      max_concurrent_requests: 4
+      requests_per_minute: 15
+      tokens_per_minute: 250000
+      requests_per_day: 100
+      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-lite-3.5"
 
     - id: "gemini-quality-fallback-lite-3.5"
