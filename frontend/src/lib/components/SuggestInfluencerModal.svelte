@@ -132,9 +132,9 @@
                                 disabled={isSubmitting}
                                 class="w-full bg-[#0c1322] border border-[#2b3655] rounded-lg px-3 py-2.5 text-white focus:outline-none focus:border-[#9aa6ff] focus:ring-1 focus:ring-[#9aa6ff] transition-all"
                             >
-                                <option value="Twitter/X">Twitter / X</option>
-                                <option value="Bluesky">Bluesky</option>
-                                <option value="Mastodon">Mastodon</option>
+                                <option value="X (Twitter)">X (Twitter)</option>
+                                <option value="LinkedIn">LinkedIn</option>
+                                <option value="YouTube">YouTube</option>
                             </select>
                         </div>
 

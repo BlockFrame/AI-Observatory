@@ -1,5 +1,5 @@
 """
-Social Analyzer - Analyzes social media posts (Twitter, Bluesky, Mastodon).
+Social Analyzer - Analyzes social media posts (Twitter/X).
 
 Focuses on:
 - Industry discussions and reactions

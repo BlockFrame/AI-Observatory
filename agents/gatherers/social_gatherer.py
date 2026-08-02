@@ -1,8 +1,7 @@
 """
-Social Gatherer - Collects posts from Twitter, Bluesky, and Mastodon.
+Social Gatherer - Collects posts from Twitter/X.
 
 Twitter uses TwitterAPI.io (paid).
-Bluesky and Mastodon use their free public APIs.
 """
 
 import asyncio
@@ -27,7 +26,7 @@ TWITTERAPI_IO_BASE = "https://api.twitterapi.io"
 
 
 class SocialGatherer(BaseGatherer):
-    """Gathers posts from Twitter, Bluesky, and Mastodon."""
+    """Gathers posts from Twitter/X."""
 
     def __init__(
         self,
@@ -40,28 +39,24 @@ class SocialGatherer(BaseGatherer):
 
         # Load configured accounts
         self.twitter_users = self.load_config_list('twitter_accounts.txt')
-        self.bluesky_handles = self.load_config_list('bluesky_accounts.txt')
-        self.mastodon_accounts = self.load_config_list('mastodon_accounts.txt')
 
         # Track collection status per platform
         self.collection_status: Dict[str, Dict[str, Any]] = {
             'twitter': {'status': 'pending', 'count': 0, 'error': None},
-            'bluesky': {'status': 'pending', 'count': 0, 'error': None},
-            'mastodon': {'status': 'pending', 'count': 0, 'error': None},
         }
 
         # TwitterAPI.io usage accounting (surfaced in the end-of-run cost summary)
         self._twitter_calls = 0          # billable API requests issued
         self._twitter_tweets_billed = 0  # raw tweets returned (TwitterAPI.io bills per tweet)
 
-        logger.info(f"Loaded {len(self.twitter_users)} Twitter, {len(self.bluesky_handles)} Bluesky, {len(self.mastodon_accounts)} Mastodon accounts")
+        logger.info(f"Loaded {len(self.twitter_users)} Twitter accounts")
 
     @property
     def category(self) -> str:
         return 'social'
 
     async def gather(self) -> List[CollectedItem]:
-        """Gather posts from all social platforms."""
+        """Gather posts from Twitter."""
         logger.info("Starting social media collection")
 
         all_items = []
@@ -71,28 +66,14 @@ class SocialGatherer(BaseGatherer):
         if not self.twitter_users or not TWITTERAPI_IO_KEY:
             self.collection_status['twitter']['status'] = 'skipped'
             self.collection_status['twitter']['error'] = 'No API key' if not TWITTERAPI_IO_KEY else 'No accounts configured'
-        if not self.bluesky_handles:
-            self.collection_status['bluesky']['status'] = 'skipped'
-            self.collection_status['bluesky']['error'] = 'No accounts configured'
-        if not self.mastodon_accounts:
-            self.collection_status['mastodon']['status'] = 'skipped'
-            self.collection_status['mastodon']['error'] = 'No accounts configured'
 
-        # Collect from all platforms in parallel
+        # Collect from Twitter in parallel
         with ThreadPoolExecutor(max_workers=6) as executor:
             tasks = []
 
             # Twitter collection
             if self.twitter_users and TWITTERAPI_IO_KEY:
                 tasks.append(loop.run_in_executor(executor, self._collect_twitter))
-
-            # Bluesky collection
-            if self.bluesky_handles:
-                tasks.append(loop.run_in_executor(executor, self._collect_bluesky))
-
-            # Mastodon collection
-            if self.mastodon_accounts:
-                tasks.append(loop.run_in_executor(executor, self._collect_mastodon))
 
             if tasks:
                 results = await asyncio.gather(*tasks)
@@ -333,248 +314,6 @@ class SocialGatherer(BaseGatherer):
             },
             keywords=self.extract_keywords(text)
         )
-
-    # ========== BLUESKY COLLECTION ==========
-
-    def _collect_bluesky(self) -> List[CollectedItem]:
-        """Collect posts from Bluesky handles."""
-        all_posts = []
-        failed_handles = 0
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_handle = {
-                executor.submit(self._fetch_bluesky_user, handle): handle
-                for handle in self.bluesky_handles
-            }
-
-            for future in as_completed(future_to_handle):
-                try:
-                    posts = future.result()
-                    all_posts.extend(posts)
-                except Exception as e:
-                    failed_handles += 1
-                    logger.error(f"Bluesky collection error: {e}")
-
-        # Track status
-        if failed_handles == len(self.bluesky_handles):
-            self.collection_status['bluesky']['status'] = 'failed'
-            self.collection_status['bluesky']['error'] = f"All {failed_handles} handles failed"
-        elif failed_handles > 0:
-            self.collection_status['bluesky']['status'] = 'partial'
-            self.collection_status['bluesky']['error'] = f"{failed_handles}/{len(self.bluesky_handles)} handles failed"
-            self.collection_status['bluesky']['count'] = len(all_posts)
-        else:
-            self.collection_status['bluesky']['status'] = 'success'
-            self.collection_status['bluesky']['count'] = len(all_posts)
-
-        logger.info(f"Collected {len(all_posts)} posts from Bluesky")
-        return all_posts
-
-    def _fetch_bluesky_user(self, handle: str) -> List[CollectedItem]:
-        """Fetch posts from a Bluesky user."""
-        posts = []
-        base_url = "https://public.api.bsky.app/xrpc"
-
-        try:
-            if not handle.endswith('.bsky.social') and '.' not in handle:
-                handle = f"{handle}.bsky.social"
-
-            logger.info(f"Fetching Bluesky posts for @{handle}")
-
-            response = requests.get(
-                f"{base_url}/app.bsky.feed.getAuthorFeed",
-                params={'actor': handle, 'limit': 30},
-                timeout=30
-            )
-            response.raise_for_status()
-            data = response.json()
-
-            for item in data.get('feed', []):
-                try:
-                    post_data = item.get('post', {})
-                    record = post_data.get('record', {})
-                    author = post_data.get('author', {})
-
-                    # Parse date
-                    created_at = record.get('createdAt', '')
-                    try:
-                        pub_date = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                        if pub_date.tzinfo:
-                            pub_date = pub_date.replace(tzinfo=None)
-                    except:
-                        pub_date = datetime.now()
-
-                    if not self.is_in_date_range(pub_date):
-                        continue
-
-                    uri = post_data.get('uri', '')
-                    rkey = uri.split('/')[-1] if uri else ''
-                    author_handle = author.get('handle', handle)
-                    web_url = f"https://bsky.app/profile/{author_handle}/post/{rkey}"
-                    text = record.get('text', '')
-
-                    post = CollectedItem(
-                        id=self.generate_id('bluesky', uri),
-                        title=text[:100] + '...' if len(text) > 100 else text,
-                        content=text,
-                        url=web_url,
-                        author=f"@{author_handle}",
-                        published=pub_date.isoformat(),
-                        source='Bluesky',
-                        source_type='bluesky',
-                        tags=[],
-                        metadata={
-                            'platform_id': uri,
-                            'author_display_name': author.get('displayName', author_handle),
-                            'engagement': {
-                                'likes': post_data.get('likeCount', 0),
-                                'reposts': post_data.get('repostCount', 0),
-                                'replies': post_data.get('replyCount', 0),
-                                'quotes': post_data.get('quoteCount', 0)
-                            }
-                        },
-                        keywords=self.extract_keywords(text)
-                    )
-
-                    posts.append(post)
-
-                except Exception as e:
-                    logger.error(f"Error processing Bluesky post: {e}")
-
-        except Exception as e:
-            logger.error(f"Error fetching Bluesky @{handle}: {e}")
-
-        return posts
-
-    # ========== MASTODON COLLECTION ==========
-
-    def _collect_mastodon(self) -> List[CollectedItem]:
-        """Collect posts from Mastodon accounts."""
-        all_posts = []
-        failed_accounts = 0
-
-        with ThreadPoolExecutor(max_workers=5) as executor:
-            future_to_account = {
-                executor.submit(self._fetch_mastodon_user, account): account
-                for account in self.mastodon_accounts
-            }
-
-            for future in as_completed(future_to_account):
-                try:
-                    posts = future.result()
-                    all_posts.extend(posts)
-                except Exception as e:
-                    failed_accounts += 1
-                    logger.error(f"Mastodon collection error: {e}")
-
-        # Track status
-        if failed_accounts == len(self.mastodon_accounts):
-            self.collection_status['mastodon']['status'] = 'failed'
-            self.collection_status['mastodon']['error'] = f"All {failed_accounts} accounts failed"
-        elif failed_accounts > 0:
-            self.collection_status['mastodon']['status'] = 'partial'
-            self.collection_status['mastodon']['error'] = f"{failed_accounts}/{len(self.mastodon_accounts)} accounts failed"
-            self.collection_status['mastodon']['count'] = len(all_posts)
-        else:
-            self.collection_status['mastodon']['status'] = 'success'
-            self.collection_status['mastodon']['count'] = len(all_posts)
-
-        logger.info(f"Collected {len(all_posts)} posts from Mastodon")
-        return all_posts
-
-    def _fetch_mastodon_user(self, account_spec: str) -> List[CollectedItem]:
-        """Fetch posts from a Mastodon user."""
-        posts = []
-
-        try:
-            # Parse account spec (username@instance)
-            if '@' not in account_spec:
-                logger.warning(f"Invalid Mastodon format: {account_spec}")
-                return []
-
-            parts = account_spec.split('@')
-            if len(parts) == 2:
-                username, instance = parts
-            elif len(parts) == 3 and parts[0] == '':
-                username, instance = parts[1], parts[2]
-            else:
-                logger.warning(f"Invalid Mastodon format: {account_spec}")
-                return []
-
-            logger.info(f"Fetching Mastodon posts for @{username}@{instance}")
-
-            # Look up account ID
-            lookup_url = f"https://{instance}/api/v1/accounts/lookup"
-            response = requests.get(lookup_url, params={'acct': username}, timeout=30)
-            response.raise_for_status()
-            account_data = response.json()
-            account_id = account_data.get('id')
-
-            if not account_id:
-                return []
-
-            # Get statuses
-            statuses_url = f"https://{instance}/api/v1/accounts/{account_id}/statuses"
-            response = requests.get(
-                statuses_url,
-                params={'limit': 40, 'exclude_replies': False, 'exclude_reblogs': True},
-                timeout=30
-            )
-            response.raise_for_status()
-            statuses = response.json()
-
-            for status in statuses:
-                try:
-                    created_at = status.get('created_at', '')
-                    try:
-                        pub_date = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
-                        if pub_date.tzinfo:
-                            pub_date = pub_date.replace(tzinfo=None)
-                    except:
-                        pub_date = datetime.now()
-
-                    if not self.is_in_date_range(pub_date):
-                        continue
-
-                    # Strip HTML from content
-                    content_html = status.get('content', '')
-                    content_text = re.sub(r'<[^>]+>', '', content_html)
-                    content_text = content_text.replace('&amp;', '&').replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"')
-
-                    account = status.get('account', {})
-
-                    post = CollectedItem(
-                        id=self.generate_id('mastodon', status.get('id', '')),
-                        title=content_text[:100] + '...' if len(content_text) > 100 else content_text,
-                        content=content_text,
-                        url=status.get('url', ''),
-                        author=f"@{account.get('username', '')}@{instance}",
-                        published=pub_date.isoformat(),
-                        source=f"Mastodon ({instance})",
-                        source_type='mastodon',
-                        tags=[],
-                        metadata={
-                            'platform_id': status.get('id', ''),
-                            'instance': instance,
-                            'author_display_name': account.get('display_name', account.get('username', '')),
-                            'engagement': {
-                                'favourites': status.get('favourites_count', 0),
-                                'reblogs': status.get('reblogs_count', 0),
-                                'replies': status.get('replies_count', 0)
-                            }
-                        },
-                        keywords=self.extract_keywords(content_text)
-                    )
-
-                    posts.append(post)
-
-                except Exception as e:
-                    logger.error(f"Error processing Mastodon status: {e}")
-
-        except Exception as e:
-            logger.error(f"Error fetching Mastodon @{account_spec}: {e}")
-
-        return posts
 
     def get_urls_from_posts(self) -> List[Dict[str, Any]]:
         """

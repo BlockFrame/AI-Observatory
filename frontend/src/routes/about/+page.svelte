@@ -99,7 +99,7 @@
 				<li>
 					<strong>Parallel Gathering</strong> - Four specialized gatherers collect content from
 					different source types: News (RSS feeds and linked articles), Research (arXiv papers
-					and research blogs), Social (Twitter, Bluesky, Mastodon), and GitHub Trending.
+					and research blogs), Social (Twitter/X), and GitHub Trending.
 				</li>
 				<li>
 					<strong>Category Analysis</strong> - Four analyzers process each category using
