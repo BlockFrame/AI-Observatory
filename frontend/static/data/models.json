@@ -4,21 +4,21 @@
     "description": "First widely-released Mythos-class model; 1M context, 128K max output, $10/$50 per MTok. Always-on thinking; ships with safety classifiers that fall\u2026",
     "url": "https://ai-tldr.dev/models/claude-fable-5/",
     "category": "Anthropic",
-    "subcategory": "Claude Fable / Mythos (Mythos-class)"
+    "subcategory": "Claude Fable / Mythos"
   },
   {
     "name": "Claude Mythos 5",
     "description": "Same underlying model as Fable 5 with some safeguards lifted; available only through Project Glasswing (cyberdefense/infrastructure partners, with th\u2026",
     "url": "https://ai-tldr.dev/models/claude-mythos-5/",
     "category": "Anthropic",
-    "subcategory": "Claude Fable / Mythos (Mythos-class)"
+    "subcategory": "Claude Fable / Mythos"
   },
   {
     "name": "Claude Mythos Preview",
     "description": "Invitation-only early Mythos-class model used by a small number of organizations for cybersecurity work; superseded by Mythos 5.",
     "url": "https://ai-tldr.dev/models/claude-mythos-preview/",
     "category": "Anthropic",
-    "subcategory": "Claude Fable / Mythos (Mythos-class)"
+    "subcategory": "Claude Fable / Mythos"
   },
   {
     "name": "Claude Opus 5",
@@ -158,28 +158,28 @@
     "description": "Added a 200K context window and reduced hallucination rates over Claude 2. Retired 2025-07-21.",
     "url": "https://ai-tldr.dev/models/claude-2-1/",
     "category": "Anthropic",
-    "subcategory": "Claude (legacy 1\u20132.x)"
+    "subcategory": "Claude (legacy 1-2.x)"
   },
   {
     "name": "Claude 2",
     "description": "Second-generation Claude with a 100K context window and improved coding/reasoning. Retired 2025-07-21.",
     "url": "https://ai-tldr.dev/models/claude-2/",
     "category": "Anthropic",
-    "subcategory": "Claude (legacy 1\u20132.x)"
+    "subcategory": "Claude (legacy 1-2.x)"
   },
   {
     "name": "Claude Instant",
     "description": "Original low-latency, lower-cost Claude variant, launched alongside Claude 1.",
     "url": "https://ai-tldr.dev/models/claude-instant/",
     "category": "Anthropic",
-    "subcategory": "Claude (legacy 1\u20132.x)"
+    "subcategory": "Claude (legacy 1-2.x)"
   },
   {
     "name": "Claude 1",
     "description": "Anthropic's first publicly released Claude model.",
     "url": "https://ai-tldr.dev/models/claude-1/",
     "category": "Anthropic",
-    "subcategory": "Claude (legacy 1\u20132.x)"
+    "subcategory": "Claude (legacy 1-2.x)"
   },
   {
     "name": "GPT-5.6 Sol",
@@ -403,7 +403,7 @@
     "description": "Frontier reasoning model for life sciences \u2014 drug discovery, genomics, medicinal chemistry; research preview via trusted-access since April 2026.",
     "url": "https://ai-tldr.dev/models/gpt-rosalind/",
     "category": "OpenAI",
-    "subcategory": "GPT-3.5"
+    "subcategory": "Experimental / Special"
   },
   {
     "name": "Gemini 3.5 Pro",
@@ -634,7 +634,7 @@
     "description": "Multimodal medical research model built on Gemini; reported 91.1% on MedQA (USMLE) with an uncertainty-guided search strategy and new state of the art on 10 of 14 medical benchmarks.",
     "url": "https://ai-tldr.dev/models/med-gemini/",
     "category": "Google",
-    "subcategory": "Gemini 3"
+    "subcategory": "Med-Gemini"
   },
   {
     "name": "Muse Spark 1.1",
@@ -711,7 +711,7 @@
     "description": "First-generation LLaMA dense models (roughly 7B, 13B, 33B and 65B), released as research-only weights.",
     "url": "https://ai-tldr.dev/models/llama-1/",
     "category": "Meta",
-    "subcategory": "Llama 2"
+    "subcategory": "LLaMA 1"
   },
   {
     "name": "Code Llama 70B",
@@ -836,43 +836,43 @@
     "name": "DeepSeek-R1-Distill-Llama-70B",
     "description": "Largest original R1 distill, on a Llama 3.3 70B base.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-llama-70b/",
-    "category": "Meta",
-    "subcategory": "Llama 2"
+    "category": "DeepSeek",
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-32B",
     "description": "32B Qwen 2.5 distill of R1 reasoning.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-qwen-32b/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-R1"
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-14B",
     "description": "14B Qwen 2.5 distill of R1 reasoning.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-qwen-14b/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-R1"
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-R1-Distill-Llama-8B",
     "description": "8B Llama 3.1 distill of R1 reasoning.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-llama-8b/",
-    "category": "Meta",
-    "subcategory": "Llama 2"
+    "category": "DeepSeek",
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-7B",
     "description": "7B Qwen 2.5 distill of R1 reasoning.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-qwen-7b/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-R1"
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-R1-Distill-Qwen-1.5B",
     "description": "Smallest R1 distill, on a 1.5B Qwen 2.5 base.",
     "url": "https://ai-tldr.dev/models/deepseek-r1-distill-qwen-1-5b/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-R1"
+    "subcategory": "DeepSeek-R1 (Distill)"
   },
   {
     "name": "DeepSeek-Coder-V2",
@@ -900,7 +900,7 @@
     "description": "Original 7B math model that introduced GRPO reinforcement learning for chain-of-thought math.",
     "url": "https://ai-tldr.dev/models/deepseek-math/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-V3"
+    "subcategory": "DeepSeek V1 / Legacy"
   },
   {
     "name": "DeepSeek-Prover-V2",
@@ -914,28 +914,28 @@
     "description": "Earlier Lean theorem-proving model combining proof-step and whole-proof generation.",
     "url": "https://ai-tldr.dev/models/deepseek-prover-v1/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-V3"
+    "subcategory": "DeepSeek V1 / Legacy"
   },
   {
     "name": "DeepSeek-VL2",
     "description": "MoE vision-language models (tiny/small/base) for advanced multimodal and document/OCR understanding. Open weights.",
     "url": "https://ai-tldr.dev/models/deepseek-vl2/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-V3"
+    "subcategory": "DeepSeek V1 / Legacy"
   },
   {
     "name": "DeepSeek-VL",
     "description": "First-generation dense vision-language models (1.3B and 7B) for real-world multimodal understanding.",
     "url": "https://ai-tldr.dev/models/deepseek-vl/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-V3"
+    "subcategory": "DeepSeek V1 / Legacy"
   },
   {
     "name": "DeepSeek LLM",
     "description": "DeepSeek's first general LLM: dense 7B and 67B Base and Chat models; foundation for the later V-series.",
     "url": "https://ai-tldr.dev/models/deepseek-llm/",
     "category": "DeepSeek",
-    "subcategory": "DeepSeek-V3"
+    "subcategory": "DeepSeek V1 / Legacy"
   },
   {
     "name": "Qwen3.8-Max-Preview",
@@ -1159,35 +1159,35 @@
     "description": "Updated thinking VL model: higher multimodal-reasoning accuracy (e.g. MathVision 56.9), ~20% shorter reasoning, and 4x higher single-image resolution\u2026",
     "url": "https://ai-tldr.dev/models/kimi-vl-a3b-thinking-2506/",
     "category": "Moonshot AI (Kimi)",
-    "subcategory": "Kimi K2"
+    "subcategory": "Kimi (Other)"
   },
   {
     "name": "Kimi-VL-A3B-Thinking",
     "description": "Reasoning-tuned variant of the original 16B/A3B vision-language model.",
     "url": "https://ai-tldr.dev/models/kimi-vl-a3b-thinking/",
     "category": "Moonshot AI (Kimi)",
-    "subcategory": "Kimi K2"
+    "subcategory": "Kimi (Other)"
   },
   {
     "name": "Kimi-VL-A3B-Instruct",
     "description": "Original open-source 16B MoE (3B active) vision-language instruct model.",
     "url": "https://ai-tldr.dev/models/kimi-vl-a3b-instruct/",
     "category": "Moonshot AI (Kimi)",
-    "subcategory": "Kimi K2"
+    "subcategory": "Kimi (Other)"
   },
   {
     "name": "Kimi Linear (48B-A3B)",
     "description": "Hybrid linear-attention model (48B total / 3B active) using Kimi Delta Attention; cuts KV cache up to 75% and reaches up to 6x decoding throughput at\u2026",
     "url": "https://ai-tldr.dev/models/kimi-linear-48b-a3b/",
     "category": "Moonshot AI (Kimi)",
-    "subcategory": "Kimi K2"
+    "subcategory": "Kimi (Other)"
   },
   {
     "name": "Kimi-Dev-72B",
     "description": "72B coding LLM (built on Qwen2.5-72B, RL-tuned) reaching 60.4% on SWE-bench Verified, a then-SOTA for open-source coding models. MIT license.",
     "url": "https://ai-tldr.dev/models/kimi-dev-72b/",
     "category": "Moonshot AI (Kimi)",
-    "subcategory": "Kimi K2"
+    "subcategory": "Kimi (Other)"
   },
   {
     "name": "GLM-5.2",
@@ -1229,7 +1229,7 @@
     "description": "Native agentic LLM, 355B total / 32B active MoE, 128K context, MIT license; unified reasoning, coding and tool use.",
     "url": "https://ai-tldr.dev/models/glm-4-5/",
     "category": "Z.ai (Zhipu / GLM)",
-    "subcategory": "GLM-5"
+    "subcategory": "GLM-4"
   },
   {
     "name": "GLM-5V-Turbo",
@@ -1250,7 +1250,7 @@
     "description": "Compact sibling of GLM-4.5: 106B total / 12B active MoE, 128K context, MIT license; near-flagship quality at much lower cost.",
     "url": "https://ai-tldr.dev/models/glm-4-5-air/",
     "category": "Z.ai (Zhipu / GLM)",
-    "subcategory": "GLM-5"
+    "subcategory": "GLM-4"
   },
   {
     "name": "GLM-4.7-Flash",
@@ -1271,7 +1271,7 @@
     "description": "106B (12B active) open-source vision-reasoning model with thinking mode, built on the GLM-4.5-Air base; SoTA across many open-model vision benchmarks.",
     "url": "https://ai-tldr.dev/models/glm-4-5v/",
     "category": "Z.ai (Zhipu / GLM)",
-    "subcategory": "GLM-5"
+    "subcategory": "GLM-4"
   },
   {
     "name": "GLM-4.1V-9B-Thinking",
@@ -1383,7 +1383,7 @@
     "description": "Fast coding model trained specifically for agentic coding; 256K context, priced $1.00/$2.00 per M tokens in the xAI API.",
     "url": "https://ai-tldr.dev/models/grok-build-0-1/",
     "category": "xAI (Grok)",
-    "subcategory": "Grok 4"
+    "subcategory": "Grok Build"
   },
   {
     "name": "Grok Code Fast 1",
@@ -1495,28 +1495,28 @@
     "description": "Code-completion model (codestral-2508, July 2025).",
     "url": "https://ai-tldr.dev/models/codestral-2508/",
     "category": "Mistral AI",
-    "subcategory": "Codestral"
+    "subcategory": "Codestral / Mathstral"
   },
   {
     "name": "Codestral 25.01",
     "description": "~2x faster generation, 80+ languages, 256k context (codestral-2501).",
     "url": "https://ai-tldr.dev/models/codestral-2501/",
     "category": "Mistral AI",
-    "subcategory": "Codestral"
+    "subcategory": "Codestral / Mathstral"
   },
   {
     "name": "Codestral 22B (24.05)",
     "description": "Original 22B code model (codestral-2405).",
     "url": "https://ai-tldr.dev/models/codestral-2405/",
     "category": "Mistral AI",
-    "subcategory": "Codestral"
+    "subcategory": "Codestral / Mathstral"
   },
   {
     "name": "Pixtral Large (24.11)",
     "description": "124B vision model built on Mistral Large 2, 128k context, open weights (pixtral-large-2411).",
     "url": "https://ai-tldr.dev/models/pixtral-large/",
     "category": "Mistral AI",
-    "subcategory": "Mistral Large"
+    "subcategory": "Pixtral"
   },
   {
     "name": "Pixtral 12B (24.09)",
@@ -1558,49 +1558,49 @@
     "description": "7B model specialised for STEM/math reasoning, Apache 2.0.",
     "url": "https://ai-tldr.dev/models/mathstral/",
     "category": "Mistral AI",
-    "subcategory": "Mistral Base"
+    "subcategory": "Codestral / Mathstral"
   },
   {
     "name": "Codestral Mamba",
     "description": "Mamba-architecture code model for efficient long-context inference (open-codestral-mamba).",
     "url": "https://ai-tldr.dev/models/codestral-mamba/",
     "category": "Mistral AI",
-    "subcategory": "Codestral"
+    "subcategory": "Codestral / Mathstral"
   },
   {
     "name": "Command A+",
     "description": "First Apache-2.0 Command frontier model; sparse MoE (218B total / 25B active), 128K context, vision + reasoning + tool use, 48 languages, runs on 1x\u2026",
     "url": "https://ai-tldr.dev/models/command-a-plus-05-2026/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Command A (03-2025)",
     "description": "256K context, runs on two GPUs with ~150% the throughput of Command R+ 08-2024; strong on tool use, RAG, and agents across 23 languages.",
     "url": "https://ai-tldr.dev/models/command-a-03-2025/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Command A Reasoning (08-2025)",
     "description": "Cohere's first reasoning model; controllable token-budgeted thinking, 256K context, 23 languages, built for enterprise agents, tool use, and multi-st\u2026",
     "url": "https://ai-tldr.dev/models/command-a-reasoning-08-2025/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Command A Vision (07-2025)",
     "description": "Cohere's first commercial vision model; 128K context, handles chart analysis, table parsing, document OCR, and multilingual image-text recognition.",
     "url": "https://ai-tldr.dev/models/command-a-vision-07-2025/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Command A Translate (08-2025)",
     "description": "Translation-specialized 111B model across 23 languages, 16K total context (8K in / 8K out), runs on one or two GPUs; secure private deployment option.",
     "url": "https://ai-tldr.dev/models/command-a-translate-08-2025/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Command R (08-2024)",
@@ -1642,28 +1642,28 @@
     "description": "Original 4K-context Command and lighter Command Light generation models; both deprecated Sept 15, 2025 in favor of Command R / Command A.",
     "url": "https://ai-tldr.dev/models/command-legacy/",
     "category": "Cohere",
-    "subcategory": "Command R"
+    "subcategory": "Command (Legacy)"
   },
   {
     "name": "Aya Expanse (8B & 32B)",
     "description": "Open-weight multilingual models in 8B and 32B sizes across 23 languages; 32B remains live, 8B retired Apr 4, 2026.",
     "url": "https://ai-tldr.dev/models/aya-expanse-2024-10/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Aya Vision (8B & 32B)",
     "description": "Cohere Labs' first open-weight vision model in 8B and 32B sizes; multilingual captioning, VQA, and translation across 23 languages (non-commercial CC\u2026",
     "url": "https://ai-tldr.dev/models/aya-vision-2025-03/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "Tiny Aya",
     "description": "Open-weight 3.35B multilingual research models (global/earth/fire/water variants) covering 70+ languages, optimized for efficient local deployment un\u2026",
     "url": "https://ai-tldr.dev/models/tiny-aya-2026-02/",
     "category": "Cohere",
-    "subcategory": "Command A"
+    "subcategory": "Command A / Aya"
   },
   {
     "name": "MiniMax M3",
@@ -1712,7 +1712,7 @@
     "description": "Open-source 456B-total / 45.9B-active hybrid MoE with lightning + softmax attention; 1M-token training context, extrapolates to 4M at inference.",
     "url": "https://ai-tldr.dev/models/minimax-text-01/",
     "category": "MiniMax",
-    "subcategory": "MiniMax M1"
+    "subcategory": "MiniMax (Other)"
   },
   {
     "name": "abab6.5 / abab6.5s",
