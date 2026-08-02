@@ -95,10 +95,10 @@ llm:
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.5-flash-lite"
       max_output_tokens: 65536
-      max_concurrent_requests: 2
-      requests_per_minute: 5
+      max_concurrent_requests: 6
+      requests_per_minute: 15
       tokens_per_minute: 250000
-      requests_per_day: 20
+      requests_per_day: 500
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-lite-3.1"
 
@@ -107,10 +107,10 @@ llm:
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.1-flash-lite"
       max_output_tokens: 65536
-      max_concurrent_requests: 2
-      requests_per_minute: 5
+      max_concurrent_requests: 6
+      requests_per_minute: 15
       tokens_per_minute: 250000
-      requests_per_day: 20
+      requests_per_day: 500
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
 
 # image section disabled - no GOOGLE_API_KEY configured
