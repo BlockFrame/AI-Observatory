@@ -148,7 +148,7 @@
 
 <div class="h-[calc(100vh-6rem)] max-w-[1800px] mx-auto p-4 md:p-6 flex flex-col">
     <div class="mb-6 shrink-0 flex flex-col md:flex-row gap-6 md:items-end justify-between">
-        <div>
+        <div class="max-w-3xl">
             <h1 class="text-3xl font-bold text-white mb-2">AI Models Directory</h1>
             <p class="text-[#b2b8cf] text-base">A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs. Filter by maker, family and capability.</p>
         </div>

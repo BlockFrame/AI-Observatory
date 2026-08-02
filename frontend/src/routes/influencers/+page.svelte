@@ -21,26 +21,28 @@
     <meta name="description" content="116 AI people worth following, grouped by what they actually do." />
 </svelte:head>
 
-<div class="h-full min-h-[calc(100vh-6rem)] max-w-[1100px] mx-auto p-4 md:p-8 pb-20">
-    <!-- Hero Header -->
-    <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-[#2b3655] pb-8">
-        <div>
-            <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">AI Influencers</h1>
-            <p class="text-xl text-[#8e94ae] max-w-2xl">
+<div class="h-full min-h-[calc(100vh-6rem)] max-w-[1800px] mx-auto p-4 md:p-6 pb-20 flex flex-col">
+    <!-- Unified Hero Header -->
+    <div class="mb-6 shrink-0 flex flex-col md:flex-row gap-6 md:items-end justify-between">
+        <div class="max-w-3xl">
+            <h1 class="text-3xl font-bold text-white mb-2">AI Influencers</h1>
+            <p class="text-[#b2b8cf] text-base">
                 The AI people worth following, grouped by what they actually do — frontier-lab founders, researchers, educators, engineers, tool creators, podcasts and newsletters.
             </p>
         </div>
-        <button 
-            on:click={() => isModalOpen = true}
-            class="px-4 py-2.5 bg-[#9aa6ff] text-[#0c1322] font-semibold rounded-lg hover:bg-[#8694ff] transition-colors flex items-center justify-center gap-2 whitespace-nowrap shrink-0 md:mb-1"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            Suggest Influencer
-        </button>
-    </header>
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <button 
+                on:click={() => isModalOpen = true}
+                class="px-4 py-2.5 bg-[#9aa6ff] text-[#0c1322] font-semibold rounded-lg hover:bg-[#8694ff] transition-colors flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Suggest Influencer
+            </button>
+        </div>
+    </div>
 
     <!-- Main Content -->
-    <main class="influencers-content-wrapper relative">
+    <main class="influencers-content-wrapper relative max-w-[1100px] w-full mx-auto">
         {#if htmlContent}
             <!-- Inject the scraped HTML directly -->
             <div class="scraped-content prose prose-invert prose-p:text-[#b2b8cf] prose-p:leading-relaxed prose-headings:text-white prose-a:text-[#9aa6ff] prose-a:no-underline hover:prose-a:underline max-w-none">
