@@ -146,6 +146,22 @@
     }
 </script>
 
+<svelte:head>
+    <title>AI Models Directory | AI Observatory</title>
+    <meta name="description" content="A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs." />
+    {@html `
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "AI Models Directory",
+        "description": "A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs.",
+        "url": "https://ai-observatory.vercel.app/models"
+    }
+    </script>
+    `}
+</svelte:head>
+
 <div class="h-[calc(100vh-6rem)] max-w-[1800px] mx-auto p-4 md:p-6 flex flex-col">
     <div class="mb-6 shrink-0 flex flex-col md:flex-row gap-6 md:items-end justify-between">
         <div class="max-w-3xl">

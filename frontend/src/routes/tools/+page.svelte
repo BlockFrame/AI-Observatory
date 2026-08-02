@@ -135,6 +135,18 @@
 
 <svelte:head>
     <title>AI Tools Directory | AI Observatory</title>
+    <meta name="description" content="A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated." />
+    {@html `
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "AI Tools Directory",
+        "description": "A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated.",
+        "url": "https://ai-observatory.vercel.app/tools"
+    }
+    </script>
+    `}
 </svelte:head>
 
 <div class="h-[calc(100vh-6rem)] max-w-[1800px] mx-auto p-4 md:p-6 flex flex-col">

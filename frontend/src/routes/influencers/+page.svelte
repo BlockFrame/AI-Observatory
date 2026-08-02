@@ -19,6 +19,17 @@
 <svelte:head>
     <title>Top AI Influencers to Follow | AI Observatory</title>
     <meta name="description" content="116 AI people worth following, grouped by what they actually do." />
+    {@html `
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Top AI Influencers",
+        "description": "116 AI people worth following, grouped by what they actually do.",
+        "url": "https://ai-observatory.vercel.app/influencers"
+    }
+    </script>
+    `}
 </svelte:head>
 
 <div class="h-full min-h-[calc(100vh-6rem)] max-w-[1800px] mx-auto p-4 md:p-6 pb-20 flex flex-col">

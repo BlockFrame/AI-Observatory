@@ -82,8 +82,35 @@
 
 <svelte:head>
     {#if model}
-        <title>{model.name} | AI Observatory</title>
+        <title>{model.name} | AI Models Directory</title>
         <meta name="description" content={model.description} />
+        
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="{model.name} | AI Models Directory" />
+        <meta property="og:description" content={model.description} />
+        <meta property="og:url" content={`https://ai-observatory.vercel.app/models/${$page.params.slug}`} />
+        
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="{model.name} | AI Models Directory" />
+        <meta name="twitter:description" content={model.description} />
+        
+        {@html `
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "${model.name.replace(/"/g, '\\"')}",
+            "description": "${model.description.replace(/"/g, '\\"')}",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Any",
+            "developer": {
+                "@type": "Organization",
+                "name": "${(model.category || 'Unknown').replace(/"/g, '\\"')}"
+            },
+            "url": "https://ai-observatory.vercel.app/models/${$page.params.slug}"
+        }
+        </script>
+        `}
     {:else}
         <title>Loading... | AI Observatory</title>
     {/if}
