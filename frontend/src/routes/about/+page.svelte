@@ -217,4 +217,9 @@
 			</p>
 		</div>
 	</section>
+
+	<!-- Memorial -->
+	<div class="mt-12 text-center text-xs text-trend-gray-500 dark:text-trend-gray-400">
+		In memory of <a href="https://www.linkedin.com/in/paologianturco/" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Paolo Gianturco</a>
+	</div>
 </div>
