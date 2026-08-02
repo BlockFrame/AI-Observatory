@@ -61,8 +61,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       TWITTERAPI_IO_KEY: ${{ secrets.TWITTERAPI_IO_KEY }}
-      SCRAPECREATORS_API_KEY: ${{ secrets.SCRAPECREATORS_API_KEY }}
-      SCRAPECREATORS_BASE: ${{ vars.SCRAPECREATORS_BASE || 'https://api.scrapecreators.com' }}
+      REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+      REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
       REDDIT_PROXY_URL: ${{ secrets.REDDIT_PROXY_URL }}
       REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT || 'AI-News-Aggregator/1.0 (by u/flyryan)' }}
       LESSWRONG_PROXY_URL: ${{ secrets.LESSWRONG_PROXY_URL }}

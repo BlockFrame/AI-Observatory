@@ -27,6 +27,7 @@ from .gatherers import (
     HackerNewsGatherer,
     GitHubTrendingGatherer,
     WebScraperGatherer,
+    RedditGatherer,
 )
 from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTrendingAnalyzer
 from .cost_tracker import get_tracker, reset_tracker
@@ -197,6 +198,12 @@ class MainOrchestrator:
                 target_date=self.target_date,
                 llm_client=self.llm_client,
                 prompt_accessor=prompt_accessor
+            ),
+            'reddit': RedditGatherer(
+                config_dir=config_dir,
+                data_dir=data_dir,
+                lookback_hours=lookback_hours,
+                target_date=self.target_date
             )
         }
         self.hackernews_gatherer = HackerNewsGatherer(

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import SuggestToolModal from '$lib/components/SuggestToolModal.svelte';
     
     interface Tool {
         name: string;
@@ -14,6 +15,8 @@
     let searchQuery = '';
     let selectedCategory: string | null = null;
     let selectedSubcategory: string | null = null;
+    
+    let isModalOpen = false;
 
     let categories: { name: string, count: number }[] = [];
     let subcategories: { name: string, count: number }[] = [];
@@ -138,18 +141,27 @@
     <div class="mb-6 shrink-0 flex flex-col md:flex-row gap-6 md:items-end justify-between">
         <div>
             <h1 class="text-3xl font-bold text-white mb-2">AI Tools Directory</h1>
-            <p class="text-[#b2b8cf] text-base">A browsable map of the AI stack — open-source libraries and commercial platforms, updated daily.</p>
+            <p class="text-[#b2b8cf] text-base">A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated.</p>
         </div>
-        <div class="relative w-full md:w-96">
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#8e94ae] w-5 h-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input 
-                type="text" 
-                bind:value={searchQuery}
-                placeholder="Filter tools — name or what it does..." 
-                class="w-full bg-[#1b2437] border border-[#2b3655] rounded-lg pl-10 pr-4 py-2.5 text-[#cfd5ff] placeholder-[#8e94ae] focus:outline-none focus:border-[#9aa6ff] focus:ring-1 focus:ring-[#9aa6ff] transition-all shadow-inner"
-            />
+        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+            <div class="relative w-full md:w-80">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 text-[#8e94ae] w-5 h-5 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    bind:value={searchQuery}
+                    placeholder="Filter tools..." 
+                    class="w-full bg-[#1b2437] border border-[#2b3655] rounded-lg pl-10 pr-4 py-2.5 text-[#cfd5ff] placeholder-[#8e94ae] focus:outline-none focus:border-[#9aa6ff] focus:ring-1 focus:ring-[#9aa6ff] transition-all shadow-inner"
+                />
+            </div>
+            <button 
+                on:click={() => isModalOpen = true}
+                class="px-4 py-2.5 bg-[#9aa6ff] text-[#0c1322] font-semibold rounded-lg hover:bg-[#8694ff] transition-colors flex items-center justify-center gap-2 whitespace-nowrap shrink-0"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                Suggest Tool
+            </button>
         </div>
     </div>
 
@@ -238,7 +250,7 @@
                                     <h3 class="text-base font-semibold text-white group-hover:text-[#9aa6ff] transition-colors truncate pr-4">{tool.name}</h3>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-[#8e94ae] group-hover:text-[#9aa6ff] transition-colors opacity-0 group-hover:opacity-100 mt-0.5"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
                                 </div>
-                                <p class="text-[13.5px] text-[#b2b8cf] leading-relaxed line-clamp-2">{tool.description}</p>
+                                <p class="text-[13.5px] text-[#b2b8cf] leading-relaxed">{tool.description}</p>
                             </div>
                         </a>
                     {/each}
@@ -247,3 +259,5 @@
         {/if}
     </div>
 </div>
+
+<SuggestToolModal bind:isOpen={isModalOpen} />
