@@ -11,6 +11,7 @@ from .link_follower import LinkFollower
 from .hackernews import HackerNewsGatherer
 from .github_trending import GitHubTrendingGatherer
 from .webscraper_gatherer import WebScraperGatherer
+from .reddit_gatherer import RedditGatherer
 
 __all__ = [
     'NewsGatherer',
@@ -19,5 +20,6 @@ __all__ = [
     'LinkFollower',
     'HackerNewsGatherer',
     'GitHubTrendingGatherer',
-    'WebScraperGatherer'
+    'WebScraperGatherer',
+    'RedditGatherer'
 ]
