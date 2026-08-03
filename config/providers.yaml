@@ -15,6 +15,7 @@ llm:
       model: "deepseek-ai/deepseek-v4-flash"
       max_output_tokens: 16384
       max_concurrent_requests: 4
+      requests_per_minute: 30
       profiles: ["QUICK", "STANDARD"]
       fallback_route_id: "glm-bulk"
 
@@ -47,6 +48,7 @@ llm:
       model: "deepseek-ai/deepseek-v4-pro"
       max_output_tokens: 16384
       max_concurrent_requests: 4
+      requests_per_minute: 30
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback"
       caller_patterns:
