@@ -756,17 +756,14 @@ post_processing:
     TEXT TO ENRICH:
     ${text}
 
-    OUTPUT (JSON only, no markdown code blocks):
-    {
-      "enriched_text": "Full text with links using format /?date=${date}&category=CATEGORY#item-actualItemId",
-      "links": [{"phrase": "the linked phrase", "item_id": "actualItemId", "category": "news"}]
-    }
-
-    CRITICAL JSON FORMATTING:
-    - Double quotes inside the text MUST be escaped as \"
-    - Example: "the \"grief cycle\" concept" NOT "the "grief cycle" concept"
-    - Newlines in the text must be escaped as \n
-    - Use single quotes for emphasis when possible to avoid escaping issues
+    OUTPUT (Use XML tags):
+    <enriched_text>
+    Full text with links using format /?date=${date}&category=CATEGORY#item-actualItemId
+    </enriched_text>
+    
+    <links>
+      <link phrase="the linked phrase" item_id="actualItemId" category="news" />
+    </links>
 
     Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not entities. Avoid bold markers inside links.
 

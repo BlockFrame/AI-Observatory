@@ -8,6 +8,16 @@ llm:
   tokens_per_minute: 250000
   requests_per_day: 500
   routes:
+    - id: "nvidia-deepseek-bulk"
+      mode: "openai-compatible"
+      api_key: "${NVIDIA_API_KEY}"
+      base_url: "https://integrate.api.nvidia.com/v1"
+      model: "deepseek-ai/deepseek-v4-flash"
+      max_output_tokens: 16384
+      max_concurrent_requests: 4
+      profiles: ["QUICK", "STANDARD"]
+      fallback_route_id: "glm-bulk"
+
     - id: "glm-bulk"
       mode: "openai-compatible"
       api_key: "${ZHIPU_API_KEY}"
@@ -27,16 +37,6 @@ llm:
       requests_per_minute: 15
       tokens_per_minute: 250000
       requests_per_day: 500
-      profiles: ["QUICK", "STANDARD"]
-      fallback_route_id: "nvidia-deepseek-bulk"
-
-    - id: "nvidia-deepseek-bulk"
-      mode: "openai-compatible"
-      api_key: "${NVIDIA_API_KEY}"
-      base_url: "https://integrate.api.nvidia.com/v1"
-      model: "deepseek-ai/deepseek-v4-flash"
-      max_output_tokens: 16384
-      max_concurrent_requests: 4
       profiles: ["QUICK", "STANDARD"]
       fallback_route_id: "nvidia-deepseek-quality"
 

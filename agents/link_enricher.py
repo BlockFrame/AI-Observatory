@@ -304,17 +304,14 @@ AVAILABLE ITEMS (ordered by importance - use id and category exactly as shown):
 TEXT TO ENRICH:
 {text_pointer}
 
-OUTPUT (JSON only, no markdown code blocks):
-{{
-  "enriched_text": "Full text with links using format /?date={self.date}&category=CATEGORY#item-actualItemId",
-  "links": [{{"phrase": "the linked phrase", "item_id": "actualItemId", "category": "news"}}]
-}}
+OUTPUT (Use XML tags):
+<enriched_text>
+Full text with links using format /?date={self.date}&category=CATEGORY#item-actualItemId
+</enriched_text>
 
-CRITICAL JSON FORMATTING:
-- Double quotes inside the text MUST be escaped as \\"
-- Example: "the \\"grief cycle\\" concept" NOT "the "grief cycle" concept"
-- Newlines in the text must be escaped as \\n
-- Use single quotes for emphasis when possible to avoid escaping issues
+<links>
+  <link phrase="the linked phrase" item_id="actualItemId" category="news" />
+</links>
 
 Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not entities. Avoid bold markers inside links."""
 
@@ -336,30 +333,25 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 caller=f"link_enricher.{context_name}"
             )
 
-            # Parse JSON response
             content = response.content.strip()
-            # Handle markdown code blocks
-            if content.startswith("```json"):
-                content = content[7:]
-            elif content.startswith("```"):
-                content = content[3:]
-            if content.endswith("```"):
-                content = content[:-3]
-            content = content.strip()
 
-            # Try to extract JSON object if there's extra text
-            if not content.startswith("{"):
-                start = content.find("{")
-                if start != -1:
-                    content = content[start:]
-            if not content.endswith("}"):
-                end = content.rfind("}")
-                if end != -1:
-                    content = content[:end + 1]
-            result = json.loads(content)
-
-            enriched = result.get('enriched_text', text)
-            links = result.get('links', [])
+            # Parse XML response
+            enriched_match = re.search(r'<enriched_text>(.*?)</enriched_text>', content, re.DOTALL)
+            if not enriched_match:
+                logger.warning(f"  {context_name}: no <enriched_text> tag found, applying deterministic fallback")
+                return self._inject_deterministic_links(text, items, context_name)
+            
+            enriched = enriched_match.group(1).strip()
+            
+            # Parse links
+            links = []
+            link_matches = re.finditer(r'<link\s+phrase="([^"]*)"\s+item_id="([^"]*)"\s+category="([^"]*)"\s*/>', content)
+            for m in link_matches:
+                links.append({
+                    "phrase": m.group(1),
+                    "item_id": m.group(2),
+                    "category": m.group(3)
+                })
 
             if links and self._has_internal_links(enriched):
                 logger.info(f"  {context_name}: added {len(links)} links")
@@ -371,33 +363,6 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
             fallback = self._inject_deterministic_links(enriched or text, items, context_name)
             return fallback
 
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse link enrichment response for {context_name}: {e}")
-            logger.debug(f"Response content: {content[:500] if content else 'None'}")
-
-            # Try regex fallback to extract enriched_text, but validate before accepting
-            match = re.search(r'"enriched_text"\s*:\s*"((?:[^"\\]|\\.)*)"', content, re.DOTALL)
-            if match:
-                enriched = match.group(1)
-                # Unescape JSON string escapes
-                enriched = enriched.replace('\\"', '"').replace('\\n', '\n').replace('\\\\', '\\')
-
-                # Validate: check for truncation (unbalanced brackets, incomplete links)
-                open_brackets = enriched.count('[')
-                close_brackets = enriched.count(']')
-                has_incomplete_link = bool(re.search(r'\[[^\]]*$', enriched))
-                is_too_short = len(enriched) < len(text) * 0.5
-
-                if open_brackets == close_brackets and not has_incomplete_link and not is_too_short:
-                    if self._has_internal_links(enriched):
-                        logger.info(f"  {context_name}: recovered enriched text via validated regex fallback")
-                        return enriched
-                    logger.warning(f"  {context_name}: regex fallback had no usable links, applying deterministic fallback")
-                    return self._inject_deterministic_links(text, items, context_name)
-                else:
-                    logger.warning(f"  {context_name}: regex extraction failed validation (brackets={open_brackets}/{close_brackets}, incomplete={has_incomplete_link}, short={is_too_short})")
-            logger.warning(f"  {context_name}: JSON parse failed, applying deterministic fallback")
-            return self._inject_deterministic_links(text, items, context_name)
         except Exception as e:
             logger.error(f"Link enrichment failed for {context_name}: {e}")
             return self._inject_deterministic_links(text, items, context_name)
@@ -422,7 +387,7 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
             if not stripped or stripped.startswith("####") or "](/?date=" in line:
                 continue
 
-            if stripped.startswith("- ") or (link_count == 0 and len(stripped) >= 60):
+            if stripped.startswith("- ") or len(stripped) >= 40:
                 item = items[item_index]
                 item_index += 1
                 item_id = (item.get("id") or "").strip()
