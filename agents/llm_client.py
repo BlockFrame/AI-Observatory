@@ -530,7 +530,7 @@ class AnthropicClient:
             self.max_output_tokens,
         )
         self.trust_env_proxy = _env_bool("LLM_TRUST_ENV_PROXY", False)
-        self.max_retries = _env_int("LLM_MAX_RETRIES", 2, minimum=0)
+        self.max_retries = _env_int("LLM_MAX_RETRIES", 1, minimum=0)
         self.requests_per_minute = requests_per_minute
         self.tokens_per_minute = tokens_per_minute
         self.requests_per_day = requests_per_day
@@ -1084,7 +1084,7 @@ class AsyncAnthropicClient:
         self.max_retries = (
             max_retries
             if max_retries is not None
-            else _env_int("LLM_MAX_RETRIES", 2, minimum=0)
+            else _env_int("LLM_MAX_RETRIES", 1, minimum=0)
         )
         self.requests_per_minute = requests_per_minute
         self.tokens_per_minute = tokens_per_minute

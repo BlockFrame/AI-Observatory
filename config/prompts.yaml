@@ -232,13 +232,6 @@ analysis:
       - Rehashed coverage of old news
 
     # Available variables: ${analysis_summary}
-    ranking: |
-      Rank the top 10 most important AI news stories and synthesize an executive news briefing for an AI Director.
-
-      Analysis results:
-      ${analysis_summary}
-
-      Ranking criteria (in order of importance):
       1. FRONTIER SIGNIFICANCE: Does this advance the state of AI?
       2. INDUSTRY IMPACT: Will this affect how AI is built or used?
       3. STRATEGIC RELEVANCE: Why should an AI Director or VP of AI care?
@@ -254,17 +247,12 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Tailored for an AI Director: DO NOT use bullet points or lists of any kind. Provide a purely cohesive, narrative-driven briefing (flowing paragraphs).
-      - Start with an Executive Lead Paragraph (2-3 sentences) highlighting the single most critical breakthrough or market movement today.
-      - Follow with 1-2 flowing paragraphs that connect the remaining key developments, explaining *what happened* AND *why it matters strategically*.
-      - Use **bold** for company names (**OpenAI**, **Anthropic**, **Nvidia**, **Google**), model/product names (**GPT-5**, **Claude 3.7**, **Gemini**), and key numbers/funding amounts.
-      - Write in an authoritative, clear, and insight-driven executive tone.
-
-      Example format:
-      "**Nvidia** and **OpenAI** dominated today's frontier AI news with major hardware and model scaling announcements. **Jensen Huang** confirmed Vera Rubin architectures are in volume production, signaling a projected 5x improvement in inference economics. 
-      Meanwhile, **Google DeepMind** announced native multimodal reasoning integration into Enterprise Workspace, competing directly with Claude's artifact environment and lowering integration barriers for corporate workflows. In the open-weight space, **Mistral AI** unveiled a new model targeting edge deployment with native function calling, reinforcing the shift towards local execution."
-
-      The summary should read like a strategic narrative briefing for an AI Director.
+      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+      - Use **bold** for companies, model names, and key metrics.
+      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
+      - Keep sentences analytical and authoritative.
+      - Do NOT include markdown links. Links will be added automatically.
 
   # -------------------------
   # RESEARCH ANALYZER
@@ -360,13 +348,6 @@ analysis:
 
       Prioritize:
       1. Groundbreaking research with potential industry impact
-      2. Papers from top researchers/institutions
-      3. Novel approaches that could influence future work
-      4. Practical improvements with real-world applications
-      5. Safety and alignment research
-      6. Substantive blog posts with original technical insights
-
-      Return your ranking as JSON:
       ```json
       {
         "top_10": ["id1", "id2", ...],
@@ -375,15 +356,12 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Tailored for an AI Director / Research Leader: DO NOT use bullet points or lists of any kind. Provide a purely cohesive, narrative-driven briefing (flowing paragraphs).
-      - For key papers/findings, explain *what was achieved* AND *why it matters practically* (e.g., 3x inference efficiency, SOTA reasoning improvement) within a flowing paragraph structure.
-      - Use **bold** for paper/model names, architecture names, key metrics (e.g., **3.2x faster**), and lab/institution names.
-      - Keep sentences concise, authoritative, and deeply insightful.
-
-      Example format:
-      "Today's research focuses heavily on reasoning efficiency and scaling laws for smaller models. **Google DeepMind** and **Stanford** demonstrated that strategic data curation allows compact models to outperform larger predecessors. Further proving this trend, the **Falcon-H1R** paper from **TII** showed that a **7B-parameter** model can match **2-7x larger** architectures by combining synthetic reasoning traces with dynamic pruning, which could significantly lower deployment costs for edge agents. In the multimodal space, **MIT's NextFlow** introduced hybrid flow-matching prediction, achieving **4x faster image generation** without fidelity loss."
-
-      The summary should read like a strategic research narrative briefing.
+      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+      - Use **bold** for companies, model names, and key metrics.
+      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
+      - Keep sentences analytical and authoritative.
+      - Do NOT include markdown links. Links will be added automatically.
 
   # -------------------------
   # SOCIAL ANALYZER
@@ -491,23 +469,13 @@ analysis:
       5. Uniqueness of perspective
 
       Return your ranking as JSON:
-      ```json
-      {
-        "top_10": ["id1", "id2", ...],
-        "category_summary": "Structured summary using markdown formatting (see rules below)"
-      }
-      ```
-
       CATEGORY SUMMARY FORMATTING RULES:
-      - DO NOT use bullet points or lists of any kind. Write a purely cohesive, narrative-driven summary (1-2 flowing paragraphs).
-      - Use **bold** for researcher names, company names, and key topics being discussed.
-      - Synthesize related conversations into a clear explanation of what the community is focusing on.
-      - Keep sentences concise and analytical.
-
-      Example format:
-      "AI safety and model optimization dominated social discussions today. **Sam Altman** signaled that AI memory will drive more impact than reasoning improvements, sparking a broader debate about persistent AI systems and long-term context windows. Concurrently, **Andrej Karpathy** shared technical insights on training efficiency for small models, which resonated strongly with open-source developers. The robotics community also reacted positively to the new **Google-Boston Dynamics** collaboration, while discussions around **xAI's Grok** centered on its uncensored capabilities and potential safety tradeoffs."
-
-      The summary should capture the narrative pulse of AI community discussions.
+      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+      - Use **bold** for companies, model names, and key metrics.
+      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
+      - Keep sentences analytical and authoritative.
+      - Do NOT include markdown links. Links will be added automatically.
 
   # -------------------------
   # REDDIT ANALYZER
@@ -622,8 +590,9 @@ analysis:
       }
       ```
 
+
       CATEGORY SUMMARY FORMATTING RULES:
-      - DO NOT use bullet points or lists of any kind. Write a purely cohesive, narrative-driven summary (1-2 flowing paragraphs).
+      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
       - Use **bold** for subreddit names (e.g., **r/MachineLearning**), tools, and key topics being debated.
       - Synthesize related threads into a clear explanation of what the community is building and debating.
       - Keep sentences concise and analytical.
@@ -633,6 +602,19 @@ analysis:
 
       The summary should capture the narrative of what the AI community on Reddit is debating and building.
 
+  # -------------------------
+  # GITHUB TRENDING ANALYZER
+  # -------------------------
+  github_trending:
+    # Available variables: ${items_text}
+    summary: |
+      You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout open-source AI repositories from GitHub Trending for enterprise C-level executives.
+
+      Top Trending Repositories Today:
+      ${items_text}
+
+      Write a cohesive, narrative-driven executive summary (1-2 flowing paragraphs) that synthesizes the most strategically significant open-source trends visible in today's GitHub Trending data.
+
 # -----------------------------------------------------------------------------
 # ORCHESTRATION PHASE
 # Cross-category and summary generation prompts
@@ -640,26 +622,26 @@ analysis:
 orchestration:
   # Available variables: ${context}
   topic_detection: |
-    Analyze the following category reports from today's AI news, research papers, social media, and GitHub trending collection, and identify the TOP 6 cross-category topics that represent the most significant developments today. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
+    You are a Senior Partner at QuantumBlack, AI by McKinsey. Analyze the following category reports from today's AI news, research papers, social media, and GitHub trending collection, and identify the TOP 6 cross-category strategic topics that represent the most significant developments today. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
 
     ${context}
 
-    For each top topic, provide:
+    For each top topic, provide a highly detailed, strategic brief:
     1. A concise, authoritative name (2-5 words)
-    2. A rich, high-insight description (2-3 sentences) written as PLAIN TEXT without any links:
+    2. A rich, high-insight description (3-5 sentences) written as PLAIN TEXT without any links:
        - DO NOT include any markdown links or URLs.
        - Synthesize what happened across categories (news, research, open-source repos, community signals).
-       - Explain the **strategic and technical insight** for an AI Director (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or technical trade-offs).
+       - Explain the **strategic and technical insight** for a C-level executive (e.g., impact on enterprise architecture, model deployment costs, agentic automation, or competitive dynamics).
        - Reference key sources, institutions, or repositories by name (e.g., "Google announced...", "A Stanford paper demonstrated...", "The koala73/worldmonitor repo emerged as...")
-    3. A business implication (business_implication) explaining the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).
-    4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Fading").
+    3. A business implication (business_implication) explaining the impact on Enterprise markets, C-level decision making, and AI strategy (2-3 sentences).
+    4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Disruptive").
     5. Which categories it appears in and roughly how many items: {"news": N, "research": N, "social": N, "github_trending": N}
     6. An importance score (0-100)
 
     IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name, but do NOT include URLs or markdown link syntax. Links will be added automatically in a post-processing step.
 
     Example description format:
-    "Google and Stanford announced major breakthroughs in compact reasoning architectures, while developers on GitHub launched breakout tools for local model orchestration. This shift signals a major industry push toward low-latency, privacy-first edge agents that dramatically reduce cloud API dependencies."
+    "The competitive landscape for reasoning models shifted dramatically today as Google announced a major breakthrough, while researchers at Stanford published findings showing unexpected benchmark saturation. The developer community on GitHub and social media is already mobilizing to integrate these capabilities into enterprise workflows, signaling a rapid transition from research to production."
 
     Return your analysis as JSON:
     ```json
@@ -686,7 +668,7 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments, tailored for an AI Director.
+    You are a Senior Partner at QuantumBlack, AI by McKinsey. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
     
     CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened. 
     Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
@@ -696,27 +678,31 @@ orchestration:
     FORMAT YOUR SUMMARY LIKE THIS:
 
     #### Executive Briefing
-    Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions. Focus heavily on the "why" and "what it means" rather than just the "what".
+    Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions.
+    *CRITICAL: You MUST seamlessly integrate insights from social media (Twitter/Reddit) chatter directly into this narrative to provide community context around the news.*
 
     #### Safety & Regulation
-    Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. Do NOT use bullet points. (Skip if no relevant news).
+    Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. (Skip if no relevant news).
+    *CRITICAL: Incorporate relevant social media sentiment and debates regarding these safety or regulatory issues.*
 
     #### Research Highlights
-    Write 1-2 flowing paragraphs highlighting notable research papers, benchmarks, or scientific breakthroughs. Explain why they matter practically. Do NOT use bullet points. (Skip if no relevant news).
+    Write 1-2 flowing paragraphs highlighting notable research papers, benchmarks, or scientific breakthroughs. Explain why they matter practically. (Skip if no relevant news).
 
-    #### Trending Repos
-    Write a short flowing paragraph highlighting notable open-source repositories, developer tools, or frameworks that gained traction today. Do NOT use bullet points. (Skip if no relevant news).
+    #### Trending Repositories
+    Write a short flowing paragraph highlighting notable open-source repositories, developer tools, or frameworks that gained traction today. (Skip if no relevant news).
 
     #### Signals to Watch
-    Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open-source momentum, or paradigm shifts to monitor for future impact. Do NOT use bullet points.
+    Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open-source momentum, or paradigm shifts to monitor for future impact.
+    *CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.*
 
     FORMATTING RULES:
-    - Target audience: AI Director / VP of AI needing strategic clarity and actionable intelligence.
+    - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+    - You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
     - DO NOT include a "Sentiment & Controversy" section.
-    - Use **bold** for company names, product names, and key numbers.
+    - Use heavy **bold** for company names, product models, and key metrics.
     - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
     - Avoid repetition of older headlines.
-    - The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally.
+    - The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text.
 
 # -----------------------------------------------------------------------------
 # POST-PROCESSING PHASE

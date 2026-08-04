@@ -98,7 +98,7 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
         )
 
     async def _generate_executive_summary(self, top_items: List[AnalyzedItem]) -> str:
-        """Generate strategic AI Director briefing for GitHub Trending."""
+        """Generate strategic QuantumBlack briefing for GitHub Trending."""
         if not top_items:
             return "No trending GitHub repositories available for analysis."
 
@@ -107,17 +107,35 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
             for item in top_items
         )
 
-        prompt = f"""You are an AI Director synthesizing today's breakout open-source AI repositories from GitHub.
+        # Try loading prompt from prompts.yaml via prompt_accessor
+        if self.prompt_accessor:
+            try:
+                prompt = self.prompt_accessor.get_analyzer_prompt(
+                    self.category, 'summary',
+                    {'items_text': items_text}
+                )
+            except Exception as e:
+                logger.warning(f"Failed to load prompt from prompts.yaml for github_trending: {e}")
+                prompt = None
+        else:
+            prompt = None
+
+        if not prompt:
+            # Fallback inline prompt (aligned with prompts.yaml style)
+            prompt = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout open-source AI repositories from GitHub Trending for enterprise C-level executives.
 
 Top Trending Repositories Today:
 {items_text}
 
-Provide an Executive AI Director Summary Insight for GitHub Trending Repositories.
-Rules:
-- Structure by strategic developer themes (e.g., Agentic Frameworks, Local Model Tooling, Developer Infrastructure).
-- Explicitly highlight the most innovative repositories in **bold**, explaining *what* they do and *why* they matter strategically for AI architecture and engineering.
-- Keep the tone authoritative, analytical, and executive-ready. Max 3 concise paragraphs.
-"""
+Write a cohesive, narrative-driven executive summary (1-2 flowing paragraphs) that synthesizes the most strategically significant open-source trends visible in today's GitHub Trending data.
+
+CATEGORY SUMMARY FORMATTING RULES:
+- Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+- You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single repository name. Each bullet point must be a rich, fully developed executive insight synthesizing the trend.
+- Use **bold** for repository names, languages, framework names, and key metrics.
+- Synthesize related repositories into themes explaining what they signal for enterprise AI adoption, developer tooling, and competitive dynamics.
+- Keep sentences analytical and authoritative.
+- Do NOT include markdown links or URLs. Links will be added automatically in a post-processing step."""
 
         try:
             if self.async_client:
@@ -131,7 +149,7 @@ Rules:
         except Exception as e:
             logger.warning(f"Failed to generate LLM summary for GitHub trending: {e}")
 
-        # Fallback summary
+        # Deterministic fallback summary
         repo_highlights = [f"- **{i.item.title.replace('[GitHub Trending] ', '')}**: {i.summary}" for i in top_items[:5]]
         return (
             "**GitHub Trending Executive Insights:** Today's open-source developer landscape shows strong momentum "

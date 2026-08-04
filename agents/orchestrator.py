@@ -1114,25 +1114,25 @@ class MainOrchestrator:
             )
         else:
             # Fallback to inline prompt for backwards compatibility
-            instructions = f"""Analyze the following category reports from today's AI news collection and identify the TOP 6 cross-category topics that appear across multiple categories. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
+            instructions = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey. Analyze the following category reports from today's AI news collection and identify the TOP 6 cross-category strategic topics that appear across multiple domains. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
 
 {DATA_POINTER}
 
-For each cross-category topic, provide:
+For each cross-category topic, provide a highly detailed, strategic brief:
 1. A concise name (2-5 words)
-2. A description (2-3 sentences) as PLAIN TEXT without any links
-   - DO NOT include any markdown links or URLs
-   - Write factual claims that reference specific sources by name
-   - Links will be added automatically in a later processing step
-3. A business implication (business_implication) explaining the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).
-4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Fading").
+2. A description (3-5 sentences) as PLAIN TEXT without any links.
+   - DO NOT include any markdown links or URLs.
+   - Write a rich, cohesive narrative synthesizing the news, research, and social chatter. Reference specific companies, models, and papers by name.
+   - Links will be added automatically in a later processing step.
+3. A business implication (business_implication) explaining the strategic impact on Enterprise markets, C-level decision making, and competitive dynamics (2-3 sentences).
+4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Disruptive").
 5. Which categories it appears in and roughly how many items
 6. An importance score (0-100)
 
 IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name (e.g., "Google announced...", "A Stanford paper found...") but do NOT include URLs or markdown link syntax.
 
 Example description format:
-"Google announced a major breakthrough in reasoning models, while researchers at Stanford published findings showing improved benchmark performance. The Reddit community has been actively discussing implications."
+"The competitive landscape for reasoning models shifted dramatically today as Google announced a major breakthrough, while researchers at Stanford published findings showing unexpected benchmark saturation. The developer community on GitHub and social media is already mobilizing to integrate these capabilities into enterprise workflows, signaling a rapid transition from research to production."
 
 Return your analysis as JSON:
 ```json
@@ -1143,7 +1143,7 @@ Return your analysis as JSON:
       "description": "Plain text description referencing sources by name without any links.",
       "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
       "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
-      "categories": {{"news": 5, "papers": 2, "social": 10, "reddit": 3}},
+      "categories": {{"news": 5, "research": 2, "social": 10, "github_trending": 4}},
       "importance": 85
     }}
   ]
@@ -1298,46 +1298,41 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
             )
         else:
             # Fallback to inline prompt for backwards compatibility
-            instructions = f"""Write a structured executive summary of today's AI news using markdown formatting.
+            instructions = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
+
+CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened.
+Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
 
 {DATA_POINTER}
 
 FORMAT YOUR SUMMARY LIKE THIS:
 
-#### Top Story
-One sentence about the most important development of the day.
-
-#### Key Developments
-- **[Company/Product Name]**: Brief description of what happened (1 sentence)
-- **[Company/Product Name]**: Brief description (1 sentence)
-- (Include 3-5 bullet points for the main developments)
+#### Executive Briefing
+Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions.
+CRITICAL: You MUST seamlessly integrate insights from social media (Twitter/Reddit) chatter directly into this narrative to provide community context around the news.
 
 #### Safety & Regulation
-- Brief bullet points on any safety, ethics, or regulatory news (omit section if none)
+Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. (Skip if no relevant news).
+CRITICAL: Incorporate relevant social media sentiment and debates regarding these safety or regulatory issues.
 
 #### Research Highlights
-- Brief bullet points on notable research or papers (omit section if none)
+Write 1-2 flowing paragraphs highlighting notable research papers, benchmarks, or scientific breakthroughs. Explain why they matter practically. (Skip if no relevant news).
 
-#### Looking Ahead
-One sentence on forward-looking implications or what to watch.
+#### Trending Repositories
+Write a short flowing paragraph highlighting notable open-source repositories, developer tools, or frameworks that gained traction today. (Skip if no relevant news).
+
+#### Signals to Watch
+Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open-source momentum, or paradigm shifts to monitor for future impact.
+CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.
 
 FORMATTING RULES:
-- Use **bold** for company names (OpenAI, Google, Anthropic), product names (GPT-4, Claude, Gemini), model names, and key numbers/stats
-- Use #### for section headers
-- Use - for bullet points
-- Keep each bullet to 1-2 sentences maximum
-- Only include sections that have relevant content today (skip empty sections)
-- Write in factual, professional tone - no hype or speculation
-- Do NOT use phrases like "significant developments", "noteworthy", or "thought leaders"
-
-CRITICAL - AVOID REPETITION:
-- Review the PREVIOUS DAYS' COVERAGE section above carefully
-- If a story was already a headline/top story in previous days, do NOT present it as breaking news again
-- For ongoing stories, frame as "continuing developments" or focus on what's NEW today
-- Prioritize genuinely new stories over rehashing recent headlines
-- If today's biggest news was already yesterday's headline, find the next most important NEW development
-
-The summary should help a busy professional quickly scan and understand what's NEW in AI today."""
+- Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+- You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+- DO NOT include a "Sentiment & Controversy" section.
+- Use heavy **bold** for company names, product models, and key metrics.
+- Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
+- Avoid repetition of older headlines.
+- The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text."""
 
         system_prompt = build_hardened_system(
             instructions, nonce, grounding=self.grounding_context

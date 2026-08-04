@@ -14,7 +14,7 @@ llm:
       base_url: "https://integrate.api.nvidia.com/v1"
       model: "deepseek-ai/deepseek-v4-flash"
       max_output_tokens: 16384
-      max_concurrent_requests: 4
+      max_concurrent_requests: 2
       requests_per_minute: 30
       profiles: ["QUICK", "STANDARD"]
       fallback_route_id: "glm-bulk"
@@ -39,7 +39,18 @@ llm:
       tokens_per_minute: 250000
       requests_per_day: 500
       profiles: ["QUICK", "STANDARD"]
-      fallback_route_id: "nvidia-deepseek-quality"
+      fallback_route_id: "gemini-bulk-fallback-3.1"
+
+    - id: "gemini-bulk-fallback-3.1"
+      mode: "gemini"
+      api_key: "${GEMINI_API_KEY}"
+      model: "gemini-3.1-flash-lite"
+      max_output_tokens: 65536
+      max_concurrent_requests: 6
+      requests_per_minute: 15
+      tokens_per_minute: 250000
+      requests_per_day: 500
+      profiles: ["QUICK", "STANDARD"]
 
     - id: "nvidia-deepseek-quality"
       mode: "openai-compatible"
@@ -47,7 +58,7 @@ llm:
       base_url: "https://integrate.api.nvidia.com/v1"
       model: "deepseek-ai/deepseek-v4-pro"
       max_output_tokens: 16384
-      max_concurrent_requests: 4
+      max_concurrent_requests: 2
       requests_per_minute: 30
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback"
@@ -96,18 +107,6 @@ llm:
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.5-flash-lite"
-      max_output_tokens: 65536
-      max_concurrent_requests: 6
-      requests_per_minute: 15
-      tokens_per_minute: 250000
-      requests_per_day: 500
-      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
-      fallback_route_id: "gemini-quality-fallback-lite-3.1"
-
-    - id: "gemini-quality-fallback-lite-3.1"
-      mode: "gemini"
-      api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.1-flash-lite"
       max_output_tokens: 65536
       max_concurrent_requests: 6
       requests_per_minute: 15

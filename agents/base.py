@@ -683,7 +683,7 @@ class BaseAnalyzer(ABC):
             logger.error(f"{self.category} batch {label} analysis failed: {type(e).__name__}: {e}")
             # Retry once with backoff for transient failures (network, 5xx, etc.)
             try:
-                await asyncio.sleep(5)
+                await asyncio.sleep(0.1)  # Instant fallback retry without blocking delays
                 response = await self.async_client.call_with_thinking(
                     messages=[{"role": "user", "content": user_message}],
                     system=system_prompt,
@@ -900,6 +900,7 @@ class BaseAnalyzer(ABC):
 
         # Build AnalyzedItem list
         analyzed_items = []
+        dropped_count = 0
         for item in items:
             if item.id in all_analyses:
                 a = all_analyses[item.id]
@@ -913,14 +914,22 @@ class BaseAnalyzer(ABC):
                 ))
             else:
                 # Item wasn't analyzed (batch failure)
+                dropped_count += 1
                 analyzed_items.append(AnalyzedItem(
                     item=item,
                     summary=item.content[:200] + '...' if len(item.content) > 200 else item.content,
                     importance_score=30,  # Lower score for unanalyzed items
-                    reasoning='Not analyzed (batch processing)',
+                    reasoning='Not analyzed (batch processing failure)',
                     themes=[],
                     sentiment='neutral'
                 ))
+
+        if dropped_count:
+            logger.warning(
+                f"  {self.category} MERGE: {dropped_count}/{len(items)} items were NOT analyzed "
+                f"due to LLM batch failures (assigned fallback score=30). "
+                f"Check LLM error logs above for root cause."
+            )
 
         # Sort by importance
         analyzed_items.sort(key=lambda x: x.importance_score, reverse=True)
@@ -958,6 +967,7 @@ class BaseAnalyzer(ABC):
         parts.append("TOP CANDIDATES (by initial score):\n")
         for i, item in enumerate(top_candidates[:30], 1):
             parts.append(f"{i}. [{item.item.id}] {self._clip_context_text(item.item.title, 300)}")
+            parts.append(f"   URL: {item.item.url}")
             parts.append(f"   Score: {item.importance_score} | {item.reasoning[:100] if item.reasoning else 'N/A'}")
             parts.append(f"   Summary: {item.summary[:150] if item.summary else 'N/A'}")
             parts.append("")

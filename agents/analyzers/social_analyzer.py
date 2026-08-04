@@ -127,21 +127,23 @@ Return your ranking as JSON:
 ```
 
 CATEGORY SUMMARY FORMATTING RULES:
-- Use **bold** for researcher names, company names, and key topics being discussed
-- Use bullet points (- ) for distinct discussions or threads
-- Group related conversations by theme
-- Keep sentences concise (under 30 words each)
-- Maximum 2-3 short paragraphs OR equivalent bullet content
-- Capture the sentiment and perspectives in the community
+You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout AI discussions on social media for enterprise C-level executives.
+Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
 
-Example format:
-"AI safety concerns dominated social discussions today. **Sam Altman** signaled that AI memory will drive more impact than reasoning improvements, sparking debate about persistent AI systems.
+Use this Markdown format (group similar items by theme and heavily use **bold** for company names, model names, and key metrics):
 
-- **Andrej Karpathy** shared technical insights on training efficiency for small models
-- The robotics community reacted positively to the **Google-Boston Dynamics** collaboration
-- Concerns about **xAI's Grok** safety issues drew widespread criticism"
+### 🚀 Macro-Trend Analysis
+(1 concise paragraph summarizing the key AI discourse and what it signals for enterprise AI adoption and strategy)
 
-The summary should capture the pulse of AI community discussions."""
+### 🏆 Top Discussions & Enterprise Impact
+(Use bullet points for the 3-5 most critical conversations/insights. Embed the source URL naturally as a Markdown link within the text, e.g., "A major debate around [Topic Name](URL) highlighted...")
+- **[Topic/Insight Name]** (via **[Key Author]**): [1-sentence explanation of the insight].
+  - *Strategic Impact*: [Explain the business value, how it unlocks new capabilities, affects the market, or shifts competitive dynamics].
+
+### 💡 Consultant's Insight
+(1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
+
+Keep the tone authoritative, visionary, analytical, and highly readable (McKinsey style). Do not include raw JSON structure outside the `category_summary` field."""
 
     def __init__(
         self,

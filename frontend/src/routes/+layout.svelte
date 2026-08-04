@@ -66,6 +66,12 @@
 				<a href="/about" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/about' ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">About</span>
 				</a>
+				<a href="https://github.com/sponsors/BlockFrame" target="_blank" rel="noopener noreferrer" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 text-[#ff79c6] hover:bg-[#ff79c6]/10 hover:text-white mt-4 border border-[#ff79c6]/20">
+					<span class="text-[13px] font-medium tracking-[0.02em] flex items-center gap-2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+						Sponsor Project
+					</span>
+				</a>
 				</div>
 			</nav>
 		</div>
@@ -90,6 +96,19 @@
 			</div>
 
 			<div class="flex items-center gap-2 sm:gap-4">
+				<!-- Sponsor Button -->
+				<a
+					href="https://github.com/sponsors/BlockFrame"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center gap-1.5 text-sm text-[#ff79c6] hover:text-white bg-[#ff79c6]/10 border border-[#ff79c6]/30 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-[#ff79c6] transition-all font-medium"
+					aria-label="Sponsor on GitHub"
+					title="Sponsor AI Observatory on GitHub"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+					<span class="hidden sm:inline">Sponsor</span>
+				</a>
+
 				<!-- Feedback Button -->
 				<button
 					on:click={() => isFeedbackModalOpen = true}

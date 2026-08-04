@@ -122,21 +122,22 @@ Return your ranking as JSON:
 ```
 
 CATEGORY SUMMARY FORMATTING RULES:
-- Use **bold** for model names, architecture names, benchmark names, and key metrics
-- Use bullet points (- ) for lists of related papers or findings
-- Group similar items together by theme (e.g., efficiency, safety, multimodal)
-- Keep sentences concise (under 30 words each)
-- Maximum 2-3 short paragraphs OR equivalent bullet content
-- Write in factual, technical tone
+You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout AI research papers and technical blogs for enterprise C-level executives.
+Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
 
-Example format:
-"Today's research highlights advances in multimodal architectures and reasoning efficiency. **NextFlow** achieves orders-of-magnitude faster image generation through a novel hybrid prediction strategy.
+Use this Markdown format (group similar papers/findings by theme and heavily use **bold** for company names, model names, and key metrics):
+### 🚀 Macro-Trend Analysis
+(1 concise paragraph summarizing the key research discourse and what it signals for enterprise AI adoption and strategy)
 
-- **Falcon-H1R** demonstrates that **7B-parameter** models can match **2-7x larger** models through careful data curation
-- Streaming hallucination detection introduces treating hallucinations as evolving latent states
-- **DatBench** exposes fundamental flaws in current VLM benchmarks"
+### 🏆 Top Research & Enterprise Impact
+(Use bullet points for the 3-5 most critical breakthroughs. Embed the source URL naturally as a Markdown link within the text, e.g., "The new paper on [Model Name](URL) demonstrates...")
+- **[Research/Paper Name]** (via **[Institution/Author]**): [1-sentence explanation of the technical breakthrough].
+  - *Strategic Impact*: [Explain the business value, how it unlocks new capabilities, affects the market, or shifts competitive dynamics].
 
-The summary should read like a technical briefing for researchers and practitioners."""
+### 💡 Consultant's Insight
+(1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
+
+Keep the tone authoritative, visionary, analytical, and highly readable (McKinsey style). Do not include raw JSON structure outside the `category_summary` field."""
 
     def __init__(
         self,
