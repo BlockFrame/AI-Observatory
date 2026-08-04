@@ -19,7 +19,6 @@ from .gatherers import (
     LinkFollower,
     HackerNewsGatherer,
     GitHubTrendingGatherer,
-    RedditGatherer,
 )
 from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTrendingAnalyzer
 
@@ -49,7 +48,6 @@ __all__ = [
     'LinkFollower',
     'HackerNewsGatherer',
     'GitHubTrendingGatherer',
-    'RedditGatherer',
     # Analyzers
     'NewsAnalyzer',
     'ResearchAnalyzer',

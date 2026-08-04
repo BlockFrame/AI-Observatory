@@ -301,15 +301,6 @@ emollick
 hardmaru
 """
 
-    # Reddit subreddits
-    reddit_subs = """# Reddit subreddits to monitor (one per line, without r/)
-MachineLearning
-artificial
-LocalLLaMA
-OpenAI
-singularity
-"""
-
     # Bluesky accounts
     bluesky_accounts = """# Bluesky accounts to monitor (one per line)
 # Format: handle or handle.bsky.social
@@ -349,9 +340,6 @@ Gargron@mastodon.social
 
     with open(os.path.join(config_dir, 'twitter_accounts.txt'), 'w') as f:
         f.write(twitter_accounts)
-
-    with open(os.path.join(config_dir, 'reddit_subreddits.txt'), 'w') as f:
-        f.write(reddit_subs)
 
     with open(os.path.join(config_dir, 'bluesky_accounts.txt'), 'w') as f:
         f.write(bluesky_accounts)
