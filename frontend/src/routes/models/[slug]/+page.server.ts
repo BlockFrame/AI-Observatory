@@ -11,7 +11,7 @@ export function entries() {
         return [];
     }
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-    const slugs = new Set(data.map((model: any) => slugify(model.name)));
+    const slugs = new Set<string>(data.map((model: any) => slugify(model.name)));
     return Array.from(slugs).map(slug => ({ slug }));
 }
 

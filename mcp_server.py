@@ -76,6 +76,10 @@ async def call_tool(name: str, arguments: dict[str, Any] | None) -> list[TextCon
             return [TextContent(type="text", text="Error: 'date' argument is required.")]
         
         date = arguments["date"]
+        import re
+        if not re.match(r'^\d{4}-\d{2}-\d{2}$', str(date)):
+            return [TextContent(type="text", text="Error: Invalid date format. Use YYYY-MM-DD.")]
+
         summary_file = DATA_DIR / date / "summary.json"
         
         if not summary_file.exists():

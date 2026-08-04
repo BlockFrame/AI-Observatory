@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import { slugify } from '$lib/utils/slugify';
+    import { safeHtml } from '$lib/services/safeHtml';
 
     // We now receive data directly from +page.server.ts load function
     export let data: any;
@@ -62,7 +63,7 @@
                     } else {
                         // Also try to fetch content client-side
                         const cRes = await fetch('/data/models-content.json');
-                        if (cRes.ok) {
+                        if (cRes.ok && slug) {
                             const cMap = await cRes.json();
                             htmlContent = cMap[slug] || null;
                         }
@@ -160,7 +161,7 @@
             {#if htmlContent}
                 <!-- Inject the scraped HTML directly -->
                 <div class="scraped-content prose prose-invert prose-p:text-[#b2b8cf] prose-p:leading-relaxed prose-headings:text-white prose-a:text-[#9aa6ff] prose-a:no-underline hover:prose-a:underline prose-code:text-[#9aa6ff] prose-code:bg-[#111d33] prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-[#0c1322] prose-pre:border prose-pre:border-[#2b3655] max-w-none">
-                    {@html htmlContent}
+                    {@html safeHtml(htmlContent)}
                 </div>
             {:else}
                 <div class="prose prose-invert prose-p:text-[#b2b8cf] prose-p:leading-relaxed max-w-none bg-[#0c1322] p-8 rounded-2xl border border-[#2b3655]">

@@ -201,7 +201,6 @@ class SocialGatherer(BaseGatherer):
 
         headers = {
             "Authorization": f"Bearer {GETXAPI_KEY}",
-            "Content-Type": "application/json"
         }
 
         for chunk_idx, chunk in enumerate(chunks):
@@ -290,10 +289,10 @@ class SocialGatherer(BaseGatherer):
             pub_date = parsedate_to_datetime(created_at)
             if pub_date.tzinfo:
                 pub_date = pub_date.replace(tzinfo=None)
-        except:
+        except (ValueError, TypeError, OverflowError):
             try:
                 pub_date = datetime.strptime(created_at, '%Y-%m-%dT%H:%M:%S.%fZ')
-            except:
+            except (ValueError, TypeError):
                 pub_date = datetime.now()
 
         return CollectedItem(
@@ -328,4 +327,4 @@ class SocialGatherer(BaseGatherer):
         """
         # This would be called after gather() to get URLs for the link follower
         # Implementation depends on when this is called in the pipeline
-        pass
+        return []

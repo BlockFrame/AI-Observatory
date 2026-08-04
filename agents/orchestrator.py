@@ -1060,10 +1060,18 @@ class MainOrchestrator:
         return dict(results)
 
     def _markdown_links_to_html(self, text: str) -> str:
-        """Convert markdown links [text](url) to HTML <a> tags."""
+        """Convert markdown links [text](url) to HTML <a> tags safely."""
         import re
+        import html
         pattern = r'\[([^\]]+)\]\(([^)]+)\)'
-        return re.sub(pattern, r'<a href="\2" target="_blank">\1</a>', text)
+        def safe_link(m):
+            label, url = m.group(1), m.group(2)
+            if not re.match(r'^https?://', url.strip(), re.IGNORECASE):
+                return html.escape(label)
+            safe_label = html.escape(label)
+            safe_url = html.escape(url.strip())
+            return f'<a href="{safe_url}" target="_blank" rel="noopener noreferrer">{safe_label}</a>'
+        return re.sub(pattern, safe_link, text)
 
     def _exclude_from_summaries(self, item: AnalyzedItem) -> bool:
         metadata = item.item.metadata if isinstance(item.item.metadata, dict) else {}

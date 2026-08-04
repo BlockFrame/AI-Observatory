@@ -136,7 +136,7 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
             tracker.stop()
             
             # Save into web/data so it gets committed by GitHub Actions
-            target_date_str = target_date if target_date else datetime.now().strftime('%Y-%m-%d')
+            target_date_str = target_date if (target_date and re.match(r'^\d{4}-\d{2}-\d{2}$', target_date)) else datetime.now().strftime('%Y-%m-%d')
             cost_target_dir = os.path.join(web_dir, 'data', target_date_str)
             os.makedirs(cost_target_dir, exist_ok=True)
             cost_report_path = os.path.join(cost_target_dir, 'cost_report.json')

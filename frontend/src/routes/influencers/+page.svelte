@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import SuggestInfluencerModal from '$lib/components/SuggestInfluencerModal.svelte';
+    import { safeHtml } from '$lib/services/safeHtml';
     export let data: any;
     let { htmlContent } = data;
     
@@ -57,7 +58,7 @@
         {#if htmlContent}
             <!-- Inject the scraped HTML directly -->
             <div class="scraped-content prose prose-invert prose-p:text-[#b2b8cf] prose-p:leading-relaxed prose-headings:text-white prose-a:text-[#9aa6ff] prose-a:no-underline hover:prose-a:underline max-w-none">
-                {@html htmlContent}
+                {@html safeHtml(htmlContent)}
             </div>
         {:else}
             <div class="flex flex-col items-center justify-center p-12 text-center bg-[#0c1322] border border-[#2b3655] rounded-xl shadow-2xl">
