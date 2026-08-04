@@ -288,7 +288,9 @@
     
     /* Hide some elements we don't want */
     :global(.scraped-content .lrn-tool-aside),
-    :global(.scraped-content .lrn-pn) {
+    :global(.scraped-content .lrn-pn),
+    :global(.scraped-content figure),
+    :global(.scraped-content img) {
         display: none;
     }
 </style>
