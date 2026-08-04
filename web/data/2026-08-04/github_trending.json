@@ -1,0 +1,1647 @@
+{
+  "category": "github_trending",
+  "date": "2026-08-04",
+  "category_summary": "The current GitHub trend landscape reveals a decisive shift toward **Agentic Frameworks** and **Team-Level Memory Systems**. We are witnessing the transition from isolated chatbots to robust, multi-agent ecosystems capable of complex, secure operations. **TencentCloud/TencentDB-Agent-Memory** is a strategic architectural breakthrough, functioning as a centralized \"memory hub\" that standardizes how agents store and retrieve conversations, skills, and code graphs, thereby eliminating data silos across different frameworks. This is complemented by security-focused tooling, such as **zhaoxuya520/reverse-skill**, which introduces an AI-powered routing layer specifically for authorized penetration testing and reverse engineering, ensuring agents operate within safe, governed boundaries. Furthermore, **esengine/DeepSeek-Reasonix** optimizes the terminal experience by leveraging DeepSeek-native architecture with prefix-cache stability, ensuring low-latency, persistent reasoning sessions for developers. ([read more](/?date=2026-08-04&category=github_trending#item-a07008bfe795))\n\nIn the realm of **Developer Infrastructure**, the focus is moving toward deterministic, low-cost processing and local inference capabilities. **Graphify-Labs/graphify** is a standout innovation, transforming codebases into queryable knowledge graphs using local AST parsing—offering a faster, cheaper alternative to vector stores by avoiding the \"black box\" nature of embeddings. This is matched by **lyogavin/airllm**, which aggressively lowers the barrier to entry for high-performance inference by enabling 70B model reasoning on a single 4GB GPU. Additionally, data ingestion tools are seeing significant traction; **firecrawl/pdf-inspector** utilizes Rust for high-speed PDF classification, allowing agents to intelligently route documents based on whether they are scanned or text-based, streamlining downstream processing. ([read more](/?date=2026-08-04&category=github_trending#item-405e22fa9c64))\n\nFinally, the ecosystem is expanding the **perception capabilities** of agents through open-source web crawlers. **Panniantong/Agent-Reach** is crucial for autonomous agents, providing a zero-API-fee CLI that gives agents \"eyes\" across the entire open web—from Twitter and Reddit to GitHub—enabling real-time web research without external dependencies. To support this growth, the community is prioritizing standardization through Microsoft’s educational repositories, with **AI-For-Beginners** and **generative-ai-for-beginners** trending to democratize foundational AI knowledge and ensure a skilled workforce can manage these emerging complex architectures. ([read more](/?date=2026-08-04&category=github_trending#item-c8e554c07816))",
+  "category_summary_html": "<p>The current GitHub trend landscape reveals a decisive shift toward <strong>Agentic Frameworks</strong> and <strong>Team-Level Memory Systems</strong>. We are witnessing the transition from isolated chatbots to robust, multi-agent ecosystems capable of complex, secure operations. <strong>TencentCloud/TencentDB-Agent-Memory</strong> is a strategic architectural breakthrough, functioning as a centralized \"memory hub\" that standardizes how agents store and retrieve conversations, skills, and code graphs, thereby eliminating data silos across different frameworks. This is complemented by security-focused tooling, such as <strong>zhaoxuya520/reverse-skill</strong>, which introduces an AI-powered routing layer specifically for authorized penetration testing and reverse engineering, ensuring agents operate within safe, governed boundaries. Furthermore, <strong>esengine/DeepSeek-Reasonix</strong> optimizes the terminal experience by leveraging DeepSeek-native architecture with prefix-cache stability, ensuring low-latency, persistent reasoning sessions for developers. (<a href=\"/?date=2026-08-04&amp;category=github_trending#item-a07008bfe795\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<p>In the realm of <strong>Developer Infrastructure</strong>, the focus is moving toward deterministic, low-cost processing and local inference capabilities. <strong>Graphify-Labs/graphify</strong> is a standout innovation, transforming codebases into queryable knowledge graphs using local AST parsing—offering a faster, cheaper alternative to vector stores by avoiding the \"black box\" nature of embeddings. This is matched by <strong>lyogavin/airllm</strong>, which aggressively lowers the barrier to entry for high-performance inference by enabling 70B model reasoning on a single 4GB GPU. Additionally, data ingestion tools are seeing significant traction; <strong>firecrawl/pdf-inspector</strong> utilizes Rust for high-speed PDF classification, allowing agents to intelligently route documents based on whether they are scanned or text-based, streamlining downstream processing. (<a href=\"/?date=2026-08-04&amp;category=github_trending#item-405e22fa9c64\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>\n<p>Finally, the ecosystem is expanding the <strong>perception capabilities</strong> of agents through open-source web crawlers. <strong>Panniantong/Agent-Reach</strong> is crucial for autonomous agents, providing a zero-API-fee CLI that gives agents \"eyes\" across the entire open web—from Twitter and Reddit to GitHub—enabling real-time web research without external dependencies. To support this growth, the community is prioritizing standardization through Microsoft’s educational repositories, with <strong>AI-For-Beginners</strong> and <strong>generative-ai-for-beginners</strong> trending to democratize foundational AI knowledge and ensure a skilled workforce can manage these emerging complex architectures. (<a href=\"/?date=2026-08-04&amp;category=github_trending#item-c8e554c07816\" class=\"internal-link\" rel=\"noopener noreferrer\">read more</a>)</p>",
+  "themes": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+      "item_count": 13,
+      "example_items": [
+        "a07008bfe795",
+        "405e22fa9c64",
+        "c8e554c07816"
+      ],
+      "importance": 88.0
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+      "item_count": 5,
+      "example_items": [
+        "a07008bfe795",
+        "405e22fa9c64",
+        "c8e554c07816"
+      ],
+      "importance": 85.0
+    }
+  ],
+  "total_items": 42,
+  "items": [
+    {
+      "id": "a07008bfe795",
+      "title": "[GitHub Trending] lyogavin/airllm: AirLLM 70B inference with single 4GB GPU",
+      "content": "GitHub Repository: lyogavin/airllm\nDescription: AirLLM 70B inference with single 4GB GPU\nLanguage: Jupyter Notebook\nStars Today: 1,085",
+      "url": "https://github.com/lyogavin/airllm",
+      "author": "lyogavin",
+      "published": "2026-08-04T07:32:34.431689+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Jupyter Notebook repository (1,085 stars today): GitHub Repository: lyogavin/airllm\nDescription: AirLLM 70B inference with single 4GB GPU\nLanguage: Jupyter Notebook\nStars Today: 1,085",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,085 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Jupyter Notebook"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,085",
+        "language": "Jupyter Notebook",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.431689+00:00",
+        "hn_score": 1085,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Jupyter Notebook repository (1,085 stars today): GitHub Repository: lyogavin/airllm</p>\n<p>Description: AirLLM 70B inference with single 4GB GPU</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 1,085</p>",
+      "content_html": "<p>GitHub Repository: lyogavin/airllm</p>\n<p>Description: AirLLM 70B inference with single 4GB GPU</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 1,085</p>"
+    },
+    {
+      "id": "405e22fa9c64",
+      "title": "[GitHub Trending] zhaoxuya520/reverse-skill: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+      "content": "GitHub Repository: zhaoxuya520/reverse-skill\nDescription: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端\nLanguage: PowerShell\nStars Today: 2,446",
+      "url": "https://github.com/zhaoxuya520/reverse-skill",
+      "author": "zhaoxuya520",
+      "published": "2026-08-04T07:32:34.432046+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source PowerShell repository (2,446 stars today): GitHub Repository: zhaoxuya520/reverse-skill\nDescription: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端\nLanguage: PowerShell\nStars Today: 2,446",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (2,446 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "PowerShell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "2,446",
+        "language": "PowerShell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.432046+00:00",
+        "hn_score": 2446,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source PowerShell repository (2,446 stars today): GitHub Repository: zhaoxuya520/reverse-skill</p>\n<p>Description: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端</p>\n<p>Language: PowerShell</p>\n<p>Stars Today: 2,446</p>",
+      "content_html": "<p>GitHub Repository: zhaoxuya520/reverse-skill</p>\n<p>Description: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端</p>\n<p>Language: PowerShell</p>\n<p>Stars Today: 2,446</p>"
+    },
+    {
+      "id": "c8e554c07816",
+      "title": "[GitHub Trending] firecrawl/pdf-inspector: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
+      "content": "GitHub Repository: firecrawl/pdf-inspector\nDescription: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.\nLanguage: Rust\nStars Today: 1,699",
+      "url": "https://github.com/firecrawl/pdf-inspector",
+      "author": "firecrawl",
+      "published": "2026-08-04T07:32:34.432401+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Rust repository (1,699 stars today): GitHub Repository: firecrawl/pdf-inspector\nDescription: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.\nLanguage: Rust\nStars Today: 1,699",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,699 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Rust"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,699",
+        "language": "Rust",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.432401+00:00",
+        "hn_score": 1699,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Rust repository (1,699 stars today): GitHub Repository: firecrawl/pdf-inspector</p>\n<p>Description: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>\n<p>Language: Rust</p>\n<p>Stars Today: 1,699</p>",
+      "content_html": "<p>GitHub Repository: firecrawl/pdf-inspector</p>\n<p>Description: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>\n<p>Language: Rust</p>\n<p>Stars Today: 1,699</p>"
+    },
+    {
+      "id": "43733e0eb364",
+      "title": "[GitHub Trending] esengine/DeepSeek-Reasonix: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+      "content": "GitHub Repository: esengine/DeepSeek-Reasonix\nDescription: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.\nLanguage: Go\nStars Today: 883",
+      "url": "https://github.com/esengine/DeepSeek-Reasonix",
+      "author": "esengine",
+      "published": "2026-08-04T07:32:34.432749+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Go repository (883 stars today): GitHub Repository: esengine/DeepSeek-Reasonix\nDescription: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.\nLanguage: Go\nStars Today: 883",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (883 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Go"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "883",
+        "language": "Go",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.432749+00:00",
+        "hn_score": 883,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Go repository (883 stars today): GitHub Repository: esengine/DeepSeek-Reasonix</p>\n<p>Description: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.</p>\n<p>Language: Go</p>\n<p>Stars Today: 883</p>",
+      "content_html": "<p>GitHub Repository: esengine/DeepSeek-Reasonix</p>\n<p>Description: DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.</p>\n<p>Language: Go</p>\n<p>Stars Today: 883</p>"
+    },
+    {
+      "id": "d72a4c669640",
+      "title": "[GitHub Trending] TencentCloud/TencentDB-Agent-Memory: TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.",
+      "content": "GitHub Repository: TencentCloud/TencentDB-Agent-Memory\nDescription: TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.\nLanguage: TypeScript\nStars Today: 1,090",
+      "url": "https://github.com/TencentCloud/TencentDB-Agent-Memory",
+      "author": "TencentCloud",
+      "published": "2026-08-04T07:32:34.433030+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (1,090 stars today): GitHub Repository: TencentCloud/TencentDB-Agent-Memory\nDescription: TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.\nLanguage: TypeScript\nStars Today: 1,090",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,090 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,090",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.433030+00:00",
+        "hn_score": 1090,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (1,090 stars today): GitHub Repository: TencentCloud/TencentDB-Agent-Memory</p>\n<p>Description: TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,090</p>",
+      "content_html": "<p>GitHub Repository: TencentCloud/TencentDB-Agent-Memory</p>\n<p>Description: TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,090</p>"
+    },
+    {
+      "id": "0d124a217ca7",
+      "title": "[GitHub Trending] microsoft/AI-For-Beginners: 12 Weeks, 24 Lessons, AI for All!",
+      "content": "GitHub Repository: microsoft/AI-For-Beginners\nDescription: 12 Weeks, 24 Lessons, AI for All!\nLanguage: Jupyter Notebook\nStars Today: 1,902",
+      "url": "https://github.com/microsoft/AI-For-Beginners",
+      "author": "microsoft",
+      "published": "2026-08-04T07:32:34.433380+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Jupyter Notebook repository (1,902 stars today): GitHub Repository: microsoft/AI-For-Beginners\nDescription: 12 Weeks, 24 Lessons, AI for All!\nLanguage: Jupyter Notebook\nStars Today: 1,902",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,902 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Jupyter Notebook"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,902",
+        "language": "Jupyter Notebook",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.433380+00:00",
+        "hn_score": 1902,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Jupyter Notebook repository (1,902 stars today): GitHub Repository: microsoft/AI-For-Beginners</p>\n<p>Description: 12 Weeks, 24 Lessons, AI for All!</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 1,902</p>",
+      "content_html": "<p>GitHub Repository: microsoft/AI-For-Beginners</p>\n<p>Description: 12 Weeks, 24 Lessons, AI for All!</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 1,902</p>"
+    },
+    {
+      "id": "a86f28e09756",
+      "title": "[GitHub Trending] microsoft/generative-ai-for-beginners: 21 Lessons, Get Started Building with Generative AI",
+      "content": "GitHub Repository: microsoft/generative-ai-for-beginners\nDescription: 21 Lessons, Get Started Building with Generative AI\nLanguage: Jupyter Notebook\nStars Today: 775",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "author": "microsoft",
+      "published": "2026-08-04T07:32:34.433715+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Jupyter Notebook repository (775 stars today): GitHub Repository: microsoft/generative-ai-for-beginners\nDescription: 21 Lessons, Get Started Building with Generative AI\nLanguage: Jupyter Notebook\nStars Today: 775",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (775 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Jupyter Notebook"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "775",
+        "language": "Jupyter Notebook",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.433715+00:00",
+        "hn_score": 775,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Jupyter Notebook repository (775 stars today): GitHub Repository: microsoft/generative-ai-for-beginners</p>\n<p>Description: 21 Lessons, Get Started Building with Generative AI</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 775</p>",
+      "content_html": "<p>GitHub Repository: microsoft/generative-ai-for-beginners</p>\n<p>Description: 21 Lessons, Get Started Building with Generative AI</p>\n<p>Language: Jupyter Notebook</p>\n<p>Stars Today: 775</p>"
+    },
+    {
+      "id": "3bb71af732b5",
+      "title": "[GitHub Trending] Panniantong/Agent-Reach: Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+      "content": "GitHub Repository: Panniantong/Agent-Reach\nDescription: Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.\nLanguage: Python\nStars Today: 1,057",
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "author": "Panniantong",
+      "published": "2026-08-04T07:32:34.435148+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (1,057 stars today): GitHub Repository: Panniantong/Agent-Reach\nDescription: Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.\nLanguage: Python\nStars Today: 1,057",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,057 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,057",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.435148+00:00",
+        "hn_score": 1057,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (1,057 stars today): GitHub Repository: Panniantong/Agent-Reach</p>\n<p>Description: Give your AI agent eyes to see the entire internet. Read &amp; search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,057</p>",
+      "content_html": "<p>GitHub Repository: Panniantong/Agent-Reach</p>\n<p>Description: Give your AI agent eyes to see the entire internet. Read &amp; search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,057</p>"
+    },
+    {
+      "id": "f55b9602b960",
+      "title": "[GitHub Trending] Graphify-Labs/graphify: Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+      "content": "GitHub Repository: Graphify-Labs/graphify\nDescription: Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.\nLanguage: Python\nStars Today: 840",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "author": "Graphify-Labs",
+      "published": "2026-08-04T07:32:35.889584+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (840 stars today): GitHub Repository: Graphify-Labs/graphify\nDescription: Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.\nLanguage: Python\nStars Today: 840",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (840 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "840",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.889584+00:00",
+        "hn_score": 840,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (840 stars today): GitHub Repository: Graphify-Labs/graphify</p>\n<p>Description: Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.</p>\n<p>Language: Python</p>\n<p>Stars Today: 840</p>",
+      "content_html": "<p>GitHub Repository: Graphify-Labs/graphify</p>\n<p>Description: Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.</p>\n<p>Language: Python</p>\n<p>Stars Today: 840</p>"
+    },
+    {
+      "id": "effa6465885f",
+      "title": "[GitHub Trending] usekaneo/kaneo: 🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.",
+      "content": "GitHub Repository: usekaneo/kaneo\nDescription: 🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.\nLanguage: TypeScript\nStars Today: 665",
+      "url": "https://github.com/usekaneo/kaneo",
+      "author": "usekaneo",
+      "published": "2026-08-04T07:32:34.436638+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (665 stars today): GitHub Repository: usekaneo/kaneo\nDescription: 🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.\nLanguage: TypeScript\nStars Today: 665",
+      "importance_score": 93,
+      "reasoning": "High community velocity on GitHub Trending (665 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "665",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.436638+00:00",
+        "hn_score": 665,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (665 stars today): GitHub Repository: usekaneo/kaneo</p>\n<p>Description: 🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 665</p>",
+      "content_html": "<p>GitHub Repository: usekaneo/kaneo</p>\n<p>Description: 🎯 All you need. Nothing you don't. Open source project management that works for you, not against you.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 665</p>"
+    },
+    {
+      "id": "5b6ccd30e30d",
+      "title": "[GitHub Trending] NousResearch/hermes-agent: The agent that grows with you",
+      "content": "GitHub Repository: NousResearch/hermes-agent\nDescription: The agent that grows with you\nLanguage: Python\nStars Today: 622",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "author": "NousResearch",
+      "published": "2026-08-04T07:32:35.890691+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (622 stars today): GitHub Repository: NousResearch/hermes-agent\nDescription: The agent that grows with you\nLanguage: Python\nStars Today: 622",
+      "importance_score": 91,
+      "reasoning": "High community velocity on GitHub Trending (622 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "622",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.890691+00:00",
+        "hn_score": 622,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (622 stars today): GitHub Repository: NousResearch/hermes-agent</p>\n<p>Description: The agent that grows with you</p>\n<p>Language: Python</p>\n<p>Stars Today: 622</p>",
+      "content_html": "<p>GitHub Repository: NousResearch/hermes-agent</p>\n<p>Description: The agent that grows with you</p>\n<p>Language: Python</p>\n<p>Stars Today: 622</p>"
+    },
+    {
+      "id": "0e67ad5fb43d",
+      "title": "[GitHub Trending] iv-org/invidious: Invidious is an alternative front-end to YouTube",
+      "content": "GitHub Repository: iv-org/invidious\nDescription: Invidious is an alternative front-end to YouTube\nLanguage: Crystal\nStars Today: 402",
+      "url": "https://github.com/iv-org/invidious",
+      "author": "iv-org",
+      "published": "2026-08-04T07:32:34.435850+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Crystal repository (402 stars today): GitHub Repository: iv-org/invidious\nDescription: Invidious is an alternative front-end to YouTube\nLanguage: Crystal\nStars Today: 402",
+      "importance_score": 80,
+      "reasoning": "High community velocity on GitHub Trending (402 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Crystal"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "402",
+        "language": "Crystal",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.435850+00:00",
+        "hn_score": 402,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Crystal repository (402 stars today): GitHub Repository: iv-org/invidious</p>\n<p>Description: Invidious is an alternative front-end to YouTube</p>\n<p>Language: Crystal</p>\n<p>Stars Today: 402</p>",
+      "content_html": "<p>GitHub Repository: iv-org/invidious</p>\n<p>Description: Invidious is an alternative front-end to YouTube</p>\n<p>Language: Crystal</p>\n<p>Stars Today: 402</p>"
+    },
+    {
+      "id": "44b32ad32fef",
+      "title": "[GitHub Trending] jamiepine/voicebox: The open-source AI voice studio. Clone, dictate, create.",
+      "content": "GitHub Repository: jamiepine/voicebox\nDescription: The open-source AI voice studio. Clone, dictate, create.\nLanguage: TypeScript\nStars Today: 412",
+      "url": "https://github.com/jamiepine/voicebox",
+      "author": "jamiepine",
+      "published": "2026-08-04T07:32:34.436977+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (412 stars today): GitHub Repository: jamiepine/voicebox\nDescription: The open-source AI voice studio. Clone, dictate, create.\nLanguage: TypeScript\nStars Today: 412",
+      "importance_score": 80,
+      "reasoning": "High community velocity on GitHub Trending (412 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "412",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.436977+00:00",
+        "hn_score": 412,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (412 stars today): GitHub Repository: jamiepine/voicebox</p>\n<p>Description: The open-source AI voice studio. Clone, dictate, create.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 412</p>",
+      "content_html": "<p>GitHub Repository: jamiepine/voicebox</p>\n<p>Description: The open-source AI voice studio. Clone, dictate, create.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 412</p>"
+    },
+    {
+      "id": "1e06be37ee6e",
+      "title": "[GitHub Trending] antirez/ds4: DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm",
+      "content": "GitHub Repository: antirez/ds4\nDescription: DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm\nLanguage: C\nStars Today: 384",
+      "url": "https://github.com/antirez/ds4",
+      "author": "antirez",
+      "published": "2026-08-04T07:32:34.434465+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source C repository (384 stars today): GitHub Repository: antirez/ds4\nDescription: DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm\nLanguage: C\nStars Today: 384",
+      "importance_score": 79,
+      "reasoning": "High community velocity on GitHub Trending (384 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "C"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "384",
+        "language": "C",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.434465+00:00",
+        "hn_score": 384,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source C repository (384 stars today): GitHub Repository: antirez/ds4</p>\n<p>Description: DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm</p>\n<p>Language: C</p>\n<p>Stars Today: 384</p>",
+      "content_html": "<p>GitHub Repository: antirez/ds4</p>\n<p>Description: DeepSeek 4 Flash and PRO local inference engine for Metal, CUDA and ROCm</p>\n<p>Language: C</p>\n<p>Stars Today: 384</p>"
+    },
+    {
+      "id": "b24b10a0ae94",
+      "title": "[GitHub Trending] can1357/oh-my-pi: ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more",
+      "content": "GitHub Repository: can1357/oh-my-pi\nDescription: ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more\nLanguage: TypeScript\nStars Today: 301",
+      "url": "https://github.com/can1357/oh-my-pi",
+      "author": "can1357",
+      "published": "2026-08-04T07:32:36.977682+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (301 stars today): GitHub Repository: can1357/oh-my-pi\nDescription: ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more\nLanguage: TypeScript\nStars Today: 301",
+      "importance_score": 75,
+      "reasoning": "High community velocity on GitHub Trending (301 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "301",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.977682+00:00",
+        "hn_score": 301,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (301 stars today): GitHub Repository: can1357/oh-my-pi</p>\n<p>Description: ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 301</p>",
+      "content_html": "<p>GitHub Repository: can1357/oh-my-pi</p>\n<p>Description: ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 301</p>"
+    },
+    {
+      "id": "e64e737fdf2a",
+      "title": "[GitHub Trending] Alishahryar1/free-claude-code: Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)",
+      "content": "GitHub Repository: Alishahryar1/free-claude-code\nDescription: Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)\nLanguage: Python\nStars Today: 278",
+      "url": "https://github.com/Alishahryar1/free-claude-code",
+      "author": "Alishahryar1",
+      "published": "2026-08-04T07:32:34.435511+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (278 stars today): GitHub Repository: Alishahryar1/free-claude-code\nDescription: Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)\nLanguage: Python\nStars Today: 278",
+      "importance_score": 73,
+      "reasoning": "High community velocity on GitHub Trending (278 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "278",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.435511+00:00",
+        "hn_score": 278,
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (278 stars today): GitHub Repository: Alishahryar1/free-claude-code</p>\n<p>Description: Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)</p>\n<p>Language: Python</p>\n<p>Stars Today: 278</p>",
+      "content_html": "<p>GitHub Repository: Alishahryar1/free-claude-code</p>\n<p>Description: Use Claude Code, Codex and Pi for free from your terminal, app, IDE, or phone like OpenClaw (voice supported)</p>\n<p>Language: Python</p>\n<p>Stars Today: 278</p>"
+    },
+    {
+      "id": "545a7684a5d5",
+      "title": "[GitHub Trending] donnemartin/system-design-primer: Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.",
+      "content": "GitHub Repository: donnemartin/system-design-primer\nDescription: Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.\nLanguage: Python\nStars Today: 237",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "author": "donnemartin",
+      "published": "2026-08-04T07:32:34.434063+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (237 stars today): GitHub Repository: donnemartin/system-design-primer\nDescription: Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.\nLanguage: Python\nStars Today: 237",
+      "importance_score": 71,
+      "reasoning": "High community velocity on GitHub Trending (237 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "237",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.434063+00:00",
+        "hn_score": 237,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (237 stars today): GitHub Repository: donnemartin/system-design-primer</p>\n<p>Description: Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.</p>\n<p>Language: Python</p>\n<p>Stars Today: 237</p>",
+      "content_html": "<p>GitHub Repository: donnemartin/system-design-primer</p>\n<p>Description: Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.</p>\n<p>Language: Python</p>\n<p>Stars Today: 237</p>"
+    },
+    {
+      "id": "b2849c8eb296",
+      "title": "[GitHub Trending] sherlock-project/sherlock: Hunt down social media accounts by username across social networks",
+      "content": "GitHub Repository: sherlock-project/sherlock\nDescription: Hunt down social media accounts by username across social networks\nLanguage: Python\nStars Today: 227",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "author": "sherlock-project",
+      "published": "2026-08-04T07:32:35.888249+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (227 stars today): GitHub Repository: sherlock-project/sherlock\nDescription: Hunt down social media accounts by username across social networks\nLanguage: Python\nStars Today: 227",
+      "importance_score": 71,
+      "reasoning": "High community velocity on GitHub Trending (227 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "227",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.888249+00:00",
+        "hn_score": 227,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (227 stars today): GitHub Repository: sherlock-project/sherlock</p>\n<p>Description: Hunt down social media accounts by username across social networks</p>\n<p>Language: Python</p>\n<p>Stars Today: 227</p>",
+      "content_html": "<p>GitHub Repository: sherlock-project/sherlock</p>\n<p>Description: Hunt down social media accounts by username across social networks</p>\n<p>Language: Python</p>\n<p>Stars Today: 227</p>"
+    },
+    {
+      "id": "88395613d55f",
+      "title": "[GitHub Trending] shiyu-coder/Kronos: Kronos: A Foundation Model for the Language of Financial Markets",
+      "content": "GitHub Repository: shiyu-coder/Kronos\nDescription: Kronos: A Foundation Model for the Language of Financial Markets\nLanguage: Python\nStars Today: 200",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "author": "shiyu-coder",
+      "published": "2026-08-04T07:32:34.434803+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (200 stars today): GitHub Repository: shiyu-coder/Kronos\nDescription: Kronos: A Foundation Model for the Language of Financial Markets\nLanguage: Python\nStars Today: 200",
+      "importance_score": 70,
+      "reasoning": "High community velocity on GitHub Trending (200 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "200",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.434803+00:00",
+        "hn_score": 200,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (200 stars today): GitHub Repository: shiyu-coder/Kronos</p>\n<p>Description: Kronos: A Foundation Model for the Language of Financial Markets</p>\n<p>Language: Python</p>\n<p>Stars Today: 200</p>",
+      "content_html": "<p>GitHub Repository: shiyu-coder/Kronos</p>\n<p>Description: Kronos: A Foundation Model for the Language of Financial Markets</p>\n<p>Language: Python</p>\n<p>Stars Today: 200</p>"
+    },
+    {
+      "id": "a41c2e43aaa4",
+      "title": "[GitHub Trending] bytedance/deer-flow: An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.",
+      "content": "GitHub Repository: bytedance/deer-flow\nDescription: An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.\nLanguage: Python\nStars Today: 186",
+      "url": "https://github.com/bytedance/deer-flow",
+      "author": "bytedance",
+      "published": "2026-08-04T07:32:35.887101+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (186 stars today): GitHub Repository: bytedance/deer-flow\nDescription: An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.\nLanguage: Python\nStars Today: 186",
+      "importance_score": 69,
+      "reasoning": "High community velocity on GitHub Trending (186 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "186",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.887101+00:00",
+        "hn_score": 186,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (186 stars today): GitHub Repository: bytedance/deer-flow</p>\n<p>Description: An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.</p>\n<p>Language: Python</p>\n<p>Stars Today: 186</p>",
+      "content_html": "<p>GitHub Repository: bytedance/deer-flow</p>\n<p>Description: An open-source long-horizon SuperAgent harness that researches, codes, and creates. With the help of sandboxes, memories, tools, skill, subagents and message gateway, it handles different levels of tasks that could take minutes to hours.</p>\n<p>Language: Python</p>\n<p>Stars Today: 186</p>"
+    },
+    {
+      "id": "f64975aa9e8f",
+      "title": "[GitHub Trending] microsoft/TRELLIS.2: Native and Compact Structured Latents for 3D Generation",
+      "content": "GitHub Repository: microsoft/TRELLIS.2\nDescription: Native and Compact Structured Latents for 3D Generation\nLanguage: Python\nStars Today: 166",
+      "url": "https://github.com/microsoft/TRELLIS.2",
+      "author": "microsoft",
+      "published": "2026-08-04T07:32:35.886478+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (166 stars today): GitHub Repository: microsoft/TRELLIS.2\nDescription: Native and Compact Structured Latents for 3D Generation\nLanguage: Python\nStars Today: 166",
+      "importance_score": 68,
+      "reasoning": "High community velocity on GitHub Trending (166 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "166",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.886478+00:00",
+        "hn_score": 166,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (166 stars today): GitHub Repository: microsoft/TRELLIS.2</p>\n<p>Description: Native and Compact Structured Latents for 3D Generation</p>\n<p>Language: Python</p>\n<p>Stars Today: 166</p>",
+      "content_html": "<p>GitHub Repository: microsoft/TRELLIS.2</p>\n<p>Description: Native and Compact Structured Latents for 3D Generation</p>\n<p>Language: Python</p>\n<p>Stars Today: 166</p>"
+    },
+    {
+      "id": "53b6879ddf31",
+      "title": "[GitHub Trending] livekit/agents: A framework for building realtime voice AI agents 🤖🎙️📹",
+      "content": "GitHub Repository: livekit/agents\nDescription: A framework for building realtime voice AI agents 🤖🎙️📹\nLanguage: Python\nStars Today: 148",
+      "url": "https://github.com/livekit/agents",
+      "author": "livekit",
+      "published": "2026-08-04T07:32:34.436200+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (148 stars today): GitHub Repository: livekit/agents\nDescription: A framework for building realtime voice AI agents 🤖🎙️📹\nLanguage: Python\nStars Today: 148",
+      "importance_score": 67,
+      "reasoning": "High community velocity on GitHub Trending (148 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "148",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:34.436200+00:00",
+        "hn_score": 148,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (148 stars today): GitHub Repository: livekit/agents</p>\n<p>Description: A framework for building realtime voice AI agents 🤖🎙️📹</p>\n<p>Language: Python</p>\n<p>Stars Today: 148</p>",
+      "content_html": "<p>GitHub Repository: livekit/agents</p>\n<p>Description: A framework for building realtime voice AI agents 🤖🎙️📹</p>\n<p>Language: Python</p>\n<p>Stars Today: 148</p>"
+    },
+    {
+      "id": "f9df40b3084f",
+      "title": "[GitHub Trending] toeverything/AFFiNE: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.",
+      "content": "GitHub Repository: toeverything/AFFiNE\nDescription: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.\nLanguage: TypeScript\nStars Today: 129",
+      "url": "https://github.com/toeverything/AFFiNE",
+      "author": "toeverything",
+      "published": "2026-08-04T07:32:36.978504+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (129 stars today): GitHub Repository: toeverything/AFFiNE\nDescription: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.\nLanguage: TypeScript\nStars Today: 129",
+      "importance_score": 66,
+      "reasoning": "High community velocity on GitHub Trending (129 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "129",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.978504+00:00",
+        "hn_score": 129,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (129 stars today): GitHub Repository: toeverything/AFFiNE</p>\n<p>Description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 129</p>",
+      "content_html": "<p>GitHub Repository: toeverything/AFFiNE</p>\n<p>Description: There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 129</p>"
+    },
+    {
+      "id": "685a0343f341",
+      "title": "[GitHub Trending] K-Dense-AI/scientific-agent-skills: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "content": "GitHub Repository: K-Dense-AI/scientific-agent-skills\nDescription: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.\nLanguage: Python\nStars Today: 107",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "author": "K-Dense-AI",
+      "published": "2026-08-04T07:32:35.889259+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (107 stars today): GitHub Repository: K-Dense-AI/scientific-agent-skills\nDescription: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.\nLanguage: Python\nStars Today: 107",
+      "importance_score": 65,
+      "reasoning": "High community velocity on GitHub Trending (107 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "107",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.889259+00:00",
+        "hn_score": 107,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (107 stars today): GitHub Repository: K-Dense-AI/scientific-agent-skills</p>\n<p>Description: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.</p>\n<p>Language: Python</p>\n<p>Stars Today: 107</p>",
+      "content_html": "<p>GitHub Repository: K-Dense-AI/scientific-agent-skills</p>\n<p>Description: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 170,000+ scientists worldwide. 158 ready-to-use skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.</p>\n<p>Language: Python</p>\n<p>Stars Today: 107</p>"
+    },
+    {
+      "id": "0a4a8600abaf",
+      "title": "[GitHub Trending] Z4nzu/hackingtool: ALL IN ONE Hacking Tool For Hackers",
+      "content": "GitHub Repository: Z4nzu/hackingtool\nDescription: ALL IN ONE Hacking Tool For Hackers\nLanguage: Python\nStars Today: 65",
+      "url": "https://github.com/Z4nzu/hackingtool",
+      "author": "Z4nzu",
+      "published": "2026-08-04T07:32:35.888917+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (65 stars today): GitHub Repository: Z4nzu/hackingtool\nDescription: ALL IN ONE Hacking Tool For Hackers\nLanguage: Python\nStars Today: 65",
+      "importance_score": 63,
+      "reasoning": "High community velocity on GitHub Trending (65 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "65",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.888917+00:00",
+        "hn_score": 65,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (65 stars today): GitHub Repository: Z4nzu/hackingtool</p>\n<p>Description: ALL IN ONE Hacking Tool For Hackers</p>\n<p>Language: Python</p>\n<p>Stars Today: 65</p>",
+      "content_html": "<p>GitHub Repository: Z4nzu/hackingtool</p>\n<p>Description: ALL IN ONE Hacking Tool For Hackers</p>\n<p>Language: Python</p>\n<p>Stars Today: 65</p>"
+    },
+    {
+      "id": "bc1757fd7a67",
+      "title": "[GitHub Trending] iptv-org/iptv: Collection of publicly available IPTV channels from all over the world",
+      "content": "GitHub Repository: iptv-org/iptv\nDescription: Collection of publicly available IPTV channels from all over the world\nLanguage: TypeScript\nStars Today: 73",
+      "url": "https://github.com/iptv-org/iptv",
+      "author": "iptv-org",
+      "published": "2026-08-04T07:32:36.980443+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (73 stars today): GitHub Repository: iptv-org/iptv\nDescription: Collection of publicly available IPTV channels from all over the world\nLanguage: TypeScript\nStars Today: 73",
+      "importance_score": 63,
+      "reasoning": "High community velocity on GitHub Trending (73 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "73",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.980443+00:00",
+        "hn_score": 73,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (73 stars today): GitHub Repository: iptv-org/iptv</p>\n<p>Description: Collection of publicly available IPTV channels from all over the world</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 73</p>",
+      "content_html": "<p>GitHub Repository: iptv-org/iptv</p>\n<p>Description: Collection of publicly available IPTV channels from all over the world</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 73</p>"
+    },
+    {
+      "id": "2b95e6b6fa48",
+      "title": "[GitHub Trending] gitroomhq/postiz-app: 📨 The ultimate agentic social media scheduling tool 🤖",
+      "content": "GitHub Repository: gitroomhq/postiz-app\nDescription: 📨 The ultimate agentic social media scheduling tool 🤖\nLanguage: TypeScript\nStars Today: 69",
+      "url": "https://github.com/gitroomhq/postiz-app",
+      "author": "gitroomhq",
+      "published": "2026-08-04T07:32:36.980833+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (69 stars today): GitHub Repository: gitroomhq/postiz-app\nDescription: 📨 The ultimate agentic social media scheduling tool 🤖\nLanguage: TypeScript\nStars Today: 69",
+      "importance_score": 63,
+      "reasoning": "High community velocity on GitHub Trending (69 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "69",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.980833+00:00",
+        "hn_score": 69,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (69 stars today): GitHub Repository: gitroomhq/postiz-app</p>\n<p>Description: 📨 The ultimate agentic social media scheduling tool 🤖</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 69</p>",
+      "content_html": "<p>GitHub Repository: gitroomhq/postiz-app</p>\n<p>Description: 📨 The ultimate agentic social media scheduling tool 🤖</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 69</p>"
+    },
+    {
+      "id": "b5683a2c3b37",
+      "title": "[GitHub Trending] abus-aikorea/voice-pro: Gradio WebUI for creators and developers, featuring key TTS (Edge-TTS, kokoro) and zero-shot Voice Cloning (E2 & F5-TTS, CosyVoice), with Whisper audio processing, YouTube download, Demucs vocal isolation, and multilingual translation.",
+      "content": "GitHub Repository: abus-aikorea/voice-pro\nDescription: Gradio WebUI for creators and developers, featuring key TTS (Edge-TTS, kokoro) and zero-shot Voice Cloning (E2 & F5-TTS, CosyVoice), with Whisper audio processing, YouTube download, Demucs vocal isolation, and multilingual translation.\nLanguage: Python\nStars Today: 46",
+      "url": "https://github.com/abus-aikorea/voice-pro",
+      "author": "abus-aikorea",
+      "published": "2026-08-04T07:32:35.887668+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (46 stars today): GitHub Repository: abus-aikorea/voice-pro\nDescription: Gradio WebUI for creators and developers, featuring key TTS (Edge-TTS, kokoro) and zero-shot Voice Cloning (E2 & F5-TTS, CosyVoice), with Whisper audio processing, YouTube download, Demucs vocal isolation, and multilingual translation.\nLanguage: Python\nStars Today: 46",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (46 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "46",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.887668+00:00",
+        "hn_score": 46,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (46 stars today): GitHub Repository: abus-aikorea/voice-pro</p>\n<p>Description: Gradio WebUI for creators and developers, featuring key TTS (Edge-TTS, kokoro) and zero-shot Voice Cloning (E2 &amp; F5-TTS, CosyVoice), with Whisper audio processing, YouTube download, Demucs vocal isolation, and multilingual translation.</p>\n<p>Language: Python</p>\n<p>Stars Today: 46</p>",
+      "content_html": "<p>GitHub Repository: abus-aikorea/voice-pro</p>\n<p>Description: Gradio WebUI for creators and developers, featuring key TTS (Edge-TTS, kokoro) and zero-shot Voice Cloning (E2 &amp; F5-TTS, CosyVoice), with Whisper audio processing, YouTube download, Demucs vocal isolation, and multilingual translation.</p>\n<p>Language: Python</p>\n<p>Stars Today: 46</p>"
+    },
+    {
+      "id": "deca6c8468f8",
+      "title": "[GitHub Trending] karakeep-app/karakeep: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
+      "content": "GitHub Repository: karakeep-app/karakeep\nDescription: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search\nLanguage: TypeScript\nStars Today: 45",
+      "url": "https://github.com/karakeep-app/karakeep",
+      "author": "karakeep-app",
+      "published": "2026-08-04T07:32:36.978002+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (45 stars today): GitHub Repository: karakeep-app/karakeep\nDescription: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search\nLanguage: TypeScript\nStars Today: 45",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (45 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "45",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.978002+00:00",
+        "hn_score": 45,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (45 stars today): GitHub Repository: karakeep-app/karakeep</p>\n<p>Description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 45</p>",
+      "content_html": "<p>GitHub Repository: karakeep-app/karakeep</p>\n<p>Description: A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 45</p>"
+    },
+    {
+      "id": "5cfc524f8d6f",
+      "title": "[GitHub Trending] slopus/happy: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured",
+      "content": "GitHub Repository: slopus/happy\nDescription: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured\nLanguage: TypeScript\nStars Today: 41",
+      "url": "https://github.com/slopus/happy",
+      "author": "slopus",
+      "published": "2026-08-04T07:32:36.980120+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (41 stars today): GitHub Repository: slopus/happy\nDescription: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured\nLanguage: TypeScript\nStars Today: 41",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (41 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "41",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.980120+00:00",
+        "hn_score": 41,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (41 stars today): GitHub Repository: slopus/happy</p>\n<p>Description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 41</p>",
+      "content_html": "<p>GitHub Repository: slopus/happy</p>\n<p>Description: Mobile and Web client for Codex and Claude Code, with realtime voice, encryption and fully featured</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 41</p>"
+    },
+    {
+      "id": "40261f042f09",
+      "title": "[GitHub Trending] CodebuffAI/codebuff: Generate code from the terminal!",
+      "content": "GitHub Repository: CodebuffAI/codebuff\nDescription: Generate code from the terminal!\nLanguage: TypeScript\nStars Today: 59",
+      "url": "https://github.com/CodebuffAI/codebuff",
+      "author": "CodebuffAI",
+      "published": "2026-08-04T07:32:36.981132+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (59 stars today): GitHub Repository: CodebuffAI/codebuff\nDescription: Generate code from the terminal!\nLanguage: TypeScript\nStars Today: 59",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (59 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "59",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.981132+00:00",
+        "hn_score": 59,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (59 stars today): GitHub Repository: CodebuffAI/codebuff</p>\n<p>Description: Generate code from the terminal!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 59</p>",
+      "content_html": "<p>GitHub Repository: CodebuffAI/codebuff</p>\n<p>Description: Generate code from the terminal!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 59</p>"
+    },
+    {
+      "id": "d33ffecd6760",
+      "title": "[GitHub Trending] vitali87/code-graph-rag: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+      "content": "GitHub Repository: vitali87/code-graph-rag\nDescription: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs\nLanguage: Python\nStars Today: 30",
+      "url": "https://github.com/vitali87/code-graph-rag",
+      "author": "vitali87",
+      "published": "2026-08-04T07:32:35.886811+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (30 stars today): GitHub Repository: vitali87/code-graph-rag\nDescription: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs\nLanguage: Python\nStars Today: 30",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (30 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "30",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.886811+00:00",
+        "hn_score": 30,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (30 stars today): GitHub Repository: vitali87/code-graph-rag</p>\n<p>Description: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</p>\n<p>Language: Python</p>\n<p>Stars Today: 30</p>",
+      "content_html": "<p>GitHub Repository: vitali87/code-graph-rag</p>\n<p>Description: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</p>\n<p>Language: Python</p>\n<p>Stars Today: 30</p>"
+    },
+    {
+      "id": "54ccd20928b8",
+      "title": "[GitHub Trending] comet-ml/opik: Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.",
+      "content": "GitHub Repository: comet-ml/opik\nDescription: Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.\nLanguage: Python\nStars Today: 29",
+      "url": "https://github.com/comet-ml/opik",
+      "author": "comet-ml",
+      "published": "2026-08-04T07:32:35.887400+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (29 stars today): GitHub Repository: comet-ml/opik\nDescription: Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.\nLanguage: Python\nStars Today: 29",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (29 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "29",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.887400+00:00",
+        "hn_score": 29,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (29 stars today): GitHub Repository: comet-ml/opik</p>\n<p>Description: Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.</p>\n<p>Language: Python</p>\n<p>Stars Today: 29</p>",
+      "content_html": "<p>GitHub Repository: comet-ml/opik</p>\n<p>Description: Debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.</p>\n<p>Language: Python</p>\n<p>Stars Today: 29</p>"
+    },
+    {
+      "id": "4cf5429e774f",
+      "title": "[GitHub Trending] jamwithai/production-agentic-rag-course",
+      "content": "GitHub Repository: jamwithai/production-agentic-rag-course\nDescription: \nLanguage: Python\nStars Today: 28",
+      "url": "https://github.com/jamwithai/production-agentic-rag-course",
+      "author": "jamwithai",
+      "published": "2026-08-04T07:32:35.887928+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (28 stars today): GitHub Repository: jamwithai/production-agentic-rag-course\nDescription: \nLanguage: Python\nStars Today: 28",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (28 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "28",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.887928+00:00",
+        "hn_score": 28,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (28 stars today): GitHub Repository: jamwithai/production-agentic-rag-course</p>\n<p>Description:</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>",
+      "content_html": "<p>GitHub Repository: jamwithai/production-agentic-rag-course</p>\n<p>Description:</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>"
+    },
+    {
+      "id": "aeb380e5e8fd",
+      "title": "[GitHub Trending] PostHog/posthog: 🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
+      "content": "GitHub Repository: PostHog/posthog\nDescription: 🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.\nLanguage: Python\nStars Today: 28",
+      "url": "https://github.com/PostHog/posthog",
+      "author": "PostHog",
+      "published": "2026-08-04T07:32:35.889976+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (28 stars today): GitHub Repository: PostHog/posthog\nDescription: 🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.\nLanguage: Python\nStars Today: 28",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (28 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "28",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.889976+00:00",
+        "hn_score": 28,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (28 stars today): GitHub Repository: PostHog/posthog</p>\n<p>Description: 🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>",
+      "content_html": "<p>GitHub Repository: PostHog/posthog</p>\n<p>Description: 🦔 PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>"
+    },
+    {
+      "id": "8ce609119014",
+      "title": "[GitHub Trending] simstudioai/sim: Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.",
+      "content": "GitHub Repository: simstudioai/sim\nDescription: Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.\nLanguage: TypeScript\nStars Today: 20",
+      "url": "https://github.com/simstudioai/sim",
+      "author": "simstudioai",
+      "published": "2026-08-04T07:32:36.979107+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (20 stars today): GitHub Repository: simstudioai/sim\nDescription: Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.\nLanguage: TypeScript\nStars Today: 20",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (20 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "20",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.979107+00:00",
+        "hn_score": 20,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (20 stars today): GitHub Repository: simstudioai/sim</p>\n<p>Description: Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 20</p>",
+      "content_html": "<p>GitHub Repository: simstudioai/sim</p>\n<p>Description: Build, deploy, and orchestrate AI agents. Sim is the central intelligence layer for your AI workforce.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 20</p>"
+    },
+    {
+      "id": "a6ed225b1a44",
+      "title": "[GitHub Trending] actualbudget/actual: A local-first personal finance app",
+      "content": "GitHub Repository: actualbudget/actual\nDescription: A local-first personal finance app\nLanguage: TypeScript\nStars Today: 30",
+      "url": "https://github.com/actualbudget/actual",
+      "author": "actualbudget",
+      "published": "2026-08-04T07:32:36.979468+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (30 stars today): GitHub Repository: actualbudget/actual\nDescription: A local-first personal finance app\nLanguage: TypeScript\nStars Today: 30",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (30 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "30",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.979468+00:00",
+        "hn_score": 30,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (30 stars today): GitHub Repository: actualbudget/actual</p>\n<p>Description: A local-first personal finance app</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 30</p>",
+      "content_html": "<p>GitHub Repository: actualbudget/actual</p>\n<p>Description: A local-first personal finance app</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 30</p>"
+    },
+    {
+      "id": "0ff564ba15ac",
+      "title": "[GitHub Trending] kovidgoyal/calibre: The official source code repository for the calibre ebook manager",
+      "content": "GitHub Repository: kovidgoyal/calibre\nDescription: The official source code repository for the calibre ebook manager\nLanguage: Python\nStars Today: 11",
+      "url": "https://github.com/kovidgoyal/calibre",
+      "author": "kovidgoyal",
+      "published": "2026-08-04T07:32:35.888606+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (11 stars today): GitHub Repository: kovidgoyal/calibre\nDescription: The official source code repository for the calibre ebook manager\nLanguage: Python\nStars Today: 11",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (11 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "11",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.888606+00:00",
+        "hn_score": 11,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (11 stars today): GitHub Repository: kovidgoyal/calibre</p>\n<p>Description: The official source code repository for the calibre ebook manager</p>\n<p>Language: Python</p>\n<p>Stars Today: 11</p>",
+      "content_html": "<p>GitHub Repository: kovidgoyal/calibre</p>\n<p>Description: The official source code repository for the calibre ebook manager</p>\n<p>Language: Python</p>\n<p>Stars Today: 11</p>"
+    },
+    {
+      "id": "d6a0b166b907",
+      "title": "[GitHub Trending] invoke-ai/InvokeAI: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.",
+      "content": "GitHub Repository: invoke-ai/InvokeAI\nDescription: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.\nLanguage: Python\nStars Today: 18",
+      "url": "https://github.com/invoke-ai/InvokeAI",
+      "author": "invoke-ai",
+      "published": "2026-08-04T07:32:35.890372+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (18 stars today): GitHub Repository: invoke-ai/InvokeAI\nDescription: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.\nLanguage: Python\nStars Today: 18",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (18 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "18",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.890372+00:00",
+        "hn_score": 18,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (18 stars today): GitHub Repository: invoke-ai/InvokeAI</p>\n<p>Description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.</p>\n<p>Language: Python</p>\n<p>Stars Today: 18</p>",
+      "content_html": "<p>GitHub Repository: invoke-ai/InvokeAI</p>\n<p>Description: Invoke is a leading creative engine for Stable Diffusion models, empowering professionals, artists, and enthusiasts to generate and create visual media using the latest AI-driven technologies. The solution offers an industry leading WebUI, and serves as the foundation for multiple commercial products.</p>\n<p>Language: Python</p>\n<p>Stars Today: 18</p>"
+    },
+    {
+      "id": "87392f8c9151",
+      "title": "[GitHub Trending] darkreader/darkreader: Dark Reader Chrome and Firefox extension",
+      "content": "GitHub Repository: darkreader/darkreader\nDescription: Dark Reader Chrome and Firefox extension\nLanguage: TypeScript\nStars Today: 11",
+      "url": "https://github.com/darkreader/darkreader",
+      "author": "darkreader",
+      "published": "2026-08-04T07:32:36.978797+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (11 stars today): GitHub Repository: darkreader/darkreader\nDescription: Dark Reader Chrome and Firefox extension\nLanguage: TypeScript\nStars Today: 11",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (11 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "11",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.978797+00:00",
+        "hn_score": 11,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (11 stars today): GitHub Repository: darkreader/darkreader</p>\n<p>Description: Dark Reader Chrome and Firefox extension</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 11</p>",
+      "content_html": "<p>GitHub Repository: darkreader/darkreader</p>\n<p>Description: Dark Reader Chrome and Firefox extension</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 11</p>"
+    },
+    {
+      "id": "84165b43e162",
+      "title": "[GitHub Trending] meshery/meshery: Meshery, the cloud native manager",
+      "content": "GitHub Repository: meshery/meshery\nDescription: Meshery, the cloud native manager\nLanguage: TypeScript\nStars Today: 7",
+      "url": "https://github.com/meshery/meshery",
+      "author": "meshery",
+      "published": "2026-08-04T07:32:36.979767+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (7 stars today): GitHub Repository: meshery/meshery\nDescription: Meshery, the cloud native manager\nLanguage: TypeScript\nStars Today: 7",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (7 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "7",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:36.979767+00:00",
+        "hn_score": 7,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (7 stars today): GitHub Repository: meshery/meshery</p>\n<p>Description: Meshery, the cloud native manager</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 7</p>",
+      "content_html": "<p>GitHub Repository: meshery/meshery</p>\n<p>Description: Meshery, the cloud native manager</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 7</p>"
+    },
+    {
+      "id": "debb506627c1",
+      "title": "[GitHub Trending] SimplifyJobs/Summer2027-Internships: Summer 2026 software engineering, data science, AI, quant, product management, and hardware internship postings. Updated daily by Simplify and Pitt CSC.",
+      "content": "GitHub Repository: SimplifyJobs/Summer2027-Internships\nDescription: Summer 2026 software engineering, data science, AI, quant, product management, and hardware internship postings. Updated daily by Simplify and Pitt CSC.\nLanguage: Python\nStars Today: 66",
+      "url": "https://github.com/SimplifyJobs/Summer2027-Internships",
+      "author": "SimplifyJobs",
+      "published": "2026-08-04T07:32:35.886226+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (66 stars today): GitHub Repository: SimplifyJobs/Summer2027-Internships\nDescription: Summer 2026 software engineering, data science, AI, quant, product management, and hardware internship postings. Updated daily by Simplify and Pitt CSC.\nLanguage: Python\nStars Today: 66",
+      "importance_score": 40.0,
+      "reasoning": "[Freshness check: primary subject released 4 days ago (GA: 2026-07-30)] High community velocity on GitHub Trending (66 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_release",
+        "label": "Stale release",
+        "reason": "primary subject released 4 days ago (GA: 2026-07-30)",
+        "score_cap": 40.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 4
+      },
+      "metadata": {
+        "stars": 0,
+        "stars_today": "66",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-04T07:32:35.886226+00:00",
+        "hn_score": 66,
+        "sentiment": "neutral",
+        "freshness": {
+          "status": "stale_release",
+          "label": "Stale release",
+          "reason": "primary subject released 4 days ago (GA: 2026-07-30)",
+          "score_cap": 40.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 4
+        }
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (66 stars today): GitHub Repository: SimplifyJobs/Summer2027-Internships</p>\n<p>Description: Summer 2026 software engineering, data science, AI, quant, product management, and hardware internship postings. Updated daily by Simplify and Pitt CSC.</p>\n<p>Language: Python</p>\n<p>Stars Today: 66</p>",
+      "content_html": "<p>GitHub Repository: SimplifyJobs/Summer2027-Internships</p>\n<p>Description: Summer 2026 software engineering, data science, AI, quant, product management, and hardware internship postings. Updated daily by Simplify and Pitt CSC.</p>\n<p>Language: Python</p>\n<p>Stars Today: 66</p>"
+    }
+  ]
+}
