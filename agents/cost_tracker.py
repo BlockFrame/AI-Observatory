@@ -93,7 +93,7 @@ class CostTracker:
         self.calls: List[APICallRecord] = []
         self.start_time: Optional[datetime] = None
         self.end_time: Optional[datetime] = None
-        # Non-LLM/third-party API usage (e.g. ScrapeCreators, TwitterAPI.io), keyed by
+        # Non-LLM/third-party API usage (e.g. ScrapeCreators, GetXAPI), keyed by
         # provider name. Each value is a flat dict of metrics (calls, credits_consumed,
         # balance, balance_usd, est_cost_usd, items, note).
         self.external_apis: Dict[str, Dict] = {}

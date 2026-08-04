@@ -1,7 +1,7 @@
 """
 Social Gatherer - Collects posts from Twitter/X.
 
-Twitter uses TwitterAPI.io (paid).
+Twitter uses GetXAPI (paid, $0.001/call ≈ $0.05/1,000 tweets).
 """
 
 import asyncio
@@ -20,9 +20,9 @@ from ..base import BaseGatherer, CollectedItem
 
 logger = logging.getLogger(__name__)
 
-# TwitterAPI.io configuration
-TWITTERAPI_IO_KEY = os.getenv('TWITTERAPI_IO_KEY', '')
-TWITTERAPI_IO_BASE = "https://api.twitterapi.io"
+# GetXAPI configuration
+GETXAPI_KEY = os.getenv('GETXAPI_KEY', '')
+GETXAPI_BASE = "https://api.getxapi.com"
 
 
 class SocialGatherer(BaseGatherer):
@@ -45,9 +45,9 @@ class SocialGatherer(BaseGatherer):
             'twitter': {'status': 'pending', 'count': 0, 'error': None},
         }
 
-        # TwitterAPI.io usage accounting (surfaced in the end-of-run cost summary)
-        self._twitter_calls = 0          # billable API requests issued
-        self._twitter_tweets_billed = 0  # raw tweets returned (TwitterAPI.io bills per tweet)
+        # GetXAPI usage accounting (surfaced in the end-of-run cost summary)
+        self._twitter_calls = 0          # billable API calls issued ($0.001 each)
+        self._twitter_tweets_billed = 0  # raw tweets returned (~20 per call)
 
         logger.info(f"Loaded {len(self.twitter_users)} Twitter accounts")
 
@@ -63,16 +63,16 @@ class SocialGatherer(BaseGatherer):
         loop = asyncio.get_event_loop()
 
         # Mark skipped platforms
-        if not self.twitter_users or not TWITTERAPI_IO_KEY:
+        if not self.twitter_users or not GETXAPI_KEY:
             self.collection_status['twitter']['status'] = 'skipped'
-            self.collection_status['twitter']['error'] = 'No API key' if not TWITTERAPI_IO_KEY else 'No accounts configured'
+            self.collection_status['twitter']['error'] = 'No API key' if not GETXAPI_KEY else 'No accounts configured'
 
         # Collect from Twitter in parallel
         with ThreadPoolExecutor(max_workers=6) as executor:
             tasks = []
 
             # Twitter collection
-            if self.twitter_users and TWITTERAPI_IO_KEY:
+            if self.twitter_users and GETXAPI_KEY:
                 tasks.append(loop.run_in_executor(executor, self._collect_twitter))
 
             if tasks:
@@ -112,9 +112,9 @@ class SocialGatherer(BaseGatherer):
     # ========== TWITTER COLLECTION ==========
 
     def _collect_twitter(self) -> List[CollectedItem]:
-        """Collect tweets from configured users via TwitterAPI.io."""
-        if not TWITTERAPI_IO_KEY:
-            logger.warning("TwitterAPI.io key not configured - skipping Twitter")
+        """Collect tweets from configured users via GetXAPI."""
+        if not GETXAPI_KEY:
+            logger.warning("GetXAPI key not configured - skipping Twitter")
             self.collection_status['twitter']['status'] = 'skipped'
             self.collection_status['twitter']['error'] = 'No API key'
             return []
@@ -140,43 +140,47 @@ class SocialGatherer(BaseGatherer):
             self.collection_status['twitter']['error'] = str(e)
             logger.error(f"Twitter collection failed: {e}")
 
-        # Surface TwitterAPI.io usage + balance in the end-of-run cost summary.
+        # Surface GetXAPI usage + balance in the end-of-run cost summary.
         try:
             from ..cost_tracker import get_tracker
-            balance = self._fetch_twitter_balance()
-            # TwitterAPI.io bills ~$0.15 / 1000 tweets; credits are $1 / 100,000 units.
+            balance_usd = self._fetch_twitter_balance()
+            # GetXAPI bills $0.001 per call (~20 tweets/call → ~$0.05 per 1,000 tweets).
+            est_cost = round(self._twitter_calls * 0.001, 4)
             logger.info(
-                f"TwitterAPI.io usage: {self._twitter_calls} calls, "
-                f"{self._twitter_tweets_billed} tweets billed; recharge_credits={balance}"
+                f"GetXAPI usage: {self._twitter_calls} calls, "
+                f"{self._twitter_tweets_billed} tweets collected; "
+                f"balance=${balance_usd}; est_cost=${est_cost}"
             )
             get_tracker().record_external_api(
-                "TwitterAPI.io (Twitter)",
+                "GetXAPI (Twitter)",
                 calls=self._twitter_calls,
                 items=self._twitter_tweets_billed,
-                balance=balance,
-                balance_usd=(balance / 100000) if balance is not None else None,
-                est_cost_usd=round(self._twitter_tweets_billed * 0.15 / 1000, 4),
+                balance=None,
+                balance_usd=balance_usd,
+                est_cost_usd=est_cost,
             )
         except Exception as e:  # never let reporting break collection
-            logger.debug(f"Could not record TwitterAPI.io usage: {e}")
+            logger.debug(f"Could not record GetXAPI usage: {e}")
 
         return all_tweets
 
-    def _fetch_twitter_balance(self) -> Optional[int]:
-        """Best-effort TwitterAPI.io recharge-credit balance (free /oapi/my/info endpoint)."""
-        if not TWITTERAPI_IO_KEY:
+    def _fetch_twitter_balance(self) -> Optional[float]:
+        """Best-effort GetXAPI credit balance via GET /account/me endpoint."""
+        if not GETXAPI_KEY:
             return None
         try:
             resp = requests.get(
-                f"{TWITTERAPI_IO_BASE}/oapi/my/info",
-                headers={"X-API-Key": TWITTERAPI_IO_KEY},
+                f"{GETXAPI_BASE}/account/me",
+                headers={"Authorization": f"Bearer {GETXAPI_KEY}"},
                 timeout=30,
             )
             if resp.status_code == 200:
-                return resp.json().get("recharge_credits")
-            logger.warning(f"TwitterAPI.io balance probe returned HTTP {resp.status_code}")
+                data = resp.json()
+                # GetXAPI returns credits_usd or balance field depending on API version
+                return data.get("credits_usd") or data.get("balance") or data.get("credits")
+            logger.warning(f"GetXAPI balance probe returned HTTP {resp.status_code}")
         except Exception as e:
-            logger.warning(f"Could not fetch TwitterAPI.io balance: {e}")
+            logger.warning(f"Could not fetch GetXAPI balance: {e}")
         return None
 
     def _twitter_search(self, usernames: List[str]) -> List[CollectedItem]:
@@ -196,7 +200,7 @@ class SocialGatherer(BaseGatherer):
         until_date = (self.end_time + timedelta(days=1)).strftime('%Y-%m-%d')
 
         headers = {
-            "X-API-Key": TWITTERAPI_IO_KEY,
+            "Authorization": f"Bearer {GETXAPI_KEY}",
             "Content-Type": "application/json"
         }
 
@@ -212,12 +216,13 @@ class SocialGatherer(BaseGatherer):
 
             while page < max_pages:
                 try:
-                    params = {"query": query, "queryType": "Latest"}
+                    # GetXAPI: query param is 'q', type param is 'product'
+                    params = {"q": query, "product": "Latest"}
                     if cursor:
                         params["cursor"] = cursor
 
                     response = requests.get(
-                        f"{TWITTERAPI_IO_BASE}/twitter/tweet/advanced_search",
+                        f"{GETXAPI_BASE}/twitter/tweet/advanced_search",
                         params=params,
                         headers=headers,
                         timeout=30
@@ -233,7 +238,7 @@ class SocialGatherer(BaseGatherer):
                     if not tweets_data:
                         break
 
-                    # TwitterAPI.io bills per tweet returned.
+                    # GetXAPI bills per call; track tweet count for metrics.
                     self._twitter_tweets_billed += len(tweets_data)
 
                     for tweet_data in tweets_data:
