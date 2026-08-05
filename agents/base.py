@@ -1132,16 +1132,52 @@ class BaseAnalyzer(ABC):
         # Log stats
         self._log_map_reduce_stats(analyzed_items, themes, top_items)
 
+        category_summary = ranking_result.get('category_summary', '')
+        category_summary = await self._ensure_category_summary(category_summary, top_items)
+
         return CategoryReport(
             category=self.category,
             top_items=top_items,
             all_items=analyzed_items,  # ALL items with analysis
-            category_summary=ranking_result.get('category_summary', ''),
+            category_summary=category_summary,
             themes=themes[:10],  # Top 10 themes
             cross_signals=cross_signals,
             total_collected=len(analyzed_items),
             thinking=f"Batch Analysis:\n{batch_thinking}\n\nRanking:\n{ranking_thinking}"
         )
+
+    async def _ensure_category_summary(self, category_summary: str, top_items: List[AnalyzedItem]) -> str:
+        """Ensure a rich multi-paragraph category summary is generated if missing or generic."""
+        if category_summary and not category_summary.startswith("Analysis complete"):
+            return category_summary
+
+        if not top_items or not self.async_client:
+            return category_summary or f"Analysis complete for {self.category}."
+
+        items_text = "\n".join(
+            f"- **{item.item.title}**: {item.summary}"
+            for item in top_items[:8]
+        )
+
+        prompt = (
+            f"You are a Senior Partner at QuantumBlack, AI by McKinsey, writing an executive briefing for the '{self.category.upper()}' category.\n\n"
+            f"Top Items in {self.category.upper()} Today:\n{items_text}\n\n"
+            "Write a cohesive, 2-paragraph executive summary synthesizing the key strategic developments, technical insights, and implications visible in these items."
+        )
+
+        try:
+            response = await self.async_client.call_with_thinking(
+                messages=[{"role": "user", "content": prompt}],
+                profile=ThinkingLevel.STANDARD,
+                caller=f"analysis.{self.category}_summary",
+                max_tokens=600,
+            )
+            if response.content and response.content.strip():
+                return response.content.strip()
+        except Exception as e:
+            logger.warning(f"Fallback category summary generation failed for {self.category}: {e}")
+
+        return category_summary or f"Analysis complete for {self.category}."
 
     def _sanitize_truncated_summary(self, summary: str) -> str:
         """Best-effort cleanup of a category summary cut off mid-generation.
