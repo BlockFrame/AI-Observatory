@@ -1107,8 +1107,10 @@ class BaseAnalyzer(ABC):
             }
             ranking_thinking = ""
 
-        # Get top 10 items by ranking
-        top_ids = ranking_result.get('top_10', [])[:10]
+        # Get top items by ranking (default 10, or category specific limit e.g. 25 for social)
+        top_limit = getattr(self, 'top_items_limit', 10)
+        raw_top_ids = ranking_result.get('top_25') or ranking_result.get('top_10') or []
+        top_ids = raw_top_ids[:top_limit]
         id_to_rank = {id: i for i, id in enumerate(top_ids)}
 
         # Build top_items list in rank order
@@ -1119,13 +1121,13 @@ class BaseAnalyzer(ABC):
                     top_items.append(item)
                     break
 
-        # Fill to 10 if needed (in case some IDs weren't found)
-        if len(top_items) < 10:
+        # Fill to top_limit if needed (in case some IDs weren't found)
+        if len(top_items) < top_limit:
             remaining = [
                 i for i in analyzed_items
                 if i not in top_items and not self._exclude_from_top(i)
             ]
-            top_items.extend(remaining[:10 - len(top_items)])
+            top_items.extend(remaining[:top_limit - len(top_items)])
 
         logger.info(f"  {self.category} REDUCE: complete, {len(top_items)} top items ranked")
 

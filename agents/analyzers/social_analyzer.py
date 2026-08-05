@@ -172,6 +172,11 @@ Keep the tone authoritative, visionary, analytical, and highly readable (McKinse
         return 'social'
 
     @property
+    def top_items_limit(self) -> int:
+        """Expand top social items limit to 25."""
+        return 25
+
+    @property
     def thinking_budget(self) -> int:
         """DEEP thinking for reduce phase ranking."""
         return ThinkingLevel.DEEP

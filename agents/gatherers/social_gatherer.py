@@ -249,10 +249,13 @@ class SocialGatherer(BaseGatherer):
                             logger.error(f"Error parsing tweet: {e}")
 
                     # Pagination
-                    if not data.get('has_next_page', False) or not data.get('next_cursor', ''):
+                    has_next = data.get('has_next_page') or data.get('has_next') or bool(data.get('next_cursor') or data.get('cursor'))
+                    next_cursor = data.get('next_cursor') or data.get('cursor') or ''
+
+                    if not has_next or not next_cursor:
                         break
 
-                    cursor = data['next_cursor']
+                    cursor = next_cursor
                     page += 1
                     time.sleep(0.3)
 
