@@ -7,10 +7,8 @@ https://feeds.arstechnica.com/arstechnica/index
 https://www.wired.com/feed/tag/ai/latest/rss
 https://venturebeat.com/category/ai/feed/
 https://www.theguardian.com/technology/artificialintelligenceai/rss
-# artificialintelligence-news.com moved its feed from /feed/rss/ to /feed/
-# (old path 301s/403s), and the site drops connections from Mullvad exit IPs,
-# so this feed bypasses the pipeline proxy (verified 2026-07-07).
-https://www.artificialintelligence-news.com/feed/  proxy=off
+# artificialintelligence-news.com: 403
+# https://www.artificialintelligence-news.com/feed/  proxy=off
 https://techcrunch.com/category/artificial-intelligence/feed/
 https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
 https://www.technologyreview.com/topic/artificial-intelligence/feed/
@@ -22,7 +20,8 @@ https://aibusiness.com/rss.xml
 # analyticsindiamag.com decommissioned their RSS feed (all candidate paths
 # now return the site HTML; verified 2026-04-17). Removed to silence warnings.
 # https://analyticsindiamag.com/feed/
-https://www.marktechpost.com/feed
+# marktechpost.com: 403
+# https://www.marktechpost.com/feed
 https://openai.com/news/rss.xml
 https://blog.google/technology/ai/rss/
 # Microsoft retired blogs.microsoft.com/ai (410 Gone) and folded it into the
@@ -34,7 +33,8 @@ https://github.blog/tag/github-copilot/feed/
 
 # Newsletter AI & Analyst Blogs
 https://every.to/chain-of-thought/feed
-https://lastweekin.ai/feed
+# lastweekin.ai: DNS error
+# https://lastweekin.ai/feed
 https://www.latent.space/feed
 https://semianalysis.com/feed/
 # AlphaSignal: SSLError (Hostname mismatch)
