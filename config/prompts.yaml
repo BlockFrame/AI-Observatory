@@ -232,11 +232,16 @@ analysis:
       - Rehashed coverage of old news
 
     # Available variables: ${analysis_summary}
+    ranking: |
+      Rank the top 10 most important AI news stories based on:
       1. FRONTIER SIGNIFICANCE: Does this advance the state of AI?
       2. INDUSTRY IMPACT: Will this affect how AI is built or used?
       3. STRATEGIC RELEVANCE: Why should an AI Director or VP of AI care?
       4. NEWS VALUE: Is this breaking news or major announcement?
       5. SOURCE QUALITY: Is this from a reliable source with direct information?
+
+      Analysis results:
+      ${analysis_summary}
 
       Return your ranking as JSON:
       ```json
