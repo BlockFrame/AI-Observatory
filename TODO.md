@@ -32,9 +32,10 @@ Questo documento contiene la roadmap operativa e il backlog delle attività prio
   - **Fase 4 — Advanced Analytics**: Sentiment analysis delle notizie, trend detection su 30/90 giorni per modellation/LLM.
 
 ### 5. 🧹 Repository Cleanup & Housekeeping
-- [ ] Identificazione e rimozione di script temporanei/un-off nella root (`fix_models.py`, `test_scrapers.py`, `test_router.py`, `test_openai_client.py`).
-- [ ] Consolidation e razionalizzazione dei documenti markdown sparsi (`VERCEL_*.md`, `REDDIT_GATHERER_HANDOFF.md`, `CYBERNETIC_BLUEPRINT_APPLIED.md`) trasferendoli nella Wiki o nella cartella `docs/`.
-- [ ] Pulizia directory temporanee e backup locali (`.data-backup/`).
+- [x] Identificazione e rimozione di script temporanei/un-off nella root (`fix_models.py`, `test_scrapers.py`, `test_router.py`, `test_openai_client.py`, legacy `collectors/` e `processors/`).
+- [x] Consolidation e razionalizzazione dei documenti markdown sparsi (`VERCEL_*.md`, `REDDIT_GATHERER_HANDOFF.md`, `CYBERNETIC_BLUEPRINT_APPLIED.md`) trasferendoli in `docs/archived/`.
+- [x] Rimozione completa codice e configurazioni Reddit non più desiderate.
+- [x] Pulizia directory temporanee e backup locali (`.data-backup/`).
 - [ ] Verifica ed estensione delle regole `.gitignore` e `.dockerignore`.
 
 ---
