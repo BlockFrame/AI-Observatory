@@ -19,7 +19,7 @@ services:
       - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-opus-4-8}
 
       # Twitter API (optional - skip Twitter collection if not set)
-      - TWITTERAPI_IO_KEY=${TWITTERAPI_IO_KEY:-}
+      - GETXAPI_KEY=${GETXAPI_KEY:-}
 
       # Collection Settings
       - ENABLE_CRON=${ENABLE_CRON:-false}

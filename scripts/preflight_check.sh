@@ -157,10 +157,10 @@ if [ -f "$PROJECT_DIR/.env" ]; then
         fi
     fi
     
-    if [ -z "${TWITTERAPI_IO_KEY:-}" ]; then
-        echo "  ℹ️  TWITTERAPI_IO_KEY not set (Twitter collection will be skipped)"
+    if [ -z "${GETXAPI_KEY:-}" ]; then
+        echo "  ℹ️  GETXAPI_KEY not set (Twitter collection will be skipped)"
     else
-        echo "  ✅ TWITTERAPI_IO_KEY set"
+        echo "  ✅ GETXAPI_KEY set"
     fi
 fi
 
