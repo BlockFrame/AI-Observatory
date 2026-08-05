@@ -41,7 +41,7 @@ class AIInterestFilter:
         try:
             response = await async_client.call_with_thinking(
                 messages=[{"role": "user", "content": prompt}],
-                profile=ThinkingLevel.QUICK,
+                profile=ThinkingLevel.NONE,
                 caller="filters.ai_interest",
                 max_tokens=256,
             )
