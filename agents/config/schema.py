@@ -367,8 +367,8 @@ ImageConfig = ImageProviderConfig
 class AnalyzerPrompts(BaseModel):
     """Prompts for a single category analyzer.
 
-    All analyzers use batch_analysis and ranking prompts. The filter and
-    combined_analysis prompts are optional and only used by some analyzers.
+    Most analyzers use batch_analysis and ranking prompts. Single-step analyzers
+    (like github_trending) use summary.
 
     Attributes:
         batch_analysis: Map phase prompt for analyzing batches of items
@@ -376,15 +376,14 @@ class AnalyzerPrompts(BaseModel):
         filter: Optional LLM filter prompt (only news analyzer uses this)
         combined_analysis: Optional small batch optimization prompt
         analysis: Legacy prompt (kept for reference during migration)
+        summary: Single-step summary prompt (used by github_trending)
     """
-    batch_analysis: str = Field(
-        ...,
-        min_length=10,
+    batch_analysis: Optional[str] = Field(
+        default=None,
         description="Map phase prompt for batch analysis"
     )
-    ranking: str = Field(
-        ...,
-        min_length=10,
+    ranking: Optional[str] = Field(
+        default=None,
         description="Reduce phase prompt for ranking items"
     )
     filter: Optional[str] = Field(
@@ -398,6 +397,10 @@ class AnalyzerPrompts(BaseModel):
     analysis: Optional[str] = Field(
         default=None,
         description="Legacy prompt (kept for reference)"
+    )
+    summary: Optional[str] = Field(
+        default=None,
+        description="Single-step summary prompt (used by github_trending)"
     )
 
     model_config = {"extra": "ignore"}
@@ -485,12 +488,12 @@ class PromptConfig(BaseModel):
     @model_validator(mode='after')
     def validate_required_categories(self) -> 'PromptConfig':
         """Validate that all required analysis categories are present."""
-        required_categories = {'news', 'research', 'social', 'reddit'}
+        required_categories = {'news', 'research', 'social'}
         present_categories = set(self.analysis.keys())
         missing = required_categories - present_categories
         if missing:
             raise ValueError(
                 f"Missing required analysis categories: {', '.join(sorted(missing))}. "
-                f"Each category needs batch_analysis and ranking prompts."
+                f"Each category needs analysis prompts."
             )
         return self
