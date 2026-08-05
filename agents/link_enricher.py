@@ -375,22 +375,72 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
         return bool(text) and "](/?date=" in text
 
     def _inject_deterministic_links(self, text: str, items: List[Dict[str, Any]], context_name: str) -> str:
-        """Best-effort internal links when LLM enrichment fails or returns no links."""
+        """Best-effort inline contextual links when LLM enrichment fails or returns no links."""
         if not text or not items:
             return text
 
+        stopwords = {'model', 'models', 'paper', 'report', 'news', 'today', 'released', 'release', 'using', 'with', 'deep', 'learning', 'single', 'world', 'that', 'open', 'from', 'this', 'have', 'more', 'about', 'first', 'into', 'been', 'their', 'which', 'also', 'over', 'these', 'will', 'some', 'than'}
+        
+        enriched_text = text
+        used_item_ids = set()
+
+        for item in items:
+            item_id = (item.get("id") or "").strip()
+            category = (item.get("category") or "").strip()
+            title = normalize_untrusted_text(item.get("title") or "").strip()
+            if not item_id or not category or not title or item_id in used_item_ids:
+                continue
+
+            url = f"/?date={self.date}&category={category}#item-{item_id}"
+            
+            raw_words = [w.strip(".,()[]:\"'") for w in title.split()]
+            title_words = [w for w in raw_words if len(w) >= 3 and w.lower() not in stopwords]
+            
+            matched_phrase = None
+            
+            # 1. Try 2-word combinations of proper/technical terms
+            for j in range(len(title_words) - 1):
+                w1, w2 = title_words[j], title_words[j+1]
+                phrase_cand = f"{w1} {w2}"
+                if len(phrase_cand) >= 7 and re.search(r'\b' + re.escape(phrase_cand) + r'\b', enriched_text):
+                    matched_phrase = phrase_cand
+                    break
+                    
+            # 2. Try single capitalized proper noun (e.g. Qwen, Anthropic, OpenAI, AISI, LongCat, Cloudflare)
+            if not matched_phrase:
+                for w in title_words:
+                    if w[0].isupper() and len(w) >= 4 and w.lower() not in stopwords:
+                        if re.search(r'\b' + re.escape(w) + r'\b', enriched_text):
+                            matched_phrase = w
+                            break
+
+            if matched_phrase:
+                pattern = re.compile(r'(?<!\[)\b(' + re.escape(matched_phrase) + r')\b(?![^\[]*\])', re.IGNORECASE)
+                
+                def replace_match(m):
+                    matched_str = m.group(1)
+                    return f"[{matched_str}]({url})"
+
+                new_text, count = pattern.subn(replace_match, enriched_text, count=1)
+                if count > 0 and '](/' in new_text:
+                    enriched_text = new_text
+                    used_item_ids.add(item_id)
+
+        if used_item_ids:
+            logger.info(f"  {context_name}: deterministic fallback added {len(used_item_ids)} inline links")
+            return enriched_text
+
+        # Fallback to appending read more if no inline phrases matched
         max_links = 8 if "executive" in context_name else 6
         lines = text.splitlines()
         link_count = 0
         item_index = 0
-
         for i, line in enumerate(lines):
             if link_count >= max_links or item_index >= len(items):
                 break
             stripped = line.strip()
             if not stripped or stripped.startswith("####") or "](/?date=" in line:
                 continue
-
             if stripped.startswith("- ") or len(stripped) >= 40:
                 item = items[item_index]
                 item_index += 1
@@ -402,24 +452,6 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 lines[i] = line.rstrip() + f" ([read more]({url}))"
                 link_count += 1
 
-        if link_count == 0:
-            tail_links = []
-            for item in items[:4]:
-                item_id = (item.get("id") or "").strip()
-                category = (item.get("category") or "").strip()
-                title = normalize_untrusted_text(item.get("title") or "").strip()
-                if not item_id or not category or not title:
-                    continue
-                url = f"/?date={self.date}&category={category}#item-{item_id}"
-                tail_links.append(f"- [{title}]({url})")
-            if tail_links:
-                lines.append("")
-                lines.append("#### Related Coverage")
-                lines.extend(tail_links)
-                link_count = len(tail_links)
-
-        if link_count > 0:
-            logger.info(f"  {context_name}: deterministic fallback added {link_count} links")
         return "\n".join(lines)
 
     def _markdown_links_to_html(self, text: str) -> str:
