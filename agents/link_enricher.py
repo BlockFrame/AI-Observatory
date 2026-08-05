@@ -338,6 +338,10 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
             # Parse XML response
             enriched_match = re.search(r'<enriched_text>(.*?)</enriched_text>', content, re.DOTALL)
             if not enriched_match:
+                # If LLM returned enriched text with internal links without XML wrapper, preserve LLM links
+                if self._has_internal_links(content):
+                    logger.info(f"  {context_name}: no <enriched_text> tag, but found internal links in response")
+                    return content
                 logger.warning(f"  {context_name}: no <enriched_text> tag found, applying deterministic fallback")
                 return self._inject_deterministic_links(text, items, context_name)
             

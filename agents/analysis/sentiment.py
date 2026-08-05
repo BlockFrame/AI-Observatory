@@ -22,9 +22,9 @@ async def _score_item(async_client, title: str, summary: str) -> str:
     try:
         response = await async_client.call_with_thinking(
             messages=[{"role": "user", "content": prompt}],
-            profile=ThinkingLevel.QUICK,
+            profile=ThinkingLevel.NONE,
             caller="analysis.sentiment",
-            max_tokens=256,
+            max_tokens=512,
         )
     except Exception:
         return "neutral"
