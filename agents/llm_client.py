@@ -1447,7 +1447,7 @@ class AsyncAnthropicClient:
                 response=response,
             )
             return response
-        except BaseException as error:
+        except Exception as error:
             if acquired:
                 await self._mark_request_finished(
                     request_id,
@@ -1689,6 +1689,7 @@ class AsyncAnthropicClient:
             requests_per_day=config.requests_per_day,
             route_profiles=config.profiles,
             caller_patterns=config.caller_patterns,
+            fallback_route_id=config.fallback_route_id,
         )
 
     async def _create_gemini_completion(
@@ -1728,22 +1729,53 @@ class AsyncAnthropicClient:
             self._format_request_context(request_context),
             estimated_input_tokens,
         )
-        if self._request_semaphore is None:
-            raw_response = await invoke()
-        else:
-            async with self._request_semaphore:
+        try:
+            if self._request_semaphore is None:
                 raw_response = await invoke()
-        response = _normalize_gemini_response(raw_response, self.model)
+            else:
+                async with self._request_semaphore:
+                    raw_response = await invoke()
+            response = _normalize_gemini_response(raw_response, self.model)
+        except BaseException as error:
+            duration = time.time() - started_at
+            logger.info(
+                "Gemini failed %s duration=%.1fs error=%s: %s",
+                self._format_request_context(request_context),
+                duration,
+                type(error).__name__,
+                error,
+            )
+            await self._write_metric({
+                "event": "failed",
+                "context": request_context,
+                "duration_seconds": round(duration, 3),
+                "error_type": type(error).__name__,
+                "error": str(error),
+            })
+            raise
+        duration = time.time() - started_at
         logger.info(
             "Gemini done %s duration=%.1fs input_tokens=%s output_tokens=%s "
             "thinking_tokens=%s stop_reason=%s",
             self._format_request_context(request_context),
-            time.time() - started_at,
+            duration,
             response.usage.get("input_tokens", 0),
             response.usage.get("output_tokens", 0),
             response.usage.get("thinking_tokens", 0),
             response.stop_reason,
         )
+        await self._write_metric({
+            "event": "done",
+            "context": request_context,
+            "duration_seconds": round(duration, 3),
+            "stop_reason": response.stop_reason,
+            "response_model": response.model,
+            "usage": {
+                "input_tokens": response.usage.get("input_tokens", 0),
+                "output_tokens": response.usage.get("output_tokens", 0),
+                "thinking_tokens": response.usage.get("thinking_tokens", 0),
+            },
+        })
         return response
 
     async def call_with_thinking(
@@ -2339,6 +2371,8 @@ class AsyncLLMRouter:
             httpx.TransportError,
             anthropic.APITimeoutError,
             anthropic.APIConnectionError,
+            openai.APITimeoutError,
+            openai.APIConnectionError,
         )
         if isinstance(error, retryable_types):
             return type(error).__name__
@@ -2402,19 +2436,25 @@ class AsyncLLMRouter:
                     f"BaseURL: '{base_url_info}' | Error: {type(error).__name__}: {error}"
                 )
                 
-                # Check for explicit fallback route on quota exhaustion
-                if getattr(client, "fallback_route_id", None) and reason in ["provider_rpd_exhausted", "http_429"]:
+                # Prefer the configured route chain for every retryable provider
+                # failure. Previously this was limited to quota/429 errors, so
+                # OpenAI-compatible timeouts could wander to an unrelated route
+                # (or abort before failover altogether).
+                if getattr(client, "fallback_route_id", None) and reason is not None:
                     fallback_id = client.fallback_route_id
                     fallback_client = next((c for c in self.clients if getattr(c, "provider_id", None) == fallback_id), None)
                     if fallback_client and fallback_client in ordered_clients:
                         try:
                             ordered_clients.remove(fallback_client)
                             ordered_clients.insert(attempt, fallback_client)
-                            logger.warning(f"⚡ [ROUTE FALLBACK] Route '{client.provider_id}' saturated. Activating fallback route: '{fallback_id}'")
+                            logger.warning(
+                                f"⚡ [ROUTE FALLBACK] Route '{client.provider_id}' failed "
+                                f"({reason}). Activating fallback route: '{fallback_id}'"
+                            )
                         except ValueError:
                             pass
                 
-                if reason is None or attempt >= len(self.clients):
+                if reason is None or attempt >= len(ordered_clients):
                     raise
 
                 logger.warning(

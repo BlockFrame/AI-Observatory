@@ -286,6 +286,7 @@ class SocialGatherer(BaseGatherer):
         created_at = tweet_data.get('createdAt', '')
         author = tweet_data.get('author', {})
         username = author.get('userName', author.get('username', 'unknown'))
+        external_urls = self._extract_tweet_urls(tweet_data)
 
         # Parse date
         try:
@@ -311,6 +312,10 @@ class SocialGatherer(BaseGatherer):
             metadata={
                 'platform_id': tweet_id,
                 'author_display_name': author.get('name', username),
+                # GetXAPI commonly keeps expanded links in entities while the
+                # visible tweet text contains no URL. Preserve them so the news
+                # link follower can discover the referenced articles.
+                'external_urls': external_urls,
                 'engagement': {
                     'likes': tweet_data.get('likeCount', 0),
                     'retweets': tweet_data.get('retweetCount', 0),
@@ -321,6 +326,53 @@ class SocialGatherer(BaseGatherer):
             },
             keywords=self.extract_keywords(text)
         )
+
+    @staticmethod
+    def _extract_tweet_urls(tweet_data: Dict[str, Any]) -> List[str]:
+        """Extract expanded article URLs from common GetX/Twitter entity shapes."""
+        urls: List[str] = []
+        seen = set()
+
+        def add(candidate: Any) -> None:
+            if not isinstance(candidate, str) or not candidate.startswith(('http://', 'https://')):
+                return
+            if candidate not in seen:
+                seen.add(candidate)
+                urls.append(candidate)
+
+        def visit(value: Any) -> None:
+            if isinstance(value, list):
+                for child in value:
+                    visit(child)
+                return
+            if not isinstance(value, dict):
+                return
+
+            expanded = (
+                value.get('expanded_url')
+                or value.get('expandedUrl')
+                or value.get('unwound_url')
+                or value.get('unwoundUrl')
+            )
+            if expanded:
+                add(expanded)
+            elif any(key in value for key in ('display_url', 'displayUrl')):
+                add(value.get('url'))
+
+            for key in ('urls', 'urlEntities', 'entities', 'extended_entities', 'extendedEntities'):
+                if key in value:
+                    visit(value[key])
+
+        for container in (
+            tweet_data.get('entities'),
+            tweet_data.get('urlEntities'),
+            tweet_data.get('extendedEntities'),
+            (tweet_data.get('legacy') or {}).get('entities')
+            if isinstance(tweet_data.get('legacy'), dict) else None,
+        ):
+            visit(container)
+
+        return urls
 
     def get_urls_from_posts(self) -> List[Dict[str, Any]]:
         """

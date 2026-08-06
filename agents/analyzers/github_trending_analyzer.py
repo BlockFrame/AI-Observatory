@@ -10,7 +10,7 @@ from typing import List, Optional
 
 from ..base import (
     BaseAnalyzer, CollectedItem, AnalyzedItem,
-    CategoryReport, CategoryTheme
+    CategoryReport, CategoryTheme, MIN_CATEGORY_SUMMARY_CHARS
 )
 from ..llm_client import AnthropicClient, AsyncAnthropicClient, ThinkingLevel
 
@@ -142,17 +142,25 @@ CATEGORY SUMMARY FORMATTING RULES:
                 response = await self.async_client.call_with_thinking(
                     messages=[{"role": "user", "content": prompt}],
                     profile=ThinkingLevel.STANDARD,
-                    caller="analysis.github_trending",
-                    max_tokens=800,
+                    # Match the dedicated Gemini quality route used by the
+                    # other category-summary regeneration calls.
+                    caller="analysis.github_trending_summary",
+                    max_tokens=4096,
                 )
-                return response.content.strip()
+                content = (response.content or "").strip()
+                if response.stop_reason == "max_tokens":
+                    logger.warning("GitHub Trending summary exhausted its output budget")
+                elif len(content) >= MIN_CATEGORY_SUMMARY_CHARS:
+                    return content
+                if content:
+                    logger.warning(
+                        "GitHub Trending summary failed the minimum quality check "
+                        f"({len(content)} chars)"
+                    )
         except Exception as e:
             logger.warning(f"Failed to generate LLM summary for GitHub trending: {e}")
 
-        # Deterministic fallback summary
-        repo_highlights = [f"- **{i.item.title.replace('[GitHub Trending] ', '')}**: {i.summary}" for i in top_items[:5]]
-        return (
-            "**GitHub Trending Executive Insights:** Today's open-source developer landscape shows strong momentum "
-            "around agentic automation frameworks, local model execution, and specialized developer tooling.\n\n"
-            + "\n".join(repo_highlights)
-        )
+        # Make the failure explicit so the publication quality gate rejects it
+        # instead of silently publishing a deterministic repository list as an
+        # LLM-generated executive briefing.
+        return "Analysis complete. GitHub Trending summary generation failed quality checks."

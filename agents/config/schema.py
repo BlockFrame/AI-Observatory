@@ -48,7 +48,7 @@ class LLMRouteConfig(BaseModel):
     )
     fallback_route_id: Optional[str] = Field(
         default=None,
-        description="ID of another route to fallback to if this route hits a rate limit (429 / Quota Exhausted)"
+        description="ID of the preferred fallback route for retryable transport, quota, 429, and 5xx failures"
     )
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = Field(
         default=None,
@@ -224,6 +224,7 @@ class ResolvedLLMRouteConfig(BaseModel):
     requests_per_day: Optional[int] = None
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = None
     caller_patterns: Optional[List[str]] = None
+    fallback_route_id: Optional[str] = None
 
     @field_validator('base_url')
     @classmethod

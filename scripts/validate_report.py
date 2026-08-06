@@ -57,6 +57,11 @@ FAILURE_SENTINELS = (
 # conservative floor that flags truncated/empty output without false-flagging a
 # genuinely short day.
 MIN_EXEC_SUMMARY_CHARS = 400
+MIN_CATEGORY_SUMMARY_CHARS = 300
+CRITICAL_PHASES = (
+    "Phase 3: Topic Detection",
+    "Phase 4: Executive Summary",
+)
 
 
 def _load_local(web_dir: str, date_str: str) -> dict:
@@ -91,6 +96,8 @@ def validate(summary: dict, date_str: str) -> dict:
     analyzed = summary.get("total_items_analyzed") or 0
     collected = summary.get("total_items_collected") or 0
     report_date = summary.get("date") or summary.get("coverage_date") or ""
+    phase_status = summary.get("phase_status") or []
+    generation_quality = summary.get("generation_quality") or {}
 
     # 1) Executive summary must be non-empty and substantive.
     if not exec_summary:
@@ -114,7 +121,49 @@ def validate(summary: dict, date_str: str) -> dict:
     if analyzed <= 0:
         failures.append(f"total_items_analyzed is {analyzed} (no analyzed items)")
 
-    # 5) Date sanity: published report should match the requested date.
+    # 5) Critical synthesis phases must be real LLM output, not deterministic
+    # fallbacks. New reports carry phase_status; older reports remain readable
+    # but surface a warning because their quality cannot be proven.
+    phases_by_name = {
+        phase.get("name"): phase
+        for phase in phase_status
+        if isinstance(phase, dict) and phase.get("name")
+    }
+    if phases_by_name:
+        for phase_name in CRITICAL_PHASES:
+            phase = phases_by_name.get(phase_name)
+            if not phase:
+                failures.append(f"missing critical phase status: {phase_name}")
+                continue
+            status = phase.get("status")
+            details = phase.get("details") or phase.get("error") or ""
+            loaded_checkpoint = status == "skipped" and "loaded from checkpoint" in details
+            if status != "success" and not loaded_checkpoint:
+                failures.append(
+                    f"{phase_name} status is {status!r}: {details or 'no details'}"
+                )
+    else:
+        warnings.append("phase_status missing; synthesis quality cannot be verified")
+
+    if generation_quality.get("fallback_used") is True:
+        failures.append("generation_quality reports deterministic synthesis fallback")
+
+    # 6) Every non-empty category needs a substantive briefing. This catches
+    # both the hardcoded "Analysis complete" fallback and token-starved output.
+    categories = summary.get("categories") or {}
+    for category, payload in categories.items():
+        if not isinstance(payload, dict):
+            continue
+        category_summary = (payload.get("category_summary") or "").strip()
+        if category_summary.lower().startswith(("analysis complete", "analysis failed")):
+            failures.append(f"{category} category_summary is a generic fallback")
+        elif (payload.get("count") or 0) > 0 and len(category_summary) < MIN_CATEGORY_SUMMARY_CHARS:
+            failures.append(
+                f"{category} category_summary too short "
+                f"({len(category_summary)} < {MIN_CATEGORY_SUMMARY_CHARS} chars)"
+            )
+
+    # 7) Date sanity: published report should match the requested date.
     if report_date and report_date != date_str:
         warnings.append(f"report date {report_date!r} != requested {date_str!r}")
 

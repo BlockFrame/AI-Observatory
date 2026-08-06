@@ -34,6 +34,8 @@ if TYPE_CHECKING:
 
 logger = logging.getLogger(__name__)
 
+MIN_CATEGORY_SUMMARY_CHARS = 300
+
 
 @dataclass
 class FeedSpec:
@@ -1070,6 +1072,7 @@ class BaseAnalyzer(ABC):
             task_line="Rank the fenced analysis results below according to your system instructions.",
         )
 
+        ranking_summary_needs_regeneration = False
         try:
             response = await self.async_client.call_with_thinking(
                 messages=[{"role": "user", "content": ranking_user}],
@@ -1084,6 +1087,7 @@ class BaseAnalyzer(ABC):
             )
 
             if response.stop_reason == "max_tokens":
+                ranking_summary_needs_regeneration = True
                 logger.error(
                     f"  {self.category} REDUCE: ranking response still truncated at max_tokens "
                     f"after escalation; sanitizing a possibly-incomplete category_summary."
@@ -1135,6 +1139,10 @@ class BaseAnalyzer(ABC):
         self._log_map_reduce_stats(analyzed_items, themes, top_items)
 
         category_summary = ranking_result.get('category_summary', '')
+        if ranking_summary_needs_regeneration:
+            # A syntactically repaired tail is safe to store, but it is not a
+            # complete executive briefing. Force the dedicated summary call.
+            category_summary = ''
         category_summary = await self._ensure_category_summary(category_summary, top_items)
 
         return CategoryReport(
@@ -1150,15 +1158,29 @@ class BaseAnalyzer(ABC):
 
     async def _ensure_category_summary(self, category_summary: str, top_items: List[AnalyzedItem]) -> str:
         """Ensure a rich multi-paragraph category summary is generated if missing or generic."""
-        if category_summary and not category_summary.startswith("Analysis complete"):
-            return category_summary
+        original_summary = (category_summary or "").strip()
+        is_generic = original_summary.lower().startswith(("analysis complete", "analysis failed"))
+        if len(original_summary) >= MIN_CATEGORY_SUMMARY_CHARS and not is_generic:
+            return original_summary
+
+        if original_summary and not is_generic:
+            logger.warning(
+                f"Category summary for {self.category} was too short "
+                f"({len(original_summary)} chars); regenerating with the dedicated quality route"
+            )
 
         if not top_items or not self.async_client:
             return category_summary or f"Analysis complete for {self.category}."
 
+        summary_items = [
+            item for item in top_items
+            if not self._exclude_from_summaries(item)
+        ][:8]
+        if not summary_items:
+            return original_summary or f"Analysis complete for {self.category}."
         items_text = "\n".join(
             f"- **{item.item.title}**: {item.summary}"
-            for item in top_items[:8]
+            for item in summary_items
         )
 
         prompt = (
@@ -1172,14 +1194,27 @@ class BaseAnalyzer(ABC):
                 messages=[{"role": "user", "content": prompt}],
                 profile=ThinkingLevel.STANDARD,
                 caller=f"analysis.{self.category}_summary",
-                max_tokens=600,
+                # Gemini reasoning and visible prose share the output budget.
+                # A 600-token ceiling produced only 23 visible tokens in CI
+                # after the thinking trace consumed the rest.
+                max_tokens=4096,
             )
-            if response.content and response.content.strip():
-                return response.content.strip()
+            content = (response.content or "").strip()
+            if response.stop_reason == "max_tokens":
+                logger.warning(
+                    f"Fallback category summary for {self.category} exhausted its output budget"
+                )
+            if len(content) >= MIN_CATEGORY_SUMMARY_CHARS and response.stop_reason != "max_tokens":
+                return content
+            if content:
+                logger.warning(
+                    f"Fallback category summary for {self.category} was too short "
+                    f"({len(content)} chars); preserving the prior summary"
+                )
         except Exception as e:
             logger.warning(f"Fallback category summary generation failed for {self.category}: {e}")
 
-        return category_summary or f"Analysis complete for {self.category}."
+        return original_summary or f"Analysis complete for {self.category}."
 
     def _sanitize_truncated_summary(self, summary: str) -> str:
         """Best-effort cleanup of a category summary cut off mid-generation.

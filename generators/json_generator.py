@@ -129,6 +129,30 @@ class JSONGenerator:
 
         executive_summary = result.get('executive_summary', '')
         collection_status = result.get('collection_status', {})
+        phase_status = result.get('phase_status', [])
+        critical_phase_names = {
+            'Phase 3: Topic Detection',
+            'Phase 4: Executive Summary',
+        }
+        critical_phases = {
+            phase.get('name'): phase
+            for phase in phase_status
+            if phase.get('name') in critical_phase_names
+        }
+        fallback_markers = ('fallback', 'failed', 'error')
+        generation_quality = {
+            'topic_detection': critical_phases.get('Phase 3: Topic Detection', {}).get('status', 'unknown'),
+            'executive_summary': critical_phases.get('Phase 4: Executive Summary', {}).get('status', 'unknown'),
+            'fallback_used': any(
+                critical_phases.get(name, {}).get('status') in ('failed', 'partial')
+                or any(
+                    marker in str(critical_phases.get(name, {}).get(field, '')).lower()
+                    for marker in fallback_markers
+                    for field in ('details', 'error')
+                )
+                for name in critical_phase_names
+            ),
+        }
 
         summary = {
             'date': result.get('date', ''),
@@ -141,6 +165,8 @@ class JSONGenerator:
             'total_items_collected': result.get('total_items_collected', 0),
             'total_items_analyzed': result.get('total_items_analyzed', 0),
             'collection_status': self._format_collection_status(collection_status),
+            'phase_status': phase_status,
+            'generation_quality': generation_quality,
             'hero_image_url': result.get('hero_image_url'),
             'hero_image_prompt': result.get('hero_image_prompt'),
             'generated_at': result.get('generated_at', datetime.now().isoformat()),
@@ -338,7 +364,7 @@ class JSONGenerator:
         has_partial = False
 
         # Main sources (not sub-platforms)
-        main_sources = ['news', 'research', 'social', 'reddit', 'hackernews', 'github_trending']
+        main_sources = ['news', 'research', 'social', 'web_scraper', 'reddit', 'hackernews', 'github_trending']
 
         for source in main_sources:
             source_status = status.get(source, {})
@@ -385,6 +411,18 @@ class JSONGenerator:
                     has_partial = True
                     warnings.append(f"{platform_name.capitalize()} had partial collection: {error}")
 
+        web_scraper_sites = []
+        for key, val in status.items():
+            if not isinstance(key, str) or not key.startswith(('http://', 'https://')):
+                continue
+            site_status = val.get('status', 'unknown')
+            web_scraper_sites.append({
+                'url': key,
+                'status': site_status,
+                'count': val.get('count', 0),
+                'error': val.get('error'),
+            })
+
         # Determine overall status
         if has_failures:
             overall = 'partial' if any(s['status'] == 'success' for s in sources) else 'failed'
@@ -397,6 +435,7 @@ class JSONGenerator:
             'overall': overall,
             'sources': sources,
             'social_platforms': social_platforms if social_platforms else None,
+            'web_scraper_sites': web_scraper_sites if web_scraper_sites else None,
             'warnings': warnings
         }
 

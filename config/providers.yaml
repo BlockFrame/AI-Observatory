@@ -3,7 +3,7 @@ llm:
   api_key: "${GEMINI_API_KEY}"
   model: "gemini-3.5-flash-lite"
   max_output_tokens: 65536
-  timeout: 600
+  timeout: 120
   requests_per_minute: 15
   tokens_per_minute: 250000
   requests_per_day: 500
@@ -13,6 +13,7 @@ llm:
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
       model: "deepseek-ai/deepseek-v4-flash"
+      timeout: 120
       max_output_tokens: 16384
       max_concurrent_requests: 2
       requests_per_minute: 30
@@ -57,20 +58,20 @@ llm:
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
       model: "deepseek-ai/deepseek-v4-pro"
+      timeout: 90
       max_output_tokens: 16384
       max_concurrent_requests: 2
       requests_per_minute: 30
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback"
       caller_patterns:
-        - "orchestrator.*"
         - "*_analyzer.reduce_rank"
-        - "link_enricher.*"
 
     - id: "gemini-quality-fallback"
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.6-flash"
+      timeout: 90
       max_output_tokens: 65536
       max_concurrent_requests: 2
       requests_per_minute: 5
@@ -78,23 +79,16 @@ llm:
       requests_per_day: 20
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-3.5"
+      caller_patterns:
+        - "orchestrator.*"
+        - "link_enricher.*"
+        - "analysis.*_summary"
 
     - id: "gemini-quality-fallback-3.5"
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.5-flash"
-      max_output_tokens: 65536
-      max_concurrent_requests: 2
-      requests_per_minute: 5
-      tokens_per_minute: 250000
-      requests_per_day: 20
-      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
-      fallback_route_id: "gemini-quality-fallback-3.0"
-
-    - id: "gemini-quality-fallback-3.0"
-      mode: "gemini"
-      api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3-flash"
+      timeout: 90
       max_output_tokens: 65536
       max_concurrent_requests: 2
       requests_per_minute: 5
@@ -107,6 +101,7 @@ llm:
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.5-flash-lite"
+      timeout: 90
       max_output_tokens: 65536
       max_concurrent_requests: 6
       requests_per_minute: 15

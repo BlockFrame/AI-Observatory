@@ -103,20 +103,18 @@ class LinkFollower:
         for url in urls:
             # Remove trailing punctuation
             url = url.rstrip('.,;:!?)\'"]')
-
-            # Skip if already seen
-            normalized = self._normalize_url(url)
-            if normalized in self.seen_urls:
-                continue
-
-            # Skip excluded domains
-            if self._should_skip_url(url):
-                continue
-
-            cleaned_urls.append(url)
-            self.seen_urls.add(normalized)
+            if self._register_url(url):
+                cleaned_urls.append(url)
 
         return cleaned_urls
+
+    def _register_url(self, url: str) -> bool:
+        """Validate and register a URL, returning True only for a new followable URL."""
+        normalized = self._normalize_url(url)
+        if normalized in self.seen_urls or self._should_skip_url(url):
+            return False
+        self.seen_urls.add(normalized)
+        return True
 
     def _normalize_url(self, url: str) -> str:
         """Normalize URL for deduplication."""
@@ -342,6 +340,13 @@ Reply with just "YES" or "NO"."""
         capped = False
         for post in posts:
             urls = self.extract_urls(post.content)
+            metadata_urls = (
+                post.metadata.get('external_urls', [])
+                if isinstance(post.metadata, dict) else []
+            )
+            for metadata_url in metadata_urls:
+                if isinstance(metadata_url, str) and self._register_url(metadata_url):
+                    urls.append(metadata_url)
             for url in urls:
                 if len(url_to_post) >= max_links and url not in url_to_post:
                     logger.warning(

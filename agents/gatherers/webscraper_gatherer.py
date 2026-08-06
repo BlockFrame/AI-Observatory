@@ -29,6 +29,9 @@ class WebScraperGatherer(BaseGatherer):
         
         # We only want one latest article per site per run
         self.max_articles_per_site = 1
+        self._last_extract_candidates = 0
+        self._last_extract_error: Optional[str] = None
+        self._last_extract_completed = False
 
     @property
     def category(self) -> str:
@@ -82,7 +85,7 @@ class WebScraperGatherer(BaseGatherer):
         """Use LLM to extract all relevant news articles from text."""
         
         system_prompt = """You are an expert web scraper. You will be given the raw text content of a company's news/blog webpage or a newsletter.
-Your job is to identify ALL recent and important news articles, announcements, or blog posts listed on the page.
+Your job is to identify at most the 5 most recent news articles, announcements, or blog posts listed on the page.
 
 Return ONLY a JSON array of objects. Each object must have the following keys:
 - "title": The title of the article.
@@ -93,17 +96,32 @@ Return ONLY a JSON array of objects. Each object must have the following keys:
 Do not include any other text, markdown formatting, or preamble. Just the JSON array of objects. If no articles are found, return []"""
 
         user_message = f"Base URL: {url}\n\nWebpage Text:\n{text}"
+        self._last_extract_candidates = 0
+        self._last_extract_error = None
+        self._last_extract_completed = False
 
         try:
             response = self.llm_client.call(
                 messages=[{"role": "user", "content": user_message}],
                 system=system_prompt,
                 temperature=0.0,
-                max_tokens=2000
+                max_tokens=4096
             )
             
             json_str = extract_json_str(response.content)
-            data_list = json.loads(json_str)
+            try:
+                data_list = json.loads(json_str)
+            except json.JSONDecodeError as parse_error:
+                # Preserve complete objects when the provider truncates the
+                # final array element. Dropping the whole page turned several
+                # otherwise useful scrapes into zero results in CI.
+                data_list = self._recover_complete_json_objects(json_str)
+                if not data_list:
+                    raise parse_error
+                logger.warning(
+                    f"Recovered {len(data_list)} complete article objects from "
+                    f"truncated JSON for {url}"
+                )
             
             if not isinstance(data_list, list):
                 # Fallback if it returned a single object
@@ -111,7 +129,11 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                     data_list = [data_list]
                 else:
                     logger.error(f"LLM returned unexpected JSON format for {url}: {data_list}")
+                    self._last_extract_error = 'LLM returned an unexpected JSON shape'
                     return []
+
+            self._last_extract_candidates = len(data_list)
+            self._last_extract_completed = True
                     
             extracted_items = []
             
@@ -149,20 +171,44 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                 
                 extracted_items.append(CollectedItem(
                     id=item_id,
-                    source=url,
                     title=data["title"],
-                    url=article_url,
                     content=data.get("summary", ""),
-                    pub_date=pub_date,
-                    category=self.category,
+                    url=article_url,
+                    author="",
+                    published=dt.isoformat(),
+                    source=url,
+                    source_type="web_scraper",
                     metadata={"scraper_type": "llm_html"}
                 ))
                 
-            return extracted_items
+            return extracted_items[:self.max_articles_per_site]
             
         except Exception as e:
+            self._last_extract_error = f"{type(e).__name__}: {e}"
             logger.error(f"LLM extraction failed for {url}: {e}")
             return []
+
+    @staticmethod
+    def _recover_complete_json_objects(content: str) -> List[Dict[str, Any]]:
+        """Recover complete top-level objects from a truncated JSON array."""
+        decoder = json.JSONDecoder()
+        recovered: List[Dict[str, Any]] = []
+        cursor = content.find('[')
+        if cursor < 0:
+            return recovered
+        cursor += 1
+        while cursor < len(content):
+            object_start = content.find('{', cursor)
+            if object_start < 0:
+                break
+            try:
+                value, object_end = decoder.raw_decode(content, object_start)
+            except json.JSONDecodeError:
+                break
+            if isinstance(value, dict):
+                recovered.append(value)
+            cursor = object_end
+        return recovered
 
     async def gather(self) -> List[CollectedItem]:
         """Main gather method."""
@@ -209,8 +255,18 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                     self.collection_status[original_url]['count'] = len(items)
                 else:
                     logger.warning(f"Could not extract any valid articles from {url}")
-                    self.collection_status[original_url]['status'] = 'failed'
-                    self.collection_status[original_url]['error'] = 'Could not extract articles or outside date range'
+                    if self._last_extract_completed and not self._last_extract_error:
+                        self.collection_status[original_url]['status'] = 'success'
+                        self.collection_status[original_url]['error'] = (
+                            'No dated articles in coverage window'
+                            if self._last_extract_candidates > 0
+                            else 'No article candidates found on page'
+                        )
+                    else:
+                        self.collection_status[original_url]['status'] = 'failed'
+                        self.collection_status[original_url]['error'] = (
+                            self._last_extract_error or 'No article candidates extracted'
+                        )
             except Exception as e:
                 logger.error(f"Error scraping {original_url}: {e}")
                 self.collection_status[original_url]['status'] = 'failed'

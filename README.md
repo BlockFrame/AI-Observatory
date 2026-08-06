@@ -240,7 +240,7 @@ Set these on the publishing repository:
 | `REDDIT_USER_AGENT` | `AI-News-Aggregator/1.0 (by u/flyryan)` | User-Agent sent to Reddit API requests |
 | `NEWS_USER_AGENT` | `REDDIT_USER_AGENT` value | User-Agent sent to RSS/feed sources |
 | `MULLVAD_RELAY_FILTER` | `us` | Mullvad WireGuard relay hostname prefix used for CI egress |
-| `LLM_TIMEOUT_SECONDS` | `240` | Hosted LLM request timeout override; supersedes provider YAML timeout |
+| `LLM_TIMEOUT_SECONDS` | unset | Optional hosted LLM request timeout override; supersedes per-route YAML timeouts |
 | `LLM_MAX_CONCURRENT_REQUESTS` | `8` | Async LLM request cap per provider route; with three routes, the default maximum is 24 active LLM requests |
 | `LLM_ADAPTIVE_MAX_TOKENS` | `65536` | Response output ceiling for adaptive-thinking calls; separate from analysis profile/effort |
 | `LLM_MAX_RETRIES` | `2` | Anthropic SDK retry count for transient request failures |
@@ -430,7 +430,7 @@ export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
 | `PIPELINE_PROXY_URL` | HTTP(S) or SOCKS proxy for the whole pipeline | No |
 | `NEWS_USER_AGENT` | User-Agent for RSS/feed requests | No |
 | `LLM_TRUST_ENV_PROXY` | Allow LLM clients to use `HTTP_PROXY`/`HTTPS_PROXY`/`ALL_PROXY`. Default: `false` | No |
-| `LLM_TIMEOUT_SECONDS` | Override provider-config LLM request timeout. GitHub Actions default: `240` | No |
+| `LLM_TIMEOUT_SECONDS` | Override provider-config LLM request timeout. Unset in GitHub Actions by default so per-route timeouts apply | No |
 | `LLM_MAX_CONCURRENT_REQUESTS` | Async LLM request cap per provider route; `0` disables the cap. Default: `8` | No |
 | `LLM_ADAPTIVE_MAX_TOKENS` | Response output ceiling for adaptive-thinking calls. It is not a thinking budget. Default: `65536` | No |
 | `LLM_MAX_RETRIES` | Anthropic SDK retry count for transient request failures. Default: `2` | No |

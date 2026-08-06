@@ -364,6 +364,7 @@ class MainOrchestrator:
                 category_reports = staleness_checker.process(category_reports)
             except Exception as e:
                 logger.warning(f"Resume freshness repair failed (non-fatal): {e}")
+            category_reports = await self._ensure_report_category_summaries(category_reports)
             total_analyzed = sum(len(r.all_items) for r in category_reports.values())
             phases.skip_phase("Phase 2: Analysis", f"loaded from checkpoint ({total_analyzed} items)")
             phases.skip_phase("Phase 2.5: Continuity Detection", "loaded from checkpoint")
@@ -409,6 +410,7 @@ class MainOrchestrator:
                     web_dir=self.web_dir,
                 )
                 category_reports = staleness_checker.process(category_reports)
+                category_reports = await self._ensure_report_category_summaries(category_reports)
                 phases.end_phase('success')
             except Exception as e:
                 logger.warning(f"Staleness check failed (non-fatal): {e}")
@@ -893,6 +895,21 @@ class MainOrchestrator:
             scraper_status = web_scraper.get_collection_status()
             for url, status in scraper_status.items():
                 collection_status[url] = status
+            if scraper_status:
+                successful = sum(
+                    1 for status in scraper_status.values()
+                    if status.get('status') == 'success'
+                )
+                failed = sum(
+                    1 for status in scraper_status.values()
+                    if status.get('status') == 'failed'
+                )
+                if failed:
+                    collection_status['web_scraper'] = {
+                        'status': 'partial' if successful else 'failed',
+                        'count': len(results.get('web_scraper', [])),
+                        'error': f'{failed}/{len(scraper_status)} configured sites failed',
+                    }
 
         # Phase 2: Run news gatherer with social posts for link following
         logger.info("  Phase 2: Gathering news with link following...")
@@ -1019,6 +1036,9 @@ class MainOrchestrator:
                 prompt_accessor=self.prompt_accessor
             )
         }
+        # Keep the actual grounded analyzer instances available for quality
+        # repair after continuity/staleness sanitization.
+        self.analyzers = analyzers_with_context
 
         async def analyze_category(
             name: str,
@@ -1051,6 +1071,26 @@ class MainOrchestrator:
         results = await asyncio.gather(*tasks)
 
         return dict(results)
+
+    async def _ensure_report_category_summaries(
+        self,
+        category_reports: Dict[str, CategoryReport],
+    ) -> Dict[str, CategoryReport]:
+        """Repair summaries made empty/generic/short by analysis or sanitization."""
+        for category, report in category_reports.items():
+            analyzer = self.analyzers.get(category)
+            if not analyzer or not hasattr(analyzer, '_ensure_category_summary'):
+                continue
+            try:
+                report.category_summary = await analyzer._ensure_category_summary(
+                    report.category_summary,
+                    report.top_items,
+                )
+            except Exception as exc:
+                logger.warning(
+                    f"Post-analysis category summary repair failed for {category}: {exc}"
+                )
+        return category_reports
 
     def _markdown_links_to_html(self, text: str) -> str:
         """Convert markdown links [text](url) to HTML <a> tags safely."""

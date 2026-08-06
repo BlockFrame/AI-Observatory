@@ -70,7 +70,9 @@ jobs:
       PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'web/data llms.txt ai-index.json config/model_releases.yaml config/ecosystem_context.yaml' }}
       PIPELINE_IMAGE_MODEL: ${{ vars.PIPELINE_IMAGE_MODEL || 'gemini-3-pro-image-preview' }}
       LLM_TRUST_ENV_PROXY: ${{ vars.LLM_TRUST_ENV_PROXY || 'false' }}
-      LLM_TIMEOUT_SECONDS: ${{ vars.LLM_TIMEOUT_SECONDS || '240' }}
+      # Leave unset unless explicitly overridden so each provider route can use
+      # its own timeout and fail over before a single request consumes 240s.
+      LLM_TIMEOUT_SECONDS: ${{ vars.LLM_TIMEOUT_SECONDS }}
       LLM_MAX_CONCURRENT_REQUESTS: ${{ vars.LLM_MAX_CONCURRENT_REQUESTS || '8' }}
       LLM_ADAPTIVE_MAX_TOKENS: ${{ vars.LLM_ADAPTIVE_MAX_TOKENS || '65536' }}
       LLM_MAX_RETRIES: ${{ vars.LLM_MAX_RETRIES || '2' }}
@@ -149,7 +151,7 @@ jobs:
             echo "Actual runner start time was $actual_et."
           fi
 
-      - name: Check out flyryan main
+      - name: Check out publishing main
         if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/checkout@v4
         with:
@@ -398,11 +400,11 @@ jobs:
           exit 1
       # ---------------------------------------------------------------------
       # Detection gap fix (2026-06-21): a scheduled run can exit 0 without ever
-      # producing today's report. The 3 AM ET gate makes the OTHER scheduled
+      # producing today's report. The 1 AM ET gate makes the OTHER scheduled
       # entry exit as a 7-second "success" no-op, and a run that does real work
       # but fails synthesis gets reverted by the publish gate (last good report
       # stays live) WITHOUT failing loudly. Either way the site silently serves
-      # stale content. This step runs only on the nominal 3 AM ET pass (the one
+      # stale content. This step runs only on the nominal 1 AM ET pass (the one
       # that is SUPPOSED to publish) and asserts a `data: Auto-update <today>`
       # commit actually landed on origin/main. If not, it fails the job, which
       # triggers the failure-alert step below.

@@ -55,6 +55,7 @@ class FakeRouteClient:
         failures=None,
         route_profiles=None,
         caller_patterns=None,
+        fallback_route_id=None,
     ):
         self.provider_id = provider_id
         self.model = model or f"claude-4.8-opus-{provider_id}"
@@ -63,6 +64,7 @@ class FakeRouteClient:
         self.calls = []
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
+        self.fallback_route_id = fallback_route_id
 
     async def call(self, **kwargs):
         self.calls.append(kwargs)
@@ -153,6 +155,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 LLMRouteConfig(
                     id="quality",
                     model="gemini-3.6-flash",
+                    fallback_route_id="bulk",
                     requests_per_minute=5,
                     requests_per_day=20,
                     profiles=["DEEP", "ULTRATHINK"],
@@ -168,6 +171,7 @@ class LLMRouteConfigTests(unittest.TestCase):
         self.assertEqual(route.tokens_per_minute, 250000)
         self.assertEqual(route.requests_per_day, 20)
         self.assertEqual(route.profiles, ["DEEP", "ULTRATHINK"])
+        self.assertEqual(route.fallback_route_id, "bulk")
 
     def test_empty_routes_fail_clearly(self):
         with self.assertRaises(ValidationError) as error:
@@ -294,6 +298,28 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(gcp.calls[0]["routing_context"]["attempt"], 2)
             self.assertEqual(gcp.calls[0]["routing_context"]["fallback_from"], "aws")
             self.assertEqual(gcp.calls[0]["routing_context"]["retry_reason"], "ConnectError")
+
+        asyncio.run(run())
+
+    def test_retryable_failure_prioritizes_explicit_fallback_route(self):
+        async def run():
+            primary = FakeRouteClient(
+                "primary",
+                failures=[httpx.ReadTimeout("provider stalled")],
+                fallback_route_id="preferred-fallback",
+            )
+            unrelated = FakeRouteClient("unrelated")
+            preferred = FakeRouteClient("preferred-fallback")
+            router = AsyncLLMRouter([primary, unrelated, preferred])
+
+            response = await router.call(messages=[{"role": "user", "content": "hi"}])
+
+            self.assertEqual(response.content, "preferred-fallback")
+            self.assertEqual(len(unrelated.calls), 0)
+            self.assertEqual(
+                preferred.calls[0]["routing_context"]["retry_reason"],
+                "ReadTimeout",
+            )
 
         asyncio.run(run())
 
