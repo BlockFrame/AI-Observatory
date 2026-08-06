@@ -6,6 +6,15 @@ Questo documento contiene l'elenco aggiornato delle sole attività aperte e da c
 
 ## 🎯 Attività Aperte
 
+### 0. 🛡️ Affidabilità, Qualità Editoriale & Osservabilità
+- [ ] **Quality score per report e categoria**: calcolare e pubblicare segnali deterministici su lunghezza, copertura dei top item, fallback LLM, validità Markdown/link e qualità delle fonti; bloccare la pubblicazione sotto soglia.
+- [ ] **Separazione ranking / scrittura**: mantenere modelli economici o specialistici per ranking ed estrazione, ma generare sempre le summary editoriali con una route quality dedicata e fallback espliciti.
+- [ ] **Telemetria LLM per categoria**: esporre in `summary.json` modello, provider, durata, token, retry/fallback e stato per News, Social, Research e GitHub Trending.
+- [ ] **Osservabilità dei gatherer**: dashboard/stato per fonte con ultimo successo, articoli raccolti, latenza, errore, tasso di duplicati e freshness del feed.
+- [ ] **Test end-to-end della resilienza**: fixture realistiche per timeout NVIDIA, 429 Gemini, JSON troncato, feed vuoti e fallback; verificare che il publish gate rifiuti report di bassa qualità.
+- [ ] **Link enrichment efficiente**: eseguire prima entity matching deterministico e inviare al modello solo riferimenti ambigui, riducendo latenza, token e chiamate LLM.
+- [ ] **Cache semantica degli articoli**: usare checksum del contenuto e cache di analisi per evitare rielaborazioni di articoli ripubblicati da più feed.
+
 ### 1. 📡 Espansione Fonti di Raccolta (Sources & Gatherers)
 - [ ] **AI News**: Identificare e integrare nuovi feed RSS/Atom di testate giornalistiche tech, blog di AI Lab emergenti e newsletter di settore (`config/rss_feeds.txt`).
 - [ ] **AI Research**: Aggiungere nuovi feed arXiv (es. cs.CL, cs.CV, cs.AI) e blog accademici universitari (Stanford, MIT, Oxford, CMU, Berkeley) (`config/research_feeds.txt`).
@@ -35,6 +44,12 @@ Questo documento contiene l'elenco aggiornato delle sole attività aperte e da c
 
 ## 📌 Backlog Feature
 
+- [ ] **“Why it matters”**: aggiungere per ogni notizia una sintesi strutturata di impatto, urgenza e destinatario decisionale.
+- [ ] **Storyline & follow-up**: raggruppare aggiornamenti della stessa storia in una timeline a 7/30 giorni.
+- [ ] **Digest personalizzato**: filtri persistenti per aziende, modelli, temi e ruolo dell'utente; generazione di una daily digest mirata.
+- [ ] **Alert selettivi**: notifiche ad alta confidenza per release frontier, benchmark, funding, policy e segnali di rischio.
+- [ ] **Evidence view**: rendere visibili fonti, confidenza, motivazione del ranking e percorso di generazione per ogni insight.
+- [ ] **Ecosystem comparison dashboard**: confronto tra provider/modelli per capacità, costo, API, benchmark, release e segnali social.
 - [ ] **Privacy-friendly Analytics**: Integrare Plausible / Umami sul frontend SvelteKit.
 - [ ] **Webhook Discord**: Aggiungere supporto per notifiche Discord oltre al bot Telegram.
 - [ ] **MCP Server Enhancements**: Estendere le capability di ricerca semantica del server MCP locale (`mcp_server.py`).
