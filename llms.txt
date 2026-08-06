@@ -2,7 +2,7 @@
 
 > Daily AI intelligence digest: news, papers, repos, HN, social signals.
 > Multi-agent analysis with adaptive thinking (MAP-REDUCE).
-> Generated: 2026-08-05
+> Generated: 2026-08-06
 
 ## Data structure
 All daily data is available as JSON at /web/data/{YYYY-MM-DD}/{category}.json
@@ -15,7 +15,8 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 - social.json — Posts from Twitter/X, Bluesky, Mastodon
 - reddit.json — Threads from AI subreddits
 
-## Available dates (221 total)
+## Available dates (222 total)
+- 2026-08-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-06/summary.json
 - 2026-08-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-05/summary.json
 - 2026-08-04: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-04/summary.json
 - 2026-08-03: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-03/summary.json
@@ -75,7 +76,6 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 - 2026-06-08: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-08/summary.json
 - 2026-06-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-07/summary.json
 - 2026-06-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-06/summary.json
-- 2026-06-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-05/summary.json
 
 ## Quick query patterns
 - "What happened today?" → fetch /web/data/{today}/summary.json
