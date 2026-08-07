@@ -3,12 +3,29 @@ Sentiment tagging for analyzed items.
 """
 
 import asyncio
+import os
+import re
 from typing import Dict
 
 from agents.base import CategoryReport
-from agents.llm_client import ThinkingLevel
 
 VALID_SENTIMENTS = {"positive", "negative", "controversial", "concerned", "neutral"}
+
+SENTIMENT_PATTERNS = {
+    "controversial": ("controvers", "backlash", "debate", "dispute", "criticized"),
+    "concerned": ("risk", "safety", "warning", "concern", "threat", "lawsuit", "ban"),
+    "negative": ("fail", "decline", "loss", "outage", "breach", "layoff"),
+    "positive": ("breakthrough", "improve", "growth", "launch", "release", "milestone"),
+}
+
+
+def _deterministic_sentiment(title: str, summary: str) -> str:
+    """Cheap default sentiment signal for free-tier runs."""
+    text = re.sub(r"\s+", " ", f"{title} {summary}").lower()
+    for label, patterns in SENTIMENT_PATTERNS.items():
+        if any(re.search(rf"\b{re.escape(pattern)}\w*\b", text) for pattern in patterns):
+            return label
+    return "neutral"
 
 
 async def _score_item(async_client, title: str, summary: str) -> str:
@@ -20,9 +37,8 @@ async def _score_item(async_client, title: str, summary: str) -> str:
         f"Title: {title}\nSummary: {summary}"
     )
     try:
-        response = await async_client.call_with_thinking(
+        response = await async_client.call(
             messages=[{"role": "user", "content": prompt}],
-            profile=ThinkingLevel.NONE,
             caller="analysis.sentiment",
             max_tokens=512,
         )
@@ -34,19 +50,23 @@ async def _score_item(async_client, title: str, summary: str) -> str:
 
 
 async def classify_sentiments(category_reports: Dict[str, CategoryReport], async_client=None) -> None:
-    semaphore = asyncio.Semaphore(8)
+    use_llm = os.getenv("SENTIMENT_USE_LLM", "false").strip().lower() in {
+        "1", "true", "yes", "on"
+    }
+    semaphore = asyncio.Semaphore(1)
     tasks = []
-    owners = []
     for report in category_reports.values():
         for item in report.all_items:
-            owners.append(item)
             tasks.append(item)
 
     async def classify(item):
-        async with semaphore:
-            sentiment = await _score_item(async_client, item.item.title, item.summary)
-            item.sentiment = sentiment
-            item.item.metadata["sentiment"] = sentiment
+        if use_llm and async_client is not None:
+            async with semaphore:
+                sentiment = await _score_item(async_client, item.item.title, item.summary)
+        else:
+            sentiment = _deterministic_sentiment(item.item.title, item.summary)
+        item.sentiment = sentiment
+        item.item.metadata["sentiment"] = sentiment
 
     await asyncio.gather(*[classify(item) for item in tasks])
 

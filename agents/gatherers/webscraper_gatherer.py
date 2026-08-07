@@ -30,6 +30,8 @@ class WebScraperGatherer(BaseGatherer):
         # We only want one latest article per site per run
         self.max_articles_per_site = 1
         self._last_extract_candidates = 0
+        self._last_date_parse_failures = 0
+        self._last_out_of_window = 0
         self._last_extract_error: Optional[str] = None
         self._last_extract_completed = False
 
@@ -97,6 +99,8 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
 
         user_message = f"Base URL: {url}\n\nWebpage Text:\n{text}"
         self._last_extract_candidates = 0
+        self._last_date_parse_failures = 0
+        self._last_out_of_window = 0
         self._last_extract_error = None
         self._last_extract_completed = False
 
@@ -158,6 +162,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                         dt = dt.replace(tzinfo=timezone.utc)
                 except ValueError:
                     # If parsing fails, skip this item as we can't verify its date
+                    self._last_date_parse_failures += 1
                     logger.warning(f"Could not parse date {pub_date} for {article_url}")
                     continue
                     
@@ -166,6 +171,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                 # so we compare naive datetimes (assuming UTC for simplicity in this context)
                 dt_naive = dt.replace(tzinfo=None)
                 if not (self.start_time <= dt_naive <= self.end_time):
+                    self._last_out_of_window += 1
                     logger.info(f"Skipping {article_url}: article date {dt_naive} is outside coverage window ({self.start_time} to {self.end_time})")
                     continue
                 
@@ -251,19 +257,51 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                 if items:
                     logger.info(f"Found {len(items)} articles from {url}")
                     all_items.extend(items)
-                    self.collection_status[original_url]['status'] = 'success'
+                    self.collection_status[original_url]['status'] = (
+                        'partial' if self._last_date_parse_failures else 'success'
+                    )
                     self.collection_status[original_url]['count'] = len(items)
-                else:
-                    logger.warning(f"Could not extract any valid articles from {url}")
-                    if self._last_extract_completed and not self._last_extract_error:
-                        self.collection_status[original_url]['status'] = 'success'
+                    if self._last_date_parse_failures:
+                        self.collection_status[original_url]['reason_code'] = 'date_parse_failed'
                         self.collection_status[original_url]['error'] = (
-                            'No dated articles in coverage window'
-                            if self._last_extract_candidates > 0
-                            else 'No article candidates found on page'
+                            f'{self._last_date_parse_failures}/{self._last_extract_candidates} '
+                            'article candidates had no parseable date'
                         )
+                else:
+                    if self._last_extract_completed and not self._last_extract_error:
+                        if self._last_date_parse_failures:
+                            logger.warning(
+                                f"Could not validate article dates from {url}: "
+                                f"{self._last_date_parse_failures}/"
+                                f"{self._last_extract_candidates} parse failures"
+                            )
+                            self.collection_status[original_url].update({
+                                'status': 'partial',
+                                'reason_code': 'date_parse_failed',
+                                'error': (
+                                    f'{self._last_date_parse_failures}/'
+                                    f'{self._last_extract_candidates} article candidates '
+                                    'had no parseable date'
+                                ),
+                            })
+                        elif self._last_extract_candidates > 0:
+                            logger.info(f"No articles in coverage window for {url}")
+                            self.collection_status[original_url].update({
+                                'status': 'success',
+                                'reason_code': 'no_items_in_window',
+                                'error': 'No dated articles in coverage window',
+                            })
+                        else:
+                            logger.info(f"No article candidates found on {url}")
+                            self.collection_status[original_url].update({
+                                'status': 'success',
+                                'reason_code': 'no_candidates',
+                                'error': 'No article candidates found on page',
+                            })
                     else:
+                        logger.warning(f"Could not extract any valid articles from {url}")
                         self.collection_status[original_url]['status'] = 'failed'
+                        self.collection_status[original_url]['reason_code'] = 'extraction_failed'
                         self.collection_status[original_url]['error'] = (
                             self._last_extract_error or 'No article candidates extracted'
                         )

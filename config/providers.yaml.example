@@ -96,6 +96,13 @@ llm:
   # tokens_per_minute: 250000
   # requests_per_day: 500
 
+  # Free-tier operational defaults are controlled through environment values:
+  # ANALYZER_BATCH_SIZE=25, ANALYZER_MAX_CONCURRENT_BATCHES=1,
+  # SEMANTIC_DEDUP_USE_LLM=false, SENTIMENT_USE_LLM=false,
+  # LLM_ROUTE_COOLDOWN_SECONDS=120, and MAX_ANALYSIS_FALLBACK_RATE=0.20.
+  # They reduce request bursts and prevent a successful CI status from
+  # publishing mostly unanalyzed fallback items.
+
 # -----------------------------------------------------------------------------
 # Image Provider Configuration (Optional)
 # -----------------------------------------------------------------------------

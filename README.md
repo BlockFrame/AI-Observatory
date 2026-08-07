@@ -39,7 +39,7 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 **Key Stats:**
 - **40+ curated RSS/Atom sources** plus Hugging Face Papers and AlphaXiv
 - **Date-aligned trending papers** selected from AI-focused topics
-- **6 social platforms** (Twitter, Bluesky, Mastodon, Reddit, LessWrong, research blogs)
+- **Social and community signals** from Twitter, Bluesky, Mastodon, LessWrong, and research blogs
 - **Adaptive reasoning profiles** for lightweight triage through cross-category synthesis
 - **Daily hero image** generated with AATF skunk mascot
 
@@ -54,8 +54,8 @@ A Python-based pipeline that collects AI/ML news from multiple sources, analyzes
 | Phase | Description | Reasoning Profile |
 |-------|-------------|----------------|
 | **0. Ecosystem Context** | Load AI model release dates for LLM grounding | - |
-| **1. Parallel Gathering** | 4 gatherers collect from RSS, Hugging Face Papers, AlphaXiv, Twitter, Reddit, Bluesky, and Mastodon | - |
-| **2. Parallel Analysis** | MAP-REDUCE pattern: batch items (75 each), analyze, then synthesize | STANDARD -> DEEP |
+| **1. Parallel Gathering** | Gatherers collect from RSS, Hugging Face Papers, AlphaXiv, Twitter, Bluesky, Mastodon, and web sources | - |
+| **2. Parallel Analysis** | MAP-REDUCE pattern: batch items (25 each by default), analyze, then synthesize | STANDARD -> DEEP |
 | **2.5. Continuity Detection** | Track developing stories, detect rehashes, link related coverage | - |
 | **3. Cross-Category Topics** | Identify 3-6 themes spanning all categories | ULTRATHINK |
 | **4. Executive Summary** | Generate daily briefing (500-800 words) | DEEP |
@@ -72,7 +72,7 @@ effort or legacy manual-budget mapping.
 
 | Profile | Gemini Thinking | Default Route | Use Case |
 |---------|-----------------|---------------|----------|
-| QUICK | `low` | Flash-Lite | Filters, matching, sentiment |
+| QUICK | `low` | Flash-Lite | Matching and lightweight enrichment |
 | STANDARD | `medium` | Flash-Lite | Batch analysis, enrichment |
 | DEEP | `high` | Flash or Flash-Lite by caller | Ranking, executive summary |
 | ULTRATHINK | `high` | Flash | Cross-category topic detection |
@@ -220,11 +220,9 @@ Set these on the publishing repository:
 | `ANTHROPIC_API_KEY` | LLM/proxy API key, also used by the fallback generated provider config |
 | `ANTHROPIC_API_BASE` | OpenAI-compatible proxy base URL when used |
 | `TWITTERAPI_IO_KEY` | Optional Twitter/X collection |
-| `SCRAPECREATORS_API_KEY` | Reddit collection via the ScrapeCreators API (replaces the dead free Reddit `.json` endpoint); required for Reddit data |
-| `REDDIT_PROXY_URL` | Legacy proxy for direct Reddit requests; no longer used by the Reddit gatherer (ScrapeCreators goes direct) |
 | `LESSWRONG_PROXY_URL` | Optional HTTP(S) or SOCKS proxy URL for LessWrong GraphQL/browser fallback requests |
 | `PIPELINE_PROXY_URL` | Optional HTTP(S) or SOCKS proxy URL for the whole pipeline; useful when hosted runner egress is blocked by multiple sources |
-| `MULLVAD_ACCOUNT` | Optional Mullvad account number; used to create a WireGuard tunnel when neither `PIPELINE_PROXY_URL` nor `REDDIT_PROXY_URL` is set |
+| `MULLVAD_ACCOUNT` | Optional Mullvad account number used to create a WireGuard tunnel for pipeline egress |
 | `MULLVAD_WG_PRIVATE_KEY` | Optional stable WireGuard private key for the CI Mullvad device; avoids creating a new Mullvad device on every run |
 | `GOOGLE_API_KEY` | Optional Gemini native image generation when not using a proxy image provider |
 | `PIPELINE_PUSH_TOKEN` | Optional PAT if the default `GITHUB_TOKEN` is not enough for downstream webhook behavior |
@@ -237,8 +235,7 @@ Set these on the publishing repository:
 | `PIPELINE_BASE_URL` | `https://news.aatf.ai` | Base URL used in feeds |
 | `PIPELINE_IMAGE_MODEL` | `gemini-3-pro-image-preview` | Native Gemini image model used by fallback config |
 | `PIPELINE_COMMIT_PATHS` | `web/data config/model_releases.yaml config/ecosystem_context.yaml` | Space-separated generated outputs to commit |
-| `REDDIT_USER_AGENT` | `AI-News-Aggregator/1.0 (by u/flyryan)` | User-Agent sent to Reddit API requests |
-| `NEWS_USER_AGENT` | `REDDIT_USER_AGENT` value | User-Agent sent to RSS/feed sources |
+| `NEWS_USER_AGENT` | `AI-News-Aggregator/1.0` | User-Agent sent to RSS/feed sources |
 | `MULLVAD_RELAY_FILTER` | `us` | Mullvad WireGuard relay hostname prefix used for CI egress |
 | `LLM_TIMEOUT_SECONDS` | unset | Optional hosted LLM request timeout override; supersedes per-route YAML timeouts |
 | `LLM_MAX_CONCURRENT_REQUESTS` | `8` | Async LLM request cap per provider route; with three routes, the default maximum is 24 active LLM requests |
@@ -247,6 +244,15 @@ Set these on the publishing repository:
 | `LLM_LOG_REQUESTS` | `true` | Log queue/start/done metadata without raw prompt content |
 | `LLM_HEARTBEAT_SECONDS` | `60` | Emit progress logs for in-flight LLM requests; set `0` to disable |
 | `LLM_METRICS_PATH` | `data/llm_metrics.jsonl` | JSONL diagnostics file uploaded as a workflow artifact |
+| `LLM_ROUTE_COOLDOWN_SECONDS` | `120` | Initial cooldown after a provider timeout, quota, or retryable server error |
+| `LLM_ROUTE_MAX_COOLDOWN_SECONDS` | `1800` | Maximum exponential cooldown for an unhealthy route |
+| `ANALYZER_BATCH_SIZE` | `25` | Smaller batches reduce truncated free-tier responses |
+| `ANALYZER_MAX_CONCURRENT_BATCHES` | `1` | Category-local request concurrency for free-tier safety |
+| `ANALYZER_MIN_BATCH_COVERAGE` | `0.85` | Minimum returned item-ID coverage before a batch is split and retried |
+| `SOCIAL_ANALYSIS_MAX_ITEMS` | `150` | Highest-engagement social posts analyzed per run |
+| `SEMANTIC_DEDUP_USE_LLM` | `false` | Optional pairwise LLM dedup; disabled because it can consume hundreds of calls |
+| `SENTIMENT_USE_LLM` | `false` | Optional per-item LLM sentiment; deterministic by default |
+| `MAX_ANALYSIS_FALLBACK_RATE` | `0.20` | Publish gate threshold for items lacking real LLM analysis |
 
 ### Manual Dry Runs
 
@@ -301,15 +307,13 @@ The daily commit includes persistent generated site and grounding outputs:
 
 Runtime scrape data, checkpoints, and logs under `data/**` and `logs/**` stay ignored. They are useful for local debugging but are not public site state.
 
-### Reddit Collection on Hosted Runners
+### Hosted Runner Egress
 
-The Reddit gatherer collects via the **ScrapeCreators API** (`SCRAPECREATORS_API_KEY`), which unblocks Reddit server-side. Reddit's free `.json` endpoint and OAuth are both dead, so this is required for Reddit data. The gatherer sends its requests directly (`requests` `trust_env=False`) and ignores `REDDIT_PROXY_URL` and the pipeline-wide `ALL_PROXY` exports; set `SCRAPECREATORS_PROXY_URL` only if that specific traffic must be proxied. Per-run credit usage and the remaining balance are logged and shown in the end-of-run cost summary.
-
-If multiple sources block hosted runner egress, set `PIPELINE_PROXY_URL`; the workflow exports it as the standard `HTTP_PROXY`, `HTTPS_PROXY`, and `ALL_PROXY` variables for the pipeline process (with `api.scrapecreators.com` in `NO_PROXY` so Reddit stays direct). The RSS gatherer fetches feeds with `requests`, so SOCKS proxy URLs are honored when `PySocks` is installed. LLM clients bypass those proxy environment variables by default; set `LLM_TRUST_ENV_PROXY=true` only when LLM traffic should also use the runner proxy.
+If multiple sources block hosted runner egress, set `PIPELINE_PROXY_URL`; the workflow exports it as the standard `HTTP_PROXY`, `HTTPS_PROXY`, and `ALL_PROXY` variables for the pipeline process. The RSS gatherer fetches feeds with `requests`, so SOCKS proxy URLs are honored when `PySocks` is installed. LLM clients bypass those proxy environment variables by default; set `LLM_TRUST_ENV_PROXY=true` only when LLM traffic should also use the runner proxy.
 
 LessWrong uses GraphQL for date-range research collection. The LessWrong helper tries direct GraphQL first, then cached cookies, then a browser cookie warm-up only if needed. If hosted egress is blocked only for LessWrong, set `LESSWRONG_PROXY_URL`; otherwise `PIPELINE_PROXY_URL` is reused for direct GraphQL, cached-cookie requests, and the Playwright browser fallback.
 
-The GitHub workflow also supports `MULLVAD_ACCOUNT`: when set and both `PIPELINE_PROXY_URL` and `REDDIT_PROXY_URL` are empty, it creates a WireGuard tunnel with Mullvad's official `wg-tools` script, narrows the route to Mullvad's SOCKS proxy address, and sets `PIPELINE_PROXY_URL` plus `REDDIT_PROXY_URL` to `socks5h://10.64.0.1:1080` for the pipeline. Set `MULLVAD_WG_PRIVATE_KEY` to reuse one registered CI device across runs.
+The GitHub workflow also supports `MULLVAD_ACCOUNT`: when set and `PIPELINE_PROXY_URL` is empty, it creates a WireGuard tunnel with Mullvad's official `wg-tools` script, narrows the route to Mullvad's SOCKS proxy address, and sets `PIPELINE_PROXY_URL` to `socks5h://10.64.0.1:1080`. Set `MULLVAD_WG_PRIVATE_KEY` to reuse one registered CI device across runs.
 
 ---
 
@@ -414,7 +418,6 @@ export ANTHROPIC_API_KEY="your-key-here"
 export GEMINI_API_KEY="your-key-here"
 export GOOGLE_API_KEY="your-key-here"
 export TWITTERAPI_IO_KEY="your-key-here"  # Optional, for Twitter collection
-export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
 ```
 
 | Variable | Description | Required |
@@ -423,9 +426,6 @@ export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
 | `ANTHROPIC_API_KEY` | Anthropic API key | For `anthropic` mode |
 | `GOOGLE_API_KEY` | Google AI API key | No (hero images) |
 | `TWITTERAPI_IO_KEY` | TwitterAPI.io key ($0.15/1000 tweets) | No |
-| `SCRAPECREATORS_API_KEY` | ScrapeCreators key for Reddit (~$0.99/1000 calls) | For Reddit |
-| `REDDIT_PROXY_URL` | Legacy; no longer used for Reddit (ScrapeCreators goes direct) | No |
-| `REDDIT_USER_AGENT` | User-Agent for Reddit requests | No |
 | `LESSWRONG_PROXY_URL` | HTTP(S) or SOCKS proxy for LessWrong requests | No |
 | `PIPELINE_PROXY_URL` | HTTP(S) or SOCKS proxy for the whole pipeline | No |
 | `NEWS_USER_AGENT` | User-Agent for RSS/feed requests | No |
@@ -437,8 +437,15 @@ export SCRAPECREATORS_API_KEY="your-key-here"  # For Reddit collection
 | `LLM_LOG_REQUESTS` | Log LLM queue/start/done metadata without raw prompt content. Default: `true` | No |
 | `LLM_HEARTBEAT_SECONDS` | Seconds between in-flight LLM progress logs. Default: `60`; set `0` to disable | No |
 | `LLM_METRICS_PATH` | Optional JSONL path for per-request LLM metrics. GitHub Actions default: `data/llm_metrics.jsonl` | No |
-| `ANALYZER_BATCH_SIZE` | Items per analyzer map batch. Default: `75` | No |
-| `ANALYZER_MAX_CONCURRENT_BATCHES` | Per-category analyzer map concurrency. Default: `3` | No |
+| `LLM_ROUTE_COOLDOWN_SECONDS` | Base route cooldown after retryable failures. Default: `120` | No |
+| `LLM_ROUTE_MAX_COOLDOWN_SECONDS` | Maximum route cooldown. Default: `1800` | No |
+| `ANALYZER_BATCH_SIZE` | Items per analyzer map batch. Default: `25` | No |
+| `ANALYZER_MAX_CONCURRENT_BATCHES` | Per-category analyzer map concurrency. Default: `1` | No |
+| `ANALYZER_MIN_BATCH_COVERAGE` | Minimum returned item coverage before split/retry. Default: `0.85` | No |
+| `SOCIAL_ANALYSIS_MAX_ITEMS` | Maximum social posts analyzed, ranked by engagement. Default: `150` | No |
+| `SEMANTIC_DEDUP_USE_LLM` | Enable pairwise LLM dedup. Default: `false` | No |
+| `SENTIMENT_USE_LLM` | Enable per-item LLM sentiment. Default: `false` | No |
+| `MAX_ANALYSIS_FALLBACK_RATE` | Maximum publishable fallback item rate. Default: `0.20` | No |
 | `MULLVAD_ACCOUNT` | Mullvad account number for CI proxy setup | No |
 | `MULLVAD_WG_PRIVATE_KEY` | Stable WireGuard private key for the CI Mullvad device | No |
 | `MULLVAD_RELAY_FILTER` | Mullvad relay hostname prefix for CI tunnel selection | No |
@@ -464,7 +471,7 @@ orchestration:
 
 Prompt categories:
 - **gathering** - Link relevance decisions
-- **analysis** - Category-specific analysis (news, research, social, reddit)
+- **analysis** - Category-specific analysis (news, research, social, GitHub Trending)
 - **orchestration** - Cross-category topic detection, executive summary
 - **post_processing** - Link enrichment, ecosystem enrichment
 
@@ -481,7 +488,6 @@ Edit files in `config/`:
 | Twitter | `twitter_accounts.txt` | Usernames (requires TWITTERAPI_IO_KEY) |
 | Bluesky | `bluesky_accounts.txt` | Handles (e.g., `karpathy.bsky.social`) |
 | Mastodon | `mastodon_accounts.txt` | Full addresses (e.g., `user@mastodon.social`) |
-| Reddit | `reddit_subreddits.txt` | Subreddit names |
 
 ### Model Release Tracking
 
@@ -533,7 +539,7 @@ Prevents hallucinations about AI model releases by injecting accurate release da
 ### Collection Status Tracking
 Each pipeline run tracks collection status per source:
 - **Status values**: `success`, `partial` (some items collected), `failed`
-- **Per-source tracking**: News, Research, Social, Reddit
+- **Per-source tracking**: News, Research, Social, Web Scraper, Hacker News, GitHub Trending
 - **Per-platform tracking**: Twitter, Bluesky, Mastodon (within Social)
 - Status is included in `summary.json` and displayed in the frontend
 
@@ -552,7 +558,7 @@ Each pipeline run tracks collection status per source:
 | **News** | 26 curated RSS/Atom feeds + linked articles | RSS/Atom + LLM-guided link following |
 | **Research** | 19 research feeds + Hugging Face Papers + AlphaXiv | Date-addressed API + rolling trend API + RSS/Atom + LessWrong GraphQL |
 | **Social** | Twitter, Bluesky, Mastodon | TwitterAPI.io + free APIs |
-| **Reddit** | Configurable subreddits | ScrapeCreators API (listings + post comments) |
+| **GitHub Trending** | Trending AI repositories | GitHub public endpoints |
 
 ### Frontend Features
 - **AATF Branding** - Trend Red (#E63946) color scheme with skunk mascot
@@ -604,7 +610,7 @@ ai-news-aggregator/
 │   ├── link_enricher.py       # Adds internal links to summaries
 │   ├── cost_tracker.py        # LLM API cost tracking
 │   ├── phase_tracker.py       # Phase status tracking and end-of-run summary
-│   ├── gatherers/             # News, Research, Social, Reddit gatherers
+│   ├── gatherers/             # News, Research, Social, Web, HN, GitHub gatherers
 │   ├── analyzers/             # Category-specific analyzers
 │   └── continuity/            # Story tracking across days
 ├── generators/
@@ -642,7 +648,7 @@ ai-news-aggregator/
 | **News** | RSS + linked articles from social | Product releases, company news |
 | **Research** | Hugging Face Papers + AlphaXiv + LessWrong GraphQL | Trending papers, breakthroughs |
 | **Social** | Twitter, Bluesky, Mastodon | Discussions, reactions |
-| **Reddit** | Reddit via ScrapeCreators API | Community debates |
+| **GitHub Trending** | Trending repositories | Developer adoption signals |
 
 ### Data Output
 
@@ -660,7 +666,7 @@ web/data/
     ├── news.json           # Full news items
     ├── research.json       # Full research items
     ├── social.json         # Full social items
-    └── reddit.json         # Full reddit items
+    └── github_trending.json # Full trending repository items
 ```
 
 ---

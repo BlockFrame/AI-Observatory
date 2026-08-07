@@ -3,6 +3,7 @@ Cross-platform semantic deduplication.
 """
 
 import logging
+import os
 import re
 from dataclasses import dataclass
 from difflib import SequenceMatcher
@@ -25,6 +26,13 @@ class CandidatePair:
 
 
 class SemanticDeduplicator:
+    def __init__(self, use_llm: Optional[bool] = None):
+        if use_llm is None:
+            use_llm = os.getenv("SEMANTIC_DEDUP_USE_LLM", "false").strip().lower() in {
+                "1", "true", "yes", "on"
+            }
+        self.use_llm = use_llm
+
     async def _llm_same_event(self, async_client, title_a: str, title_b: str) -> bool:
         if async_client is None:
             return False
@@ -59,7 +67,7 @@ class SemanticDeduplicator:
         category_reports: Dict[str, CategoryReport],
         async_client=None,
     ) -> Dict[str, CategoryReport]:
-        target_categories = [c for c in ("news", "social", "reddit") if c in category_reports]
+        target_categories = [c for c in ("news", "social") if c in category_reports]
         if len(target_categories) < 2:
             return category_reports
 
@@ -78,7 +86,7 @@ class SemanticDeduplicator:
                         if similarity <= 0.30:
                             continue
                         same_event = similarity > 0.82
-                        if not same_event:
+                        if not same_event and self.use_llm:
                             same_event = await self._llm_same_event(
                                 async_client, left_item.item.title, right_item.item.title
                             )

@@ -2,7 +2,7 @@
 Continuity Coordinator
 
 Orchestrates the two-stage continuity detection process:
-  Stage A: Parallel story matching (4 matchers)
+  Stage A: Parallel story matching (one matcher per category)
   Stage B: Editorial curation (1 curator)
 """
 
@@ -27,7 +27,7 @@ class ContinuityCoordinator:
 
     Flow:
     1. Load historical data from past N days
-    2. Run 4 parallel matchers (Stage A) - one per category
+    2. Run parallel matchers (Stage A) - one per category
     3. Aggregate all matches
     4. Run editorial curator (Stage B) - makes nuanced decisions
     5. Apply continuation info to items
@@ -35,7 +35,7 @@ class ContinuityCoordinator:
     """
 
     # Categories to process
-    CATEGORIES = ['news', 'research', 'social', 'reddit']
+    CATEGORIES = ['news', 'research', 'social']
 
     def __init__(
         self,

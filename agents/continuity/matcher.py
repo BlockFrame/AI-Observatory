@@ -30,7 +30,7 @@ class StoryMatcher:
 
         Args:
             async_client: Async Anthropic client for LLM calls.
-            category: The category this matcher handles (news, research, social, reddit).
+            category: The category this matcher handles (news, research, social, github_trending).
         """
         self.async_client = async_client
         self.category = category

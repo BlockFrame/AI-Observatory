@@ -2289,6 +2289,23 @@ class AsyncLLMRouter:
         self.clients = clients
         self._route_lock = asyncio.Lock()
         self._next_route_index = 0
+        self._cooldown_base_seconds = _env_float(
+            "LLM_ROUTE_COOLDOWN_SECONDS", 120.0, minimum=1.0
+        )
+        self._cooldown_max_seconds = _env_float(
+            "LLM_ROUTE_MAX_COOLDOWN_SECONDS", 1800.0, minimum=self._cooldown_base_seconds
+        )
+        self._route_health: Dict[str, Dict[str, Any]] = {
+            client.provider_id: {
+                "successes": 0,
+                "failures": 0,
+                "consecutive_failures": 0,
+                "cooldown_until": 0.0,
+                "cooldown_skips": 0,
+                "last_error": None,
+            }
+            for client in clients
+        }
         finite_caps = [client.max_concurrent_requests for client in clients]
         self.max_total_concurrent_requests = (
             sum(finite_caps)
@@ -2305,6 +2322,57 @@ class AsyncLLMRouter:
             ),
             self.max_total_concurrent_requests or "unlimited",
         )
+
+    def _route_is_cooling_down(self, client: AsyncAnthropicClient) -> bool:
+        state = self._route_health[client.provider_id]
+        return float(state["cooldown_until"]) > time.monotonic()
+
+    def _record_route_success(self, client: AsyncAnthropicClient) -> None:
+        state = self._route_health[client.provider_id]
+        state["successes"] += 1
+        state["consecutive_failures"] = 0
+        state["cooldown_until"] = 0.0
+        state["last_error"] = None
+
+    def _record_route_failure(
+        self,
+        client: AsyncAnthropicClient,
+        reason: str,
+        error: Exception,
+    ) -> None:
+        state = self._route_health[client.provider_id]
+        state["failures"] += 1
+        state["consecutive_failures"] += 1
+        state["last_error"] = f"{type(error).__name__}: {error}"
+        multiplier = 2 ** min(int(state["consecutive_failures"]) - 1, 4)
+        delay = min(self._cooldown_max_seconds, self._cooldown_base_seconds * multiplier)
+        if reason in {"http_429", "provider_rpd_exhausted"}:
+            delay = max(delay, min(self._cooldown_max_seconds, 300.0))
+        state["cooldown_until"] = time.monotonic() + delay
+        logger.warning(
+            "LLM route %s cooling down for %.0fs after %s (consecutive failures=%s)",
+            client.provider_id,
+            delay,
+            reason,
+            state["consecutive_failures"],
+        )
+
+    def get_health_snapshot(self) -> Dict[str, Dict[str, Any]]:
+        """Return prompt-free per-route reliability counters for diagnostics."""
+        now = time.monotonic()
+        return {
+            provider_id: {
+                "successes": int(state["successes"]),
+                "failures": int(state["failures"]),
+                "consecutive_failures": int(state["consecutive_failures"]),
+                "cooldown_skips": int(state["cooldown_skips"]),
+                "cooldown_remaining_seconds": round(
+                    max(0.0, float(state["cooldown_until"]) - now), 1
+                ),
+                "last_error": state["last_error"],
+            }
+            for provider_id, state in self._route_health.items()
+        }
 
     @classmethod
     def from_config(cls, config: 'LLMProviderConfig') -> 'AsyncLLMRouter | AsyncAnthropicClient':
@@ -2416,19 +2484,35 @@ class AsyncLLMRouter:
 
         ordered_clients = self._ordered_clients_for_call(start_index, caller, profile_name)
         for attempt, client in enumerate(ordered_clients, start=1):
+            later_clients = ordered_clients[attempt:]
+            if self._route_is_cooling_down(client) and any(
+                not self._route_is_cooling_down(candidate)
+                for candidate in later_clients
+            ):
+                self._route_health[client.provider_id]["cooldown_skips"] += 1
+                logger.info(
+                    "Skipping LLM route %s during cooldown for caller=%s",
+                    client.provider_id,
+                    caller or "unknown",
+                )
+                continue
             routing_context = {
                 "attempt": attempt,
                 "fallback_from": fallback_from,
                 "retry_reason": retry_reason,
             }
             try:
-                return await getattr(client, method_name)(
+                response = await getattr(client, method_name)(
                     **call_kwargs,
                     routing_context=routing_context,
                 )
+                self._record_route_success(client)
+                return response
             except Exception as error:
                 last_error = error
                 reason = self._retry_reason(error)
+                if reason is not None:
+                    self._record_route_failure(client, reason, error)
                 
                 base_url_info = getattr(client, "base_url", None) or "default"
                 logger.error(
@@ -2554,6 +2638,7 @@ class AsyncLLMRouter:
 
     async def close(self):
         """Close all routed async clients."""
+        logger.info("LLM ROUTE HEALTH: %s", json.dumps(self.get_health_snapshot(), ensure_ascii=False))
         for client in self.clients:
             await client.close()
 

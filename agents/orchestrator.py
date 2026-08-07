@@ -42,7 +42,7 @@ from .prompt_security import (
 from .staleness_checker import StalenessChecker
 from .phase_tracker import PhaseTracker
 from .config import ProviderConfig
-from .filters import AIInterestFilter, KeywordFilter, apply_keyword_limit, SemanticDeduplicator
+from .filters import KeywordFilter, apply_keyword_limit, SemanticDeduplicator
 from .analysis import classify_sentiments, append_sentiment_section
 from typing import TYPE_CHECKING
 
@@ -121,8 +121,8 @@ class MainOrchestrator:
 
     Flow:
     0. Ecosystem Context (fetch AI model state for grounding)
-    1. Parallel Gathering (4 gatherers)
-    2. Parallel Analysis (4 analyzers with grounding context)
+    1. Parallel Gathering (category and auxiliary gatherers)
+    2. Parallel Analysis (category analyzers with grounding context)
     3. Cross-Category Topic Detection (ULTRATHINK)
     4. Main Page Assembly
     5. Deduplication & QC
@@ -219,7 +219,6 @@ class MainOrchestrator:
             target_date=self.target_date,
             token=github_token or os.getenv("GITHUB_TOKEN"),
         )
-        self.ai_interest_filter = AIInterestFilter(Path(config_dir) / "ai_interests.txt")
         self.keyword_filter = KeywordFilter(Path(config_dir) / "keywords.txt")
         self.semantic_dedup = SemanticDeduplicator()
 
@@ -338,8 +337,11 @@ class MainOrchestrator:
                 gathered_items, collection_status = await self._gather_all()
                 gathered_items = await self._apply_pre_analysis_filters(gathered_items)
                 total_items = sum(len(items) for items in gathered_items.values())
-                has_failures = any(s.get('status') == 'failed' for s in collection_status.values())
-                status = 'partial' if has_failures else 'success'
+                has_degradation = any(
+                    s.get('status') in {'failed', 'partial', 'unknown'}
+                    for s in collection_status.values()
+                )
+                status = 'partial' if has_degradation else 'success'
                 phases.end_phase(status, details=f"{total_items} items")
                 self._save_checkpoint('gathering', {
                     'collection_status': collection_status,
@@ -721,7 +723,6 @@ class MainOrchestrator:
             "news": "News",
             "research": "Research",
             "social": "Social",
-            "reddit": "Reddit",
         }
         for category, report in category_reports.items():
             eligible_items = [
@@ -845,7 +846,7 @@ class MainOrchestrator:
         Run all gatherers with proper coordination for link following.
 
         The workflow is:
-        1. Run papers, reddit, and social gatherers in parallel
+        1. Run research, social, and web-scraper gatherers in parallel
         2. Pass social posts to news gatherer for link extraction
         3. Run news gatherer (which also collects RSS)
 
@@ -855,8 +856,8 @@ class MainOrchestrator:
         results = {}
         collection_status = {}
 
-        # Phase 1: Run papers, reddit, and social in parallel
-        logger.info("  Phase 1: Gathering papers, reddit, social...")
+        # Phase 1: Run research, social, and web-scraper gatherers in parallel
+        logger.info("  Phase 1: Gathering research, social, web scraper...")
 
         async def gather_category(name: str) -> tuple:
             gatherer = self.gatherers[name]
@@ -904,11 +905,18 @@ class MainOrchestrator:
                     1 for status in scraper_status.values()
                     if status.get('status') == 'failed'
                 )
-                if failed:
+                partial = sum(
+                    1 for status in scraper_status.values()
+                    if status.get('status') == 'partial'
+                )
+                if failed or partial:
                     collection_status['web_scraper'] = {
-                        'status': 'partial' if successful else 'failed',
+                        'status': 'partial' if successful or partial else 'failed',
                         'count': len(results.get('web_scraper', [])),
-                        'error': f'{failed}/{len(scraper_status)} configured sites failed',
+                        'error': (
+                            f'{failed} failed and {partial} partial out of '
+                            f'{len(scraper_status)} configured sites'
+                        ),
                     }
 
         # Phase 2: Run news gatherer with social posts for link following
@@ -967,7 +975,6 @@ class MainOrchestrator:
             return gathered_items
 
         filtered_news, keyword_matches = self.keyword_filter.filter_items(news_items)
-        filtered_news = await self.ai_interest_filter.filter_items(filtered_news, self.async_client)
         max_per_keyword = 3
         if self.provider_config and self.provider_config.pipeline:
             max_per_keyword = int(getattr(self.provider_config.pipeline, "max_news_per_keyword", 3) or 3)
@@ -975,7 +982,7 @@ class MainOrchestrator:
         gathered_items["news"] = filtered_news
         logger.info(
             f"Pre-analysis filters kept {len(filtered_news)}/{len(news_items)} news items "
-            f"(keyword + AI interest + per-keyword limit)"
+            f"(keyword + per-keyword limit; semantic relevance runs once in NewsAnalyzer)"
         )
         return gathered_items
 
@@ -1350,7 +1357,7 @@ FORMAT YOUR SUMMARY LIKE THIS:
 
 #### Executive Briefing
 Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions.
-CRITICAL: You MUST seamlessly integrate insights from social media (Twitter/Reddit) chatter directly into this narrative to provide community context around the news.
+CRITICAL: You MUST seamlessly integrate insights from social media chatter directly into this narrative to provide community context around the news.
 
 #### Safety & Regulation
 Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. (Skip if no relevant news).
@@ -1443,7 +1450,6 @@ FORMATTING RULES:
             "news": "News",
             "research": "Research",
             "social": "Social",
-            "reddit": "Reddit",
         }
         category_lines: List[str] = []
         for category, report in category_reports.items():
@@ -1501,7 +1507,7 @@ FORMATTING RULES:
         has_partial = False
 
         # Group by category vs sub-platform
-        main_sources = ['news', 'research', 'social', 'reddit', 'hackernews', 'github_trending']
+        main_sources = ['news', 'research', 'social', 'web_scraper', 'hackernews', 'github_trending']
         sub_platforms = [k for k in collection_status.keys() if k.startswith('social_')]
 
         for source in main_sources:
@@ -1509,7 +1515,7 @@ FORMATTING RULES:
             self._log_source_status(source, status)
             if status.get('status') == 'failed':
                 has_failures = True
-            elif status.get('status') == 'partial':
+            elif status.get('status') in {'partial', 'unknown'}:
                 has_partial = True
 
         if sub_platforms:

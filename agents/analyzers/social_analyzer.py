@@ -10,6 +10,7 @@ Focuses on:
 
 import json
 import logging
+import os
 from typing import List, Optional
 
 from ..base import (
@@ -215,6 +216,15 @@ Keep the tone authoritative, visionary, analytical, and highly readable (McKinse
         if not items:
             return self._empty_report()
 
+        source_item_count = len(items)
+        analysis_limit = max(25, int(os.getenv("SOCIAL_ANALYSIS_MAX_ITEMS", "150")))
+        if len(items) > analysis_limit:
+            items = sorted(items, key=self._engagement_score, reverse=True)[:analysis_limit]
+            logger.info(
+                "Social free-tier budget cap selected %s highest-engagement posts for analysis",
+                len(items),
+            )
+
         logger.info(f"Analyzing {len(items)} social posts with map-reduce")
 
         # MAP phase: Parallel batch analysis
@@ -230,7 +240,46 @@ Keep the tone authoritative, visionary, analytical, and highly readable (McKinse
         )
 
         # REDUCE phase: Final ranking
-        return await self._reduce_phase(analyzed_items, themes, cross_signals, batch_thinking)
+        report = await self._reduce_phase(
+            analyzed_items, themes, cross_signals, batch_thinking
+        )
+        fallback_items = sum(
+            1
+            for item in report.all_items
+            if item.reasoning == 'Not analyzed (batch processing failure)'
+        )
+        analyzed_count = len(report.all_items)
+        report.total_collected = source_item_count
+        report.analysis_quality = {
+            'source_items': source_item_count,
+            'total_items': analyzed_count,
+            'llm_analyzed_items': max(0, analyzed_count - fallback_items),
+            'fallback_items': fallback_items,
+            'fallback_rate': (fallback_items / analyzed_count) if analyzed_count else 0.0,
+            'skipped_by_budget': max(0, source_item_count - analyzed_count),
+        }
+        return report
+
+    @staticmethod
+    def _engagement_score(item: CollectedItem) -> float:
+        """Return a deterministic cross-platform engagement score."""
+        metadata = item.metadata if isinstance(item.metadata, dict) else {}
+        engagement = metadata.get('engagement')
+        if not isinstance(engagement, dict):
+            engagement = {}
+        values = (
+            engagement.get('likes'), engagement.get('reposts'), engagement.get('retweets'),
+            engagement.get('replies'), engagement.get('quotes'), engagement.get('score'),
+            metadata.get('likes'), metadata.get('reposts'), metadata.get('retweets'),
+            metadata.get('replies'), metadata.get('quotes'), metadata.get('score'),
+        )
+        score = 0.0
+        for value in values:
+            try:
+                score += float(value or 0)
+            except (TypeError, ValueError):
+                continue
+        return score
 
     def _build_items_context(self, items: List[CollectedItem], max_items: int = 50) -> str:
         """Build context string optimized for social posts."""

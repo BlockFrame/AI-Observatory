@@ -124,7 +124,7 @@ class PromptAccessor:
         """Get an analysis prompt with variables resolved.
 
         Args:
-            category: Category name ('news', 'research', 'social', 'reddit')
+            category: Category name ('news', 'research', 'social', 'github_trending')
             prompt_type: Prompt type ('batch_analysis', 'ranking', 'filter', 'combined_analysis')
             context: Runtime variables to substitute
 

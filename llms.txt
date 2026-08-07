@@ -11,9 +11,9 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 ### Categories
 - summary.json — Executive summary + top items (500-800 words)
 - research.json — Trending AI papers from Hugging Face Papers and AlphaXiv
-- news.json — News AI from RSS feeds + Hacker News + GitHub Trending
+- news.json — News AI from RSS feeds + Hacker News
 - social.json — Posts from Twitter/X, Bluesky, Mastodon
-- reddit.json — Threads from AI subreddits
+- github_trending.json — Trending AI repositories
 
 ## Available dates (223 total)
 - 2026-08-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-07/summary.json
@@ -81,7 +81,7 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 - "What happened today?" → fetch /web/data/{today}/summary.json
 - "Recent RAG papers" → fetch /web/data/{date}/research.json, search for "RAG"
 - "What's trending on HN?" → fetch /web/data/{date}/news.json, filter source=hackernews
-- "New AI repos on GitHub" → fetch /web/data/{date}/news.json, filter source=github_trending
+- "New AI repos on GitHub" → fetch /web/data/{date}/github_trending.json
 - "Cross-day story tracking" → fetch summary.json for last 7 days, compare topics
 
 ## Machine-readable index

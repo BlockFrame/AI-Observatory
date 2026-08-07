@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from multiple sources (RSS feeds, arXiv API, Twitter, Reddit, Bluesky, Mastodon), analyzes them using Claude Opus 4.8 with adaptive thinking, and serves a modern Svelte SPA frontend with AATF branding.
+AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from RSS, research APIs, Twitter, Bluesky, Mastodon, Hacker News, GitHub, and web sources, analyzes them with routed LLM providers, and serves a modern Svelte SPA frontend with AATF branding.
 
 **Testing:** The user always runs tests themselves. Do not run the pipeline or tests unless explicitly asked.
 
@@ -68,7 +68,7 @@ The production publishing workflow lives in `.github/workflows/daily-pipeline.ym
 
 The workflow writes ignored `config/providers.yaml` from the `PIPELINE_PROVIDERS_YAML` secret. `ANTHROPIC_MODEL` or the `anthropic_model` dispatch input only overrides legacy single-provider configs; it must not clobber `llm.routes`. The workflow runs the pipeline and commits only generated public outputs (`web/data`, `config/model_releases.yaml`, and `config/ecosystem_context.yaml`) when `commit_outputs=true`. Use `workflow_dispatch` with `commit_outputs=false` for a full hosted dry run that uploads artifacts without committing. Hosted runs also upload a `pipeline-diagnostics` artifact with LLM request metrics and cost reports when those files exist.
 
-Hosted runner egress can be proxied with `PIPELINE_PROXY_URL` for all sources or `LESSWRONG_PROXY_URL` for LessWrong only. `REDDIT_PROXY_URL` is legacy: Reddit now collects via the ScrapeCreators API which unblocks server-side, so the Reddit gatherer goes direct (`requests` `trust_env=False`) and ignores both `REDDIT_PROXY_URL` and the pipeline-wide `ALL_PROXY` exports; use `SCRAPECREATORS_PROXY_URL` only if that specific traffic must be proxied. LLM clients ignore proxy environment variables by default because `LLM_TRUST_ENV_PROXY=false`; set it true only when LLM traffic should use the runner proxy too. If neither pipeline nor Reddit proxy URL is set and `MULLVAD_ACCOUNT` is configured, the workflow creates a Mullvad WireGuard tunnel and exposes Mullvad's local SOCKS proxy as both `PIPELINE_PROXY_URL` and `REDDIT_PROXY_URL`. `MULLVAD_WG_PRIVATE_KEY` pins CI to one registered Mullvad device across runs.
+Hosted runner egress can be proxied with `PIPELINE_PROXY_URL` for all sources or `LESSWRONG_PROXY_URL` for LessWrong only. LLM clients ignore proxy environment variables by default because `LLM_TRUST_ENV_PROXY=false`; set it true only when LLM traffic should use the runner proxy too. If no pipeline proxy is set and `MULLVAD_ACCOUNT` is configured, the workflow exposes Mullvad's local SOCKS proxy as `PIPELINE_PROXY_URL`. `MULLVAD_WG_PRIVATE_KEY` pins CI to one registered Mullvad device across runs.
 
 Use `scripts/post_pipeline_verify.sh` for hosted-site verification. It is configured with environment variables: set `AWS_HOST` directly, or set `AWS_PROFILE` plus `AWS_INSTANCE_ID`/`AWS_INSTANCE_NAME` for EC2 lookup. Set `REBUILD_WEB=true` when the deployment includes frontend source or web-image changes.
 
@@ -161,7 +161,7 @@ Phase 7: Search Corpus Update (client-built MiniSearch index)
 | **News** | RSS feeds + articles from Twitter links | Product releases, company news |
 | **Research** | arXiv API + research blogs (LessWrong) | Research findings, breakthroughs |
 | **Social** | Twitter, Bluesky, Mastodon | Industry discussions, reactions |
-| **Reddit** | Reddit via ScrapeCreators API | Community discussions, debates |
+| **GitHub Trending** | Trending AI repositories | Developer adoption signals |
 
 ### Directory Structure
 
@@ -179,13 +179,13 @@ agents/
 │   ├── news_gatherer.py       # RSS + Twitter-linked articles
 │   ├── research_gatherer.py   # arXiv + research blogs (LessWrong)
 │   ├── social_gatherer.py     # Twitter, Bluesky, Mastodon (with status tracking)
-│   ├── reddit_gatherer.py     # Reddit
+│   ├── webscraper_gatherer.py # Web sources without feeds
 │   └── link_follower.py       # Smart link extraction from social posts
 └── analyzers/
     ├── news_analyzer.py
     ├── research_analyzer.py
     ├── social_analyzer.py
-    └── reddit_analyzer.py
+    └── github_trending_analyzer.py
 
 generators/
 ├── json_generator.py          # Generates JSON data for SPA frontend
@@ -235,7 +235,6 @@ frontend/                       # Svelte SPA frontend
 ### External Dependencies
 - **Anthropic SDK** - Direct Claude API with adaptive thinking support (Bearer auth)
 - **TwitterAPI.io** - Twitter/X data collection ($0.15/1000 tweets)
-- **ScrapeCreators API** - Reddit data collection (~$0.99/1000 calls; 1 call = 1 credit). Replaces the dead free Reddit `.json` endpoint; unblocks Reddit server-side. Requires `SCRAPECREATORS_API_KEY`.
 - **Bluesky Public API** - Free, no auth required
 - **Mastodon Public API** - Free, no auth required
 - **OpenRouter API** - Model discovery and API availability dates (free, no auth)
@@ -247,17 +246,6 @@ ANTHROPIC_API_BASE    # Anthropic API endpoint (no /v1 suffix)
 ANTHROPIC_API_KEY     # Bearer token for authentication
 ANTHROPIC_MODEL       # Legacy single-provider model name (default: claude-4.8-opus-aws)
 TWITTERAPI_IO_KEY     # TwitterAPI.io API key
-SCRAPECREATORS_API_KEY # ScrapeCreators API key for Reddit collection (required for Reddit data)
-SCRAPECREATORS_BASE   # ScrapeCreators base URL (default: https://api.scrapecreators.com)
-SCRAPECREATORS_PROXY_URL # Optional proxy for ScrapeCreators traffic only; default direct (ignores ALL_PROXY)
-REDDIT_SORT           # Reddit listing sort: new|hot|top (default: new, window-bounded paging)
-REDDIT_MAX_PAGES      # Max listing pages per subreddit, safety cap (default: 20)
-REDDIT_BODY_TOP_N     # Top-scoring posts/sub to enrich with body+comments (default: 12)
-REDDIT_MIN_COMMENTS_FOR_DIGEST # Min comments before a link post gets a comment digest (default: 8)
-REDDIT_CREDIT_BUDGET  # Hard per-run ScrapeCreators call ceiling; aborts gracefully if hit (default: 600)
-REDDIT_FETCH_WORKERS  # Concurrent subreddit fetch threads (default: 6)
-REDDIT_PROXY_URL      # Legacy proxy for direct Reddit requests; now a no-op for Reddit (ScrapeCreators goes direct)
-REDDIT_USER_AGENT     # User-Agent sent on ScrapeCreators requests (optional)
 LESSWRONG_PROXY_URL   # HTTP(S) or SOCKS proxy for LessWrong GraphQL/browser fallback requests (optional)
 PIPELINE_PROXY_URL    # HTTP(S) or SOCKS proxy for the whole pipeline (optional)
 NEWS_USER_AGENT       # User-Agent sent to RSS/feed sources, incl. research blog feeds (optional)
@@ -271,8 +259,15 @@ LLM_MAX_RETRIES       # Anthropic SDK retry count for transient request failures
 LLM_LOG_REQUESTS      # Log LLM queue/start/done metadata without raw prompt content (default: true)
 LLM_HEARTBEAT_SECONDS # Seconds between in-flight LLM progress logs; 0 disables it (default: 60)
 LLM_METRICS_PATH      # Optional JSONL path for per-request LLM metrics (Actions default: data/llm_metrics.jsonl)
-ANALYZER_BATCH_SIZE   # Items per analyzer map batch (default: 75)
-ANALYZER_MAX_CONCURRENT_BATCHES # Per-category analyzer map concurrency (default: 3)
+LLM_ROUTE_COOLDOWN_SECONDS # Initial unhealthy-route cooldown (default: 120)
+LLM_ROUTE_MAX_COOLDOWN_SECONDS # Maximum route cooldown (default: 1800)
+ANALYZER_BATCH_SIZE   # Items per analyzer map batch (default: 25)
+ANALYZER_MAX_CONCURRENT_BATCHES # Per-category analyzer map concurrency (default: 1)
+ANALYZER_MIN_BATCH_COVERAGE # Minimum batch item coverage before split/retry (default: 0.85)
+SOCIAL_ANALYSIS_MAX_ITEMS # Highest-engagement social items analyzed (default: 150)
+SEMANTIC_DEDUP_USE_LLM # Optional pairwise LLM dedup (default: false)
+SENTIMENT_USE_LLM     # Optional per-item LLM sentiment (default: false)
+MAX_ANALYSIS_FALLBACK_RATE # Publish gate threshold (default: 0.20)
 MULLVAD_ACCOUNT       # Mullvad account number for CI proxy setup (optional)
 MULLVAD_WG_PRIVATE_KEY # Stable WireGuard private key for the CI Mullvad device (optional)
 MULLVAD_RELAY_FILTER  # Mullvad relay hostname prefix for CI tunnel selection (optional)
@@ -374,15 +369,13 @@ The pipeline generates Atom 1.0 RSS feeds with Media RSS namespace support for t
 |------|------|---------|
 | **Main Feed** | `main.xml` | Executive summary + top 5 items per category (recommended) |
 | **Daily Briefing** | `summaries-executive.xml` | Executive summaries only with hero image (most popular) |
-| **All Summaries** | `summaries.xml` | Executive + all 4 category summaries per day |
+| **All Summaries** | `summaries.xml` | Executive + all category summaries per day |
 | **News Summaries** | `summaries-news.xml` | News category summaries only |
 | **Research Summaries** | `summaries-research.xml` | Research category summaries only |
 | **Social Summaries** | `summaries-social.xml` | Social category summaries only |
-| **Reddit Summaries** | `summaries-reddit.xml` | Reddit category summaries only |
 | **News** | `news.xml` | All news items |
 | **Research** | `research-{25,50,100,full}.xml` | Research items (configurable count) |
 | **Social** | `social-{25,50,100,full}.xml` | Social items (configurable count) |
-| **Reddit** | `reddit-{25,50,100,full}.xml` | Reddit items (configurable count) |
 
 ### Hero Image in Feeds
 
@@ -408,14 +401,13 @@ Feeds are output to `web/data/feeds/` and accessible at `/data/feeds/*.xml` on t
 
 - **arXiv**: Uses arXiv RSS feeds for today's collection (no rate limits, more reliable) with automatic API fallback. For historical dates, uses API directly since RSS only contains current announcements. Only collects papers with `announce_type` of "new" or "cross" (skips replacements). arXiv only publishes papers on weekdays (Mon-Fri). Weekend dates will return 0 papers.
 - **LessWrong**: Uses GraphQL for date-range collection because RSS only exposes the newest posts. The helper tries direct GraphQL, cached cookies, and a Playwright browser warm-up. `LESSWRONG_PROXY_URL` can target only this source; otherwise `PIPELINE_PROXY_URL` is reused.
-- **Reddit (ScrapeCreators)**: The free Reddit `.json` endpoint and OAuth are dead, so Reddit collects via the ScrapeCreators API (`x-api-key`). Listings page `sort=new` newest→oldest and stop once the coverage window is passed (credit-cheap, complete; `REDDIT_MAX_PAGES` safety cap). The top `REDDIT_BODY_TOP_N` posts/sub are enriched via one `post/comments` call: self posts get their `selftext`; high-discussion link posts get a digest of top community comments (analyzer `content`). A hard `REDDIT_CREDIT_BUDGET` aborts calls gracefully if exceeded. Egress is direct (`trust_env=False`), bypassing the pipeline proxy/Mullvad. `sort=new` backfill of dates >2 days old is depth-limited and logs a warning.
-- **External API Usage**: Non-LLM paid APIs report per-run usage and live balance into the end-of-run cost summary (and `cost_report_{date}.json` under `external_apis`): ScrapeCreators shows calls/credits-consumed/remaining-balance, and TwitterAPI.io shows calls/tweets/`recharge_credits` balance ($1 = 100,000 credits). Balance probes are free.
+- **External API Usage**: Non-LLM paid APIs report per-run usage and live balance into the end-of-run cost summary. TwitterAPI.io shows calls, tweets, and `recharge_credits` balance ($1 = 100,000 credits). Balance probes are free.
 - **Link Following**: The News gatherer receives social posts and uses LLM to decide which linked articles to fetch.
 - **Link Enrichment**: Executive summaries, category summaries, and topic descriptions are enriched with internal links to referenced items. Links use format `/?date={date}&category={category}#item-{id}`.
 - **Date Semantics**: TARGET_DATE represents the report date. Coverage period is the day BEFORE the report date (00:00-23:59 ET). For example, TARGET_DATE=2026-01-05 generates a "January 5th report" covering news from January 4th.
 - **Collection Status**: Each gatherer tracks success/partial/failed status. Social gatherer tracks per-platform status (Twitter, Bluesky, Mastodon). Status is logged at end of run and included in JSON output for frontend display.
 - **Output Quality**: LLM prompts are tuned for factual, briefing-style output. Avoid generic "thought leader" language.
-- **Source Diversity**: The ranking algorithm prioritizes news articles (RSS, arXiv) over social discussions (Reddit) to ensure top stories reflect actual developments.
+- **Source Diversity**: The ranking algorithm prioritizes news articles and research papers over social discussions to ensure top stories reflect actual developments.
 - **Item IDs**: Generated as 12-character SHA256 hashes (~280 trillion unique values) for compact URLs.
 - **Ecosystem Grounding**: All analyzers receive model release dates as system context to prevent hallucinations about "new" releases that are actually weeks/months old.
 - **Phase Tracking**: Each phase is tracked with status (success/partial/failed/skipped), timing, and details. End-of-run summary prints before cost report. Phase status is included in `OrchestratorResult` JSON output.
@@ -429,7 +421,6 @@ Feeds are output to `web/data/feeds/` and accessible at `/data/feeds/*.xml` on t
 - Bluesky: Add handles to `config/bluesky_accounts.txt` (e.g., `karpathy.bsky.social`)
 - Mastodon: Add accounts to `config/mastodon_accounts.txt` (format: `username@instance.social`)
 - Twitter: Add usernames to `config/twitter_accounts.txt` (requires TWITTERAPI_IO_KEY)
-- Reddit: Add subreddits to `config/reddit_subreddits.txt` (requires `SCRAPECREATORS_API_KEY`)
 
 ## Adding a New Agent
 
@@ -502,18 +493,17 @@ web/data/
 ├── search-corpus.json      # Search corpus (30-day window); index built in-browser
 ├── feeds/                  # Atom RSS feeds
 │   ├── main.xml            # Main feed (executive + top items)
-│   ├── summaries*.xml      # Summary-only feeds (6 variants)
+│   ├── summaries*.xml      # Summary-only feeds
 │   ├── news.xml            # All news items
 │   ├── research-*.xml      # Research feeds (25/50/100/full)
-│   ├── social-*.xml        # Social feeds (25/50/100/full)
-│   └── reddit-*.xml        # Reddit feeds (25/50/100/full)
+│   └── social-*.xml        # Social feeds (25/50/100/full)
 └── {date}/
     ├── summary.json        # Executive summary + top items per category + coverage info
     ├── hero.webp           # Daily hero image with skunk mascot
     ├── news.json           # Full news items
     ├── research.json       # Full research items (arXiv + blogs)
     ├── social.json         # Full social items
-    └── reddit.json         # Full reddit items
+    └── github_trending.json # Full trending repository items
 
 ### summary.json includes:
 - `date`: Report date (YYYY-MM-DD)
@@ -541,5 +531,5 @@ Legacy path-based URLs (`/{date}` and `/{date}/{category}`) are automatically re
 ### Route Validation
 
 - Date param validated as YYYY-MM-DD format, invalid dates redirect to home
-- Category param validated against valid categories (news, research, social, reddit)
+- Category param validated against valid categories (news, research, social, github_trending)
 - Navigation links are disabled until date store is initialized

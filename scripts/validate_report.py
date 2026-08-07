@@ -35,6 +35,7 @@ Add --json to emit a machine-readable result object on stdout.
 
 import argparse
 import json
+import os
 import sys
 import urllib.request
 import urllib.error
@@ -58,6 +59,7 @@ FAILURE_SENTINELS = (
 # genuinely short day.
 MIN_EXEC_SUMMARY_CHARS = 400
 MIN_CATEGORY_SUMMARY_CHARS = 300
+MAX_ANALYSIS_FALLBACK_RATE = float(os.getenv("MAX_ANALYSIS_FALLBACK_RATE", "0.20"))
 CRITICAL_PHASES = (
     "Phase 3: Topic Detection",
     "Phase 4: Executive Summary",
@@ -163,6 +165,19 @@ def validate(summary: dict, date_str: str) -> dict:
                 f"({len(category_summary)} < {MIN_CATEGORY_SUMMARY_CHARS} chars)"
             )
 
+        analysis_quality = payload.get("analysis_quality")
+        if isinstance(analysis_quality, dict):
+            total_items = int(analysis_quality.get("total_items") or 0)
+            fallback_items = int(analysis_quality.get("fallback_items") or 0)
+            fallback_rate = float(analysis_quality.get("fallback_rate") or 0.0)
+            if total_items >= 5 and fallback_rate > MAX_ANALYSIS_FALLBACK_RATE:
+                failures.append(
+                    f"{category} analysis fallback rate is {fallback_rate:.1%} "
+                    f"({fallback_items}/{total_items}, max {MAX_ANALYSIS_FALLBACK_RATE:.0%})"
+                )
+        elif (payload.get("count") or 0) > 0:
+            warnings.append(f"{category} analysis_quality missing; map coverage cannot be verified")
+
     # 7) Date sanity: published report should match the requested date.
     if report_date and report_date != date_str:
         warnings.append(f"report date {report_date!r} != requested {date_str!r}")
@@ -182,6 +197,7 @@ def validate(summary: dict, date_str: str) -> dict:
             "total_items_collected": collected,
             "total_items_analyzed": analyzed,
             "hero_image_url": summary.get("hero_image_url"),
+            "max_analysis_fallback_rate": MAX_ANALYSIS_FALLBACK_RATE,
         },
     }
 

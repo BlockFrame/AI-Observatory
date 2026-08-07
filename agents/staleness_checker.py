@@ -50,10 +50,7 @@ OLD_ANCHOR_LLM_ENABLED = os.getenv("OLD_ANCHOR_LLM_ENABLED", "true").lower() not
 # Minimum original score to bother checking (skip low-scoring items)
 MIN_SCORE_THRESHOLD = 50.0
 
-FRESHNESS_USER_AGENT = os.getenv(
-    "NEWS_USER_AGENT",
-    os.getenv("REDDIT_USER_AGENT", "AI-News-Aggregator/1.0")
-)
+FRESHNESS_USER_AGENT = os.getenv("NEWS_USER_AGENT", "AI-News-Aggregator/1.0")
 
 PRIMARY_SOURCE_DOMAINS = (
     "ai.google.dev",
@@ -160,7 +157,7 @@ OLD_ANCHOR_FACT_TERMS = {
     "justify", "roi", "spend", "spending", "token", "tokens"
 }
 
-OLD_ANCHOR_CATEGORIES = {"news", "social", "reddit"}
+OLD_ANCHOR_CATEGORIES = {"news", "social"}
 
 # --- SSRF guard for outbound freshness fetches (finding #1248, CWE-918) --------
 # StalenessChecker fetches fully untrusted URLs (RSS <link>, second-order
@@ -453,7 +450,7 @@ class StalenessChecker:
         oldest = self._history_window_start()
         while current >= oldest:
             date_dir = data_dir / current.isoformat()
-            for category in ("news", "research", "social", "reddit"):
+            for category in ("news", "research", "social"):
                 path = date_dir / f"{category}.json"
                 if not path.exists():
                     continue

@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 from html import escape as html_escape
 
-CATEGORIES = ['news', 'research', 'social', 'reddit']
+CATEGORIES = ['news', 'research', 'social']
 
 # Time phrases that should be linked in same-category follow-ups
 TIME_PHRASES = ['yesterday', 'earlier this week', 'last week', 'earlier today']
@@ -264,7 +264,7 @@ def process_search_documents(search_file: Path, dry_run: bool = False) -> int:
         summary = doc.get('summary', '')
 
         # Check for unlinked/uncomma'd continuation patterns
-        for phrase in TIME_PHRASES + ['**News**', '**Research**', '**Social**', '**Reddit**']:
+        for phrase in TIME_PHRASES + ['**News**', '**Research**', '**Social**']:
             # This is a simplified fix - just ensure comma after common patterns
             pass
 

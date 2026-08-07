@@ -38,7 +38,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-CATEGORIES = ["news", "research", "social", "reddit"]
+CATEGORIES = ["news", "research", "social", "github_trending"]
 
 # Gate thresholds (see module docstring for why they are loose)
 MIN_TOP10_OVERLAP = 5        # of 10, per category

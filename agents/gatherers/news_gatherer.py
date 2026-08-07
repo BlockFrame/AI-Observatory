@@ -21,10 +21,7 @@ from .link_follower import LinkFollower
 
 logger = logging.getLogger(__name__)
 
-NEWS_USER_AGENT = os.getenv(
-    "NEWS_USER_AGENT",
-    os.getenv("REDDIT_USER_AGENT", "AI-News-Aggregator/1.0")
-)
+NEWS_USER_AGENT = os.getenv("NEWS_USER_AGENT", "AI-News-Aggregator/1.0")
 PIPELINE_PROXY_URL = (
     os.getenv("PIPELINE_PROXY_URL")
     or os.getenv("ALL_PROXY")

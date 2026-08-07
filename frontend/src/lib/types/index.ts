@@ -2,7 +2,7 @@
  * Type definitions for AI News Aggregator frontend
  */
 
-export type Category = 'news' | 'research' | 'social' | 'reddit' | 'github_trending';
+export type Category = 'news' | 'research' | 'social' | 'github_trending';
 
 export interface NewsItem {
 	id: string;
@@ -52,6 +52,14 @@ export interface TopTopic {
 
 export interface CategorySummary {
 	count: number;
+	analysis_quality?: {
+		source_items?: number;
+		total_items: number;
+		llm_analyzed_items: number;
+		fallback_items: number;
+		fallback_rate: number;
+		skipped_by_budget?: number;
+	};
 	category_summary: string;
 	category_summary_html?: string;
 	themes: CategoryTheme[];
@@ -180,16 +188,6 @@ export const CATEGORY_CONFIG: Record<
 		badgeClass: 'badge-social',
 		accentClass: 'category-accent-social'
 	},
-	reddit: {
-		title: 'Reddit Discussions',
-		singularTitle: 'Reddit Discussion',
-		shortTitle: 'Reddit',
-		color: '#ef4444',
-		bgClass: 'bg-category-reddit',
-		textClass: 'text-category-reddit',
-		badgeClass: 'badge-reddit',
-		accentClass: 'category-accent-reddit'
-	},
 	github_trending: {
 		title: 'GitHub Trending Repos',
 		singularTitle: 'GitHub Trending Repo',
@@ -201,4 +199,3 @@ export const CATEGORY_CONFIG: Record<
 		accentClass: 'category-accent-news'
 	}
 };
-

@@ -32,7 +32,7 @@ class HealthReport:
 
     def text_summary(self) -> str:
         lines = [f"Pipeline Health Report — {self.date}"]
-        for category in ["news", "research", "social", "reddit"]:
+        for category in ["news", "research", "social", "github_trending"]:
             count = self.counts.get(category, 0)
             marker = "⚠️" if category == "research" and count == 0 else "✅"
             detail = ""

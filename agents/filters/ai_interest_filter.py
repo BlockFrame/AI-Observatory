@@ -8,8 +8,6 @@ from pathlib import Path
 from typing import List, Optional
 
 from agents.base import CollectedItem
-from agents.llm_client import ThinkingLevel
-
 logger = logging.getLogger(__name__)
 
 FALLBACK_KEYWORDS = (
@@ -39,9 +37,11 @@ class AIInterestFilter:
             f"Rate this title from 1 to 10 and return only the number:\n{item.title}"
         )
         try:
-            response = await async_client.call_with_thinking(
+            # This optional legacy filter does not need reasoning. Using the
+            # plain call also avoids referencing the removed legacy
+            # no-thinking profile.
+            response = await async_client.call(
                 messages=[{"role": "user", "content": prompt}],
-                profile=ThinkingLevel.NONE,
                 caller="filters.ai_interest",
                 max_tokens=256,
             )

@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 # Domains to skip (social media, images, videos, etc.)
 SKIP_DOMAINS = {
     'twitter.com', 'x.com', 't.co',
-    'reddit.com', 'redd.it',
+    'reddit.com', 'redd.it',  # Reddit collection is disabled; do not re-ingest linked posts.
     'youtube.com', 'youtu.be',
     'instagram.com',
     'facebook.com', 'fb.me',

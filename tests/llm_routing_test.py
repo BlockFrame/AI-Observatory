@@ -190,6 +190,30 @@ class LLMRouteConfigTests(unittest.TestCase):
 
 
 class AsyncLLMRouterTests(unittest.TestCase):
+    def test_route_in_cooldown_is_skipped_when_fallback_is_healthy(self):
+        async def run():
+            primary = FakeRouteClient(
+                "primary",
+                failures=[httpx.ConnectTimeout("free-tier endpoint timed out")],
+            )
+            fallback = FakeRouteClient("fallback")
+            router = AsyncLLMRouter([primary, fallback])
+
+            first = await router.call(messages=[{"role": "user", "content": "first"}])
+            router._next_route_index = 0
+            second = await router.call(messages=[{"role": "user", "content": "second"}])
+
+            self.assertEqual(first.content, "fallback")
+            self.assertEqual(second.content, "fallback")
+            self.assertEqual(len(primary.calls), 1)
+            self.assertEqual(len(fallback.calls), 2)
+            self.assertEqual(
+                router.get_health_snapshot()["primary"]["cooldown_skips"],
+                1,
+            )
+
+        asyncio.run(run())
+
     def test_round_robin_rotation(self):
         async def run():
             router = AsyncLLMRouter([

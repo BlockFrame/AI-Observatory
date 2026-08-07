@@ -3,8 +3,8 @@
 AI News Aggregation Pipeline - Multi-Agent Architecture
 
 Main entry point that orchestrates the multi-agent pipeline:
-1. Parallel Gathering (4 gatherers: news, papers, social, reddit)
-2. Parallel Analysis (4 analyzers with adaptive/manual thinking profiles)
+1. Parallel Gathering (news, papers, social, web sources)
+2. Parallel Analysis (category analyzers with adaptive/manual thinking profiles)
 3. Cross-Category Topic Detection (ULTRATHINK)
 4. Executive Summary Generation
 5. Deduplication & QC
@@ -33,8 +33,6 @@ from generators.json_generator import JSONGenerator
 from generators.search_indexer import SearchIndexer
 from generators.llms_generator import generate_ai_index_json, generate_llms_txt
 from generators.markdown_export import generate_digest_markdown
-from agents.delivery.telegram import format_daily_report, send_report
-from agents.delivery.push_modes import build_push_payload, update_push_state
 from pathlib import Path
 
 logging.basicConfig(
@@ -170,24 +168,10 @@ async def run_pipeline(config_dir: str, data_dir: str, web_dir: str, target_date
         generate_ai_index_json(Path(web_dir) / "data")
         generate_digest_markdown(result_dict, web_dir=web_dir)
 
-        logger.info("=" * 60)
-        logger.info("PHASE 7.2: TELEGRAM DELIVERY")
-        logger.info("=" * 60)
-        push_mode = "daily"
-        if provider_config.push:
-            push_mode = str(provider_config.push.get("mode", "daily"))
-        state_path = Path(data_dir) / "state" / "last_push.json"
-        payload, should_send = build_push_payload(push_mode, result_dict, state_path)
-        if should_send:
-            report = format_daily_report(payload)
-            delivered = send_report(report)
-            if delivered:
-                update_push_state(state_path, payload)
-                logger.info("Telegram delivery complete")
-            else:
-                logger.warning("Telegram delivery skipped or failed")
-        else:
-            logger.info("Telegram delivery skipped (incremental mode with no new items)")
+        # Telegram delivery is intentionally disabled. Keep the delivery module
+        # available for a future opt-in without producing a misleading warning
+        # on every successful daily run.
+        logger.info("PHASE 7.2: Telegram delivery disabled")
 
         # Complete
         end_time = datetime.now()

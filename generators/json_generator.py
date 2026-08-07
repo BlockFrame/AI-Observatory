@@ -121,6 +121,7 @@ class JSONGenerator:
             category_summary = report.get('category_summary', '')
             categories[category] = {
                 'count': len(report.get('all_items', [])),
+                'analysis_quality': report.get('analysis_quality', {}),
                 'category_summary': category_summary,
                 'category_summary_html': self._markdown_to_html(category_summary),
                 'themes': report.get('themes', []),
@@ -364,7 +365,7 @@ class JSONGenerator:
         has_partial = False
 
         # Main sources (not sub-platforms)
-        main_sources = ['news', 'research', 'social', 'web_scraper', 'reddit', 'hackernews', 'github_trending']
+        main_sources = ['news', 'research', 'social', 'web_scraper', 'hackernews', 'github_trending']
 
         for source in main_sources:
             source_status = status.get(source, {})
@@ -386,6 +387,9 @@ class JSONGenerator:
             elif status_val == 'partial':
                 has_partial = True
                 warnings.append(f"{source.capitalize()} had partial collection: {error}")
+            elif status_val == 'unknown':
+                has_partial = True
+                warnings.append(f"{source.capitalize()} collection status is unknown")
 
         # Add social platform breakdown as sub-sources
         social_platforms = []
@@ -410,6 +414,9 @@ class JSONGenerator:
                 elif status_val == 'partial':
                     has_partial = True
                     warnings.append(f"{platform_name.capitalize()} had partial collection: {error}")
+                elif status_val == 'unknown':
+                    has_partial = True
+                    warnings.append(f"{platform_name.capitalize()} collection status is unknown")
 
         web_scraper_sites = []
         for key, val in status.items():
@@ -563,7 +570,7 @@ class JSONGenerator:
 
         data = {'date': date, 'categories': {}}
 
-        for category in ['news', 'research', 'social', 'reddit']:
+        for category in ['news', 'research', 'social', 'github_trending']:
             category_path = os.path.join(date_dir, f'{category}.json')
             if os.path.exists(category_path):
                 with open(category_path, 'r', encoding='utf-8') as f:

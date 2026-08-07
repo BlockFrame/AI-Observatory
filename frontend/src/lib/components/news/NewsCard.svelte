@@ -165,7 +165,7 @@
 			rel="noopener noreferrer"
 			class="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white"
 		>
-			{category === 'research' ? 'View Research' : category === 'reddit' ? 'View Discussion' : category === 'github_trending' ? 'View Repository' : 'Read More'}
+			{category === 'research' ? 'View Research' : category === 'github_trending' ? 'View Repository' : 'Read More'}
 			<span aria-hidden="true">&rarr;</span>
 		</a>
 		<button
@@ -176,4 +176,3 @@
 		</button>
 	</footer>
 </article>
-

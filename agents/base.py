@@ -145,7 +145,7 @@ class CollectedItem:
     author: str
     published: str
     source: str
-    source_type: str  # 'rss', 'research_paper', 'twitter', 'reddit', 'bluesky', 'mastodon', 'linked_article'
+    source_type: str  # 'rss', 'research_paper', 'twitter', 'bluesky', 'mastodon', 'linked_article'
     tags: List[str] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
     collected_at: str = field(default_factory=lambda: datetime.now().isoformat())
@@ -279,18 +279,33 @@ class CategoryReport:
     This is the standard output format that each analyzer produces
     and the orchestrator consumes.
     """
-    category: str  # 'news', 'papers', 'social', 'reddit'
+    category: str  # 'news', 'research', 'social', 'github_trending'
     top_items: List[AnalyzedItem]  # Top 10 with full analysis + thinking
     all_items: List[AnalyzedItem]  # All items for comprehensive page
     category_summary: str  # Executive summary for this category
     themes: List[CategoryTheme]  # Detected themes within category
     cross_signals: List[str]  # Hints for orchestrator (e.g., "OpenAI news trending")
     total_collected: int
+    analysis_quality: Dict[str, Any] = field(default_factory=dict)
     analysis_timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
     thinking: Optional[str] = None  # Extended thinking from analysis
 
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
+        analysis_quality = dict(self.analysis_quality or {})
+        if not analysis_quality:
+            fallback_items = sum(
+                1
+                for item in self.all_items
+                if item.reasoning == 'Not analyzed (batch processing failure)'
+            )
+            total_items = len(self.all_items)
+            analysis_quality = {
+                'total_items': total_items,
+                'llm_analyzed_items': max(0, total_items - fallback_items),
+                'fallback_items': fallback_items,
+                'fallback_rate': (fallback_items / total_items) if total_items else 0.0,
+            }
         return {
             'category': self.category,
             'top_items': [item.to_dict() for item in self.top_items],
@@ -299,6 +314,7 @@ class CategoryReport:
             'themes': [asdict(theme) for theme in self.themes],
             'cross_signals': self.cross_signals,
             'total_collected': self.total_collected,
+            'analysis_quality': analysis_quality,
             'analysis_timestamp': self.analysis_timestamp,
             'thinking': self.thinking
         }
@@ -318,6 +334,7 @@ class CategoryReport:
             themes=themes,
             cross_signals=data.get('cross_signals', []),
             total_collected=data.get('total_collected', 0),
+            analysis_quality=data.get('analysis_quality', {}),
             analysis_timestamp=data.get('analysis_timestamp', ''),
             thinking=data.get('thinking')
         )
@@ -592,8 +609,10 @@ class BaseAnalyzer(ABC):
         return ThinkingLevel.DEEP
 
     # Map-reduce batch processing constants
-    BATCH_SIZE = _env_int("ANALYZER_BATCH_SIZE", 75)  # Items per batch for map phase
-    MAX_CONCURRENT_BATCHES = _env_int("ANALYZER_MAX_CONCURRENT_BATCHES", 3)  # Per-category API calls
+    # Free-tier models are much more reliable with smaller responses and one
+    # in-flight batch per category. Both remain configurable for paid tiers.
+    BATCH_SIZE = _env_int("ANALYZER_BATCH_SIZE", 25)
+    MAX_CONCURRENT_BATCHES = _env_int("ANALYZER_MAX_CONCURRENT_BATCHES", 1)
 
     # --- Map-Reduce Methods ---
 
@@ -670,6 +689,11 @@ class BaseAnalyzer(ABC):
                 )
 
             result = sanitize_batch_result(result, where=f"{self.category} map {label}")
+            coverage_error = self._batch_coverage_error(result, batch_items)
+            if coverage_error:
+                return await self._handle_truncated_batch(
+                    batch_items, batch_index, total_batches, sub_label, coverage_error
+                )
             batch_themes = result.get('themes', result.get('category_themes', []))
             parsed_items = result.get('items', [])
             logger.info(f"  {self.category} map {label}: {len(parsed_items)} items, {len(batch_themes)} themes")
@@ -705,6 +729,11 @@ class BaseAnalyzer(ABC):
                         batch_items, batch_index, total_batches, sub_label, str(parse_error)
                     )
                 result = sanitize_batch_result(result, where=f"{self.category} map {label} retry")
+                coverage_error = self._batch_coverage_error(result, batch_items)
+                if coverage_error:
+                    return await self._handle_truncated_batch(
+                        batch_items, batch_index, total_batches, sub_label, coverage_error
+                    )
                 batch_themes = result.get('themes', result.get('category_themes', []))
                 parsed_items = result.get('items', [])
                 logger.info(f"  {self.category} map {label}: {len(parsed_items)} items, {len(batch_themes)} themes (retry)")
@@ -727,6 +756,30 @@ class BaseAnalyzer(ABC):
                     cross_signals=[],
                     thinking=f"Error: {e}, Retry error: {retry_e}"
                 )
+
+    @staticmethod
+    def _batch_coverage_error(
+        result: Dict[str, Any],
+        batch_items: List[CollectedItem],
+    ) -> Optional[str]:
+        """Reject valid-but-incomplete map JSON so it is split and retried."""
+        if not batch_items:
+            return None
+        expected_ids = {item.id for item in batch_items}
+        returned_ids = {
+            str(item.get('id', ''))
+            for item in result.get('items', [])
+            if isinstance(item, dict)
+        }
+        matched = len(expected_ids & returned_ids)
+        minimum_ratio = _env_float("ANALYZER_MIN_BATCH_COVERAGE", 0.85, minimum=0.1)
+        minimum_items = max(1, int(len(expected_ids) * minimum_ratio + 0.999))
+        if matched >= minimum_items:
+            return None
+        return (
+            f"incomplete valid JSON: {matched}/{len(expected_ids)} expected item analyses "
+            f"(minimum {minimum_items})"
+        )
 
     async def _handle_truncated_batch(
         self,

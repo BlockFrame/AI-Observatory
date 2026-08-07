@@ -86,7 +86,7 @@ class SearchIndexer:
         """Extract searchable documents for a specific date."""
         documents = []
 
-        for category in ['news', 'research', 'social', 'reddit']:
+        for category in ['news', 'research', 'social', 'github_trending']:
             category_path = os.path.join(self.data_dir, date, f'{category}.json')
             if not os.path.exists(category_path):
                 continue

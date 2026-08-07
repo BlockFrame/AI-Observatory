@@ -71,7 +71,7 @@ async def main():
     checker._historical_anchor_items = [{
         "id": "old-uber",
         "date": "2026-05-22",
-        "category": "reddit",
+        "category": "social",
         "title": "Tokens",
         "summary": "Discussion of token economics including Uber burning through AI budget in four months.",
         "source": "r/artificial",

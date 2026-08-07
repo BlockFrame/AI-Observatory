@@ -131,22 +131,22 @@ MATCHED PAIRS:
 
 RELATIONSHIP TYPES AND RULES:
 
-A) NEWS/RESEARCH FOLLOWING SOCIAL/REDDIT:
+A) NEWS/RESEARCH FOLLOWING SOCIAL:
    - "rehash": Today's mainstream coverage adds NO new information beyond what was
-     already reported in yesterday's social/reddit post → DEMOTE from homepage
+     already reported in yesterday's social post → DEMOTE from homepage
      Reference: "As first reported in **Social** yesterday"
 
    - "mainstream_pickup": The FACT that mainstream media picked up a story is itself
      newsworthy (e.g., small project goes viral, major outlet validates a rumor)
      → KEEP on homepage
-     Reference: "First spotted on **Reddit**, now making mainstream headlines"
+     Reference: "First spotted on **Social**, now making mainstream headlines"
 
    - "new_development": Today's coverage contains SUBSTANTIAL new information,
      official announcements, or developments beyond the original
      → KEEP on homepage
      Reference: "Building on yesterday's **Social** buzz"
 
-B) SOCIAL/REDDIT FOLLOWING NEWS:
+B) SOCIAL FOLLOWING NEWS:
    - "community_reaction": Discussion or analysis that adds value to yesterday's
      news coverage → KEEP on homepage
      Reference: "Following yesterday's **News** coverage"
