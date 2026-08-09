@@ -88,6 +88,14 @@ class HTTP400(Exception):
     status_code = 400
 
 
+class HTTP410(Exception):
+    status_code = 410
+
+
+class HTTP429RPD(Exception):
+    status_code = 429
+
+
 class LLMRouteConfigTests(unittest.TestCase):
     def test_single_model_config_normalizes_to_one_route(self):
         config = LLMProviderConfig(
@@ -160,7 +168,12 @@ class LLMRouteConfigTests(unittest.TestCase):
                     requests_per_day=20,
                     profiles=["DEEP", "ULTRATHINK"],
                     caller_patterns=["orchestrator.*"],
-                )
+                ),
+                LLMRouteConfig(
+                    id="bulk",
+                    model="gemini-3.5-flash-lite",
+                    profiles=["QUICK", "STANDARD"],
+                ),
             ],
         )
 
@@ -380,6 +393,47 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
         asyncio.run(run())
 
+    def test_removed_model_fails_over_and_is_disabled_for_the_run(self):
+        async def run():
+            removed = FakeRouteClient(
+                "removed",
+                failures=[HTTP410("model endpoint is no longer available")],
+            )
+            fallback = FakeRouteClient("fallback")
+            router = AsyncLLMRouter([removed, fallback])
+
+            first = await router.call(messages=[{"role": "user", "content": "hi"}])
+            second = await router.call(messages=[{"role": "user", "content": "again"}])
+
+            self.assertEqual(first.content, "fallback")
+            self.assertEqual(second.content, "fallback")
+            self.assertEqual(len(removed.calls), 1)
+            self.assertEqual(
+                router.get_health_snapshot()["removed"]["disabled_reason"],
+                "http_410",
+            )
+
+        asyncio.run(run())
+
+    def test_provider_rpd_429_is_disabled_instead_of_retried_later(self):
+        async def run():
+            limited = FakeRouteClient(
+                "limited",
+                failures=[HTTP429RPD("GenerateRequestsPerDay quota exhausted")],
+            )
+            fallback = FakeRouteClient("fallback")
+            router = AsyncLLMRouter([limited, fallback])
+
+            response = await router.call(messages=[{"role": "user", "content": "hi"}])
+
+            self.assertEqual(response.content, "fallback")
+            self.assertEqual(
+                router.get_health_snapshot()["limited"]["disabled_reason"],
+                "provider_rpd_exhausted",
+            )
+
+        asyncio.run(run())
+
     def test_profile_and_caller_routing_prefers_quality_route(self):
         async def run():
             bulk = FakeRouteClient(
@@ -425,6 +479,50 @@ class AsyncLLMRouterTests(unittest.TestCase):
             )
 
             self.assertEqual(response.content, "bulk")
+
+        asyncio.run(run())
+
+    def test_caller_restricted_quality_route_is_not_used_for_bulk_batch(self):
+        async def run():
+            bulk = FakeRouteClient(
+                "bulk",
+                route_profiles=["QUICK", "STANDARD", "DEEP"],
+            )
+            quality = FakeRouteClient(
+                "quality",
+                route_profiles=["STANDARD", "DEEP", "ULTRATHINK"],
+                caller_patterns=["orchestrator.*", "*_analyzer.reduce_rank"],
+            )
+            router = AsyncLLMRouter([bulk, quality])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "map"}],
+                profile=ThinkingLevel.STANDARD,
+                caller="news_analyzer.batch_1",
+            )
+
+            self.assertEqual(response.content, "bulk")
+            self.assertEqual(len(quality.calls), 0)
+
+        asyncio.run(run())
+
+    def test_plain_call_is_routed_as_quick_bulk_work(self):
+        async def run():
+            bulk = FakeRouteClient("bulk", route_profiles=["QUICK", "STANDARD"])
+            quality = FakeRouteClient(
+                "quality",
+                route_profiles=["STANDARD", "DEEP"],
+                caller_patterns=["orchestrator.*"],
+            )
+            router = AsyncLLMRouter([bulk, quality])
+
+            response = await router.call(
+                messages=[{"role": "user", "content": "classify"}],
+                caller="interest_filter",
+            )
+
+            self.assertEqual(response.content, "bulk")
+            self.assertEqual(len(quality.calls), 0)
 
         asyncio.run(run())
 

@@ -8,16 +8,16 @@ llm:
   tokens_per_minute: 250000
   requests_per_day: 500
   routes:
-    - id: "nvidia-deepseek-bulk"
+    - id: "nvidia-nemotron-bulk"
       mode: "openai-compatible"
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
-      model: "deepseek-ai/deepseek-v4-flash"
+      model: "nvidia/nemotron-3-nano-30b-a3b"
       timeout: 120
       max_output_tokens: 16384
       max_concurrent_requests: 2
       requests_per_minute: 30
-      profiles: ["QUICK", "STANDARD"]
+      profiles: ["QUICK", "STANDARD", "DEEP"]
       fallback_route_id: "glm-bulk"
 
     - id: "glm-bulk"
@@ -27,7 +27,7 @@ llm:
       model: "glm-4.7-flash"
       max_concurrent_requests: 1
       requests_per_minute: 10
-      profiles: ["QUICK", "STANDARD"]
+      profiles: ["QUICK", "STANDARD", "DEEP"]
       fallback_route_id: "gemini-bulk-fallback"
 
     - id: "gemini-bulk-fallback"
@@ -39,7 +39,7 @@ llm:
       requests_per_minute: 15
       tokens_per_minute: 250000
       requests_per_day: 500
-      profiles: ["QUICK", "STANDARD"]
+      profiles: ["QUICK", "STANDARD", "DEEP"]
       fallback_route_id: "gemini-bulk-fallback-3.1"
 
     - id: "gemini-bulk-fallback-3.1"
@@ -51,19 +51,19 @@ llm:
       requests_per_minute: 15
       tokens_per_minute: 250000
       requests_per_day: 500
-      profiles: ["QUICK", "STANDARD"]
+      profiles: ["QUICK", "STANDARD", "DEEP"]
 
-    - id: "nvidia-deepseek-quality"
+    - id: "nvidia-glm-quality"
       mode: "openai-compatible"
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
-      model: "deepseek-ai/deepseek-v4-pro"
+      model: "z-ai/glm-5.2"
       timeout: 90
       max_output_tokens: 16384
-      max_concurrent_requests: 2
+      max_concurrent_requests: 1
       requests_per_minute: 30
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
-      fallback_route_id: "gemini-quality-fallback"
+      fallback_route_id: "gemini-quality-fallback-3.5"
       caller_patterns:
         - "*_analyzer.reduce_rank"
 
@@ -96,6 +96,11 @@ llm:
       requests_per_day: 20
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-lite-3.5"
+      caller_patterns:
+        - "*_analyzer.reduce_rank"
+        - "orchestrator.*"
+        - "link_enricher.*"
+        - "analysis.*_summary"
 
     - id: "gemini-quality-fallback-lite-3.5"
       mode: "gemini"
@@ -108,6 +113,11 @@ llm:
       tokens_per_minute: 250000
       requests_per_day: 500
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      caller_patterns:
+        - "*_analyzer.reduce_rank"
+        - "orchestrator.*"
+        - "link_enricher.*"
+        - "analysis.*_summary"
 
 # image section disabled - no GOOGLE_API_KEY configured
 # To enable hero image generation, add GOOGLE_API_KEY secret and uncomment:

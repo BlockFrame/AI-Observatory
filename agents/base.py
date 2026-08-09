@@ -85,6 +85,22 @@ def _env_int(name: str, default: int, minimum: int = 1) -> int:
     return value
 
 
+def _env_float(name: str, default: float, minimum: float = 0.0) -> float:
+    """Read a float environment setting with validation."""
+    raw_value = os.environ.get(name)
+    if not raw_value:
+        return default
+    try:
+        value = float(raw_value)
+    except ValueError:
+        logger.warning(f"Ignoring invalid {name}={raw_value!r}; using {default}")
+        return default
+    if value < minimum:
+        logger.warning(f"Ignoring {name}={value}; minimum is {minimum}, using {default}")
+        return default
+    return value
+
+
 def extract_json_str(content: str) -> str:
     """Extract a JSON object/array substring from an LLM response.
 
@@ -705,6 +721,15 @@ class BaseAnalyzer(ABC):
                 cross_signals=result.get('cross_signals', []),
                 thinking=response.thinking
             )
+        except (NameError, AttributeError, TypeError, KeyError, AssertionError) as e:
+            # Programming errors are deterministic. Retrying would duplicate a
+            # paid/provider call and hide a broken deployment behind fallbacks.
+            logger.exception(
+                "%s batch %s hit a non-retryable application error",
+                self.category,
+                label,
+            )
+            raise
         except Exception as e:
             logger.error(f"{self.category} batch {label} analysis failed: {type(e).__name__}: {e}")
             # Retry once with backoff for transient failures (network, 5xx, etc.)

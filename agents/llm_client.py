@@ -1532,17 +1532,35 @@ class AsyncAnthropicClient:
             "messages": openai_messages,
         }
         if "max_tokens" in kwargs:
-            payload["max_completion_tokens"] = kwargs["max_tokens"]
+            # NVIDIA's hosted NIM examples expose the legacy ``max_tokens``
+            # field, while newer OpenAI-compatible providers use
+            # ``max_completion_tokens``.
+            token_field = (
+                "max_tokens" if "nvidia.com" in self.base_url
+                else "max_completion_tokens"
+            )
+            payload[token_field] = kwargs["max_tokens"]
         if "temperature" in kwargs and kwargs["temperature"] is not None:
             payload["temperature"] = kwargs["temperature"]
         if "extra_body" in kwargs:
             payload["extra_body"] = kwargs["extra_body"]
             
-        # NVIDIA NIM specific flag for DeepSeek reasoning models
+        # NVIDIA NIM provider-specific reasoning controls.  The generic
+        # ``thinking`` argument is internal and is not part of Chat Completions.
         if "nvidia.com" in self.base_url and "deepseek" in kwargs["model"]:
             if "thinking" in kwargs and kwargs["thinking"].get("budget_tokens", 0) > 0:
                 payload["extra_body"] = payload.get("extra_body", {})
                 payload["extra_body"]["chat_template_kwargs"] = {"thinking": True}
+        elif "nvidia.com" in self.base_url and "nemotron-3-nano" in kwargs["model"]:
+            thinking_budget = kwargs.get("thinking", {}).get("budget_tokens", 0)
+            payload["top_p"] = 1
+            if thinking_budget > 0:
+                payload["extra_body"] = payload.get("extra_body", {})
+                payload["extra_body"]["max_thinking_tokens"] = thinking_budget
+        elif "nvidia.com" in self.base_url and kwargs["model"] == "z-ai/glm-5.2":
+            # Match the provider's recommended hosted-endpoint parameters.
+            payload["top_p"] = 1
+            payload["seed"] = 42
         
         if not self.log_requests:
             raw_response = await self._openai_client.chat.completions.create(**payload)
@@ -1993,7 +2011,17 @@ class AsyncAnthropicClient:
 
         # Only enforce thinking-block presence on the manual path; see
         # the sync method for rationale.
-        if not use_adaptive and manual_budget_tokens > 0 and not thinking_blocks:
+        expects_thinking_blocks = (
+            self.mode == "anthropic"
+            or "deepseek" in self.model
+            or "nemotron-3-nano" in self.model
+        )
+        if (
+            not use_adaptive
+            and manual_budget_tokens > 0
+            and expects_thinking_blocks
+            and not thinking_blocks
+        ):
             error_msg = (
                 f"Extended thinking requested (budget_tokens={manual_budget_tokens}) but no thinking "
                 f"blocks returned. This is required for quality analysis.\n\n"
@@ -2303,6 +2331,7 @@ class AsyncLLMRouter:
                 "cooldown_until": 0.0,
                 "cooldown_skips": 0,
                 "last_error": None,
+                "disabled_reason": None,
             }
             for client in clients
         }
@@ -2333,6 +2362,7 @@ class AsyncLLMRouter:
         state["consecutive_failures"] = 0
         state["cooldown_until"] = 0.0
         state["last_error"] = None
+        state["disabled_reason"] = None
 
     def _record_route_failure(
         self,
@@ -2344,6 +2374,14 @@ class AsyncLLMRouter:
         state["failures"] += 1
         state["consecutive_failures"] += 1
         state["last_error"] = f"{type(error).__name__}: {error}"
+        if reason in {"http_404", "http_410", "provider_rpd_exhausted"}:
+            state["disabled_reason"] = reason
+            logger.warning(
+                "LLM route %s disabled for this run after %s",
+                client.provider_id,
+                reason,
+            )
+            return
         multiplier = 2 ** min(int(state["consecutive_failures"]) - 1, 4)
         delay = min(self._cooldown_max_seconds, self._cooldown_base_seconds * multiplier)
         if reason in {"http_429", "provider_rpd_exhausted"}:
@@ -2370,6 +2408,7 @@ class AsyncLLMRouter:
                     max(0.0, float(state["cooldown_until"]) - now), 1
                 ),
                 "last_error": state["last_error"],
+                "disabled_reason": state["disabled_reason"],
             }
             for provider_id, state in self._route_health.items()
         }
@@ -2409,12 +2448,19 @@ class AsyncLLMRouter:
     ) -> List[AsyncAnthropicClient]:
         rotated = self._ordered_clients(start_index)
         scored = []
-        deferred = []
+        # Plain calls are lightweight classification/sentiment work and belong
+        # to the bulk QUICK tier. Route profiles intentionally expose only the
+        # four analysis-profile names used by call_with_thinking().
+        eligibility_profile = "QUICK" if profile_name == "plain" else profile_name
+        fallback_targets = {
+            client.fallback_route_id
+            for client in self.clients
+            if getattr(client, "fallback_route_id", None)
+        }
         for position, client in enumerate(rotated):
             route_profiles = getattr(client, "route_profiles", set())
             caller_patterns = getattr(client, "caller_patterns", [])
-            if route_profiles and profile_name not in route_profiles:
-                deferred.append(client)
+            if route_profiles and eligibility_profile not in route_profiles:
                 continue
             caller_match = (
                 any(fnmatch.fnmatch(caller or "", pattern) for pattern in caller_patterns)
@@ -2422,14 +2468,20 @@ class AsyncLLMRouter:
                 else False
             )
             if caller_patterns and not caller_match:
-                deferred.append(client)
                 continue
-            score = (2 if caller_match else 0) + (1 if route_profiles else 0)
+            # Explicit caller matches select quality routes. Root routes select
+            # the start of a fallback chain; referenced routes remain available
+            # only after their primary or when no matching root exists.
+            is_chain_root = client.provider_id not in fallback_targets
+            score = (
+                (4 if caller_match else 0)
+                + (2 if is_chain_root else 0)
+                + (1 if route_profiles else 0)
+            )
             scored.append((score, position, client))
 
         scored.sort(key=lambda item: (-item[0], item[1]))
-        preferred = [client for _, _, client in scored]
-        return preferred + [client for client in deferred if client not in preferred]
+        return [client for _, _, client in scored]
 
     @staticmethod
     def _retry_reason(error: Exception) -> Optional[str]:
@@ -2457,7 +2509,18 @@ class AsyncLLMRouter:
             status_code = getattr(response, "status_code", None)
 
         if status_code == 429:
+            error_text = str(error).lower()
+            if any(marker in error_text for marker in (
+                "generaterequestsperday",
+                "requestsperday",
+                "per day",
+                "daily quota",
+                "rpd",
+            )):
+                return "provider_rpd_exhausted"
             return "http_429"
+        if status_code in {404, 410}:
+            return f"http_{status_code}"
         if isinstance(status_code, int) and status_code >= 500:
             return f"http_{status_code}"
 
@@ -2483,8 +2546,22 @@ class AsyncLLMRouter:
         last_error = None
 
         ordered_clients = self._ordered_clients_for_call(start_index, caller, profile_name)
+        if not ordered_clients:
+            raise RuntimeError(
+                f"No LLM route is eligible for caller={caller or 'unknown'} "
+                f"profile={profile_name}"
+            )
         for attempt, client in enumerate(ordered_clients, start=1):
             later_clients = ordered_clients[attempt:]
+            state = self._route_health[client.provider_id]
+            if state["disabled_reason"] is not None:
+                state["cooldown_skips"] += 1
+                logger.info(
+                    "Skipping disabled LLM route %s (%s)",
+                    client.provider_id,
+                    state["disabled_reason"],
+                )
+                continue
             if self._route_is_cooling_down(client) and any(
                 not self._route_is_cooling_down(candidate)
                 for candidate in later_clients

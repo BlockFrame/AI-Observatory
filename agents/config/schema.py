@@ -48,7 +48,7 @@ class LLMRouteConfig(BaseModel):
     )
     fallback_route_id: Optional[str] = Field(
         default=None,
-        description="ID of the preferred fallback route for retryable transport, quota, 429, and 5xx failures"
+        description="ID of the preferred fallback route for transport, quota, unavailable-model, 429, and 5xx failures"
     )
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = Field(
         default=None,
@@ -164,6 +164,17 @@ class LLMProviderConfig(BaseModel):
         duplicates = sorted({route_id for route_id in route_ids if route_ids.count(route_id) > 1})
         if duplicates:
             raise ValueError(f"Duplicate llm.routes id(s): {', '.join(duplicates)}")
+        route_id_set = set(route_ids)
+        missing_fallbacks = sorted({
+            route.fallback_route_id
+            for route in self.routes
+            if route.fallback_route_id and route.fallback_route_id not in route_id_set
+        })
+        if missing_fallbacks:
+            raise ValueError(
+                "Unknown llm.routes fallback_route_id(s): "
+                + ", ".join(missing_fallbacks)
+            )
         return self
 
     def get_route_configs(self) -> List['ResolvedLLMRouteConfig']:
