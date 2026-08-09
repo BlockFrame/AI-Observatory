@@ -113,6 +113,8 @@ class JSONGenerator:
     def _generate_summary_json(self, date_dir: str, result: Dict[str, Any]) -> None:
         """Generate summary.json with executive summary and top items."""
         category_reports = result.get('category_reports', {})
+        llm_telemetry = result.get('llm_telemetry', {})
+        llm_by_category = llm_telemetry.get('by_category', {})
 
         # Build category summaries with only top items
         categories = {}
@@ -122,6 +124,7 @@ class JSONGenerator:
             categories[category] = {
                 'count': len(report.get('all_items', [])),
                 'analysis_quality': report.get('analysis_quality', {}),
+                'llm_telemetry': llm_by_category.get(category, {}),
                 'category_summary': category_summary,
                 'category_summary_html': self._markdown_to_html(category_summary),
                 'themes': report.get('themes', []),
@@ -167,6 +170,7 @@ class JSONGenerator:
             'total_items_analyzed': result.get('total_items_analyzed', 0),
             'collection_status': self._format_collection_status(collection_status),
             'phase_status': phase_status,
+            'llm_telemetry': llm_telemetry,
             'generation_quality': generation_quality,
             'hero_image_url': result.get('hero_image_url'),
             'hero_image_prompt': result.get('hero_image_prompt'),

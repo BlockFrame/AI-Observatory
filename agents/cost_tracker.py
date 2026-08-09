@@ -12,7 +12,7 @@ import json
 import logging
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 from enum import Enum
 
 logger = logging.getLogger(__name__)
@@ -45,6 +45,7 @@ class APICallRecord:
     thinking_level: Optional[str]
     input_tokens: int
     output_tokens: int
+    thinking_tokens: int = 0
     cache_creation_tokens: int = 0
     cache_read_tokens: int = 0
     model: str = "claude-4.8-opus-aws"
@@ -52,6 +53,10 @@ class APICallRecord:
     analysis_profile: Optional[str] = None
     adaptive_effort: Optional[str] = None
     duration_seconds: float = 0.0
+    attempt: int = 1
+    same_provider_retry: int = 0
+    fallback_from: Optional[str] = None
+    retry_reason: Optional[str] = None
 
     @property
     def total_input_tokens(self) -> int:
@@ -61,7 +66,7 @@ class APICallRecord:
     @property
     def total_tokens(self) -> int:
         """Total tokens (input + output)."""
-        return self.total_input_tokens + self.output_tokens
+        return self.total_input_tokens + self.output_tokens + self.thinking_tokens
 
 
 @dataclass
@@ -75,6 +80,21 @@ class CostBreakdown:
     @property
     def total_cost(self) -> float:
         return self.input_cost + self.output_cost + self.cache_write_cost + self.cache_hit_cost
+
+
+@dataclass
+class APIFailureRecord:
+    """Prompt-free record of one failed provider attempt."""
+    timestamp: str
+    caller: str
+    model: str
+    provider_id: str
+    duration_seconds: float
+    error_type: str
+    retry_reason: Optional[str] = None
+    attempt: int = 1
+    same_provider_retry: int = 0
+    fallback_from: Optional[str] = None
 
 
 class CostTracker:
@@ -91,6 +111,7 @@ class CostTracker:
     def __init__(self, model: str = "claude-4.8-opus-aws"):
         self.model = model
         self.calls: List[APICallRecord] = []
+        self.failures: List[APIFailureRecord] = []
         self.start_time: Optional[datetime] = None
         self.end_time: Optional[datetime] = None
         # Non-LLM/third-party API usage (e.g. ScrapeCreators, GetXAPI), keyed by
@@ -125,6 +146,7 @@ class CostTracker:
         """Mark the start of a pipeline run."""
         self.start_time = datetime.now()
         self.calls = []
+        self.failures = []
         self.external_apis = {}
         logger.info("Cost tracking started")
 
@@ -153,7 +175,11 @@ class CostTracker:
         model: Optional[str] = None,
         provider_id: Optional[str] = None,
         analysis_profile: Optional[str] = None,
-        adaptive_effort: Optional[str] = None
+        adaptive_effort: Optional[str] = None,
+        attempt: int = 1,
+        same_provider_retry: int = 0,
+        fallback_from: Optional[str] = None,
+        retry_reason: Optional[str] = None,
     ):
         """
         Record an API call.
@@ -171,13 +197,18 @@ class CostTracker:
             thinking_level=thinking_level,
             input_tokens=usage.get('input_tokens', 0),
             output_tokens=usage.get('output_tokens', 0),
+            thinking_tokens=usage.get('thinking_tokens', 0),
             cache_creation_tokens=usage.get('cache_creation_input_tokens', 0),
             cache_read_tokens=usage.get('cache_read_input_tokens', 0),
             model=model or self.model,
             provider_id=provider_id,
             analysis_profile=analysis_profile,
             adaptive_effort=adaptive_effort,
-            duration_seconds=duration_seconds
+            duration_seconds=duration_seconds,
+            attempt=attempt,
+            same_provider_retry=same_provider_retry,
+            fallback_from=fallback_from,
+            retry_reason=retry_reason,
         )
         self.calls.append(record)
 
@@ -186,6 +217,187 @@ class CostTracker:
             f"in={record.input_tokens}, out={record.output_tokens}, "
             f"cache_write={record.cache_creation_tokens}, cache_read={record.cache_read_tokens}"
         )
+
+    def record_failure(
+        self,
+        *,
+        caller: str,
+        model: str,
+        provider_id: str,
+        duration_seconds: float,
+        error_type: str,
+        retry_reason: Optional[str],
+        attempt: int = 1,
+        same_provider_retry: int = 0,
+        fallback_from: Optional[str] = None,
+    ) -> None:
+        """Record a failed provider attempt without prompt or raw error text."""
+        self.failures.append(APIFailureRecord(
+            timestamp=datetime.now().isoformat(),
+            caller=caller,
+            model=model,
+            provider_id=provider_id,
+            duration_seconds=duration_seconds,
+            error_type=error_type,
+            retry_reason=retry_reason,
+            attempt=attempt,
+            same_provider_retry=same_provider_retry,
+            fallback_from=fallback_from,
+        ))
+
+    @staticmethod
+    def _caller_scope(caller: str) -> str:
+        """Map stable caller IDs to public telemetry scopes."""
+        normalized = (caller or "unknown").lower()
+        for category in ("news", "research", "social", "github_trending"):
+            if (
+                normalized.startswith(f"{category}_analyzer")
+                or normalized.startswith(f"analysis.{category}_summary")
+                or normalized.startswith(f"continuity.matcher.{category}")
+                or normalized.startswith(f"link_enricher.{category} summary")
+            ):
+                return category
+        if normalized.startswith("orchestrator."):
+            return "orchestration"
+        if normalized.startswith("link_enricher."):
+            return "cross_category_enrichment"
+        if normalized.startswith("ecosystem_context."):
+            return "ecosystem"
+        if normalized.startswith("freshness."):
+            return "freshness"
+        return "other"
+
+    def get_llm_telemetry(self) -> Dict[str, Any]:
+        """Aggregate prompt-free reliability and usage telemetry by scope."""
+        scopes: Dict[str, Dict[str, Any]] = {}
+
+        def ensure_scope(name: str) -> Dict[str, Any]:
+            return scopes.setdefault(name, {
+                "successful_calls": 0,
+                "failed_attempts": 0,
+                "provider_attempts": 0,
+                "fallback_successes": 0,
+                "same_provider_retry_successes": 0,
+                "duration_seconds": 0.0,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "thinking_tokens": 0,
+                "retry_reasons": {},
+                "providers": {},
+            })
+
+        def ensure_provider(scope: Dict[str, Any], provider_id: str, model: str) -> Dict[str, Any]:
+            providers = scope["providers"]
+            provider = providers.setdefault(provider_id, {
+                "provider_id": provider_id,
+                "model": model,
+                "successful_calls": 0,
+                "failed_attempts": 0,
+                "duration_seconds": 0.0,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "thinking_tokens": 0,
+            })
+            return provider
+
+        for call in self.calls:
+            scope = ensure_scope(self._caller_scope(call.caller))
+            provider_id = call.provider_id or call.model
+            provider = ensure_provider(scope, provider_id, call.model)
+            scope["successful_calls"] += 1
+            scope["provider_attempts"] += 1
+            scope["fallback_successes"] += int(bool(call.fallback_from) or call.attempt > 1)
+            scope["same_provider_retry_successes"] += int(call.same_provider_retry > 0)
+            scope["duration_seconds"] += call.duration_seconds
+            scope["input_tokens"] += call.input_tokens
+            scope["output_tokens"] += call.output_tokens
+            scope["thinking_tokens"] += call.thinking_tokens
+            provider["successful_calls"] += 1
+            provider["duration_seconds"] += call.duration_seconds
+            provider["input_tokens"] += call.input_tokens
+            provider["output_tokens"] += call.output_tokens
+            provider["thinking_tokens"] += call.thinking_tokens
+
+        for failure in self.failures:
+            scope = ensure_scope(self._caller_scope(failure.caller))
+            provider = ensure_provider(scope, failure.provider_id, failure.model)
+            scope["failed_attempts"] += 1
+            scope["provider_attempts"] += 1
+            scope["duration_seconds"] += failure.duration_seconds
+            reason = failure.retry_reason or failure.error_type
+            scope["retry_reasons"][reason] = scope["retry_reasons"].get(reason, 0) + 1
+            provider["failed_attempts"] += 1
+            provider["duration_seconds"] += failure.duration_seconds
+
+        for scope in scopes.values():
+            if scope["failed_attempts"] and scope["successful_calls"]:
+                scope["status"] = "recovered"
+            elif scope["failed_attempts"]:
+                scope["status"] = "failed"
+            else:
+                scope["status"] = "success"
+            scope["error_rate"] = (
+                round(scope["failed_attempts"] / scope["provider_attempts"], 4)
+                if scope["provider_attempts"] else 0.0
+            )
+            scope["duration_seconds"] = round(scope["duration_seconds"], 3)
+            scope["providers"] = list(scope["providers"].values())
+            for provider in scope["providers"]:
+                provider["duration_seconds"] = round(provider["duration_seconds"], 3)
+
+        overall = ensure_scope("overall")
+        for name, scope in list(scopes.items()):
+            if name == "overall":
+                continue
+            for key in (
+                "successful_calls", "failed_attempts", "provider_attempts",
+                "fallback_successes", "same_provider_retry_successes",
+                "input_tokens", "output_tokens", "thinking_tokens",
+            ):
+                overall[key] += scope[key]
+            overall["duration_seconds"] += scope["duration_seconds"]
+            for reason, count in scope["retry_reasons"].items():
+                overall["retry_reasons"][reason] = overall["retry_reasons"].get(reason, 0) + count
+
+        overall["status"] = (
+            "recovered" if overall["failed_attempts"] and overall["successful_calls"]
+            else "failed" if overall["failed_attempts"]
+            else "success"
+        )
+        overall["error_rate"] = (
+            round(overall["failed_attempts"] / overall["provider_attempts"], 4)
+            if overall["provider_attempts"] else 0.0
+        )
+        overall["duration_seconds"] = round(overall["duration_seconds"], 3)
+        overall.pop("providers", None)
+
+        category_names = ("news", "research", "social", "github_trending")
+        return {
+            "overall": overall,
+            "by_category": {
+                name: scopes.get(name, {
+                    "status": "unused",
+                    "successful_calls": 0,
+                    "failed_attempts": 0,
+                    "provider_attempts": 0,
+                    "fallback_successes": 0,
+                    "same_provider_retry_successes": 0,
+                    "duration_seconds": 0.0,
+                    "input_tokens": 0,
+                    "output_tokens": 0,
+                    "thinking_tokens": 0,
+                    "error_rate": 0.0,
+                    "retry_reasons": {},
+                    "providers": [],
+                })
+                for name in category_names
+            },
+            "pipeline_scopes": {
+                name: scope
+                for name, scope in scopes.items()
+                if name not in {*category_names, "overall"}
+            },
+        }
 
     def calculate_cost(self, record: APICallRecord) -> CostBreakdown:
         """Calculate cost for a single API call."""
@@ -214,6 +426,7 @@ class CostTracker:
         totals = {
             'input_tokens': 0,
             'output_tokens': 0,
+            'thinking_tokens': 0,
             'cache_creation_tokens': 0,
             'cache_read_tokens': 0,
             'total_tokens': 0
@@ -222,6 +435,7 @@ class CostTracker:
         for call in self.calls:
             totals['input_tokens'] += call.input_tokens
             totals['output_tokens'] += call.output_tokens
+            totals['thinking_tokens'] += call.thinking_tokens
             totals['cache_creation_tokens'] += call.cache_creation_tokens
             totals['cache_read_tokens'] += call.cache_read_tokens
             totals['total_tokens'] += call.total_tokens
@@ -296,6 +510,7 @@ class CostTracker:
             "TOKEN USAGE:",
             f"  Input tokens:        {totals['input_tokens']:>12,}",
             f"  Output tokens:       {totals['output_tokens']:>12,}",
+            f"  Thinking tokens:     {totals['thinking_tokens']:>12,}",
             f"  Cache write tokens:  {totals['cache_creation_tokens']:>12,}",
             f"  Cache read tokens:   {totals['cache_read_tokens']:>12,}",
             f"  ─────────────────────────────────",
@@ -400,6 +615,7 @@ class CostTracker:
                 for provider, c in by_provider.items()
             },
             "external_apis": self.external_apis,
+            "llm_telemetry": self.get_llm_telemetry(),
             "calls": [
                 {
                     "timestamp": call.timestamp,
@@ -407,16 +623,36 @@ class CostTracker:
                     "thinking_level": call.thinking_level,
                     "input_tokens": call.input_tokens,
                     "output_tokens": call.output_tokens,
+                    "thinking_tokens": call.thinking_tokens,
                     "cache_creation_tokens": call.cache_creation_tokens,
                     "cache_read_tokens": call.cache_read_tokens,
                     "model": call.model,
                     "provider_id": call.provider_id,
                     "analysis_profile": call.analysis_profile,
                     "adaptive_effort": call.adaptive_effort,
-                    "duration_seconds": call.duration_seconds
+                    "duration_seconds": call.duration_seconds,
+                    "attempt": call.attempt,
+                    "same_provider_retry": call.same_provider_retry,
+                    "fallback_from": call.fallback_from,
+                    "retry_reason": call.retry_reason,
                 }
                 for call in self.calls
-            ]
+            ],
+            "failures": [
+                {
+                    "timestamp": failure.timestamp,
+                    "caller": failure.caller,
+                    "model": failure.model,
+                    "provider_id": failure.provider_id,
+                    "duration_seconds": failure.duration_seconds,
+                    "error_type": failure.error_type,
+                    "retry_reason": failure.retry_reason,
+                    "attempt": failure.attempt,
+                    "same_provider_retry": failure.same_provider_retry,
+                    "fallback_from": failure.fallback_from,
+                }
+                for failure in self.failures
+            ],
         }
 
     def save_report(self, filepath: str):

@@ -1,6 +1,6 @@
 # AI Observatory — Strategic TODO
 
-Questo documento contiene l'elenco aggiornato delle sole attività aperte e da completare per l'**AI Observatory**.
+Questo documento contiene lo stato aggiornato delle attività strategiche per l'**AI Observatory**.
 
 ---
 
@@ -8,8 +8,8 @@ Questo documento contiene l'elenco aggiornato delle sole attività aperte e da c
 
 ### 0. 🛡️ Affidabilità, Qualità Editoriale & Osservabilità
 - [ ] **Quality score per report e categoria**: calcolare e pubblicare segnali deterministici su lunghezza, copertura dei top item, fallback LLM, validità Markdown/link e qualità delle fonti; bloccare la pubblicazione sotto soglia.
-- [ ] **Separazione ranking / scrittura**: mantenere modelli economici o specialistici per ranking ed estrazione, ma generare sempre le summary editoriali con una route quality dedicata e fallback espliciti.
-- [ ] **Telemetria LLM per categoria**: esporre in `summary.json` modello, provider, durata, token, retry/fallback e stato per News, Social, Research e GitHub Trending.
+- [x] **Separazione ranking / scrittura**: modelli specialistici per ranking/estrazione e route quality dedicate con fallback espliciti per le summary editoriali.
+- [x] **Telemetria LLM per categoria**: `summary.json` espone modello, provider, durata, token, retry/fallback e stato per News, Social, Research e GitHub Trending.
 - [ ] **Osservabilità dei gatherer**: dashboard/stato per fonte con ultimo successo, articoli raccolti, latenza, errore, tasso di duplicati e freshness del feed.
 - [ ] **Test end-to-end della resilienza**: fixture realistiche per timeout NVIDIA, 429 Gemini, JSON troncato, feed vuoti e fallback; verificare che il publish gate rifiuti report di bassa qualità.
 - [ ] **Link enrichment efficiente**: eseguire prima entity matching deterministico e inviare al modello solo riferimenti ambigui, riducendo latenza, token e chiamate LLM.

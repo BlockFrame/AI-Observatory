@@ -91,6 +91,7 @@ class OrchestratorResult:
     hero_image_url: Optional[str] = None  # URL path to generated hero image
     hero_image_prompt: Optional[str] = None  # Prompt used to generate hero image
     phase_status: List[Dict[str, Any]] = field(default_factory=list)  # Phase tracker records
+    llm_telemetry: Dict[str, Any] = field(default_factory=dict)
     orchestrator_thinking: Optional[str] = None
     generated_at: str = field(default_factory=lambda: datetime.now().isoformat())
 
@@ -110,6 +111,7 @@ class OrchestratorResult:
             'hero_image_url': self.hero_image_url,
             'hero_image_prompt': self.hero_image_prompt,
             'phase_status': self.phase_status,
+            'llm_telemetry': self.llm_telemetry,
             'orchestrator_thinking': self.orchestrator_thinking,
             'generated_at': self.generated_at
         }
@@ -659,6 +661,7 @@ class MainOrchestrator:
             hero_image_url=hero_image_url,
             hero_image_prompt=hero_image_prompt,
             phase_status=phases.to_dict(),
+            llm_telemetry=cost_tracker.get_llm_telemetry(),
             orchestrator_thinking=f"Topic Detection:\n{topic_thinking}\n\nSummary:\n{summary_thinking}"
         )
 

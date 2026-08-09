@@ -86,6 +86,17 @@ def _env_bool(name: str, default: bool = False) -> bool:
     return default
 
 
+def _routing_record_fields(context: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    """Return prompt-free route metadata for the public cost/health tracker."""
+    context = context or {}
+    return {
+        "attempt": int(context.get("attempt") or 1),
+        "same_provider_retry": int(context.get("same_provider_retry") or 0),
+        "fallback_from": context.get("fallback_from"),
+        "retry_reason": context.get("retry_reason"),
+    }
+
+
 class ThinkingLevel(IntEnum):
     """Internal analysis profiles.
 
@@ -1872,6 +1883,7 @@ class AsyncAnthropicClient:
                 provider_id=self.provider_id,
                 analysis_profile=profile_name,
                 adaptive_effort=thinking_level,
+                **_routing_record_fields(routing_context),
             )
             return response
 
@@ -1916,6 +1928,7 @@ class AsyncAnthropicClient:
                 provider_id=self.provider_id,
                 analysis_profile=profile_name,
                 adaptive_effort=None,
+                **_routing_record_fields(routing_context),
             )
             return LLMResponse(
                 content="\n".join(block.text or "" for block in response.content if block.type == "text"),
@@ -2074,7 +2087,8 @@ class AsyncAnthropicClient:
             model=response.model,
             provider_id=self.provider_id,
             analysis_profile=profile_name if use_adaptive else None,
-            adaptive_effort=effort if use_adaptive else None
+            adaptive_effort=effort if use_adaptive else None,
+            **_routing_record_fields(routing_context),
         )
 
         return LLMResponse(
@@ -2137,6 +2151,7 @@ class AsyncAnthropicClient:
                 provider_id=self.provider_id,
                 analysis_profile="plain",
                 adaptive_effort="minimal",
+                **_routing_record_fields(routing_context),
             )
             return response
 
@@ -2177,6 +2192,7 @@ class AsyncAnthropicClient:
                 provider_id=self.provider_id,
                 analysis_profile="plain",
                 adaptive_effort=None,
+                **_routing_record_fields(routing_context),
             )
             content = "".join(block.text or "" for block in response.content)
             return LLMResponse(
@@ -2254,7 +2270,8 @@ class AsyncAnthropicClient:
             model=response.model,
             provider_id=self.provider_id,
             analysis_profile="plain" if use_adaptive else None,
-            adaptive_effort="high" if use_adaptive else None
+            adaptive_effort="high" if use_adaptive else None,
+            **_routing_record_fields(routing_context),
         )
 
         return LLMResponse(
@@ -2642,6 +2659,17 @@ class AsyncLLMRouter:
                     last_error = error
                     reason = self._retry_reason(error)
                     elapsed_seconds = time.monotonic() - started_at
+                    get_tracker().record_failure(
+                        caller=caller or "unknown",
+                        model=client.model,
+                        provider_id=client.provider_id,
+                        duration_seconds=elapsed_seconds,
+                        error_type=type(error).__name__,
+                        retry_reason=reason,
+                        attempt=attempt,
+                        same_provider_retry=same_provider_retry,
+                        fallback_from=fallback_from,
+                    )
                     if reason is not None:
                         self._record_route_failure(client, reason, error)
 

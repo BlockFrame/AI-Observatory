@@ -1,6 +1,7 @@
 """Focused regression checks for scraper and summary-pipeline resilience."""
 
 import asyncio
+import json
 import os
 import tempfile
 import unittest
@@ -9,8 +10,10 @@ from unittest.mock import MagicMock, patch
 
 from agents.analyzers.github_trending_analyzer import GitHubTrendingAnalyzer
 from agents.base import BaseAnalyzer, CollectedItem
+from agents.cost_tracker import CostTracker
 from agents.gatherers.social_gatherer import SocialGatherer
 from agents.gatherers.webscraper_gatherer import WebScraperGatherer
+from generators.json_generator import JSONGenerator
 from scripts.validate_report import validate
 
 
@@ -249,6 +252,84 @@ class CategorySummaryRoutingTests(unittest.TestCase):
             self.assertEqual(client.kwargs["max_tokens"], 4096)
 
         asyncio.run(run())
+
+
+class LLMTelemetryTests(unittest.TestCase):
+    def test_category_telemetry_reports_provider_failover_and_tokens(self):
+        tracker = CostTracker("test-model")
+        tracker.start()
+        tracker.record_failure(
+            caller="news_analyzer.batch_1",
+            model="primary-model",
+            provider_id="primary",
+            duration_seconds=2.5,
+            error_type="ConnectError",
+            retry_reason="ConnectError",
+        )
+        tracker.record_call(
+            caller="news_analyzer.batch_1",
+            usage={"input_tokens": 100, "output_tokens": 20, "thinking_tokens": 30},
+            duration_seconds=1.5,
+            model="fallback-model",
+            provider_id="fallback",
+            attempt=2,
+            fallback_from="primary",
+            retry_reason="ConnectError",
+        )
+        tracker.record_call(
+            caller="analysis.research_summary",
+            usage={"input_tokens": 50, "output_tokens": 10},
+            duration_seconds=1.0,
+            model="quality-model",
+            provider_id="quality",
+        )
+
+        telemetry = tracker.get_llm_telemetry()
+        news = telemetry["by_category"]["news"]
+        research = telemetry["by_category"]["research"]
+
+        self.assertEqual(news["status"], "recovered")
+        self.assertEqual(news["provider_attempts"], 2)
+        self.assertEqual(news["failed_attempts"], 1)
+        self.assertEqual(news["fallback_successes"], 1)
+        self.assertEqual(news["error_rate"], 0.5)
+        self.assertEqual(news["input_tokens"], 100)
+        self.assertEqual(news["thinking_tokens"], 30)
+        self.assertEqual(
+            {provider["model"] for provider in news["providers"]},
+            {"primary-model", "fallback-model"},
+        )
+        self.assertEqual(research["status"], "success")
+        self.assertEqual(telemetry["overall"]["provider_attempts"], 3)
+        self.assertEqual(telemetry["overall"]["error_rate"], 0.3333)
+
+    def test_unused_category_is_explicit(self):
+        telemetry = CostTracker("test-model").get_llm_telemetry()
+
+        self.assertEqual(telemetry["by_category"]["social"]["status"], "unused")
+        self.assertEqual(telemetry["by_category"]["social"]["provider_attempts"], 0)
+
+    def test_summary_json_publishes_llm_telemetry(self):
+        telemetry = CostTracker("test-model").get_llm_telemetry()
+        with tempfile.TemporaryDirectory() as output_dir:
+            generator = JSONGenerator(output_dir)
+            date_dir = os.path.join(output_dir, "data", "2026-08-09")
+            os.makedirs(date_dir)
+            generator._generate_summary_json(date_dir, {
+                "date": "2026-08-09",
+                "llm_telemetry": telemetry,
+                "category_reports": {
+                    "news": {"all_items": [], "category_summary": ""},
+                },
+            })
+            with open(os.path.join(date_dir, "summary.json"), encoding="utf-8") as summary_file:
+                summary = json.load(summary_file)
+
+        self.assertEqual(summary["llm_telemetry"], telemetry)
+        self.assertEqual(
+            summary["categories"]["news"]["llm_telemetry"],
+            telemetry["by_category"]["news"],
+        )
 
 
 if __name__ == "__main__":
