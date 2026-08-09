@@ -1,0 +1,1477 @@
+{
+  "category": "github_trending",
+  "date": "2026-08-09",
+  "category_summary": "Today's open-source landscape signals a decisive inflection point in enterprise AI architecture: the rapid transition from passive, chat-based LLM interactions toward fully autonomous, skill-equipped agentic workforces. As highlighted by breakout repositories like PrimeIntellect's [self-improving agent framework](/?date=2026-08-09&category=github_trending#item-a493632d11e9) and Cloudflare's [sandboxed agent compute environments](/?date=2026-08-09&category=github_trending#item-5b1fbab942a2), engineering teams are rapidly laying the foundation for agents that can reason, execute code, and operate within controlled environments over long horizons. Crucially, we are seeing the emergence of a standardized \"agent skill economy\"—backed by initiatives from engineering leaders like Addy Osmani [production-grade engineering skills](/?date=2026-08-09&category=github_trending#item-be1bb7d2c6b4) and Google [agent skills for products](/?date=2026-08-09&category=github_trending#item-e6603c4d06bc), as well as domain-ingestion tools like *book-to-skill* [turning book PDFs into skills](/?date=2026-08-09&category=github_trending#item-2f6fe5f6d2af)—which allows organizations to package proprietary knowledge and operational procedures into modular capabilities that agents can dynamically invoke. For C-level executives, this means the battleground for digital transformation is pivoting from raw model size to the richness of the tools, context, and operational sandboxes provisioned to your autonomous systems.\n\nTo deploy these multi-agent architectures safely and economically at enterprise scale, business leaders must simultaneously prioritize model-agnostic routing, cost governance, and security infrastructure. The viral adoption of unified gateways like *OmniRoute* [free AI gateway with 290+ providers](/?date=2026-08-09&category=github_trending#item-79030ad727e1) underscores a critical operational reality: enterprises require vendor-neutral control planes capable of dynamic fallback, context-compression, and cost optimization across hundreds of model providers to mitigate lock-in and manage runaway token spend. When paired with enterprise identity management (*authentik* [authentication glue](/?date=2026-08-09&category=github_trending#item-375750660459)) and deep runtime observability (*witr* [trace any process back to its source](/?date=2026-08-09&category=github_trending#item-73fbe7bbafe1)), the strategic imperative for the C-suite becomes clear. Winning with AI will not stem from training custom foundation models, but from orchestrating modular, skill-enabled agent networks backed by resilient gateway infrastructure, deterministic security controls, and rigorous execution environments.",
+  "category_summary_html": "<p>Today's open-source landscape signals a decisive inflection point in enterprise AI architecture: the rapid transition from passive, chat-based LLM interactions toward fully autonomous, skill-equipped agentic workforces. As highlighted by breakout repositories like PrimeIntellect's <a href=\"/?date=2026-08-09&amp;category=github_trending#item-a493632d11e9\" class=\"internal-link\" rel=\"noopener noreferrer\">self-improving agent framework</a> and Cloudflare's <a href=\"/?date=2026-08-09&amp;category=github_trending#item-5b1fbab942a2\" class=\"internal-link\" rel=\"noopener noreferrer\">sandboxed agent compute environments</a>, engineering teams are rapidly laying the foundation for agents that can reason, execute code, and operate within controlled environments over long horizons. Crucially, we are seeing the emergence of a standardized \"agent skill economy\"—backed by initiatives from engineering leaders like Addy Osmani <a href=\"/?date=2026-08-09&amp;category=github_trending#item-be1bb7d2c6b4\" class=\"internal-link\" rel=\"noopener noreferrer\">production-grade engineering skills</a> and Google <a href=\"/?date=2026-08-09&amp;category=github_trending#item-e6603c4d06bc\" class=\"internal-link\" rel=\"noopener noreferrer\">agent skills for products</a>, as well as domain-ingestion tools like *book-to-skill* <a href=\"/?date=2026-08-09&amp;category=github_trending#item-2f6fe5f6d2af\" class=\"internal-link\" rel=\"noopener noreferrer\">turning book PDFs into skills</a>—which allows organizations to package proprietary knowledge and operational procedures into modular capabilities that agents can dynamically invoke. For C-level executives, this means the battleground for digital transformation is pivoting from raw model size to the richness of the tools, context, and operational sandboxes provisioned to your autonomous systems.</p>\n<p>To deploy these multi-agent architectures safely and economically at enterprise scale, business leaders must simultaneously prioritize model-agnostic routing, cost governance, and security infrastructure. The viral adoption of unified gateways like *OmniRoute* <a href=\"/?date=2026-08-09&amp;category=github_trending#item-79030ad727e1\" class=\"internal-link\" rel=\"noopener noreferrer\">free AI gateway with 290+ providers</a> underscores a critical operational reality: enterprises require vendor-neutral control planes capable of dynamic fallback, context-compression, and cost optimization across hundreds of model providers to mitigate lock-in and manage runaway token spend. When paired with enterprise identity management (*authentik* <a href=\"/?date=2026-08-09&amp;category=github_trending#item-375750660459\" class=\"internal-link\" rel=\"noopener noreferrer\">authentication glue</a>) and deep runtime observability (*witr* <a href=\"/?date=2026-08-09&amp;category=github_trending#item-73fbe7bbafe1\" class=\"internal-link\" rel=\"noopener noreferrer\">trace any process back to its source</a>), the strategic imperative for the C-suite becomes clear. Winning with AI will not stem from training custom foundation models, but from orchestrating modular, skill-enabled agent networks backed by resilient gateway infrastructure, deterministic security controls, and rigorous execution environments.</p>",
+  "themes": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+      "item_count": 15,
+      "example_items": [
+        "a493632d11e9",
+        "be1bb7d2c6b4",
+        "79030ad727e1"
+      ],
+      "importance": 88.0
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+      "item_count": 4,
+      "example_items": [
+        "a493632d11e9",
+        "be1bb7d2c6b4",
+        "79030ad727e1"
+      ],
+      "importance": 85.0
+    }
+  ],
+  "total_items": 38,
+  "items": [
+    {
+      "id": "a493632d11e9",
+      "title": "[GitHub Trending] PrimeIntellect-ai/prime-agent: A self-improving RLM agent for coding workflows and long-running autonomous tasks.",
+      "content": "GitHub Repository: PrimeIntellect-ai/prime-agent\nDescription: A self-improving RLM agent for coding workflows and long-running autonomous tasks.\nLanguage: TypeScript\nStars Today: 2,483",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "author": "PrimeIntellect-ai",
+      "published": "2026-08-09T13:07:14.216428+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (2,483 stars today): GitHub Repository: PrimeIntellect-ai/prime-agent\nDescription: A self-improving RLM agent for coding workflows and long-running autonomous tasks.\nLanguage: TypeScript\nStars Today: 2,483",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (2,483 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "2,483",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.216428+00:00",
+        "hn_score": 2483,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (2,483 stars today): GitHub Repository: PrimeIntellect-ai/prime-agent</p>\n<p>Description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 2,483</p>",
+      "content_html": "<p>GitHub Repository: PrimeIntellect-ai/prime-agent</p>\n<p>Description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 2,483</p>"
+    },
+    {
+      "id": "be1bb7d2c6b4",
+      "title": "[GitHub Trending] addyosmani/agent-skills: Production-grade engineering skills for AI coding agents.",
+      "content": "GitHub Repository: addyosmani/agent-skills\nDescription: Production-grade engineering skills for AI coding agents.\nLanguage: JavaScript\nStars Today: 779",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "author": "addyosmani",
+      "published": "2026-08-09T13:07:14.218192+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source JavaScript repository (779 stars today): GitHub Repository: addyosmani/agent-skills\nDescription: Production-grade engineering skills for AI coding agents.\nLanguage: JavaScript\nStars Today: 779",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (779 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "JavaScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "779",
+        "language": "JavaScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.218192+00:00",
+        "hn_score": 779,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source JavaScript repository (779 stars today): GitHub Repository: addyosmani/agent-skills</p>\n<p>Description: Production-grade engineering skills for AI coding agents.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 779</p>",
+      "content_html": "<p>GitHub Repository: addyosmani/agent-skills</p>\n<p>Description: Production-grade engineering skills for AI coding agents.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 779</p>"
+    },
+    {
+      "id": "79030ad727e1",
+      "title": "[GitHub Trending] diegosouzapw/OmniRoute: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors",
+      "content": "GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 852",
+      "url": "https://github.com/diegosouzapw/OmniRoute",
+      "author": "diegosouzapw",
+      "published": "2026-08-09T13:07:16.297993+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (852 stars today): GitHub Repository: diegosouzapw/OmniRoute\nDescription: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline & Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors\nLanguage: TypeScript\nStars Today: 852",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (852 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "852",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.297993+00:00",
+        "hn_score": 852,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (852 stars today): GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 852</p>",
+      "content_html": "<p>GitHub Repository: diegosouzapw/OmniRoute</p>\n<p>Description: Never stop coding. Free MIT AI gateway: one endpoint, 290+ providers (90+ free), 500+ models — Kimi, Claude, GPT, OpenAI, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline &amp; Copilot. Quota-aware auto-fallback, RTK+Caveman compression saves 15-95% tokens, MCP/A2A, Desktop/PWA. Built by 500+ contributors</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 852</p>"
+    },
+    {
+      "id": "5b1fbab942a2",
+      "title": "[GitHub Trending] cloudflare/computer: Give your agent a computer 👾",
+      "content": "GitHub Repository: cloudflare/computer\nDescription: Give your agent a computer 👾\nLanguage: TypeScript\nStars Today: 1,045",
+      "url": "https://github.com/cloudflare/computer",
+      "author": "cloudflare",
+      "published": "2026-08-09T13:07:16.299222+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (1,045 stars today): GitHub Repository: cloudflare/computer\nDescription: Give your agent a computer 👾\nLanguage: TypeScript\nStars Today: 1,045",
+      "importance_score": 98,
+      "reasoning": "High community velocity on GitHub Trending (1,045 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "1,045",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.299222+00:00",
+        "hn_score": 1045,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (1,045 stars today): GitHub Repository: cloudflare/computer</p>\n<p>Description: Give your agent a computer 👾</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,045</p>",
+      "content_html": "<p>GitHub Repository: cloudflare/computer</p>\n<p>Description: Give your agent a computer 👾</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,045</p>"
+    },
+    {
+      "id": "2f6fe5f6d2af",
+      "title": "[GitHub Trending] virgiliojr94/book-to-skill: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+      "content": "GitHub Repository: virgiliojr94/book-to-skill\nDescription: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.\nLanguage: Python\nStars Today: 644",
+      "url": "https://github.com/virgiliojr94/book-to-skill",
+      "author": "virgiliojr94",
+      "published": "2026-08-09T13:07:15.143314+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (644 stars today): GitHub Repository: virgiliojr94/book-to-skill\nDescription: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.\nLanguage: Python\nStars Today: 644",
+      "importance_score": 92,
+      "reasoning": "High community velocity on GitHub Trending (644 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "644",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.143314+00:00",
+        "hn_score": 644,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (644 stars today): GitHub Repository: virgiliojr94/book-to-skill</p>\n<p>Description: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 644</p>",
+      "content_html": "<p>GitHub Repository: virgiliojr94/book-to-skill</p>\n<p>Description: Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 644</p>"
+    },
+    {
+      "id": "73fbe7bbafe1",
+      "title": "[GitHub Trending] pranshuparmar/witr: Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI.",
+      "content": "GitHub Repository: pranshuparmar/witr\nDescription: Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI.\nLanguage: Go\nStars Today: 556",
+      "url": "https://github.com/pranshuparmar/witr",
+      "author": "pranshuparmar",
+      "published": "2026-08-09T13:07:14.217565+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Go repository (556 stars today): GitHub Repository: pranshuparmar/witr\nDescription: Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI.\nLanguage: Go\nStars Today: 556",
+      "importance_score": 87,
+      "reasoning": "High community velocity on GitHub Trending (556 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Go"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "556",
+        "language": "Go",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.217565+00:00",
+        "hn_score": 556,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Go repository (556 stars today): GitHub Repository: pranshuparmar/witr</p>\n<p>Description: Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI.</p>\n<p>Language: Go</p>\n<p>Stars Today: 556</p>",
+      "content_html": "<p>GitHub Repository: pranshuparmar/witr</p>\n<p>Description: Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI.</p>\n<p>Language: Go</p>\n<p>Stars Today: 556</p>"
+    },
+    {
+      "id": "e6603c4d06bc",
+      "title": "[GitHub Trending] google/skills: Agent Skills for Google products and technologies",
+      "content": "GitHub Repository: google/skills\nDescription: Agent Skills for Google products and technologies\nLanguage: Python\nStars Today: 481",
+      "url": "https://github.com/google/skills",
+      "author": "google",
+      "published": "2026-08-09T13:07:14.219237+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (481 stars today): GitHub Repository: google/skills\nDescription: Agent Skills for Google products and technologies\nLanguage: Python\nStars Today: 481",
+      "importance_score": 84,
+      "reasoning": "High community velocity on GitHub Trending (481 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "481",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.219237+00:00",
+        "hn_score": 481,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (481 stars today): GitHub Repository: google/skills</p>\n<p>Description: Agent Skills for Google products and technologies</p>\n<p>Language: Python</p>\n<p>Stars Today: 481</p>",
+      "content_html": "<p>GitHub Repository: google/skills</p>\n<p>Description: Agent Skills for Google products and technologies</p>\n<p>Language: Python</p>\n<p>Stars Today: 481</p>"
+    },
+    {
+      "id": "375750660459",
+      "title": "[GitHub Trending] goauthentik/authentik: The authentication glue you need.",
+      "content": "GitHub Repository: goauthentik/authentik\nDescription: The authentication glue you need.\nLanguage: Python\nStars Today: 467",
+      "url": "https://github.com/goauthentik/authentik",
+      "author": "goauthentik",
+      "published": "2026-08-09T13:07:14.218929+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (467 stars today): GitHub Repository: goauthentik/authentik\nDescription: The authentication glue you need.\nLanguage: Python\nStars Today: 467",
+      "importance_score": 83,
+      "reasoning": "High community velocity on GitHub Trending (467 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "467",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.218929+00:00",
+        "hn_score": 467,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (467 stars today): GitHub Repository: goauthentik/authentik</p>\n<p>Description: The authentication glue you need.</p>\n<p>Language: Python</p>\n<p>Stars Today: 467</p>",
+      "content_html": "<p>GitHub Repository: goauthentik/authentik</p>\n<p>Description: The authentication glue you need.</p>\n<p>Language: Python</p>\n<p>Stars Today: 467</p>"
+    },
+    {
+      "id": "1381817a42f0",
+      "title": "[GitHub Trending] msitarzewski/agency-agents: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
+      "content": "GitHub Repository: msitarzewski/agency-agents\nDescription: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.\nLanguage: Shell\nStars Today: 446",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "author": "msitarzewski",
+      "published": "2026-08-09T13:07:14.217188+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Shell repository (446 stars today): GitHub Repository: msitarzewski/agency-agents\nDescription: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.\nLanguage: Shell\nStars Today: 446",
+      "importance_score": 82,
+      "reasoning": "High community velocity on GitHub Trending (446 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Shell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "446",
+        "language": "Shell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.217188+00:00",
+        "hn_score": 446,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Shell repository (446 stars today): GitHub Repository: msitarzewski/agency-agents</p>\n<p>Description: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 446</p>",
+      "content_html": "<p>GitHub Repository: msitarzewski/agency-agents</p>\n<p>Description: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 446</p>"
+    },
+    {
+      "id": "7d3e332df8c3",
+      "title": "[GitHub Trending] Comfy-Org/ComfyUI: The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
+      "content": "GitHub Repository: Comfy-Org/ComfyUI\nDescription: The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.\nLanguage: Python\nStars Today: 333",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "author": "Comfy-Org",
+      "published": "2026-08-09T13:07:14.219567+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (333 stars today): GitHub Repository: Comfy-Org/ComfyUI\nDescription: The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.\nLanguage: Python\nStars Today: 333",
+      "importance_score": 76,
+      "reasoning": "High community velocity on GitHub Trending (333 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "333",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.219567+00:00",
+        "hn_score": 333,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (333 stars today): GitHub Repository: Comfy-Org/ComfyUI</p>\n<p>Description: The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.</p>\n<p>Language: Python</p>\n<p>Stars Today: 333</p>",
+      "content_html": "<p>GitHub Repository: Comfy-Org/ComfyUI</p>\n<p>Description: The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.</p>\n<p>Language: Python</p>\n<p>Stars Today: 333</p>"
+    },
+    {
+      "id": "3da98ac03565",
+      "title": "[GitHub Trending] ZhuLinsen/daily_stock_analysis: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+      "content": "GitHub Repository: ZhuLinsen/daily_stock_analysis\nDescription: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.\nLanguage: Python\nStars Today: 287",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "author": "ZhuLinsen",
+      "published": "2026-08-09T13:07:14.218570+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (287 stars today): GitHub Repository: ZhuLinsen/daily_stock_analysis\nDescription: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.\nLanguage: Python\nStars Today: 287",
+      "importance_score": 74,
+      "reasoning": "High community velocity on GitHub Trending (287 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "287",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.218570+00:00",
+        "hn_score": 287,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (287 stars today): GitHub Repository: ZhuLinsen/daily_stock_analysis</p>\n<p>Description: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.</p>\n<p>Language: Python</p>\n<p>Stars Today: 287</p>",
+      "content_html": "<p>GitHub Repository: ZhuLinsen/daily_stock_analysis</p>\n<p>Description: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.</p>\n<p>Language: Python</p>\n<p>Stars Today: 287</p>"
+    },
+    {
+      "id": "a73d197b00cd",
+      "title": "[GitHub Trending] Significant-Gravitas/AutoGPT: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+      "content": "GitHub Repository: Significant-Gravitas/AutoGPT\nDescription: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.\nLanguage: Python\nStars Today: 218",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "author": "Significant-Gravitas",
+      "published": "2026-08-09T13:07:15.144941+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (218 stars today): GitHub Repository: Significant-Gravitas/AutoGPT\nDescription: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.\nLanguage: Python\nStars Today: 218",
+      "importance_score": 70,
+      "reasoning": "High community velocity on GitHub Trending (218 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "218",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.144941+00:00",
+        "hn_score": 218,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (218 stars today): GitHub Repository: Significant-Gravitas/AutoGPT</p>\n<p>Description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.</p>\n<p>Language: Python</p>\n<p>Stars Today: 218</p>",
+      "content_html": "<p>GitHub Repository: Significant-Gravitas/AutoGPT</p>\n<p>Description: AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.</p>\n<p>Language: Python</p>\n<p>Stars Today: 218</p>"
+    },
+    {
+      "id": "b7fbd3571cf4",
+      "title": "[GitHub Trending] garrytan/gstack: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
+      "content": "GitHub Repository: garrytan/gstack\nDescription: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA\nLanguage: TypeScript\nStars Today: 210",
+      "url": "https://github.com/garrytan/gstack",
+      "author": "garrytan",
+      "published": "2026-08-09T13:07:16.303067+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (210 stars today): GitHub Repository: garrytan/gstack\nDescription: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA\nLanguage: TypeScript\nStars Today: 210",
+      "importance_score": 70,
+      "reasoning": "High community velocity on GitHub Trending (210 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "210",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.303067+00:00",
+        "hn_score": 210,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (210 stars today): GitHub Repository: garrytan/gstack</p>\n<p>Description: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 210</p>",
+      "content_html": "<p>GitHub Repository: garrytan/gstack</p>\n<p>Description: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 210</p>"
+    },
+    {
+      "id": "f5afe9df2b01",
+      "title": "[GitHub Trending] pingdotgg/t3code",
+      "content": "GitHub Repository: pingdotgg/t3code\nDescription: \nLanguage: TypeScript\nStars Today: 182",
+      "url": "https://github.com/pingdotgg/t3code",
+      "author": "pingdotgg",
+      "published": "2026-08-09T13:07:14.220187+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (182 stars today): GitHub Repository: pingdotgg/t3code\nDescription: \nLanguage: TypeScript\nStars Today: 182",
+      "importance_score": 69,
+      "reasoning": "High community velocity on GitHub Trending (182 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "182",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.220187+00:00",
+        "hn_score": 182,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (182 stars today): GitHub Repository: pingdotgg/t3code</p>\n<p>Description:</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 182</p>",
+      "content_html": "<p>GitHub Repository: pingdotgg/t3code</p>\n<p>Description:</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 182</p>"
+    },
+    {
+      "id": "8537c308f6de",
+      "title": "[GitHub Trending] JCodesMore/ai-website-cloner-template: Clone any website with one command using AI coding agents",
+      "content": "GitHub Repository: JCodesMore/ai-website-cloner-template\nDescription: Clone any website with one command using AI coding agents\nLanguage: TypeScript\nStars Today: 166",
+      "url": "https://github.com/JCodesMore/ai-website-cloner-template",
+      "author": "JCodesMore",
+      "published": "2026-08-09T13:07:16.298363+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (166 stars today): GitHub Repository: JCodesMore/ai-website-cloner-template\nDescription: Clone any website with one command using AI coding agents\nLanguage: TypeScript\nStars Today: 166",
+      "importance_score": 68,
+      "reasoning": "High community velocity on GitHub Trending (166 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "166",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.298363+00:00",
+        "hn_score": 166,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (166 stars today): GitHub Repository: JCodesMore/ai-website-cloner-template</p>\n<p>Description: Clone any website with one command using AI coding agents</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 166</p>",
+      "content_html": "<p>GitHub Repository: JCodesMore/ai-website-cloner-template</p>\n<p>Description: Clone any website with one command using AI coding agents</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 166</p>"
+    },
+    {
+      "id": "d844b580adde",
+      "title": "[GitHub Trending] openclaw/openclaw: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+      "content": "GitHub Repository: openclaw/openclaw\nDescription: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞\nLanguage: TypeScript\nStars Today: 170",
+      "url": "https://github.com/openclaw/openclaw",
+      "author": "openclaw",
+      "published": "2026-08-09T13:07:16.298826+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (170 stars today): GitHub Repository: openclaw/openclaw\nDescription: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞\nLanguage: TypeScript\nStars Today: 170",
+      "importance_score": 68,
+      "reasoning": "High community velocity on GitHub Trending (170 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "170",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.298826+00:00",
+        "hn_score": 170,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (170 stars today): GitHub Repository: openclaw/openclaw</p>\n<p>Description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 170</p>",
+      "content_html": "<p>GitHub Repository: openclaw/openclaw</p>\n<p>Description: Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 170</p>"
+    },
+    {
+      "id": "74abd965f8a2",
+      "title": "[GitHub Trending] KunAgent/Kun: Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.",
+      "content": "GitHub Repository: KunAgent/Kun\nDescription: Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.\nLanguage: TypeScript\nStars Today: 168",
+      "url": "https://github.com/KunAgent/Kun",
+      "author": "KunAgent",
+      "published": "2026-08-09T13:07:16.302401+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (168 stars today): GitHub Repository: KunAgent/Kun\nDescription: Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.\nLanguage: TypeScript\nStars Today: 168",
+      "importance_score": 68,
+      "reasoning": "High community velocity on GitHub Trending (168 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "168",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.302401+00:00",
+        "hn_score": 168,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (168 stars today): GitHub Repository: KunAgent/Kun</p>\n<p>Description: Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 168</p>",
+      "content_html": "<p>GitHub Repository: KunAgent/Kun</p>\n<p>Description: Local-first AI agent workspace for coding, writing, design, research, and automation — one runtime for desktop GUI and TUI.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 168</p>"
+    },
+    {
+      "id": "01b438f523cb",
+      "title": "[GitHub Trending] TauricResearch/TradingAgents: TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "content": "GitHub Repository: TauricResearch/TradingAgents\nDescription: TradingAgents: Multi-Agents LLM Financial Trading Framework\nLanguage: Python\nStars Today: 153",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "author": "TauricResearch",
+      "published": "2026-08-09T13:07:15.145219+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (153 stars today): GitHub Repository: TauricResearch/TradingAgents\nDescription: TradingAgents: Multi-Agents LLM Financial Trading Framework\nLanguage: Python\nStars Today: 153",
+      "importance_score": 67,
+      "reasoning": "High community velocity on GitHub Trending (153 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "153",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.145219+00:00",
+        "hn_score": 153,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (153 stars today): GitHub Repository: TauricResearch/TradingAgents</p>\n<p>Description: TradingAgents: Multi-Agents LLM Financial Trading Framework</p>\n<p>Language: Python</p>\n<p>Stars Today: 153</p>",
+      "content_html": "<p>GitHub Repository: TauricResearch/TradingAgents</p>\n<p>Description: TradingAgents: Multi-Agents LLM Financial Trading Framework</p>\n<p>Language: Python</p>\n<p>Stars Today: 153</p>"
+    },
+    {
+      "id": "ce98e8843c45",
+      "title": "[GitHub Trending] stanfordnlp/dspy: DSPy: The framework for programming—not prompting—language models",
+      "content": "GitHub Repository: stanfordnlp/dspy\nDescription: DSPy: The framework for programming—not prompting—language models\nLanguage: Python\nStars Today: 114",
+      "url": "https://github.com/stanfordnlp/dspy",
+      "author": "stanfordnlp",
+      "published": "2026-08-09T13:07:15.144656+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (114 stars today): GitHub Repository: stanfordnlp/dspy\nDescription: DSPy: The framework for programming—not prompting—language models\nLanguage: Python\nStars Today: 114",
+      "importance_score": 65,
+      "reasoning": "High community velocity on GitHub Trending (114 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "114",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.144656+00:00",
+        "hn_score": 114,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (114 stars today): GitHub Repository: stanfordnlp/dspy</p>\n<p>Description: DSPy: The framework for programming—not prompting—language models</p>\n<p>Language: Python</p>\n<p>Stars Today: 114</p>",
+      "content_html": "<p>GitHub Repository: stanfordnlp/dspy</p>\n<p>Description: DSPy: The framework for programming—not prompting—language models</p>\n<p>Language: Python</p>\n<p>Stars Today: 114</p>"
+    },
+    {
+      "id": "4a1047f100d5",
+      "title": "[GitHub Trending] CodebuffAI/freebuff: The free coding agent",
+      "content": "GitHub Repository: CodebuffAI/freebuff\nDescription: The free coding agent\nLanguage: TypeScript\nStars Today: 106",
+      "url": "https://github.com/CodebuffAI/freebuff",
+      "author": "CodebuffAI",
+      "published": "2026-08-09T13:07:16.303356+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (106 stars today): GitHub Repository: CodebuffAI/freebuff\nDescription: The free coding agent\nLanguage: TypeScript\nStars Today: 106",
+      "importance_score": 65,
+      "reasoning": "High community velocity on GitHub Trending (106 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "106",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.303356+00:00",
+        "hn_score": 106,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (106 stars today): GitHub Repository: CodebuffAI/freebuff</p>\n<p>Description: The free coding agent</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 106</p>",
+      "content_html": "<p>GitHub Repository: CodebuffAI/freebuff</p>\n<p>Description: The free coding agent</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 106</p>"
+    },
+    {
+      "id": "cc7155b29697",
+      "title": "[GitHub Trending] vectorize-io/hindsight: Hindsight: Agent Memory That Learns",
+      "content": "GitHub Repository: vectorize-io/hindsight\nDescription: Hindsight: Agent Memory That Learns\nLanguage: Python\nStars Today: 81",
+      "url": "https://github.com/vectorize-io/hindsight",
+      "author": "vectorize-io",
+      "published": "2026-08-09T13:07:15.144308+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (81 stars today): GitHub Repository: vectorize-io/hindsight\nDescription: Hindsight: Agent Memory That Learns\nLanguage: Python\nStars Today: 81",
+      "importance_score": 64,
+      "reasoning": "High community velocity on GitHub Trending (81 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "81",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.144308+00:00",
+        "hn_score": 81,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (81 stars today): GitHub Repository: vectorize-io/hindsight</p>\n<p>Description: Hindsight: Agent Memory That Learns</p>\n<p>Language: Python</p>\n<p>Stars Today: 81</p>",
+      "content_html": "<p>GitHub Repository: vectorize-io/hindsight</p>\n<p>Description: Hindsight: Agent Memory That Learns</p>\n<p>Language: Python</p>\n<p>Stars Today: 81</p>"
+    },
+    {
+      "id": "1645eedf77d2",
+      "title": "[GitHub Trending] browseros-ai/BrowserOS: 🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.",
+      "content": "GitHub Repository: browseros-ai/BrowserOS\nDescription: 🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.\nLanguage: TypeScript\nStars Today: 81",
+      "url": "https://github.com/browseros-ai/BrowserOS",
+      "author": "browseros-ai",
+      "published": "2026-08-09T13:07:16.300925+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (81 stars today): GitHub Repository: browseros-ai/BrowserOS\nDescription: 🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.\nLanguage: TypeScript\nStars Today: 81",
+      "importance_score": 64,
+      "reasoning": "High community velocity on GitHub Trending (81 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "81",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.300925+00:00",
+        "hn_score": 81,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (81 stars today): GitHub Repository: browseros-ai/BrowserOS</p>\n<p>Description: 🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 81</p>",
+      "content_html": "<p>GitHub Repository: browseros-ai/BrowserOS</p>\n<p>Description: 🌐 The open-source Agentic browser; alternative to ChatGPT Atlas, Perplexity Comet, Dia.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 81</p>"
+    },
+    {
+      "id": "67aff0372e48",
+      "title": "[GitHub Trending] Mininglamp-OSS/octo-web: Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.",
+      "content": "GitHub Repository: Mininglamp-OSS/octo-web\nDescription: Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.\nLanguage: TypeScript\nStars Today: 82",
+      "url": "https://github.com/Mininglamp-OSS/octo-web",
+      "author": "Mininglamp-OSS",
+      "published": "2026-08-09T13:07:16.302779+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (82 stars today): GitHub Repository: Mininglamp-OSS/octo-web\nDescription: Web & desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.\nLanguage: TypeScript\nStars Today: 82",
+      "importance_score": 64,
+      "reasoning": "High community velocity on GitHub Trending (82 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "82",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.302779+00:00",
+        "hn_score": 82,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (82 stars today): GitHub Repository: Mininglamp-OSS/octo-web</p>\n<p>Description: Web &amp; desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 82</p>",
+      "content_html": "<p>GitHub Repository: Mininglamp-OSS/octo-web</p>\n<p>Description: Web &amp; desktop (Electron) client for the OCTO open workplace — one React + TypeScript codebase shipping browser and PC surfaces, with first-class AI agent UX.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 82</p>"
+    },
+    {
+      "id": "bda9d86a331e",
+      "title": "[GitHub Trending] DayuanJiang/next-ai-draw-io: A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.",
+      "content": "GitHub Repository: DayuanJiang/next-ai-draw-io\nDescription: A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.\nLanguage: TypeScript\nStars Today: 86",
+      "url": "https://github.com/DayuanJiang/next-ai-draw-io",
+      "author": "DayuanJiang",
+      "published": "2026-08-09T13:07:16.304142+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (86 stars today): GitHub Repository: DayuanJiang/next-ai-draw-io\nDescription: A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.\nLanguage: TypeScript\nStars Today: 86",
+      "importance_score": 64,
+      "reasoning": "High community velocity on GitHub Trending (86 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "86",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.304142+00:00",
+        "hn_score": 86,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (86 stars today): GitHub Repository: DayuanJiang/next-ai-draw-io</p>\n<p>Description: A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 86</p>",
+      "content_html": "<p>GitHub Repository: DayuanJiang/next-ai-draw-io</p>\n<p>Description: A next.js web application that integrates AI capabilities with draw.io diagrams. This app allows you to create, modify, and enhance diagrams through natural language commands and AI-assisted visualization.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 86</p>"
+    },
+    {
+      "id": "0d8b86966122",
+      "title": "[GitHub Trending] funstory-ai/BabelDOC: Yet Another Document Translator",
+      "content": "GitHub Repository: funstory-ai/BabelDOC\nDescription: Yet Another Document Translator\nLanguage: Python\nStars Today: 69",
+      "url": "https://github.com/funstory-ai/BabelDOC",
+      "author": "funstory-ai",
+      "published": "2026-08-09T13:07:15.142883+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (69 stars today): GitHub Repository: funstory-ai/BabelDOC\nDescription: Yet Another Document Translator\nLanguage: Python\nStars Today: 69",
+      "importance_score": 63,
+      "reasoning": "High community velocity on GitHub Trending (69 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "69",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.142883+00:00",
+        "hn_score": 69,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (69 stars today): GitHub Repository: funstory-ai/BabelDOC</p>\n<p>Description: Yet Another Document Translator</p>\n<p>Language: Python</p>\n<p>Stars Today: 69</p>",
+      "content_html": "<p>GitHub Repository: funstory-ai/BabelDOC</p>\n<p>Description: Yet Another Document Translator</p>\n<p>Language: Python</p>\n<p>Stars Today: 69</p>"
+    },
+    {
+      "id": "9c670531b74d",
+      "title": "[GitHub Trending] yikart/AiToEarn: Let's use AI to Earn!",
+      "content": "GitHub Repository: yikart/AiToEarn\nDescription: Let's use AI to Earn!\nLanguage: TypeScript\nStars Today: 77",
+      "url": "https://github.com/yikart/AiToEarn",
+      "author": "yikart",
+      "published": "2026-08-09T13:07:16.301678+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (77 stars today): GitHub Repository: yikart/AiToEarn\nDescription: Let's use AI to Earn!\nLanguage: TypeScript\nStars Today: 77",
+      "importance_score": 63,
+      "reasoning": "High community velocity on GitHub Trending (77 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "77",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.301678+00:00",
+        "hn_score": 77,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (77 stars today): GitHub Repository: yikart/AiToEarn</p>\n<p>Description: Let's use AI to Earn!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 77</p>",
+      "content_html": "<p>GitHub Repository: yikart/AiToEarn</p>\n<p>Description: Let's use AI to Earn!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 77</p>"
+    },
+    {
+      "id": "d33ffecd6760",
+      "title": "[GitHub Trending] vitali87/code-graph-rag: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs",
+      "content": "GitHub Repository: vitali87/code-graph-rag\nDescription: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs\nLanguage: Python\nStars Today: 59",
+      "url": "https://github.com/vitali87/code-graph-rag",
+      "author": "vitali87",
+      "published": "2026-08-09T13:07:14.216817+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (59 stars today): GitHub Repository: vitali87/code-graph-rag\nDescription: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs\nLanguage: Python\nStars Today: 59",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (59 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "59",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.216817+00:00",
+        "hn_score": 59,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (59 stars today): GitHub Repository: vitali87/code-graph-rag</p>\n<p>Description: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</p>\n<p>Language: Python</p>\n<p>Stars Today: 59</p>",
+      "content_html": "<p>GitHub Repository: vitali87/code-graph-rag</p>\n<p>Description: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</p>\n<p>Language: Python</p>\n<p>Stars Today: 59</p>"
+    },
+    {
+      "id": "5bde546144bb",
+      "title": "[GitHub Trending] google-deepmind/weathernext",
+      "content": "GitHub Repository: google-deepmind/weathernext\nDescription: \nLanguage: Python\nStars Today: 55",
+      "url": "https://github.com/google-deepmind/weathernext",
+      "author": "google-deepmind",
+      "published": "2026-08-09T13:07:14.217871+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (55 stars today): GitHub Repository: google-deepmind/weathernext\nDescription: \nLanguage: Python\nStars Today: 55",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (55 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "55",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.217871+00:00",
+        "hn_score": 55,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (55 stars today): GitHub Repository: google-deepmind/weathernext</p>\n<p>Description:</p>\n<p>Language: Python</p>\n<p>Stars Today: 55</p>",
+      "content_html": "<p>GitHub Repository: google-deepmind/weathernext</p>\n<p>Description:</p>\n<p>Language: Python</p>\n<p>Stars Today: 55</p>"
+    },
+    {
+      "id": "ff6aa546e194",
+      "title": "[GitHub Trending] harveyai/harvey-labs: A benchmark built to evaluate and improve agent capabilities for supporting legal work.",
+      "content": "GitHub Repository: harveyai/harvey-labs\nDescription: A benchmark built to evaluate and improve agent capabilities for supporting legal work.\nLanguage: Python\nStars Today: 47",
+      "url": "https://github.com/harveyai/harvey-labs",
+      "author": "harveyai",
+      "published": "2026-08-09T13:07:14.219878+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (47 stars today): GitHub Repository: harveyai/harvey-labs\nDescription: A benchmark built to evaluate and improve agent capabilities for supporting legal work.\nLanguage: Python\nStars Today: 47",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (47 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "47",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:14.219878+00:00",
+        "hn_score": 47,
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (47 stars today): GitHub Repository: harveyai/harvey-labs</p>\n<p>Description: A benchmark built to evaluate and improve agent capabilities for supporting legal work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 47</p>",
+      "content_html": "<p>GitHub Repository: harveyai/harvey-labs</p>\n<p>Description: A benchmark built to evaluate and improve agent capabilities for supporting legal work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 47</p>"
+    },
+    {
+      "id": "5aa824a1228d",
+      "title": "[GitHub Trending] MervinPraison/PraisonAI: PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents that research, plan, code, and execute tasks. Deployed in 5 lines of code with built-in memory, RAG, and support for 100+ LLMs.",
+      "content": "GitHub Repository: MervinPraison/PraisonAI\nDescription: PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents that research, plan, code, and execute tasks. Deployed in 5 lines of code with built-in memory, RAG, and support for 100+ LLMs.\nLanguage: Python\nStars Today: 49",
+      "url": "https://github.com/MervinPraison/PraisonAI",
+      "author": "MervinPraison",
+      "published": "2026-08-09T13:07:15.144017+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (49 stars today): GitHub Repository: MervinPraison/PraisonAI\nDescription: PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents that research, plan, code, and execute tasks. Deployed in 5 lines of code with built-in memory, RAG, and support for 100+ LLMs.\nLanguage: Python\nStars Today: 49",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (49 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "49",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.144017+00:00",
+        "hn_score": 49,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (49 stars today): GitHub Repository: MervinPraison/PraisonAI</p>\n<p>Description: PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents that research, plan, code, and execute tasks. Deployed in 5 lines of code with built-in memory, RAG, and support for 100+ LLMs.</p>\n<p>Language: Python</p>\n<p>Stars Today: 49</p>",
+      "content_html": "<p>GitHub Repository: MervinPraison/PraisonAI</p>\n<p>Description: PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents that research, plan, code, and execute tasks. Deployed in 5 lines of code with built-in memory, RAG, and support for 100+ LLMs.</p>\n<p>Language: Python</p>\n<p>Stars Today: 49</p>"
+    },
+    {
+      "id": "9f9e41685ade",
+      "title": "[GitHub Trending] fosrl/pangolin: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.",
+      "content": "GitHub Repository: fosrl/pangolin\nDescription: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.\nLanguage: TypeScript\nStars Today: 54",
+      "url": "https://github.com/fosrl/pangolin",
+      "author": "fosrl",
+      "published": "2026-08-09T13:07:16.300182+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (54 stars today): GitHub Repository: fosrl/pangolin\nDescription: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.\nLanguage: TypeScript\nStars Today: 54",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (54 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "54",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.300182+00:00",
+        "hn_score": 54,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (54 stars today): GitHub Repository: fosrl/pangolin</p>\n<p>Description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 54</p>",
+      "content_html": "<p>GitHub Repository: fosrl/pangolin</p>\n<p>Description: Identity-aware VPN and tunneled reverse proxy for remote access based on WireGuard®.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 54</p>"
+    },
+    {
+      "id": "23b501bf8208",
+      "title": "[GitHub Trending] amruthpillai/reactive-resume: A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!",
+      "content": "GitHub Repository: amruthpillai/reactive-resume\nDescription: A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!\nLanguage: TypeScript\nStars Today: 47",
+      "url": "https://github.com/amruthpillai/reactive-resume",
+      "author": "amruthpillai",
+      "published": "2026-08-09T13:07:16.300523+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (47 stars today): GitHub Repository: amruthpillai/reactive-resume\nDescription: A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!\nLanguage: TypeScript\nStars Today: 47",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (47 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "47",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.300523+00:00",
+        "hn_score": 47,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (47 stars today): GitHub Repository: amruthpillai/reactive-resume</p>\n<p>Description: A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 47</p>",
+      "content_html": "<p>GitHub Repository: amruthpillai/reactive-resume</p>\n<p>Description: A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 47</p>"
+    },
+    {
+      "id": "055e3b0ec3b0",
+      "title": "[GitHub Trending] danielmiessler/LifeOS: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.",
+      "content": "GitHub Repository: danielmiessler/LifeOS\nDescription: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.\nLanguage: TypeScript\nStars Today: 57",
+      "url": "https://github.com/danielmiessler/LifeOS",
+      "author": "danielmiessler",
+      "published": "2026-08-09T13:07:16.301390+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (57 stars today): GitHub Repository: danielmiessler/LifeOS\nDescription: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.\nLanguage: TypeScript\nStars Today: 57",
+      "importance_score": 62,
+      "reasoning": "High community velocity on GitHub Trending (57 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "57",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.301390+00:00",
+        "hn_score": 57,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (57 stars today): GitHub Repository: danielmiessler/LifeOS</p>\n<p>Description: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 57</p>",
+      "content_html": "<p>GitHub Repository: danielmiessler/LifeOS</p>\n<p>Description: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 57</p>"
+    },
+    {
+      "id": "fcc62375d95b",
+      "title": "[GitHub Trending] vladmandic/sdnext: SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing",
+      "content": "GitHub Repository: vladmandic/sdnext\nDescription: SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing\nLanguage: Python\nStars Today: 28",
+      "url": "https://github.com/vladmandic/sdnext",
+      "author": "vladmandic",
+      "published": "2026-08-09T13:07:15.143644+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source Python repository (28 stars today): GitHub Repository: vladmandic/sdnext\nDescription: SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing\nLanguage: Python\nStars Today: 28",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (28 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "28",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:15.143644+00:00",
+        "hn_score": 28,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source Python repository (28 stars today): GitHub Repository: vladmandic/sdnext</p>\n<p>Description: SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>",
+      "content_html": "<p>GitHub Repository: vladmandic/sdnext</p>\n<p>Description: SD.Next: All-in-one WebUI for AI generative image and video creation, captioning and processing</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>"
+    },
+    {
+      "id": "30a4ed8e44ac",
+      "title": "[GitHub Trending] lissy93/web-check: 🕵️‍♂️ All-in-one OSINT tool for analysing any website",
+      "content": "GitHub Repository: lissy93/web-check\nDescription: 🕵️‍♂️ All-in-one OSINT tool for analysing any website\nLanguage: TypeScript\nStars Today: 24",
+      "url": "https://github.com/lissy93/web-check",
+      "author": "lissy93",
+      "published": "2026-08-09T13:07:16.303812+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (24 stars today): GitHub Repository: lissy93/web-check\nDescription: 🕵️‍♂️ All-in-one OSINT tool for analysing any website\nLanguage: TypeScript\nStars Today: 24",
+      "importance_score": 61,
+      "reasoning": "High community velocity on GitHub Trending (24 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "24",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.303812+00:00",
+        "hn_score": 24,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (24 stars today): GitHub Repository: lissy93/web-check</p>\n<p>Description: 🕵️‍♂️ All-in-one OSINT tool for analysing any website</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 24</p>",
+      "content_html": "<p>GitHub Repository: lissy93/web-check</p>\n<p>Description: 🕵️‍♂️ All-in-one OSINT tool for analysing any website</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 24</p>"
+    },
+    {
+      "id": "5a0a1695dccf",
+      "title": "[GitHub Trending] nitrojs/nitro: Next Generation Server Toolkit. Create web servers with everything you need and deploy them wherever you prefer.",
+      "content": "GitHub Repository: nitrojs/nitro\nDescription: Next Generation Server Toolkit. Create web servers with everything you need and deploy them wherever you prefer.\nLanguage: TypeScript\nStars Today: 7",
+      "url": "https://github.com/nitrojs/nitro",
+      "author": "nitrojs",
+      "published": "2026-08-09T13:07:16.299565+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (7 stars today): GitHub Repository: nitrojs/nitro\nDescription: Next Generation Server Toolkit. Create web servers with everything you need and deploy them wherever you prefer.\nLanguage: TypeScript\nStars Today: 7",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (7 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "7",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.299565+00:00",
+        "hn_score": 7,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (7 stars today): GitHub Repository: nitrojs/nitro</p>\n<p>Description: Next Generation Server Toolkit. Create web servers with everything you need and deploy them wherever you prefer.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 7</p>",
+      "content_html": "<p>GitHub Repository: nitrojs/nitro</p>\n<p>Description: Next Generation Server Toolkit. Create web servers with everything you need and deploy them wherever you prefer.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 7</p>"
+    },
+    {
+      "id": "b1a7a189b2e4",
+      "title": "[GitHub Trending] github/docs: The open-source repo for docs.github.com",
+      "content": "GitHub Repository: github/docs\nDescription: The open-source repo for docs.github.com\nLanguage: TypeScript\nStars Today: 14",
+      "url": "https://github.com/github/docs",
+      "author": "github",
+      "published": "2026-08-09T13:07:16.299850+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (14 stars today): GitHub Repository: github/docs\nDescription: The open-source repo for docs.github.com\nLanguage: TypeScript\nStars Today: 14",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (14 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "14",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.299850+00:00",
+        "hn_score": 14,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (14 stars today): GitHub Repository: github/docs</p>\n<p>Description: The open-source repo for docs.github.com</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 14</p>",
+      "content_html": "<p>GitHub Repository: github/docs</p>\n<p>Description: The open-source repo for docs.github.com</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 14</p>"
+    },
+    {
+      "id": "b338bcac0b23",
+      "title": "[GitHub Trending] InsForge/InsForge: The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.",
+      "content": "GitHub Repository: InsForge/InsForge\nDescription: The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.\nLanguage: TypeScript\nStars Today: 14",
+      "url": "https://github.com/InsForge/InsForge",
+      "author": "InsForge",
+      "published": "2026-08-09T13:07:16.302012+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "Trending open-source TypeScript repository (14 stars today): GitHub Repository: InsForge/InsForge\nDescription: The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.\nLanguage: TypeScript\nStars Today: 14",
+      "importance_score": 60,
+      "reasoning": "High community velocity on GitHub Trending (14 stars today).",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "stars": 0,
+        "stars_today": "14",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-09T13:07:16.302012+00:00",
+        "hn_score": 14,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Trending open-source TypeScript repository (14 stars today): GitHub Repository: InsForge/InsForge</p>\n<p>Description: The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 14</p>",
+      "content_html": "<p>GitHub Repository: InsForge/InsForge</p>\n<p>Description: The all-in-one, open-source backend platform for agentic coding. InsForge gives your coding agent database, auth, storage, compute, hosting, and AI gateway to ship full-stack apps end-to-end.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 14</p>"
+    }
+  ]
+}
