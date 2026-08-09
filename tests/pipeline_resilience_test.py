@@ -2,8 +2,10 @@
 
 import asyncio
 import os
+import tempfile
 import unittest
 from types import SimpleNamespace
+from unittest.mock import MagicMock, patch
 
 from agents.analyzers.github_trending_analyzer import GitHubTrendingAnalyzer
 from agents.base import BaseAnalyzer, CollectedItem
@@ -29,6 +31,29 @@ class ScraperResilienceTests(unittest.TestCase):
             SocialGatherer._extract_tweet_urls(tweet),
             ["https://example.com/article"],
         )
+
+    def test_twitter_search_uses_at_most_twenty_accounts_and_logs_empty_chunks(self):
+        with tempfile.TemporaryDirectory() as config_dir:
+            with open(os.path.join(config_dir, "twitter_accounts.txt"), "w") as accounts_file:
+                accounts_file.write("\n".join(f"account{index}" for index in range(21)))
+
+            gatherer = SocialGatherer(config_dir=config_dir, target_date="2026-08-08")
+            response = MagicMock()
+            response.json.return_value = {"tweets": []}
+
+            with patch("agents.gatherers.social_gatherer.GETXAPI_KEY", "test-key"), \
+                 patch("agents.gatherers.social_gatherer.requests.get", return_value=response) as get, \
+                 patch("agents.gatherers.social_gatherer.time.sleep"), \
+                 self.assertLogs("agents.gatherers.social_gatherer", "WARNING") as logs:
+                tweets = gatherer._twitter_search(gatherer.twitter_users)
+
+        self.assertEqual(tweets, [])
+        self.assertEqual(get.call_count, 2)
+        self.assertTrue(all(
+            call.kwargs["params"]["q"].count("from:") <= 20
+            for call in get.call_args_list
+        ))
+        self.assertTrue(any("returned no tweets" in message for message in logs.output))
 
     def test_truncated_scraper_array_recovers_complete_objects(self):
         content = (

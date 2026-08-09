@@ -54,7 +54,6 @@ jobs:
       ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-4.8-opus-aws' }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
       NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       # Telegram delivery intentionally disabled until explicitly re-enabled.
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -202,7 +201,6 @@ jobs:
           GETXAPI_KEY: ""
           GEMINI_API_KEY: "unit-test-key"
           NVIDIA_API_KEY: "unit-test-key"
-          ZHIPU_API_KEY: "unit-test-key"
           OPENROUTER_API_KEY: "unit-test-key"
           LLM_LOG_REQUESTS: "false"
           LLM_METRICS_PATH: ""

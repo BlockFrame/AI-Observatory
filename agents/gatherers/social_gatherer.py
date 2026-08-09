@@ -191,8 +191,10 @@ class SocialGatherer(BaseGatherer):
         if not usernames:
             return []
 
-        # Build search query chunks (max ~25 users per query)
-        max_users = 25
+        # X silently returns an empty result set when a query exceeds its
+        # approximately 22-23 operator limit. Reserve two operators for the
+        # date range, leaving at most 20 `from:` clauses per request.
+        max_users = 20
         chunks = [usernames[i:i + max_users] for i in range(0, len(usernames), max_users)]
 
         # Format dates for search
@@ -235,6 +237,11 @@ class SocialGatherer(BaseGatherer):
                         tweets_data = data.get('data', {}).get('tweets', [])
 
                     if not tweets_data:
+                        logger.warning(
+                            "GetXAPI returned no tweets for Twitter search chunk "
+                            f"{chunk_idx + 1}/{len(chunks)} "
+                            f"({len(chunk)} accounts, page {page + 1})"
+                        )
                         break
 
                     # GetXAPI bills per call; track tweet count for metrics.

@@ -1198,6 +1198,7 @@ class AsyncAnthropicClient:
             "response_max_tokens",
             "thinking_blocks",
             "attempt",
+            "same_provider_retry",
             "fallback_from",
             "retry_reason",
             "message_count",
@@ -2542,6 +2543,34 @@ class AsyncLLMRouter:
 
         return None
 
+    @staticmethod
+    def _should_retry_same_provider(
+        error: Exception,
+        reason: Optional[str],
+        elapsed_seconds: float,
+    ) -> bool:
+        """Retry once only for fast transient failures on the current route.
+
+        Full request timeouts, rate limits, quota exhaustion, removed models,
+        and compatibility errors should fail over immediately. Retrying those
+        on the same provider only adds latency or consumes another paid call.
+        """
+        if elapsed_seconds > 30.0:
+            return False
+        if isinstance(error, (
+            httpx.TimeoutException,
+            anthropic.APITimeoutError,
+            openai.APITimeoutError,
+        )):
+            return False
+        if isinstance(error, (
+            httpx.ConnectError,
+            anthropic.APIConnectionError,
+            openai.APIConnectionError,
+        )):
+            return True
+        return reason in {"http_500", "http_502", "http_503", "http_504"}
+
     async def _call_with_failover(
         self,
         method_name: str,
@@ -2589,59 +2618,82 @@ class AsyncLLMRouter:
                     caller or "unknown",
                 )
                 continue
-            routing_context = {
-                "attempt": attempt,
-                "fallback_from": fallback_from,
-                "retry_reason": retry_reason,
-            }
-            try:
-                response = await getattr(client, method_name)(
-                    **call_kwargs,
-                    routing_context=routing_context,
-                )
-                self._record_route_success(client)
-                return response
-            except Exception as error:
-                last_error = error
-                reason = self._retry_reason(error)
-                if reason is not None:
-                    self._record_route_failure(client, reason, error)
-                
-                base_url_info = getattr(client, "base_url", None) or "default"
-                logger.error(
-                    f"❌ [LLM ENDPOINT FAIL] Route: '{client.provider_id}' | Model: '{client.model}' | "
-                    f"BaseURL: '{base_url_info}' | Error: {type(error).__name__}: {error}"
-                )
-                
-                # Prefer the configured route chain for every retryable provider
-                # failure. Previously this was limited to quota/429 errors, so
-                # OpenAI-compatible timeouts could wander to an unrelated route
-                # (or abort before failover altogether).
-                if getattr(client, "fallback_route_id", None) and reason is not None:
-                    fallback_id = client.fallback_route_id
-                    fallback_client = next((c for c in self.clients if getattr(c, "provider_id", None) == fallback_id), None)
-                    if fallback_client and fallback_client in ordered_clients:
-                        try:
-                            ordered_clients.remove(fallback_client)
-                            ordered_clients.insert(attempt, fallback_client)
-                            logger.warning(
-                                f"⚡ [ROUTE FALLBACK] Route '{client.provider_id}' failed "
-                                f"({reason}). Activating fallback route: '{fallback_id}'"
-                            )
-                        except ValueError:
-                            pass
-                
-                if reason is None or attempt >= len(ordered_clients):
-                    raise
+            same_provider_retry = 0
+            while True:
+                routing_context = {
+                    "attempt": attempt,
+                    "same_provider_retry": same_provider_retry,
+                    "fallback_from": fallback_from,
+                    "retry_reason": retry_reason,
+                }
+                started_at = time.monotonic()
+                try:
+                    response = await getattr(client, method_name)(
+                        **call_kwargs,
+                        routing_context=routing_context,
+                    )
+                    self._record_route_success(client)
+                    return response
+                except Exception as error:
+                    last_error = error
+                    reason = self._retry_reason(error)
+                    elapsed_seconds = time.monotonic() - started_at
+                    if reason is not None:
+                        self._record_route_failure(client, reason, error)
 
-                logger.warning(
-                    "Retrying LLM call on another provider after %s failed: %s: %s",
-                    client.provider_id,
-                    type(error).__name__,
-                    error,
-                )
-                fallback_from = client.provider_id
-                retry_reason = reason
+                    if same_provider_retry == 0 and self._should_retry_same_provider(
+                        error,
+                        reason,
+                        elapsed_seconds,
+                    ):
+                        same_provider_retry = 1
+                        retry_reason = reason
+                        logger.warning(
+                            "Retrying LLM call once on the same provider %s after "
+                            "%s failed in %.1fs",
+                            client.provider_id,
+                            reason,
+                            elapsed_seconds,
+                        )
+                        await asyncio.sleep(0.25)
+                        continue
+                
+                    base_url_info = getattr(client, "base_url", None) or "default"
+                    logger.error(
+                        f"❌ [LLM ENDPOINT FAIL] Route: '{client.provider_id}' | Model: '{client.model}' | "
+                        f"BaseURL: '{base_url_info}' | Error: {type(error).__name__}: {error}"
+                    )
+                
+                    # Prefer the configured route chain for every retryable provider
+                    # failure. Previously this was limited to quota/429 errors, so
+                    # OpenAI-compatible timeouts could wander to an unrelated route
+                    # (or abort before failover altogether).
+                    if getattr(client, "fallback_route_id", None) and reason is not None:
+                        fallback_id = client.fallback_route_id
+                        fallback_client = next((c for c in self.clients if getattr(c, "provider_id", None) == fallback_id), None)
+                        if fallback_client and fallback_client in ordered_clients:
+                            try:
+                                ordered_clients.remove(fallback_client)
+                                ordered_clients.insert(attempt, fallback_client)
+                                logger.warning(
+                                    f"⚡ [ROUTE FALLBACK] Route '{client.provider_id}' failed "
+                                    f"({reason}). Activating fallback route: '{fallback_id}'"
+                                )
+                            except ValueError:
+                                pass
+                
+                    if reason is None or attempt >= len(ordered_clients):
+                        raise
+
+                    logger.warning(
+                        "Retrying LLM call on another provider after %s failed: %s: %s",
+                        client.provider_id,
+                        type(error).__name__,
+                        error,
+                    )
+                    fallback_from = client.provider_id
+                    retry_reason = reason
+                    break
 
         if last_error is not None:
             raise last_error

@@ -5,12 +5,14 @@ import json
 import os
 import unittest
 from types import SimpleNamespace
+from unittest.mock import patch
 
 import httpx
 import openai
 from pydantic import ValidationError
 
 from agents.config.schema import LLMProviderConfig, LLMRouteConfig
+from agents.config.loader import load_config
 from agents.llm_client import (
     AsyncAnthropicClient,
     AsyncLLMRouter,
@@ -104,6 +106,60 @@ class HTTP400UnsupportedParameter(Exception):
 
 
 class LLMRouteConfigTests(unittest.TestCase):
+    def test_production_routes_keep_bulk_and_quality_chains_separate(self):
+        with patch.dict(
+            os.environ,
+            {"GEMINI_API_KEY": "test-key", "NVIDIA_API_KEY": "test-key"},
+        ):
+            config = load_config("config")
+
+        routes = {route.id: route for route in config.llm.get_route_configs()}
+        self.assertNotIn("glm-bulk", routes)
+        self.assertEqual(
+            routes["nvidia-nemotron-bulk"].fallback_route_id,
+            "gemini-bulk-fallback",
+        )
+        self.assertIn(
+            "link_enricher.*",
+            routes["nvidia-glm-quality"].caller_patterns,
+        )
+        self.assertNotIn(
+            "link_enricher.*",
+            routes["gemini-quality-fallback"].caller_patterns,
+        )
+
+        async def verify_routing():
+            router = AsyncLLMRouter([
+                FakeRouteClient(
+                    route.id,
+                    model=route.model,
+                    route_profiles=route.profiles,
+                    caller_patterns=route.caller_patterns,
+                    fallback_route_id=route.fallback_route_id,
+                )
+                for route in routes.values()
+            ])
+            link = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "links"}],
+                profile=ThinkingLevel.STANDARD,
+                caller="link_enricher.executive_summary",
+            )
+            summary = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "summary"}],
+                profile=ThinkingLevel.DEEP,
+                caller="orchestrator.executive_summary",
+            )
+            bulk = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "batch"}],
+                profile=ThinkingLevel.STANDARD,
+                caller="news_analyzer.batch_1",
+            )
+            self.assertEqual(link.content, "nvidia-glm-quality")
+            self.assertEqual(summary.content, "gemini-quality-fallback")
+            self.assertEqual(bulk.content, "nvidia-nemotron-bulk")
+
+        asyncio.run(verify_routing())
+
     def test_single_model_config_normalizes_to_one_route(self):
         config = LLMProviderConfig(
             mode="openai-compatible",
@@ -336,7 +392,7 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_retryable_failure_falls_back_to_another_provider(self):
+    def test_fast_connection_failure_retries_same_provider_once(self):
         async def run():
             aws = FakeRouteClient("aws", failures=[httpx.ConnectError("boom")])
             gcp = FakeRouteClient("gcp")
@@ -345,12 +401,54 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
             response = await router.call(messages=[{"role": "user", "content": "hi"}])
 
+            self.assertEqual(response.content, "aws")
+            self.assertEqual(len(aws.calls), 2)
+            self.assertEqual(len(gcp.calls), 0)
+            self.assertEqual(
+                aws.calls[1]["routing_context"]["same_provider_retry"],
+                1,
+            )
+            self.assertEqual(
+                aws.calls[1]["routing_context"]["retry_reason"],
+                "ConnectError",
+            )
+
+        asyncio.run(run())
+
+    def test_second_fast_connection_failure_falls_back(self):
+        async def run():
+            aws = FakeRouteClient(
+                "aws",
+                failures=[httpx.ConnectError("first"), httpx.ConnectError("second")],
+            )
+            gcp = FakeRouteClient("gcp")
+            router = AsyncLLMRouter([aws, gcp])
+
+            response = await router.call(messages=[{"role": "user", "content": "hi"}])
+
             self.assertEqual(response.content, "gcp")
-            self.assertEqual(len(aws.calls), 1)
+            self.assertEqual(len(aws.calls), 2)
             self.assertEqual(len(gcp.calls), 1)
             self.assertEqual(gcp.calls[0]["routing_context"]["attempt"], 2)
             self.assertEqual(gcp.calls[0]["routing_context"]["fallback_from"], "aws")
             self.assertEqual(gcp.calls[0]["routing_context"]["retry_reason"], "ConnectError")
+
+        asyncio.run(run())
+
+    def test_explicit_chain_root_starts_each_new_call(self):
+        async def run():
+            primary = FakeRouteClient("primary", fallback_route_id="fallback")
+            fallback = FakeRouteClient("fallback")
+            router = AsyncLLMRouter([primary, fallback])
+
+            responses = [
+                await router.call(messages=[{"role": "user", "content": str(index)}])
+                for index in range(3)
+            ]
+
+            self.assertEqual([response.content for response in responses], ["primary"] * 3)
+            self.assertEqual(len(primary.calls), 3)
+            self.assertEqual(len(fallback.calls), 0)
 
         asyncio.run(run())
 
@@ -368,6 +466,7 @@ class AsyncLLMRouterTests(unittest.TestCase):
             response = await router.call(messages=[{"role": "user", "content": "hi"}])
 
             self.assertEqual(response.content, "preferred-fallback")
+            self.assertEqual(len(primary.calls), 1)
             self.assertEqual(len(unrelated.calls), 0)
             self.assertEqual(
                 preferred.calls[0]["routing_context"]["retry_reason"],

@@ -66,8 +66,9 @@ llm:
   # Request timeout in seconds (1-600)
   timeout: 600
 
-  # Optional multi-provider routing. When present, async LLM calls rotate
-  # across routes and retryable provider failures fail over to another route.
+  # Optional multi-provider routing. Explicit fallback chains always start at
+  # their root route. Fast connection/5xx failures retry that route once;
+  # timeouts, quota/rate-limit errors, and removed models fail over immediately.
   # Each route inherits mode, api_key, base_url, timeout, and max_output_tokens
   # unless overridden. The async LLM request cap applies per route, so three
   # routes with LLM_MAX_CONCURRENT_REQUESTS=8 can run up to 24 LLM calls.
@@ -90,6 +91,7 @@ llm:
   #     # requests_per_day: 20
   #     # profiles: ["DEEP", "ULTRATHINK"]
   #     # caller_patterns: ["orchestrator.*", "*_analyzer.reduce_rank"]
+  #     # fallback_route_id: "gcp"
 
   # Optional quota limits. Route-level values override these defaults.
   # requests_per_minute: 15
