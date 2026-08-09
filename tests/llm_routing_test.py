@@ -1,11 +1,13 @@
 """Focused tests for Opus 4.8 adaptive thinking and async LLM routing."""
 
 import asyncio
+import json
 import os
 import unittest
 from types import SimpleNamespace
 
 import httpx
+import openai
 from pydantic import ValidationError
 
 from agents.config.schema import LLMProviderConfig, LLMRouteConfig
@@ -830,6 +832,82 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(glm["top_p"], 1)
             self.assertEqual(glm["seed"], 42)
             self.assertNotIn("extra_body", glm)
+
+        asyncio.run(run())
+
+    def test_openai_sdk_serializes_nvidia_payloads_on_the_wire(self):
+        async def run():
+            request_bodies = []
+
+            async def handler(request):
+                body = json.loads(request.content)
+                request_bodies.append(body)
+                return httpx.Response(
+                    200,
+                    json={
+                        "id": "chatcmpl-test",
+                        "object": "chat.completion",
+                        "created": 0,
+                        "model": body["model"],
+                        "choices": [{
+                            "index": 0,
+                            "message": {
+                                "role": "assistant",
+                                "content": '{"ok": true}',
+                            },
+                            "finish_reason": "stop",
+                        }],
+                        "usage": {
+                            "prompt_tokens": 10,
+                            "completion_tokens": 5,
+                            "total_tokens": 15,
+                        },
+                    },
+                )
+
+            mock_http = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+            sdk_client = openai.AsyncOpenAI(
+                base_url="https://integrate.api.nvidia.com/v1",
+                api_key="test-key",
+                http_client=mock_http,
+                max_retries=0,
+            )
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://integrate.api.nvidia.com/v1",
+                model="nvidia/nemotron-3-nano-30b-a3b",
+                mode="openai-compatible",
+                max_retries=0,
+            )
+            await client._openai_client.close()
+            client._openai_client = sdk_client
+            client.log_requests = False
+            try:
+                await client._create_openai_completion(
+                    model="nvidia/nemotron-3-nano-30b-a3b",
+                    messages=[{"role": "user", "content": "analyze"}],
+                    max_tokens=16384,
+                    temperature=1.0,
+                    thinking={"type": "enabled", "budget_tokens": 8192},
+                )
+                await client._create_openai_completion(
+                    model="z-ai/glm-5.2",
+                    messages=[{"role": "user", "content": "rank"}],
+                    max_tokens=16384,
+                    temperature=1.0,
+                )
+            finally:
+                await client.close()
+
+            nemotron, glm = request_bodies
+            self.assertEqual(nemotron["max_tokens"], 16384)
+            self.assertEqual(nemotron["reasoning_budget"], 8192)
+            self.assertNotIn("max_thinking_tokens", nemotron)
+            self.assertNotIn("max_completion_tokens", nemotron)
+            self.assertEqual(glm["max_tokens"], 16384)
+            self.assertEqual(glm["top_p"], 1)
+            self.assertEqual(glm["seed"], 42)
+            self.assertNotIn("output_config", glm)
 
         asyncio.run(run())
 

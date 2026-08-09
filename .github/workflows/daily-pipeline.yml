@@ -193,6 +193,25 @@ jobs:
           fi
           echo "API keys verified."
 
+      - name: Run pipeline regression tests before paid API calls
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        env:
+          # Regression tests use mocks. Explicitly shadow production secrets so
+          # a future test cannot accidentally consume provider or GetX quota.
+          GETXAPI_KEY: ""
+          GEMINI_API_KEY: "unit-test-key"
+          NVIDIA_API_KEY: "unit-test-key"
+          ZHIPU_API_KEY: "unit-test-key"
+          OPENROUTER_API_KEY: "unit-test-key"
+          LLM_LOG_REQUESTS: "false"
+          LLM_METRICS_PATH: ""
+        run: |
+          set -euo pipefail
+          python3 -m unittest \
+            tests.llm_routing_test \
+            tests.pipeline_resilience_test
+
       - name: Start Mullvad tunnel for hosted egress
         if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == ''
         shell: bash
