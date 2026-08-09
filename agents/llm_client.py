@@ -426,7 +426,13 @@ def _uses_adaptive_thinking(model: str) -> bool:
     alias space: claude-opus-4-8, claude-4.8-opus, claude-opus-4-8-20260416,
     claude-4.6-opus-aws, etc.
     """
-    match = re.search(r'(\d+)[-.](\d+)', model.lower())
+    normalized = model.lower()
+    # Adaptive thinking is an Anthropic Opus capability, not a generic model
+    # version rule. Without this guard, z-ai/glm-5.2 was misclassified solely
+    # because 5.2 is numerically greater than 4.7.
+    if "claude" not in normalized or "opus" not in normalized:
+        return False
+    match = re.search(r'(\d+)[-.](\d+)', normalized)
     if not match:
         return False
     major, minor = int(match.group(1)), int(match.group(2))
@@ -1556,7 +1562,10 @@ class AsyncAnthropicClient:
             payload["top_p"] = 1
             if thinking_budget > 0:
                 payload["extra_body"] = payload.get("extra_body", {})
-                payload["extra_body"]["max_thinking_tokens"] = thinking_budget
+                # The hosted integrate.api.nvidia.com endpoint accepts
+                # ``reasoning_budget``. ``max_thinking_tokens`` is exposed by
+                # some self-hosted NIM deployments but is rejected by hosted NIM.
+                payload["extra_body"]["reasoning_budget"] = thinking_budget
         elif "nvidia.com" in self.base_url and kwargs["model"] == "z-ai/glm-5.2":
             # Match the provider's recommended hosted-endpoint parameters.
             payload["top_p"] = 1
@@ -2011,11 +2020,11 @@ class AsyncAnthropicClient:
 
         # Only enforce thinking-block presence on the manual path; see
         # the sync method for rationale.
-        expects_thinking_blocks = (
-            self.mode == "anthropic"
-            or "deepseek" in self.model
-            or "nemotron-3-nano" in self.model
-        )
+        # Anthropic native responses have a stable thinking-block contract.
+        # OpenAI-compatible providers expose reasoning inconsistently (for
+        # example reasoning_content, reasoning, <think>, or content only), so a
+        # valid visible response must not be rejected for missing metadata.
+        expects_thinking_blocks = self.mode == "anthropic"
         if (
             not use_adaptive
             and manual_budget_tokens > 0
@@ -2374,7 +2383,12 @@ class AsyncLLMRouter:
         state["failures"] += 1
         state["consecutive_failures"] += 1
         state["last_error"] = f"{type(error).__name__}: {error}"
-        if reason in {"http_404", "http_410", "provider_rpd_exhausted"}:
+        if reason in {
+            "http_404",
+            "http_410",
+            "provider_rpd_exhausted",
+            "request_compatibility_http_400",
+        }:
             state["disabled_reason"] = reason
             logger.warning(
                 "LLM route %s disabled for this run after %s",
@@ -2519,6 +2533,8 @@ class AsyncLLMRouter:
             )):
                 return "provider_rpd_exhausted"
             return "http_429"
+        if status_code == 400 and "unsupported parameter" in str(error).lower():
+            return "request_compatibility_http_400"
         if status_code in {404, 410}:
             return f"http_{status_code}"
         if isinstance(status_code, int) and status_code >= 500:

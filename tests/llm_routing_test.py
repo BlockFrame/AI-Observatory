@@ -3,6 +3,7 @@
 import asyncio
 import os
 import unittest
+from types import SimpleNamespace
 
 import httpx
 from pydantic import ValidationError
@@ -94,6 +95,10 @@ class HTTP410(Exception):
 
 class HTTP429RPD(Exception):
     status_code = 429
+
+
+class HTTP400UnsupportedParameter(Exception):
+    status_code = 400
 
 
 class LLMRouteConfigTests(unittest.TestCase):
@@ -200,6 +205,15 @@ class LLMRouteConfigTests(unittest.TestCase):
         ):
             with self.subTest(model=model):
                 self.assertTrue(_uses_adaptive_thinking(model))
+
+    def test_non_claude_version_numbers_do_not_enable_adaptive_thinking(self):
+        for model in (
+            "z-ai/glm-5.2",
+            "nvidia/nemotron-3-nano-30b-a3b",
+            "gemini-3.6-flash",
+        ):
+            with self.subTest(model=model):
+                self.assertFalse(_uses_adaptive_thinking(model))
 
 
 class AsyncLLMRouterTests(unittest.TestCase):
@@ -430,6 +444,25 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(
                 router.get_health_snapshot()["limited"]["disabled_reason"],
                 "provider_rpd_exhausted",
+            )
+
+        asyncio.run(run())
+
+    def test_unsupported_provider_parameter_fails_over_and_disables_route(self):
+        async def run():
+            incompatible = FakeRouteClient(
+                "incompatible",
+                failures=[HTTP400UnsupportedParameter("Unsupported parameter(s): output_config")],
+            )
+            fallback = FakeRouteClient("fallback")
+            router = AsyncLLMRouter([incompatible, fallback])
+
+            response = await router.call(messages=[{"role": "user", "content": "hi"}])
+
+            self.assertEqual(response.content, "fallback")
+            self.assertEqual(
+                router.get_health_snapshot()["incompatible"]["disabled_reason"],
+                "request_compatibility_http_400",
             )
 
         asyncio.run(run())
@@ -671,6 +704,132 @@ class AsyncLLMRouterTests(unittest.TestCase):
             self.assertEqual(captured_kwargs["model"], "nvidia/nemotron-3-ultra-550b-a55b:free")
             self.assertEqual(captured_context["kind"], "openrouter_chat")
             self.assertEqual(captured_context["analysis_profile"], "QUICK")
+
+        asyncio.run(run())
+
+    def test_glm_52_does_not_receive_opus_output_config(self):
+        async def run():
+            captured_kwargs = {}
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://integrate.api.nvidia.com/v1",
+                model="z-ai/glm-5.2",
+                mode="openai-compatible",
+                max_output_tokens=16384,
+                max_retries=0,
+            )
+
+            async def fake_create_message(request_context=None, **kwargs):
+                captured_kwargs.update(kwargs)
+                return FakeAnthropicResponse()
+
+            client._create_message = fake_create_message
+            try:
+                await client.call_with_thinking(
+                    messages=[{"role": "user", "content": "rank"}],
+                    profile=ThinkingLevel.DEEP,
+                    caller="news_analyzer.reduce_rank",
+                )
+            finally:
+                await client.close()
+
+            self.assertNotIn("extra_body", captured_kwargs)
+            self.assertEqual(captured_kwargs["temperature"], 1.0)
+            self.assertEqual(captured_kwargs["model"], "z-ai/glm-5.2")
+
+        asyncio.run(run())
+
+    def test_nemotron_accepts_valid_content_without_separate_reasoning_block(self):
+        async def run():
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://integrate.api.nvidia.com/v1",
+                model="nvidia/nemotron-3-nano-30b-a3b",
+                mode="openai-compatible",
+                max_output_tokens=16384,
+                max_retries=0,
+            )
+
+            async def fake_create_message(request_context=None, **kwargs):
+                return FakeAnthropicResponse()
+
+            client._create_message = fake_create_message
+            try:
+                response = await client.call_with_thinking(
+                    messages=[{"role": "user", "content": "analyze"}],
+                    profile=ThinkingLevel.STANDARD,
+                    caller="news_analyzer.batch_0",
+                )
+            finally:
+                await client.close()
+
+            self.assertEqual(response.content, "ok")
+            self.assertEqual(response.thinking_block_count, 0)
+
+        asyncio.run(run())
+
+    def test_nvidia_hosted_payloads_use_supported_parameters(self):
+        async def run():
+            captured_payloads = []
+
+            class FakeCompletions:
+                async def create(self, **kwargs):
+                    captured_payloads.append(kwargs)
+                    return SimpleNamespace(
+                        choices=[SimpleNamespace(
+                            message=SimpleNamespace(
+                                content='{"ok": true}',
+                                model_extra={"reasoning_content": "reasoning"},
+                            ),
+                            finish_reason="stop",
+                        )],
+                        usage=SimpleNamespace(prompt_tokens=10, completion_tokens=5),
+                        model=kwargs["model"],
+                    )
+
+            class FakeOpenAI:
+                def __init__(self):
+                    self.chat = SimpleNamespace(completions=FakeCompletions())
+
+                async def close(self):
+                    return None
+
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://integrate.api.nvidia.com/v1",
+                model="nvidia/nemotron-3-nano-30b-a3b",
+                mode="openai-compatible",
+                max_retries=0,
+            )
+            await client._openai_client.close()
+            client._openai_client = FakeOpenAI()
+            client.log_requests = False
+            try:
+                await client._create_openai_completion(
+                    model="nvidia/nemotron-3-nano-30b-a3b",
+                    messages=[{"role": "user", "content": "analyze"}],
+                    max_tokens=16384,
+                    temperature=1.0,
+                    thinking={"type": "enabled", "budget_tokens": 8192},
+                )
+                await client._create_openai_completion(
+                    model="z-ai/glm-5.2",
+                    messages=[{"role": "user", "content": "rank"}],
+                    max_tokens=16384,
+                    temperature=1.0,
+                )
+            finally:
+                await client.close()
+
+            nemotron, glm = captured_payloads
+            self.assertEqual(nemotron["max_tokens"], 16384)
+            self.assertNotIn("max_completion_tokens", nemotron)
+            self.assertEqual(nemotron["extra_body"], {"reasoning_budget": 8192})
+            self.assertNotIn("max_thinking_tokens", nemotron["extra_body"])
+            self.assertEqual(glm["max_tokens"], 16384)
+            self.assertEqual(glm["top_p"], 1)
+            self.assertEqual(glm["seed"], 42)
+            self.assertNotIn("extra_body", glm)
 
         asyncio.run(run())
 

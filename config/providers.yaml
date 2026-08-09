@@ -58,7 +58,7 @@ llm:
       api_key: "${NVIDIA_API_KEY}"
       base_url: "https://integrate.api.nvidia.com/v1"
       model: "z-ai/glm-5.2"
-      timeout: 90
+      timeout: 180
       max_output_tokens: 16384
       max_concurrent_requests: 1
       requests_per_minute: 30
