@@ -89,6 +89,7 @@ llm:
   #     # requests_per_minute: 5
   #     # tokens_per_minute: 250000
   #     # requests_per_day: 20
+  #     # priority: 100  # Higher values are attempted first
   #     # profiles: ["DEEP", "ULTRATHINK"]
   #     # caller_patterns: ["orchestrator.*", "*_analyzer.reduce_rank"]
   #     # fallback_route_id: "gcp"

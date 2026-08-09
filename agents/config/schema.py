@@ -50,6 +50,12 @@ class LLMRouteConfig(BaseModel):
         default=None,
         description="ID of the preferred fallback route for transport, quota, unavailable-model, 429, and 5xx failures"
     )
+    priority: int = Field(
+        default=0,
+        ge=0,
+        le=1000,
+        description="Higher values are attempted first among otherwise eligible routes"
+    )
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = Field(
         default=None,
         description="Analysis profiles eligible for this route"
@@ -193,6 +199,7 @@ class LLMProviderConfig(BaseModel):
                     requests_per_minute=self.requests_per_minute,
                     tokens_per_minute=self.tokens_per_minute,
                     requests_per_day=self.requests_per_day,
+                    priority=0,
                     profiles=None,
                     caller_patterns=None,
                 )
@@ -211,6 +218,7 @@ class LLMProviderConfig(BaseModel):
                 requests_per_minute=route.requests_per_minute or self.requests_per_minute,
                 tokens_per_minute=route.tokens_per_minute or self.tokens_per_minute,
                 requests_per_day=route.requests_per_day or self.requests_per_day,
+                priority=route.priority,
                 profiles=route.profiles,
                 caller_patterns=route.caller_patterns,
                 fallback_route_id=route.fallback_route_id,
@@ -233,6 +241,7 @@ class ResolvedLLMRouteConfig(BaseModel):
     requests_per_minute: Optional[int] = None
     tokens_per_minute: Optional[int] = None
     requests_per_day: Optional[int] = None
+    priority: int = 0
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = None
     caller_patterns: Optional[List[str]] = None
     fallback_route_id: Optional[str] = None

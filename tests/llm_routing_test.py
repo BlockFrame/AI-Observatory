@@ -61,6 +61,7 @@ class FakeRouteClient:
         route_profiles=None,
         caller_patterns=None,
         fallback_route_id=None,
+        route_priority=0,
     ):
         self.provider_id = provider_id
         self.model = model or f"claude-4.8-opus-{provider_id}"
@@ -70,6 +71,7 @@ class FakeRouteClient:
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
         self.fallback_route_id = fallback_route_id
+        self.route_priority = route_priority
 
     async def call(self, **kwargs):
         self.calls.append(kwargs)
@@ -119,6 +121,10 @@ class LLMRouteConfigTests(unittest.TestCase):
             routes["nvidia-nemotron-bulk"].fallback_route_id,
             "gemini-bulk-fallback",
         )
+        self.assertEqual(
+            routes["gemini-quality-fallback"].fallback_route_id,
+            "nvidia-glm-orchestration-backup",
+        )
         self.assertIn(
             "link_enricher.*",
             routes["nvidia-glm-quality"].caller_patterns,
@@ -136,6 +142,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                     route_profiles=route.profiles,
                     caller_patterns=route.caller_patterns,
                     fallback_route_id=route.fallback_route_id,
+                    route_priority=route.priority,
                 )
                 for route in routes.values()
             ])
@@ -159,6 +166,39 @@ class LLMRouteConfigTests(unittest.TestCase):
             self.assertEqual(bulk.content, "nvidia-nemotron-bulk")
 
         asyncio.run(verify_routing())
+
+        async def verify_orchestration_fallback():
+            clients = []
+            for route in routes.values():
+                failures = (
+                    [ProviderQuotaExhaustedError("20 RPD")]
+                    if route.id == "gemini-quality-fallback"
+                    else None
+                )
+                clients.append(FakeRouteClient(
+                    route.id,
+                    model=route.model,
+                    failures=failures,
+                    route_profiles=route.profiles,
+                    caller_patterns=route.caller_patterns,
+                    fallback_route_id=route.fallback_route_id,
+                    route_priority=route.priority,
+                ))
+            router = AsyncLLMRouter(clients)
+            first = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "summary"}],
+                profile=ThinkingLevel.DEEP,
+                caller="orchestrator.executive_summary",
+            )
+            second = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "topics"}],
+                profile=ThinkingLevel.ULTRATHINK,
+                caller="orchestrator.topics",
+            )
+            self.assertEqual(first.content, "nvidia-glm-orchestration-backup")
+            self.assertEqual(second.content, "nvidia-glm-orchestration-backup")
+
+        asyncio.run(verify_orchestration_fallback())
 
     def test_single_model_config_normalizes_to_one_route(self):
         config = LLMProviderConfig(
@@ -226,6 +266,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 LLMRouteConfig(
                     id="quality",
                     model="gemini-3.6-flash",
+                    priority=100,
                     fallback_route_id="bulk",
                     requests_per_minute=5,
                     requests_per_day=20,
@@ -246,6 +287,7 @@ class LLMRouteConfigTests(unittest.TestCase):
         self.assertEqual(route.requests_per_minute, 5)
         self.assertEqual(route.tokens_per_minute, 250000)
         self.assertEqual(route.requests_per_day, 20)
+        self.assertEqual(route.priority, 100)
         self.assertEqual(route.profiles, ["DEEP", "ULTRATHINK"])
         self.assertEqual(route.fallback_route_id, "bulk")
 

@@ -1057,6 +1057,7 @@ class AsyncAnthropicClient:
         route_profiles: Optional[List[str]] = None,
         caller_patterns: Optional[List[str]] = None,
         fallback_route_id: Optional[str] = None,
+        route_priority: int = 0,
     ):
         default_api_key_env = (
             'OPENROUTER_API_KEY' if mode == "openrouter"
@@ -1098,6 +1099,7 @@ class AsyncAnthropicClient:
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
         self.fallback_route_id = fallback_route_id
+        self.route_priority = route_priority
         self._rate_limiter = _get_rate_limiter(
             self.mode,
             self.base_url or "",
@@ -1718,6 +1720,7 @@ class AsyncAnthropicClient:
             route_profiles=config.profiles,
             caller_patterns=config.caller_patterns,
             fallback_route_id=config.fallback_route_id,
+            route_priority=config.priority,
         )
 
     async def _create_gemini_completion(
@@ -2493,10 +2496,11 @@ class AsyncLLMRouter:
                 + (2 if is_chain_root else 0)
                 + (1 if route_profiles else 0)
             )
-            scored.append((score, position, client))
+            priority = int(getattr(client, "route_priority", 0))
+            scored.append((priority, score, position, client))
 
-        scored.sort(key=lambda item: (-item[0], item[1]))
-        return [client for _, _, client in scored]
+        scored.sort(key=lambda item: (-item[0], -item[1], item[2]))
+        return [client for _, _, _, client in scored]
 
     @staticmethod
     def _retry_reason(error: Exception) -> Optional[str]:
