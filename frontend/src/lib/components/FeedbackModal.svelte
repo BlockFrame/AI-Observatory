@@ -65,6 +65,7 @@
     }
 
     // Handle Escape key
+    /** @param {KeyboardEvent} event */
     function handleKeydown(event) {
         if (event.key === 'Escape' && isOpen) {
             close();

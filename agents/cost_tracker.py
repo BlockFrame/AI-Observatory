@@ -36,6 +36,12 @@ class ModelPricing(Enum):
     HAIKU_4_5_INPUT = 1.00
     HAIKU_4_5_OUTPUT = 5.00
 
+    # OpenRouter promotional GLM 5.2 pricing observed through /api/v1/models
+    # on 2026-08-09. Keep this route-specific so NVIDIA-hosted GLM remains $0.
+    OPENROUTER_GLM_5_2_INPUT = 0.07
+    OPENROUTER_GLM_5_2_OUTPUT = 0.22
+    OPENROUTER_GLM_5_2_CACHE_HIT = 0.013
+
 
 @dataclass
 class APICallRecord:
@@ -404,8 +410,15 @@ class CostTracker:
         # Costs are per million tokens
         mtok = 1_000_000
         model = (record.model or "").lower()
-        if model.startswith("gemini-"):
+        provider_id = (record.provider_id or "").lower()
+        if provider_id == "openrouter-glm-complex" and model == "z-ai/glm-5.2":
+            input_price = ModelPricing.OPENROUTER_GLM_5_2_INPUT.value
+            output_price = ModelPricing.OPENROUTER_GLM_5_2_OUTPUT.value
+            cache_write_price = 0.0
+            cache_hit_price = ModelPricing.OPENROUTER_GLM_5_2_CACHE_HIT.value
+        elif model.startswith("gemini-") or provider_id.startswith("nvidia-"):
             # This project targets the quota-limited Google AI Studio tier.
+            # NVIDIA NIM routes are also currently used without token billing.
             # Keep usage visible without incorrectly applying Claude pricing.
             input_price = output_price = cache_write_price = cache_hit_price = 0.0
         else:

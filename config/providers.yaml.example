@@ -193,13 +193,13 @@ pipeline:
 #   base_url: "https://news.your-domain.com"
 #   lookback_hours: 24
 #
-# Example: Direct OpenRouter free model
+# Example: Direct OpenRouter model
 # llm:
 #   mode: "openrouter"
 #   api_key: "${OPENROUTER_API_KEY}"
 #   base_url: "https://openrouter.ai/api/v1"
-#   model: "nvidia/nemotron-3-ultra-550b-a55b:free"
-#   max_output_tokens: 16384
+#   model: "z-ai/glm-5.2"
+#   max_output_tokens: 32768
 #   timeout: 600
 #
 # Example: Native Gemini routing for Google AI Studio quotas
@@ -225,6 +225,5 @@ pipeline:
 #       requests_per_day: 20
 #       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
 #       caller_patterns:
-#         - "orchestrator.*"
-#         - "*_analyzer.reduce_rank"
-#         - "link_enricher.*"
+#         - "orchestrator.topics"
+#         - "orchestrator.summary"

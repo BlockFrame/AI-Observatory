@@ -252,7 +252,8 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - Target audience: enterprise C-level executives and AI leaders.
+      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
       - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
       - Use **bold** for companies, model names, and key metrics.
       - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
@@ -361,7 +362,8 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - Target audience: enterprise C-level executives and AI leaders.
+      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
       - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
       - Use **bold** for companies, model names, and key metrics.
       - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
@@ -473,9 +475,17 @@ analysis:
       4. Timeliness and relevance
       5. Uniqueness of perspective
 
-      Return your ranking as JSON:
+      Return your ranking as valid JSON only:
+      ```json
+      {
+        "top_25": ["id1", "id2", "id3"],
+        "category_summary": "Structured executive summary using markdown formatting (see rules below)"
+      }
+      ```
+
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+      - Target audience: enterprise C-level executives and AI leaders.
+      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
       - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
       - Use **bold** for companies, model names, and key metrics.
       - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
@@ -488,7 +498,7 @@ analysis:
   github_trending:
     # Available variables: ${items_text}
     summary: |
-      You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout open-source AI repositories from GitHub Trending for enterprise C-level executives.
+      You are an enterprise AI strategy advisor analyzing today's breakout open-source AI repositories from GitHub Trending for C-level executives.
 
       Top Trending Repositories Today:
       ${items_text}
@@ -502,7 +512,7 @@ analysis:
 orchestration:
   # Available variables: ${context}
   topic_detection: |
-    You are a Senior Partner at QuantumBlack, AI by McKinsey. Analyze the following category reports from today's AI news, research papers, social media, and GitHub trending collection, and identify the TOP 6 cross-category strategic topics that represent the most significant developments today. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
+    You are an enterprise AI strategy advisor. Analyze the following category reports from today's AI news, research papers, social media, and GitHub trending collection, and identify the TOP 6 cross-category strategic topics that represent the most significant developments today. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead. Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
 
     ${context}
 
@@ -516,7 +526,8 @@ orchestration:
     3. A business implication (business_implication) explaining the impact on Enterprise markets, C-level decision making, and AI strategy (2-3 sentences).
     4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Disruptive").
     5. Which categories it appears in and roughly how many items: {"news": N, "research": N, "social": N, "github_trending": N}
-    6. An importance score (0-100)
+    6. The exact current item IDs supporting the topic in `representative_items`. Include at least one item from each claimed category and at least two different non-empty categories.
+    7. An importance score (0-100)
 
     IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name, but do NOT include URLs or markdown link syntax. Links will be added automatically in a post-processing step.
 
@@ -533,6 +544,7 @@ orchestration:
           "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
           "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
           "categories": {"news": 5, "research": 2, "social": 10, "github_trending": 4},
+          "representative_items": ["current-news-item-id", "current-social-item-id"],
           "importance": 88
         }
       ]
@@ -548,7 +560,7 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    You are a Senior Partner at QuantumBlack, AI by McKinsey. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
+    You are an enterprise AI strategy advisor. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
     
     CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened. 
     Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
@@ -576,13 +588,22 @@ orchestration:
     *CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.*
 
     FORMATTING RULES:
-    - Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+    - Target audience: enterprise C-level executives and AI leaders.
+    - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
     - You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
     - DO NOT include a "Sentiment & Controversy" section.
     - Use heavy **bold** for company names, product models, and key metrics.
     - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
     - Avoid repetition of older headlines.
     - The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text.
+
+    EVIDENCE REQUIREMENT:
+    - Treat everything before `=== END PREVIOUS DAYS' COVERAGE ===` as historical anti-repetition context only. Never present it as today's evidence.
+    - Use only developments supported by CURRENT ITEM records inside `=== TODAY'S DATA (CURRENT EVIDENCE) ===`.
+    - If a claim appears only in historical coverage, omit it from the new briefing.
+    - Return valid JSON only with this schema:
+      {"executive_summary": "the complete Markdown briefing", "evidence_item_ids": ["current-item-id-1", "current-item-id-2"]}
+    - `evidence_item_ids` must contain exact IDs from CURRENT ITEM records and cover at least two non-empty categories when two or more categories are available.
 
 # -----------------------------------------------------------------------------
 # POST-PROCESSING PHASE

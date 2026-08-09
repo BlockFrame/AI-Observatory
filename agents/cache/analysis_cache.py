@@ -5,6 +5,7 @@ Per-item analysis cache backed by JSONL.
 import hashlib
 import json
 import logging
+import re
 from dataclasses import asdict, is_dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -42,8 +43,14 @@ class AnalysisCache:
 
     @staticmethod
     def make_cache_key(item: "CollectedItem") -> str:
-        base = f"{item.url}:{item.title}:{item.published}"
-        return hashlib.md5(base.encode("utf-8")).hexdigest()
+        """Key by normalized content so syndicated copies share analysis."""
+        title = re.sub(r"\s+", " ", str(item.title or "")).strip().casefold()
+        content = re.sub(r"\s+", " ", str(item.content or "")).strip().casefold()
+        # Prefer the body checksum: syndicated feeds may rewrite headlines.
+        # Very short/empty bodies include the title to avoid broad collisions.
+        semantic_content = content if len(content) >= 40 else f"{title}\n{content}"
+        base = f"v2:{semantic_content}"
+        return hashlib.sha256(base.encode("utf-8")).hexdigest()
 
     def _load(self) -> None:
         if not self.cache_path.exists():
@@ -100,6 +107,7 @@ class AnalysisCache:
 
         entry = {
             "cache_key": self.make_cache_key(item),
+            "content_checksum": self.make_cache_key(item),
             "analyzed_at": datetime.now(timezone.utc).isoformat(),
             "analysis": payload,
             "interests_hash": self._interests_hash,

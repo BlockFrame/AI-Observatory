@@ -8,7 +8,7 @@ import asyncio
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 # Load environment variables
@@ -19,8 +19,15 @@ load_dotenv()
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from agents.llm_client import AsyncAnthropicClient, ThinkingLevel
+from agents.base import extract_json_str
 from agents.config.prompts import PromptAccessor, load_prompts
 from agents.config import load_config
+from agents.editorial_guard import sanitize_editorial_text
+from agents.summary_context import (
+    build_executive_context,
+    format_previous_coverage,
+    load_previous_summaries,
+)
 
 
 async def regenerate_summary(target_date: str, web_dir: str = './web', config_dir: str = './config'):
@@ -47,61 +54,39 @@ async def regenerate_summary(target_date: str, web_dir: str = './web', config_di
     with open(summary_path, 'r', encoding='utf-8') as f:
         summary_data = json.load(f)
     
-    # Load previous days' summaries (3 days lookback)
-    previous_summaries = []
-    target_dt = datetime.strptime(target_date, '%Y-%m-%d')
-    
-    for days_ago in range(1, 4):
-        check_date = target_dt - timedelta(days=days_ago)
-        date_str = check_date.strftime('%Y-%m-%d')
-        prev_summary_path = os.path.join(web_dir, 'data', date_str, 'summary.json')
-        
-        if not os.path.exists(prev_summary_path):
-            continue
-        
-        try:
-            with open(prev_summary_path, 'r', encoding='utf-8') as f:
-                prev_data = json.load(f)
-            exec_summary = prev_data.get('executive_summary', '')
-            if exec_summary:
-                previous_summaries.append(f"=== {date_str} ===\n{exec_summary}")
-                print(f"  Loaded previous summary from {date_str}")
-        except Exception as e:
-            print(f"  Warning: Failed to load {date_str}: {e}")
-            continue
-    
-    previous_coverage = ""
-    if previous_summaries:
-        previous_coverage = "PREVIOUS DAYS' COVERAGE (do NOT repeat these as new/breaking news):\n\n" + "\n\n".join(previous_summaries)
-    
-    # Build context from categories
-    context_parts = [f"Date: {target_date}", ""]
-    
-    # Add previous coverage first
-    if previous_coverage:
-        context_parts.append(previous_coverage)
-        context_parts.append("")
-    
-    # Add top topics
-    context_parts.append("TOP TOPICS:")
+    previous_summaries = load_previous_summaries(web_dir, target_date, lookback_days=3)
+    for date_str, _ in previous_summaries:
+        print(f"  Loaded previous summary from {date_str}")
+    previous_coverage = format_previous_coverage(previous_summaries)
+
     top_topics = summary_data.get('top_topics', [])
-    for i, topic in enumerate(top_topics[:6], 1):
-        name = topic.get('name', 'Unknown')
-        desc = topic.get('description', '')
-        context_parts.append(f"{i}. {name}: {desc}")
-    context_parts.append("")
-    
-    # Add category summaries
+    current_topics = [
+        (topic.get('name', 'Unknown'), topic.get('description', ''))
+        for topic in top_topics[:6]
+    ]
+
     categories = summary_data.get('categories', {})
+    current_categories = []
     for category, cat_data in categories.items():
-        context_parts.append(f"--- {category.upper()} ---")
-        context_parts.append(f"Summary: {cat_data.get('category_summary', 'N/A')}")
-        top_items = cat_data.get('top_items', [])
-        if top_items:
-            context_parts.append("Top story: " + top_items[0].get('title', 'Unknown'))
-        context_parts.append("")
-    
-    context = "\n".join(context_parts)
+        current_categories.append((
+            category,
+            cat_data.get('category_summary', 'N/A'),
+            [
+                {
+                    'id': item.get('id', ''),
+                    'title': item.get('title', '')[:300],
+                    'summary': item.get('summary', '')[:500],
+                }
+                for item in cat_data.get('top_items', [])[:8]
+            ],
+        ))
+
+    context = build_executive_context(
+        target_date,
+        previous_coverage,
+        current_topics,
+        current_categories,
+    )
     
     # Get prompt
     prompt = prompt_accessor.get_orchestration_prompt('executive_summary', {'context': context})
@@ -117,12 +102,21 @@ async def regenerate_summary(target_date: str, web_dir: str = './web', config_di
             caller="regenerate_summary"
         )
         
-        new_summary = response.content
+        response_data = json.loads(extract_json_str(response.content or ""))
+        if not isinstance(response_data, dict):
+            raise ValueError("Executive summary response is not a JSON object")
+        new_summary = sanitize_editorial_text(
+            response_data.get('executive_summary', '')
+        ).strip()
+        if not new_summary:
+            raise ValueError("Executive summary response was empty")
+        evidence_ids = response_data.get('evidence_item_ids', [])
         print(f"  Generated new summary ({len(new_summary)} chars)")
         
         # Update summary.json
         old_summary = summary_data.get('executive_summary', '')
         summary_data['executive_summary'] = new_summary
+        summary_data['executive_evidence_items'] = evidence_ids
         summary_data['executive_summary_regenerated'] = datetime.now().isoformat()
         
         # Backup old summary

@@ -98,7 +98,7 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
         )
 
     async def _generate_executive_summary(self, top_items: List[AnalyzedItem]) -> str:
-        """Generate strategic QuantumBlack briefing for GitHub Trending."""
+        """Generate a strategic briefing for GitHub Trending."""
         if not top_items:
             return "No trending GitHub repositories available for analysis."
 
@@ -122,7 +122,7 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
 
         if not prompt:
             # Fallback inline prompt (aligned with prompts.yaml style)
-            prompt = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout open-source AI repositories from GitHub Trending for enterprise C-level executives.
+            prompt = f"""You are an enterprise AI strategy advisor analyzing today's breakout open-source AI repositories from GitHub Trending for C-level executives.
 
 Top Trending Repositories Today:
 {items_text}
@@ -130,7 +130,8 @@ Top Trending Repositories Today:
 Write a cohesive, narrative-driven executive summary (1-2 flowing paragraphs) that synthesizes the most strategically significant open-source trends visible in today's GitHub Trending data.
 
 CATEGORY SUMMARY FORMATTING RULES:
-- Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+- Target audience: enterprise C-level executives and AI leaders.
+- Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
 - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single repository name. Each bullet point must be a rich, fully developed executive insight synthesizing the trend.
 - Use **bold** for repository names, languages, framework names, and key metrics.
 - Synthesize related repositories into themes explaining what they signal for enterprise AI adoption, developer tooling, and competitive dynamics.

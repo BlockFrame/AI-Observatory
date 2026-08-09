@@ -31,6 +31,15 @@
 	let activeLoadId = 0;
 	let lastHandledRouteKey = '';
 
+	const formatDuration = (milliseconds?: number | null) => {
+		if (milliseconds === null || milliseconds === undefined) return 'n/a';
+		return milliseconds < 1000 ? `${milliseconds} ms` : `${(milliseconds / 1000).toFixed(1)} s`;
+	};
+	const formatRate = (rate?: number | null) =>
+		rate === null || rate === undefined ? 'n/a' : `${Math.round(rate * 100)}%`;
+	const formatTimestamp = (timestamp?: string | null) =>
+		timestamp ? timestamp.replace('T', ' ').slice(0, 16) : 'never';
+
 	const validCategories: Category[] = ['news', 'research', 'social', 'github_trending'];
 
 	// Read query params
@@ -398,6 +407,48 @@
 			</div>
 		</section>
 
+		<!-- Deterministic report and source-health telemetry -->
+		{#if summary.quality_score || summary.collection_status?.sources?.length}
+			<section class="mb-12">
+				<details class="card group p-6">
+					<summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+						<div>
+							<p class="section-kicker">Pipeline observability</p>
+							<h2 class="text-2xl font-black text-white">Quality & Source Health</h2>
+						</div>
+						{#if summary.quality_score}
+							<span class="material-chip">
+								Quality {summary.quality_score.score.toFixed(1)} / 100
+							</span>
+						{/if}
+					</summary>
+
+					{#if summary.collection_status?.sources?.length}
+						<div class="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+							{#each summary.collection_status.sources as source}
+								<div class="rounded-xl border border-white/10 bg-black/20 p-4">
+									<div class="mb-3 flex items-center justify-between gap-3">
+										<h3 class="font-bold text-white">{source.display_name}</h3>
+										<span class="text-xs font-bold uppercase tracking-wider {source.status === 'success' ? 'text-tertiary' : source.status === 'failed' ? 'text-red-400' : 'text-amber-300'}">
+											{source.status}
+										</span>
+									</div>
+									<dl class="grid grid-cols-2 gap-x-3 gap-y-2 text-xs text-on-surface-variant">
+										<dt>Collected</dt><dd class="text-right text-white">{source.count}</dd>
+										<dt>Latency</dt><dd class="text-right text-white">{formatDuration(source.duration_ms)}</dd>
+										<dt>Duplicates</dt><dd class="text-right text-white">{formatRate(source.duplicate_rate)}</dd>
+										<dt>Freshness</dt><dd class="text-right text-white">{formatRate(source.freshness_rate)}</dd>
+										<dt>Last success</dt><dd class="text-right text-white">{formatTimestamp(source.last_success_at)}</dd>
+									</dl>
+									{#if source.error}<p class="mt-3 text-xs text-red-300">{source.error}</p>{/if}
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</details>
+			</section>
+		{/if}
+
 		<!-- Top Topics -->
 		{#if summary.top_topics && summary.top_topics.length > 0}
 			<section class="mb-12">
@@ -458,4 +509,3 @@
 		/>
 	{/if}
 </div>
-

@@ -19,6 +19,9 @@ from pathlib import Path
 
 import nh3
 
+from agents.quality_score import calculate_quality_score
+from agents.editorial_guard import sanitize_editorial_text
+
 logger = logging.getLogger(__name__)
 
 # HTML sanitization allowlist for XSS prevention
@@ -120,9 +123,16 @@ class JSONGenerator:
         categories = {}
         for category, report in category_reports.items():
             top_items = report.get('top_items', [])[:10]
-            category_summary = report.get('category_summary', '')
+            category_summary = sanitize_editorial_text(report.get('category_summary', ''))
+            current_item_ids = []
+            for analyzed_item in report.get('all_items', []):
+                item = analyzed_item.get('item', analyzed_item) if isinstance(analyzed_item, dict) else {}
+                item_id = item.get('id') if isinstance(item, dict) else None
+                if item_id and item_id not in current_item_ids:
+                    current_item_ids.append(item_id)
             categories[category] = {
                 'count': len(report.get('all_items', [])),
+                'current_item_ids': current_item_ids,
                 'analysis_quality': report.get('analysis_quality', {}),
                 'llm_telemetry': llm_by_category.get(category, {}),
                 'category_summary': category_summary,
@@ -131,7 +141,7 @@ class JSONGenerator:
                 'top_items': self._simplify_items(top_items)
             }
 
-        executive_summary = result.get('executive_summary', '')
+        executive_summary = sanitize_editorial_text(result.get('executive_summary', ''))
         collection_status = result.get('collection_status', {})
         phase_status = result.get('phase_status', [])
         critical_phase_names = {
@@ -169,6 +179,8 @@ class JSONGenerator:
             'total_items_collected': result.get('total_items_collected', 0),
             'total_items_analyzed': result.get('total_items_analyzed', 0),
             'collection_status': self._format_collection_status(collection_status),
+            'analysis_funnel': result.get('analysis_funnel', {}),
+            'executive_evidence_items': result.get('executive_evidence_items', []),
             'phase_status': phase_status,
             'llm_telemetry': llm_telemetry,
             'generation_quality': generation_quality,
@@ -177,6 +189,7 @@ class JSONGenerator:
             'generated_at': result.get('generated_at', datetime.now().isoformat()),
             'categories': categories
         }
+        summary['quality_score'] = calculate_quality_score(summary)
 
         output_path = os.path.join(date_dir, 'summary.json')
         self._write_json(output_path, summary)
@@ -189,7 +202,7 @@ class JSONGenerator:
 
         for category, report in category_reports.items():
             all_items = report.get('all_items', [])
-            category_summary = report.get('category_summary', '')
+            category_summary = sanitize_editorial_text(report.get('category_summary', ''))
 
             category_data = {
                 'category': category,
@@ -382,7 +395,16 @@ class JSONGenerator:
                 'display_name': source.capitalize(),
                 'status': status_val,
                 'count': count,
-                'error': error
+                'error': error,
+                'raw_count': source_status.get('raw_count', count),
+                'duration_ms': source_status.get('duration_ms'),
+                'duplicates_removed': source_status.get('duplicates_removed', 0),
+                'duplicate_rate': source_status.get('duplicate_rate', 0.0),
+                'fresh_items': source_status.get('fresh_items'),
+                'freshness_rate': source_status.get('freshness_rate'),
+                'newest_item_at': source_status.get('newest_item_at'),
+                'last_success_at': source_status.get('last_success_at'),
+                'last_nonempty_at': source_status.get('last_nonempty_at'),
             })
 
             if status_val == 'failed':
@@ -409,7 +431,10 @@ class JSONGenerator:
                     'display_name': platform_name.capitalize(),
                     'status': status_val,
                     'count': count,
-                    'error': error
+                    'error': error,
+                    'duration_ms': val.get('duration_ms'),
+                    'last_success_at': val.get('last_success_at'),
+                    'last_nonempty_at': val.get('last_nonempty_at'),
                 })
 
                 if status_val == 'failed':
@@ -432,6 +457,9 @@ class JSONGenerator:
                 'status': site_status,
                 'count': val.get('count', 0),
                 'error': val.get('error'),
+                'duration_ms': val.get('duration_ms'),
+                'last_success_at': val.get('last_success_at'),
+                'last_nonempty_at': val.get('last_nonempty_at'),
             })
 
         # Determine overall status
@@ -479,6 +507,11 @@ class JSONGenerator:
         sanitized = []
         for topic in topics:
             t = dict(topic)
+            for field in ('name', 'description', 'business_implication', 'trend_velocity'):
+                if field in t:
+                    t[field] = sanitize_editorial_text(t[field])
+            if t.get('description'):
+                t['description_html'] = self._markdown_to_html(t['description'])
             if t.get('description_html'):
                 t['description_html'] = self._sanitize_html(t['description_html'])
             sanitized.append(t)

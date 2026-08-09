@@ -52,6 +52,7 @@ export interface TopTopic {
 
 export interface CategorySummary {
 	count: number;
+	current_item_ids?: string[];
 	analysis_quality?: {
 		source_items?: number;
 		total_items: number;
@@ -69,14 +70,40 @@ export interface CategorySummary {
 export interface CollectionSource {
 	name: string;
 	display_name: string;
-	status: 'success' | 'partial' | 'failed';
+	status: 'success' | 'partial' | 'failed' | 'unknown';
 	count: number;
 	error: string | null;
+	raw_count?: number;
+	duration_ms?: number | null;
+	duplicates_removed?: number;
+	duplicate_rate?: number;
+	fresh_items?: number | null;
+	freshness_rate?: number | null;
+	newest_item_at?: string | null;
+	last_success_at?: string | null;
+	last_nonempty_at?: string | null;
 }
 
 export interface CollectionStatus {
-	overall: 'success' | 'partial' | 'failed';
+	overall: 'success' | 'partial' | 'failed' | 'unknown';
 	sources: CollectionSource[];
+}
+
+export interface QualityScore {
+	score: number;
+	threshold: number;
+	category_threshold: number;
+	passed: boolean;
+	components: Record<string, number>;
+	failed_categories: string[];
+	wiped_out_categories?: string[];
+}
+
+export interface AnalysisFunnelEntry {
+	collected: number;
+	analyzed: number;
+	retention_rate: number | null;
+	wipeout: boolean;
 }
 
 export interface DaySummary {
@@ -94,6 +121,9 @@ export interface DaySummary {
 	hero_image_url?: string;
 	hero_image_prompt?: string;
 	collection_status?: CollectionStatus;
+	analysis_funnel?: Record<Category, AnalysisFunnelEntry>;
+	executive_evidence_items?: string[];
+	quality_score?: QualityScore;
 }
 
 export interface CategoryNotice {

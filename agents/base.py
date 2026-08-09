@@ -1262,7 +1262,8 @@ class BaseAnalyzer(ABC):
         )
 
         prompt = (
-            f"You are a Senior Partner at QuantumBlack, AI by McKinsey, writing an executive briefing for the '{self.category.upper()}' category.\n\n"
+            f"You are an enterprise AI strategy advisor writing an executive briefing for the '{self.category.upper()}' category. "
+            "Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.\n\n"
             f"Top Items in {self.category.upper()} Today:\n{items_text}\n\n"
             "Write a cohesive, 2-paragraph executive summary synthesizing the key strategic developments, technical insights, and implications visible in these items."
         )

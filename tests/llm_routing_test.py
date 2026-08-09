@@ -22,6 +22,7 @@ from agents.llm_client import (
     ProviderRateLimiter,
     ThinkingLevel,
     _normalize_gemini_response,
+    _openrouter_provider_preferences,
     _uses_adaptive_thinking,
 )
 
@@ -111,7 +112,11 @@ class LLMRouteConfigTests(unittest.TestCase):
     def test_production_routes_keep_bulk_and_quality_chains_separate(self):
         with patch.dict(
             os.environ,
-            {"GEMINI_API_KEY": "test-key", "NVIDIA_API_KEY": "test-key"},
+            {
+                "GEMINI_API_KEY": "test-key",
+                "NVIDIA_API_KEY": "test-key",
+                "OPENROUTER_API_KEY": "test-key",
+            },
         ):
             config = load_config("config")
 
@@ -122,8 +127,8 @@ class LLMRouteConfigTests(unittest.TestCase):
             "gemini-bulk-fallback",
         )
         self.assertEqual(
-            routes["gemini-quality-fallback"].fallback_route_id,
-            "nvidia-glm-orchestration-backup",
+            routes["openrouter-glm-complex"].fallback_route_id,
+            "gemini-quality-fallback",
         )
         self.assertIn(
             "link_enricher.*",
@@ -154,7 +159,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             summary = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "summary"}],
                 profile=ThinkingLevel.DEEP,
-                caller="orchestrator.executive_summary",
+                caller="orchestrator.summary",
             )
             bulk = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "batch"}],
@@ -162,7 +167,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 caller="news_analyzer.batch_1",
             )
             self.assertEqual(link.content, "nvidia-glm-quality")
-            self.assertEqual(summary.content, "gemini-quality-fallback")
+            self.assertEqual(summary.content, "openrouter-glm-complex")
             self.assertEqual(bulk.content, "nvidia-nemotron-bulk")
 
         asyncio.run(verify_routing())
@@ -172,7 +177,10 @@ class LLMRouteConfigTests(unittest.TestCase):
             for route in routes.values():
                 failures = (
                     [ProviderQuotaExhaustedError("20 RPD")]
-                    if route.id == "gemini-quality-fallback"
+                    if route.id in {
+                        "openrouter-glm-complex",
+                        "gemini-quality-fallback",
+                    }
                     else None
                 )
                 clients.append(FakeRouteClient(
@@ -188,7 +196,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             first = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "summary"}],
                 profile=ThinkingLevel.DEEP,
-                caller="orchestrator.executive_summary",
+                caller="orchestrator.summary",
             )
             second = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "topics"}],
@@ -253,6 +261,16 @@ class LLMRouteConfigTests(unittest.TestCase):
 
         self.assertEqual(config.base_url, "https://openrouter.ai/api/v1")
         self.assertEqual(config.get_route_configs()[0].base_url, "https://openrouter.ai/api/v1")
+
+    def test_paid_glm_openrouter_route_has_promotional_price_ceiling(self):
+        self.assertEqual(
+            _openrouter_provider_preferences("z-ai/glm-5.2"),
+            {
+                "sort": "price",
+                "max_price": {"prompt": 0.10, "completion": 0.30},
+            },
+        )
+        self.assertEqual(_openrouter_provider_preferences("another/model"), {})
 
     def test_gemini_mode_defaults_and_route_quota_fields(self):
         config = LLMProviderConfig(

@@ -122,7 +122,7 @@ Return your ranking as JSON:
 ```
 
 CATEGORY SUMMARY FORMATTING RULES:
-You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout AI research papers and technical blogs for enterprise C-level executives.
+You are an enterprise AI strategy advisor analyzing today's breakout AI research papers and technical blogs for C-level executives.
 Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
 
 Use this Markdown format (group similar papers/findings by theme and heavily use **bold** for company names, model names, and key metrics):
@@ -137,7 +137,7 @@ Use this Markdown format (group similar papers/findings by theme and heavily use
 ### 💡 Consultant's Insight
 (1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
 
-Keep the tone authoritative, visionary, analytical, and highly readable (McKinsey style). Do not include raw JSON structure outside the `category_summary` field."""
+Keep the tone authoritative, analytical, decision-oriented, and highly readable in a top-tier strategy-consulting style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
 
     def __init__(
         self,

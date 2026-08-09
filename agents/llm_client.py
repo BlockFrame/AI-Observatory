@@ -132,6 +132,7 @@ THINKING_LEVEL_NAMES = {
 }
 
 OPENROUTER_DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
+OPENROUTER_GLM_5_2_MAX_PRICE = {"prompt": 0.10, "completion": 0.30}
 GEMINI_DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com"
 
 GEMINI_PROFILE_TO_THINKING = {
@@ -144,6 +145,16 @@ GEMINI_PROFILE_TO_THINKING = {
 
 def _uses_openrouter(mode: str) -> bool:
     return mode == "openrouter"
+
+
+def _openrouter_provider_preferences(model: str) -> Dict[str, Any]:
+    """Protect promotional paid routes from silently reverting to list price."""
+    if model == "z-ai/glm-5.2":
+        return {
+            "sort": "price",
+            "max_price": dict(OPENROUTER_GLM_5_2_MAX_PRICE),
+        }
+    return {}
 
 
 def _uses_gemini(mode: str) -> bool:
@@ -668,14 +679,18 @@ class AnthropicClient:
         max_tokens: int,
         temperature: Optional[float],
     ) -> ProviderResponse:
+        payload = {
+            "model": self.model,
+            "messages": _build_openrouter_messages(messages, system),
+            "max_tokens": max_tokens,
+            **({"temperature": temperature} if temperature is not None else {}),
+        }
+        provider_preferences = _openrouter_provider_preferences(self.model)
+        if provider_preferences:
+            payload["provider"] = provider_preferences
         response = self._http_client.post(
             f"{self.base_url}/chat/completions",
-            json={
-                "model": self.model,
-                "messages": _build_openrouter_messages(messages, system),
-                "max_tokens": max_tokens,
-                **({"temperature": temperature} if temperature is not None else {}),
-            },
+            json=payload,
         )
         response.raise_for_status()
         return _normalize_openrouter_response(response.json())
@@ -1431,6 +1446,9 @@ class AsyncAnthropicClient:
             payload["chat_template_kwargs"] = kwargs["chat_template_kwargs"]
         elif kwargs.get("is_thinking_call", False):
             payload["chat_template_kwargs"] = {"thinking": True}
+        provider_preferences = _openrouter_provider_preferences(kwargs["model"])
+        if provider_preferences:
+            payload["provider"] = provider_preferences
 
         if not self.log_requests:
             response = await self._http_client.post(

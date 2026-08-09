@@ -46,6 +46,26 @@ llm:
       requests_per_day: 500
       profiles: ["QUICK", "STANDARD", "DEEP"]
 
+    # Paid GLM is reserved for the synthesis/ranking steps where model quality
+    # has the largest editorial impact. Keep bulk map/filter calls off this
+    # route even while the OpenRouter promotional price is active.
+    - id: "openrouter-glm-complex"
+      priority: 110
+      mode: "openrouter"
+      api_key: "${OPENROUTER_API_KEY}"
+      base_url: "https://openrouter.ai/api/v1"
+      model: "z-ai/glm-5.2"
+      timeout: 240
+      max_output_tokens: 32768
+      max_concurrent_requests: 2
+      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
+      fallback_route_id: "gemini-quality-fallback"
+      caller_patterns:
+        - "*_analyzer.reduce_rank"
+        - "analysis.*_summary"
+        - "orchestrator.topics"
+        - "orchestrator.summary"
+
     - id: "nvidia-glm-quality"
       priority: 100
       mode: "openai-compatible"
@@ -59,7 +79,6 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-3.5"
       caller_patterns:
-        - "*_analyzer.reduce_rank"
         - "link_enricher.*"
 
     - id: "gemini-quality-fallback"
@@ -76,7 +95,9 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "nvidia-glm-orchestration-backup"
       caller_patterns:
-        - "orchestrator.*"
+        - "*_analyzer.reduce_rank"
+        - "orchestrator.topics"
+        - "orchestrator.summary"
         - "analysis.*_summary"
 
     - id: "nvidia-glm-orchestration-backup"
@@ -92,7 +113,9 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-3.5"
       caller_patterns:
-        - "orchestrator.*"
+        - "*_analyzer.reduce_rank"
+        - "orchestrator.topics"
+        - "orchestrator.summary"
         - "analysis.*_summary"
 
     - id: "gemini-quality-fallback-3.5"

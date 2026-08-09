@@ -7,13 +7,17 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per l'
 ## 🎯 Attività Aperte
 
 ### 0. 🛡️ Affidabilità, Qualità Editoriale & Osservabilità
-- [ ] **Quality score per report e categoria**: calcolare e pubblicare segnali deterministici su lunghezza, copertura dei top item, fallback LLM, validità Markdown/link e qualità delle fonti; bloccare la pubblicazione sotto soglia.
+- [x] **Quality score per report e categoria**: calcolare e pubblicare segnali deterministici su lunghezza, copertura dei top item, fallback LLM, validità Markdown/link e qualità delle fonti; bloccare la pubblicazione sotto soglia.
 - [x] **Separazione ranking / scrittura**: modelli specialistici per ranking/estrazione e route quality dedicate con fallback espliciti per le summary editoriali.
 - [x] **Telemetria LLM per categoria**: `summary.json` espone modello, provider, durata, token, retry/fallback e stato per News, Social, Research e GitHub Trending.
-- [ ] **Osservabilità dei gatherer**: dashboard/stato per fonte con ultimo successo, articoli raccolti, latenza, errore, tasso di duplicati e freshness del feed.
-- [ ] **Test end-to-end della resilienza**: fixture realistiche per timeout NVIDIA, 429 Gemini, JSON troncato, feed vuoti e fallback; verificare che il publish gate rifiuti report di bassa qualità.
-- [ ] **Link enrichment efficiente**: eseguire prima entity matching deterministico e inviare al modello solo riferimenti ambigui, riducendo latenza, token e chiamate LLM.
-- [ ] **Cache semantica degli articoli**: usare checksum del contenuto e cache di analisi per evitare rielaborazioni di articoli ripubblicati da più feed.
+- [x] **Osservabilità dei gatherer**: dashboard/stato per fonte con ultimo successo, articoli raccolti, latenza, errore, tasso di duplicati e freshness del feed.
+- [x] **Test end-to-end della resilienza**: fixture realistiche per timeout NVIDIA, 429 Gemini, JSON troncato, feed vuoti e fallback; verificare che il publish gate rifiuti report di bassa qualità.
+- [x] **Link enrichment efficiente**: eseguire prima entity matching deterministico e inviare al modello solo riferimenti ambigui, riducendo latenza, token e chiamate LLM.
+- [x] **Cache semantica degli articoli**: usare checksum del contenuto e cache di analisi per evitare rielaborazioni di articoli ripubblicati da più feed.
+- [ ] **Usage accounting OpenRouter autorevole**: acquisire dalle risposte `usage.cost`, reasoning token e cache token reali, mantenendo il tracker locale come vista cross-provider e riconciliando gli scostamenti dal listino statico.
+- [ ] **Correlazione delle trace LLM**: assegnare un `run_id` alla pipeline e propagare fase, caller, coverage date, release e fallback come metadata, così da ricostruire `run → fase → chiamata` anche nei sistemi esterni.
+- [ ] **Valutazione Langfuse end-to-end**: dopo 3-5 run OpenRouter reali, valutare Langfuse per tracing multi-provider, prompt versioning, dataset ed eval; usare sampling/privacy mode per prompt e output e considerare LangSmith solo in caso di adozione LangChain/LangGraph.
+- [ ] **Replay selettivo degli errori LLM**: conservare prompt/output completi solo per chiamate fallite o campionate, con redazione dei dati sensibili e retention esplicita, senza pubblicarli negli artifact del frontend.
 
 ### 1. 📡 Espansione Fonti di Raccolta (Sources & Gatherers)
 - [ ] **AI News**: Identificare e integrare nuovi feed RSS/Atom di testate giornalistiche tech, blog di AI Lab emergenti e newsletter di settore (`config/rss_feeds.txt`).

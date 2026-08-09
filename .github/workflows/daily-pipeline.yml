@@ -64,7 +64,7 @@ jobs:
       MULLVAD_ACCOUNT: ${{ secrets.MULLVAD_ACCOUNT }}
       MULLVAD_WG_PRIVATE_KEY: ${{ secrets.MULLVAD_WG_PRIVATE_KEY }}
       MULLVAD_RELAY_FILTER: ${{ vars.MULLVAD_RELAY_FILTER || 'us' }}
-      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://news.aatf.ai' }}
+      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}
       PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'web/data llms.txt ai-index.json config/model_releases.yaml config/ecosystem_context.yaml' }}
       PIPELINE_IMAGE_MODEL: ${{ vars.PIPELINE_IMAGE_MODEL || 'gemini-3-pro-image-preview' }}
       LLM_TRUST_ENV_PROXY: ${{ vars.LLM_TRUST_ENV_PROXY || 'false' }}
@@ -190,6 +190,10 @@ jobs:
             echo "ERROR: GEMINI_API_KEY secret is empty - set it in GitHub repo secrets." >&2
             exit 1
           fi
+          if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
+            echo "ERROR: OPENROUTER_API_KEY secret is empty - paid GLM complex-task route cannot start." >&2
+            exit 1
+          fi
           echo "API keys verified."
 
       - name: Run pipeline regression tests before paid API calls
@@ -208,7 +212,10 @@ jobs:
           set -euo pipefail
           python3 -m unittest \
             tests.llm_routing_test \
-            tests.pipeline_resilience_test
+            tests.editorial_integrity_test \
+            tests.news_ai_keyword_filter_test \
+            tests.pipeline_resilience_test \
+            tests.summary_context_test
 
       - name: Start Mullvad tunnel for hosted egress
         if: steps.schedule_gate.outputs.should_run == 'true' && env.MULLVAD_ACCOUNT != '' && env.PIPELINE_PROXY_URL == ''
@@ -383,7 +390,7 @@ jobs:
           name: pipeline-diagnostics
           path: |
             data/llm_metrics.jsonl
-            data/processed/cost_report_*.json
+            web/data/*/cost_report.json
           if-no-files-found: ignore
 
       - name: Push generated commit

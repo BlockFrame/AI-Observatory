@@ -143,7 +143,7 @@ DEPRIORITIZE (lower scores):
 - Rehashed coverage of old news
 
 CATEGORY SUMMARY FORMATTING RULES:
-You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout AI news for enterprise C-level executives.
+You are an enterprise AI strategy advisor analyzing today's breakout AI news for C-level executives.
 Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
 
 Use this Markdown format (group similar news/events by theme and heavily use **bold** for company names, model names, and key metrics):
@@ -158,7 +158,7 @@ Use this Markdown format (group similar news/events by theme and heavily use **b
 ### 💡 Consultant's Insight
 (1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
 
-Keep the tone authoritative, visionary, analytical, and highly readable (McKinsey style). Do not include raw JSON structure outside the `category_summary` field."""
+Keep the tone authoritative, analytical, decision-oriented, and highly readable in a top-tier strategy-consulting style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
 
     ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
 
@@ -364,6 +364,50 @@ The summary should read like a professional briefing, focusing on what matters f
         """Truncate ID to first 16 chars for display."""
         return full_id[:16]
 
+    def _validate_filter_ids(self, result: object, id_map: dict[str, str]) -> Set[str]:
+        """Validate and resolve the News filter response.
+
+        The keyword filter is the safe baseline.  A malformed semantic-filter
+        response must never be interpreted as an instruction to remove every
+        article, so invalid schemas, empty selections, and unknown/ambiguous
+        IDs raise and let the caller fail open.
+        """
+        if not isinstance(result, dict) or 'ai_article_ids' not in result:
+            raise ValueError("missing ai_article_ids in LLM filter response")
+
+        ai_ids = result['ai_article_ids']
+        if not isinstance(ai_ids, list) or not all(
+            isinstance(article_id, str) and article_id.strip()
+            for article_id in ai_ids
+        ):
+            raise ValueError("ai_article_ids must be a list of non-empty strings")
+        if not ai_ids:
+            raise ValueError("LLM filter returned an empty selection")
+
+        resolved_ids: Set[str] = set()
+        for raw_id in ai_ids:
+            article_id = raw_id.strip()
+            if article_id in id_map:
+                resolved_ids.add(id_map[article_id])
+                continue
+
+            # Allow alternate truncation lengths, but only when the match is
+            # long enough and unambiguous.  Never guess which article was meant.
+            if len(article_id) < 8:
+                raise ValueError(f"LLM filter returned an invalid ID: {article_id!r}")
+            matches = {
+                full_id
+                for truncated_id, full_id in id_map.items()
+                if truncated_id.startswith(article_id) or article_id.startswith(truncated_id)
+            }
+            if len(matches) != 1:
+                raise ValueError(f"LLM filter returned an unknown or ambiguous ID: {article_id!r}")
+            resolved_ids.update(matches)
+
+        if not resolved_ids:
+            raise ValueError("LLM filter did not resolve any input article IDs")
+        return resolved_ids
+
     async def _filter_with_llm(self, items: List[CollectedItem]) -> List[CollectedItem]:
         """Use LLM to filter items for frontier AI relevance."""
         if not items:
@@ -410,23 +454,10 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             )
 
             result = self._parse_json_response(response.content)
-            ai_ids = set(result.get('ai_article_ids', []))
+            full_ai_ids = self._validate_filter_ids(result, id_map)
 
             logger.info(self._thinking_log_message("LLM filter thinking", response))
-            logger.info(f"LLM filter returned {len(ai_ids)} AI article IDs")
-
-            # Match truncated IDs back to full IDs
-            full_ai_ids: Set[str] = set()
-            for aid in ai_ids:
-                # Try exact match first
-                if aid in id_map:
-                    full_ai_ids.add(id_map[aid])
-                else:
-                    # Try prefix match (in case LLM truncated differently)
-                    for truncated, full in id_map.items():
-                        if truncated.startswith(aid[:8]) or aid.startswith(truncated[:8]):
-                            full_ai_ids.add(full)
-                            break
+            logger.info(f"LLM filter returned {len(full_ai_ids)} valid AI article IDs")
 
             filtered = [item for item in items if item.id in full_ai_ids]
             logger.info(f"LLM filter: {len(items)} -> {len(filtered)} frontier AI articles")

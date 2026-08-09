@@ -31,7 +31,7 @@ MAX_THEME_NAME_LEN = 120
 MAX_THEME_DESC_LEN = 600
 MAX_SIGNALS = 20
 MAX_SIGNAL_LEN = 300
-MAX_TOP_IDS = 15
+MAX_TOP_IDS = 25
 MAX_CATEGORY_SUMMARY_LEN = 6000
 
 
@@ -216,6 +216,8 @@ def sanitize_batch_result(result: Any, where: str = "batch") -> Dict[str, Any]:
 
         if 'top_10' in result:
             clean['top_10'] = _sanitize_top_ids(result['top_10'])
+        if 'top_25' in result:
+            clean['top_25'] = _sanitize_top_ids(result['top_25'])
 
         if 'category_summary' in result:
             clean['category_summary'] = _coerce_str(
@@ -238,6 +240,8 @@ def sanitize_ranking_result(result: Any, where: str = "ranking") -> Dict[str, An
         clean: Dict[str, Any] = {}
         if 'top_10' in result:
             clean['top_10'] = _sanitize_top_ids(result['top_10'])
+        if 'top_25' in result:
+            clean['top_25'] = _sanitize_top_ids(result['top_25'])
         if 'category_summary' in result:
             clean['category_summary'] = _coerce_str(
                 result['category_summary'], MAX_CATEGORY_SUMMARY_LEN

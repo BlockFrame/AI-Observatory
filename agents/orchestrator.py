@@ -9,6 +9,8 @@ import asyncio
 import logging
 import os
 import json
+import time
+from collections import Counter
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from typing import List, Dict, Any, Optional
@@ -32,6 +34,12 @@ from .analyzers import NewsAnalyzer, ResearchAnalyzer, SocialAnalyzer, GitHubTre
 from .cost_tracker import get_tracker, reset_tracker
 from .link_enricher import LinkEnricher
 from .ecosystem_context import EcosystemContextManager
+from .editorial_guard import sanitize_editorial_text
+from .summary_context import (
+    build_executive_context,
+    format_previous_coverage,
+    load_previous_summaries,
+)
 from .prompt_security import (
     DATA_POINTER,
     build_fenced_user_message,
@@ -88,6 +96,8 @@ class OrchestratorResult:
     coverage_start: str = ''  # ISO datetime string for coverage start
     coverage_end: str = ''  # ISO datetime string for coverage end
     collection_status: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # source -> status
+    analysis_funnel: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    executive_evidence_items: List[str] = field(default_factory=list)
     hero_image_url: Optional[str] = None  # URL path to generated hero image
     hero_image_prompt: Optional[str] = None  # Prompt used to generate hero image
     phase_status: List[Dict[str, Any]] = field(default_factory=list)  # Phase tracker records
@@ -108,6 +118,8 @@ class OrchestratorResult:
             'total_items_collected': self.total_items_collected,
             'total_items_analyzed': self.total_items_analyzed,
             'collection_status': self.collection_status,
+            'analysis_funnel': self.analysis_funnel,
+            'executive_evidence_items': self.executive_evidence_items,
             'hero_image_url': self.hero_image_url,
             'hero_image_prompt': self.hero_image_prompt,
             'phase_status': self.phase_status,
@@ -500,6 +512,7 @@ class MainOrchestrator:
             if not checkpoint:
                 raise RuntimeError("Cannot resume: no checkpoint for Phase 4 (summary)")
             executive_summary = checkpoint.get('executive_summary', '')
+            executive_evidence_items = checkpoint.get('executive_evidence_items', [])
             summary_thinking = checkpoint.get('thinking', '')
             # Restore enriched category summaries
             enriched_summaries = checkpoint.get('enriched_category_summaries', {})
@@ -516,7 +529,7 @@ class MainOrchestrator:
             phases.start_phase("Phase 4: Executive Summary")
             try:
                 logger.info("Phase 4: Generating executive summary...")
-                executive_summary, summary_thinking = await self._generate_executive_summary(
+                executive_summary, summary_thinking, executive_evidence_items = await self._generate_executive_summary(
                     category_reports, top_topics
                 )
                 phases.end_phase('success')
@@ -525,6 +538,7 @@ class MainOrchestrator:
                 executive_summary = self._build_executive_summary_fallback(
                     category_reports, top_topics
                 )
+                executive_evidence_items = []
                 summary_thinking = (
                     "Deterministic fallback used after "
                     f"{type(e).__name__} during executive summary generation."
@@ -557,6 +571,7 @@ class MainOrchestrator:
             # Save summary checkpoint (post-enrichment)
             self._save_checkpoint('summary', {
                 'executive_summary': executive_summary,
+                'executive_evidence_items': executive_evidence_items,
                 'thinking': summary_thinking,
                 'enriched_category_summaries': {cat: report.category_summary for cat, report in category_reports.items()},
                 'enriched_topics': [asdict(t) for t in top_topics]
@@ -640,6 +655,19 @@ class MainOrchestrator:
         logger.info("Phase 5: Assembling final result...")
         total_collected = sum(len(items) for items in gathered_items.values())
         total_analyzed = sum(len(report.all_items) for report in category_reports.values())
+        analysis_funnel = {}
+        for category in sorted(set(gathered_items) | set(category_reports)):
+            collected_count = len(gathered_items.get(category, []))
+            analyzed_count = len(category_reports[category].all_items) if category in category_reports else 0
+            analysis_funnel[category] = {
+                'collected': collected_count,
+                'analyzed': analyzed_count,
+                'retention_rate': (
+                    round(analyzed_count / collected_count, 4)
+                    if collected_count else None
+                ),
+                'wipeout': collected_count > 0 and analyzed_count == 0,
+            }
 
         # Get coverage info from any gatherer (all have the same dates)
         any_gatherer = next(iter(self.gatherers.values()))
@@ -658,6 +686,8 @@ class MainOrchestrator:
             coverage_start=coverage_start,
             coverage_end=coverage_end,
             collection_status=collection_status,
+            analysis_funnel=analysis_funnel,
+            executive_evidence_items=executive_evidence_items,
             hero_image_url=hero_image_url,
             hero_image_prompt=hero_image_prompt,
             phase_status=phases.to_dict(),
@@ -818,7 +848,9 @@ class MainOrchestrator:
                 description_html=topic_data.get('description_html', ''),
                 category_breakdown=topic_data.get('category_breakdown', {}),
                 representative_items=topic_data.get('representative_items', []),
-                importance=topic_data.get('importance', 50)
+                importance=topic_data.get('importance', 50),
+                business_implication=topic_data.get('business_implication', ''),
+                trend_velocity=topic_data.get('trend_velocity', ''),
             ))
         return topics
 
@@ -858,19 +890,22 @@ class MainOrchestrator:
         """
         results = {}
         collection_status = {}
+        raw_counts: Dict[str, int] = {}
+        durations_ms: Dict[str, int] = {}
 
         # Phase 1: Run research, social, and web-scraper gatherers in parallel
         logger.info("  Phase 1: Gathering research, social, web scraper...")
 
         async def gather_category(name: str) -> tuple:
             gatherer = self.gatherers[name]
+            started = time.perf_counter()
             try:
                 items = await gatherer.gather()
                 logger.info(f"    {name} gatherer collected {len(items)} items")
-                return name, items, None
+                return name, items, None, int((time.perf_counter() - started) * 1000)
             except Exception as e:
                 logger.error(f"    {name} gatherer failed: {e}")
-                return name, [], str(e)
+                return name, [], str(e), int((time.perf_counter() - started) * 1000)
 
         phase1_tasks = [
             gather_category(name)
@@ -879,8 +914,10 @@ class MainOrchestrator:
         ]
         phase1_results = await asyncio.gather(*phase1_tasks)
 
-        for name, items, error in phase1_results:
+        for name, items, error, duration_ms in phase1_results:
             results[name] = items
+            raw_counts[name] = len(items)
+            durations_ms[name] = duration_ms
             if error:
                 collection_status[name] = {'status': 'failed', 'count': 0, 'error': error}
             else:
@@ -926,13 +963,16 @@ class MainOrchestrator:
         logger.info("  Phase 2: Gathering news with link following...")
         social_posts = results.get('social', [])
 
+        started = time.perf_counter()
         try:
             news_gatherer = self.gatherers['news']
             news_items = await news_gatherer.gather(social_posts=social_posts)
+            durations_ms['news'] = int((time.perf_counter() - started) * 1000)
             logger.info(f"    news gatherer collected {len(news_items)} items")
             results['news'] = news_items
             collection_status['news'] = {'status': 'success', 'count': len(news_items), 'error': None}
         except Exception as e:
+            durations_ms['news'] = int((time.perf_counter() - started) * 1000)
             logger.error(f"    news gatherer failed: {e}")
             results['news'] = []
             collection_status['news'] = {'status': 'failed', 'count': 0, 'error': str(e)}
@@ -942,15 +982,21 @@ class MainOrchestrator:
         hn_items = []
         gh_items = []
         try:
+            started = time.perf_counter()
             hn_items = await self.hackernews_gatherer.gather()
+            durations_ms['hackernews'] = int((time.perf_counter() - started) * 1000)
             collection_status['hackernews'] = {'status': 'success', 'count': len(hn_items), 'error': None}
         except Exception as e:
+            durations_ms['hackernews'] = int((time.perf_counter() - started) * 1000)
             collection_status['hackernews'] = {'status': 'failed', 'count': 0, 'error': str(e)}
             logger.warning(f"    HackerNews gatherer failed: {e}")
         try:
+            started = time.perf_counter()
             gh_items = await self.github_trending_gatherer.gather()
+            durations_ms['github_trending'] = int((time.perf_counter() - started) * 1000)
             collection_status['github_trending'] = {'status': 'success', 'count': len(gh_items), 'error': None}
         except Exception as e:
+            durations_ms['github_trending'] = int((time.perf_counter() - started) * 1000)
             collection_status['github_trending'] = {'status': 'failed', 'count': 0, 'error': str(e)}
             logger.warning(f"    GitHubTrending gatherer failed: {e}")
 
@@ -961,13 +1007,94 @@ class MainOrchestrator:
             results['news'].extend(results['web_scraper'])
             
         if results.get('news') is not None:
+            raw_counts['news'] = len(results['news'])
             results['news'] = deduplicate_items(results['news'])
             collection_status['news']['count'] = len(results['news'])
 
         # Store github_trending as its own distinct category
         results['github_trending'] = gh_items
 
+        raw_counts.setdefault('hackernews', len(hn_items))
+        raw_counts.setdefault('github_trending', len(gh_items))
+        source_items = dict(results)
+        source_items['hackernews'] = hn_items
+        self._decorate_collection_status(
+            collection_status, source_items, raw_counts, durations_ms
+        )
+
         return results, collection_status
+
+    def _decorate_collection_status(
+        self,
+        collection_status: Dict[str, Dict[str, Any]],
+        source_items: Dict[str, List[CollectedItem]],
+        raw_counts: Dict[str, int],
+        durations_ms: Dict[str, int],
+    ) -> None:
+        """Add per-source health metrics and persist rolling last-success state."""
+        health_path = Path(self.web_dir) / 'data' / 'source-health.json'
+        previous: Dict[str, Any] = {}
+        try:
+            if health_path.exists():
+                previous = json.loads(health_path.read_text(encoding='utf-8'))
+        except (OSError, json.JSONDecodeError) as exc:
+            logger.warning(f"Could not read previous source health: {exc}")
+
+        observed_at = datetime.now().isoformat()
+        expected_coverage_date = next(
+            (
+                str(getattr(gatherer, 'coverage_date'))
+                for gatherer in self.gatherers.values()
+                if getattr(gatherer, 'coverage_date', None)
+            ),
+            '',
+        )
+        previous_sources = previous.get('sources', {}) if isinstance(previous, dict) else {}
+        persisted_sources: Dict[str, Any] = {}
+
+        for source, status in collection_status.items():
+            if not isinstance(status, dict):
+                continue
+            items = source_items.get(source, [])
+            raw_count = int(raw_counts.get(source, status.get('count') or len(items)))
+            final_count = int(status.get('count') or len(items))
+            duplicates_removed = max(0, raw_count - final_count)
+            dated_items = [item for item in items if getattr(item, 'published', None)]
+            fresh_items = [
+                item for item in dated_items
+                if expected_coverage_date and str(getattr(item, 'published', '')).startswith(
+                    expected_coverage_date
+                )
+            ]
+            prior = previous_sources.get(source, {}) if isinstance(previous_sources, dict) else {}
+            succeeded = status.get('status') in {'success', 'partial'}
+            last_success = observed_at if succeeded else prior.get('last_success_at')
+            last_nonempty = observed_at if succeeded and final_count > 0 else prior.get('last_nonempty_at')
+            newest = max(
+                (str(getattr(item, 'published', '')) for item in dated_items),
+                default=None,
+            )
+            status.update({
+                'raw_count': raw_count,
+                'duration_ms': int(durations_ms.get(source, status.get('duration_ms') or 0)),
+                'duplicates_removed': duplicates_removed,
+                'duplicate_rate': round(duplicates_removed / raw_count, 4) if raw_count else 0.0,
+                'fresh_items': len(fresh_items),
+                'freshness_rate': round(len(fresh_items) / len(dated_items), 4) if dated_items else None,
+                'newest_item_at': newest,
+                'last_success_at': last_success,
+                'last_nonempty_at': last_nonempty,
+            })
+            persisted_sources[source] = dict(status)
+
+        try:
+            health_path.parent.mkdir(parents=True, exist_ok=True)
+            health_path.write_text(
+                json.dumps({'updated_at': observed_at, 'sources': persisted_sources}, indent=2, ensure_ascii=False),
+                encoding='utf-8',
+            )
+        except OSError as exc:
+            logger.warning(f"Could not persist source health: {exc}")
 
     async def _apply_pre_analysis_filters(
         self,
@@ -1121,6 +1248,44 @@ class MainOrchestrator:
         freshness = metadata.get('freshness') if isinstance(metadata.get('freshness'), dict) else {}
         return bool(freshness.get('exclude_from_summaries'))
 
+    def _current_item_categories(
+        self, category_reports: Dict[str, CategoryReport]
+    ) -> Dict[str, str]:
+        """Map current, summary-eligible item IDs to their real categories."""
+        return {
+            item.item.id: category
+            for category, report in category_reports.items()
+            for item in report.all_items
+            if item.item.id and not self._exclude_from_summaries(item)
+        }
+
+    def _validated_evidence_ids(
+        self,
+        raw_ids: Any,
+        item_categories: Dict[str, str],
+        minimum_categories: int,
+        context: str,
+    ) -> List[str]:
+        """Return unique current evidence IDs or raise on unsupported output."""
+        if not isinstance(raw_ids, list) or not raw_ids:
+            raise ValueError(f"{context} has no evidence_item_ids")
+        evidence_ids = []
+        for raw_id in raw_ids:
+            if not isinstance(raw_id, str) or not raw_id.strip():
+                raise ValueError(f"{context} contains an invalid evidence item ID")
+            item_id = raw_id.strip()
+            if item_id not in item_categories:
+                raise ValueError(f"{context} references non-current item {item_id!r}")
+            if item_id not in evidence_ids:
+                evidence_ids.append(item_id)
+        covered_categories = {item_categories[item_id] for item_id in evidence_ids}
+        if len(covered_categories) < minimum_categories:
+            raise ValueError(
+                f"{context} evidence covers {len(covered_categories)} categories; "
+                f"minimum is {minimum_categories}"
+            )
+        return evidence_ids
+
     async def _detect_cross_category_topics(
         self,
         category_reports: Dict[str, CategoryReport]
@@ -1135,6 +1300,7 @@ class MainOrchestrator:
         """
         # Build context from all category reports with URLs for linking
         context_parts = []
+        item_categories = self._current_item_categories(category_reports)
         for category, report in category_reports.items():
             context_parts.append(f"=== {category.upper()} ===")
             context_parts.append(f"Summary: {report.category_summary}")
@@ -1146,7 +1312,8 @@ class MainOrchestrator:
             context_parts.append(f"Top items ({len(summary_items)}):")
             for i, item in enumerate(summary_items[:10], 1):
                 # Include URL so LLM can create inline links
-                context_parts.append(f"  {i}. {normalize_untrusted_text(item.item.title)[:300]}")
+                context_parts.append(f"  {i}. ID: {item.item.id}")
+                context_parts.append(f"     Title: {normalize_untrusted_text(item.item.title)[:300]}")
                 context_parts.append(f"     URL: {normalize_untrusted_text(item.item.url)[:512]}")
                 context_parts.append(f"     Source: {item.item.source}")
                 if item.summary:
@@ -1165,7 +1332,7 @@ class MainOrchestrator:
             )
         else:
             # Fallback to inline prompt for backwards compatibility
-            instructions = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey. Analyze the following category reports from today's AI news collection and identify the TOP 6 cross-category strategic topics that appear across multiple domains. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead.
+            instructions = f"""You are an enterprise AI strategy advisor. Analyze the following category reports from today's AI news collection and identify the TOP 6 cross-category strategic topics that appear across multiple domains. If there are fewer than 6 distinct topics worth covering, return exactly 3 instead. Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
 
 {DATA_POINTER}
 
@@ -1178,7 +1345,8 @@ For each cross-category topic, provide a highly detailed, strategic brief:
 3. A business implication (business_implication) explaining the strategic impact on Enterprise markets, C-level decision making, and competitive dynamics (2-3 sentences).
 4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Disruptive").
 5. Which categories it appears in and roughly how many items
-6. An importance score (0-100)
+6. Exact current item IDs in `representative_items`, with at least one item from each claimed category and at least two different categories
+7. An importance score (0-100)
 
 IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name (e.g., "Google announced...", "A Stanford paper found...") but do NOT include URLs or markdown link syntax.
 
@@ -1195,6 +1363,7 @@ Return your analysis as JSON:
       "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
       "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
       "categories": {{"news": 5, "research": 2, "social": 10, "github_trending": 4}},
+      "representative_items": ["current-news-item-id", "current-social-item-id"],
       "importance": 85
     }}
   ]
@@ -1241,14 +1410,31 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
 
             topics = []
             for topic_data in result.get('topics', []):
-                description = topic_data.get('description', '')
+                if not isinstance(topic_data, dict):
+                    continue
+                try:
+                    evidence_ids = self._validated_evidence_ids(
+                        topic_data.get('representative_items'),
+                        item_categories,
+                        minimum_categories=2,
+                        context=f"topic {topic_data.get('name', '<unnamed>')!r}",
+                    )
+                except ValueError as exc:
+                    logger.warning("Dropping unsupported cross-category topic: %s", exc)
+                    continue
+                category_counts = Counter(item_categories[item_id] for item_id in evidence_ids)
+                description = sanitize_editorial_text(topic_data.get('description', ''))
                 topics.append(TopTopic(
-                    name=topic_data['name'],
+                    name=sanitize_editorial_text(topic_data['name']),
                     description=description,
                     description_html=self._markdown_links_to_html(description),
-                    category_breakdown=topic_data.get('categories', {}),
-                    representative_items=[],
-                    importance=topic_data.get('importance', 50)
+                    category_breakdown=dict(category_counts),
+                    representative_items=evidence_ids,
+                    importance=topic_data.get('importance', 50),
+                    business_implication=sanitize_editorial_text(
+                        topic_data.get('business_implication', '')
+                    ),
+                    trend_velocity=sanitize_editorial_text(topic_data.get('trend_velocity', '')),
                 ))
 
             # Sort by importance
@@ -1270,33 +1456,13 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
         Returns:
             Formatted string with previous summaries for context.
         """
-        from datetime import datetime, timedelta
-
-        target_dt = datetime.strptime(self.target_date, '%Y-%m-%d')
-        previous_summaries = []
-
-        for days_ago in range(1, lookback_days + 1):
-            check_date = target_dt - timedelta(days=days_ago)
-            date_str = check_date.strftime('%Y-%m-%d')
-            summary_path = os.path.join(self.web_dir, 'data', date_str, 'summary.json')
-
-            if not os.path.exists(summary_path):
-                continue
-
-            try:
-                with open(summary_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                exec_summary = data.get('executive_summary', '')
-                if exec_summary:
-                    previous_summaries.append(f"=== {date_str} ===\n{exec_summary}")
-            except Exception as e:
-                logger.warning(f"Failed to load previous summary for {date_str}: {e}")
-                continue
-
-        if not previous_summaries:
-            return ""
-
-        return "PREVIOUS DAYS' COVERAGE (do NOT repeat these as new/breaking news):\n\n" + "\n\n".join(previous_summaries)
+        return format_previous_coverage(
+            load_previous_summaries(
+                self.web_dir,
+                self.target_date,
+                lookback_days=lookback_days,
+            )
+        )
 
     async def _generate_executive_summary(
         self,
@@ -1309,36 +1475,37 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
         Uses DEEP thinking for quality synthesis.
 
         Returns:
-            Tuple of (summary string, thinking string).
+            Tuple of (summary string, thinking string, current evidence item IDs).
         """
         # Load previous days' summaries to avoid repetition
         previous_coverage = self._load_previous_summaries(lookback_days=3)
 
-        # Build context
-        context_parts = [f"Date: {self.target_date}", ""]
-
-        # Add previous coverage context first (important for avoiding repetition)
-        if previous_coverage:
-            context_parts.append(previous_coverage)
-            context_parts.append("")
-
-        context_parts.append("TOP TOPICS:")
-        for i, topic in enumerate(top_topics[:6], 1):
-            context_parts.append(f"{i}. {topic.name}: {topic.description}")
-        context_parts.append("")
-
+        item_categories = self._current_item_categories(category_reports)
+        current_categories = []
         for category, report in category_reports.items():
-            context_parts.append(f"--- {category.upper()} ---")
-            context_parts.append(f"Summary: {report.category_summary}")
             summary_items = [
                 item for item in report.top_items
                 if not self._exclude_from_summaries(item)
             ]
-            if summary_items:
-                context_parts.append("Top story: " + normalize_untrusted_text(summary_items[0].item.title)[:300])
-            context_parts.append("")
+            current_categories.append((
+                category,
+                report.category_summary,
+                [
+                    {
+                        "id": item.item.id,
+                        "title": normalize_untrusted_text(item.item.title)[:300],
+                        "summary": normalize_untrusted_text(item.summary)[:500],
+                    }
+                    for item in summary_items[:8]
+                ],
+            ))
 
-        context = "\n".join(context_parts)
+        context = build_executive_context(
+            self.target_date,
+            previous_coverage,
+            [(topic.name, topic.description) for topic in top_topics[:6]],
+            current_categories,
+        )
 
         # CWE-1427: summary instructions travel in the system prompt; the
         # aggregated context travels in the user message inside a nonce fence.
@@ -1349,7 +1516,7 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
             )
         else:
             # Fallback to inline prompt for backwards compatibility
-            instructions = f"""You are a Senior Partner at QuantumBlack, AI by McKinsey. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
+            instructions = f"""You are an enterprise AI strategy advisor. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
 
 CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened.
 Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
@@ -1377,13 +1544,21 @@ Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open
 CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.
 
 FORMATTING RULES:
-- Target audience: Senior Partner at QuantumBlack, AI by McKinsey.
+- Target audience: enterprise C-level executives and AI leaders.
+- Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
 - You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
 - DO NOT include a "Sentiment & Controversy" section.
 - Use heavy **bold** for company names, product models, and key metrics.
 - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
 - Avoid repetition of older headlines.
-- The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text."""
+- The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text.
+
+EVIDENCE REQUIREMENT:
+- Treat everything before `=== END PREVIOUS DAYS' COVERAGE ===` as historical anti-repetition context only.
+- Use only developments supported by CURRENT ITEMS inside `=== TODAY'S DATA (CURRENT EVIDENCE) ===`.
+- If a claim appears only in historical coverage, omit it from the new briefing.
+- Return valid JSON only: {{"executive_summary": "the complete Markdown briefing", "evidence_item_ids": ["current-item-id-1", "current-item-id-2"]}}
+- Use exact CURRENT ITEM IDs and cover at least two non-empty categories when two or more categories are available."""
 
         system_prompt = build_hardened_system(
             instructions, nonce, grounding=self.grounding_context
@@ -1407,14 +1582,27 @@ FORMATTING RULES:
                 "output may be incomplete."
             )
 
-        content = (response.content or "").strip()
+        result = json.loads(extract_json_str(response.content or ""))
+        if not isinstance(result, dict):
+            raise ValueError("Executive summary response is not a JSON object")
+        content = sanitize_editorial_text(result.get('executive_summary', '')).strip()
+        active_categories = set(item_categories.values())
+        minimum_categories = min(2, len(active_categories))
+        if minimum_categories == 0:
+            raise ValueError("Executive summary has no current items available as evidence")
+        evidence_ids = self._validated_evidence_ids(
+            result.get('evidence_item_ids'),
+            item_categories,
+            minimum_categories=minimum_categories,
+            context="executive summary",
+        )
         if len(content) < MIN_EXECUTIVE_SUMMARY_CHARS:
             raise ValueError(
                 "Executive summary response was empty or too short "
                 f"({len(content)} < {MIN_EXECUTIVE_SUMMARY_CHARS} characters)"
             )
 
-        return content, response.thinking or ""
+        return content, response.thinking or "", evidence_ids
 
     def _build_executive_summary_fallback(
         self,

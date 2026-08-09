@@ -1,494 +1,135 @@
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+Repository guidance for coding agents working on AI Observatory.
 
-## Project Overview
+## Project
 
-AI News Aggregator - A Python-based multi-agent pipeline that collects AI/ML news from RSS feeds, Hugging Face Papers, AlphaXiv, Twitter, Bluesky, Mastodon, Hacker News, GitHub, and web sources, analyzes them using profile-routed native Gemini models by default (with Anthropic/OpenRouter retained as alternatives), and serves a modern Svelte SPA frontend with AATF branding.
+AI Observatory is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
 
-**Testing:** The user always runs tests themselves. Do not run the pipeline or tests unless explicitly asked.
+Active source details live in `ai_news_sources.md`. Do not describe Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, or Slack as supported sources.
 
-## Commands
+## Safety and quota rules
 
-### Docker (Production)
+- Do not run the live pipeline or make provider/GetXAPI calls unless the user explicitly requests it.
+- Unit tests are mocked and may be run to validate code changes; keep production API keys shadowed or absent.
+- Never commit `.env`, credentials, proxy secrets, raw prompts, or provider responses containing secrets.
+- Preserve generated historical reports unless the task explicitly requires changing them.
+- Do not bypass `scripts/validate_report.py` or weaken the publish gate to make a run green.
+
+## Common commands
+
 ```bash
-docker-compose build                    # Build container
-docker-compose up -d                    # Start services (serves existing content only)
-docker-compose down                     # Stop services
-docker logs ai-news-aggregator          # View container logs
+# Pipeline setup and local execution
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python run_pipeline.py --date 2026-08-10
+python run_pipeline.py --resume
+python run_pipeline.py --resume-from 4.5
 
-# Manual pipeline run (trigger data collection)
-docker exec ai-news-aggregator python3 /app/run_pipeline.py --config-dir /app/config --data-dir /app/data --web-dir /app/web
+# Mocked regression tests; no paid calls
+python -m unittest discover -s tests -p '*_test.py'
 
-# Enable scheduled collection (cron)
-ENABLE_CRON=true docker-compose up -d
+# Frontend
+npm run install:frontend
+npm run dev
+npm run check
+npm run build
+
+# Report validation
+python scripts/validate_report.py --web-dir ./web --date 2026-08-10
 ```
-
-### Local Development (Pipeline)
-```bash
-source venv/bin/activate                            # Activate virtual environment
-pip install -r requirements.txt                     # Install dependencies
-python3 run_pipeline.py --create-config             # Generate default config
-python3 run_pipeline.py --config-dir ./config --data-dir ./data --web-dir ./web
-
-# Run for a specific date (useful for testing/backfilling)
-TARGET_DATE="2026-01-02" python3 run_pipeline.py --config-dir ./config --data-dir ./data --web-dir ./web
-
-# Resume after a crash (auto-detect latest checkpoint)
-python3 run_pipeline.py --resume --config-dir ./config --data-dir ./data --web-dir ./web
-
-# Resume from a specific phase (loads earlier phases from checkpoint)
-python3 run_pipeline.py --resume-from 3 --config-dir ./config --data-dir ./data --web-dir ./web
-```
-
-### Frontend Development
-```bash
-cd frontend
-npm install                     # Install dependencies
-npm run dev                     # Start dev server at http://localhost:5173
-npm run build                   # Build production (outputs to ../web)
-npm run preview                 # Preview production build
-npm run check                   # TypeScript type checking
-```
-
-There are no unit tests, linting, or type checking configured.
-
-### Web-Only Host Deployment
-```bash
-git fetch origin
-git reset --hard origin/main
-docker compose -f docker-compose.web.yml up -d --build
-```
-
-The production web host serves a web-only Docker image. `web/_app/` is intentionally ignored and built on the host, so do not commit rebuilt Svelte bundle files just to update the site. Data-only updates can be picked up by a git sync of `web/data`; frontend/source changes need the web-only image rebuild above.
-
-## Daily Automation
-
-The production publishing workflow lives in `.github/workflows/daily-pipeline.yml` and is guarded to run only in the configured publishing repository. Do not enable scheduled publishing in mirrors or forks unless the workflow guard, secrets, and output ownership have been intentionally reconfigured. The schedule uses two UTC cron entries with a local-time gate so exactly the nominal 3 AM ET invocation continues, even if GitHub starts the runner late.
-
-The workflow writes ignored `config/providers.yaml` from the `PIPELINE_PROVIDERS_YAML` secret. `ANTHROPIC_MODEL` or the `anthropic_model` dispatch input only overrides legacy single-provider configs; it must not clobber `llm.routes`. The workflow runs the pipeline and commits only generated public outputs (`web/data`, `config/model_releases.yaml`, and `config/ecosystem_context.yaml`) when `commit_outputs=true`. Use `workflow_dispatch` with `commit_outputs=false` for a full hosted dry run that uploads artifacts without committing. Hosted runs also upload a `pipeline-diagnostics` artifact with LLM request metrics and cost reports when those files exist.
-
-Hosted runner egress can be proxied with `PIPELINE_PROXY_URL` for all sources or `LESSWRONG_PROXY_URL` for LessWrong only. LLM clients ignore proxy environment variables by default because `LLM_TRUST_ENV_PROXY=false`; set it true only when LLM traffic should use the runner proxy too. If no pipeline proxy is set and `MULLVAD_ACCOUNT` is configured, the workflow creates a Mullvad WireGuard tunnel and exposes Mullvad's local SOCKS proxy as `PIPELINE_PROXY_URL`. `MULLVAD_WG_PRIVATE_KEY` pins CI to one registered Mullvad device across runs.
-
-Use `scripts/post_pipeline_verify.sh` for hosted-site verification. It is configured with environment variables: set `AWS_HOST` directly, or set `AWS_PROFILE` plus `AWS_INSTANCE_ID`/`AWS_INSTANCE_NAME` for EC2 lookup. Set `REBUILD_WEB=true` when the deployment includes frontend source or web-image changes.
 
 ## Architecture
 
-### Multi-Agent Pipeline (run_pipeline.py)
+The pipeline is coordinated by `agents/orchestrator.py`:
 
-```
-Phase 0: Ecosystem Context Initialization
-    ↓
-Phase 1: Parallel Gathering
-    ↓
-Phase 2: Parallel Analysis (category analyzers with grounding context)
-    ↓
-Phase 3: Cross-Category Topic Detection (ULTRATHINK)
-    ↓
-Phase 4: Executive Summary Generation
-    ↓
-Phase 4.5: Link Enrichment (adds internal links to summaries)
-    ↓
-Phase 4.6: Ecosystem Enrichment (detect new model releases)
-    ↓
-Phase 4.7: Hero Image Generation (Gemini 3 Pro via configured provider)
-    ↓
-Phase 5: Assembly & Output
-    ↓
-Phase 6: JSON Data Generation (for SPA frontend)
-    ↓
-Phase 6.5: RSS Feed Generation (Atom 1.0 with Media RSS)
-    ↓
-Phase 7: Search Corpus Update (client-built MiniSearch index)
-```
+1. Initialize ecosystem and release-date grounding.
+2. Gather News, Research, Social, and GitHub Trending in parallel.
+3. Apply deterministic filters, deduplication, batch analysis, and ranking.
+4. Detect topics supported by at least two populated current categories.
+5. Generate an executive summary with exact current evidence IDs.
+6. Enrich links, sanitize editorial output, and calculate quality diagnostics.
+7. Serialize static reports and machine-readable discovery artifacts.
+8. Validate before a generated report may be committed.
 
-### Agent Pairs
+See `architecture.md` for diagrams and failure boundaries.
 
-| Agent Pair | Gatherer Sources | Analysis Focus |
-|------------|------------------|----------------|
-| **News** | RSS feeds + articles from Twitter links | Product releases, company news |
-| **Research** | Hugging Face Papers + AlphaXiv + research blogs (LessWrong) | Research findings, breakthroughs |
-| **Social** | Twitter, Bluesky, Mastodon | Industry discussions, reactions |
-| **GitHub Trending** | Trending AI repositories | Developer adoption signals |
+## Active gatherers
 
-### Directory Structure
+| Category | Inputs | Implementation |
+|---|---|---|
+| News | RSS/Atom, direct web pages, Hacker News, articles linked from X | `agents/gatherers/news_gatherer.py`, `webscraper_gatherer.py`, `hackernews.py`, `link_follower.py` |
+| Research | Hugging Face Daily Papers, AlphaXiv, research feeds, LessWrong GraphQL | `agents/gatherers/research_gatherer.py` |
+| Social | X accounts through GetXAPI, 20 accounts maximum per query | `agents/gatherers/social_gatherer.py` |
+| GitHub Trending | GitHub Trending | `agents/gatherers/github_trending.py` |
 
-```
-agents/
-├── __init__.py
-├── llm_client.py              # Gemini/Anthropic/OpenRouter clients and profile-aware router
-├── base.py                    # Base classes (BaseGatherer, BaseAnalyzer)
-├── orchestrator.py            # Main coordinator
-├── link_enricher.py           # Adds internal links to summaries
-├── cost_tracker.py            # LLM API cost tracking
-├── phase_tracker.py           # Phase status tracking and end-of-run summary
-├── ecosystem_context.py       # AI model release tracking for grounding
-├── gatherers/
-│   ├── news_gatherer.py       # RSS + Twitter-linked articles
-│   ├── research_gatherer.py   # Trending paper APIs + research blogs (LessWrong)
-│   ├── social_gatherer.py     # Twitter, Bluesky, Mastodon (with status tracking)
-│   ├── webscraper_gatherer.py # Web sources without feeds
-│   └── link_follower.py       # Smart link extraction from social posts
-└── analyzers/
-    ├── news_analyzer.py
-    ├── research_analyzer.py
-    ├── social_analyzer.py
-    └── github_trending_analyzer.py
+Source lists are configuration-driven:
 
-generators/
-├── json_generator.py          # Generates JSON data for SPA frontend
-├── search_indexer.py          # Builds the MiniSearch corpus
-├── hero_generator.py          # Daily hero image with skunk mascot
-└── feed_generator.py          # Atom RSS feeds with Media RSS support
+- `config/rss_feeds.txt`
+- `config/web_scraper_sources.txt`
+- `config/research_feeds.txt`
+- `config/twitter_accounts.txt`
 
-scripts/
-└── regenerate_hero.py         # Manual hero image regeneration
+## LLM routing
 
-assets/
-└── skunk-reference.png        # AATF skunk mascot reference image
+`config/providers.yaml` is authoritative. The current strategy separates bulk and quality work:
 
-frontend/                       # Svelte SPA frontend
-├── src/
-│   ├── lib/
-│   │   ├── components/        # Svelte components
-│   │   ├── stores/            # State management
-│   │   ├── services/          # Data loading, search
-│   │   └── types/             # TypeScript types
-│   └── routes/                # SvelteKit file-based routing
-├── static/assets/             # Static assets (logo, etc.)
-├── svelte.config.js
-├── tailwind.config.js
-└── package.json
+- bulk map/filter: NVIDIA Nemotron, then Gemini Flash Lite fallbacks;
+- ranking and synthesis: OpenRouter paid GLM 5.2, then Gemini 3.6, NVIDIA GLM, Gemini 3.5, and Flash Lite;
+- link enrichment: deterministic first, then a caller-specific NVIDIA GLM route and Gemini fallbacks.
+
+Routes may select both analysis profiles and `caller_patterns`. Retryable transport, timeout, rate-limit, and server failures can fail over. Prompt/schema errors must be handled by the caller according to the task’s safety policy.
+
+New tasks should always start from their preferred route. Route cooldown state prevents repeatedly calling a provider known to be temporarily unhealthy.
+
+## Summary grounding contract
+
+`agents/summary_context.py` is the only place that assembles executive-summary history and current data. Both the orchestrator and `scripts/regenerate_summary.py` must use it.
+
+- Previous summaries are anti-repetition context only and end at `=== END PREVIOUS DAYS' COVERAGE ===`.
+- Current factual evidence lives inside `=== TODAY'S DATA (CURRENT EVIDENCE) ===`.
+- Executive and topic outputs must return exact IDs for current items.
+- Historical claims cannot be reused unless a current item independently supports them.
+
+## Reliability requirements
+
+- News LLM filtering is fail-open to the deterministic keyword-filtered set when JSON/schema output is invalid.
+- A category that collected eligible items cannot silently collapse to zero downstream.
+- Cross-category topics need current evidence from at least two non-empty categories.
+- Executive evidence must cover at least two categories when two or more are available.
+- `t.co` redirects are expanded before link following.
+- Editorial output is sanitized through `agents/editorial_guard.py`.
+- Quality rules live in `agents/quality_score.py` and the final gate in `scripts/validate_report.py`.
+- Checkpoints under `data/checkpoints/<date>/` support resume; do not change checkpoint compatibility casually.
+
+## Telemetry
+
+`agents/llm_client.py` emits provider, route, caller, attempts, latency, token, and error metadata. `agents/cost_tracker.py` aggregates estimated spend and GetXAPI usage. Diagnostics are written to `data/llm_metrics.jsonl` and `web/data/<date>/cost_report.json` when enabled.
+
+Telemetry must remain prompt-free and secret-safe.
+
+## Key paths
+
+```text
+agents/                  Pipeline agents, routing, context and reliability guards
+config/                  Providers, prompts, sources and grounding data
+frontend/                SvelteKit 5 application
+generators/              JSON, feed and optional visual generators
+scripts/                 Validation, regeneration and deployment utilities
+tests/                   Mocked unit and regression tests
+web/data/<date>/          Generated report artifacts
+.github/workflows/        Daily generation and publishing workflow
 ```
 
-### Key Files
-- `run_pipeline.py` - Async entry point using MainOrchestrator
-- `agents/orchestrator.py` - Main coordinator for all agents
-- `agents/llm_client.py` - Native Gemini plus Anthropic/OpenRouter adapters, quota limiting, and profile-aware routing
-- `agents/link_enricher.py` - Adds internal links to summaries using LLM
-- `agents/cost_tracker.py` - Tracks LLM API usage and costs
-- `agents/ecosystem_context.py` - Model release tracking for LLM grounding
-- `agents/phase_tracker.py` - Phase status tracking, timing, and end-of-run summary
-- `generators/json_generator.py` - JSON data for SPA frontend
-- `generators/search_indexer.py` - Builds the MiniSearch corpus (single search-corpus.json)
-- `generators/hero_generator.py` - Daily hero image generation via Gemini
-- `generators/feed_generator.py` - Atom RSS feeds with Media RSS namespace
-- `scripts/regenerate_hero.py` - Manual hero image regeneration script
-- `config/` - Feed lists (rss_feeds.txt, twitter_accounts.txt, etc.)
-- `config/model_releases.yaml` - Curated AI model release dates (source of truth)
-- `config/ecosystem_context.yaml` - Auto-generated cache (merged releases + OpenRouter)
-- `data/raw/` - Collected JSON, `data/processed/` - Analyzed JSON, `data/checkpoints/` - Phase checkpoints for resume
-- `web/data/` - Generated JSON data for frontend
+## Adding a source or agent
 
-### External Dependencies
-- **Anthropic SDK** - Direct Claude API with adaptive thinking support (Bearer auth)
-- **Google GenAI SDK** - Native Gemini text/image access and thinking-level support
-- **TwitterAPI.io** - Twitter/X data collection ($0.15/1000 tweets)
-- **Bluesky Public API** - Free, no auth required
-- **Mastodon Public API** - Free, no auth required
-- **OpenRouter API** - Model discovery and API availability dates (free, no auth)
+For a source, update the appropriate config file, implement date-window behavior, expose source status, add empty/error tests, and update `ai_news_sources.md` plus the README source table.
 
-## Environment Variables
+For a gatherer, extend `BaseGatherer` and return `List[CollectedItem]`. For an analyzer, extend `BaseAnalyzer`, preserve item-ID coverage, and return a valid `CategoryReport`. Register new components in `MainOrchestrator` and add mocked failure-path tests.
 
-```
-ANTHROPIC_API_BASE    # Anthropic API endpoint (no /v1 suffix)
-ANTHROPIC_API_KEY     # Bearer token for authentication
-ANTHROPIC_MODEL       # Legacy single-provider model name (default: claude-4.8-opus-aws)
-GEMINI_API_KEY        # Google AI Studio key for native Gemini LLM routes
-TWITTERAPI_IO_KEY     # TwitterAPI.io API key
-LESSWRONG_PROXY_URL   # HTTP(S) or SOCKS proxy for LessWrong GraphQL/browser fallback requests (optional)
-PIPELINE_PROXY_URL    # HTTP(S) or SOCKS proxy for the whole pipeline (optional)
-NEWS_USER_AGENT       # User-Agent sent to RSS/feed sources, incl. research blog feeds (optional)
-RESEARCH_FEED_TIMEOUT # Network timeout (seconds) for research blog feed fetches (default: 20)
-ALPHAXIV_SORT         # AlphaXiv ranking: Hot|Likes|Recent|Comments|Views (default: Hot)
-ALPHAXIV_PAGE_SIZE    # AlphaXiv papers requested per page (default: 50, max: 100)
-ALPHAXIV_MAX_PAGES    # Maximum AlphaXiv feed pages per run (default: 5)
-RESEARCH_TRENDING_MAX_PAPERS # Maximum merged Hugging Face/AlphaXiv papers (default: 100)
-LLM_TRUST_ENV_PROXY   # Let LLM clients use HTTP(S)/ALL_PROXY env vars (default: false)
-LLM_TIMEOUT_SECONDS   # Override provider-config LLM request timeout (Actions default: 240)
-LLM_MAX_CONCURRENT_REQUESTS # Async LLM request cap per provider route; 0 disables it (default: 8)
-LLM_ADAPTIVE_MAX_TOKENS # Response output ceiling for adaptive calls; not a thinking budget (default: 65536)
-LLM_MAX_RETRIES       # Anthropic SDK retry count for transient request failures (default: 2)
-LLM_LOG_REQUESTS      # Log LLM queue/start/done metadata without raw prompt content (default: true)
-LLM_HEARTBEAT_SECONDS # Seconds between in-flight LLM progress logs; 0 disables it (default: 60)
-LLM_METRICS_PATH      # Optional JSONL path for per-request LLM metrics (Actions default: data/llm_metrics.jsonl)
-LLM_ROUTE_COOLDOWN_SECONDS # Initial unhealthy-route cooldown (default: 120)
-LLM_ROUTE_MAX_COOLDOWN_SECONDS # Maximum exponential route cooldown (default: 1800)
-ANALYZER_BATCH_SIZE   # Items per analyzer map batch (default: 25)
-ANALYZER_MAX_CONCURRENT_BATCHES # Per-category analyzer map concurrency (default: 1)
-ANALYZER_MIN_BATCH_COVERAGE # Minimum expected item-ID coverage before split/retry (default: 0.85)
-SOCIAL_ANALYSIS_MAX_ITEMS # Highest-engagement social items analyzed (default: 150)
-SEMANTIC_DEDUP_USE_LLM # Optional pairwise LLM dedup (default: false)
-SENTIMENT_USE_LLM     # Optional per-item LLM sentiment (default: false)
-MAX_ANALYSIS_FALLBACK_RATE # Publish gate threshold for fallback items (default: 0.20)
-MULLVAD_ACCOUNT       # Mullvad account number for CI proxy setup (optional)
-MULLVAD_WG_PRIVATE_KEY # Stable WireGuard private key for the CI Mullvad device (optional)
-MULLVAD_RELAY_FILTER  # Mullvad relay hostname prefix for CI tunnel selection (optional)
-TARGET_DATE           # Report date (YYYY-MM-DD), coverage is day before. Defaults to today.
-ENABLE_CRON           # Enable scheduled collection (default: false)
-COLLECTION_SCHEDULE   # Cron schedule (default: 0 6 * * *), requires ENABLE_CRON=true
-LOOKBACK_HOURS        # Data window in hours (default: 24)
-TZ                    # Timezone (default: America/New_York)
-```
+## Publishing
 
-## Adaptive Thinking Profiles
+`.github/workflows/daily-pipeline.yml` runs the critical mocked tests before paid calls, generates the report, applies the publish gate, and commits only validated public artifacts. Failed runs restore the last good report.
 
-The pipeline uses internal AATF analysis profiles. Native Gemini routes map them
-to low/medium/high `thinking_level`; optional Claude routes map them to adaptive
-effort or legacy manual budgets. Route caller patterns can override profile-only
-selection for scarce quality-model quotas.
-
-| Component | Profile | Default Gemini Route |
-|-----------|---------|----------------------|
-| Link relevance check | QUICK | Flash-Lite / low |
-| Item summarization | QUICK | Flash-Lite / low |
-| Category theme detection | STANDARD | Flash-Lite / medium |
-| Item ranking | DEEP | Flash / high |
-| Cross-category topics | ULTRATHINK | Flash / high |
-| Executive summary | DEEP | Flash / high |
-| Link enrichment | STANDARD | Flash / medium |
-| Ecosystem enrichment | STANDARD | Flash-Lite / medium |
-
-## Multi-Provider LLM Routing
-
-`config/providers.yaml` can define `llm.routes` for async LLM calls. Routes
-inherit root settings, may select `profiles` and `caller_patterns`, and can
-enforce `requests_per_minute`, `tokens_per_minute`, and `requests_per_day`.
-Configurations without selectors retain round-robin behavior.
-
-Retryable transport failures, timeouts, 429s, and 5xx responses retry on a different route. Prompt/schema/client errors and JSON parse failures do not cross-provider retry. Hosted diagnostics include provider IDs, provider model IDs, route attempts, fallback source, retry reason, `thinking_type`, `analysis_profile`, `adaptive_effort`, `response_max_tokens`, queue/active counts, and content block counts; they must stay secret-safe and prompt-free.
-
-## Ecosystem Context
-
-The pipeline uses an ecosystem context system to ground LLM analysis with accurate model release dates. This prevents hallucinations like treating news about "GPT-5.2" as a new release when it was actually released weeks earlier.
-
-### How It Works
-- **Phase 0**: Loads curated `model_releases.yaml` and fetches fresh data from OpenRouter API
-- **Phase 4.6**: Analyzes daily news to auto-detect new model releases and updates `model_releases.yaml`
-- Grounding context is injected as a system prompt to all analyzers
-
-### Data Sources
-| Source | Purpose |
-|--------|---------|
-| `config/model_releases.yaml` | Curated GA dates (from Wikipedia, announcements) |
-| OpenRouter API | API availability dates, new model discovery |
-| Daily news (auto) | Phase 4.6 detects releases and updates curated file |
-
-### Date Types
-- **GA date**: General Availability - when model was publicly announced/released
-- **API date**: When model became available via public APIs (OpenRouter, etc.)
-
-### Adding/Updating Model Releases
-Edit `config/model_releases.yaml` directly:
-```yaml
-openai:
-  GPT-5.3:
-    ga_date: "2026-01-20"   # From announcement/Wikipedia
-    api_date: "2026-01-21"  # From OpenRouter or "unknown"
-```
-
-The enrichment phase (4.6) will also auto-add high-confidence releases detected in daily news.
-
-### Generated Files
-- `config/ecosystem_context.yaml` - Auto-generated cache merging curated + OpenRouter data. Do not edit manually; regenerated on each pipeline run.
-
-## Hero Image Generation
-
-Each daily report includes a hero image featuring the AATF skunk mascot in a scene representing the day's top stories.
-
-### How It Works
-- Uses Gemini 3 Pro Image API via configured provider
-- Takes the skunk reference image (`assets/skunk-reference.png`) and all detected topics (typically 3-6)
-- Generates a 21:9 ultra-wide banner image
-- Outputs to `web/data/{date}/hero.webp` (optimized WebP at 1280px, q75)
-- **Fallback**: If cross-category topic detection fails (Phase 3), hero generation falls back to top themes from each category (deduplicated, sorted by importance, top 6)
-
-### Prompt Design
-The prompt includes:
-1. **Mascot preservation**: Explicit instructions to keep the circuit board pattern on the skunk
-2. **Story context**: Full topic descriptions (cleaned of markdown links) so the model understands the news
-3. **Visual direction**: Keyword-to-visual mappings (e.g., "safety" → shields, "robotics" → robot arms)
-
-### Manual Regeneration
-```bash
-# Regenerate hero for a specific date
-python3 scripts/regenerate_hero.py 2026-01-06
-
-# With custom prompt override
-python3 scripts/regenerate_hero.py 2026-01-06 --prompt "Custom scene description"
-```
-
-## RSS Feeds
-
-The pipeline generates Atom 1.0 RSS feeds with Media RSS namespace support for thumbnail images.
-
-### Feed Types
-
-| Feed | File | Content |
-|------|------|---------|
-| **Main Feed** | `main.xml` | Executive summary + top 5 items per category (recommended) |
-| **Daily Briefing** | `summaries-executive.xml` | Executive summaries only with hero image (most popular) |
-| **All Summaries** | `summaries.xml` | Executive + all category summaries per day |
-| **News Summaries** | `summaries-news.xml` | News category summaries only |
-| **Research Summaries** | `summaries-research.xml` | Research category summaries only |
-| **Social Summaries** | `summaries-social.xml` | Social category summaries only |
-| **News** | `news.xml` | All news items |
-| **Research** | `research-{25,50,100,full}.xml` | Research items (configurable count) |
-| **Social** | `social-{25,50,100,full}.xml` | Social items (configurable count) |
-
-### Hero Image in Feeds
-
-Executive summary entries include the hero image via:
-- `<media:thumbnail>` element (for Feedly and compatible readers)
-- Inline `<img>` tag in HTML content (fallback for basic readers)
-
-Requires Media RSS namespace: `xmlns:media="http://search.yahoo.com/mrss/"`
-
-Summary feed entries keep the AATF report URL as the first `rel="alternate"` and `rel="canonical"` link. A representative external source, when present, remains as a secondary alternate with a distinct content type plus `rel="via"` for Feedly compatibility. Summary entries also emit `<content type="html">` with the same HTML as `<summary type="html">`.
-
-### Manual Feed Regeneration
-```bash
-# Regenerate feeds for last 30 days
-source venv/bin/activate
-python3 generators/feed_generator.py web/ 30
-```
-
-### Feed Location
-Feeds are output to `web/data/feeds/` and accessible at `/data/feeds/*.xml` on the frontend.
-
-## Important Notes
-
-- **Trending Papers**: Hugging Face Daily Papers is queried for the exact coverage date. AlphaXiv uses the smallest rolling trend interval containing that date and then filters to exact publication dates. AlphaXiv is skipped for backfills older than 90 days because its API does not expose historical snapshots.
-- **LessWrong**: Uses GraphQL for date-range collection because RSS only exposes the newest posts. The helper tries direct GraphQL, cached cookies, and a Playwright browser warm-up. `LESSWRONG_PROXY_URL` can target only this source; otherwise `PIPELINE_PROXY_URL` is reused.
-- **External API Usage**: Non-LLM paid APIs report per-run usage and live balance into the end-of-run cost summary. TwitterAPI.io shows calls, tweets, and `recharge_credits` balance ($1 = 100,000 credits). Balance probes are free.
-- **Link Following**: The News gatherer receives social posts and uses LLM to decide which linked articles to fetch.
-- **Link Enrichment**: Executive summaries, category summaries, and topic descriptions are enriched with internal links to referenced items. Links use format `/?date={date}&category={category}#item-{id}`.
-- **Date Semantics**: TARGET_DATE represents the report date. Coverage period is the day BEFORE the report date (00:00-23:59 ET). For example, TARGET_DATE=2026-01-05 generates a "January 5th report" covering news from January 4th.
-- **Collection Status**: Each gatherer tracks success/partial/failed status. Social gatherer tracks per-platform status (Twitter, Bluesky, Mastodon). Status is logged at end of run and included in JSON output for frontend display.
-- **Output Quality**: LLM prompts are tuned for factual, briefing-style output. Avoid generic "thought leader" language.
-- **Source Diversity**: The ranking algorithm prioritizes news articles and research papers over social discussions to ensure top stories reflect actual developments.
-- **Item IDs**: Generated as 12-character SHA256 hashes (~280 trillion unique values) for compact URLs.
-- **Ecosystem Grounding**: All analyzers receive model release dates as system context to prevent hallucinations about "new" releases that are actually weeks/months old.
-- **Phase Tracking**: Each phase is tracked with status (success/partial/failed/skipped), timing, and details. End-of-run summary prints before cost report. Phase status is included in `OrchestratorResult` JSON output.
-- **Checkpointing**: Major phases save checkpoints to `data/checkpoints/{date}/`. Use `--resume` for auto crash recovery or `--resume-from N` to re-run from a specific phase. Checkpoints persist between runs.
-- **Hero Fallback**: When topic detection (Phase 3) fails or returns no topics, hero image generation falls back to top category themes instead of being skipped entirely.
-
-## Adding New Sources
-
-- RSS feeds: Add URLs to `config/rss_feeds.txt` (one per line)
-- Research blogs: Add URLs to `config/research_feeds.txt` (LessWrong, AI Alignment Forum, etc.)
-- Bluesky: Add handles to `config/bluesky_accounts.txt` (e.g., `karpathy.bsky.social`)
-- Mastodon: Add accounts to `config/mastodon_accounts.txt` (format: `username@instance.social`)
-- Twitter: Add usernames to `config/twitter_accounts.txt` (requires TWITTERAPI_IO_KEY)
-
-## Adding a New Agent
-
-### Creating a Gatherer
-Create a new file in `agents/gatherers/` following the pattern:
-- Extend `BaseGatherer` from `agents/base.py`
-- Implement `async gather()` method returning `List[CollectedItem]`
-- Add to `MainOrchestrator.__init__()` in `agents/orchestrator.py`
-
-### Creating an Analyzer
-Create a new file in `agents/analyzers/` following the pattern:
-- Extend `BaseAnalyzer` from `agents/base.py`
-- Implement `async analyze(items)` returning `CategoryReport`
-- Use `self.llm_client.call_with_thinking()` for analysis
-- Add to `MainOrchestrator.__init__()` in `agents/orchestrator.py`
-
-## SPA Frontend
-
-The Svelte 5 + SvelteKit SPA frontend provides:
-- **AATF Branding**: Trend Red (#E63946) color scheme, skunk logo
-- **Calendar Navigation**: Interactive date picker, prev/next navigation
-- **Full-text Search**: Client-side MiniSearch index built in a Web Worker from a compact corpus
-- **Dark Mode**: System-aware theme toggle with manual override
-- **Responsive Design**: Mobile-first with Tailwind CSS
-
-### Frontend Components
-
-```
-frontend/src/lib/
-├── components/
-│   ├── layout/
-│   │   ├── Header.svelte       # Logo, title, date display, search toggle
-│   │   ├── Navigation.svelte   # Category nav with date-aware links
-│   │   ├── Footer.svelte       # Attribution
-│   │   ├── ThemeToggle.svelte  # Dark/light mode toggle
-│   │   └── HeroSection.svelte  # Daily hero image banner
-│   ├── calendar/
-│   │   ├── Calendar.svelte     # Month view calendar picker
-│   │   └── DateNavigator.svelte # Prev/next date controls
-│   ├── news/
-│   │   ├── NewsCard.svelte     # Individual item card
-│   │   ├── NewsList.svelte     # List of items
-│   │   └── TopicCard.svelte    # Top topic display
-│   ├── search/
-│   │   ├── SearchBar.svelte    # Search input with category filter
-│   │   └── SearchResults.svelte # Search results dropdown
-│   └── common/
-│       ├── LoadingSpinner.svelte
-│       ├── ErrorMessage.svelte
-│       └── EmptyState.svelte
-├── stores/
-│   ├── dateStore.ts            # Current date, available dates, navigation
-│   └── themeStore.ts           # Dark/light mode state
-├── services/
-│   ├── dataLoader.ts           # Fetch JSON data with caching
-│   ├── searchIndex.ts          # MiniSearch worker proxy
-│   ├── searchWorker.ts         # Web Worker: builds + queries MiniSearch index
-│   └── dateUtils.ts            # Date formatting helpers
-└── types/
-    └── index.ts                # TypeScript interfaces
-```
-
-### JSON Data Structure
-
-Data is output to `web/data/`. The dev server serves from there via Vite alias.
-
-```
-web/data/
-├── index.json              # Date manifest (list of available dates)
-├── search-corpus.json      # Search corpus (30-day window); index built in-browser
-├── feeds/                  # Atom RSS feeds
-│   ├── main.xml            # Main feed (executive + top items)
-│   ├── summaries*.xml      # Summary-only feeds
-│   ├── news.xml            # All news items
-│   ├── research-*.xml      # Research feeds (25/50/100/full)
-│   └── social-*.xml        # Social feeds (25/50/100/full)
-└── {date}/
-    ├── summary.json        # Executive summary + top items per category + coverage info
-    ├── hero.webp           # Daily hero image with skunk mascot
-    ├── news.json           # Full news items
-    ├── research.json       # Full research items (trending papers + blogs)
-    ├── social.json         # Full social items
-    └── github_trending.json # Full trending repository items
-
-### summary.json includes:
-- `date`: Report date (YYYY-MM-DD)
-- `coverage_date`: Date of news coverage (day before report date)
-- `coverage_start`: ISO datetime for coverage start
-- `coverage_end`: ISO datetime for coverage end
-- `hero_image_url`: Relative URL to hero image (e.g., `/data/2026-01-05/hero.webp`)
-- `hero_image_prompt`: Prompt used to generate the hero image
-```
-
-### URL Routing
-
-Uses query parameters for bookmarkable/shareable URLs:
-
-| Route | Content |
-|-------|---------|
-| `/` | Redirects to `/?date=LATEST` |
-| `/?date=2026-01-05` | Specific date overview |
-| `/?date=2026-01-05&category=research` | Category page for date |
-| `/archive` | Calendar browser with all available dates |
-| `/feeds` | RSS feed directory with subscribe links |
-
-Legacy path-based URLs (`/{date}` and `/{date}/{category}`) are automatically redirected to query param format.
-
-### Route Validation
-
-- Date param validated as YYYY-MM-DD format, invalid dates redirect to home
-- Category param validated against valid categories (news, research, social, github_trending)
-- Navigation links are disabled until date store is initialized
+The workflow is guarded for `BlockFrame/AI-Observatory`. Do not enable scheduled publishing in a fork without intentionally changing repository guards, secrets, signing, and output ownership.

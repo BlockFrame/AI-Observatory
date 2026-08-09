@@ -255,6 +255,25 @@ class LinkEnricher:
         if not text or not items:
             return text
 
+        # Resolve high-confidence title/entity matches before asking a model.
+        # Already resolved items are removed from model context, so only
+        # ambiguous references consume tokens.
+        deterministic = self._inject_deterministic_links(
+            text, items, context_name, append_read_more=False
+        )
+        linked_ids = set(re.findall(r"#item-([\w-]+)", deterministic))
+        remaining_items = [item for item in items if item.get("id") not in linked_ids]
+        if linked_ids and not self._needs_llm_enrichment(deterministic):
+            logger.info(
+                f"  {context_name}: deterministic matching resolved "
+                f"{len(linked_ids)} reference(s); skipped LLM enrichment"
+            )
+            return deterministic
+        if not remaining_items:
+            return deterministic
+        text = deterministic
+        items = remaining_items
+
         # Build items context. Cap is 4 categories * ITEMS_PER_CATEGORY plus
         # headroom; kept generous so the LLM sees enough candidates to link
         # every story mentioned by the executive summary.
@@ -374,7 +393,24 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
     def _has_internal_links(self, text: str) -> bool:
         return bool(text) and "](/?date=" in text
 
-    def _inject_deterministic_links(self, text: str, items: List[Dict[str, Any]], context_name: str) -> str:
+    def _needs_llm_enrichment(self, text: str) -> bool:
+        """Return True when most meaningful lines still have no internal link."""
+        meaningful = [
+            line for line in text.splitlines()
+            if len(re.sub(r"[#*\-]", "", line).strip()) >= 40
+        ]
+        if not meaningful:
+            return not self._has_internal_links(text)
+        linked = sum(1 for line in meaningful if "](/?date=" in line)
+        return linked < max(1, (len(meaningful) + 1) // 2)
+
+    def _inject_deterministic_links(
+        self,
+        text: str,
+        items: List[Dict[str, Any]],
+        context_name: str,
+        append_read_more: bool = True,
+    ) -> str:
         """Best-effort inline contextual links when LLM enrichment fails or returns no links."""
         if not text or not items:
             return text
@@ -428,6 +464,9 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
 
         if used_item_ids:
             logger.info(f"  {context_name}: deterministic fallback added {len(used_item_ids)} inline links")
+            return enriched_text
+
+        if not append_read_more:
             return enriched_text
 
         # Fallback to appending read more if no inline phrases matched

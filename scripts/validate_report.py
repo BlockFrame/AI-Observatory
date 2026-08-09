@@ -42,6 +42,9 @@ import urllib.error
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from agents.quality_score import calculate_quality_score
+from agents.editorial_guard import find_forbidden_editorial_fields
+
 # Substrings that indicate a phase wrote a failure sentinel instead of real content.
 # Matched case-insensitively against the executive summary text.
 FAILURE_SENTINELS = (
@@ -60,6 +63,8 @@ FAILURE_SENTINELS = (
 MIN_EXEC_SUMMARY_CHARS = 400
 MIN_CATEGORY_SUMMARY_CHARS = 300
 MAX_ANALYSIS_FALLBACK_RATE = float(os.getenv("MAX_ANALYSIS_FALLBACK_RATE", "0.20"))
+MIN_REPORT_QUALITY_SCORE = float(os.getenv("MIN_REPORT_QUALITY_SCORE", "70"))
+MIN_CATEGORY_QUALITY_SCORE = float(os.getenv("MIN_CATEGORY_QUALITY_SCORE", "55"))
 CRITICAL_PHASES = (
     "Phase 3: Topic Detection",
     "Phase 4: Executive Summary",
@@ -100,6 +105,7 @@ def validate(summary: dict, date_str: str) -> dict:
     report_date = summary.get("date") or summary.get("coverage_date") or ""
     phase_status = summary.get("phase_status") or []
     generation_quality = summary.get("generation_quality") or {}
+    published_quality_score = summary.get("quality_score")
 
     # 1) Executive summary must be non-empty and substantive.
     if not exec_summary:
@@ -178,6 +184,113 @@ def validate(summary: dict, date_str: str) -> dict:
         elif (payload.get("count") or 0) > 0:
             warnings.append(f"{category} analysis_quality missing; map coverage cannot be verified")
 
+    # 6b) A category that had items entering analysis may not silently collapse
+    # to zero. This is the exact failure mode that emptied News on 2026-08-09.
+    analysis_funnel = summary.get("analysis_funnel") or {}
+    if analysis_funnel:
+        for category, funnel in analysis_funnel.items():
+            if not isinstance(funnel, dict):
+                continue
+            gathered_count = int(funnel.get("collected") or 0)
+            analyzed_count = int(funnel.get("analyzed") or 0)
+            if gathered_count > 0 and analyzed_count == 0:
+                failures.append(
+                    f"{category} category wipeout: {gathered_count} items entered analysis, 0 survived"
+                )
+    else:
+        warnings.append("analysis_funnel missing; category wipeouts cannot be verified")
+
+    # 6c) Generated editorial copy must not leak internal style references.
+    editorial_fields = [("executive_summary", exec_summary)]
+    for category, payload in categories.items():
+        if isinstance(payload, dict):
+            editorial_fields.append(
+                (f"categories.{category}.category_summary", payload.get("category_summary"))
+            )
+    for index, topic in enumerate(top_topics if isinstance(top_topics, list) else []):
+        if not isinstance(topic, dict):
+            continue
+        for field in ("name", "description", "business_implication"):
+            editorial_fields.append((f"top_topics[{index}].{field}", topic.get(field)))
+    for field_name in find_forbidden_editorial_fields(editorial_fields):
+        failures.append(f"{field_name} contains a forbidden internal style reference")
+
+    # 6d) Evidence IDs must resolve to current items. Topics advertised as
+    # cross-category must be backed by at least two real, non-empty categories.
+    current_item_categories = {}
+    has_evidence_catalog = False
+    for category, payload in categories.items():
+        if not isinstance(payload, dict):
+            continue
+        if "current_item_ids" in payload:
+            has_evidence_catalog = True
+        for item_id in payload.get("current_item_ids") or []:
+            if isinstance(item_id, str) and item_id:
+                current_item_categories[item_id] = category
+
+    if has_evidence_catalog:
+        executive_evidence = summary.get("executive_evidence_items") or []
+        invalid_exec_evidence = [
+            item_id for item_id in executive_evidence
+            if item_id not in current_item_categories
+        ]
+        executive_categories = {
+            current_item_categories[item_id]
+            for item_id in executive_evidence
+            if item_id in current_item_categories
+        }
+        active_categories = {
+            category for category, payload in categories.items()
+            if isinstance(payload, dict) and int(payload.get("count") or 0) > 0
+        }
+        required_exec_categories = min(2, len(active_categories))
+        if invalid_exec_evidence:
+            failures.append(
+                f"executive_summary references {len(invalid_exec_evidence)} non-current evidence item(s)"
+            )
+        if len(executive_categories) < required_exec_categories:
+            failures.append(
+                "executive_summary evidence covers "
+                f"{len(executive_categories)} current categories "
+                f"(minimum {required_exec_categories})"
+            )
+
+        for index, topic in enumerate(top_topics if isinstance(top_topics, list) else []):
+            if not isinstance(topic, dict):
+                failures.append(f"top_topics[{index}] is not an object")
+                continue
+            representative_items = topic.get("representative_items") or []
+            invalid_topic_evidence = [
+                item_id for item_id in representative_items
+                if item_id not in current_item_categories
+            ]
+            evidence_categories = {
+                current_item_categories[item_id]
+                for item_id in representative_items
+                if item_id in current_item_categories
+            }
+            declared_categories = {
+                category
+                for category, count in (topic.get("category_breakdown") or {}).items()
+                if int(count or 0) > 0
+                and category in active_categories
+            }
+            if invalid_topic_evidence:
+                failures.append(
+                    f"top_topics[{index}] references non-current evidence item(s)"
+                )
+            if len(evidence_categories) < 2:
+                failures.append(
+                    f"top_topics[{index}] is not cross-category: evidence covers "
+                    f"{len(evidence_categories)} current categories"
+                )
+            if len(declared_categories) < 2:
+                failures.append(
+                    f"top_topics[{index}] category_breakdown has fewer than two non-empty categories"
+                )
+    else:
+        warnings.append("current item evidence catalog missing; synthesis grounding cannot be verified")
+
     # 7) Date sanity: published report should match the requested date.
     if report_date and report_date != date_str:
         warnings.append(f"report date {report_date!r} != requested {date_str!r}")
@@ -185,6 +298,28 @@ def validate(summary: dict, date_str: str) -> dict:
     # Non-fatal quality signals.
     if not summary.get("hero_image_url"):
         warnings.append("hero_image_url missing (hero fallback or failure)")
+
+    # Current generators always publish this score. Older reports remain
+    # inspectable, but only scored reports can exercise the numeric gate.
+    computed_quality = calculate_quality_score(
+        summary,
+        report_threshold=MIN_REPORT_QUALITY_SCORE,
+        category_threshold=MIN_CATEGORY_QUALITY_SCORE,
+    )
+    if isinstance(published_quality_score, dict):
+        if computed_quality["score"] < MIN_REPORT_QUALITY_SCORE:
+            failures.append(
+                f"report quality score is {computed_quality['score']:.1f} "
+                f"(min {MIN_REPORT_QUALITY_SCORE:.1f})"
+            )
+        for category in computed_quality["failed_categories"]:
+            category_score = computed_quality["categories"][category]["score"]
+            failures.append(
+                f"{category} quality score is {category_score:.1f} "
+                f"(min {MIN_CATEGORY_QUALITY_SCORE:.1f})"
+            )
+    else:
+        warnings.append("quality_score missing; numeric quality gate not available")
 
     return {
         "valid": len(failures) == 0,
@@ -198,6 +333,8 @@ def validate(summary: dict, date_str: str) -> dict:
             "total_items_analyzed": analyzed,
             "hero_image_url": summary.get("hero_image_url"),
             "max_analysis_fallback_rate": MAX_ANALYSIS_FALLBACK_RATE,
+            "quality_score": computed_quality["score"],
+            "min_quality_score": MIN_REPORT_QUALITY_SCORE,
         },
     }
 

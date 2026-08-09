@@ -103,10 +103,42 @@ class LinkFollower:
         for url in urls:
             # Remove trailing punctuation
             url = url.rstrip('.,;:!?)\'"]')
-            if self._register_url(url):
+            # t.co is not itself an article, but it may redirect to one. Keep
+            # it for the deterministic expansion pass before domain filtering.
+            if self._is_tco_url(url) or self._register_url(url):
                 cleaned_urls.append(url)
 
         return cleaned_urls
+
+    @staticmethod
+    def _is_tco_url(url: str) -> bool:
+        try:
+            return (urlparse(url).hostname or "").lower() == "t.co"
+        except Exception:
+            return False
+
+    def _expand_tco_url(self, url: str) -> Optional[str]:
+        """Resolve a t.co URL without downloading the destination body."""
+        if not self._is_tco_url(url):
+            return url
+        try:
+            response = requests.head(
+                url,
+                headers={'User-Agent': 'Mozilla/5.0 (compatible; AI-Observatory/1.0)'},
+                timeout=min(self.timeout, 10.0),
+                allow_redirects=True,
+            )
+            response.raise_for_status()
+            expanded = response.url
+            if (
+                expanded
+                and not self._is_tco_url(expanded)
+                and not self._should_skip_url(expanded)
+            ):
+                return expanded
+        except Exception as exc:
+            logger.debug("Could not expand t.co URL %s: %s", url, exc)
+        return None
 
     def _register_url(self, url: str) -> bool:
         """Validate and register a URL, returning True only for a new followable URL."""
@@ -336,8 +368,11 @@ Reply with just "YES" or "NO"."""
         # an unbounded set lets a flood of social posts amplify cost/egress.
         max_links = int(os.environ.get('LINK_FOLLOWER_MAX_URLS', '50'))
 
-        # Extract URLs from all posts
-        capped = False
+        # Extract URL candidates first. t.co links are expanded concurrently
+        # before the normal skip/relevance gates, so the follower sees their
+        # actual article destinations rather than discarding the short domain.
+        raw_url_posts = []
+        raw_cap = max_links * 2
         for post in posts:
             urls = self.extract_urls(post.content)
             metadata_urls = (
@@ -345,19 +380,48 @@ Reply with just "YES" or "NO"."""
                 if isinstance(post.metadata, dict) else []
             )
             for metadata_url in metadata_urls:
-                if isinstance(metadata_url, str) and self._register_url(metadata_url):
+                if not isinstance(metadata_url, str):
+                    continue
+                if self._is_tco_url(metadata_url) or self._register_url(metadata_url):
                     urls.append(metadata_url)
             for url in urls:
-                if len(url_to_post) >= max_links and url not in url_to_post:
-                    logger.warning(
-                        f"LINK_FOLLOWER_MAX_URLS cap ({max_links}) reached; "
-                        f"dropping further URLs this run"
-                    )
-                    capped = True
+                raw_url_posts.append((url, post))
+                if len(raw_url_posts) >= raw_cap:
                     break
-                url_to_post[url] = post
-            if capped:
+            if len(raw_url_posts) >= raw_cap:
                 break
+
+        loop = asyncio.get_running_loop()
+        tco_candidates = [url for url, _ in raw_url_posts if self._is_tco_url(url)]
+        if tco_candidates:
+            with ThreadPoolExecutor(max_workers=self.max_concurrent) as executor:
+                expanded_results = await asyncio.gather(*[
+                    loop.run_in_executor(executor, self._expand_tco_url, url)
+                    for url in tco_candidates
+                ])
+            expanded_by_url = dict(zip(tco_candidates, expanded_results))
+            expanded_count = sum(1 for url in expanded_results if url)
+            logger.info(
+                "Expanded %s/%s t.co redirects before link filtering",
+                expanded_count,
+                len(tco_candidates),
+            )
+        else:
+            expanded_by_url = {}
+
+        for raw_url, post in raw_url_posts:
+            url = expanded_by_url.get(raw_url) if self._is_tco_url(raw_url) else raw_url
+            if not url:
+                continue
+            if self._is_tco_url(raw_url) and not self._register_url(url):
+                continue
+            if len(url_to_post) >= max_links and url not in url_to_post:
+                logger.warning(
+                    f"LINK_FOLLOWER_MAX_URLS cap ({max_links}) reached; "
+                    f"dropping further URLs this run"
+                )
+                break
+            url_to_post[url] = post
 
         logger.info(f"Found {len(url_to_post)} unique URLs in {len(posts)} social posts")
 

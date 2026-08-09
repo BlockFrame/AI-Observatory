@@ -107,7 +107,7 @@ Deprioritize:
 - Off-topic tangents
 - Inflammatory or purely opinion-based content"""
 
-    RANKING_PROMPT = """Rank the top 10 most valuable social media posts.
+    RANKING_PROMPT = """Rank the top 25 most valuable social media posts.
 
 Analysis results:
 {analysis_summary}
@@ -122,13 +122,13 @@ Consider:
 Return your ranking as JSON:
 ```json
 {{
-  "top_10": ["id1", "id2", ...],
+  "top_25": ["id1", "id2", ...],
   "category_summary": "Structured summary using markdown formatting (see rules below)"
 }}
 ```
 
 CATEGORY SUMMARY FORMATTING RULES:
-You are a Senior Partner at QuantumBlack, AI by McKinsey, analyzing today's breakout AI discussions on social media for enterprise C-level executives.
+You are an enterprise AI strategy advisor analyzing today's breakout AI discussions for C-level executives.
 Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
 
 Use this Markdown format (group similar items by theme and heavily use **bold** for company names, model names, and key metrics):
@@ -144,7 +144,7 @@ Use this Markdown format (group similar items by theme and heavily use **bold** 
 ### 💡 Consultant's Insight
 (1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
 
-Keep the tone authoritative, visionary, analytical, and highly readable (McKinsey style). Do not include raw JSON structure outside the `category_summary` field."""
+Keep the tone authoritative, analytical, decision-oriented, and highly readable in a top-tier strategy-consulting style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
 
     def __init__(
         self,
