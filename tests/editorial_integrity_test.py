@@ -2,6 +2,9 @@
 
 import json
 import os
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -19,6 +22,79 @@ from scripts.validate_report import validate
 
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+class ValidatorCliTests(unittest.TestCase):
+    def test_validator_cli_imports_project_modules_without_pythonpath(self):
+        env = os.environ.copy()
+        env.pop("PYTHONPATH", None)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts" / "validate_report.py"),
+                    "--help",
+                ],
+                cwd=temp_dir,
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Validate a daily report", result.stdout)
+
+    def test_workflow_uploads_candidate_diagnostics_before_cleanup(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(
+            encoding="utf-8"
+        )
+
+        upload_index = workflow.index("- name: Upload pipeline diagnostics")
+        cleanup_index = workflow.index("- name: Discard invalid generated data")
+        self.assertLess(upload_index, cleanup_index)
+        self.assertIn("web/data/*/summary.json", workflow)
+        self.assertIn("web/data/*/endpoint_status.json", workflow)
+
+    def test_workflow_checks_paid_price_before_setup_and_collection(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(
+            encoding="utf-8"
+        )
+
+        price_index = workflow.index("- name: Verify paid model promotional pricing")
+        setup_index = workflow.index("- name: Set up Python")
+        pipeline_index = workflow.index("- name: Run pipeline")
+        self.assertLess(price_index, setup_index)
+        self.assertLess(price_index, pipeline_index)
+        self.assertIn("python3 scripts/check_openrouter_pricing.py", workflow)
+
+    def test_workflow_pins_reruns_to_original_report_date(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("actions/runs/${GITHUB_RUN_ID}", workflow)
+        self.assertIn(".created_at // empty", workflow)
+        self.assertIn('--date "${{ steps.report_date.outputs.date }}"', workflow)
+        self.assertIn("refusing an ambiguous collection", workflow)
+
+    def test_workflow_reuses_gathering_without_reusing_failed_synthesis(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("Restore completed gathering checkpoint", workflow)
+        self.assertIn("Inspect gathering checkpoint for reuse", workflow)
+        self.assertIn("Save completed gathering checkpoint", workflow)
+        self.assertIn("args+=(--resume-from 2)", workflow)
+        self.assertIn("paid X collection will be skipped", workflow)
+        self.assertIn("data/checkpoints/*/gathering.json", workflow)
+        self.assertIn('twitter.get("status") != "success"', workflow)
+        self.assertIn("steps.gathering_checkpoint.outputs.reusable == 'true'", workflow)
+        self.assertNotIn("data/checkpoints/*/analysis.json", workflow)
+        self.assertNotIn("data/checkpoints/*/topics.json", workflow)
+        self.assertNotIn("data/checkpoints/*/summary.json", workflow)
 
 
 class SocialRankingSchemaTests(unittest.TestCase):
@@ -276,27 +352,28 @@ class TcoExpansionTests(unittest.IsolatedAsyncioTestCase):
 
 
 class GeminiQuotaRoutingTests(unittest.TestCase):
-    def test_paid_glm_is_primary_and_gemini_36_is_complex_task_fallback(self):
+    def test_paid_minimax_is_primary_and_gemini_36_is_complex_task_fallback(self):
         providers = yaml.safe_load((ROOT / "config" / "providers.yaml").read_text())
-        paid_glm = next(
+        paid_model = next(
             route for route in providers["llm"]["routes"]
-            if route["id"] == "openrouter-glm-complex"
+            if route["id"] == "openrouter-minimax-complex"
         )
         gemini = next(
             route for route in providers["llm"]["routes"]
             if route["model"] == "gemini-3.6-flash"
         )
         self.assertEqual(
-            set(paid_glm["caller_patterns"]),
+            set(paid_model["caller_patterns"]),
             {
+                "news_analyzer.small_batch",
                 "*_analyzer.reduce_rank",
                 "analysis.*_summary",
                 "orchestrator.topics",
                 "orchestrator.summary",
             },
         )
-        self.assertEqual(paid_glm["fallback_route_id"], "gemini-quality-fallback")
-        self.assertEqual(set(gemini["caller_patterns"]), set(paid_glm["caller_patterns"]))
+        self.assertEqual(paid_model["fallback_route_id"], "gemini-quality-fallback")
+        self.assertEqual(set(gemini["caller_patterns"]), set(paid_model["caller_patterns"]))
 
 
 if __name__ == "__main__":

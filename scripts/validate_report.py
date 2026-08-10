@@ -21,7 +21,7 @@ Usage
   python3 scripts/validate_report.py --web-dir ./web --date 2026-06-02
 
   # Validate the live published report (watchdog):
-  python3 scripts/validate_report.py --url https://news.aatf.ai --date 2026-06-02
+  python3 scripts/validate_report.py --url https://ai-observatory.vercel.app --date 2026-06-02
 
 Exit codes
 ----------
@@ -40,7 +40,16 @@ import sys
 import urllib.request
 import urllib.error
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
+
+# Executing ``python scripts/validate_report.py`` makes ``scripts/`` the first
+# import root, not the repository root. Add the project root before importing
+# pipeline modules so the documented CLI and GitHub Actions publish gate work
+# without relying on an ambient PYTHONPATH.
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from agents.quality_score import calculate_quality_score
 from agents.editorial_guard import find_forbidden_editorial_fields
@@ -343,7 +352,10 @@ def main() -> int:
     p = argparse.ArgumentParser(description="Validate a daily report's summary.json")
     src = p.add_mutually_exclusive_group()
     src.add_argument("--web-dir", help="Local web dir containing data/<date>/summary.json")
-    src.add_argument("--url", help="Base URL of the published site, e.g. https://news.aatf.ai")
+    src.add_argument(
+        "--url",
+        help="Base URL of the published site, e.g. https://ai-observatory.vercel.app",
+    )
     p.add_argument("--date", help="Report date YYYY-MM-DD (default: today in America/New_York)")
     p.add_argument("--json", action="store_true", help="Emit machine-readable JSON result")
     args = p.parse_args()

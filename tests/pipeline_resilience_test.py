@@ -64,7 +64,48 @@ class ScraperResilienceTests(unittest.TestCase):
             call.kwargs["params"]["q"].count("from:") <= 20
             for call in get.call_args_list
         ))
+        self.assertTrue(all(
+            "since:2026-08-07 until:2026-08-08" in call.kwargs["params"]["q"]
+            for call in get.call_args_list
+        ))
         self.assertTrue(any("returned no tweets" in message for message in logs.output))
+
+    def test_twitter_search_rejects_posts_outside_exact_coverage_date(self):
+        with tempfile.TemporaryDirectory() as config_dir:
+            with open(os.path.join(config_dir, "twitter_accounts.txt"), "w") as accounts_file:
+                accounts_file.write("current_account\n")
+
+            gatherer = SocialGatherer(config_dir=config_dir, target_date="2026-08-08")
+            response = MagicMock()
+            response.json.return_value = {
+                "tweets": [
+                    {
+                        "id": "old",
+                        "text": "Old post",
+                        "createdAt": "Thu, 06 Aug 2026 12:00:00 +0000",
+                        "author": {"userName": "current_account"},
+                    },
+                    {
+                        "id": "current",
+                        "text": "Current coverage post",
+                        "createdAt": "Fri, 07 Aug 2026 12:00:00 +0000",
+                        "author": {"userName": "current_account"},
+                    },
+                    {
+                        "id": "invalid-date",
+                        "text": "Untrusted timestamp",
+                        "createdAt": "not-a-date",
+                        "author": {"userName": "current_account"},
+                    },
+                ]
+            }
+
+            with patch("agents.gatherers.social_gatherer.GETXAPI_KEY", "test-key"), \
+                 patch("agents.gatherers.social_gatherer.requests.get", return_value=response), \
+                 patch("agents.gatherers.social_gatherer.time.sleep"):
+                tweets = gatherer._twitter_search(gatherer.twitter_users)
+
+        self.assertEqual([tweet.metadata["platform_id"] for tweet in tweets], ["current"])
 
     def test_truncated_scraper_array_recovers_complete_objects(self):
         content = (
@@ -313,22 +354,28 @@ class CategorySummaryRoutingTests(unittest.TestCase):
 
 
 class LLMTelemetryTests(unittest.TestCase):
-    def test_openrouter_glm_promotional_cost_is_provider_specific(self):
+    def test_openrouter_minimax_promotional_cost_is_provider_specific(self):
         tracker = CostTracker("test-model")
         tracker.record_call(
             caller="orchestrator.summary",
             usage={"input_tokens": 1_000_000, "output_tokens": 1_000_000},
-            model="z-ai/glm-5.2",
-            provider_id="openrouter-glm-complex",
+            model="minimax/minimax-m3",
+            provider_id="openrouter-minimax-complex",
         )
         tracker.record_call(
             caller="link_enricher.executive summary",
             usage={"input_tokens": 1_000_000, "output_tokens": 1_000_000},
             model="z-ai/glm-5.2",
-            provider_id="nvidia-glm-quality",
+            provider_id="nvidia-glm-orchestration-backup",
+        )
+        tracker.record_call(
+            caller="news_analyzer.batch_1",
+            usage={"input_tokens": 1_000_000, "output_tokens": 0},
+            model="minimax/minimax-m3",
+            provider_id="openrouter-minimax-bulk",
         )
 
-        self.assertAlmostEqual(tracker.get_total_cost().total_cost, 0.29)
+        self.assertAlmostEqual(tracker.get_total_cost().total_cost, 1.44)
 
     def test_category_telemetry_reports_provider_failover_and_tokens(self):
         tracker = CostTracker("test-model")

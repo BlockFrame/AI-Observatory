@@ -31,6 +31,7 @@ from google import genai
 from google.genai import types as genai_types
 
 from .cost_tracker import get_tracker
+from openrouter_pricing import provider_preferences as openrouter_provider_preferences
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
@@ -132,7 +133,6 @@ THINKING_LEVEL_NAMES = {
 }
 
 OPENROUTER_DEFAULT_BASE_URL = "https://openrouter.ai/api/v1"
-OPENROUTER_GLM_5_2_MAX_PRICE = {"prompt": 0.10, "completion": 0.30}
 GEMINI_DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com"
 
 GEMINI_PROFILE_TO_THINKING = {
@@ -148,13 +148,8 @@ def _uses_openrouter(mode: str) -> bool:
 
 
 def _openrouter_provider_preferences(model: str) -> Dict[str, Any]:
-    """Protect promotional paid routes from silently reverting to list price."""
-    if model == "z-ai/glm-5.2":
-        return {
-            "sort": "price",
-            "max_price": dict(OPENROUTER_GLM_5_2_MAX_PRICE),
-        }
-    return {}
+    """Apply the paid complex-route price policy to OpenRouter requests."""
+    return openrouter_provider_preferences(model)
 
 
 def _uses_gemini(mode: str) -> bool:
@@ -344,6 +339,9 @@ def _normalize_openrouter_response(response_json: Dict[str, Any]) -> ProviderRes
     choice = choices[0]
     message = choice.get("message") or {}
     text = _extract_openrouter_text(message.get("content"))
+    reasoning = _extract_openrouter_text(
+        message.get("reasoning") or message.get("reasoning_content")
+    )
     usage_json = response_json.get("usage") or {}
     usage = ResponseUsage(
         input_tokens=int(usage_json.get("prompt_tokens") or 0),
@@ -352,7 +350,10 @@ def _normalize_openrouter_response(response_json: Dict[str, Any]) -> ProviderRes
         cache_read_input_tokens=int(usage_json.get("cache_read_input_tokens") or 0),
     )
     return ProviderResponse(
-        content=[ResponseBlock(type="text", text=text)],
+        content=(
+            ([ResponseBlock(type="thinking", thinking=reasoning)] if reasoning else [])
+            + [ResponseBlock(type="text", text=text)]
+        ),
         usage=usage,
         model=response_json.get("model") or "",
         stop_reason=choice.get("finish_reason"),
@@ -678,6 +679,7 @@ class AnthropicClient:
         system: Optional[str],
         max_tokens: int,
         temperature: Optional[float],
+        reasoning: Optional[Dict[str, Any]] = None,
     ) -> ProviderResponse:
         payload = {
             "model": self.model,
@@ -688,6 +690,8 @@ class AnthropicClient:
         provider_preferences = _openrouter_provider_preferences(self.model)
         if provider_preferences:
             payload["provider"] = provider_preferences
+        if reasoning:
+            payload["reasoning"] = reasoning
         response = self._http_client.post(
             f"{self.base_url}/chat/completions",
             json=payload,
@@ -845,27 +849,36 @@ class AnthropicClient:
 
         if _uses_openrouter(self.mode):
             if max_tokens is None:
-                max_tokens = min(self.max_output_tokens, 16384)
+                max_tokens = (
+                    self.max_output_tokens
+                    if full_output_budget
+                    else min(self.max_output_tokens, 16384)
+                )
+            effort = BUDGET_TO_EFFORT.get(requested_profile, "high")
             response = self._create_openrouter_completion(
                 messages=messages,
                 system=system,
                 max_tokens=max_tokens,
                 temperature=temperature,
+                reasoning={"effort": effort, "exclude": False},
             )
             content = "".join(block.text or "" for block in response.content)
+            thinking = "\n\n".join(
+                block.thinking or "" for block in response.content if block.type == "thinking"
+            ) or None
             return LLMResponse(
                 content=content,
-                thinking=None,
+                thinking=thinking,
                 usage={
                     "input_tokens": response.usage.input_tokens,
                     "output_tokens": response.usage.output_tokens,
                 },
                 model=response.model or self.model,
                 stop_reason=response.stop_reason,
-                thinking_type=None,
-                adaptive_effort=None,
+                thinking_type="adaptive",
+                adaptive_effort=effort,
                 analysis_profile=profile_name,
-                thinking_block_count=0,
+                thinking_block_count=1 if thinking else 0,
             )
 
         use_adaptive = _uses_adaptive_thinking(self.model)
@@ -1446,6 +1459,8 @@ class AsyncAnthropicClient:
             payload["chat_template_kwargs"] = kwargs["chat_template_kwargs"]
         elif kwargs.get("is_thinking_call", False):
             payload["chat_template_kwargs"] = {"thinking": True}
+        if "reasoning" in kwargs:
+            payload["reasoning"] = kwargs["reasoning"]
         provider_preferences = _openrouter_provider_preferences(kwargs["model"])
         if provider_preferences:
             payload["provider"] = provider_preferences
@@ -1907,7 +1922,12 @@ class AsyncAnthropicClient:
 
         if _uses_openrouter(self.mode):
             if max_tokens is None:
-                max_tokens = min(self.max_output_tokens, 16384)
+                max_tokens = (
+                    self.max_output_tokens
+                    if full_output_budget
+                    else min(self.max_output_tokens, 16384)
+                )
+            effort = BUDGET_TO_EFFORT.get(requested_profile, "high")
 
             start_time = time.time()
             request_context = {
@@ -1915,7 +1935,9 @@ class AsyncAnthropicClient:
                 "kind": "openrouter_chat",
                 "provider_id": self.provider_id,
                 "provider_model": self.model,
+                "thinking_type": "adaptive",
                 "analysis_profile": profile_name,
+                "adaptive_effort": effort,
                 "response_max_tokens": max_tokens,
                 "message_count": len(messages),
                 "message_chars": _messages_char_count(messages),
@@ -1931,6 +1953,7 @@ class AsyncAnthropicClient:
                 messages=messages,
                 system=system,
                 temperature=temperature,
+                reasoning={"effort": effort, "exclude": False},
             )
             duration = time.time() - start_time
             usage = {
@@ -1945,19 +1968,22 @@ class AsyncAnthropicClient:
                 model=response.model or self.model,
                 provider_id=self.provider_id,
                 analysis_profile=profile_name,
-                adaptive_effort=None,
+                adaptive_effort=effort,
                 **_routing_record_fields(routing_context),
             )
+            thinking = "\n\n".join(
+                block.thinking or "" for block in response.content if block.type == "thinking"
+            ) or None
             return LLMResponse(
                 content="\n".join(block.text or "" for block in response.content if block.type == "text"),
-                thinking=None,
+                thinking=thinking,
                 usage=usage,
                 model=response.model or self.model,
                 stop_reason=response.stop_reason,
-                thinking_type=None,
-                adaptive_effort=None,
+                thinking_type="adaptive",
+                adaptive_effort=effort,
                 analysis_profile=profile_name,
-                thinking_block_count=0,
+                thinking_block_count=1 if thinking else 0,
             )
 
         use_adaptive = _uses_adaptive_thinking(self.model)

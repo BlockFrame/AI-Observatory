@@ -304,7 +304,10 @@ class SocialGatherer(BaseGatherer):
             try:
                 pub_date = datetime.strptime(created_at, '%Y-%m-%dT%H:%M:%S.%fZ')
             except (ValueError, TypeError):
-                pub_date = datetime.now()
+                # Never substitute the current time: a malformed timestamp on
+                # an old tweet could otherwise make it pass today's date gate.
+                logger.warning("Discarding tweet %s with invalid createdAt=%r", tweet_id, created_at)
+                return None
 
         return CollectedItem(
             id=self.generate_id('twitter', tweet_id),

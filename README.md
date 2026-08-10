@@ -22,7 +22,7 @@ The pipeline is designed to degrade safely: provider fallbacks, checkpoints, sch
 - **Four daily intelligence views:** AI News, Research, Social signals from X, and GitHub Trending.
 - **Cross-category synthesis:** topics are accepted only when supported by current items from at least two populated categories.
 - **Evidence-grounded writing:** summaries return exact current-item IDs and cannot use historical summaries as fresh evidence.
-- **Resilient LLM routing:** paid GLM handles high-value synthesis; Gemini and NVIDIA routes provide task-specific fallbacks.
+- **Consistent LLM quality:** price-guarded paid MiniMax M3 handles both per-item analysis and high-value synthesis; Gemini and NVIDIA routes provide task-specific fallbacks.
 - **Operational visibility:** phase status, collection funnels, LLM telemetry, token usage, provider costs, and GetXAPI calls are persisted with the report.
 - **Static-first publishing:** generated JSON feeds a fast SvelteKit frontend and machine-readable discovery artifacts.
 

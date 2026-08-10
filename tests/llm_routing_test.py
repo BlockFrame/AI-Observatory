@@ -123,16 +123,16 @@ class LLMRouteConfigTests(unittest.TestCase):
         routes = {route.id: route for route in config.llm.get_route_configs()}
         self.assertNotIn("glm-bulk", routes)
         self.assertEqual(
-            routes["nvidia-nemotron-bulk"].fallback_route_id,
+            routes["openrouter-minimax-bulk"].fallback_route_id,
             "gemini-bulk-fallback",
         )
         self.assertEqual(
-            routes["openrouter-glm-complex"].fallback_route_id,
+            routes["openrouter-minimax-complex"].fallback_route_id,
             "gemini-quality-fallback",
         )
         self.assertIn(
             "link_enricher.*",
-            routes["nvidia-glm-quality"].caller_patterns,
+            routes["openrouter-minimax-link"].caller_patterns,
         )
         self.assertNotIn(
             "link_enricher.*",
@@ -166,9 +166,15 @@ class LLMRouteConfigTests(unittest.TestCase):
                 profile=ThinkingLevel.STANDARD,
                 caller="news_analyzer.batch_1",
             )
-            self.assertEqual(link.content, "nvidia-glm-quality")
-            self.assertEqual(summary.content, "openrouter-glm-complex")
-            self.assertEqual(bulk.content, "nvidia-nemotron-bulk")
+            small_news = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "small news batch"}],
+                profile=ThinkingLevel.DEEP,
+                caller="news_analyzer.small_batch",
+            )
+            self.assertEqual(link.content, "openrouter-minimax-link")
+            self.assertEqual(summary.content, "openrouter-minimax-complex")
+            self.assertEqual(small_news.content, "openrouter-minimax-complex")
+            self.assertEqual(bulk.content, "openrouter-minimax-bulk")
 
         asyncio.run(verify_routing())
 
@@ -178,7 +184,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 failures = (
                     [ProviderQuotaExhaustedError("20 RPD")]
                     if route.id in {
-                        "openrouter-glm-complex",
+                        "openrouter-minimax-complex",
                         "gemini-quality-fallback",
                     }
                     else None
@@ -262,12 +268,12 @@ class LLMRouteConfigTests(unittest.TestCase):
         self.assertEqual(config.base_url, "https://openrouter.ai/api/v1")
         self.assertEqual(config.get_route_configs()[0].base_url, "https://openrouter.ai/api/v1")
 
-    def test_paid_glm_openrouter_route_has_promotional_price_ceiling(self):
+    def test_paid_minimax_route_repeats_preflight_price_cap(self):
         self.assertEqual(
-            _openrouter_provider_preferences("z-ai/glm-5.2"),
+            _openrouter_provider_preferences("minimax/minimax-m3"),
             {
                 "sort": "price",
-                "max_price": {"prompt": 0.10, "completion": 0.30},
+                "max_price": {"prompt": 0.24, "completion": 0.96},
             },
         )
         self.assertEqual(_openrouter_provider_preferences("another/model"), {})
@@ -834,7 +840,7 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_openrouter_call_with_thinking_uses_plain_chat_completion(self):
+    def test_openrouter_call_with_thinking_uses_reasoning_effort(self):
         async def run():
             captured_kwargs = {}
             captured_context = {}
@@ -862,9 +868,50 @@ class AsyncLLMRouterTests(unittest.TestCase):
                 await client.close()
 
             self.assertNotIn("thinking", captured_kwargs)
+            self.assertEqual(
+                captured_kwargs["reasoning"],
+                {"effort": "high", "exclude": False},
+            )
             self.assertEqual(captured_kwargs["model"], "nvidia/nemotron-3-ultra-550b-a55b:free")
             self.assertEqual(captured_context["kind"], "openrouter_chat")
+            self.assertEqual(captured_context["thinking_type"], "adaptive")
             self.assertEqual(captured_context["analysis_profile"], "QUICK")
+            self.assertEqual(captured_context["adaptive_effort"], "high")
+
+        asyncio.run(run())
+
+    def test_openrouter_complex_call_uses_full_output_budget(self):
+        async def run():
+            captured_kwargs = {}
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                base_url="https://openrouter.ai/api/v1",
+                model="minimax/minimax-m3",
+                mode="openrouter",
+                max_output_tokens=32768,
+                max_retries=0,
+            )
+
+            async def fake_create_message(request_context=None, **kwargs):
+                captured_kwargs.update(kwargs)
+                return FakeOpenRouterResponse()
+
+            client._create_message = fake_create_message
+            try:
+                await client.call_with_thinking(
+                    messages=[{"role": "user", "content": "detect topics"}],
+                    profile=ThinkingLevel.ULTRATHINK,
+                    caller="orchestrator.topics",
+                    full_output_budget=True,
+                )
+            finally:
+                await client.close()
+
+            self.assertEqual(captured_kwargs["max_tokens"], 32768)
+            self.assertEqual(
+                captured_kwargs["reasoning"],
+                {"effort": "max", "exclude": False},
+            )
 
         asyncio.run(run())
 

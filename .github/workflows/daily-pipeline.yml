@@ -53,6 +53,8 @@ jobs:
       ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
       ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-4.8-opus-aws' }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+      OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK: ${{ vars.OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK || '0.24' }}
+      OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK: ${{ vars.OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK || '0.96' }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
       # Telegram delivery intentionally disabled until explicitly re-enabled.
@@ -164,6 +166,50 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.PIPELINE_PUSH_TOKEN || github.token }}
 
+      - name: Resolve report date
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        id: report_date
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "${TARGET_DATE_INPUT:-}" ]]; then
+            report_date="$TARGET_DATE_INPUT"
+          else
+            # A GitHub rerun can happen on a later calendar day. Anchor the
+            # report to the original workflow run creation time, not to "now",
+            # so its X coverage window and gathering cache remain unchanged.
+            run_json="$(curl -fsSL \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}")"
+            created_at="$(jq -r '.created_at // empty' <<< "$run_json")"
+            if [[ -z "$created_at" ]]; then
+              echo "Could not resolve the original workflow run date; refusing an ambiguous collection." >&2
+              exit 1
+            fi
+            report_date="$(TZ=America/New_York date -d "$created_at" +%F)"
+          fi
+          echo "date=$report_date" >> "$GITHUB_OUTPUT"
+          echo "Report date pinned to $report_date."
+
+      - name: Verify paid model promotional pricing
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          # This is intentionally the first post-checkout operation: a missing
+          # promotion must stop before dependency installation, X collection,
+          # scraping, or any LLM request consumes resources.
+          python3 scripts/check_openrouter_pricing.py
+
+      - name: Restore completed gathering checkpoint
+        if: steps.schedule_gate.outputs.should_run == 'true'
+        id: gathering_cache
+        uses: actions/cache/restore@v4
+        with:
+          path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
+          key: gathering-v1-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
+
       - name: Set up Python
         if: steps.schedule_gate.outputs.should_run == 'true'
         uses: actions/setup-python@v5
@@ -191,7 +237,7 @@ jobs:
             exit 1
           fi
           if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
-            echo "ERROR: OPENROUTER_API_KEY secret is empty - paid GLM complex-task route cannot start." >&2
+            echo "ERROR: OPENROUTER_API_KEY secret is empty - paid MiniMax complex-task route cannot start." >&2
             exit 1
           fi
           echo "API keys verified."
@@ -215,6 +261,7 @@ jobs:
             tests.editorial_integrity_test \
             tests.news_ai_keyword_filter_test \
             tests.pipeline_resilience_test \
+            tests.openrouter_pricing_test \
             tests.summary_context_test
 
       - name: Start Mullvad tunnel for hosted egress
@@ -284,14 +331,61 @@ jobs:
             echo "Pipeline-wide proxy is configured."
           fi
 
-          args=(--config-dir ./config --data-dir ./data --web-dir ./web)
-          if [[ -n "${TARGET_DATE_INPUT:-}" ]]; then
-            args+=(--date "$TARGET_DATE_INPUT")
-          fi
+          args=(
+            --config-dir ./config
+            --data-dir ./data
+            --web-dir ./web
+            --date "${{ steps.report_date.outputs.date }}"
+          )
           if [[ -n "${RESUME_FROM_INPUT:-}" ]]; then
             args+=(--resume-from "$RESUME_FROM_INPUT")
+          elif [[ -f "data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json" ]]; then
+            echo "Reusing completed gathering checkpoint; paid X collection will be skipped."
+            args+=(--resume-from 2)
           fi
           python3 run_pipeline.py "${args[@]}"
+
+      - name: Inspect gathering checkpoint for reuse
+        if: always() && steps.schedule_gate.outputs.should_run == 'true'
+        id: gathering_checkpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          checkpoint="data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json"
+          if [[ ! -f "$checkpoint" ]]; then
+            echo "reusable=false" >> "$GITHUB_OUTPUT"
+            echo "No completed gathering checkpoint is available."
+            exit 0
+          fi
+          if python3 - "$checkpoint" <<'PY'
+          import json
+          import sys
+
+          with open(sys.argv[1], encoding="utf-8") as handle:
+              checkpoint = json.load(handle)
+          twitter = (checkpoint.get("collection_status") or {}).get("social_twitter") or {}
+          if twitter.get("status") != "success":
+              raise SystemExit(
+                  f"GetXAPI collection is not reusable: status={twitter.get('status')!r}"
+              )
+          categories = checkpoint.get("categories")
+          if not isinstance(categories, dict) or not isinstance(categories.get("social"), list):
+              raise SystemExit("Gathering checkpoint has no valid social category")
+          PY
+          then
+            echo "reusable=true" >> "$GITHUB_OUTPUT"
+            echo "Gathering checkpoint is reusable; GetXAPI collection completed successfully."
+          else
+            echo "reusable=false" >> "$GITHUB_OUTPUT"
+            echo "Gathering checkpoint will not be cached because GetXAPI was incomplete." >&2
+          fi
+
+      - name: Save completed gathering checkpoint
+        if: ${{ always() && steps.schedule_gate.outputs.should_run == 'true' && steps.gathering_cache.outputs.cache-hit != 'true' && steps.gathering_checkpoint.outputs.reusable == 'true' }}
+        uses: actions/cache/save@v4
+        with:
+          path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
+          key: gathering-v1-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
 
       - name: Verify llms index artifacts
         if: steps.schedule_gate.outputs.should_run == 'true'
@@ -313,6 +407,21 @@ jobs:
           # publish a "generation failed" report. Exit 1 here fails the job and
           # blocks the commit; the revert step below restores the prior good data.
           python3 scripts/validate_report.py --web-dir ./web --date "$report_date"
+
+      # Capture the candidate report before the failure cleanup removes it. This
+      # keeps quality/evidence diagnostics available when the publish gate fails.
+      - name: Upload pipeline diagnostics
+        if: always() && steps.schedule_gate.outputs.should_run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-diagnostics
+          path: |
+            data/llm_metrics.jsonl
+            data/checkpoints/*/gathering.json
+            web/data/*/cost_report.json
+            web/data/*/summary.json
+            web/data/*/endpoint_status.json
+          if-no-files-found: ignore
 
       - name: Discard invalid generated data (keep last good report)
         if: failure() && steps.schedule_gate.outputs.should_run == 'true'
@@ -382,16 +491,6 @@ jobs:
             config/model_releases.yaml
             config/ecosystem_context.yaml
           if-no-files-found: error
-
-      - name: Upload pipeline diagnostics
-        if: always() && steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: pipeline-diagnostics
-          path: |
-            data/llm_metrics.jsonl
-            web/data/*/cost_report.json
-          if-no-files-found: ignore
 
       - name: Push generated commit
         if: steps.schedule_gate.outputs.should_run == 'true' && steps.commit.outputs.committed == 'true'

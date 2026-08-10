@@ -8,16 +8,18 @@ llm:
   tokens_per_minute: 250000
   requests_per_day: 500
   routes:
-    - id: "nvidia-nemotron-bulk"
+    # MiniMax also handles per-item analysis and lightweight editorial calls.
+    # This keeps one quality level across the pipeline while preserving a
+    # cheaper/quota-separated fallback chain for bulk work.
+    - id: "openrouter-minimax-bulk"
       priority: 100
-      mode: "openai-compatible"
-      api_key: "${NVIDIA_API_KEY}"
-      base_url: "https://integrate.api.nvidia.com/v1"
-      model: "nvidia/nemotron-3-nano-30b-a3b"
-      timeout: 120
-      max_output_tokens: 16384
+      mode: "openrouter"
+      api_key: "${OPENROUTER_API_KEY}"
+      base_url: "https://openrouter.ai/api/v1"
+      model: "minimax/minimax-m3"
+      timeout: 240
+      max_output_tokens: 32768
       max_concurrent_requests: 2
-      requests_per_minute: 30
       profiles: ["QUICK", "STANDARD", "DEEP"]
       fallback_route_id: "gemini-bulk-fallback"
 
@@ -46,36 +48,36 @@ llm:
       requests_per_day: 500
       profiles: ["QUICK", "STANDARD", "DEEP"]
 
-    # Paid GLM is reserved for the synthesis/ranking steps where model quality
-    # has the largest editorial impact. Keep bulk map/filter calls off this
-    # route even while the OpenRouter promotional price is active.
-    - id: "openrouter-glm-complex"
+    # Paid MiniMax M3 is reserved for synthesis/ranking. The workflow verifies
+    # its promotional price before collection and the request repeats the same
+    # price cap, so an expired offer cannot silently increase spend.
+    - id: "openrouter-minimax-complex"
       priority: 110
       mode: "openrouter"
       api_key: "${OPENROUTER_API_KEY}"
       base_url: "https://openrouter.ai/api/v1"
-      model: "z-ai/glm-5.2"
+      model: "minimax/minimax-m3"
       timeout: 240
       max_output_tokens: 32768
       max_concurrent_requests: 2
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback"
       caller_patterns:
+        - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "analysis.*_summary"
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    - id: "nvidia-glm-quality"
+    - id: "openrouter-minimax-link"
       priority: 100
-      mode: "openai-compatible"
-      api_key: "${NVIDIA_API_KEY}"
-      base_url: "https://integrate.api.nvidia.com/v1"
-      model: "z-ai/glm-5.2"
-      timeout: 180
-      max_output_tokens: 16384
-      max_concurrent_requests: 1
-      requests_per_minute: 30
+      mode: "openrouter"
+      api_key: "${OPENROUTER_API_KEY}"
+      base_url: "https://openrouter.ai/api/v1"
+      model: "minimax/minimax-m3"
+      timeout: 240
+      max_output_tokens: 32768
+      max_concurrent_requests: 2
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-3.5"
       caller_patterns:
@@ -95,6 +97,7 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "nvidia-glm-orchestration-backup"
       caller_patterns:
+        - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.topics"
         - "orchestrator.summary"
@@ -113,6 +116,7 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-3.5"
       caller_patterns:
+        - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.topics"
         - "orchestrator.summary"
@@ -132,6 +136,7 @@ llm:
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       fallback_route_id: "gemini-quality-fallback-lite-3.5"
       caller_patterns:
+        - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.*"
         - "link_enricher.*"
@@ -150,6 +155,7 @@ llm:
       requests_per_day: 500
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
       caller_patterns:
+        - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.*"
         - "link_enricher.*"

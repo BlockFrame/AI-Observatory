@@ -36,11 +36,12 @@ class ModelPricing(Enum):
     HAIKU_4_5_INPUT = 1.00
     HAIKU_4_5_OUTPUT = 5.00
 
-    # OpenRouter promotional GLM 5.2 pricing observed through /api/v1/models
-    # on 2026-08-09. Keep this route-specific so NVIDIA-hosted GLM remains $0.
-    OPENROUTER_GLM_5_2_INPUT = 0.07
-    OPENROUTER_GLM_5_2_OUTPUT = 0.22
-    OPENROUTER_GLM_5_2_CACHE_HIT = 0.013
+    # OpenRouter MiniMax M3 promotional pricing observed through the endpoint
+    # catalog on 2026-08-10. The workflow blocks before collection if no active
+    # endpoint remains at or below these prices.
+    OPENROUTER_MINIMAX_M3_INPUT = 0.24
+    OPENROUTER_MINIMAX_M3_OUTPUT = 0.96
+    OPENROUTER_MINIMAX_M3_CACHE_HIT = 0.048
 
 
 @dataclass
@@ -411,11 +412,11 @@ class CostTracker:
         mtok = 1_000_000
         model = (record.model or "").lower()
         provider_id = (record.provider_id or "").lower()
-        if provider_id == "openrouter-glm-complex" and model == "z-ai/glm-5.2":
-            input_price = ModelPricing.OPENROUTER_GLM_5_2_INPUT.value
-            output_price = ModelPricing.OPENROUTER_GLM_5_2_OUTPUT.value
+        if provider_id.startswith("openrouter-minimax-") and model == "minimax/minimax-m3":
+            input_price = ModelPricing.OPENROUTER_MINIMAX_M3_INPUT.value
+            output_price = ModelPricing.OPENROUTER_MINIMAX_M3_OUTPUT.value
             cache_write_price = 0.0
-            cache_hit_price = ModelPricing.OPENROUTER_GLM_5_2_CACHE_HIT.value
+            cache_hit_price = ModelPricing.OPENROUTER_MINIMAX_M3_CACHE_HIT.value
         elif model.startswith("gemini-") or provider_id.startswith("nvidia-"):
             # This project targets the quota-limited Google AI Studio tier.
             # NVIDIA NIM routes are also currently used without token billing.
