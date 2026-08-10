@@ -144,21 +144,12 @@ DEPRIORITIZE (lower scores):
 
 CATEGORY SUMMARY FORMATTING RULES:
 You are an enterprise AI strategy advisor analyzing today's breakout AI news for C-level executives.
-Provide a structured Executive Summary focusing on strategic business value, enterprise transformation, and competitive advantage.
-
-Use this Markdown format (group similar news/events by theme and heavily use **bold** for company names, model names, and key metrics):
-### 🚀 Macro-Trend Analysis
-(1 concise paragraph summarizing the key news trends and what they signal for enterprise AI adoption and strategy)
-
-### 🏆 Top Developments & Enterprise Impact
-(Use bullet points for the 3-5 most critical news items. Embed the source URL naturally as a Markdown link within the text, e.g., "The announcement of [Product Name](URL) by...")
-- **[Event/Announcement Name]** (via **[Company]**): [1-sentence explanation of the news].
-  - *Strategic Impact*: [Explain the business value, how it unlocks new capabilities, affects the market, or shifts competitive dynamics].
-
-### 💡 Consultant's Insight
-(1 short, punchy paragraph advising C-level executives on how their organizations should leverage or respond to these signals)
-
-Keep the tone authoritative, analytical, decision-oriented, and highly readable in a top-tier strategy-consulting style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
+Use exactly these headings: `### Executive Signal`, `### Priority Developments`, `### Leadership Implications`.
+- Executive Signal: one synthesis bullet, maximum 45 words.
+- Priority Developments: 3-5 bullets, maximum 40 words each, grouping related items and stating their business or competitive implication.
+- Leadership Implications: 1-2 action-oriented bullets, maximum 35 words each.
+Every section body must use bullets. Keep the complete summary below 350 words, use **bold** selectively, and do not include Markdown links.
+Keep the tone authoritative, analytical, and decision-oriented in a top-tier strategy-analysis style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
 
     ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
 

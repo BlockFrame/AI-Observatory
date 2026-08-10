@@ -73,8 +73,8 @@ class ExecutiveSummaryFallbackTest(unittest.TestCase):
 
         self.assertGreaterEqual(len(summary), MIN_EXECUTIVE_SUMMARY_CHARS)
         self.assertNotIn("generation failed", summary.lower())
-        self.assertIn("#### Top Story", summary)
-        self.assertIn("#### Category Briefings", summary)
+        self.assertIn("#### Executive Briefing", summary)
+        self.assertNotIn("#### Sentiment & Controversy", summary)
 
 
 if __name__ == "__main__":

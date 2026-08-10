@@ -400,7 +400,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          report_date="${{ steps.report_date.outputs.date }}"
           # The pipeline can exit 0 even when Topic Detection / Executive Summary
           # failed (those phases catch their own errors and write failure sentinels
           # into summary.json). Validate the actual user-facing artifact so we never
@@ -477,7 +477,7 @@ jobs:
           # is discarded with the runner.
           git config rebase.gpgSign true
 
-          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          report_date="${{ steps.report_date.outputs.date }}"
           git commit -S -m "data: Auto-update ${report_date}"
           echo "committed=true" >> "$GITHUB_OUTPUT"
 
@@ -534,7 +534,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          report_date="${{ steps.report_date.outputs.date }}"
           git fetch origin main --quiet
           # Verify the actual published artifact for report_date exists on the live
           # branch. This is commit-timing independent (no false positives on same-day
@@ -572,7 +572,7 @@ jobs:
             echo "PIPELINE_ALERT_TOKEN not set; skipping alert POST (configure the repo secret)."
             exit 0
           fi
-          report_date="${TARGET_DATE_INPUT:-$(TZ=America/New_York date +%F)}"
+          report_date="${{ steps.report_date.outputs.date }}"
           payload="$(python3 - "$report_date" "$RUN_URL" <<'PY'
           import json, sys
           print(json.dumps({

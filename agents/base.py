@@ -35,6 +35,30 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 MIN_CATEGORY_SUMMARY_CHARS = 300
+MAX_CATEGORY_SUMMARY_WORDS = 350
+CATEGORY_SUMMARY_HEADINGS = (
+    "### Executive Signal",
+    "### Priority Developments",
+    "### Leadership Implications",
+)
+
+
+def is_scan_first_category_summary(summary: str) -> bool:
+    """Validate the common compact editorial contract for category briefings."""
+    text = (summary or "").strip()
+    if (
+        len(text) < MIN_CATEGORY_SUMMARY_CHARS
+        or len(text.split()) > MAX_CATEGORY_SUMMARY_WORDS
+        or not all(heading in text for heading in CATEGORY_SUMMARY_HEADINGS)
+    ):
+        return False
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped in CATEGORY_SUMMARY_HEADINGS:
+            continue
+        if not stripped.startswith(("- ", "* ")):
+            return False
+    return True
 
 
 @dataclass
@@ -1235,10 +1259,10 @@ class BaseAnalyzer(ABC):
         )
 
     async def _ensure_category_summary(self, category_summary: str, top_items: List[AnalyzedItem]) -> str:
-        """Ensure a rich multi-paragraph category summary is generated if missing or generic."""
+        """Ensure a compact, consistently structured category summary exists."""
         original_summary = (category_summary or "").strip()
         is_generic = original_summary.lower().startswith(("analysis complete", "analysis failed"))
-        if len(original_summary) >= MIN_CATEGORY_SUMMARY_CHARS and not is_generic:
+        if not is_generic and is_scan_first_category_summary(original_summary):
             return original_summary
 
         if original_summary and not is_generic:
@@ -1265,7 +1289,12 @@ class BaseAnalyzer(ABC):
             f"You are an enterprise AI strategy advisor writing an executive briefing for the '{self.category.upper()}' category. "
             "Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.\n\n"
             f"Top Items in {self.category.upper()} Today:\n{items_text}\n\n"
-            "Write a cohesive, 2-paragraph executive summary synthesizing the key strategic developments, technical insights, and implications visible in these items."
+            "Use exactly this compact Markdown structure:\n"
+            "### Executive Signal\n- One decision-relevant synthesis bullet, maximum 45 words.\n"
+            "### Priority Developments\n- 3-5 bullets, maximum 40 words each; synthesize related items and explain why they matter.\n"
+            "### Leadership Implications\n- 1-2 action-oriented bullets, maximum 35 words each.\n"
+            "Every section body must use bullets. Do not write prose paragraphs or links. "
+            "Keep the complete summary below 350 words and use bold selectively."
         )
 
         try:
@@ -1283,7 +1312,10 @@ class BaseAnalyzer(ABC):
                 logger.warning(
                     f"Fallback category summary for {self.category} exhausted its output budget"
                 )
-            if len(content) >= MIN_CATEGORY_SUMMARY_CHARS and response.stop_reason != "max_tokens":
+            if (
+                is_scan_first_category_summary(content)
+                and response.stop_reason != "max_tokens"
+            ):
                 return content
             if content:
                 logger.warning(

@@ -167,12 +167,14 @@ analysis:
       - If a model is named but absent from grounding and the article reads like a release announcement on the coverage date, treat as a possible new release but say so in your reasoning ("not in grounding, treating as new release based on article framing").
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Use **bold** for company names, product names, model names, and key numbers
-      - Use bullet points (- ) for lists of related developments
-      - Group similar items together by theme
-      - Keep sentences concise (under 30 words each)
-      - Maximum 2-3 short paragraphs OR equivalent bullet content
-      - Write in factual, professional tone
+      - Use exactly these headings: `### Executive Signal`, `### Priority Developments`, `### Leadership Implications`.
+      - Under Executive Signal, write one decision-relevant synthesis bullet of at most 45 words.
+      - Under Priority Developments, write 3-5 bullets of at most 40 words each; group related items and explain their business or competitive implication.
+      - Under Leadership Implications, write 1-2 action-oriented bullets of at most 35 words each.
+      - Every section body must use bullets; never write prose paragraphs.
+      - Keep the complete summary below 350 words and use **bold** selectively.
+      - Do not include Markdown links; links are added later.
+      - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
     # Available variables: ${items_context}
     # Note: Legacy prompt kept for reference
@@ -252,13 +254,14 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: enterprise C-level executives and AI leaders.
-      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
-      - Use **bold** for companies, model names, and key metrics.
-      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
-      - Keep sentences analytical and authoritative.
-      - Do NOT include markdown links. Links will be added automatically.
+      - Use exactly these headings: `### Executive Signal`, `### Priority Developments`, `### Leadership Implications`.
+      - Under Executive Signal, write one decision-relevant synthesis bullet of at most 45 words.
+      - Under Priority Developments, write 3-5 bullets of at most 40 words each; group related items and explain their business or competitive implication.
+      - Under Leadership Implications, write 1-2 action-oriented bullets of at most 35 words each.
+      - Every section body must use bullets; never write prose paragraphs.
+      - Keep the complete summary below 350 words and use **bold** selectively.
+      - Do not include Markdown links; links are added later.
+      - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
   # RESEARCH ANALYZER
@@ -362,13 +365,14 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: enterprise C-level executives and AI leaders.
-      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
-      - Use **bold** for companies, model names, and key metrics.
-      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
-      - Keep sentences analytical and authoritative.
-      - Do NOT include markdown links. Links will be added automatically.
+      - Use exactly these headings: `### Executive Signal`, `### Priority Developments`, `### Leadership Implications`.
+      - Under Executive Signal, write one decision-relevant synthesis bullet of at most 45 words.
+      - Under Priority Developments, write 3-5 bullets of at most 40 words each; group related items and explain their practical or strategic implication.
+      - Under Leadership Implications, write 1-2 action-oriented bullets of at most 35 words each.
+      - Every section body must use bullets; never write prose paragraphs.
+      - Keep the complete summary below 350 words and use **bold** selectively.
+      - Do not include Markdown links; links are added later.
+      - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
   # SOCIAL ANALYZER
@@ -484,13 +488,14 @@ analysis:
       ```
 
       CATEGORY SUMMARY FORMATTING RULES:
-      - Target audience: enterprise C-level executives and AI leaders.
-      - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-      - You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
-      - Use **bold** for companies, model names, and key metrics.
-      - Synthesize related items into a clear explanation of industry impact and competitive dynamics.
-      - Keep sentences analytical and authoritative.
-      - Do NOT include markdown links. Links will be added automatically.
+      - Use exactly these headings: `### Executive Signal`, `### Priority Developments`, `### Leadership Implications`.
+      - Under Executive Signal, write one decision-relevant synthesis bullet of at most 45 words.
+      - Under Priority Developments, write 3-5 bullets of at most 40 words each; group related discussions and distinguish evidence from opinion.
+      - Under Leadership Implications, write 1-2 action-oriented bullets of at most 35 words each.
+      - Every section body must use bullets; never write prose paragraphs.
+      - Keep the complete summary below 350 words and use **bold** selectively.
+      - Do not include Markdown links; links are added later.
+      - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
   # GITHUB TRENDING ANALYZER
@@ -503,7 +508,15 @@ analysis:
       Top Trending Repositories Today:
       ${items_text}
 
-      Write a cohesive, narrative-driven executive summary (1-2 flowing paragraphs) that synthesizes the most strategically significant open-source trends visible in today's GitHub Trending data.
+      Use exactly this compact Markdown structure:
+      ### Executive Signal
+      - One decision-relevant synthesis bullet, maximum 45 words.
+      ### Priority Developments
+      - 3-5 bullets, maximum 40 words each. Group related repositories and explain why the pattern matters.
+      ### Leadership Implications
+      - 1-2 action-oriented bullets, maximum 35 words each.
+
+      Every section body must use bullets; never write prose paragraphs. Keep the complete summary below 350 words, use **bold** selectively, and do not include Markdown links. Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
 # -----------------------------------------------------------------------------
 # ORCHESTRATION PHASE
@@ -560,39 +573,37 @@ orchestration:
 
   # Available variables: ${context}
   executive_summary: |
-    You are an enterprise AI strategy advisor. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
+    You are an enterprise AI strategy advisor. Write a compact, scan-first strategic intelligence briefing of today's AI developments.
     
-    CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened. 
-    Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
+    CRITICAL: Synthesize implications rather than listing headlines. Be concise: the complete briefing must stay below 650 words.
 
     ${context}
 
     FORMAT YOUR SUMMARY LIKE THIS:
 
     #### Executive Briefing
-    Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions.
-    *CRITICAL: You MUST seamlessly integrate insights from social media chatter directly into this narrative to provide community context around the news.*
+    Write 3-4 bullets, each no more than 45 words. Lead with the strategic implication, then the strongest supporting evidence. Integrate material social signals only when they change the interpretation.
 
     #### Safety & Regulation
-    Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. (Skip if no relevant news).
-    *CRITICAL: Incorporate relevant social media sentiment and debates regarding these safety or regulatory issues.*
+    Write 2-3 bullets, each no more than 40 words, covering material safety, governance, security, or regulatory developments. Skip the section if evidence is weak.
 
     #### Research Highlights
-    Write 1-2 flowing paragraphs highlighting notable research papers, benchmarks, or scientific breakthroughs. Explain why they matter practically. (Skip if no relevant news).
+    Write 2-3 bullets, each no more than 40 words. State the result and its practical relevance. Skip the section if evidence is weak.
 
     #### Trending Repositories
-    Write a short flowing paragraph highlighting notable open-source repositories, developer tools, or frameworks that gained traction today. (Skip if no relevant news).
+    Write 2-3 bullets, each no more than 35 words. Group related repositories where useful and explain why the momentum matters. Skip the section if evidence is weak.
 
     #### Signals to Watch
-    Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open-source momentum, or paradigm shifts to monitor for future impact.
-    *CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.*
+    Write 2-3 bullets, each no more than 35 words, covering genuinely forward-looking signals supported by current evidence.
 
     FORMATTING RULES:
     - Target audience: enterprise C-level executives and AI leaders.
     - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-    - You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+    - Every section body MUST use bullets; do not place prose paragraphs between headings.
+    - A bullet must express one decision-relevant insight, not merely repeat a headline.
+    - Keep every subsection heading exactly as specified and never put Markdown links inside headings.
     - DO NOT include a "Sentiment & Controversy" section.
-    - Use heavy **bold** for company names, product models, and key metrics.
+    - Use **bold** selectively for the key entity or metric; avoid visual clutter.
     - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
     - Avoid repetition of older headlines.
     - The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text.
@@ -628,6 +639,11 @@ post_processing:
     5. Do NOT add new **bold** markers inside link labels. Preserve existing bold markers outside links.
     6. Preserve ALL original formatting exactly unless a link would require moving existing bold markers outside the link.
     7. For bullet points, link the key action/event after the entity prefix
+    8. NEVER use generic glue text or section labels as a link. In particular,
+       anchors such as "and the", "the most", "the best", "research and",
+       "Source", or a bare category/entity name are invalid.
+    9. Every link label must contain at least two meaningful content words and
+       must not begin or end with an article, conjunction, or preposition.
 
     LINK FORMAT (exact format required):
     [descriptive phrase](/?date=${date}&category=CATEGORY#item-ITEMID)

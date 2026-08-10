@@ -9,6 +9,7 @@ import asyncio
 import logging
 import os
 import json
+import re
 import time
 from collections import Counter
 from dataclasses import dataclass, field, asdict
@@ -51,7 +52,7 @@ from .staleness_checker import StalenessChecker
 from .phase_tracker import PhaseTracker
 from .config import ProviderConfig
 from .filters import KeywordFilter, apply_keyword_limit, SemanticDeduplicator
-from .analysis import classify_sentiments, append_sentiment_section
+from .analysis import classify_sentiments
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -68,6 +69,7 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 MIN_EXECUTIVE_SUMMARY_CHARS = 400
+MAX_EXECUTIVE_SUMMARY_WORDS = 650
 
 
 @dataclass
@@ -548,8 +550,6 @@ class MainOrchestrator:
                     error=str(e),
                     details="used deterministic summary fallback",
                 )
-
-            executive_summary = append_sentiment_section(executive_summary, category_reports)
 
             # Phase 4.5: Link Enrichment
             phases.start_phase("Phase 4.5: Link Enrichment")
@@ -1516,39 +1516,37 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
             )
         else:
             # Fallback to inline prompt for backwards compatibility
-            instructions = f"""You are an enterprise AI strategy advisor. Write a cohesive, narrative-driven strategic intelligence briefing of today's AI developments.
+            instructions = f"""You are an enterprise AI strategy advisor. Write a compact, scan-first strategic intelligence briefing of today's AI developments.
 
-CRITICAL: DO NOT simply list or enumerate news events. DO NOT write a "laundry list" of what happened.
-Instead, synthesize the developments into flowing paragraphs that connect the dots, explaining the broader trends, strategic movements, and ecosystem implications.
+CRITICAL: Synthesize implications rather than listing headlines. Be concise: the complete briefing must stay below 650 words.
 
 {DATA_POINTER}
 
 FORMAT YOUR SUMMARY LIKE THIS:
 
 #### Executive Briefing
-Write a compelling, analytical narrative (2-3 paragraphs) that synthesizes today's top stories. Discuss how these events shape the industry, the competitive landscape, and future directions.
-CRITICAL: You MUST seamlessly integrate insights from social media chatter directly into this narrative to provide community context around the news.
+Write 3-4 bullets, each no more than 45 words. Lead with the strategic implication, then the strongest supporting evidence. Integrate material social signals only when they change the interpretation.
 
 #### Safety & Regulation
-Write 1-2 flowing paragraphs covering key developments in AI safety, ethics, governance, and regulatory movements. (Skip if no relevant news).
-CRITICAL: Incorporate relevant social media sentiment and debates regarding these safety or regulatory issues.
+Write 2-3 bullets, each no more than 40 words, covering material safety, governance, security, or regulatory developments. Skip the section if evidence is weak.
 
 #### Research Highlights
-Write 1-2 flowing paragraphs highlighting notable research papers, benchmarks, or scientific breakthroughs. Explain why they matter practically. (Skip if no relevant news).
+Write 2-3 bullets, each no more than 40 words. State the result and its practical relevance. Skip the section if evidence is weak.
 
 #### Trending Repositories
-Write a short flowing paragraph highlighting notable open-source repositories, developer tools, or frameworks that gained traction today. (Skip if no relevant news).
+Write 2-3 bullets, each no more than 35 words. Group related repositories where useful and explain why the momentum matters. Skip the section if evidence is weak.
 
 #### Signals to Watch
-Provide a cohesive paragraph (3-4 sentences) synthesizing early indicators, open-source momentum, or paradigm shifts to monitor for future impact.
-CRITICAL: You MUST use trending social discussions, rumors, or developer sentiment from social channels as early signals for this section.
+Write 2-3 bullets, each no more than 35 words, covering genuinely forward-looking signals supported by current evidence.
 
 FORMATTING RULES:
 - Target audience: enterprise C-level executives and AI leaders.
 - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-- You may use bullet points if they improve readability, but a bullet point MUST NOT be just a simple link or a single news title. Each bullet point must be a rich, fully developed executive insight synthesizing the news.
+- Every section body MUST use bullets; do not place prose paragraphs between headings.
+- A bullet must express one decision-relevant insight, not merely repeat a headline.
+- Keep every subsection heading exactly as specified and never put Markdown links inside headings.
 - DO NOT include a "Sentiment & Controversy" section.
-- Use heavy **bold** for company names, product models, and key metrics.
+- Use **bold** selectively for the key entity or metric; avoid visual clutter.
 - Write in an authoritative, clear, and insight-driven executive tone - no hype or speculation.
 - Avoid repetition of older headlines.
 - The pipeline will automatically inject contextual "read more" links into your text after generation, so you do not need to format Markdown links yourself. Just write the text naturally as plain text.
@@ -1586,6 +1584,39 @@ EVIDENCE REQUIREMENT:
         if not isinstance(result, dict):
             raise ValueError("Executive summary response is not a JSON object")
         content = sanitize_editorial_text(result.get('executive_summary', '')).strip()
+        content = re.sub(
+            r"(?ims)^#{1,6}\s+Sentiment\s*&\s*Controversy\s*$.*?(?=^#{1,6}\s+|\Z)",
+            "",
+            content,
+        ).strip()
+        word_count = len(content.split())
+        if word_count > MAX_EXECUTIVE_SUMMARY_WORDS:
+            raise ValueError(
+                "Executive summary is too verbose "
+                f"({word_count} > {MAX_EXECUTIVE_SUMMARY_WORDS} words)"
+            )
+        allowed_headings = {
+            "Executive Briefing",
+            "Safety & Regulation",
+            "Research Highlights",
+            "Trending Repositories",
+            "Signals to Watch",
+        }
+        for line in content.splitlines():
+            stripped = line.strip()
+            if not stripped:
+                continue
+            if stripped.startswith("#### "):
+                heading = stripped[5:].strip()
+                if heading not in allowed_headings or "[" in heading or "](" in heading:
+                    raise ValueError(f"Invalid executive-summary heading: {heading!r}")
+                continue
+            if not stripped.startswith(("- ", "* ")):
+                raise ValueError(
+                    "Executive summary is not scan-first: section bodies must use bullets"
+                )
+        if "#### Executive Briefing" not in content:
+            raise ValueError("Executive summary is missing the Executive Briefing section")
         active_categories = set(item_categories.values())
         minimum_categories = min(2, len(active_categories))
         if minimum_categories == 0:
@@ -1622,46 +1653,41 @@ EVIDENCE REQUIREMENT:
             topic for topic in top_topics
             if compact(topic.name, 120) and compact(topic.description, 700)
         ]
+        lines.append("#### Executive Briefing")
         if usable_topics:
-            lead = usable_topics[0]
-            lines.extend([
-                "#### Top Story",
-                f"**{compact(lead.name, 120)}** — {compact(lead.description, 700)}",
-            ])
+            for topic in usable_topics[:4]:
+                lines.append(
+                    f"- **{compact(topic.name, 120)}**: "
+                    f"{compact(topic.description, 360)}"
+                )
 
-            if len(usable_topics) > 1:
-                lines.extend(["", "#### Key Developments"])
-                for topic in usable_topics[1:6]:
-                    lines.append(
-                        f"- **{compact(topic.name, 120)}**: "
-                        f"{compact(topic.description, 550)}"
-                    )
-
-        category_labels = {
-            "news": "News",
-            "research": "Research",
-            "social": "Social",
+        category_sections = {
+            "research": "Research Highlights",
+            "github_trending": "Trending Repositories",
+            "social": "Signals to Watch",
         }
-        category_lines: List[str] = []
         for category, report in category_reports.items():
-            label = category_labels.get(category, category.replace("_", " ").title())
+            section = category_sections.get(category)
+            if not section:
+                continue
             eligible_items = [
                 item for item in report.top_items
                 if not self._exclude_from_summaries(item)
             ]
+            category_lines: List[str] = []
             for item in eligible_items[:2]:
                 title = compact(item.item.title, 180)
-                summary = compact(item.summary, 500)
+                summary = compact(item.summary, 300)
                 if title and summary:
-                    category_lines.append(f"- **{label} — {title}**: {summary}")
+                    category_lines.append(f"- **{title}**: {summary}")
 
             if not eligible_items and report.category_summary:
-                summary = compact(report.category_summary, 700)
+                summary = compact(report.category_summary, 400)
                 if summary:
-                    category_lines.append(f"- **{label}**: {summary}")
+                    category_lines.append(f"- {summary}")
 
-        if category_lines:
-            lines.extend(["", "#### Category Briefings", *category_lines])
+            if category_lines:
+                lines.extend(["", f"#### {section}", *category_lines])
 
         return "\n".join(lines).strip()
 

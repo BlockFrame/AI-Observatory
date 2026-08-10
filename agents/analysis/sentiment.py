@@ -69,15 +69,3 @@ async def classify_sentiments(category_reports: Dict[str, CategoryReport], async
         item.item.metadata["sentiment"] = sentiment
 
     await asyncio.gather(*[classify(item) for item in tasks])
-
-
-def append_sentiment_section(executive_summary: str, category_reports: Dict[str, CategoryReport]) -> str:
-    flagged = []
-    for report in category_reports.values():
-        for item in report.top_items[:5]:
-            if item.sentiment in {"controversial", "concerned"}:
-                flagged.append(f"- **{item.item.title}** ({item.sentiment})")
-    if not flagged:
-        return executive_summary
-    section = "\n\n#### Sentiment & Controversy\n" + "\n".join(flagged[:8])
-    return (executive_summary or "").rstrip() + section

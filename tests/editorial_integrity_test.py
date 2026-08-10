@@ -301,7 +301,7 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(topics[0].category_breakdown, {"news": 1, "social": 1})
 
     async def test_executive_contract_returns_verified_current_evidence(self):
-        briefing = "#### Executive Briefing\n\n" + ("Current strategic evidence. " * 25)
+        briefing = "#### Executive Briefing\n\n- " + ("Current strategic evidence. " * 25)
         response = json.dumps({
             "executive_summary": briefing,
             "evidence_item_ids": ["news-current", "social-current"],
@@ -316,6 +316,28 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(content, briefing.strip())
         self.assertEqual(evidence, ["news-current", "social-current"])
+
+    async def test_executive_contract_removes_sentiment_section(self):
+        briefing = (
+            "#### Executive Briefing\n\n"
+            + "- Current strategic evidence with a decision-relevant implication.\n" * 8
+            + "\n#### Sentiment & Controversy\n"
+            + "- This section must never be published."
+        )
+        response = json.dumps({
+            "executive_summary": briefing,
+            "evidence_item_ids": ["news-current", "social-current"],
+        })
+        orchestrator = self._orchestrator(response)
+        reports = {
+            "news": self._report("news", "news-current"),
+            "social": self._report("social", "social-current"),
+        }
+
+        content, _, _ = await orchestrator._generate_executive_summary(reports, [])
+
+        self.assertNotIn("Sentiment & Controversy", content)
+        self.assertNotIn("must never be published", content)
 
 
 class TcoExpansionTests(unittest.IsolatedAsyncioTestCase):

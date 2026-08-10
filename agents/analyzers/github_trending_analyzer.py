@@ -10,7 +10,8 @@ from typing import List, Optional
 
 from ..base import (
     BaseAnalyzer, CollectedItem, AnalyzedItem,
-    CategoryReport, CategoryTheme, MIN_CATEGORY_SUMMARY_CHARS
+    CategoryReport, CategoryTheme,
+    is_scan_first_category_summary,
 )
 from ..llm_client import AnthropicClient, AsyncAnthropicClient, ThinkingLevel
 
@@ -40,17 +41,28 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
         analyzed_items: List[AnalyzedItem] = []
 
         for item in items:
-            repo_name = item.metadata.get("title") or item.title.replace("[GitHub Trending] ", "")
+            repo_name = item.metadata.get("title") or ""
+            if not repo_name and item.content.startswith("GitHub Repository: "):
+                repo_name = item.content.splitlines()[0].removeprefix("GitHub Repository: ").strip()
+            if not repo_name:
+                repo_name = item.title.replace("[GitHub Trending] ", "").split(": ", 1)[0]
+            item.title = repo_name
             stars_today = item.metadata.get("stars_today") or "0"
             lang = item.metadata.get("language") or "Code"
-            desc = item.content or item.title
 
             # Basic deterministic scoring based on velocity and relevance
             hn_score = item.metadata.get("hn_score", 100)
             score = min(98, max(50, int(hn_score / 20) + 60))
 
-            summary_text = f"Trending open-source {lang} repository ({stars_today} stars today): {desc}"
-            reasoning_text = f"High community velocity on GitHub Trending ({stars_today} stars today)."
+            summary_text = (
+                f"**Adoption signal:** {stars_today} stars today indicate strong developer attention. "
+                f"**Enterprise lens:** evaluate the {lang} project's maturity, governance, "
+                "integration surface, and operating cost before production adoption."
+            )
+            reasoning_text = (
+                f"Ranked on current community velocity ({stars_today} stars today) and "
+                "potential relevance to enterprise AI delivery."
+            )
 
             analyzed_item = AnalyzedItem(
                 item=item,
@@ -103,7 +115,7 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
             return "No trending GitHub repositories available for analysis."
 
         items_text = "\n".join(
-            f"- **{item.item.title.replace('[GitHub Trending] ', '')}**: {item.item.content}"
+            f"- **{item.item.title}**: {item.item.content}"
             for item in top_items
         )
 
@@ -127,12 +139,20 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
 Top Trending Repositories Today:
 {items_text}
 
-Write a cohesive, narrative-driven executive summary (1-2 flowing paragraphs) that synthesizes the most strategically significant open-source trends visible in today's GitHub Trending data.
+Use exactly this compact Markdown structure:
+### Executive Signal
+- One decision-relevant synthesis bullet, maximum 45 words.
+### Priority Developments
+- 3-5 bullets, maximum 40 words each. Group related repositories and state why the pattern matters.
+### Leadership Implications
+- 1-2 action-oriented bullets, maximum 35 words each.
 
 CATEGORY SUMMARY FORMATTING RULES:
 - Target audience: enterprise C-level executives and AI leaders.
 - Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.
-- You may use bullet points if they improve readability. However, a bullet point MUST NOT be just a simple link or a single repository name. Each bullet point must be a rich, fully developed executive insight synthesizing the trend.
+- Every section body must use bullets. Do not write prose paragraphs.
+- Keep the complete summary below 350 words.
+- A bullet must synthesize a signal or implication, not merely repeat a repository description.
 - Use **bold** for repository names, languages, framework names, and key metrics.
 - Synthesize related repositories into themes explaining what they signal for enterprise AI adoption, developer tooling, and competitive dynamics.
 - Keep sentences analytical and authoritative.
@@ -151,7 +171,7 @@ CATEGORY SUMMARY FORMATTING RULES:
                 content = (response.content or "").strip()
                 if response.stop_reason == "max_tokens":
                     logger.warning("GitHub Trending summary exhausted its output budget")
-                elif len(content) >= MIN_CATEGORY_SUMMARY_CHARS:
+                elif is_scan_first_category_summary(content):
                     return content
                 if content:
                     logger.warning(

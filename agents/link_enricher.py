@@ -255,24 +255,11 @@ class LinkEnricher:
         if not text or not items:
             return text
 
-        # Resolve high-confidence title/entity matches before asking a model.
-        # Already resolved items are removed from model context, so only
-        # ambiguous references consume tokens.
-        deterministic = self._inject_deterministic_links(
-            text, items, context_name, append_read_more=False
-        )
-        linked_ids = set(re.findall(r"#item-([\w-]+)", deterministic))
-        remaining_items = [item for item in items if item.get("id") not in linked_ids]
-        if linked_ids and not self._needs_llm_enrichment(deterministic):
-            logger.info(
-                f"  {context_name}: deterministic matching resolved "
-                f"{len(linked_ids)} reference(s); skipped LLM enrichment"
-            )
-            return deterministic
-        if not remaining_items:
-            return deterministic
-        text = deterministic
-        items = remaining_items
+        # Link labels are editorial content. A lexical matcher cannot reliably
+        # distinguish a meaningful action phrase from incidental title overlap
+        # (for example "and the" or "research and"). Let the routed MiniMax
+        # model perform that semantic choice; deterministic matching remains an
+        # availability fallback if the model call fails or is unusable.
 
         # Build items context. Cap is 4 categories * ITEMS_PER_CATEGORY plus
         # headroom; kept generous so the LLM sees enough candidates to link
@@ -308,6 +295,8 @@ LINKING STRATEGY (CRITICAL):
 5. Do NOT add new **bold** markers inside link labels. Preserve existing bold markers outside links.
 6. Preserve ALL original formatting exactly unless a link would require moving existing bold markers outside the link.
 7. For bullet points, link the key action/event after the entity prefix
+8. NEVER link generic glue text or section labels such as "and the", "the most", "the best", "research and", or "Source"
+9. Every link label must contain at least two meaningful content words and must not begin or end with an article, conjunction, or preposition
 
 LINK FORMAT (exact format required):
 [descriptive phrase](/?date={self.date}&category=CATEGORY#item-ITEMID)
@@ -332,7 +321,7 @@ Full text with links using format /?date={self.date}&category=CATEGORY#item-actu
   <link phrase="the linked phrase" item_id="actualItemId" category="news" />
 </links>
 
-Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not entities. Avoid bold markers inside links."""
+Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions, not entities or generic connective words. Avoid bold markers inside links."""
 
         system_prompt = build_hardened_system(instructions, nonce)
         fenced_payload = (
@@ -360,7 +349,9 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 # If LLM returned enriched text with internal links without XML wrapper, preserve LLM links
                 if self._has_internal_links(content):
                     logger.info(f"  {context_name}: no <enriched_text> tag, but found internal links in response")
-                    return content
+                    sanitized = self._sanitize_internal_link_labels(content)
+                    if self._has_internal_links(sanitized):
+                        return sanitized
                 logger.warning(f"  {context_name}: no <enriched_text> tag found, applying deterministic fallback")
                 return self._inject_deterministic_links(text, items, context_name)
             
@@ -377,6 +368,13 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
                 })
 
             if links and self._has_internal_links(enriched):
+                enriched = self._sanitize_internal_link_labels(enriched)
+                if not self._has_internal_links(enriched):
+                    logger.warning(
+                        f"  {context_name}: model links had no meaningful labels; "
+                        "applying deterministic fallback"
+                    )
+                    return self._inject_deterministic_links(text, items, context_name)
                 logger.info(f"  {context_name}: added {len(links)} links")
                 for link in links:
                     logger.debug(f"    Linked '{link.get('phrase', '')}' -> {link.get('category', '')}/{link.get('item_id', '')[:8]}...")
@@ -393,16 +391,53 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
     def _has_internal_links(self, text: str) -> bool:
         return bool(text) and "](/?date=" in text
 
-    def _needs_llm_enrichment(self, text: str) -> bool:
-        """Return True when most meaningful lines still have no internal link."""
-        meaningful = [
-            line for line in text.splitlines()
-            if len(re.sub(r"[#*\-]", "", line).strip()) >= 40
-        ]
-        if not meaningful:
-            return not self._has_internal_links(text)
-        linked = sum(1 for line in meaningful if "](/?date=" in line)
-        return linked < max(1, (len(meaningful) + 1) // 2)
+    def _sanitize_internal_link_labels(self, text: str) -> str:
+        """Remove links whose labels are generic connective text.
+
+        The visible wording is preserved; only the unusable hyperlink is
+        removed. This guards the UI even if an enrichment model ignores the
+        editorial constraints in its prompt.
+        """
+        edge_stopwords = {
+            "a", "an", "and", "as", "at", "but", "by", "for", "from",
+            "in", "into", "of", "on", "or", "the", "to", "with",
+        }
+        generic_words = edge_stopwords | {
+            "best", "important", "most", "news", "research", "source",
+        }
+        pattern = re.compile(r"\[([^\]]+)\]\((/\?date=[^)]+#item-[^)]+)\)")
+
+        def sanitize(match: re.Match) -> str:
+            label = match.group(1)
+            words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+.'’-]*", label)
+            normalized = [word.lower().strip(".'’") for word in words]
+            meaningful = [word for word in normalized if word not in generic_words]
+            if (
+                len(words) < 2
+                or len(words) > 7
+                or normalized[0] in edge_stopwords
+                or normalized[-1] in edge_stopwords
+                or len(meaningful) < 2
+            ):
+                logger.warning("Removed generic internal-link label %r", label)
+                return label
+            return match.group(0)
+
+        sanitized = pattern.sub(sanitize, text)
+
+        # Section headings are navigation structure, never link targets. Strip
+        # any Markdown link a model may have inserted while preserving the
+        # visible heading text.
+        def sanitize_heading(match: re.Match) -> str:
+            prefix, heading = match.groups()
+            plain_heading = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", heading)
+            return prefix + plain_heading
+
+        return re.sub(
+            r"(?m)^(#{1,6}\s+)(.+)$",
+            sanitize_heading,
+            sanitized,
+        )
 
     def _inject_deterministic_links(
         self,
@@ -415,7 +450,16 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
         if not text or not items:
             return text
 
-        stopwords = {'model', 'models', 'paper', 'report', 'news', 'today', 'released', 'release', 'using', 'with', 'deep', 'learning', 'single', 'world', 'that', 'open', 'from', 'this', 'have', 'more', 'about', 'first', 'into', 'been', 'their', 'which', 'also', 'over', 'these', 'will', 'some', 'than'}
+        stopwords = {
+            'a', 'an', 'and', 'are', 'as', 'at', 'be', 'been', 'but', 'by',
+            'for', 'from', 'have', 'in', 'into', 'is', 'it', 'its', 'more',
+            'of', 'on', 'or', 'our', 'research', 'source', 'than', 'that',
+            'the', 'their', 'these', 'this', 'to', 'using', 'was', 'were',
+            'which', 'will', 'with', 'model', 'models', 'paper', 'report',
+            'news', 'today', 'released', 'release', 'deep', 'learning',
+            'single', 'world', 'open', 'first', 'also', 'over', 'some',
+            'most', 'best', 'important', 'development', 'developments',
+        }
         
         enriched_text = text
         used_item_ids = set()
@@ -464,7 +508,7 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link actions, not ent
 
         if used_item_ids:
             logger.info(f"  {context_name}: deterministic fallback added {len(used_item_ids)} inline links")
-            return enriched_text
+            return self._sanitize_internal_link_labels(enriched_text)
 
         if not append_read_more:
             return enriched_text

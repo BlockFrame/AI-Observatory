@@ -16,6 +16,7 @@ from agents.base import BaseAnalyzer, CollectedItem
 from agents.cache import AnalysisCache
 from agents.cost_tracker import CostTracker
 from agents.gatherers.social_gatherer import SocialGatherer
+from agents.gatherers.github_trending import GitHubTrendingGatherer
 from agents.gatherers.webscraper_gatherer import WebScraperGatherer
 from agents.link_enricher import LinkEnricher
 from agents.llm_client import AsyncLLMRouter, LLMResponse, ThinkingLevel
@@ -317,6 +318,18 @@ class PublicationQualityGateTests(unittest.TestCase):
 
 class CategorySummaryRoutingTests(unittest.TestCase):
     def test_github_trending_uses_quality_summary_route_and_budget(self):
+        valid_summary = """### Executive Signal
+- **Open-source adoption** is accelerating around enterprise agent infrastructure, increasing the importance of governance and integration discipline across production AI portfolios.
+
+### Priority Developments
+- **Agent frameworks** are attracting concentrated developer attention, indicating demand for reusable orchestration layers and more reliable operational tooling.
+- **Developer infrastructure** is moving toward integrated workflows that reduce deployment friction while expanding the surface requiring security review.
+- **Community velocity** provides an early adoption signal, but stars alone do not establish production readiness or sustainable maintenance.
+
+### Leadership Implications
+- Establish technical due diligence covering maintainership, licensing, security posture, integration cost, and operational maturity before adoption.
+- Use repository momentum as a discovery signal, then validate strategic fit through controlled pilots and measurable production criteria."""
+
         class FakeClient:
             def __init__(self):
                 self.kwargs = None
@@ -324,7 +337,7 @@ class CategorySummaryRoutingTests(unittest.TestCase):
             async def call_with_thinking(self, **kwargs):
                 self.kwargs = kwargs
                 return SimpleNamespace(
-                    content="A" * 500,
+                    content=valid_summary,
                     stop_reason="stop",
                 )
 
@@ -343,7 +356,7 @@ class CategorySummaryRoutingTests(unittest.TestCase):
 
             result = await analyzer._generate_executive_summary([item])
 
-            self.assertEqual(len(result), 500)
+            self.assertEqual(result, valid_summary)
             self.assertEqual(
                 client.kwargs["caller"],
                 "analysis.github_trending_summary",
@@ -351,6 +364,25 @@ class CategorySummaryRoutingTests(unittest.TestCase):
             self.assertEqual(client.kwargs["max_tokens"], 4096)
 
         asyncio.run(run())
+
+    def test_github_gathered_title_excludes_source_prefix_and_description(self):
+        gatherer = object.__new__(GitHubTrendingGatherer)
+        repo = {
+            "title": "example/repository",
+            "url": "https://github.com/example/repository",
+            "description": "An agent framework for enterprise workflows",
+            "updated": "2026-08-10T12:00:00Z",
+            "language": "Python",
+            "stars_today": "420",
+            "topics": ["agents"],
+        }
+
+        item = gatherer._to_collected_item(repo)
+
+        self.assertEqual(item.title, "example/repository")
+        self.assertNotIn("GitHub Trending", item.title)
+        self.assertNotIn(repo["description"], item.title)
+        self.assertEqual(item.metadata["title"], "example/repository")
 
 
 class LLMTelemetryTests(unittest.TestCase):
@@ -490,17 +522,62 @@ class SemanticCacheTests(unittest.TestCase):
 
 
 class DeterministicLinkEnrichmentTests(unittest.TestCase):
-    def test_clear_entity_match_skips_llm_call(self):
-        class NeverCallClient:
+    def test_generic_model_link_labels_are_removed_without_losing_text(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = (
+            "This covers [and the](/?date=2026-08-09&category=news#item-bad) "
+            "latest [prompt injection research](/?date=2026-08-09&category=research#item-good)."
+        )
+
+        sanitized = enricher._sanitize_internal_link_labels(text)
+
+        self.assertNotIn("#item-bad", sanitized)
+        self.assertIn("and the", sanitized)
+        self.assertIn("#item-good", sanitized)
+
+    def test_links_are_never_kept_inside_subsection_headings(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = (
+            "#### [Trending Repositories](/?date=2026-08-09&category=github_trending#item-one)\n"
+            "- A [useful developer tool](/?date=2026-08-09&category=github_trending#item-one)."
+        )
+
+        sanitized = enricher._sanitize_internal_link_labels(text)
+
+        self.assertIn("#### Trending Repositories", sanitized)
+        self.assertNotIn("#### [", sanitized)
+        self.assertIn("[useful developer tool]", sanitized)
+
+    def test_fallback_does_not_link_generic_title_glue(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = "The briefing covers research and the most important developments."
+        items = [{
+            "id": "story-1",
+            "category": "research",
+            "title": "Research and the most important developments",
+            "summary": "",
+        }]
+
+        enriched = enricher._inject_deterministic_links(
+            text, items, "research summary", append_read_more=False
+        )
+
+        self.assertEqual(enriched, text)
+
+    def test_clear_entity_match_uses_llm_for_editorial_anchor(self):
+        class RecordingClient:
             def __init__(self):
                 self.calls = 0
 
             async def call_with_thinking(self, **kwargs):
                 self.calls += 1
-                raise AssertionError("deterministic match should not call the LLM")
+                return SimpleNamespace(content="""<enriched_text>
+OpenAI [launches a new reasoning model](/?date=2026-08-09&category=news#item-story-1) with stronger tool use for enterprise agents.
+</enriched_text>
+<links><link phrase="launches a new reasoning model" item_id="story-1" category="news" /></links>""")
 
         async def run():
-            client = NeverCallClient()
+            client = RecordingClient()
             enricher = LinkEnricher(client, "2026-08-09")
             text = "OpenAI launches a new reasoning model with stronger tool use for enterprise agents."
             items = [{
@@ -513,7 +590,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
             self.assertIn("#item-story-1", enriched)
-            self.assertEqual(client.calls, 0)
+            self.assertEqual(client.calls, 1)
 
         asyncio.run(run())
 

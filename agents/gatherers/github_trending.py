@@ -173,7 +173,10 @@ class GitHubTrendingGatherer(BaseGatherer):
                 published = datetime.fromisoformat(updated.replace("Z", "+00:00"))
         except Exception:
             pass
-        item_title = f"[GitHub Trending] {title}: {description}" if description else f"[GitHub Trending] {title}"
+        # Keep the card title clean and stable. Source/category context is
+        # already rendered separately by the UI, while the description belongs
+        # in the content body rather than being duplicated in the heading.
+        item_title = title
         return CollectedItem(
             id=self.generate_id("github_trending", title, url),
             title=item_title,
@@ -185,6 +188,7 @@ class GitHubTrendingGatherer(BaseGatherer):
             source_type="github_trending",
             tags=repo.get("topics", []),
             metadata={
+                "title": title,
                 "stars": repo.get("stars", 0),
                 "stars_today": repo.get("stars_today", ""),
                 "language": repo.get("language", ""),
