@@ -158,6 +158,15 @@ class ResearchGathererTest(unittest.TestCase):
 
         self.assertIsNone(gatherer._alphaxiv_interval_for_coverage())
 
+    def test_openai_canonical_feed_keeps_only_research_tags(self):
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+
+        self.assertTrue(gatherer._is_openai_research_entry(["Research"]))
+        self.assertTrue(gatherer._is_openai_research_entry(["Safety & Alignment"]))
+        self.assertTrue(gatherer._is_openai_research_entry(["Security"]))
+        self.assertFalse(gatherer._is_openai_research_entry(["Product"]))
+        self.assertFalse(gatherer._is_openai_research_entry([]))
+
 
 if __name__ == "__main__":
     unittest.main()

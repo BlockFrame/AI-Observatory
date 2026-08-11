@@ -564,22 +564,22 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         self.assertEqual(enriched, text)
 
-    def test_clear_entity_match_uses_llm_for_editorial_anchor(self):
+    def test_each_visible_bullet_gets_deterministic_evidence_link(self):
         class RecordingClient:
             def __init__(self):
                 self.calls = 0
 
             async def call_with_thinking(self, **kwargs):
                 self.calls += 1
-                return SimpleNamespace(content="""<enriched_text>
-OpenAI [launches a new reasoning model](/?date=2026-08-09&category=news#item-story-1) with stronger tool use for enterprise agents.
-</enriched_text>
-<links><link phrase="launches a new reasoning model" item_id="story-1" category="news" /></links>""")
+                raise AssertionError("link enrichment must not call an LLM")
 
         async def run():
             client = RecordingClient()
             enricher = LinkEnricher(client, "2026-08-09")
-            text = "OpenAI launches a new reasoning model with stronger tool use for enterprise agents."
+            text = (
+                "- OpenAI launches a new reasoning model with stronger tool use for enterprise agents.\n"
+                "- The rollout changes procurement priorities for agent development teams."
+            )
             items = [{
                 "id": "story-1",
                 "category": "news",
@@ -589,8 +589,8 @@ OpenAI [launches a new reasoning model](/?date=2026-08-09&category=news#item-sto
 
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
-            self.assertIn("#item-story-1", enriched)
-            self.assertEqual(client.calls, 1)
+            self.assertEqual(enriched.count("#item-story-1"), 2)
+            self.assertEqual(client.calls, 0)
 
         asyncio.run(run())
 

@@ -4,8 +4,8 @@ This document describes sources that are wired into the current pipeline. The fi
 
 ## AI News
 
-- `config/rss_feeds.txt`: 43 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts.
-- `config/web_scraper_sources.txt`: 18 direct web pages used where no reliable feed is available.
+- `config/rss_feeds.txt`: 36 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts.
+- `config/web_scraper_sources.txt`: 6 direct web pages used only where no reliable feed is available: Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, and ElevenLabs.
 - Hacker News: current stories collected through the Algolia API and filtered for AI relevance.
 - Links from X: `LinkFollower` expands `t.co` redirects and collects qualifying linked articles.
 
@@ -15,7 +15,7 @@ News filtering is deterministic-first. If the LLM relevance filter returns inval
 
 - Hugging Face Daily Papers for date-addressable curated papers.
 - AlphaXiv Trending for recent rolling-window signals.
-- `config/research_feeds.txt`: 18 research and technical feeds.
+- `config/research_feeds.txt`: 19 research and technical feeds, including the research-tagged subset of OpenAI's canonical feed. The OpenAI Research index is recorded as the editorial source of truth.
 - LessWrong through its GraphQL endpoint for date-range queries. The LessWrong feed entry in `research_feeds.txt` selects this special route; collection is not performed through ordinary RSS.
 
 AlphaXiv cannot provide arbitrary historical snapshots beyond its supported ranking windows. Hugging Face remains the primary source for older backfills.

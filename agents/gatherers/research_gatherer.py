@@ -61,6 +61,10 @@ class ResearchGatherer(BaseGatherer):
         'feeds.trendmicro.com/trendmicrosimplysecurity',
         'trend micro research'
     )
+    OPENAI_RESEARCH_FEED_MARKER = 'openai.com/news/rss.xml'
+    OPENAI_RESEARCH_TAGS = {
+        'research', 'publication', 'safety', 'safety & alignment', 'security',
+    }
     TREND_AI_RELEVANCE_PATTERNS = (
         r'\btrendai\b',
         r'\bai\b',
@@ -670,6 +674,7 @@ class ResearchGatherer(BaseGatherer):
 
             feed_title = feed.feed.get('title', 'Research Blog')
             is_trend_feed = self._is_trend_research_feed(feed_url, feed_title)
+            is_openai_research_feed = self.OPENAI_RESEARCH_FEED_MARKER in feed_url.lower()
             trend_filtered = 0
             trend_retained = 0
 
@@ -712,6 +717,12 @@ class ResearchGatherer(BaseGatherer):
                     author = entry.get('author', entry.get('dc_creator', 'Unknown'))
                     tags = [tag.term for tag in entry.get('tags', []) if getattr(tag, 'term', None)]
 
+                    if (
+                        is_openai_research_feed
+                        and not self._is_openai_research_entry(tags)
+                    ):
+                        continue
+
                     if is_trend_feed and not self._is_trend_ai_relevant(title, content_text, tags):
                         trend_filtered += 1
                         continue
@@ -727,11 +738,15 @@ class ResearchGatherer(BaseGatherer):
                         url=url,
                         author=author,
                         published=pub_date.isoformat(),
-                        source=feed_title,
+                        source='OpenAI Research' if is_openai_research_feed else feed_title,
                         source_type='research_blog',
                         tags=tags,
                         metadata={
                             'feed_url': feed_url,
+                            'source_index_url': (
+                                'https://openai.com/it-IT/research/'
+                                if is_openai_research_feed else ''
+                            ),
                             'raw_summary': entry.get('summary', '')[:500]
                         },
                         keywords=self.extract_keywords(f"{title} {content_text}")
@@ -755,12 +770,16 @@ class ResearchGatherer(BaseGatherer):
         except Exception as e:
             logger.error(f"Error fetching research feed {feed_url}: {e}")
 
-        return posts
+            return posts
 
     def _is_trend_research_feed(self, feed_url: str, feed_title: str = '') -> bool:
         """Identify Trend Micro's broad threat-research feed for source-specific filtering."""
         marker_text = f"{feed_url} {feed_title}".lower()
         return any(marker in marker_text for marker in self.TREND_RESEARCH_FEED_MARKERS)
+
+    def _is_openai_research_entry(self, tags: List[str]) -> bool:
+        """Keep only the research-relevant subset of OpenAI's canonical feed."""
+        return bool({tag.strip().lower() for tag in tags} & self.OPENAI_RESEARCH_TAGS)
 
     def _is_trend_ai_relevant(self, title: str, content: str, tags: List[str]) -> bool:
         """Keep Trend threat research only when it intersects AI/security topics."""

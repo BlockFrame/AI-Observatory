@@ -70,6 +70,7 @@ logger = logging.getLogger(__name__)
 
 MIN_EXECUTIVE_SUMMARY_CHARS = 400
 MAX_EXECUTIVE_SUMMARY_WORDS = 650
+MAX_TOPIC_DESCRIPTION_WORDS = 70
 
 
 @dataclass
@@ -1336,13 +1337,13 @@ class MainOrchestrator:
 
 {DATA_POINTER}
 
-For each cross-category topic, provide a highly detailed, strategic brief:
+For each cross-category topic, provide a compact, decision-relevant brief:
 1. A concise name (2-5 words)
-2. A description (3-5 sentences) as PLAIN TEXT without any links.
+2. A description of no more than 2 sentences and 70 words as PLAIN TEXT without any links.
    - DO NOT include any markdown links or URLs.
-   - Write a rich, cohesive narrative synthesizing the news, research, and social chatter. Reference specific companies, models, and papers by name.
+   - State the signal, strongest evidence, and executive implication without recapping every supporting item.
    - Links will be added automatically in a later processing step.
-3. A business implication (business_implication) explaining the strategic impact on Enterprise markets, C-level decision making, and competitive dynamics (2-3 sentences).
+3. A business implication (business_implication) in one sentence of at most 35 words.
 4. A trend velocity (trend_velocity) as a single word (e.g., "Emerging", "Accelerating", "Mainstream", "Disruptive").
 5. Which categories it appears in and roughly how many items
 6. Exact current item IDs in `representative_items`, with at least one item from each claimed category and at least two different categories
@@ -1351,7 +1352,7 @@ For each cross-category topic, provide a highly detailed, strategic brief:
 IMPORTANT: Write descriptions as plain text WITHOUT any links. Reference sources by name (e.g., "Google announced...", "A Stanford paper found...") but do NOT include URLs or markdown link syntax.
 
 Example description format:
-"The competitive landscape for reasoning models shifted dramatically today as Google announced a major breakthrough, while researchers at Stanford published findings showing unexpected benchmark saturation. The developer community on GitHub and social media is already mobilizing to integrate these capabilities into enterprise workflows, signaling a rapid transition from research to production."
+"Google's capability signal and Stanford's validation indicate that reasoning advances are moving rapidly from research into deployable enterprise workflows. Teams should prioritize evaluation and integration readiness over benchmark watching."
 
 Return your analysis as JSON:
 ```json
@@ -1423,7 +1424,9 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
                     logger.warning("Dropping unsupported cross-category topic: %s", exc)
                     continue
                 category_counts = Counter(item_categories[item_id] for item_id in evidence_ids)
-                description = sanitize_editorial_text(topic_data.get('description', ''))
+                description = self._compact_topic_description(
+                    sanitize_editorial_text(topic_data.get('description', ''))
+                )
                 topics.append(TopTopic(
                     name=sanitize_editorial_text(topic_data['name']),
                     description=description,
@@ -1445,6 +1448,20 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
         except Exception as e:
             logger.error(f"Cross-category topic detection failed: {e}")
             return [], f"Error: {e}"
+
+    @staticmethod
+    def _compact_topic_description(value: str) -> str:
+        """Enforce the topic card's concise, scan-first editorial budget."""
+        text = " ".join((value or "").split())
+        if not text:
+            return text
+        sentences = re.split(r"(?<=[.!?])\s+", text)
+        candidate = " ".join(sentences[:2])
+        words = candidate.split()
+        if len(words) <= MAX_TOPIC_DESCRIPTION_WORDS:
+            return candidate
+        compact = " ".join(words[:MAX_TOPIC_DESCRIPTION_WORDS]).rstrip(" ,;:")
+        return compact + ("." if compact[-1] not in ".!?" else "")
 
     def _load_previous_summaries(self, lookback_days: int = 3) -> str:
         """

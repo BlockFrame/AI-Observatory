@@ -5,6 +5,11 @@
 #   <url>  proxy=on  -> force routing through the proxy
 https://www.lesswrong.com/feed.xml?view=frontpage-rss&karmaThreshold=2
 https://research.google/blog/rss/
+# OpenAI's Research index is the editorial source of truth:
+# https://openai.com/it-IT/research/
+# OpenAI publishes its dated entries through this canonical feed; the gatherer
+# retains only Research, Publication, Safety, and Security tagged entries.
+https://openai.com/news/rss.xml
 # The AI-category feed (category/artificial-intelligence/feed/) froze in 2020 —
 # still 200s but its latest post is 2020-04-13. The main MS Research blog feed is
 # live (predominantly AI/ML). Switched 2026-07-07.
@@ -22,7 +27,9 @@ https://www.alignmentforum.org/feed.xml?view=frontpage-rss&karmaThreshold=2
 https://news.mit.edu/rss/topic/artificial-intelligence2
 https://blog.ml.cmu.edu/feed/
 https://thegradient.pub/rss/
-https://importai.substack.com/feed
+# Direct health check on 2026-08-11: valid RSS; bypass the pipeline proxy,
+# which intermittently receives Substack 403 responses.
+https://importai.substack.com/feed  proxy=off
 https://www.interconnects.ai/feed
 https://lilianweng.github.io/index.xml
 https://huyenchip.com/feed.xml

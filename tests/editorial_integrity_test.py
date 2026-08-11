@@ -300,6 +300,27 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(topics[0].representative_items, ["news-current", "social-current"])
         self.assertEqual(topics[0].category_breakdown, {"news": 1, "social": 1})
 
+    async def test_topic_contract_compacts_overlong_description(self):
+        description = " ".join(["Evidence-grounded strategic topic."] * 40)
+        response = json.dumps({
+            "topics": [{
+                "name": "Current cross signal",
+                "description": description,
+                "categories": {"news": 99, "social": 99},
+                "representative_items": ["news-current", "social-current"],
+                "importance": 90,
+            }]
+        })
+        orchestrator = self._orchestrator(response)
+        reports = {
+            "news": self._report("news", "news-current"),
+            "social": self._report("social", "social-current"),
+        }
+
+        topics, _ = await orchestrator._detect_cross_category_topics(reports)
+
+        self.assertLessEqual(len(topics[0].description.split()), 70)
+
     async def test_executive_contract_returns_verified_current_evidence(self):
         briefing = "#### Executive Briefing\n\n- " + ("Current strategic evidence. " * 25)
         response = json.dumps({

@@ -127,7 +127,19 @@ class LinkEnricher:
             description = topic.description if hasattr(topic, 'description') else topic.get('description', '')
             if description:
                 topic_name = topic.name if hasattr(topic, 'name') else topic.get('name', 'unknown')
-                tasks.append(self._enrich_text(description, all_items, f"topic: {topic_name}"))
+                representative_ids = (
+                    topic.representative_items if hasattr(topic, 'representative_items')
+                    else topic.get('representative_items', [])
+                )
+                topic_items = [
+                    item for item in all_items if item.get('id') in set(representative_ids)
+                ]
+                tasks.append(self._enrich_text(
+                    description,
+                    topic_items or all_items,
+                    f"topic: {topic_name}",
+                    links_per_block=2,
+                ))
                 task_keys.append(('topic', i))
 
         logger.info(f"  Running {len(tasks)} enrichment tasks in parallel...")
@@ -236,6 +248,22 @@ class LinkEnricher:
         return items
 
     async def _enrich_text(
+        self,
+        text: str,
+        items: List[Dict[str, Any]],
+        context_name: str,
+        links_per_block: int = 1,
+    ) -> str:
+        """Attach evidence links deterministically, once per visible bullet.
+
+        The previous LLM-based rewrite was expensive and frequently exhausted
+        its output budget before emitting the required XML wrapper. Evidence
+        links are a coverage requirement, not a creative-writing task, so this
+        path is deterministic and preserves the generated prose verbatim.
+        """
+        return self._inject_per_block_links(text, items, context_name, links_per_block)
+
+    async def _enrich_text_with_llm(
         self,
         text: str,
         items: List[Dict[str, Any]],
@@ -390,6 +418,76 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
 
     def _has_internal_links(self, text: str) -> bool:
         return bool(text) and "](/?date=" in text
+
+    def _inject_per_block_links(
+        self,
+        text: str,
+        items: List[Dict[str, Any]],
+        context_name: str,
+        links_per_block: int = 1,
+    ) -> str:
+        """Ensure each substantive bullet/paragraph carries source evidence."""
+        if not text or not items:
+            return text
+
+        # Retain any high-confidence inline anchor, then fill remaining
+        # coverage gaps with compact source links at the end of each block.
+        enriched = self._inject_deterministic_links(
+            text, items, context_name, append_read_more=False
+        )
+        used_ids = set(re.findall(r"#item-([\w-]+)", enriched))
+        lines = enriched.splitlines()
+
+        for index, line in enumerate(lines):
+            stripped = line.strip()
+            if (
+                not stripped
+                or stripped.startswith("#")
+                or len(re.sub(r"^[*\-]\s+", "", stripped)) < 35
+            ):
+                continue
+            existing = len(re.findall(r"\]\(/\?date=[^)]+#item-[^)]+\)", line))
+            needed = max(0, links_per_block - existing)
+            if not needed:
+                continue
+            selected = self._select_evidence_items(stripped, items, used_ids, needed)
+            if not selected:
+                continue
+            links = []
+            for item in selected:
+                item_id = item["id"]
+                category = item["category"]
+                used_ids.add(item_id)
+                label = "view item" if links_per_block == 1 else f"view item {len(links) + 1}"
+                links.append(
+                    f"[{label}](/?date={self.date}&category={category}#item-{item_id})"
+                )
+            lines[index] = line.rstrip() + " (" + "; ".join(links) + ")"
+
+        result = self._sanitize_internal_link_labels("\n".join(lines))
+        logger.info("  %s: ensured evidence links on visible content blocks", context_name)
+        return result
+
+    @staticmethod
+    def _select_evidence_items(
+        block: str,
+        items: List[Dict[str, Any]],
+        used_ids: set,
+        count: int,
+    ) -> List[Dict[str, Any]]:
+        """Pick evidence with the strongest lexical overlap, then rank order."""
+        tokens = set(re.findall(r"[a-z0-9]{4,}", block.lower()))
+        ranked = []
+        for position, item in enumerate(items):
+            item_id = (item.get("id") or "").strip()
+            if not item_id:
+                continue
+            evidence = f"{item.get('title', '')} {item.get('summary', '')}".lower()
+            score = len(tokens & set(re.findall(r"[a-z0-9]{4,}", evidence)))
+            # Prefer unused, high-overlap evidence but always return a link.
+            ranked.append((item_id in used_ids, -score, position, item))
+        ranked.sort(key=lambda value: value[:3])
+        return [value[3] for value in ranked[:count]]
 
     def _sanitize_internal_link_labels(self, text: str) -> str:
         """Remove links whose labels are generic connective text.
