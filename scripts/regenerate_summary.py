@@ -111,12 +111,14 @@ async def regenerate_summary(target_date: str, web_dir: str = './web', config_di
         if not new_summary:
             raise ValueError("Executive summary response was empty")
         evidence_ids = response_data.get('evidence_item_ids', [])
+        evidence_by_bullet = response_data.get('evidence_by_bullet', [])
         print(f"  Generated new summary ({len(new_summary)} chars)")
         
         # Update summary.json
         old_summary = summary_data.get('executive_summary', '')
         summary_data['executive_summary'] = new_summary
         summary_data['executive_evidence_items'] = evidence_ids
+        summary_data['executive_summary_evidence'] = evidence_by_bullet
         summary_data['executive_summary_regenerated'] = datetime.now().isoformat()
         
         # Backup old summary

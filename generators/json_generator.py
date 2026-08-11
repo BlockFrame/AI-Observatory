@@ -136,6 +136,7 @@ class JSONGenerator:
                 'analysis_quality': report.get('analysis_quality', {}),
                 'llm_telemetry': llm_by_category.get(category, {}),
                 'category_summary': category_summary,
+                'category_summary_evidence': report.get('category_summary_evidence', []),
                 'category_summary_html': self._markdown_to_html(category_summary),
                 'themes': report.get('themes', []),
                 'top_items': self._simplify_items(top_items)
@@ -181,6 +182,7 @@ class JSONGenerator:
             'collection_status': self._format_collection_status(collection_status),
             'analysis_funnel': result.get('analysis_funnel', {}),
             'executive_evidence_items': result.get('executive_evidence_items', []),
+            'executive_summary_evidence': result.get('executive_summary_evidence', []),
             'phase_status': phase_status,
             'llm_telemetry': llm_telemetry,
             'generation_quality': generation_quality,
@@ -209,6 +211,7 @@ class JSONGenerator:
                 'date': report_date,
                 'category_summary': category_summary,
                 'category_summary_html': self._markdown_to_html(category_summary),
+                'category_summary_evidence': report.get('category_summary_evidence', []),
                 'themes': report.get('themes', []),
                 'total_items': len(all_items),
                 'items': self._simplify_items(all_items)

@@ -67,7 +67,8 @@ class LinkEnricher:
         self,
         executive_summary: str,
         category_reports: Dict[str, Any],
-        top_topics: List[Any]
+        top_topics: List[Any],
+        executive_summary_evidence: Optional[List[List[str]]] = None,
     ) -> Tuple[str, Dict[str, str], List[Any]]:
         """
         Enrich all summary text with internal links.
@@ -107,7 +108,10 @@ class LinkEnricher:
         task_keys: List[Tuple[str, Any]] = []
 
         # Executive summary task (all items available)
-        tasks.append(self._enrich_text(executive_summary, all_items, "executive summary"))
+        tasks.append(self._enrich_text(
+            executive_summary, all_items, "executive summary",
+            evidence_by_bullet=executive_summary_evidence,
+        ))
         task_keys.append(('exec', None))
 
         # Category summary tasks (ONLY items from that category)
@@ -116,7 +120,15 @@ class LinkEnricher:
             if summary:
                 category_items = items_by_category.get(category, [])
                 if category_items:
-                    tasks.append(self._enrich_text(summary, category_items, f"{category} summary"))
+                    evidence = (
+                        report.category_summary_evidence
+                        if hasattr(report, 'category_summary_evidence')
+                        else report.get('category_summary_evidence', [])
+                    )
+                    tasks.append(self._enrich_text(
+                        summary, category_items, f"{category} summary",
+                        evidence_by_bullet=evidence,
+                    ))
                     task_keys.append(('category', category))
                 else:
                     # No items for this category, skip enrichment
@@ -253,6 +265,7 @@ class LinkEnricher:
         items: List[Dict[str, Any]],
         context_name: str,
         links_per_block: int = 1,
+        evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
         """Attach evidence links deterministically, once per visible bullet.
 
@@ -261,7 +274,9 @@ class LinkEnricher:
         links are a coverage requirement, not a creative-writing task, so this
         path is deterministic and preserves the generated prose verbatim.
         """
-        return self._inject_per_block_links(text, items, context_name, links_per_block)
+        return self._inject_per_block_links(
+            text, items, context_name, links_per_block, evidence_by_bullet
+        )
 
     async def _enrich_text_with_llm(
         self,
@@ -425,6 +440,7 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         items: List[Dict[str, Any]],
         context_name: str,
         links_per_block: int = 1,
+        evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
         """Ensure each substantive bullet/paragraph carries source evidence."""
         if not text or not items:
@@ -435,22 +451,43 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         enriched = self._inject_deterministic_links(
             text, items, context_name, append_read_more=False
         )
+        enriched = self._inject_explicit_item_links(enriched, items)
         used_ids = set(re.findall(r"#item-([\w-]+)", enriched))
         lines = enriched.splitlines()
+        item_by_id = {item.get("id"): item for item in items}
+        bullet_index = 0
 
         for index, line in enumerate(lines):
             stripped = line.strip()
+            is_bullet = stripped.startswith(("- ", "* "))
+            structured_ids = []
+            if is_bullet and evidence_by_bullet and bullet_index < len(evidence_by_bullet):
+                structured_ids = evidence_by_bullet[bullet_index]
+            if is_bullet:
+                bullet_index += 1
             if (
                 not stripped
                 or stripped.startswith("#")
                 or len(re.sub(r"^[*\-]\s+", "", stripped)) < 35
             ):
                 continue
-            existing = len(re.findall(r"\]\(/\?date=[^)]+#item-[^)]+\)", line))
-            needed = max(0, links_per_block - existing)
-            if not needed:
-                continue
-            selected = self._select_evidence_items(stripped, items, used_ids, needed)
+            existing_ids = set(re.findall(r"#item-([\w-]+)", line))
+            existing = len(existing_ids)
+
+            if structured_ids:
+                selected = [
+                    item_by_id[item_id]
+                    for item_id in structured_ids
+                    if item_id in item_by_id and item_id not in existing_ids
+                ]
+                needed = 0
+            else:
+                selected = []
+                needed = max(0, links_per_block - existing)
+            if needed:
+                selected = self._select_evidence_items(
+                    stripped, items, existing_ids | used_ids, needed
+                )
             if not selected:
                 continue
             links = []
@@ -458,7 +495,7 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
                 item_id = item["id"]
                 category = item["category"]
                 used_ids.add(item_id)
-                label = "view item" if links_per_block == 1 else f"view item {len(links) + 1}"
+                label = self._evidence_link_label(item)
                 links.append(
                     f"[{label}](/?date={self.date}&category={category}#item-{item_id})"
                 )
@@ -467,6 +504,75 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         result = self._sanitize_internal_link_labels("\n".join(lines))
         logger.info("  %s: ensured evidence links on visible content blocks", context_name)
         return result
+
+    @staticmethod
+    def _evidence_link_label(item: Dict[str, Any]) -> str:
+        """Build a compact, identifiable source label."""
+        title = normalize_untrusted_text(item.get("title") or "").strip()
+        words = title.split()
+        if len(words) > 6:
+            title = " ".join(words[:6]).rstrip(" ,;:") + "…"
+        if len(re.findall(r"[A-Za-z0-9]+", title)) < 2:
+            category = str(item.get("category") or "source").replace("_", " ").title()
+            title = f"{category}: {title}"
+        return title or "View source"
+
+    def _inject_explicit_item_links(
+        self,
+        block: str,
+        items: List[Dict[str, Any]],
+    ) -> str:
+        """Link collected items named verbatim in a visible block.
+
+        Exact matching avoids guessing semantic equivalence while ensuring a
+        reader can open every named news story, research result, social post,
+        or repository the editorial text explicitly cites.
+        """
+        enriched = block
+        for item in items:
+            item_id = (item.get("id") or "").strip()
+            category = (item.get("category") or "").strip()
+            title = normalize_untrusted_text(item.get("title") or "").strip()
+            if not item_id or not category or f"#item-{item_id}" in enriched or not title:
+                continue
+
+            phrase = self._find_explicit_item_phrase(title, enriched)
+            if not phrase:
+                continue
+            url = f"/?date={self.date}&category={category}#item-{item_id}"
+            pattern = re.compile(
+                r"(?<![\w.\-\[])" + re.escape(phrase) + r"(?![\w.\-])",
+                re.I,
+            )
+            enriched, _ = pattern.subn(
+                lambda match: f"[{match.group(0)}]({url})", enriched, count=1
+            )
+        return enriched
+
+    @staticmethod
+    def _find_explicit_item_phrase(title: str, text: str) -> Optional[str]:
+        """Find the most specific literal title fragment present in ``text``."""
+        repository = re.search(r"(?<![\w.-])([\w.-]+/[\w.-]+)(?![\w.-])", title)
+        candidates = [repository.group(1)] if repository else []
+
+        words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", title)
+        # Longest fragments first: a two-or-more word phrase provides enough
+        # identity to map an editorial reference to one collected item.
+        for size in range(min(6, len(words)), 1, -1):
+            for start in range(len(words) - size + 1):
+                phrase_words = words[start:start + size]
+                if not any(len(word) >= 5 or word[:1].isupper() for word in phrase_words):
+                    continue
+                candidates.append(" ".join(phrase_words))
+
+        for candidate in candidates:
+            if re.search(
+                r"(?<![\w.\-])" + re.escape(candidate) + r"(?![\w.\-])",
+                text,
+                re.I,
+            ):
+                return candidate
+        return None
 
     @staticmethod
     def _select_evidence_items(

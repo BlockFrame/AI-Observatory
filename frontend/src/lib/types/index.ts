@@ -63,6 +63,7 @@ export interface CategorySummary {
 	};
 	category_summary: string;
 	category_summary_html?: string;
+	category_summary_evidence?: string[][];
 	themes: CategoryTheme[];
 	top_items: NewsItem[];
 }
@@ -123,6 +124,7 @@ export interface DaySummary {
 	collection_status?: CollectionStatus;
 	analysis_funnel?: Record<Category, AnalysisFunnelEntry>;
 	executive_evidence_items?: string[];
+	executive_summary_evidence?: string[][];
 	quality_score?: QualityScore;
 }
 

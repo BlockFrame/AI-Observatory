@@ -326,6 +326,7 @@ class CategoryReport:
     themes: List[CategoryTheme]  # Detected themes within category
     cross_signals: List[str]  # Hints for orchestrator (e.g., "OpenAI news trending")
     total_collected: int
+    category_summary_evidence: List[List[str]] = field(default_factory=list)
     analysis_quality: Dict[str, Any] = field(default_factory=dict)
     analysis_timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
     thinking: Optional[str] = None  # Extended thinking from analysis
@@ -351,6 +352,7 @@ class CategoryReport:
             'top_items': [item.to_dict() for item in self.top_items],
             'all_items': [item.to_dict() for item in self.all_items],
             'category_summary': self.category_summary,
+            'category_summary_evidence': self.category_summary_evidence,
             'themes': [asdict(theme) for theme in self.themes],
             'cross_signals': self.cross_signals,
             'total_collected': self.total_collected,
@@ -374,6 +376,7 @@ class CategoryReport:
             themes=themes,
             cross_signals=data.get('cross_signals', []),
             total_collected=data.get('total_collected', 0),
+            category_summary_evidence=data.get('category_summary_evidence', []),
             analysis_quality=data.get('analysis_quality', {}),
             analysis_timestamp=data.get('analysis_timestamp', ''),
             thinking=data.get('thinking')
@@ -1241,11 +1244,20 @@ class BaseAnalyzer(ABC):
         self._log_map_reduce_stats(analyzed_items, themes, top_items)
 
         category_summary = ranking_result.get('category_summary', '')
+        category_summary_evidence = ranking_result.get('category_summary_evidence', [])
         if ranking_summary_needs_regeneration:
             # A syntactically repaired tail is safe to store, but it is not a
             # complete executive briefing. Force the dedicated summary call.
             category_summary = ''
+        original_category_summary = category_summary
         category_summary = await self._ensure_category_summary(category_summary, top_items)
+        if category_summary != original_category_summary:
+            category_summary_evidence = []
+
+        valid_item_ids = {item.item.id for item in top_candidates}
+        category_summary_evidence = self._validated_summary_evidence(
+            category_summary, category_summary_evidence, valid_item_ids
+        )
 
         return CategoryReport(
             category=self.category,
@@ -1255,8 +1267,34 @@ class BaseAnalyzer(ABC):
             themes=themes[:10],  # Top 10 themes
             cross_signals=cross_signals,
             total_collected=len(analyzed_items),
+            category_summary_evidence=category_summary_evidence,
             thinking=f"Batch Analysis:\n{batch_thinking}\n\nRanking:\n{ranking_thinking}"
         )
+
+    @staticmethod
+    def _validated_summary_evidence(
+        summary: str, raw_evidence: Any, valid_item_ids: set
+    ) -> List[List[str]]:
+        """Validate the ordered 1:N evidence mapping for visible bullets."""
+        bullet_count = sum(
+            1 for line in (summary or "").splitlines()
+            if line.strip().startswith(("- ", "* "))
+        )
+        if not isinstance(raw_evidence, list) or len(raw_evidence) != bullet_count:
+            return []
+        validated: List[List[str]] = []
+        for raw_ids in raw_evidence:
+            if not isinstance(raw_ids, list):
+                return []
+            ids = []
+            for raw_id in raw_ids[:3]:
+                item_id = str(raw_id).strip()
+                if item_id in valid_item_ids and item_id not in ids:
+                    ids.append(item_id)
+            if not ids:
+                return []
+            validated.append(ids)
+        return validated
 
     async def _ensure_category_summary(self, category_summary: str, top_items: List[AnalyzedItem]) -> str:
         """Ensure a compact, consistently structured category summary exists."""

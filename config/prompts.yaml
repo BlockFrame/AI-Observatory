@@ -137,6 +137,7 @@ analysis:
         ],
         "top_10": ["id1", "id2", "id3", "id4", "id5", "id6", "id7", "id8", "id9", "id10"],
         "category_summary": "Structured summary using markdown formatting (see rules below)",
+        "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]],
         "themes": [
           {"name": "Theme Name", "description": "...", "item_count": 5, "importance": 80}
         ]
@@ -174,6 +175,7 @@ analysis:
       - Every section body must use bullets; never write prose paragraphs.
       - Keep the complete summary below 350 words and use **bold** selectively.
       - Do not include Markdown links; links are added later.
+      - Return `category_summary_evidence` with one ordered array per summary bullet. Each array must contain 1-3 exact current item IDs supporting that bullet.
       - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
     # Available variables: ${items_context}
@@ -249,7 +251,8 @@ analysis:
       ```json
       {
         "top_10": ["id1", "id2", ...],
-        "category_summary": "Structured executive summary using markdown formatting (see rules below)"
+        "category_summary": "Structured executive summary using markdown formatting (see rules below)",
+        "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]
       }
       ```
 
@@ -261,6 +264,7 @@ analysis:
       - Every section body must use bullets; never write prose paragraphs.
       - Keep the complete summary below 350 words and use **bold** selectively.
       - Do not include Markdown links; links are added later.
+      - Return `category_summary_evidence` with one ordered array per summary bullet. Each array must contain 1-3 exact current item IDs supporting that bullet.
       - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
@@ -360,7 +364,8 @@ analysis:
       ```json
       {
         "top_10": ["id1", "id2", ...],
-        "category_summary": "Structured summary using markdown formatting (see rules below)"
+        "category_summary": "Structured summary using markdown formatting (see rules below)",
+        "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]
       }
       ```
 
@@ -372,6 +377,7 @@ analysis:
       - Every section body must use bullets; never write prose paragraphs.
       - Keep the complete summary below 350 words and use **bold** selectively.
       - Do not include Markdown links; links are added later.
+      - Return `category_summary_evidence` with one ordered array per summary bullet. Each array must contain 1-3 exact current item IDs supporting that bullet.
       - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
@@ -483,7 +489,8 @@ analysis:
       ```json
       {
         "top_25": ["id1", "id2", "id3"],
-        "category_summary": "Structured executive summary using markdown formatting (see rules below)"
+        "category_summary": "Structured executive summary using markdown formatting (see rules below)",
+        "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]
       }
       ```
 
@@ -495,6 +502,7 @@ analysis:
       - Every section body must use bullets; never write prose paragraphs.
       - Keep the complete summary below 350 words and use **bold** selectively.
       - Do not include Markdown links; links are added later.
+      - Return `category_summary_evidence` with one ordered array per summary bullet. Each array must contain 1-3 exact current item IDs supporting that bullet.
       - Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
   # -------------------------
@@ -518,6 +526,10 @@ analysis:
 
       Every section body must use bullets; never write prose paragraphs. Keep the complete summary below 350 words, use **bold** selectively, and do not include Markdown links. Use a rigorous, decision-oriented strategy-analysis style without naming any consulting firm or persona.
 
+      Return valid JSON only:
+      {"category_summary": "complete Markdown summary", "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]}
+      `category_summary_evidence` must contain one ordered array per bullet, with 1-3 exact repository IDs from the provided items.
+
 # -----------------------------------------------------------------------------
 # ORCHESTRATION PHASE
 # Cross-category and summary generation prompts
@@ -531,7 +543,7 @@ orchestration:
 
     For each top topic, provide a compact, decision-relevant brief:
     1. A concise, authoritative name (2-5 words)
-    2. A concise description of no more than 2 sentences and 70 words, written as PLAIN TEXT without any links:
+    2. A concise description of exactly one sentence and no more than 40 words, written as PLAIN TEXT without any links:
        - DO NOT include any markdown links or URLs.
        - State the signal, strongest evidence, and executive implication without recapping every supporting item.
        - Reference key sources, institutions, or repositories by name (e.g., "Google announced...", "A Stanford paper demonstrated...", "The koala73/worldmonitor repo emerged as...")
@@ -553,7 +565,7 @@ orchestration:
         {
           "name": "Topic Name",
           "description": "Plain text description with strategic insights and source references without any links.",
-          "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
+          "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (one sentence).",
           "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
           "categories": {"news": 5, "research": 2, "social": 10, "github_trending": 4},
           "representative_items": ["current-news-item-id", "current-social-item-id"],
@@ -612,7 +624,8 @@ orchestration:
     - Use only developments supported by CURRENT ITEM records inside `=== TODAY'S DATA (CURRENT EVIDENCE) ===`.
     - If a claim appears only in historical coverage, omit it from the new briefing.
     - Return valid JSON only with this schema:
-      {"executive_summary": "the complete Markdown briefing", "evidence_item_ids": ["current-item-id-1", "current-item-id-2"]}
+      {"executive_summary": "the complete Markdown briefing", "evidence_by_bullet": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]], "evidence_item_ids": ["all unique current IDs"]}
+    - `evidence_by_bullet` must contain one ordered array per briefing bullet, with 1-3 exact CURRENT ITEM IDs supporting that bullet.
     - `evidence_item_ids` must contain exact IDs from CURRENT ITEM records and cover at least two non-empty categories when two or more categories are available.
 
 # -----------------------------------------------------------------------------

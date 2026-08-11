@@ -223,6 +223,13 @@ def sanitize_batch_result(result: Any, where: str = "batch") -> Dict[str, Any]:
             clean['category_summary'] = _coerce_str(
                 result['category_summary'], MAX_CATEGORY_SUMMARY_LEN
             )
+        if 'category_summary_evidence' in result:
+            raw = result['category_summary_evidence']
+            clean['category_summary_evidence'] = [
+                _sanitize_top_ids(ids)[:3]
+                for ids in raw[:20]
+                if isinstance(ids, list)
+            ] if isinstance(raw, list) else []
 
         return clean
     except Exception as exc:  # pragma: no cover - safety net
@@ -246,6 +253,13 @@ def sanitize_ranking_result(result: Any, where: str = "ranking") -> Dict[str, An
             clean['category_summary'] = _coerce_str(
                 result['category_summary'], MAX_CATEGORY_SUMMARY_LEN
             )
+        if 'category_summary_evidence' in result:
+            raw = result['category_summary_evidence']
+            clean['category_summary_evidence'] = [
+                _sanitize_top_ids(ids)[:3]
+                for ids in raw[:20]
+                if isinstance(ids, list)
+            ] if isinstance(raw, list) else []
         return clean
     except Exception as exc:  # pragma: no cover - safety net
         logger.error(f"{where}: ranking sanitizer failed ({exc}); using unsanitized result")

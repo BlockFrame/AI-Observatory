@@ -194,7 +194,12 @@ async def run(args: argparse.Namespace) -> int:
     try:
         enricher = LinkEnricher(async_client, date, prompt_accessor=prompt_accessor)
         executive_summary, enriched_category_summaries, top_topics = await enricher.enrich_all(
-            executive_summary, category_reports, top_topics
+            executive_summary,
+            category_reports,
+            top_topics,
+            executive_summary_evidence=summary_checkpoint.get(
+                "executive_summary_evidence", []
+            ),
         )
     finally:
         await async_client.close()

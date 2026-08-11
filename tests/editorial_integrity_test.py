@@ -325,6 +325,7 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
         briefing = "#### Executive Briefing\n\n- " + ("Current strategic evidence. " * 25)
         response = json.dumps({
             "executive_summary": briefing,
+            "evidence_by_bullet": [["news-current", "social-current"]],
             "evidence_item_ids": ["news-current", "social-current"],
         })
         orchestrator = self._orchestrator(response)
@@ -333,10 +334,11 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
             "social": self._report("social", "social-current"),
         }
 
-        content, _, evidence = await orchestrator._generate_executive_summary(reports, [])
+        content, _, evidence, evidence_by_bullet = await orchestrator._generate_executive_summary(reports, [])
 
         self.assertEqual(content, briefing.strip())
         self.assertEqual(evidence, ["news-current", "social-current"])
+        self.assertEqual(evidence_by_bullet, [["news-current", "social-current"]])
 
     async def test_executive_contract_removes_sentiment_section(self):
         briefing = (
@@ -355,7 +357,7 @@ class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):
             "social": self._report("social", "social-current"),
         }
 
-        content, _, _ = await orchestrator._generate_executive_summary(reports, [])
+        content, _, _, _ = await orchestrator._generate_executive_summary(reports, [])
 
         self.assertNotIn("Sentiment & Controversy", content)
         self.assertNotIn("must never be published", content)

@@ -78,7 +78,7 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
         top_items = analyzed_items[:10]
 
         # Generate AI Director Category Summary for GitHub Trending
-        category_summary = await self._generate_executive_summary(top_items)
+        category_summary, category_summary_evidence = await self._generate_executive_summary(top_items)
 
         # Extract themes
         themes = [
@@ -106,16 +106,17 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
             themes=themes,
             cross_signals=["High open-source developer velocity around agentic workflows and local tooling"],
             total_collected=len(items),
+            category_summary_evidence=category_summary_evidence,
             analysis_timestamp=datetime.now().isoformat(),
         )
 
-    async def _generate_executive_summary(self, top_items: List[AnalyzedItem]) -> str:
+    async def _generate_executive_summary(self, top_items: List[AnalyzedItem]) -> tuple:
         """Generate a strategic briefing for GitHub Trending."""
         if not top_items:
-            return "No trending GitHub repositories available for analysis."
+            return "No trending GitHub repositories available for analysis.", []
 
         items_text = "\n".join(
-            f"- **{item.item.title}**: {item.item.content}"
+            f"- [{item.item.id}] **{item.item.title}**: {item.item.content}"
             for item in top_items
         )
 
@@ -156,7 +157,9 @@ CATEGORY SUMMARY FORMATTING RULES:
 - Use **bold** for repository names, languages, framework names, and key metrics.
 - Synthesize related repositories into themes explaining what they signal for enterprise AI adoption, developer tooling, and competitive dynamics.
 - Keep sentences analytical and authoritative.
-- Do NOT include markdown links or URLs. Links will be added automatically in a post-processing step."""
+- Do NOT include markdown links or URLs. Links will be added automatically in a post-processing step.
+- Return JSON only: {{"category_summary": "complete Markdown summary", "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]}}.
+- `category_summary_evidence` must contain one ordered array per bullet, with 1-3 exact repository IDs."""
 
         try:
             if self.async_client:
@@ -168,11 +171,17 @@ CATEGORY SUMMARY FORMATTING RULES:
                     caller="analysis.github_trending_summary",
                     max_tokens=4096,
                 )
-                content = (response.content or "").strip()
+                result = self._parse_json_response(response.content or "")
+                content = str(result.get("category_summary") or "").strip()
+                evidence = self._validated_summary_evidence(
+                    content,
+                    result.get("category_summary_evidence", []),
+                    {item.item.id for item in top_items},
+                )
                 if response.stop_reason == "max_tokens":
                     logger.warning("GitHub Trending summary exhausted its output budget")
                 elif is_scan_first_category_summary(content):
-                    return content
+                    return content, evidence
                 if content:
                     logger.warning(
                         "GitHub Trending summary failed the minimum quality check "
@@ -184,4 +193,4 @@ CATEGORY SUMMARY FORMATTING RULES:
         # Make the failure explicit so the publication quality gate rejects it
         # instead of silently publishing a deterministic repository list as an
         # LLM-generated executive briefing.
-        return "Analysis complete. GitHub Trending summary generation failed quality checks."
+        return "Analysis complete. GitHub Trending summary generation failed quality checks.", []

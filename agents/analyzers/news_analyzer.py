@@ -120,6 +120,7 @@ Return your analysis as valid JSON only:
   ],
   "top_10": ["id1", "id2", "id3", "id4", "id5", "id6", "id7", "id8", "id9", "id10"],
   "category_summary": "Structured summary using markdown formatting (see rules below)",
+  "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]],
   "themes": [
     {{"name": "Theme Name", "description": "...", "item_count": 5, "importance": 80}}
   ]
@@ -149,6 +150,7 @@ Use exactly these headings: `### Executive Signal`, `### Priority Developments`,
 - Priority Developments: 3-5 bullets, maximum 40 words each, grouping related items and stating their business or competitive implication.
 - Leadership Implications: 1-2 action-oriented bullets, maximum 35 words each.
 Every section body must use bullets. Keep the complete summary below 350 words, use **bold** selectively, and do not include Markdown links.
+Return one ordered `category_summary_evidence` array per bullet, containing 1-3 exact current item IDs supporting that bullet.
 Keep the tone authoritative, analytical, and decision-oriented in a top-tier strategy-analysis style. Never mention a consulting firm or internal writing persona in the output. Do not include raw JSON structure outside the `category_summary` field."""
 
     ANALYSIS_PROMPT = """You are an AI news analyst covering artificial intelligence and machine learning.
@@ -222,7 +224,8 @@ Return your ranking as JSON:
 ```json
 {{
   "top_10": ["id1", "id2", ...],
-  "category_summary": "Structured summary using markdown formatting (see rules below)"
+  "category_summary": "Structured summary using markdown formatting (see rules below)",
+  "category_summary_evidence": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]]
 }}
 ```
 
@@ -579,6 +582,11 @@ Snippet: {self._clip_context_text(item.content, 300)}...
             top_items=top_items,
             all_items=analyzed_items,
             category_summary=result.get('category_summary', ''),
+            category_summary_evidence=self._validated_summary_evidence(
+                result.get('category_summary', ''),
+                result.get('category_summary_evidence', []),
+                set(item_by_id),
+            ),
             themes=themes[:10],
             cross_signals=[],
             total_collected=len(analyzed_items),

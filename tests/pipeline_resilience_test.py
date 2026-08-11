@@ -337,7 +337,10 @@ class CategorySummaryRoutingTests(unittest.TestCase):
             async def call_with_thinking(self, **kwargs):
                 self.kwargs = kwargs
                 return SimpleNamespace(
-                    content=valid_summary,
+                    content=json.dumps({
+                        "category_summary": valid_summary,
+                        "category_summary_evidence": [["repo-1"]] * 6,
+                    }),
                     stop_reason="stop",
                 )
 
@@ -348,6 +351,7 @@ class CategorySummaryRoutingTests(unittest.TestCase):
             analyzer.prompt_accessor = None
             item = SimpleNamespace(
                 item=SimpleNamespace(
+                    id="repo-1",
                     title="[GitHub Trending] example/repository",
                     content="An agent framework for enterprise workflows",
                 ),
@@ -356,7 +360,7 @@ class CategorySummaryRoutingTests(unittest.TestCase):
 
             result = await analyzer._generate_executive_summary([item])
 
-            self.assertEqual(result, valid_summary)
+            self.assertEqual(result[0], valid_summary)
             self.assertEqual(
                 client.kwargs["caller"],
                 "analysis.github_trending_summary",
@@ -593,6 +597,77 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             self.assertEqual(client.calls, 0)
 
         asyncio.run(run())
+
+    def test_each_explicitly_named_repository_gets_an_evidence_link(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = (
+            "- Agent orchestration is the new battleground. "
+            "PrimeIntellect-ai/prime-agent (2,642 stars), "
+            "msitarzewski/agency-agents (1,349) and "
+            "semantica-agi/semantica (970) signal a shift toward orchestration."
+        )
+        items = [
+            {"id": "prime", "category": "github_trending", "title": "PrimeIntellect-ai/prime-agent", "summary": ""},
+            {"id": "agency", "category": "github_trending", "title": "msitarzewski/agency-agents", "summary": ""},
+            {"id": "semantica", "category": "github_trending", "title": "semantica-agi/semantica", "summary": ""},
+        ]
+
+        enriched = enricher._inject_per_block_links(text, items, "github summary")
+
+        self.assertIn("[PrimeIntellect-ai/prime-agent]", enriched)
+        self.assertIn("[msitarzewski/agency-agents]", enriched)
+        self.assertIn("[semantica-agi/semantica]", enriched)
+
+    def test_explicit_news_research_and_social_references_are_linked(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = (
+            "- OpenAI releases Responses API while the Attention Is All You Need paper "
+            "and Andrej Karpathy's LLM OS post shape the discussion."
+        )
+        items = [
+            {"id": "news", "category": "news", "title": "OpenAI releases Responses API", "summary": ""},
+            {"id": "research", "category": "research", "title": "Attention Is All You Need", "summary": ""},
+            {"id": "social", "category": "social", "title": "Andrej Karpathy LLM OS", "summary": ""},
+        ]
+
+        enriched = enricher._inject_per_block_links(text, items, "executive summary")
+
+        self.assertIn("#item-news", enriched)
+        self.assertIn("#item-research", enriched)
+        self.assertIn("#item-social", enriched)
+
+    def test_structured_bullet_evidence_keeps_one_to_many_links(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = "- Three independent signals point to the same strategic shift in enterprise AI."
+        items = [
+            {"id": "news", "category": "news", "title": "Enterprise agents gain controls", "summary": ""},
+            {"id": "research", "category": "research", "title": "Agent reliability benchmark", "summary": ""},
+            {"id": "social", "category": "social", "title": "Practitioner adoption signal", "summary": ""},
+        ]
+
+        enriched = enricher._inject_per_block_links(
+            text,
+            items,
+            "executive summary",
+            evidence_by_bullet=[["news", "research", "social"]],
+        )
+
+        self.assertEqual(enriched.count("#item-"), 3)
+
+
+class TopicDescriptionCompactionTests(unittest.TestCase):
+    def test_topic_description_keeps_only_one_short_sentence(self):
+        text = (
+            "OpenAI expands agent tooling across enterprise workflows with a new API and controls. "
+            "Research and developer commentary suggest broader adoption."
+        )
+
+        compact = MainOrchestrator._compact_topic_description(text)
+
+        self.assertEqual(
+            compact,
+            "OpenAI expands agent tooling across enterprise workflows with a new API and controls.",
+        )
 
 
 class GathererObservabilityTests(unittest.TestCase):

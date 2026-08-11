@@ -70,7 +70,7 @@ logger = logging.getLogger(__name__)
 
 MIN_EXECUTIVE_SUMMARY_CHARS = 400
 MAX_EXECUTIVE_SUMMARY_WORDS = 650
-MAX_TOPIC_DESCRIPTION_WORDS = 70
+MAX_TOPIC_DESCRIPTION_WORDS = 40
 
 
 @dataclass
@@ -101,6 +101,7 @@ class OrchestratorResult:
     collection_status: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # source -> status
     analysis_funnel: Dict[str, Dict[str, Any]] = field(default_factory=dict)
     executive_evidence_items: List[str] = field(default_factory=list)
+    executive_summary_evidence: List[List[str]] = field(default_factory=list)
     hero_image_url: Optional[str] = None  # URL path to generated hero image
     hero_image_prompt: Optional[str] = None  # Prompt used to generate hero image
     phase_status: List[Dict[str, Any]] = field(default_factory=list)  # Phase tracker records
@@ -123,6 +124,7 @@ class OrchestratorResult:
             'collection_status': self.collection_status,
             'analysis_funnel': self.analysis_funnel,
             'executive_evidence_items': self.executive_evidence_items,
+            'executive_summary_evidence': self.executive_summary_evidence,
             'hero_image_url': self.hero_image_url,
             'hero_image_prompt': self.hero_image_prompt,
             'phase_status': self.phase_status,
@@ -516,6 +518,7 @@ class MainOrchestrator:
                 raise RuntimeError("Cannot resume: no checkpoint for Phase 4 (summary)")
             executive_summary = checkpoint.get('executive_summary', '')
             executive_evidence_items = checkpoint.get('executive_evidence_items', [])
+            executive_summary_evidence = checkpoint.get('executive_summary_evidence', [])
             summary_thinking = checkpoint.get('thinking', '')
             # Restore enriched category summaries
             enriched_summaries = checkpoint.get('enriched_category_summaries', {})
@@ -532,7 +535,7 @@ class MainOrchestrator:
             phases.start_phase("Phase 4: Executive Summary")
             try:
                 logger.info("Phase 4: Generating executive summary...")
-                executive_summary, summary_thinking, executive_evidence_items = await self._generate_executive_summary(
+                executive_summary, summary_thinking, executive_evidence_items, executive_summary_evidence = await self._generate_executive_summary(
                     category_reports, top_topics
                 )
                 phases.end_phase('success')
@@ -542,6 +545,7 @@ class MainOrchestrator:
                     category_reports, top_topics
                 )
                 executive_evidence_items = []
+                executive_summary_evidence = []
                 summary_thinking = (
                     "Deterministic fallback used after "
                     f"{type(e).__name__} during executive summary generation."
@@ -558,7 +562,10 @@ class MainOrchestrator:
                 logger.info("Phase 4.5: Enriching summaries with internal links...")
                 enricher = LinkEnricher(self.async_client, self.target_date, prompt_accessor=self.prompt_accessor)
                 executive_summary, enriched_category_summaries, top_topics = await enricher.enrich_all(
-                    executive_summary, category_reports, top_topics
+                    executive_summary,
+                    category_reports,
+                    top_topics,
+                    executive_summary_evidence=executive_summary_evidence,
                 )
                 for category, enriched_summary in enriched_category_summaries.items():
                     if category in category_reports:
@@ -573,6 +580,7 @@ class MainOrchestrator:
             self._save_checkpoint('summary', {
                 'executive_summary': executive_summary,
                 'executive_evidence_items': executive_evidence_items,
+                'executive_summary_evidence': executive_summary_evidence,
                 'thinking': summary_thinking,
                 'enriched_category_summaries': {cat: report.category_summary for cat, report in category_reports.items()},
                 'enriched_topics': [asdict(t) for t in top_topics]
@@ -689,6 +697,7 @@ class MainOrchestrator:
             collection_status=collection_status,
             analysis_funnel=analysis_funnel,
             executive_evidence_items=executive_evidence_items,
+            executive_summary_evidence=executive_summary_evidence,
             hero_image_url=hero_image_url,
             hero_image_prompt=hero_image_prompt,
             phase_status=phases.to_dict(),
@@ -1220,10 +1229,13 @@ class MainOrchestrator:
             if not analyzer or not hasattr(analyzer, '_ensure_category_summary'):
                 continue
             try:
+                previous_summary = report.category_summary
                 report.category_summary = await analyzer._ensure_category_summary(
                     report.category_summary,
                     report.top_items,
                 )
+                if report.category_summary != previous_summary:
+                    report.category_summary_evidence = []
             except Exception as exc:
                 logger.warning(
                     f"Post-analysis category summary repair failed for {category}: {exc}"
@@ -1339,7 +1351,7 @@ class MainOrchestrator:
 
 For each cross-category topic, provide a compact, decision-relevant brief:
 1. A concise name (2-5 words)
-2. A description of no more than 2 sentences and 70 words as PLAIN TEXT without any links.
+2. A description of exactly one concise sentence, no more than 40 words, as PLAIN TEXT without any links.
    - DO NOT include any markdown links or URLs.
    - State the signal, strongest evidence, and executive implication without recapping every supporting item.
    - Links will be added automatically in a later processing step.
@@ -1361,7 +1373,7 @@ Return your analysis as JSON:
     {{
       "name": "Topic Name",
       "description": "Plain text description referencing sources by name without any links.",
-      "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (1-2 sentences).",
+      "business_implication": "Explanation of the impact on B2B/Enterprise markets and AI strategy (one sentence).",
       "trend_velocity": "A one-word indicator (e.g., 'Emerging', 'Accelerating', 'Mainstream', 'Fading')",
       "categories": {{"news": 5, "research": 2, "social": 10, "github_trending": 4}},
       "representative_items": ["current-news-item-id", "current-social-item-id"],
@@ -1456,7 +1468,7 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
         if not text:
             return text
         sentences = re.split(r"(?<=[.!?])\s+", text)
-        candidate = " ".join(sentences[:2])
+        candidate = sentences[0]
         words = candidate.split()
         if len(words) <= MAX_TOPIC_DESCRIPTION_WORDS:
             return candidate
@@ -1492,7 +1504,7 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
         Uses DEEP thinking for quality synthesis.
 
         Returns:
-            Tuple of (summary string, thinking string, current evidence item IDs).
+            Tuple of summary, thinking, flat evidence IDs, and evidence IDs by bullet.
         """
         # Load previous days' summaries to avoid repetition
         previous_coverage = self._load_previous_summaries(lookback_days=3)
@@ -1572,7 +1584,8 @@ EVIDENCE REQUIREMENT:
 - Treat everything before `=== END PREVIOUS DAYS' COVERAGE ===` as historical anti-repetition context only.
 - Use only developments supported by CURRENT ITEMS inside `=== TODAY'S DATA (CURRENT EVIDENCE) ===`.
 - If a claim appears only in historical coverage, omit it from the new briefing.
-- Return valid JSON only: {{"executive_summary": "the complete Markdown briefing", "evidence_item_ids": ["current-item-id-1", "current-item-id-2"]}}
+- Return valid JSON only: {{"executive_summary": "the complete Markdown briefing", "evidence_by_bullet": [["id for bullet 1"], ["id 1 for bullet 2", "id 2 for bullet 2"]], "evidence_item_ids": ["all unique current IDs"]}}
+- `evidence_by_bullet` must contain one ordered array per briefing bullet, with 1-3 exact CURRENT ITEM IDs supporting that bullet.
 - Use exact CURRENT ITEM IDs and cover at least two non-empty categories when two or more categories are available."""
 
         system_prompt = build_hardened_system(
@@ -1638,8 +1651,18 @@ EVIDENCE REQUIREMENT:
         minimum_categories = min(2, len(active_categories))
         if minimum_categories == 0:
             raise ValueError("Executive summary has no current items available as evidence")
+        evidence_by_bullet = BaseAnalyzer._validated_summary_evidence(
+            content,
+            result.get('evidence_by_bullet'),
+            set(item_categories),
+        )
+        raw_evidence_ids = (
+            [item_id for ids in evidence_by_bullet for item_id in ids]
+            if evidence_by_bullet
+            else result.get('evidence_item_ids')
+        )
         evidence_ids = self._validated_evidence_ids(
-            result.get('evidence_item_ids'),
+            raw_evidence_ids,
             item_categories,
             minimum_categories=minimum_categories,
             context="executive summary",
@@ -1650,7 +1673,7 @@ EVIDENCE REQUIREMENT:
                 f"({len(content)} < {MIN_EXECUTIVE_SUMMARY_CHARS} characters)"
             )
 
-        return content, response.thinking or "", evidence_ids
+        return content, response.thinking or "", evidence_ids, evidence_by_bullet
 
     def _build_executive_summary_fallback(
         self,
