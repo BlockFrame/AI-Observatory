@@ -1,61 +1,61 @@
 {
-  "updated_at": "2026-08-10T10:00:43.814260",
+  "updated_at": "2026-08-11T01:51:39.592902",
   "sources": {
     "research": {
       "status": "success",
-      "count": 14,
+      "count": 58,
       "error": null,
-      "raw_count": 14,
-      "duration_ms": 5568,
+      "raw_count": 58,
+      "duration_ms": 6776,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 13,
-      "freshness_rate": 0.9286,
-      "newest_item_at": "2026-08-09T20:00:00",
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "fresh_items": 55,
+      "freshness_rate": 0.9483,
+      "newest_item_at": "2026-08-10T22:46:11",
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     },
     "social": {
       "status": "success",
-      "count": 244,
+      "count": 544,
       "error": null,
-      "raw_count": 244,
-      "duration_ms": 86483,
+      "raw_count": 544,
+      "duration_ms": 106628,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 244,
+      "fresh_items": 544,
       "freshness_rate": 1.0,
-      "newest_item_at": "2026-08-09T23:45:56",
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "newest_item_at": "2026-08-10T23:48:43",
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     },
     "web_scraper": {
       "status": "partial",
       "count": 0,
-      "error": "0 failed and 2 partial out of 18 configured sites",
+      "error": "0 failed and 3 partial out of 18 configured sites",
       "raw_count": 0,
-      "duration_ms": 69833,
+      "duration_ms": 69892,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "social_twitter": {
       "status": "success",
-      "count": 244,
+      "count": 544,
       "error": null,
-      "raw_count": 244,
+      "raw_count": 544,
       "duration_ms": 0,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     },
     "https://www.anthropic.com/news": {
       "status": "success",
@@ -69,7 +69,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://cohere.com/blog": {
@@ -84,14 +84,14 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://aleph-alpha.com/blog/": {
-      "status": "success",
+      "status": "partial",
       "count": 0,
-      "error": "No article candidates found on page",
-      "reason_code": "no_candidates",
+      "error": "5/5 article candidates had no parseable date",
+      "reason_code": "date_parse_failed",
       "raw_count": 0,
       "duration_ms": 0,
       "duplicates_removed": 0,
@@ -99,7 +99,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.ibm.com/blog/category/artificial-intelligence/": {
@@ -114,7 +114,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.confident-ai.com/blog": {
@@ -129,7 +129,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.trulens.org/blog/": {
@@ -144,7 +144,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.keywordsai.co/blog": {
@@ -159,7 +159,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://honeyhive.ai/blog": {
@@ -174,7 +174,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.pinecone.io/blog/": {
@@ -189,7 +189,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://zilliz.com/blog": {
@@ -204,7 +204,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.trychroma.com/blog": {
@@ -219,7 +219,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://lovable.dev/blog": {
@@ -234,7 +234,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.copilotkit.ai/blog": {
@@ -249,7 +249,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.microsoft.com/en-us/microsoft-copilot/blog/": {
@@ -264,7 +264,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://www.heygen.com/blog": {
@@ -279,7 +279,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://elevenlabs.io/blog": {
@@ -294,7 +294,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://alphasignal.ai/": {
@@ -309,7 +309,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "https://ai-tldr.dev/tools/": {
@@ -324,50 +324,50 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-10T10:00:43.814260",
+      "last_success_at": "2026-08-11T01:51:39.592902",
       "last_nonempty_at": null
     },
     "news": {
       "status": "success",
-      "count": 44,
+      "count": 111,
       "error": null,
-      "raw_count": 45,
-      "duration_ms": 103984,
+      "raw_count": 112,
+      "duration_ms": 146212,
       "duplicates_removed": 1,
-      "duplicate_rate": 0.0222,
-      "fresh_items": 35,
-      "freshness_rate": 0.7955,
-      "newest_item_at": "2026-08-10T10:00:34.111277",
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "duplicate_rate": 0.0089,
+      "fresh_items": 92,
+      "freshness_rate": 0.8288,
+      "newest_item_at": "2026-08-11T01:51:31.380011",
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     },
     "hackernews": {
       "status": "success",
-      "count": 17,
+      "count": 27,
       "error": null,
-      "raw_count": 17,
-      "duration_ms": 6258,
+      "raw_count": 27,
+      "duration_ms": 4110,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 17,
+      "fresh_items": 27,
       "freshness_rate": 1.0,
-      "newest_item_at": "2026-08-09T23:36:05+00:00",
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "newest_item_at": "2026-08-10T23:45:50+00:00",
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     },
     "github_trending": {
       "status": "success",
-      "count": 35,
+      "count": 34,
       "error": null,
-      "raw_count": 35,
-      "duration_ms": 3441,
+      "raw_count": 34,
+      "duration_ms": 4093,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": 0.0,
-      "newest_item_at": "2026-08-10T14:00:43.812578+00:00",
-      "last_success_at": "2026-08-10T10:00:43.814260",
-      "last_nonempty_at": "2026-08-10T10:00:43.814260"
+      "newest_item_at": "2026-08-11T05:51:39.590916+00:00",
+      "last_success_at": "2026-08-11T01:51:39.592902",
+      "last_nonempty_at": "2026-08-11T01:51:39.592902"
     }
   }
 }
