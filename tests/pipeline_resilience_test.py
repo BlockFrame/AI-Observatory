@@ -869,6 +869,46 @@ class TopicDescriptionCompactionTests(unittest.TestCase):
 
 
 class GathererObservabilityTests(unittest.TestCase):
+    def test_source_funnel_alerts_when_active_source_is_silenced_by_ranking(self):
+        source_items = [
+            CollectedItem(
+                id=f"framework-{index}", title=f"Framework release {index}", content="body",
+                url=f"https://example.com/{index}", author="", published="2026-08-08T12:00:00",
+                source="LangChain Blog", source_type="rss",
+            )
+            for index in range(5)
+        ]
+        analyzed = [SimpleNamespace(item=item) for item in source_items]
+        report = SimpleNamespace(
+            category="news", all_items=analyzed, top_items=[], category_summary_evidence=[]
+        )
+        orchestrator = object.__new__(MainOrchestrator)
+
+        funnel, alerts = orchestrator._build_source_funnel(
+            {"news": source_items}, {"news": report}, [], [], []
+        )
+
+        self.assertEqual(funnel["LangChain Blog"]["analyzed"], 5)
+        self.assertEqual(funnel["LangChain Blog"]["top_ranked"], 0)
+        self.assertTrue(any(alert["kind"] == "ranking_silence" for alert in alerts))
+
+    def test_source_funnel_alerts_when_collected_items_never_reach_analysis(self):
+        source_items = [
+            CollectedItem(
+                id=f"feed-{index}", title=f"Candidate {index}", content="body",
+                url=f"https://example.com/{index}", author="", published="2026-08-08T12:00:00",
+                source="CopilotKit Blog", source_type="rss",
+            )
+            for index in range(3)
+        ]
+        orchestrator = object.__new__(MainOrchestrator)
+
+        _, alerts = orchestrator._build_source_funnel(
+            {"news": source_items}, {}, [], [], []
+        )
+
+        self.assertTrue(any(alert["kind"] == "analysis_wipeout" for alert in alerts))
+
     def test_source_health_contains_latency_dedup_freshness_and_last_success(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             orchestrator = object.__new__(MainOrchestrator)

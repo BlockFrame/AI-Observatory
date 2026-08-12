@@ -100,6 +100,8 @@ class OrchestratorResult:
     coverage_end: str = ''  # ISO datetime string for coverage end
     collection_status: Dict[str, Dict[str, Any]] = field(default_factory=dict)  # source -> status
     analysis_funnel: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    source_funnel: Dict[str, Dict[str, Any]] = field(default_factory=dict)
+    source_coverage_alerts: List[Dict[str, Any]] = field(default_factory=list)
     executive_evidence_items: List[str] = field(default_factory=list)
     executive_summary_evidence: List[List[str]] = field(default_factory=list)
     hero_image_url: Optional[str] = None  # URL path to generated hero image
@@ -123,6 +125,8 @@ class OrchestratorResult:
             'total_items_analyzed': self.total_items_analyzed,
             'collection_status': self.collection_status,
             'analysis_funnel': self.analysis_funnel,
+            'source_funnel': self.source_funnel,
+            'source_coverage_alerts': self.source_coverage_alerts,
             'executive_evidence_items': self.executive_evidence_items,
             'executive_summary_evidence': self.executive_summary_evidence,
             'hero_image_url': self.hero_image_url,
@@ -680,6 +684,10 @@ class MainOrchestrator:
                 ),
                 'wipeout': collected_count > 0 and analyzed_count == 0,
             }
+        source_funnel, source_coverage_alerts = self._build_source_funnel(
+            gathered_items, category_reports, top_topics,
+            executive_evidence_items, executive_summary_evidence,
+        )
 
         # Get coverage info from any gatherer (all have the same dates)
         any_gatherer = next(iter(self.gatherers.values()))
@@ -699,6 +707,8 @@ class MainOrchestrator:
             coverage_end=coverage_end,
             collection_status=collection_status,
             analysis_funnel=analysis_funnel,
+            source_funnel=source_funnel,
+            source_coverage_alerts=source_coverage_alerts,
             executive_evidence_items=executive_evidence_items,
             executive_summary_evidence=executive_summary_evidence,
             hero_image_url=hero_image_url,
@@ -727,6 +737,74 @@ class MainOrchestrator:
         # Cost tracking is now handled in the finally block of run_pipeline.py
 
         return result
+
+    def _build_source_funnel(
+        self,
+        gathered_items: Dict[str, List[CollectedItem]],
+        category_reports: Dict[str, CategoryReport],
+        top_topics: List[TopTopic],
+        executive_evidence_items: List[str],
+        executive_summary_evidence: List[List[str]],
+    ) -> tuple[Dict[str, Dict[str, Any]], List[Dict[str, Any]]]:
+        """Measure source visibility without changing editorial ranking.
+
+        A feed can be healthy yet silently lose every item during filtering or
+        ranking. These observability-only alerts make that visible; they never
+        boost a source or force framework release notes into the briefing.
+        """
+        source_funnel: Dict[str, Dict[str, Any]] = {}
+        item_source: Dict[str, str] = {}
+        for category, items in gathered_items.items():
+            for item in items:
+                source = (getattr(item, 'source', None) or category).strip()
+                metrics = source_funnel.setdefault(source, {
+                    'category': category, 'collected': 0, 'analyzed': 0,
+                    'top_ranked': 0, 'cited': 0,
+                })
+                metrics['collected'] += 1
+                item_source[getattr(item, 'id', '')] = source
+
+        for report in category_reports.values():
+            for analyzed in report.all_items:
+                item = analyzed.item
+                source = item_source.get(item.id, (item.source or report.category).strip())
+                metrics = source_funnel.setdefault(source, {
+                    'category': report.category, 'collected': 0, 'analyzed': 0,
+                    'top_ranked': 0, 'cited': 0,
+                })
+                metrics['analyzed'] += 1
+                item_source[item.id] = source
+            for ranked in report.top_items:
+                source = item_source.get(ranked.item.id, (ranked.item.source or report.category).strip())
+                source_funnel[source]['top_ranked'] += 1
+
+        cited_ids = set(executive_evidence_items)
+        cited_ids.update(item_id for group in executive_summary_evidence for item_id in group)
+        for report in category_reports.values():
+            cited_ids.update(item_id for group in report.category_summary_evidence for item_id in group)
+        for topic in top_topics:
+            cited_ids.update(topic.representative_items)
+        for item_id in cited_ids:
+            source = item_source.get(item_id)
+            if source in source_funnel:
+                source_funnel[source]['cited'] += 1
+
+        alerts = []
+        for source, metrics in sorted(source_funnel.items()):
+            collected, analyzed, ranked = (int(metrics[key]) for key in ('collected', 'analyzed', 'top_ranked'))
+            metrics['analysis_retention_rate'] = round(analyzed / collected, 4) if collected else None
+            metrics['ranking_rate'] = round(ranked / analyzed, 4) if analyzed else None
+            if collected >= 3 and analyzed == 0:
+                alerts.append({
+                    'severity': 'warning', 'kind': 'analysis_wipeout', 'source': source,
+                    'message': f'{source}: {collected} collected items, none reached analysis.',
+                })
+            elif collected >= 5 and analyzed > 0 and ranked == 0:
+                alerts.append({
+                    'severity': 'info', 'kind': 'ranking_silence', 'source': source,
+                    'message': f'{source}: {analyzed}/{collected} items analyzed, none in the category top ranking.',
+                })
+        return source_funnel, alerts
 
     def _build_fallback_topics(self, category_reports: Dict[str, CategoryReport]) -> List[TopTopic]:
         """Build publishable topics from category themes or analyzed items."""

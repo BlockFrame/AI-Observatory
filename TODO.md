@@ -11,6 +11,7 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per l'
 - [x] **Separazione ranking / scrittura**: modelli specialistici per ranking/estrazione e route quality dedicate con fallback espliciti per le summary editoriali.
 - [x] **Telemetria LLM per categoria**: `summary.json` espone modello, provider, durata, token, retry/fallback e stato per News, Social, Research e GitHub Trending.
 - [x] **Osservabilità dei gatherer**: dashboard/stato per fonte con ultimo successo, articoli raccolti, latenza, errore, tasso di duplicati e freshness del feed.
+- [x] **Alert funnel per fonte**: esporre raccolti → analizzati → top-ranked → citati e segnalare fonti attive ma silenziate, senza alterare il ranking editoriale.
 - [x] **Test end-to-end della resilienza**: fixture realistiche per timeout NVIDIA, 429 Gemini, JSON troncato, feed vuoti e fallback; verificare che il publish gate rifiuti report di bassa qualità.
 - [x] **Link enrichment efficiente**: eseguire prima entity matching deterministico e inviare al modello solo riferimenti ambigui, riducendo latenza, token e chiamate LLM.
 - [x] **Cache semantica degli articoli**: usare checksum del contenuto e cache di analisi per evitare rielaborazioni di articoli ripubblicati da più feed.
@@ -48,6 +49,7 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per l'
 
 ## 📌 Backlog Feature
 
+- [ ] **Technical Updates**: creare una sezione separata per release note, breaking change, SDK/framework update e integrazioni tecniche (LangChain, CopilotKit, LangGraph, n8n, ecc.), distinta dall'Executive Briefing e non soggetta al ranking editoriale strategico.
 - [ ] **“Why it matters”**: aggiungere per ogni notizia una sintesi strutturata di impatto, urgenza e destinatario decisionale.
 - [ ] **Storyline & follow-up**: raggruppare aggiornamenti della stessa storia in una timeline a 7/30 giorni.
 - [ ] **Digest personalizzato**: filtri persistenti per aziende, modelli, temi e ruolo dell'utente; generazione di una daily digest mirata.

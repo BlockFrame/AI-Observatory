@@ -181,6 +181,8 @@ class JSONGenerator:
             'total_items_analyzed': result.get('total_items_analyzed', 0),
             'collection_status': self._format_collection_status(collection_status),
             'analysis_funnel': result.get('analysis_funnel', {}),
+            'source_funnel': result.get('source_funnel', {}),
+            'source_coverage_alerts': result.get('source_coverage_alerts', []),
             'executive_evidence_items': result.get('executive_evidence_items', []),
             'executive_summary_evidence': result.get('executive_summary_evidence', []),
             'phase_status': phase_status,
