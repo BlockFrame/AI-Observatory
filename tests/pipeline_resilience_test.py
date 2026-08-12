@@ -204,6 +204,89 @@ class PublicationQualityGateTests(unittest.TestCase):
         self.assertLess(summary["quality_score"]["score"], 70)
         self.assertTrue(any("quality score" in failure for failure in result["failures"]))
 
+    def test_auxiliary_web_scraper_is_not_treated_as_editorial_wipeout(self):
+        top_items = [{
+            "id": f"item-{index}",
+            "title": f"AI story {index}",
+            "url": f"https://source.example/{index}",
+            "source": "source",
+        } for index in range(5)]
+        summary = {
+            "date": "2026-08-09",
+            "executive_summary": "x" * 800,
+            "top_topics": [{"name": f"Topic {index}"} for index in range(3)],
+            "total_items_collected": 11,
+            "total_items_analyzed": 10,
+            "phase_status": [
+                {"name": "Phase 3: Topic Detection", "status": "success"},
+                {"name": "Phase 4: Executive Summary", "status": "success"},
+            ],
+            "generation_quality": {"fallback_used": False},
+            "collection_status": {"overall": "success", "sources": []},
+            "analysis_funnel": {
+                "news": {"collected": 10, "analyzed": 10},
+                "web_scraper": {"collected": 1, "analyzed": 0},
+            },
+            "categories": {
+                "news": {
+                    "count": 10,
+                    "category_summary": "y" * 500,
+                    "analysis_quality": {"total_items": 10, "fallback_rate": 0},
+                    "top_items": top_items,
+                },
+            },
+        }
+        summary["quality_score"] = calculate_quality_score(summary)
+
+        result = validate(summary, "2026-08-09")
+
+        self.assertTrue(result["valid"], result["failures"])
+        self.assertNotIn("web_scraper", summary["quality_score"]["wiped_out_categories"])
+
+
+class SelectiveGatheringCheckpointRepairTests(unittest.IsolatedAsyncioTestCase):
+    async def test_failed_research_is_regathered_without_calling_social(self):
+        class Gatherer:
+            def __init__(self, items=None):
+                self.items = items or []
+                self.calls = 0
+
+            async def gather(self):
+                self.calls += 1
+                return self.items
+
+        research_item = CollectedItem(
+            id="paper-1",
+            title="Recovered paper",
+            content="Current research",
+            url="https://example.com/paper",
+            author="Researcher",
+            published="2026-08-08T12:00:00",
+            source="Research",
+            source_type="research_paper",
+        )
+        research = Gatherer([research_item])
+        social = Gatherer()
+        orchestrator = object.__new__(MainOrchestrator)
+        orchestrator.gatherers = {"research": research, "social": social}
+        orchestrator._save_checkpoint = MagicMock()
+        gathered = {"research": [], "social": [research_item]}
+        statuses = {
+            "research": {"status": "failed", "count": 0, "error": "broken"},
+            "social": {"status": "success", "count": 1, "error": None},
+            "social_twitter": {"status": "success", "count": 1, "error": None},
+        }
+
+        repaired, repaired_status = await orchestrator._repair_failed_checkpoint_categories(
+            gathered, statuses
+        )
+
+        self.assertEqual(research.calls, 1)
+        self.assertEqual(social.calls, 0)
+        self.assertEqual([item.id for item in repaired["research"]], ["paper-1"])
+        self.assertEqual(repaired_status["research"]["status"], "success")
+        orchestrator._save_checkpoint.assert_called_once()
+
     def test_excessive_item_analysis_fallback_is_rejected(self):
         summary = {
             "date": "2026-08-06",

@@ -560,6 +560,31 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
         asyncio.run(run())
 
+    def test_malformed_provider_json_falls_back_to_another_route(self):
+        async def run():
+            primary = FakeRouteClient(
+                "openrouter-minimax-complex",
+                failures=[json.JSONDecodeError("truncated body", "{", 1)],
+                fallback_route_id="gemini-quality-fallback",
+            )
+            fallback = FakeRouteClient("gemini-quality-fallback")
+            router = AsyncLLMRouter([primary, fallback])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "topics"}],
+                profile=ThinkingLevel.DEEP,
+                caller="orchestrator.topics",
+            )
+
+            self.assertEqual(response.content, "gemini-quality-fallback")
+            self.assertEqual(len(primary.calls), 1)
+            self.assertEqual(
+                fallback.calls[0]["routing_context"]["retry_reason"],
+                "invalid_provider_json",
+            )
+
+        asyncio.run(run())
+
     def test_client_error_does_not_cross_provider_retry(self):
         async def run():
             aws = FakeRouteClient("aws", failures=[HTTP400("bad request")])

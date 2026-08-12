@@ -197,7 +197,10 @@ def validate(summary: dict, date_str: str) -> dict:
     # to zero. This is the exact failure mode that emptied News on 2026-08-09.
     analysis_funnel = summary.get("analysis_funnel") or {}
     if analysis_funnel:
+        editorial_categories = {"news", "research", "social", "github_trending"}
         for category, funnel in analysis_funnel.items():
+            if category not in editorial_categories:
+                continue
             if not isinstance(funnel, dict):
                 continue
             gathered_count = int(funnel.get("collected") or 0)

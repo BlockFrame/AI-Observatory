@@ -2,6 +2,7 @@
 
 import tempfile
 import unittest
+from time import struct_time
 from datetime import datetime, timedelta
 from unittest.mock import Mock, patch
 
@@ -61,6 +62,32 @@ class ResearchGathererTest(unittest.TestCase):
         self.assertEqual(item.source_type, "research_paper")
         self.assertEqual(item.metadata["arxiv_id"], "2607.03118")
         self.assertEqual(item.author, "Jintao Zhang, Kai Jiang")
+
+    @patch("agents.gatherers.research_gatherer.feedparser.parse")
+    @patch("agents.gatherers.research_gatherer.requests.get")
+    def test_successful_research_feed_returns_collected_posts(self, mock_get, mock_parse):
+        response = Mock(content=b"<rss />")
+        response.raise_for_status.return_value = None
+        mock_get.return_value = response
+        mock_parse.return_value = Mock(
+            bozo=False,
+            feed={"title": "Research Feed"},
+            entries=[{
+                "title": "A current research result",
+                "link": "https://example.com/research",
+                "summary": "A useful result.",
+                "author": "Researcher",
+                "published_parsed": struct_time((2026, 7, 10, 12, 0, 0, 3, 191, -1)),
+                "tags": [],
+            }],
+        )
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+
+        posts = gatherer._fetch_research_feed("https://example.com/feed")
+
+        self.assertIsInstance(posts, list)
+        self.assertEqual(len(posts), 1)
+        self.assertEqual(posts[0].title, "A current research result")
 
     def test_alphaxiv_record_filters_and_extracts_structured_summary(self):
         gatherer = self._gatherer_for_coverage("2026-07-10")

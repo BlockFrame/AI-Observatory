@@ -208,7 +208,9 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
-          key: gathering-v1-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
+          key: gathering-v2-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
+          restore-keys: |
+            gathering-v1-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
 
       - name: Set up Python
         if: steps.schedule_gate.outputs.should_run == 'true'
@@ -257,6 +259,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest \
+            tests.research_gatherer_test \
             tests.llm_routing_test \
             tests.editorial_integrity_test \
             tests.news_ai_keyword_filter_test \
@@ -385,7 +388,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
-          key: gathering-v1-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
+          key: gathering-v2-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt') }}
 
       - name: Verify llms index artifacts
         if: steps.schedule_gate.outputs.should_run == 'true'

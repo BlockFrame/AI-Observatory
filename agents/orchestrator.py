@@ -347,6 +347,9 @@ class MainOrchestrator:
                 raise RuntimeError("Cannot resume: no checkpoint for Phase 1 (gathering)")
             gathered_items = self._restore_gathered_items(checkpoint)
             collection_status = checkpoint.get('collection_status', {})
+            gathered_items, collection_status = await self._repair_failed_checkpoint_categories(
+                gathered_items, collection_status
+            )
             total_items = sum(len(items) for items in gathered_items.values())
             phases.skip_phase("Phase 1: Gathering", f"loaded from checkpoint ({total_items} items)")
         else:
@@ -840,6 +843,61 @@ class MainOrchestrator:
         for category, items_data in checkpoint.get('categories', {}).items():
             result[category] = [CollectedItem.from_dict(item) for item in items_data]
         return result
+
+    async def _repair_failed_checkpoint_categories(
+        self,
+        gathered_items: Dict[str, List[CollectedItem]],
+        collection_status: Dict[str, Dict[str, Any]],
+    ) -> tuple:
+        """Regather failed independent categories while preserving paid X data.
+
+        A gathering checkpoint is intentionally reusable when Twitter
+        succeeded. Other independent gatherers can still have failed; replay
+        those selectively instead of either accepting an empty category or
+        rerunning the paid social collection.
+        """
+        repaired = False
+        for category in ("research",):
+            status = collection_status.get(category) or {}
+            if status.get("status") != "failed":
+                continue
+            gatherer = self.gatherers.get(category)
+            if gatherer is None:
+                continue
+            logger.warning(
+                "Checkpoint category %s failed previously; regathering it without rerunning Social/X",
+                category,
+            )
+            started = time.perf_counter()
+            try:
+                items = await gatherer.gather()
+                gathered_items[category] = items
+                collection_status[category] = {
+                    "status": "success",
+                    "count": len(items),
+                    "error": None,
+                    "raw_count": len(items),
+                    "duration_ms": int((time.perf_counter() - started) * 1000),
+                }
+                repaired = True
+            except Exception as exc:
+                logger.error("Selective checkpoint repair failed for %s: %s", category, exc)
+                collection_status[category] = {
+                    **status,
+                    "status": "failed",
+                    "count": 0,
+                    "error": str(exc),
+                }
+
+        if repaired:
+            self._save_checkpoint('gathering', {
+                'collection_status': collection_status,
+                'categories': {
+                    category: [item.to_dict() for item in items]
+                    for category, items in gathered_items.items()
+                },
+            })
+        return gathered_items, collection_status
 
     def _restore_category_reports(self, checkpoint: dict) -> Dict[str, CategoryReport]:
         """Restore CategoryReport objects from checkpoint data."""

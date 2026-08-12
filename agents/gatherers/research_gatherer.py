@@ -770,7 +770,7 @@ class ResearchGatherer(BaseGatherer):
         except Exception as e:
             logger.error(f"Error fetching research feed {feed_url}: {e}")
 
-            return posts
+        return posts
 
     def _is_trend_research_feed(self, feed_url: str, feed_title: str = '') -> bool:
         """Identify Trend Micro's broad threat-research feed for source-specific filtering."""

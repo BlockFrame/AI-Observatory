@@ -9,6 +9,7 @@ from typing import Any, Dict, Iterable
 _MARKDOWN_LINK = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 _BROKEN_MARKDOWN_LINK = re.compile(r"\[[^\]]*\]\([^)]*$|\[[^\]]*$")
 _FAILURE_MARKERS = ("analysis failed", "analysis complete", "generation failed", "connection error")
+_EDITORIAL_CATEGORIES = {"news", "research", "social", "github_trending"}
 
 
 def _clamp(value: float) -> float:
@@ -99,7 +100,8 @@ def calculate_quality_score(
     wiped_out_categories = [
         category
         for category, funnel in analysis_funnel.items()
-        if isinstance(funnel, dict)
+        if category in _EDITORIAL_CATEGORIES
+        and isinstance(funnel, dict)
         and int(funnel.get("collected") or 0) > 0
         and int(funnel.get("analyzed") or 0) == 0
     ]

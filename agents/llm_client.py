@@ -2578,6 +2578,11 @@ class AsyncLLMRouter:
             return type(error).__name__
         if isinstance(error, OpenRouterResponseError):
             return "invalid_openrouter_response"
+        if isinstance(error, json.JSONDecodeError):
+            # The provider returned a non-JSON/truncated HTTP body. This is a
+            # transport-level response failure, not an application schema
+            # error, so move to the configured fallback route immediately.
+            return "invalid_provider_json"
         if isinstance(error, ProviderQuotaExhaustedError):
             return "provider_rpd_exhausted"
 
