@@ -651,7 +651,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         self.assertEqual(enriched, text)
 
-    def test_each_visible_bullet_gets_deterministic_evidence_link(self):
+    def test_only_bullets_with_an_explicit_source_reference_are_linked(self):
         class RecordingClient:
             def __init__(self):
                 self.calls = 0
@@ -676,7 +676,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
-            self.assertEqual(enriched.count("#item-story-1"), 2)
+            self.assertEqual(enriched.count("#item-story-1"), 1)
             self.assertEqual(client.calls, 0)
 
         asyncio.run(run())
@@ -705,7 +705,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
         enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
         text = (
             "- OpenAI releases Responses API while the Attention Is All You Need paper "
-            "and Andrej Karpathy's LLM OS post shape the discussion."
+            "and Andrej Karpathy LLM OS post shape the discussion."
         )
         items = [
             {"id": "news", "category": "news", "title": "OpenAI releases Responses API", "summary": ""},
@@ -721,7 +721,10 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
     def test_structured_bullet_evidence_keeps_one_to_many_links(self):
         enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
-        text = "- Three independent signals point to the same strategic shift in enterprise AI."
+        text = (
+            "- Enterprise agents gain controls, the Agent reliability benchmark, and a "
+            "Practitioner adoption signal point to the same strategic shift in enterprise AI."
+        )
         items = [
             {"id": "news", "category": "news", "title": "Enterprise agents gain controls", "summary": ""},
             {"id": "research", "category": "research", "title": "Agent reliability benchmark", "summary": ""},
@@ -736,6 +739,37 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
         )
 
         self.assertEqual(enriched.count("#item-"), 3)
+
+    def test_structured_evidence_never_becomes_a_trailing_source_list(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = "- The strategic implication is clear, even though no source is named in this sentence."
+        items = [{
+            "id": "news",
+            "category": "news",
+            "title": "OpenAI releases Responses API for enterprise agents",
+            "summary": "",
+        }]
+
+        enriched = enricher._inject_per_block_links(
+            text, items, "executive summary", evidence_by_bullet=[["news"]]
+        )
+
+        self.assertEqual(enriched, text)
+        self.assertNotIn("(", enriched)
+
+    def test_short_generic_title_overlap_is_not_linked(self):
+        enricher = LinkEnricher(SimpleNamespace(), "2026-08-09")
+        text = "- Agent runtimes are converging on unified LLM APIs and developer tooling."
+        items = [{
+            "id": "unrelated-news",
+            "category": "news",
+            "title": "LLM APIs: a general market overview",
+            "summary": "",
+        }]
+
+        enriched = enricher._inject_per_block_links(text, items, "github summary")
+
+        self.assertEqual(enriched, text)
 
 
 class TopicDescriptionCompactionTests(unittest.TestCase):

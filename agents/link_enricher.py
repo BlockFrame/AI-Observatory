@@ -442,18 +442,16 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         links_per_block: int = 1,
         evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
-        """Ensure each substantive bullet/paragraph carries source evidence."""
+        """Add only verifiable, inline source links to visible content blocks.
+
+        Evidence IDs prove which records informed a bullet, but they do not
+        license a synthetic source list at the end of the sentence.  A reader
+        should see a link only where the prose actually names that story.
+        """
         if not text or not items:
             return text
 
-        # Retain any high-confidence inline anchor, then fill remaining
-        # coverage gaps with compact source links at the end of each block.
-        enriched = self._inject_deterministic_links(
-            text, items, context_name, append_read_more=False
-        )
-        enriched = self._inject_explicit_item_links(enriched, items)
-        used_ids = set(re.findall(r"#item-([\w-]+)", enriched))
-        lines = enriched.splitlines()
+        lines = text.splitlines()
         item_by_id = {item.get("id"): item for item in items}
         bullet_index = 0
 
@@ -471,38 +469,18 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
                 or len(re.sub(r"^[*\-]\s+", "", stripped)) < 35
             ):
                 continue
-            existing_ids = set(re.findall(r"#item-([\w-]+)", line))
-            existing = len(existing_ids)
 
-            if structured_ids:
-                selected = [
-                    item_by_id[item_id]
-                    for item_id in structured_ids
-                    if item_id in item_by_id and item_id not in existing_ids
-                ]
-                needed = 0
-            else:
-                selected = []
-                needed = max(0, links_per_block - existing)
-            if needed:
-                selected = self._select_evidence_items(
-                    stripped, items, existing_ids | used_ids, needed
-                )
-            if not selected:
-                continue
-            links = []
-            for item in selected:
-                item_id = item["id"]
-                category = item["category"]
-                used_ids.add(item_id)
-                label = self._evidence_link_label(item)
-                links.append(
-                    f"[{label}](/?date={self.date}&category={category}#item-{item_id})"
-                )
-            lines[index] = line.rstrip() + " (" + "; ".join(links) + ")"
+            # Structured evidence is the authoritative candidate set. Where a
+            # bullet has no structured mapping (e.g. legacy checkpoints), use
+            # the category pool but still require a literal, specific mention.
+            candidates = (
+                [item_by_id[item_id] for item_id in structured_ids if item_id in item_by_id]
+                if structured_ids else items
+            )
+            lines[index] = self._inject_explicit_item_links(line, candidates)
 
         result = self._sanitize_internal_link_labels("\n".join(lines))
-        logger.info("  %s: ensured evidence links on visible content blocks", context_name)
+        logger.info("  %s: added only inline, explicitly grounded evidence links", context_name)
         return result
 
     @staticmethod
@@ -556,9 +534,11 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         candidates = [repository.group(1)] if repository else []
 
         words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", title)
-        # Longest fragments first: a two-or-more word phrase provides enough
-        # identity to map an editorial reference to one collected item.
-        for size in range(min(6, len(words)), 1, -1):
+        # Longest fragments first. Two-word lexical overlap ("LLM APIs",
+        # "real-time clinical") is too ambiguous across a news corpus and was
+        # the source of contextually wrong links; require three words unless a
+        # repository identifier supplies an unambiguous canonical name.
+        for size in range(min(6, len(words)), 2, -1):
             for start in range(len(words) - size + 1):
                 phrase_words = words[start:start + size]
                 if not any(len(word) >= 5 or word[:1].isupper() for word in phrase_words):
