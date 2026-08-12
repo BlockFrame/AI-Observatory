@@ -1,0 +1,1711 @@
+{
+  "category": "github_trending",
+  "date": "2026-08-12",
+  "category_summary": "### Executive Signal\n- The **agent orchestration stack** is consolidating rapidly, with eight of ten trending repos targeting agent building, deployment, or management—signaling that enterprise AI procurement must shift from model selection to **agent platform decisions**. ([PrimeIntellect-ai/prime-agent](/?date=2026-08-12&category=github_trending#item-a493632d11e9))\n\n### Priority Developments\n- **Agent runtimes and SDKs are converging**: orca, prime-agent, pi, and corsair all target the same layer (unified LLM APIs, agent loops, CLI/TUI), meaning the standards war for agent infrastructure is underway and **lock-in risk is imminent**. ([stablyai/orca](/?date=2026-08-12&category=github_trending#item-b3a6b26fa3d6))\n- **Agent Operations (\"AgentOps\") is emerging as a category**: paperclip and corsair position around managing fleets of agents at work, indicating a near-term enterprise need for **governance, observability, and integration** controls comparable to early MLOps. ([msitarzewski/agency-agents](/?date=2026-08-12&category=github_trending#item-1381817a42f0))\n- **Pre-built agent personas are being commoditized**: agency-agents packages specialized agents with personas and deliverables, lowering the barrier for non-technical teams to deploy agentic workflows and **compressing time-to-value**. ([addyosmani/agent-skills](/?date=2026-08-12&category=github_trending#item-be1bb7d2c6b4))\n- **Context and data-extraction layers are productizing**: semantica (graph-native context) and firecrawl (web scraping API) reveal that the **bottleneck has shifted from models to context engineering** and accountable retrieval. ([semantica-agi/semantica](/?date=2026-08-12&category=github_trending#item-a7fc77a817ce))\n- **Verticalized autonomous agents are validating**: prime-agent (self-improving coding workflows) and DeepTutor (personalized tutoring) show autonomous, long-running agents are crossing from demos into **domain-specific production use cases**. ([HKUDS/DeepTutor](/?date=2026-08-12&category=github_trending#item-1c9bf949b724))\n\n### Leadership Implications\n- **Establish an agent platform evaluation this quarter**, not a model bake-off—standards are forming now and procurement delay will mean paying integration tax later. ([NanmiCoder/MediaCrawler](/?date=2026-08-12&category=github_trending#item-3c755ea6244b))\n- **Stand up an AgentOps function** mirroring the MLOps playbook before fragmented toolsets create unmanaged agent sprawl across business units. ([earendil-works/pi](/?date=2026-08-12&category=github_trending#item-7f4b77e91802))",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>The <strong>agent orchestration stack</strong> is consolidating rapidly, with eight of ten trending repos targeting agent building, deployment, or management—signaling that enterprise AI procurement must shift from model selection to <strong>agent platform decisions</strong>. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-a493632d11e9\" class=\"internal-link\" rel=\"noopener noreferrer\">PrimeIntellect-ai/prime-agent</a>)</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Agent runtimes and SDKs are converging</strong>: orca, prime-agent, pi, and corsair all target the same layer (unified LLM APIs, agent loops, CLI/TUI), meaning the standards war for agent infrastructure is underway and <strong>lock-in risk is imminent</strong>. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-b3a6b26fa3d6\" class=\"internal-link\" rel=\"noopener noreferrer\">stablyai/orca</a>)</li>\n<li><strong>Agent Operations (\"AgentOps\") is emerging as a category</strong>: paperclip and corsair position around managing fleets of agents at work, indicating a near-term enterprise need for <strong>governance, observability, and integration</strong> controls comparable to early MLOps. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-1381817a42f0\" class=\"internal-link\" rel=\"noopener noreferrer\">msitarzewski/agency-agents</a>)</li>\n<li><strong>Pre-built agent personas are being commoditized</strong>: agency-agents packages specialized agents with personas and deliverables, lowering the barrier for non-technical teams to deploy agentic workflows and <strong>compressing time-to-value</strong>. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-be1bb7d2c6b4\" class=\"internal-link\" rel=\"noopener noreferrer\">addyosmani/agent-skills</a>)</li>\n<li><strong>Context and data-extraction layers are productizing</strong>: semantica (graph-native context) and firecrawl (web scraping API) reveal that the <strong>bottleneck has shifted from models to context engineering</strong> and accountable retrieval. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-a7fc77a817ce\" class=\"internal-link\" rel=\"noopener noreferrer\">semantica-agi/semantica</a>)</li>\n<li><strong>Verticalized autonomous agents are validating</strong>: prime-agent (self-improving coding workflows) and DeepTutor (personalized tutoring) show autonomous, long-running agents are crossing from demos into <strong>domain-specific production use cases</strong>. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-1c9bf949b724\" class=\"internal-link\" rel=\"noopener noreferrer\">HKUDS/DeepTutor</a>)</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li><strong>Establish an agent platform evaluation this quarter</strong>, not a model bake-off—standards are forming now and procurement delay will mean paying integration tax later. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-3c755ea6244b\" class=\"internal-link\" rel=\"noopener noreferrer\">NanmiCoder/MediaCrawler</a>)</li>\n<li><strong>Stand up an AgentOps function</strong> mirroring the MLOps playbook before fragmented toolsets create unmanaged agent sprawl across business units. (<a href=\"/?date=2026-08-12&amp;category=github_trending#item-7f4b77e91802\" class=\"internal-link\" rel=\"noopener noreferrer\">earendil-works/pi</a>)</li>\n</ul>",
+  "category_summary_evidence": [],
+  "themes": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+      "item_count": 15,
+      "example_items": [
+        "1381817a42f0",
+        "a7fc77a817ce",
+        "1c9bf949b724"
+      ],
+      "importance": 88.0
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+      "item_count": 7,
+      "example_items": [
+        "1381817a42f0",
+        "a7fc77a817ce",
+        "1c9bf949b724"
+      ],
+      "importance": 85.0
+    }
+  ],
+  "total_items": 43,
+  "items": [
+    {
+      "id": "1381817a42f0",
+      "title": "msitarzewski/agency-agents",
+      "content": "GitHub Repository: msitarzewski/agency-agents\nDescription: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.\nLanguage: Shell\nStars Today: 958",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "author": "msitarzewski",
+      "published": "2026-08-12T06:15:02.869206+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 958 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (958 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Shell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "msitarzewski/agency-agents",
+        "stars": 0,
+        "stars_today": "958",
+        "language": "Shell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.869206+00:00",
+        "hn_score": 958,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 958 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: msitarzewski/agency-agents</p>\n<p>Description: A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.</p>\n<p>Language: Shell</p>\n<p>Stars Today: 958</p>"
+    },
+    {
+      "id": "a7fc77a817ce",
+      "title": "semantica-agi/semantica",
+      "content": "GitHub Repository: semantica-agi/semantica\nDescription: Graph-Native Infrastructure for Context and Accountable AI Systems\nLanguage: Python\nStars Today: 893",
+      "url": "https://github.com/semantica-agi/semantica",
+      "author": "semantica-agi",
+      "published": "2026-08-12T06:15:02.869572+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 893 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (893 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "semantica-agi/semantica",
+        "stars": 0,
+        "stars_today": "893",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.869572+00:00",
+        "hn_score": 893,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 893 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: semantica-agi/semantica</p>\n<p>Description: Graph-Native Infrastructure for Context and Accountable AI Systems</p>\n<p>Language: Python</p>\n<p>Stars Today: 893</p>"
+    },
+    {
+      "id": "1c9bf949b724",
+      "title": "HKUDS/DeepTutor",
+      "content": "GitHub Repository: HKUDS/DeepTutor\nDescription: DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.\nLanguage: Python\nStars Today: 812",
+      "url": "https://github.com/HKUDS/DeepTutor",
+      "author": "HKUDS",
+      "published": "2026-08-12T06:15:02.871782+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 812 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (812 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "HKUDS/DeepTutor",
+        "stars": 0,
+        "stars_today": "812",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.871782+00:00",
+        "hn_score": 812,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 812 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: HKUDS/DeepTutor</p>\n<p>Description: DeepTutor: Lifelong Personalized Tutoring. https://deeptutor.info/.</p>\n<p>Language: Python</p>\n<p>Stars Today: 812</p>"
+    },
+    {
+      "id": "b3a6b26fa3d6",
+      "title": "stablyai/orca",
+      "content": "GitHub Repository: stablyai/orca\nDescription: Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop, mobile and VPS.\nLanguage: TypeScript\nStars Today: 875",
+      "url": "https://github.com/stablyai/orca",
+      "author": "stablyai",
+      "published": "2026-08-12T06:15:02.872082+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 875 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (875 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "stablyai/orca",
+        "stars": 0,
+        "stars_today": "875",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.872082+00:00",
+        "hn_score": 875,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 875 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: stablyai/orca</p>\n<p>Description: Orca is the ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop, mobile and VPS.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 875</p>"
+    },
+    {
+      "id": "a493632d11e9",
+      "title": "PrimeIntellect-ai/prime-agent",
+      "content": "GitHub Repository: PrimeIntellect-ai/prime-agent\nDescription: A self-improving RLM agent for coding workflows and long-running autonomous tasks.\nLanguage: TypeScript\nStars Today: 1,138",
+      "url": "https://github.com/PrimeIntellect-ai/prime-agent",
+      "author": "PrimeIntellect-ai",
+      "published": "2026-08-12T06:15:02.874413+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 1,138 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (1,138 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "PrimeIntellect-ai/prime-agent",
+        "stars": 0,
+        "stars_today": "1,138",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.874413+00:00",
+        "hn_score": 1138,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 1,138 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: PrimeIntellect-ai/prime-agent</p>\n<p>Description: A self-improving RLM agent for coding workflows and long-running autonomous tasks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,138</p>"
+    },
+    {
+      "id": "3c755ea6244b",
+      "title": "NanmiCoder/MediaCrawler",
+      "content": "GitHub Repository: NanmiCoder/MediaCrawler\nDescription: 小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫 | 知乎问答文章｜评论爬虫\nLanguage: Python\nStars Today: 855",
+      "url": "https://github.com/NanmiCoder/MediaCrawler",
+      "author": "NanmiCoder",
+      "published": "2026-08-12T06:15:04.236000+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 855 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (855 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "NanmiCoder/MediaCrawler",
+        "stars": 0,
+        "stars_today": "855",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.236000+00:00",
+        "hn_score": 855,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 855 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: NanmiCoder/MediaCrawler</p>\n<p>Description: 小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫 | 知乎问答文章｜评论爬虫</p>\n<p>Language: Python</p>\n<p>Stars Today: 855</p>"
+    },
+    {
+      "id": "7f4b77e91802",
+      "title": "earendil-works/pi",
+      "content": "GitHub Repository: earendil-works/pi\nDescription: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI\nLanguage: TypeScript\nStars Today: 990",
+      "url": "https://github.com/earendil-works/pi",
+      "author": "earendil-works",
+      "published": "2026-08-12T06:15:05.873989+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 990 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (990 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "earendil-works/pi",
+        "stars": 0,
+        "stars_today": "990",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.873989+00:00",
+        "hn_score": 990,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 990 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: earendil-works/pi</p>\n<p>Description: AI agent toolkit: unified LLM API, agent loop, TUI, coding agent CLI</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 990</p>"
+    },
+    {
+      "id": "01bc72d01687",
+      "title": "firecrawl/firecrawl",
+      "content": "GitHub Repository: firecrawl/firecrawl\nDescription: The context API to search, scrape, and interact with the web at scale. 🔥\nLanguage: TypeScript\nStars Today: 934",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "author": "firecrawl",
+      "published": "2026-08-12T06:15:05.875369+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 934 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (934 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "firecrawl/firecrawl",
+        "stars": 0,
+        "stars_today": "934",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.875369+00:00",
+        "hn_score": 934,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 934 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: firecrawl/firecrawl</p>\n<p>Description: The context API to search, scrape, and interact with the web at scale. 🔥</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 934</p>"
+    },
+    {
+      "id": "e68a2e567001",
+      "title": "paperclipai/paperclip",
+      "content": "GitHub Repository: paperclipai/paperclip\nDescription: The open-source app everyone uses to manage agents at work\nLanguage: TypeScript\nStars Today: 748",
+      "url": "https://github.com/paperclipai/paperclip",
+      "author": "paperclipai",
+      "published": "2026-08-12T06:15:02.872383+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 748 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 97,
+      "reasoning": "Ranked on current community velocity (748 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "paperclipai/paperclip",
+        "stars": 0,
+        "stars_today": "748",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.872383+00:00",
+        "hn_score": 748,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 748 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: paperclipai/paperclip</p>\n<p>Description: The open-source app everyone uses to manage agents at work</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 748</p>"
+    },
+    {
+      "id": "2b60a77ba5fa",
+      "title": "corsairdev/corsair",
+      "content": "GitHub Repository: corsairdev/corsair\nDescription: Your Agent's Integration Layer\nLanguage: TypeScript\nStars Today: 683",
+      "url": "https://github.com/corsairdev/corsair",
+      "author": "corsairdev",
+      "published": "2026-08-12T06:15:05.878386+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 683 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 94,
+      "reasoning": "Ranked on current community velocity (683 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "corsairdev/corsair",
+        "stars": 0,
+        "stars_today": "683",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.878386+00:00",
+        "hn_score": 683,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 683 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: corsairdev/corsair</p>\n<p>Description: Your Agent's Integration Layer</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 683</p>"
+    },
+    {
+      "id": "be1bb7d2c6b4",
+      "title": "addyosmani/agent-skills",
+      "content": "GitHub Repository: addyosmani/agent-skills\nDescription: Production-grade engineering skills for AI coding agents.\nLanguage: JavaScript\nStars Today: 578",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "author": "addyosmani",
+      "published": "2026-08-12T06:15:02.870160+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 578 stars today indicate strong developer attention. **Enterprise lens:** evaluate the JavaScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 88,
+      "reasoning": "Ranked on current community velocity (578 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "JavaScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "addyosmani/agent-skills",
+        "stars": 0,
+        "stars_today": "578",
+        "language": "JavaScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.870160+00:00",
+        "hn_score": 578,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 578 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the JavaScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: addyosmani/agent-skills</p>\n<p>Description: Production-grade engineering skills for AI coding agents.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 578</p>"
+    },
+    {
+      "id": "055e3b0ec3b0",
+      "title": "danielmiessler/LifeOS",
+      "content": "GitHub Repository: danielmiessler/LifeOS\nDescription: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.\nLanguage: TypeScript\nStars Today: 506",
+      "url": "https://github.com/danielmiessler/LifeOS",
+      "author": "danielmiessler",
+      "published": "2026-08-12T06:15:05.874988+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 506 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 85,
+      "reasoning": "Ranked on current community velocity (506 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "danielmiessler/LifeOS",
+        "stars": 0,
+        "stars_today": "506",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.874988+00:00",
+        "hn_score": 506,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 506 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: danielmiessler/LifeOS</p>\n<p>Description: ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 506</p>"
+    },
+    {
+      "id": "73a23e19e5ba",
+      "title": "anthropics/skills",
+      "content": "GitHub Repository: anthropics/skills\nDescription: Public repository for Agent Skills\nLanguage: Python\nStars Today: 485",
+      "url": "https://github.com/anthropics/skills",
+      "author": "anthropics",
+      "published": "2026-08-12T06:15:02.871188+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 485 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 84,
+      "reasoning": "Ranked on current community velocity (485 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "anthropics/skills",
+        "stars": 0,
+        "stars_today": "485",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.871188+00:00",
+        "hn_score": 485,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 485 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: anthropics/skills</p>\n<p>Description: Public repository for Agent Skills</p>\n<p>Language: Python</p>\n<p>Stars Today: 485</p>"
+    },
+    {
+      "id": "cede89c567e6",
+      "title": "calesthio/OpenMontage",
+      "content": "GitHub Repository: calesthio/OpenMontage\nDescription: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.\nLanguage: Python\nStars Today: 458",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "author": "calesthio",
+      "published": "2026-08-12T06:15:02.873819+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 458 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 82,
+      "reasoning": "Ranked on current community velocity (458 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "calesthio/OpenMontage",
+        "stars": 0,
+        "stars_today": "458",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.873819+00:00",
+        "hn_score": 458,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 458 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: calesthio/OpenMontage</p>\n<p>Description: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.</p>\n<p>Language: Python</p>\n<p>Stars Today: 458</p>"
+    },
+    {
+      "id": "0a166ea4fb28",
+      "title": "practical-tutorials/project-based-learning",
+      "content": "GitHub Repository: practical-tutorials/project-based-learning\nDescription: Curated list of project-based tutorials\nLanguage: Python\nStars Today: 401",
+      "url": "https://github.com/practical-tutorials/project-based-learning",
+      "author": "practical-tutorials",
+      "published": "2026-08-12T06:15:02.874106+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 401 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 80,
+      "reasoning": "Ranked on current community velocity (401 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "practical-tutorials/project-based-learning",
+        "stars": 0,
+        "stars_today": "401",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.874106+00:00",
+        "hn_score": 401,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 401 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: practical-tutorials/project-based-learning</p>\n<p>Description: Curated list of project-based tutorials</p>\n<p>Language: Python</p>\n<p>Stars Today: 401</p>"
+    },
+    {
+      "id": "d33ffecd6760",
+      "title": "vitali87/code-graph-rag",
+      "content": "GitHub Repository: vitali87/code-graph-rag\nDescription: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs\nLanguage: Python\nStars Today: 341",
+      "url": "https://github.com/vitali87/code-graph-rag",
+      "author": "vitali87",
+      "published": "2026-08-12T06:15:02.870884+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 341 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 77,
+      "reasoning": "Ranked on current community velocity (341 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "vitali87/code-graph-rag",
+        "stars": 0,
+        "stars_today": "341",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.870884+00:00",
+        "hn_score": 341,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 341 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: vitali87/code-graph-rag</p>\n<p>Description: The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</p>\n<p>Language: Python</p>\n<p>Stars Today: 341</p>"
+    },
+    {
+      "id": "f5afe9df2b01",
+      "title": "pingdotgg/t3code",
+      "content": "GitHub Repository: pingdotgg/t3code\nDescription: \nLanguage: TypeScript\nStars Today: 306",
+      "url": "https://github.com/pingdotgg/t3code",
+      "author": "pingdotgg",
+      "published": "2026-08-12T06:15:05.873683+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 306 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 75,
+      "reasoning": "Ranked on current community velocity (306 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "pingdotgg/t3code",
+        "stars": 0,
+        "stars_today": "306",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.873683+00:00",
+        "hn_score": 306,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 306 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: pingdotgg/t3code</p>\n<p>Description:</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 306</p>"
+    },
+    {
+      "id": "05737127302c",
+      "title": "jaywcjlove/awesome-mac",
+      "content": "GitHub Repository: jaywcjlove/awesome-mac\nDescription:  This project is dedicated to collecting high-quality macOS software and organizing them systematically by different categories for easy search and use.\nLanguage: Swift\nStars Today: 298",
+      "url": "https://github.com/jaywcjlove/awesome-mac",
+      "author": "jaywcjlove",
+      "published": "2026-08-12T06:15:02.873467+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 298 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Swift project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 74,
+      "reasoning": "Ranked on current community velocity (298 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Swift"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "jaywcjlove/awesome-mac",
+        "stars": 0,
+        "stars_today": "298",
+        "language": "Swift",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.873467+00:00",
+        "hn_score": 298,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 298 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Swift project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: jaywcjlove/awesome-mac</p>\n<p>Description:  This project is dedicated to collecting high-quality macOS software and organizing them systematically by different categories for easy search and use.</p>\n<p>Language: Swift</p>\n<p>Stars Today: 298</p>"
+    },
+    {
+      "id": "3da98ac03565",
+      "title": "ZhuLinsen/daily_stock_analysis",
+      "content": "GitHub Repository: ZhuLinsen/daily_stock_analysis\nDescription: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.\nLanguage: Python\nStars Today: 243",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "author": "ZhuLinsen",
+      "published": "2026-08-12T06:15:02.870543+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 243 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 72,
+      "reasoning": "Ranked on current community velocity (243 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "ZhuLinsen/daily_stock_analysis",
+        "stars": 0,
+        "stars_today": "243",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.870543+00:00",
+        "hn_score": 243,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 243 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: ZhuLinsen/daily_stock_analysis</p>\n<p>Description: LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。 LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.</p>\n<p>Language: Python</p>\n<p>Stars Today: 243</p>"
+    },
+    {
+      "id": "8e5ef86b8945",
+      "title": "cactus-compute/needle",
+      "content": "GitHub Repository: cactus-compute/needle\nDescription: 14MB foundation model for tiny devices; phones, wearables, smart home, and robots.\nLanguage: Python\nStars Today: 248",
+      "url": "https://github.com/cactus-compute/needle",
+      "author": "cactus-compute",
+      "published": "2026-08-12T06:15:04.236294+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 248 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 72,
+      "reasoning": "Ranked on current community velocity (248 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "cactus-compute/needle",
+        "stars": 0,
+        "stars_today": "248",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.236294+00:00",
+        "hn_score": 248,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 248 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: cactus-compute/needle</p>\n<p>Description: 14MB foundation model for tiny devices; phones, wearables, smart home, and robots.</p>\n<p>Language: Python</p>\n<p>Stars Today: 248</p>"
+    },
+    {
+      "id": "88395613d55f",
+      "title": "shiyu-coder/Kronos",
+      "content": "GitHub Repository: shiyu-coder/Kronos\nDescription: Kronos: A Foundation Model for the Language of Financial Markets\nLanguage: Python\nStars Today: 238",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "author": "shiyu-coder",
+      "published": "2026-08-12T06:15:04.237388+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 238 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 71,
+      "reasoning": "Ranked on current community velocity (238 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "shiyu-coder/Kronos",
+        "stars": 0,
+        "stars_today": "238",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.237388+00:00",
+        "hn_score": 238,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 238 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: shiyu-coder/Kronos</p>\n<p>Description: Kronos: A Foundation Model for the Language of Financial Markets</p>\n<p>Language: Python</p>\n<p>Stars Today: 238</p>"
+    },
+    {
+      "id": "b7fbd3571cf4",
+      "title": "garrytan/gstack",
+      "content": "GitHub Repository: garrytan/gstack\nDescription: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA\nLanguage: TypeScript\nStars Today: 233",
+      "url": "https://github.com/garrytan/gstack",
+      "author": "garrytan",
+      "published": "2026-08-12T06:15:05.875656+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 233 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 71,
+      "reasoning": "Ranked on current community velocity (233 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "garrytan/gstack",
+        "stars": 0,
+        "stars_today": "233",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.875656+00:00",
+        "hn_score": 233,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 233 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: garrytan/gstack</p>\n<p>Description: Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 233</p>"
+    },
+    {
+      "id": "213d9fcc514c",
+      "title": "3b1b/manim",
+      "content": "GitHub Repository: 3b1b/manim\nDescription: Animation engine for explanatory math videos\nLanguage: Python\nStars Today: 197",
+      "url": "https://github.com/3b1b/manim",
+      "author": "3b1b",
+      "published": "2026-08-12T06:15:02.871489+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 197 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 69,
+      "reasoning": "Ranked on current community velocity (197 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "3b1b/manim",
+        "stars": 0,
+        "stars_today": "197",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.871489+00:00",
+        "hn_score": 197,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 197 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: 3b1b/manim</p>\n<p>Description: Animation engine for explanatory math videos</p>\n<p>Language: Python</p>\n<p>Stars Today: 197</p>"
+    },
+    {
+      "id": "5bde546144bb",
+      "title": "google-deepmind/weathernext",
+      "content": "GitHub Repository: google-deepmind/weathernext\nDescription: \nLanguage: Python\nStars Today: 186",
+      "url": "https://github.com/google-deepmind/weathernext",
+      "author": "google-deepmind",
+      "published": "2026-08-12T06:15:04.236576+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 186 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 69,
+      "reasoning": "Ranked on current community velocity (186 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "google-deepmind/weathernext",
+        "stars": 0,
+        "stars_today": "186",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.236576+00:00",
+        "hn_score": 186,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 186 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: google-deepmind/weathernext</p>\n<p>Description:</p>\n<p>Language: Python</p>\n<p>Stars Today: 186</p>"
+    },
+    {
+      "id": "bef36a9369c9",
+      "title": "n8n-io/n8n",
+      "content": "GitHub Repository: n8n-io/n8n\nDescription: Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.\nLanguage: TypeScript\nStars Today: 160",
+      "url": "https://github.com/n8n-io/n8n",
+      "author": "n8n-io",
+      "published": "2026-08-12T06:15:05.877759+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 160 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 68,
+      "reasoning": "Ranked on current community velocity (160 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "n8n-io/n8n",
+        "stars": 0,
+        "stars_today": "160",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.877759+00:00",
+        "hn_score": 160,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 160 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: n8n-io/n8n</p>\n<p>Description: Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 160</p>"
+    },
+    {
+      "id": "4b281cf68abe",
+      "title": "AWeirdDev/flights",
+      "content": "GitHub Repository: AWeirdDev/flights\nDescription: Fast, robust Google Flights scraper (API) for Python. (Probably)\nLanguage: Python\nStars Today: 159",
+      "url": "https://github.com/AWeirdDev/flights",
+      "author": "AWeirdDev",
+      "published": "2026-08-12T06:15:04.235241+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 159 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 67,
+      "reasoning": "Ranked on current community velocity (159 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "AWeirdDev/flights",
+        "stars": 0,
+        "stars_today": "159",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.235241+00:00",
+        "hn_score": 159,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 159 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: AWeirdDev/flights</p>\n<p>Description: Fast, robust Google Flights scraper (API) for Python. (Probably)</p>\n<p>Language: Python</p>\n<p>Stars Today: 159</p>"
+    },
+    {
+      "id": "58439f0978b7",
+      "title": "huggingface/transformers",
+      "content": "GitHub Repository: huggingface/transformers\nDescription: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.\nLanguage: Python\nStars Today: 80",
+      "url": "https://github.com/huggingface/transformers",
+      "author": "huggingface",
+      "published": "2026-08-12T06:15:02.872755+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 80 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (80 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "huggingface/transformers",
+        "stars": 0,
+        "stars_today": "80",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.872755+00:00",
+        "hn_score": 80,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 80 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: huggingface/transformers</p>\n<p>Description: 🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training.</p>\n<p>Language: Python</p>\n<p>Stars Today: 80</p>"
+    },
+    {
+      "id": "733b2b6d8221",
+      "title": "LLMQuant/quant-mind",
+      "content": "GitHub Repository: LLMQuant/quant-mind\nDescription: QuantMind is an agent-native knowledge extraction and retrieval framework for quantitative finance.\nLanguage: Python\nStars Today: 88",
+      "url": "https://github.com/LLMQuant/quant-mind",
+      "author": "LLMQuant",
+      "published": "2026-08-12T06:15:04.234922+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 88 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (88 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "LLMQuant/quant-mind",
+        "stars": 0,
+        "stars_today": "88",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.234922+00:00",
+        "hn_score": 88,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 88 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: LLMQuant/quant-mind</p>\n<p>Description: QuantMind is an agent-native knowledge extraction and retrieval framework for quantitative finance.</p>\n<p>Language: Python</p>\n<p>Stars Today: 88</p>"
+    },
+    {
+      "id": "ce98e8843c45",
+      "title": "stanfordnlp/dspy",
+      "content": "GitHub Repository: stanfordnlp/dspy\nDescription: DSPy: The framework for programming—not prompting—language models\nLanguage: Python\nStars Today: 90",
+      "url": "https://github.com/stanfordnlp/dspy",
+      "author": "stanfordnlp",
+      "published": "2026-08-12T06:15:04.235580+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 90 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (90 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "stanfordnlp/dspy",
+        "stars": 0,
+        "stars_today": "90",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.235580+00:00",
+        "hn_score": 90,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 90 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: stanfordnlp/dspy</p>\n<p>Description: DSPy: The framework for programming—not prompting—language models</p>\n<p>Language: Python</p>\n<p>Stars Today: 90</p>"
+    },
+    {
+      "id": "9b56502a30c8",
+      "title": "code-yeongyu/oh-my-openagent",
+      "content": "GitHub Repository: code-yeongyu/oh-my-openagent\nDescription: omo/lazycodex: The coding agent for tokenmaxxers;the one and only agent harness for complex codebases. For your Codex, for your OpenCode\nLanguage: TypeScript\nStars Today: 98",
+      "url": "https://github.com/code-yeongyu/oh-my-openagent",
+      "author": "code-yeongyu",
+      "published": "2026-08-12T06:15:05.878089+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 98 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (98 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "code-yeongyu/oh-my-openagent",
+        "stars": 0,
+        "stars_today": "98",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.878089+00:00",
+        "hn_score": 98,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 98 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: code-yeongyu/oh-my-openagent</p>\n<p>Description: omo/lazycodex: The coding agent for tokenmaxxers;the one and only agent harness for complex codebases. For your Codex, for your OpenCode</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 98</p>"
+    },
+    {
+      "id": "f52db6ebe029",
+      "title": "lfnovo/open-notebook",
+      "content": "GitHub Repository: lfnovo/open-notebook\nDescription: An Open Source implementation of Notebook LM with more flexibility and features\nLanguage: TypeScript\nStars Today: 69",
+      "url": "https://github.com/lfnovo/open-notebook",
+      "author": "lfnovo",
+      "published": "2026-08-12T06:15:05.874566+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 69 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (69 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "lfnovo/open-notebook",
+        "stars": 0,
+        "stars_today": "69",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.874566+00:00",
+        "hn_score": 69,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 69 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: lfnovo/open-notebook</p>\n<p>Description: An Open Source implementation of Notebook LM with more flexibility and features</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 69</p>"
+    },
+    {
+      "id": "2f6b84e30048",
+      "title": "garrytan/gbrain",
+      "content": "GitHub Repository: garrytan/gbrain\nDescription: Garry's Opinionated OpenClaw/Hermes Agent Brain\nLanguage: TypeScript\nStars Today: 78",
+      "url": "https://github.com/garrytan/gbrain",
+      "author": "garrytan",
+      "published": "2026-08-12T06:15:05.875938+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 78 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (78 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "garrytan/gbrain",
+        "stars": 0,
+        "stars_today": "78",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.875938+00:00",
+        "hn_score": 78,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 78 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: garrytan/gbrain</p>\n<p>Description: Garry's Opinionated OpenClaw/Hermes Agent Brain</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 78</p>"
+    },
+    {
+      "id": "e7ff3a47a86f",
+      "title": "AgriciDaniel/claude-obsidian",
+      "content": "GitHub Repository: AgriciDaniel/claude-obsidian\nDescription: Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.\nLanguage: Python\nStars Today: 47",
+      "url": "https://github.com/AgriciDaniel/claude-obsidian",
+      "author": "AgriciDaniel",
+      "published": "2026-08-12T06:15:04.237095+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 47 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (47 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "AgriciDaniel/claude-obsidian",
+        "stars": 0,
+        "stars_today": "47",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.237095+00:00",
+        "hn_score": 47,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 47 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: AgriciDaniel/claude-obsidian</p>\n<p>Description: Self-organizing AI second brain for Obsidian + Claude Code. Drop any source and Claude reads, links, and files it into one connected knowledge graph of plain Markdown you own. AI note-taking, personal knowledge management (PKM), and an open-source Notion alternative. Based on Karpathy's LLM Wiki pattern.</p>\n<p>Language: Python</p>\n<p>Stars Today: 47</p>"
+    },
+    {
+      "id": "1ac12256b994",
+      "title": "JimLiu/baoyu-skills",
+      "content": "GitHub Repository: JimLiu/baoyu-skills\nDescription: \nLanguage: TypeScript\nStars Today: 44",
+      "url": "https://github.com/JimLiu/baoyu-skills",
+      "author": "JimLiu",
+      "published": "2026-08-12T06:15:05.876513+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 44 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (44 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "JimLiu/baoyu-skills",
+        "stars": 0,
+        "stars_today": "44",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.876513+00:00",
+        "hn_score": 44,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 44 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: JimLiu/baoyu-skills</p>\n<p>Description:</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 44</p>"
+    },
+    {
+      "id": "433cd380d8e1",
+      "title": "mksglu/context-mode",
+      "content": "GitHub Repository: mksglu/context-mode\nDescription: Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.\nLanguage: TypeScript\nStars Today: 40",
+      "url": "https://github.com/mksglu/context-mode",
+      "author": "mksglu",
+      "published": "2026-08-12T06:15:05.878719+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 40 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (40 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "mksglu/context-mode",
+        "stars": 0,
+        "stars_today": "40",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.878719+00:00",
+        "hn_score": 40,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 40 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: mksglu/context-mode</p>\n<p>Description: Context window optimization for AI coding agents. Sandboxes tool output (98% reduction), persists session memory, and enforces routing across 17 platforms via MCP + hooks.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 40</p>"
+    },
+    {
+      "id": "6e67d1eafd66",
+      "title": "nvm-sh/nvm",
+      "content": "GitHub Repository: nvm-sh/nvm\nDescription: Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions\nLanguage: Shell\nStars Today: 22",
+      "url": "https://github.com/nvm-sh/nvm",
+      "author": "nvm-sh",
+      "published": "2026-08-12T06:15:02.869866+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 22 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (22 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Shell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "nvm-sh/nvm",
+        "stars": 0,
+        "stars_today": "22",
+        "language": "Shell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.869866+00:00",
+        "hn_score": 22,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 22 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: nvm-sh/nvm</p>\n<p>Description: Node Version Manager - POSIX-compliant bash script to manage multiple active node.js versions</p>\n<p>Language: Shell</p>\n<p>Stars Today: 22</p>"
+    },
+    {
+      "id": "ff6aa546e194",
+      "title": "harveyai/harvey-labs",
+      "content": "GitHub Repository: harveyai/harvey-labs\nDescription: A benchmark built to evaluate and improve agent capabilities for supporting legal work.\nLanguage: Python\nStars Today: 28",
+      "url": "https://github.com/harveyai/harvey-labs",
+      "author": "harveyai",
+      "published": "2026-08-12T06:15:02.873049+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 28 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (28 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "harveyai/harvey-labs",
+        "stars": 0,
+        "stars_today": "28",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:02.873049+00:00",
+        "hn_score": 28,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 28 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: harveyai/harvey-labs</p>\n<p>Description: A benchmark built to evaluate and improve agent capabilities for supporting legal work.</p>\n<p>Language: Python</p>\n<p>Stars Today: 28</p>"
+    },
+    {
+      "id": "312d4173b80a",
+      "title": "NVlabs/GR00T-WholeBodyControl",
+      "content": "GitHub Repository: NVlabs/GR00T-WholeBodyControl\nDescription: Welcome to GR00T Whole-Body Control (WBC)! This is a unified platform for developing and deploying advanced humanoid controllers. This includes: Decoupled WBC models used in NVIDIA Isaac-Gr00t, Gr00t N1.5 and N1.6 and GEAR-SONIC\nLanguage: Python\nStars Today: 26",
+      "url": "https://github.com/NVlabs/GR00T-WholeBodyControl",
+      "author": "NVlabs",
+      "published": "2026-08-12T06:15:04.236862+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 26 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (26 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "NVlabs/GR00T-WholeBodyControl",
+        "stars": 0,
+        "stars_today": "26",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:04.236862+00:00",
+        "hn_score": 26,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 26 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: NVlabs/GR00T-WholeBodyControl</p>\n<p>Description: Welcome to GR00T Whole-Body Control (WBC)! This is a unified platform for developing and deploying advanced humanoid controllers. This includes: Decoupled WBC models used in NVIDIA Isaac-Gr00t, Gr00t N1.5 and N1.6 and GEAR-SONIC</p>\n<p>Language: Python</p>\n<p>Stars Today: 26</p>"
+    },
+    {
+      "id": "4ae9b7c1317f",
+      "title": "anthropics/cwc-workshops",
+      "content": "GitHub Repository: anthropics/cwc-workshops\nDescription: \nLanguage: TypeScript\nStars Today: 20",
+      "url": "https://github.com/anthropics/cwc-workshops",
+      "author": "anthropics",
+      "published": "2026-08-12T06:15:05.874287+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 20 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (20 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "anthropics/cwc-workshops",
+        "stars": 0,
+        "stars_today": "20",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.874287+00:00",
+        "hn_score": 20,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 20 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: anthropics/cwc-workshops</p>\n<p>Description:</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 20</p>"
+    },
+    {
+      "id": "93d5c550e3f5",
+      "title": "sourcebot-dev/sourcebot",
+      "content": "GitHub Repository: sourcebot-dev/sourcebot\nDescription: Sourcebot is a self-hosted tool that helps humans and agents understand your codebase.\nLanguage: TypeScript\nStars Today: 34",
+      "url": "https://github.com/sourcebot-dev/sourcebot",
+      "author": "sourcebot-dev",
+      "published": "2026-08-12T06:15:05.876231+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 34 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (34 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "sourcebot-dev/sourcebot",
+        "stars": 0,
+        "stars_today": "34",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.876231+00:00",
+        "hn_score": 34,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 34 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: sourcebot-dev/sourcebot</p>\n<p>Description: Sourcebot is a self-hosted tool that helps humans and agents understand your codebase.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 34</p>"
+    },
+    {
+      "id": "54fec498c5ce",
+      "title": "eigent-ai/eigent",
+      "content": "GitHub Repository: eigent-ai/eigent\nDescription: Eigent: The Open Source Cowork Desktop - Local and Free Alternative to Claude Cowork and Codex\nLanguage: TypeScript\nStars Today: 33",
+      "url": "https://github.com/eigent-ai/eigent",
+      "author": "eigent-ai",
+      "published": "2026-08-12T06:15:05.877475+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 33 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (33 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "eigent-ai/eigent",
+        "stars": 0,
+        "stars_today": "33",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.877475+00:00",
+        "hn_score": 33,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 33 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: eigent-ai/eigent</p>\n<p>Description: Eigent: The Open Source Cowork Desktop - Local and Free Alternative to Claude Cowork and Codex</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 33</p>"
+    },
+    {
+      "id": "93250ce2e98b",
+      "title": "modelcontextprotocol/typescript-sdk",
+      "content": "GitHub Repository: modelcontextprotocol/typescript-sdk\nDescription: The official TypeScript SDK for Model Context Protocol servers and clients\nLanguage: TypeScript\nStars Today: 16",
+      "url": "https://github.com/modelcontextprotocol/typescript-sdk",
+      "author": "modelcontextprotocol",
+      "published": "2026-08-12T06:15:05.876795+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 16 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (16 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "modelcontextprotocol/typescript-sdk",
+        "stars": 0,
+        "stars_today": "16",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.876795+00:00",
+        "hn_score": 16,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 16 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: modelcontextprotocol/typescript-sdk</p>\n<p>Description: The official TypeScript SDK for Model Context Protocol servers and clients</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 16</p>"
+    },
+    {
+      "id": "5e15060537c7",
+      "title": "TanStack/router",
+      "content": "GitHub Repository: TanStack/router\nDescription: 🤖 A client-first, server-capable, fully type-safe router and full-stack framework for the web (React and more).\nLanguage: TypeScript\nStars Today: 6",
+      "url": "https://github.com/TanStack/router",
+      "author": "TanStack",
+      "published": "2026-08-12T06:15:05.877189+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 6 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (6 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "TanStack/router",
+        "stars": 0,
+        "stars_today": "6",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-12T06:15:05.877189+00:00",
+        "hn_score": 6,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 6 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: TanStack/router</p>\n<p>Description: 🤖 A client-first, server-capable, fully type-safe router and full-stack framework for the web (React and more).</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 6</p>"
+    }
+  ]
+}
