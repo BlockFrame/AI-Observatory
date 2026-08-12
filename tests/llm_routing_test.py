@@ -134,7 +134,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             "link_enricher.*",
             routes["gemini-link-enrichment"].caller_patterns,
         )
-        self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.5-flash")
+        self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.5-flash-lite")
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_minute, 5)
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 20)
         self.assertNotIn(

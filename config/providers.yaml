@@ -69,7 +69,7 @@ llm:
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    # Gemini is the semantic selector for link enrichment.  It never rewrites
+    # Gemini Flash Lite is the semantic selector for link enrichment. It never rewrites
     # prose: it may only return an existing source ID plus an exact visible
     # text span, which LinkEnricher validates locally before inserting a link.
     # 1 concurrent request and 5 RPM keep this below the AI Studio free tier;
@@ -78,7 +78,7 @@ llm:
       priority: 120
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.5-flash"
+      model: "gemini-3.5-flash-lite"
       timeout: 90
       max_output_tokens: 4096
       max_concurrent_requests: 1
