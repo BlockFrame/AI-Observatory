@@ -303,10 +303,16 @@ class LinkEnricher:
             "items": [{key: item.get(key, "") for key in ("id", "category", "title", "summary")} for item in items],
         }
         system = (
-            "Return JSON only: {\"selections\":[{\"line\":0,\"item_id\":\"id\",\"exact_span\":\"verbatim\"}]}. "
-            "Select links for an AI briefing only when a source supports a named development. "
-            "exact_span must be copied verbatim from the bullet, contain 3-12 meaningful words, and never be generic glue. "
-            "Do not rewrite text or emit Markdown. If allowed_item_ids is non-empty, select only one of them."
+            "Return one JSON object only, with exactly this schema: "
+            "{\"selections\":[{\"line\":0,\"item_id\":\"id\",\"exact_span\":\"verbatim\"}]}. "
+            "Do not use Markdown, code fences, prose, explanations, URLs, or additional keys. "
+            "A selection is optional: return {\"selections\":[]} when no exact, grounded anchor exists. "
+            "For every selection: line must be a supplied bullet line; item_id must be a supplied item and, "
+            "when allowed_item_ids is non-empty, it must be in that list. exact_span must be copied character-for-character "
+            "from that bullet, be 3-12 meaningful words, name a concrete event/product/repository/result, and overlap the "
+            "selected item's title with at least two meaningful words. Never select generic terms, connective text, headings, "
+            "claims, implications, dates, quantities, or source labels. Select at most two non-overlapping spans per bullet, "
+            "and never repeat an item_id or exact_span. Do not rewrite text or emit Markdown."
         )
         try:
             response = await self.async_client.call_with_thinking(
@@ -315,15 +321,22 @@ class LinkEnricher:
                 temperature=0.0, caller=f"link_enricher.{context_name}",
             )
             content = response.content.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
-            selections = json.loads(content).get("selections", [])
+            parsed = json.loads(content)
+            if not isinstance(parsed, dict) or set(parsed) != {"selections"}:
+                raise ValueError("Gemini link output does not match the required JSON envelope")
+            selections = parsed["selections"]
+            if not isinstance(selections, list):
+                raise ValueError("Gemini link selections must be a JSON array")
         except Exception as exc:
             logger.warning("  %s: Gemini unavailable; using exact-match fallback: %s", context_name, exc)
             return None
 
         allowed_by_line = {entry["line"]: set(entry["allowed_item_ids"]) for entry in payload["bullets"]}
+        seen_item_ids, seen_spans = set(), set()
+        links_by_line: Dict[int, int] = {}
         accepted = 0
-        for selection in selections if isinstance(selections, list) else []:
-            if not isinstance(selection, dict):
+        for selection in selections:
+            if not isinstance(selection, dict) or set(selection) != {"line", "item_id", "exact_span"}:
                 continue
             line_no, item_id, span = selection.get("line"), str(selection.get("item_id") or ""), selection.get("exact_span")
             item = item_by_id.get(item_id)
@@ -335,13 +348,43 @@ class LinkEnricher:
             words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", span)
             if not (3 <= len(words) <= 12) or span.lower() not in lines[line_no].lower():
                 continue
-            if f"#item-{item_id}" in lines[line_no]:
+            normalized_span = " ".join(word.lower() for word in words)
+            if (
+                item_id in seen_item_ids
+                or normalized_span in seen_spans
+                or links_by_line.get(line_no, 0) >= 2
+                or f"#item-{item_id}" in lines[line_no]
+                or not self._span_is_grounded_in_item(span, item)
+            ):
                 continue
             url = f"/?date={self.date}&category={item['category']}#item-{item_id}"
             lines[line_no], count = re.subn(re.escape(span), lambda m: f"[{m.group(0)}]({url})", lines[line_no], count=1, flags=re.I)
-            accepted += bool(count)
+            if count:
+                accepted += 1
+                seen_item_ids.add(item_id)
+                seen_spans.add(normalized_span)
+                links_by_line[line_no] = links_by_line.get(line_no, 0) + 1
         logger.info("  %s: Gemini selected %s validated inline link span(s)", context_name, accepted)
         return self._sanitize_internal_link_labels("\n".join(lines))
+
+    @staticmethod
+    def _span_is_grounded_in_item(span: str, item: Dict[str, Any]) -> bool:
+        """Require two distinctive words shared with the selected item's title.
+
+        This local check prevents a model from attaching an allowed-but-
+        irrelevant source to a plausible phrase in the bullet.
+        """
+        stopwords = {
+            "about", "agent", "agents", "and", "are", "for", "from", "into", "its",
+            "model", "models", "new", "of", "on", "or", "the", "this", "to", "with",
+        }
+        def distinctive(value: str) -> set:
+            return {
+                token.lower() for token in re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", value)
+                if len(token) >= 4 and token.lower() not in stopwords
+            }
+        overlap = distinctive(span) & distinctive(str(item.get("title") or ""))
+        return len(overlap) >= 2
 
     async def _enrich_text_with_llm(
         self,

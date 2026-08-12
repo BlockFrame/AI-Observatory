@@ -781,7 +781,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
         async def run():
             enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
             text = "- OpenAI releases Responses API for enterprise agents this week."
-            items = [{"id": "news", "category": "news", "title": "OpenAI Responses API", "summary": ""}]
+            items = [{"id": "news", "category": "news", "title": "OpenAI releases Responses API", "summary": ""}]
 
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
@@ -810,6 +810,45 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             )
 
             self.assertEqual(enriched, text)
+
+        asyncio.run(run())
+
+    def test_gemini_rejects_extra_fields_and_weak_title_grounding(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({"selections": [{
+                    "line": 0, "item_id": "news", "exact_span": "enterprise agents this week",
+                    "commentary": "not allowed",
+                }]}))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "- OpenAI releases Responses API for enterprise agents this week."
+            items = [{"id": "news", "category": "news", "title": "OpenAI Responses API", "summary": ""}]
+            enriched = await enricher._enrich_text(text, items, "executive summary")
+            self.assertEqual(enriched, text)
+
+        asyncio.run(run())
+
+    def test_gemini_rejects_more_than_two_links_per_bullet(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({"selections": [
+                    {"line": 0, "item_id": "one", "exact_span": "OpenAI releases Responses API"},
+                    {"line": 0, "item_id": "two", "exact_span": "Anthropic launches Claude controls"},
+                    {"line": 0, "item_id": "three", "exact_span": "Google ships Gemini tooling"},
+                ]}))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "- OpenAI releases Responses API; Anthropic launches Claude controls; Google ships Gemini tooling."
+            items = [
+                {"id": "one", "category": "news", "title": "OpenAI releases Responses API", "summary": ""},
+                {"id": "two", "category": "news", "title": "Anthropic launches Claude controls", "summary": ""},
+                {"id": "three", "category": "news", "title": "Google ships Gemini tooling", "summary": ""},
+            ]
+            enriched = await enricher._enrich_text(text, items, "executive summary")
+            self.assertEqual(enriched.count("#item-"), 2)
 
         asyncio.run(run())
 
