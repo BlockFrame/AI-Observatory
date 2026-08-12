@@ -72,7 +72,8 @@ llm:
     # Gemini Flash Lite is the semantic selector for link enrichment. It never rewrites
     # prose: it may only return an existing source ID plus an exact visible
     # text span, which LinkEnricher validates locally before inserting a link.
-    # 1 concurrent request and 5 RPM keep this below the AI Studio free tier;
+    # 1 concurrent request and the Flash Lite free-tier 15 RPM cap keep this
+    # below the provider limit without creating burst traffic;
     # a maximum of ten sections are enriched in one pipeline run.
     - id: "gemini-link-enrichment"
       priority: 120
@@ -82,9 +83,9 @@ llm:
       timeout: 90
       max_output_tokens: 4096
       max_concurrent_requests: 1
-      requests_per_minute: 5
+      requests_per_minute: 15
       tokens_per_minute: 250000
-      requests_per_day: 20
+      requests_per_day: 500
       profiles: ["STANDARD"]
       caller_patterns:
         - "link_enricher.*"
