@@ -132,8 +132,11 @@ class LLMRouteConfigTests(unittest.TestCase):
         )
         self.assertIn(
             "link_enricher.*",
-            routes["openrouter-minimax-link"].caller_patterns,
+            routes["gemini-link-enrichment"].caller_patterns,
         )
+        self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.5-flash")
+        self.assertEqual(routes["gemini-link-enrichment"].requests_per_minute, 5)
+        self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 20)
         self.assertNotIn(
             "link_enricher.*",
             routes["gemini-quality-fallback"].caller_patterns,
@@ -171,7 +174,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 profile=ThinkingLevel.DEEP,
                 caller="news_analyzer.small_batch",
             )
-            self.assertEqual(link.content, "openrouter-minimax-link")
+            self.assertEqual(link.content, "gemini-link-enrichment")
             self.assertEqual(summary.content, "openrouter-minimax-complex")
             self.assertEqual(small_news.content, "openrouter-minimax-complex")
             self.assertEqual(bulk.content, "openrouter-minimax-bulk")

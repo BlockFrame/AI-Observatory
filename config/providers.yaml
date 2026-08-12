@@ -69,17 +69,23 @@ llm:
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    - id: "openrouter-minimax-link"
-      priority: 100
-      mode: "openrouter"
-      api_key: "${OPENROUTER_API_KEY}"
-      base_url: "https://openrouter.ai/api/v1"
-      model: "minimax/minimax-m3"
-      timeout: 240
-      max_output_tokens: 8192
-      max_concurrent_requests: 2
-      profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
-      fallback_route_id: "gemini-quality-fallback-3.5"
+    # Gemini is the semantic selector for link enrichment.  It never rewrites
+    # prose: it may only return an existing source ID plus an exact visible
+    # text span, which LinkEnricher validates locally before inserting a link.
+    # 1 concurrent request and 5 RPM keep this below the AI Studio free tier;
+    # a maximum of ten sections are enriched in one pipeline run.
+    - id: "gemini-link-enrichment"
+      priority: 120
+      mode: "gemini"
+      api_key: "${GEMINI_API_KEY}"
+      model: "gemini-3.5-flash"
+      timeout: 90
+      max_output_tokens: 4096
+      max_concurrent_requests: 1
+      requests_per_minute: 5
+      tokens_per_minute: 250000
+      requests_per_day: 20
+      profiles: ["STANDARD"]
       caller_patterns:
         - "link_enricher.*"
 

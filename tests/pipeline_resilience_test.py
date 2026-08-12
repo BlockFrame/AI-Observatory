@@ -677,7 +677,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
             self.assertEqual(enriched.count("#item-story-1"), 1)
-            self.assertEqual(client.calls, 0)
+            self.assertEqual(client.calls, 1)
 
         asyncio.run(run())
 
@@ -770,6 +770,48 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
         enriched = enricher._inject_per_block_links(text, items, "github summary")
 
         self.assertEqual(enriched, text)
+
+    def test_gemini_links_only_a_validated_verbatim_span(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({"selections": [{
+                    "line": 0, "item_id": "news", "exact_span": "releases Responses API for enterprise agents",
+                }]}))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "- OpenAI releases Responses API for enterprise agents this week."
+            items = [{"id": "news", "category": "news", "title": "OpenAI Responses API", "summary": ""}]
+
+            enriched = await enricher._enrich_text(text, items, "executive summary")
+
+            self.assertIn("[releases Responses API for enterprise agents]", enriched)
+            self.assertNotIn(" ([", enriched)
+
+        asyncio.run(run())
+
+    def test_gemini_cannot_insert_a_nonverbatim_or_disallowed_link(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({"selections": [{
+                    "line": 0, "item_id": "wrong", "exact_span": "invented supporting story",
+                }]}))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "- OpenAI releases Responses API for enterprise agents this week."
+            items = [
+                {"id": "news", "category": "news", "title": "OpenAI Responses API", "summary": ""},
+                {"id": "wrong", "category": "news", "title": "Unrelated item", "summary": ""},
+            ]
+
+            enriched = await enricher._enrich_text(
+                text, items, "executive summary", evidence_by_bullet=[["news"]]
+            )
+
+            self.assertEqual(enriched, text)
+
+        asyncio.run(run())
 
 
 class TopicDescriptionCompactionTests(unittest.TestCase):

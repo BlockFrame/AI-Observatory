@@ -267,16 +267,81 @@ class LinkEnricher:
         links_per_block: int = 1,
         evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
-        """Attach evidence links deterministically, once per visible bullet.
+        """Use Gemini as a constrained semantic span selector.
 
-        The previous LLM-based rewrite was expensive and frequently exhausted
-        its output budget before emitting the required XML wrapper. Evidence
-        links are a coverage requirement, not a creative-writing task, so this
-        path is deterministic and preserves the generated prose verbatim.
+        The model may nominate only a source ID and exact existing text span;
+        local validation performs the actual Markdown insertion. If its quota
+        is unavailable, exact-name matching remains the safe fallback.
         """
+        semantic = await self._select_semantic_link_spans(
+            text, items, context_name, evidence_by_bullet
+        )
+        if semantic is not None:
+            return semantic
         return self._inject_per_block_links(
             text, items, context_name, links_per_block, evidence_by_bullet
         )
+
+    async def _select_semantic_link_spans(
+        self, text: str, items: List[Dict[str, Any]], context_name: str,
+        evidence_by_bullet: Optional[List[List[str]]],
+    ) -> Optional[str]:
+        """Select verbatim source spans with Gemini and validate every result."""
+        if not self.async_client or not text or not items:
+            return None
+        item_by_id = {str(item.get("id")): item for item in items if item.get("id")}
+        lines = text.splitlines()
+        bullet_lines = [i for i, line in enumerate(lines) if line.strip().startswith(("- ", "* "))]
+        payload = {
+            "bullets": [
+                {"line": line_no, "text": lines[line_no], "allowed_item_ids": (
+                    [item_id for item_id in evidence_by_bullet[pos] if item_id in item_by_id]
+                    if evidence_by_bullet and pos < len(evidence_by_bullet) else []
+                )}
+                for pos, line_no in enumerate(bullet_lines)
+            ],
+            "items": [{key: item.get(key, "") for key in ("id", "category", "title", "summary")} for item in items],
+        }
+        system = (
+            "Return JSON only: {\"selections\":[{\"line\":0,\"item_id\":\"id\",\"exact_span\":\"verbatim\"}]}. "
+            "Select links for an AI briefing only when a source supports a named development. "
+            "exact_span must be copied verbatim from the bullet, contain 3-12 meaningful words, and never be generic glue. "
+            "Do not rewrite text or emit Markdown. If allowed_item_ids is non-empty, select only one of them."
+        )
+        try:
+            response = await self.async_client.call_with_thinking(
+                messages=[{"role": "user", "content": json.dumps(payload, ensure_ascii=False)}],
+                system=system, profile=ThinkingLevel.STANDARD, max_tokens=4096,
+                temperature=0.0, caller=f"link_enricher.{context_name}",
+            )
+            content = response.content.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+            selections = json.loads(content).get("selections", [])
+        except Exception as exc:
+            logger.warning("  %s: Gemini unavailable; using exact-match fallback: %s", context_name, exc)
+            return None
+
+        allowed_by_line = {entry["line"]: set(entry["allowed_item_ids"]) for entry in payload["bullets"]}
+        accepted = 0
+        for selection in selections if isinstance(selections, list) else []:
+            if not isinstance(selection, dict):
+                continue
+            line_no, item_id, span = selection.get("line"), str(selection.get("item_id") or ""), selection.get("exact_span")
+            item = item_by_id.get(item_id)
+            if not isinstance(line_no, int) or line_no not in allowed_by_line or not item or not isinstance(span, str):
+                continue
+            if allowed_by_line[line_no] and item_id not in allowed_by_line[line_no]:
+                continue
+            span = span.strip()
+            words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", span)
+            if not (3 <= len(words) <= 12) or span.lower() not in lines[line_no].lower():
+                continue
+            if f"#item-{item_id}" in lines[line_no]:
+                continue
+            url = f"/?date={self.date}&category={item['category']}#item-{item_id}"
+            lines[line_no], count = re.subn(re.escape(span), lambda m: f"[{m.group(0)}]({url})", lines[line_no], count=1, flags=re.I)
+            accepted += bool(count)
+        logger.info("  %s: Gemini selected %s validated inline link span(s)", context_name, accepted)
+        return self._sanitize_internal_link_labels("\n".join(lines))
 
     async def _enrich_text_with_llm(
         self,
