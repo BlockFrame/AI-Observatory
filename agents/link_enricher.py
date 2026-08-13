@@ -301,8 +301,8 @@ Rules:
             response = await self.async_client.call_with_thinking(
                 messages=[{"role": "user", "content": payload}],
                 system=build_hardened_system(system, nonce),
-                profile=ThinkingLevel.QUICK,
-                max_tokens=8192,
+                profile=ThinkingLevel.DEEP,
+                max_tokens=32768,
                 temperature=0.0,
                 caller=f"link_enricher.{context_name}",
             )

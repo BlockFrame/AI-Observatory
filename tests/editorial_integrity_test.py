@@ -405,7 +405,7 @@ class GeminiQuotaRoutingTests(unittest.TestCase):
         )
         gemini = next(
             route for route in providers["llm"]["routes"]
-            if route["model"] == "gemini-3.6-flash"
+            if route["id"] == "gemini-quality-fallback"
         )
         self.assertEqual(
             set(paid_model["caller_patterns"]),

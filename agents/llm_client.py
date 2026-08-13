@@ -1787,18 +1787,23 @@ class AsyncAnthropicClient:
         await asyncio.to_thread(self._rate_limiter.acquire, estimated_input_tokens)
 
         async def invoke():
+            config_kwargs = {
+                "system_instruction": system,
+                "max_output_tokens": max_tokens,
+                "thinking_config": genai_types.ThinkingConfig(
+                    thinking_level=thinking_level,
+                    include_thoughts=True,
+                ),
+            }
+            # Gemini 3.6+ deprecated sampling controls and may reject them.
+            # Older Gemini models still accept temperature, so retain the
+            # existing behavior only outside the new model family.
+            if not re.match(r"^gemini-3\.(?:[6-9]|\d{2,})-", self.model):
+                config_kwargs["temperature"] = temperature
             return await self._gemini_client.aio.models.generate_content(
                 model=self.model,
                 contents=_build_gemini_contents(messages),
-                config=genai_types.GenerateContentConfig(
-                    system_instruction=system,
-                    max_output_tokens=max_tokens,
-                    temperature=temperature,
-                    thinking_config=genai_types.ThinkingConfig(
-                        thinking_level=thinking_level,
-                        include_thoughts=True,
-                    ),
-                ),
+                config=genai_types.GenerateContentConfig(**config_kwargs),
             )
 
         started_at = time.time()
@@ -2669,11 +2674,20 @@ class AsyncLLMRouter:
                 f"No LLM route is eligible for caller={caller or 'unknown'} "
                 f"profile={profile_name}"
             )
-        # Some best-effort phases deliberately own their local fallback. Once
-        # such a route wins caller/profile selection, never let cooldown or a
-        # disabled state make the router wander to an unrelated paid model.
+        # Some best-effort phases deliberately own a closed fallback chain.
+        # Keep only the root and its explicitly configured descendants so a
+        # disabled/cooling route cannot make later calls wander to an
+        # unrelated paid model.
         if not getattr(ordered_clients[0], "allow_cross_route_fallback", True):
-            ordered_clients = ordered_clients[:1]
+            route_by_id = {client.provider_id: client for client in ordered_clients}
+            exclusive_chain = []
+            current = ordered_clients[0]
+            seen_ids = set()
+            while current and current.provider_id not in seen_ids:
+                exclusive_chain.append(current)
+                seen_ids.add(current.provider_id)
+                current = route_by_id.get(getattr(current, "fallback_route_id", None))
+            ordered_clients = exclusive_chain
         for attempt, client in enumerate(ordered_clients, start=1):
             later_clients = ordered_clients[attempt:]
             state = self._route_health[client.provider_id]
@@ -2757,10 +2771,12 @@ class AsyncLLMRouter:
                     # failure. Previously this was limited to quota/429 errors, so
                     # OpenAI-compatible timeouts could wander to an unrelated route
                     # (or abort before failover altogether).
+                    explicit_fallback_available = False
                     if getattr(client, "fallback_route_id", None) and reason is not None:
                         fallback_id = client.fallback_route_id
                         fallback_client = next((c for c in self.clients if getattr(c, "provider_id", None) == fallback_id), None)
                         if fallback_client and fallback_client in ordered_clients:
+                            explicit_fallback_available = True
                             try:
                                 ordered_clients.remove(fallback_client)
                                 ordered_clients.insert(attempt, fallback_client)
@@ -2773,7 +2789,10 @@ class AsyncLLMRouter:
                 
                     if reason is None or attempt >= len(ordered_clients):
                         raise
-                    if not getattr(client, "allow_cross_route_fallback", True):
+                    if (
+                        not getattr(client, "allow_cross_route_fallback", True)
+                        and not explicit_fallback_available
+                    ):
                         logger.warning(
                             "Route %s is configured without cross-route fallback; "
                             "returning control to the caller",

@@ -69,26 +69,43 @@ llm:
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    # Gemini Flash Lite follows the upstream AATF enrichment contract and
-    # returns the complete text with contextual links. LinkEnricher validates
-    # that the prose is unchanged and that every URL targets an eligible item.
-    # QUICK avoids spending the output budget on unnecessary model reasoning.
-    # One concurrent request and the Flash Lite free-tier 15 RPM cap keep this
-    # below the provider limit without creating burst traffic;
-    # a maximum of eleven sections are enriched in one pipeline run.
+    # Gemini 3.7 Flash follows the upstream AATF enrichment contract and uses
+    # high reasoning to resolve every supported 1:N reference. A normal run
+    # makes at most eleven logical enrichment requests, within its 20 RPD quota.
     - id: "gemini-link-enrichment"
       priority: 120
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.5-flash-lite"
-      timeout: 90
-      max_output_tokens: 8192
+      model: "gemini-3.7-flash"
+      timeout: 180
+      max_output_tokens: 32768
       max_concurrent_requests: 1
       requests_per_minute: 15
       tokens_per_minute: 250000
-      requests_per_day: 500
+      requests_per_day: 20
+      fallback_route_id: "gemini-link-enrichment-fallback-3.6"
       allow_cross_route_fallback: false
-      profiles: ["QUICK"]
+      profiles: ["DEEP"]
+      caller_patterns:
+        - "link_enricher.*"
+
+    # This route is the exclusive LLM fallback for enrichment. Its quota is
+    # shared in-process with the other Gemini 3.6 route because rate limiting
+    # is keyed by provider endpoint and model. Failure returns control to the
+    # deterministic enricher; it must never wander to a paid provider.
+    - id: "gemini-link-enrichment-fallback-3.6"
+      priority: 119
+      mode: "gemini"
+      api_key: "${GEMINI_API_KEY}"
+      model: "gemini-3.6-flash"
+      timeout: 180
+      max_output_tokens: 32768
+      max_concurrent_requests: 1
+      requests_per_minute: 15
+      tokens_per_minute: 250000
+      requests_per_day: 20
+      allow_cross_route_fallback: false
+      profiles: ["DEEP"]
       caller_patterns:
         - "link_enricher.*"
 
@@ -100,7 +117,7 @@ llm:
       timeout: 90
       max_output_tokens: 65536
       max_concurrent_requests: 2
-      requests_per_minute: 5
+      requests_per_minute: 15
       tokens_per_minute: 250000
       requests_per_day: 20
       profiles: ["STANDARD", "DEEP", "ULTRATHINK"]
@@ -148,7 +165,6 @@ llm:
         - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.*"
-        - "link_enricher.*"
         - "analysis.*_summary"
 
     - id: "gemini-quality-fallback-lite-3.5"
@@ -167,7 +183,6 @@ llm:
         - "news_analyzer.small_batch"
         - "*_analyzer.reduce_rank"
         - "orchestrator.*"
-        - "link_enricher.*"
         - "analysis.*_summary"
 
 # image section disabled - no GOOGLE_API_KEY configured

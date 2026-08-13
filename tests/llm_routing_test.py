@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 import httpx
 import openai
+from google.genai import types as genai_types
 from pydantic import ValidationError
 
 from agents.config.schema import LLMProviderConfig, LLMRouteConfig
@@ -136,12 +137,24 @@ class LLMRouteConfigTests(unittest.TestCase):
             "link_enricher.*",
             routes["gemini-link-enrichment"].caller_patterns,
         )
-        self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.5-flash-lite")
+        self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.7-flash")
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_minute, 15)
-        self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 500)
-        self.assertEqual(routes["gemini-link-enrichment"].max_output_tokens, 8192)
+        self.assertEqual(routes["gemini-link-enrichment"].tokens_per_minute, 250000)
+        self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 20)
+        self.assertEqual(routes["gemini-link-enrichment"].max_output_tokens, 32768)
+        self.assertEqual(
+            routes["gemini-link-enrichment"].fallback_route_id,
+            "gemini-link-enrichment-fallback-3.6",
+        )
         self.assertFalse(routes["gemini-link-enrichment"].allow_cross_route_fallback)
-        self.assertEqual(routes["gemini-link-enrichment"].profiles, ["QUICK"])
+        self.assertEqual(routes["gemini-link-enrichment"].profiles, ["DEEP"])
+        link_fallback = routes["gemini-link-enrichment-fallback-3.6"]
+        self.assertEqual(link_fallback.model, "gemini-3.6-flash")
+        self.assertEqual(link_fallback.requests_per_minute, 15)
+        self.assertEqual(link_fallback.tokens_per_minute, 250000)
+        self.assertEqual(link_fallback.requests_per_day, 20)
+        self.assertFalse(link_fallback.allow_cross_route_fallback)
+        self.assertEqual(link_fallback.profiles, ["DEEP"])
         self.assertNotIn(
             "link_enricher.*",
             routes["gemini-quality-fallback"].caller_patterns,
@@ -162,7 +175,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             ])
             link = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "links"}],
-                profile=ThinkingLevel.QUICK,
+                profile=ThinkingLevel.DEEP,
                 caller="link_enricher.executive_summary",
             )
             summary = await router.call_with_thinking(
@@ -186,6 +199,61 @@ class LLMRouteConfigTests(unittest.TestCase):
             self.assertEqual(bulk.content, "openrouter-minimax-bulk")
 
         asyncio.run(verify_routing())
+
+        async def verify_link_fallback_is_exclusive():
+            clients = [
+                FakeRouteClient(
+                    route.id,
+                    model=route.model,
+                    failures=(
+                        [ProviderQuotaExhaustedError("20 RPD")]
+                        if route.id in {
+                            "gemini-link-enrichment",
+                            "gemini-link-enrichment-fallback-3.6",
+                        }
+                        else None
+                    ),
+                    route_profiles=route.profiles,
+                    caller_patterns=route.caller_patterns,
+                    fallback_route_id=route.fallback_route_id,
+                    allow_cross_route_fallback=route.allow_cross_route_fallback,
+                    route_priority=route.priority,
+                )
+                for route in routes.values()
+            ]
+            router = AsyncLLMRouter(clients)
+            with self.assertRaises(ProviderQuotaExhaustedError):
+                await router.call_with_thinking(
+                    messages=[{"role": "user", "content": "links"}],
+                    profile=ThinkingLevel.DEEP,
+                    caller="link_enricher.executive_summary",
+                )
+            calls = {
+                client.provider_id: len(client.calls)
+                for client in clients
+                if client.calls
+            }
+            self.assertEqual(calls, {
+                "gemini-link-enrichment": 1,
+                "gemini-link-enrichment-fallback-3.6": 1,
+            })
+
+            # Subsequent enrichment calls see both Gemini routes disabled and
+            # must fail locally without touching any unrelated provider.
+            with self.assertRaises(RuntimeError):
+                await router.call_with_thinking(
+                    messages=[{"role": "user", "content": "more links"}],
+                    profile=ThinkingLevel.DEEP,
+                    caller="link_enricher.news_summary",
+                )
+            calls_after = {
+                client.provider_id: len(client.calls)
+                for client in clients
+                if client.calls
+            }
+            self.assertEqual(calls_after, calls)
+
+        asyncio.run(verify_link_fallback_is_exclusive())
 
         async def verify_orchestration_fallback():
             clients = []
@@ -1184,6 +1252,46 @@ class AsyncLLMRouterTests(unittest.TestCase):
 
 
 class GeminiResponseTests(unittest.TestCase):
+    def test_gemini_37_omits_deprecated_sampling_parameters(self):
+        async def run():
+            captured = {}
+
+            class Models:
+                async def generate_content(self, **kwargs):
+                    captured.update(kwargs)
+                    return SimpleNamespace(candidates=[], usage_metadata=None)
+
+            client = AsyncAnthropicClient(
+                api_key="test-key",
+                model="gemini-3.7-flash",
+                mode="gemini",
+                requests_per_day=20,
+            )
+            client._gemini_client = SimpleNamespace(aio=SimpleNamespace(models=Models()))
+            with patch.object(
+                genai_types,
+                "ThinkingConfig",
+                side_effect=lambda **kwargs: SimpleNamespace(**kwargs),
+            ), patch.object(
+                genai_types,
+                "GenerateContentConfig",
+                side_effect=lambda **kwargs: SimpleNamespace(**kwargs),
+            ):
+                await client._create_gemini_completion(
+                    messages=[{"role": "user", "content": "enrich"}],
+                    system="system",
+                    max_tokens=32768,
+                    temperature=0.0,
+                    thinking_level="high",
+                    request_context={"caller": "link_enricher.test"},
+                )
+
+            config = captured["config"]
+            self.assertFalse(hasattr(config, "temperature"))
+            self.assertEqual(config.thinking_config.thinking_level, "high")
+
+        asyncio.run(run())
+
     def test_normalizes_text_thoughts_usage_and_truncation(self):
         class Part:
             def __init__(self, text, thought=False):
