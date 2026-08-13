@@ -31,8 +31,8 @@ The pipeline is designed to degrade safely: provider fallbacks, checkpoints, sch
 ```mermaid
 flowchart LR
     subgraph Sources[Current sources]
-        RSS[36 news feeds]
-        WEB[6 direct web sources]
+        RSS[37 news feeds]
+        WEB[8 direct web sources]
         HN[Hacker News]
         PAPERS[HF Papers + AlphaXiv]
         RESEARCH[19 research feeds + LessWrong]
@@ -68,7 +68,7 @@ The configuration files—not this table—are the source of truth. Counts refle
 
 | Category | Active inputs | Collection path | Notes |
 |---|---|---|---|
-| **AI News** | 36 RSS/Atom feeds, 6 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Invalid LLM filtering fails open to the deterministic keyword-filtered set. |
+| **AI News** | 37 RSS/Atom feeds, 8 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Includes the Tech & Media group: Aleph Alpha, MarkTechPost, and Artificial Analysis. Invalid LLM filtering fails open to the deterministic keyword-filtered set. |
 | **Research** | Hugging Face Daily Papers, AlphaXiv Trending, 19 research feeds, LessWrong | `ResearchGatherer` | LessWrong uses GraphQL for date-range collection; OpenAI's canonical feed is filtered to research-relevant tags. |
 | **Social** | 171 configured X accounts | `SocialGatherer` | GetXAPI queries at most 20 accounts per paid request and logs empty responses explicitly. |
 | **GitHub Trending** | GitHub Trending | `GitHubTrendingGatherer` | Repositories are analyzed as a separate report category. |

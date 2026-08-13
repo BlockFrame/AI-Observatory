@@ -29,6 +29,13 @@ PIPELINE_PROXY_URL = (
     or os.getenv("HTTP_PROXY")
 )
 
+FEED_SOURCE_METADATA = {
+    "https://www.marktechpost.com/category/tech-news/feed/": {
+        "source": "MarkTechPost",
+        "source_group": "Tech & Media",
+    },
+}
+
 
 class NewsGatherer(BaseGatherer):
     """
@@ -175,6 +182,8 @@ class NewsGatherer(BaseGatherer):
                     logger.warning(f"Feed warning for {feed_url}: {exc}")
 
             feed_title = feed.feed.get('title', 'Unknown Source')
+            source_metadata = FEED_SOURCE_METADATA.get(feed_url.rstrip('/') + '/', {})
+            feed_title = source_metadata.get('source', feed_title)
 
             for entry in feed.entries:
                 try:
@@ -215,7 +224,11 @@ class NewsGatherer(BaseGatherer):
                         tags=[tag.term for tag in entry.get('tags', [])],
                         metadata={
                             'feed_url': feed_url,
-                            'raw_summary': entry.get('summary', '')[:500]
+                            'raw_summary': entry.get('summary', '')[:500],
+                            **(
+                                {'source_group': source_metadata['source_group']}
+                                if source_metadata.get('source_group') else {}
+                            ),
                         },
                         keywords=self.extract_keywords(f"{title} {content_text}")
                     )

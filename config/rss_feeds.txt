@@ -19,6 +19,11 @@ https://the-decoder.com/feed/
 https://www.theregister.com/software/ai_ml/headlines.atom  proxy=off
 https://www.newscientist.com/subject/artificial-intelligence/feed/
 https://aibusiness.com/rss.xml
+
+# Tech & Media
+# The category-specific feed avoids unrelated MarkTechPost sections while
+# preserving canonical article URLs and publication timestamps.
+https://www.marktechpost.com/category/tech-news/feed/  proxy=off
 # analyticsindiamag.com decommissioned their RSS feed (all candidate paths
 # now return the site HTML; verified 2026-04-17). Removed to silence warnings.
 # https://analyticsindiamag.com/feed/

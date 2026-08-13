@@ -4,8 +4,8 @@ This document describes sources that are wired into the current pipeline. The fi
 
 ## AI News
 
-- `config/rss_feeds.txt`: 36 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts.
-- `config/web_scraper_sources.txt`: 6 direct web pages used only where no reliable feed is available: Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, and ElevenLabs.
+- `config/rss_feeds.txt`: 37 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts. The Tech & Media group includes MarkTechPost's category-specific Tech News feed.
+- `config/web_scraper_sources.txt`: 8 direct web pages used where no reliable feed is available: Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, ElevenLabs, Aleph Alpha, and Artificial Analysis. Aleph Alpha and Artificial Analysis use deterministic, date-validated HTML extractors and consume no LLM calls.
 - Hacker News: current stories collected through the Algolia API and filtered for AI relevance.
 - Links from X: `LinkFollower` expands `t.co` redirects and collects qualifying linked articles.
 

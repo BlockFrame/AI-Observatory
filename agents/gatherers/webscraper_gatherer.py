@@ -6,6 +6,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Dict, Any
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 
@@ -29,6 +30,9 @@ class WebScraperGatherer(BaseGatherer):
         
         # We only want one latest article per site per run
         self.max_articles_per_site = 1
+        # Deterministic parsers can safely retain every dated publication in
+        # the coverage window without multiplying LLM cost.
+        self.max_deterministic_articles_per_site = 5
         self._last_extract_candidates = 0
         self._last_date_parse_failures = 0
         self._last_out_of_window = 0
@@ -194,6 +198,131 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
             logger.error(f"LLM extraction failed for {url}: {e}")
             return []
 
+    def _build_deterministic_item(
+        self,
+        *,
+        source: str,
+        title: str,
+        article_url: str,
+        published: datetime,
+        summary: str,
+    ) -> CollectedItem:
+        """Normalize a dated article extracted without an LLM."""
+        return CollectedItem(
+            id=self.generate_id(article_url),
+            title=title,
+            content=summary,
+            url=article_url,
+            author="",
+            published=published.isoformat(),
+            source=source,
+            source_type="web_scraper",
+            metadata={
+                "scraper_type": "deterministic_html",
+                "source_group": "Tech & Media",
+            },
+            keywords=self.extract_keywords(f"{title} {summary}"),
+        )
+
+    def _extract_artificial_analysis(self, url: str, html: str) -> List[CollectedItem]:
+        """Extract dated cards from Artificial Analysis' server-rendered index."""
+        soup = BeautifulSoup(html, "html.parser")
+        items: List[CollectedItem] = []
+        seen_urls = set()
+        for anchor in soup.select('a[href^="/articles/"]'):
+            heading = anchor.find(["h2", "h3"])
+            if not heading:
+                continue
+            article_url = urljoin(url, anchor.get("href", ""))
+            if not article_url or article_url in seen_urls:
+                continue
+            text = anchor.get_text(" ", strip=True)
+            date_match = re.search(
+                r"\b(January|February|March|April|May|June|July|August|"
+                r"September|October|November|December)\s+\d{1,2},\s+\d{4}\b",
+                text,
+            )
+            if not date_match:
+                self._last_date_parse_failures += 1
+                continue
+            published = datetime.strptime(date_match.group(0), "%B %d, %Y")
+            seen_urls.add(article_url)
+            self._last_extract_candidates += 1
+            if not self.is_in_date_range(published):
+                self._last_out_of_window += 1
+                continue
+            title = heading.get_text(" ", strip=True)
+            summary = text.replace(title, "", 1).replace(date_match.group(0), "", 1).strip()
+            items.append(self._build_deterministic_item(
+                source="Artificial Analysis",
+                title=title,
+                article_url=article_url,
+                published=published,
+                summary=summary,
+            ))
+        return items[:self.max_deterministic_articles_per_site]
+
+    async def _extract_aleph_alpha(self, url: str, html: str) -> List[CollectedItem]:
+        """Follow Aleph Alpha cards and validate each article's canonical date."""
+        soup = BeautifulSoup(html, "html.parser")
+        candidate_urls = []
+        for anchor in soup.select('a[href*="/en/blog/"]'):
+            article_url = urljoin(url, anchor.get("href", ""))
+            if article_url.rstrip("/") == url.rstrip("/") or article_url in candidate_urls:
+                continue
+            candidate_urls.append(article_url)
+            if len(candidate_urls) >= 5:
+                break
+
+        items: List[CollectedItem] = []
+        for article_url in candidate_urls:
+            article_html = await self._fetch_html(article_url)
+            if not article_html:
+                continue
+            article = BeautifulSoup(article_html, "html.parser")
+            heading = article.find("h1")
+            time_element = article.find("time", attrs={"datetime": True})
+            if not heading or not time_element:
+                self._last_date_parse_failures += 1
+                continue
+            try:
+                published = datetime.fromisoformat(time_element["datetime"][:10])
+            except (TypeError, ValueError):
+                self._last_date_parse_failures += 1
+                continue
+            self._last_extract_candidates += 1
+            if not self.is_in_date_range(published):
+                self._last_out_of_window += 1
+                continue
+            description = article.find("meta", attrs={"name": "description"})
+            summary = description.get("content", "").strip() if description else ""
+            items.append(self._build_deterministic_item(
+                source="Aleph Alpha",
+                title=heading.get_text(" ", strip=True),
+                article_url=article_url,
+                published=published,
+                summary=summary,
+            ))
+            if len(items) >= self.max_deterministic_articles_per_site:
+                break
+        return items
+
+    async def _extract_deterministic_news(
+        self, url: str, html: str,
+    ) -> Optional[List[CollectedItem]]:
+        """Return None for generic pages, or deterministically parsed items."""
+        self._last_extract_candidates = 0
+        self._last_date_parse_failures = 0
+        self._last_out_of_window = 0
+        self._last_extract_error = None
+        self._last_extract_completed = True
+        if url.rstrip("/") == "https://artificialanalysis.ai/articles":
+            return self._extract_artificial_analysis(url, html)
+        if url.rstrip("/") == "https://aleph-alpha.com/en/blog":
+            return await self._extract_aleph_alpha(url, html)
+        self._last_extract_completed = False
+        return None
+
     @staticmethod
     def _recover_complete_json_objects(content: str) -> List[Dict[str, Any]]:
         """Recover complete top-level objects from a truncated JSON array."""
@@ -246,14 +375,17 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                     self.collection_status[original_url]['error'] = 'Failed to fetch HTML'
                     continue
                     
-                clean_text = self._clean_html(html)
-                if len(clean_text) < 100:
-                    self.collection_status[original_url]['status'] = 'failed'
-                    self.collection_status[original_url]['error'] = 'Text too short after cleaning'
-                    logger.warning(f"Text too short after cleaning for {url}")
-                    continue
-                    
-                items = await self._extract_news_with_llm(url, clean_text)
+                deterministic_items = await self._extract_deterministic_news(url, html)
+                if deterministic_items is not None:
+                    items = deterministic_items
+                else:
+                    clean_text = self._clean_html(html)
+                    if len(clean_text) < 100:
+                        self.collection_status[original_url]['status'] = 'failed'
+                        self.collection_status[original_url]['error'] = 'Text too short after cleaning'
+                        logger.warning(f"Text too short after cleaning for {url}")
+                        continue
+                    items = await self._extract_news_with_llm(url, clean_text)
                 if items:
                     logger.info(f"Found {len(items)} articles from {url}")
                     all_items.extend(items)

@@ -17,6 +17,7 @@ from agents.cache import AnalysisCache
 from agents.cost_tracker import CostTracker
 from agents.gatherers.social_gatherer import SocialGatherer
 from agents.gatherers.github_trending import GitHubTrendingGatherer
+from agents.gatherers.news_gatherer import NewsGatherer
 from agents.gatherers.webscraper_gatherer import WebScraperGatherer
 from agents.link_enricher import LinkEnricher
 from agents.llm_client import AsyncLLMRouter, LLMResponse, ThinkingLevel
@@ -27,6 +28,82 @@ from scripts.validate_report import validate
 
 
 class ScraperResilienceTests(unittest.TestCase):
+    def test_marktechpost_feed_gets_canonical_tech_media_metadata(self):
+        gatherer = NewsGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        response = MagicMock()
+        response.content = b"""<?xml version="1.0"?><rss version="2.0"><channel>
+        <title>Tech News Category - MarkTechPost</title>
+        <item><title>Current AI release</title><link>https://www.marktechpost.com/current</link>
+        <pubDate>Thu, 13 Aug 2026 12:00:00 +0000</pubDate><description>Details</description></item>
+        </channel></rss>"""
+        response.headers = {"content-type": "application/rss+xml"}
+        response.raise_for_status.return_value = None
+
+        with patch.object(gatherer.feed_session, "get", return_value=response):
+            items = gatherer._fetch_feed(
+                "https://www.marktechpost.com/category/tech-news/feed/"
+            )
+
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0].source, "MarkTechPost")
+        self.assertEqual(items[0].metadata["source_group"], "Tech & Media")
+
+    def test_artificial_analysis_deterministic_parser_keeps_only_coverage_date(self):
+        gatherer = WebScraperGatherer(
+            target_date="2026-08-14",
+            llm_client=MagicMock(),
+        )
+        html = """
+        <a href="/articles/current"><h3>Current benchmark analysis</h3><p>August 13, 2026</p></a>
+        <a href="/articles/old"><h3>Old benchmark analysis</h3><p>August 12, 2026</p></a>
+        """
+
+        items = gatherer._extract_artificial_analysis(
+            "https://artificialanalysis.ai/articles", html
+        )
+
+        self.assertEqual([item.title for item in items], ["Current benchmark analysis"])
+        self.assertEqual(items[0].source, "Artificial Analysis")
+        self.assertEqual(items[0].metadata["source_group"], "Tech & Media")
+        self.assertEqual(items[0].published, "2026-08-13T00:00:00")
+
+    def test_aleph_alpha_deterministic_parser_validates_article_date(self):
+        async def run():
+            llm = MagicMock()
+            gatherer = WebScraperGatherer(
+                target_date="2026-08-14",
+                llm_client=llm,
+            )
+            index_html = """
+            <a href="/en/blog/current/"><h3>Current sovereign AI update</h3></a>
+            <a href="/en/blog/old/"><h3>Old sovereign AI update</h3></a>
+            """
+            pages = {
+                "https://aleph-alpha.com/en/blog/current/": """
+                    <html><head><meta name="description" content="Current details"></head>
+                    <body><h1>Current sovereign AI update</h1>
+                    <time datetime="2026-08-13">13/08/2026</time></body></html>
+                """,
+                "https://aleph-alpha.com/en/blog/old/": """
+                    <html><body><h1>Old sovereign AI update</h1>
+                    <time datetime="2026-08-12">12/08/2026</time></body></html>
+                """,
+            }
+
+            with patch.object(
+                gatherer, "_fetch_html", side_effect=lambda url: pages[url]
+            ):
+                items = await gatherer._extract_aleph_alpha(
+                    "https://aleph-alpha.com/en/blog/", index_html
+                )
+
+            self.assertEqual([item.title for item in items], ["Current sovereign AI update"])
+            self.assertEqual(items[0].content, "Current details")
+            self.assertEqual(items[0].metadata["source_group"], "Tech & Media")
+            llm.call.assert_not_called()
+
+        asyncio.run(run())
+
     def test_tweet_entity_expanded_urls_are_preserved(self):
         tweet = {
             "entities": {
