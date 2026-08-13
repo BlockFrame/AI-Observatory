@@ -73,8 +73,11 @@ https://deepmind.google/blog/feed
 https://qwenlm.github.io/blog/index.xml
 # Mistral AI
 https://mistral.ai/rss.xml
-# NVIDIA
-https://research.nvidia.com/rss.xml
+# NVIDIA Research is intentionally excluded from News: the feed republishes
+# historical paper records with current update timestamps, which caused 2023–24
+# work to be misclassified as current-day news. Revisit for Pure Technical
+# Updates only with original-publication-date validation.
+# https://research.nvidia.com/rss.xml
 
 # AGENTIC FRAMEWORK
 # LangChain

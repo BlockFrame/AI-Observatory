@@ -31,7 +31,7 @@ The pipeline is designed to degrade safely: provider fallbacks, checkpoints, sch
 ```mermaid
 flowchart LR
     subgraph Sources[Current sources]
-        RSS[37 news feeds]
+        RSS[36 news feeds]
         WEB[8 direct web sources]
         HN[Hacker News]
         PAPERS[HF Papers + AlphaXiv]
@@ -68,9 +68,9 @@ The configuration files—not this table—are the source of truth. Counts refle
 
 | Category | Active inputs | Collection path | Notes |
 |---|---|---|---|
-| **AI News** | 37 RSS/Atom feeds, 8 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Includes the Tech & Media group: Aleph Alpha, MarkTechPost, and Artificial Analysis. Invalid LLM filtering fails open to the deterministic keyword-filtered set. |
+| **AI News** | 36 RSS/Atom feeds, 8 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Includes the Tech & Media group: Aleph Alpha, MarkTechPost, and Artificial Analysis. NVIDIA Research is excluded because its update timestamps do not reliably represent publication dates. |
 | **Research** | Hugging Face Daily Papers, AlphaXiv Trending, 19 research feeds, LessWrong | `ResearchGatherer` | LessWrong uses GraphQL for date-range collection; OpenAI's canonical feed is filtered to research-relevant tags. |
-| **Social** | 171 configured X accounts | `SocialGatherer` | GetXAPI queries at most 20 accounts per paid request and logs empty responses explicitly. |
+| **Social** | 170 configured X accounts | `SocialGatherer` | `@NVIDIAAI` is retained while the broader corporate `@nvidia` account is excluded. GetXAPI queries at most 20 accounts per paid request. |
 | **GitHub Trending** | GitHub Trending | `GitHubTrendingGatherer` | Repositories are analyzed as a separate report category. |
 
 Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, and Slack are **not active pipeline sources**. See [AI news sources](ai_news_sources.md) for maintenance rules and the exact configuration entry points.

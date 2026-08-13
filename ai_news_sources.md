@@ -4,7 +4,7 @@ This document describes sources that are wired into the current pipeline. The fi
 
 ## AI News
 
-- `config/rss_feeds.txt`: 37 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts. The Tech & Media group includes MarkTechPost's category-specific Tech News feed.
+- `config/rss_feeds.txt`: 36 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts. The Tech & Media group includes MarkTechPost's category-specific Tech News feed. NVIDIA Research is excluded because its feed can assign current update timestamps to historical publications.
 - `config/web_scraper_sources.txt`: 8 direct web pages used where no reliable feed is available: Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, ElevenLabs, Aleph Alpha, and Artificial Analysis. Aleph Alpha and Artificial Analysis use deterministic, date-validated HTML extractors and consume no LLM calls.
 - Hacker News: current stories collected through the Algolia API and filtered for AI relevance.
 - Links from X: `LinkFollower` expands `t.co` redirects and collects qualifying linked articles.
@@ -22,7 +22,7 @@ AlphaXiv cannot provide arbitrary historical snapshots beyond its supported rank
 
 ## Social
 
-- `config/twitter_accounts.txt`: 171 X accounts.
+- `config/twitter_accounts.txt`: 170 X accounts. `@NVIDIAAI` is retained for model and AI releases; the broader corporate `@nvidia` account is excluded to reduce promotional and duplicate coverage.
 - GetXAPI is the active provider.
 - Accounts are grouped into chunks of at most 20 per paid query.
 - Calls, tweets returned, estimated cost, balance probes, and empty responses are logged.

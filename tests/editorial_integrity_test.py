@@ -24,6 +24,31 @@ from scripts.validate_report import validate
 ROOT = Path(__file__).resolve().parent.parent
 
 
+class SourceInventoryTests(unittest.TestCase):
+    def test_nvidia_sources_keep_ai_specific_channels_only(self):
+        feeds = (ROOT / "config" / "rss_feeds.txt").read_text(encoding="utf-8")
+        active_feeds = {
+            line.split()[0]
+            for line in feeds.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        }
+        accounts = {
+            line.strip()
+            for line in (ROOT / "config" / "twitter_accounts.txt")
+            .read_text(encoding="utf-8")
+            .splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        }
+
+        self.assertIn(
+            "https://blogs.nvidia.com/blog/tag/generative-ai/feed/",
+            active_feeds,
+        )
+        self.assertNotIn("https://research.nvidia.com/rss.xml", active_feeds)
+        self.assertIn("NVIDIAAI", accounts)
+        self.assertNotIn("nvidia", accounts)
+
+
 class ValidatorCliTests(unittest.TestCase):
     def test_validator_cli_imports_project_modules_without_pythonpath(self):
         env = os.environ.copy()
