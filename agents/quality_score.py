@@ -24,7 +24,9 @@ def _link_integrity(text: str) -> float:
         return 0.0
     links = _MARKDOWN_LINK.findall(text)
     if not links:
-        return 0.75
+        # Enrichment is best-effort and runs after paid generation. A report
+        # without links remains publishable; only malformed links are faults.
+        return 1.0
     valid = sum(
         1
         for label, url in links

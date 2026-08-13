@@ -69,24 +69,26 @@ llm:
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    # Gemini Flash Lite is the semantic selector for link enrichment. It never rewrites
-    # prose: it may only return an existing source ID plus an exact visible
-    # text span, which LinkEnricher validates locally before inserting a link.
-    # 1 concurrent request and the Flash Lite free-tier 15 RPM cap keep this
+    # Gemini Flash Lite follows the upstream AATF enrichment contract and
+    # returns the complete text with contextual links. LinkEnricher validates
+    # that the prose is unchanged and that every URL targets an eligible item.
+    # QUICK avoids spending the output budget on unnecessary model reasoning.
+    # One concurrent request and the Flash Lite free-tier 15 RPM cap keep this
     # below the provider limit without creating burst traffic;
-    # a maximum of ten sections are enriched in one pipeline run.
+    # a maximum of eleven sections are enriched in one pipeline run.
     - id: "gemini-link-enrichment"
       priority: 120
       mode: "gemini"
       api_key: "${GEMINI_API_KEY}"
       model: "gemini-3.5-flash-lite"
       timeout: 90
-      max_output_tokens: 4096
+      max_output_tokens: 8192
       max_concurrent_requests: 1
       requests_per_minute: 15
       tokens_per_minute: 250000
       requests_per_day: 500
-      profiles: ["STANDARD"]
+      allow_cross_route_fallback: false
+      profiles: ["QUICK"]
       caller_patterns:
         - "link_enricher.*"
 

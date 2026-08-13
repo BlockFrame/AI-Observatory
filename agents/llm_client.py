@@ -1096,6 +1096,7 @@ class AsyncAnthropicClient:
         route_profiles: Optional[List[str]] = None,
         caller_patterns: Optional[List[str]] = None,
         fallback_route_id: Optional[str] = None,
+        allow_cross_route_fallback: bool = True,
         route_priority: int = 0,
     ):
         default_api_key_env = (
@@ -1138,6 +1139,7 @@ class AsyncAnthropicClient:
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
         self.fallback_route_id = fallback_route_id
+        self.allow_cross_route_fallback = allow_cross_route_fallback
         self.route_priority = route_priority
         self._rate_limiter = _get_rate_limiter(
             self.mode,
@@ -1764,6 +1766,7 @@ class AsyncAnthropicClient:
             route_profiles=config.profiles,
             caller_patterns=config.caller_patterns,
             fallback_route_id=config.fallback_route_id,
+            allow_cross_route_fallback=config.allow_cross_route_fallback,
             route_priority=config.priority,
         )
 
@@ -2666,6 +2669,11 @@ class AsyncLLMRouter:
                 f"No LLM route is eligible for caller={caller or 'unknown'} "
                 f"profile={profile_name}"
             )
+        # Some best-effort phases deliberately own their local fallback. Once
+        # such a route wins caller/profile selection, never let cooldown or a
+        # disabled state make the router wander to an unrelated paid model.
+        if not getattr(ordered_clients[0], "allow_cross_route_fallback", True):
+            ordered_clients = ordered_clients[:1]
         for attempt, client in enumerate(ordered_clients, start=1):
             later_clients = ordered_clients[attempt:]
             state = self._route_health[client.provider_id]
@@ -2764,6 +2772,13 @@ class AsyncLLMRouter:
                                 pass
                 
                     if reason is None or attempt >= len(ordered_clients):
+                        raise
+                    if not getattr(client, "allow_cross_route_fallback", True):
+                        logger.warning(
+                            "Route %s is configured without cross-route fallback; "
+                            "returning control to the caller",
+                            client.provider_id,
+                        )
                         raise
 
                     logger.warning(

@@ -191,6 +191,10 @@ class PublicationQualityGateTests(unittest.TestCase):
 
         self.assertTrue(result["valid"], result["failures"])
         self.assertGreaterEqual(summary["quality_score"]["score"], 70)
+        self.assertEqual(
+            summary["quality_score"]["categories"]["news"]["components"]["markdown_link_integrity"],
+            100.0,
+        )
 
     def test_generated_numeric_score_blocks_below_threshold(self):
         fixture_path = Path(__file__).parent / "fixtures" / "resilience_scenario.json"
@@ -771,12 +775,13 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         self.assertEqual(enriched, text)
 
-    def test_gemini_links_only_a_validated_verbatim_span(self):
+    def test_aatf_full_text_links_a_validated_verbatim_span(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
-                return SimpleNamespace(content=json.dumps({"selections": [{
-                    "line": 0, "item_id": "news", "exact_span": "releases Responses API for enterprise agents",
-                }]}))
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "- OpenAI [releases Responses API](/?date=2026-08-09&category=news#item-news) for enterprise agents this week.",
+                    "links": [{"phrase": "releases Responses API", "item_id": "news", "category": "news"}],
+                }))
 
         async def run():
             enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
@@ -785,17 +790,18 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
             enriched = await enricher._enrich_text(text, items, "executive summary")
 
-            self.assertIn("[releases Responses API for enterprise agents]", enriched)
+            self.assertIn("[releases Responses API]", enriched)
             self.assertNotIn(" ([", enriched)
 
         asyncio.run(run())
 
-    def test_gemini_cannot_insert_a_nonverbatim_or_disallowed_link(self):
+    def test_aatf_output_cannot_change_prose_or_use_disallowed_link(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
-                return SimpleNamespace(content=json.dumps({"selections": [{
-                    "line": 0, "item_id": "wrong", "exact_span": "invented supporting story",
-                }]}))
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "- OpenAI releases Responses API for enterprise agents this week. ([source](/?date=2026-08-09&category=news#item-wrong))",
+                    "links": [{"phrase": "source", "item_id": "wrong", "category": "news"}],
+                }))
 
         async def run():
             enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
@@ -813,31 +819,34 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_gemini_rejects_extra_fields_and_weak_title_grounding(self):
+    def test_aatf_removes_weak_link_but_keeps_valid_link(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
-                return SimpleNamespace(content=json.dumps({"selections": [{
-                    "line": 0, "item_id": "news", "exact_span": "enterprise agents this week",
-                    "commentary": "not allowed",
-                }]}))
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "- OpenAI [releases Responses API](/?date=2026-08-09&category=news#item-news) for enterprise [agents](/?date=2026-08-09&category=news#item-wrong) this week.",
+                    "links": [],
+                }))
 
         async def run():
             enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
             text = "- OpenAI releases Responses API for enterprise agents this week."
-            items = [{"id": "news", "category": "news", "title": "OpenAI Responses API", "summary": ""}]
+            items = [
+                {"id": "news", "category": "news", "title": "OpenAI releases Responses API", "summary": ""},
+                {"id": "wrong", "category": "news", "title": "Agents market overview", "summary": ""},
+            ]
             enriched = await enricher._enrich_text(text, items, "executive summary")
-            self.assertEqual(enriched, text)
+            self.assertIn("[releases Responses API]", enriched)
+            self.assertNotIn("[agents]", enriched)
 
         asyncio.run(run())
 
-    def test_gemini_rejects_more_than_two_links_per_bullet(self):
+    def test_aatf_allows_one_to_many_links_per_bullet(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
-                return SimpleNamespace(content=json.dumps({"selections": [
-                    {"line": 0, "item_id": "one", "exact_span": "OpenAI releases Responses API"},
-                    {"line": 0, "item_id": "two", "exact_span": "Anthropic launches Claude controls"},
-                    {"line": 0, "item_id": "three", "exact_span": "Google ships Gemini tooling"},
-                ]}))
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "- [OpenAI releases Responses API](/?date=2026-08-09&category=news#item-one); [Anthropic launches Claude controls](/?date=2026-08-09&category=news#item-two); [Google ships Gemini tooling](/?date=2026-08-09&category=news#item-three).",
+                    "links": [],
+                }))
 
         async def run():
             enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
@@ -848,7 +857,41 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
                 {"id": "three", "category": "news", "title": "Google ships Gemini tooling", "summary": ""},
             ]
             enriched = await enricher._enrich_text(text, items, "executive summary")
-            self.assertEqual(enriched.count("#item-"), 2)
+            self.assertEqual(enriched.count("#item-"), 3)
+
+        asyncio.run(run())
+
+    def test_aatf_enriches_topic_paragraph_and_short_technical_name(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "Qwen3.8 changes the inference economics for enterprise deployment.",
+                    "links": [{"phrase": "Qwen3.8", "item_id": "qwen", "category": "news"}],
+                }).replace("Qwen3.8", "[Qwen3.8](/?date=2026-08-09&category=news#item-qwen)", 1))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "Qwen3.8 changes the inference economics for enterprise deployment."
+            items = [{"id": "qwen", "category": "news", "title": "Qwen3.8 model release", "summary": ""}]
+            enriched = await enricher._enrich_text(text, items, "topic: inference")
+            self.assertIn("[Qwen3.8]", enriched)
+
+        asyncio.run(run())
+
+    def test_aatf_empty_output_uses_exact_match_fallback(self):
+        class GeminiFixture:
+            async def call_with_thinking(self, **_kwargs):
+                return SimpleNamespace(content=json.dumps({
+                    "enriched_text": "PrimeIntellect ships prime-agent for accountable orchestration.",
+                    "links": [],
+                }))
+
+        async def run():
+            enricher = LinkEnricher(GeminiFixture(), "2026-08-09")
+            text = "PrimeIntellect ships prime-agent for accountable orchestration."
+            items = [{"id": "prime", "category": "github_trending", "title": "PrimeIntellect-ai/prime-agent", "summary": ""}]
+            enriched = await enricher._enrich_text(text, items, "topic: agents")
+            self.assertIn("#item-prime", enriched)
 
         asyncio.run(run())
 

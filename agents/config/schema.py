@@ -50,6 +50,10 @@ class LLMRouteConfig(BaseModel):
         default=None,
         description="ID of the preferred fallback route for transport, quota, unavailable-model, 429, and 5xx failures"
     )
+    allow_cross_route_fallback: bool = Field(
+        default=True,
+        description="Whether retryable failures may continue on another configured route"
+    )
     priority: int = Field(
         default=0,
         ge=0,
@@ -199,6 +203,7 @@ class LLMProviderConfig(BaseModel):
                     requests_per_minute=self.requests_per_minute,
                     tokens_per_minute=self.tokens_per_minute,
                     requests_per_day=self.requests_per_day,
+                    allow_cross_route_fallback=True,
                     priority=0,
                     profiles=None,
                     caller_patterns=None,
@@ -218,6 +223,7 @@ class LLMProviderConfig(BaseModel):
                 requests_per_minute=route.requests_per_minute or self.requests_per_minute,
                 tokens_per_minute=route.tokens_per_minute or self.tokens_per_minute,
                 requests_per_day=route.requests_per_day or self.requests_per_day,
+                allow_cross_route_fallback=route.allow_cross_route_fallback,
                 priority=route.priority,
                 profiles=route.profiles,
                 caller_patterns=route.caller_patterns,
@@ -241,6 +247,7 @@ class ResolvedLLMRouteConfig(BaseModel):
     requests_per_minute: Optional[int] = None
     tokens_per_minute: Optional[int] = None
     requests_per_day: Optional[int] = None
+    allow_cross_route_fallback: bool = True
     priority: int = 0
     profiles: Optional[List[Literal["QUICK", "STANDARD", "DEEP", "ULTRATHINK"]]] = None
     caller_patterns: Optional[List[str]] = None

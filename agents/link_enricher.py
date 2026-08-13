@@ -267,20 +267,144 @@ class LinkEnricher:
         links_per_block: int = 1,
         evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
-        """Use Gemini as a constrained semantic span selector.
+        """Apply the upstream AATF full-text enrichment contract safely.
 
-        The model may nominate only a source ID and exact existing text span;
-        local validation performs the actual Markdown insertion. If its quota
-        is unavailable, exact-name matching remains the safe fallback.
+        Gemini returns the complete original text with contextual Markdown
+        links. We accept it only when removing those links reproduces the
+        original prose exactly and every target belongs to the supplied item
+        catalog. Empty or invalid output falls back locally and never blocks
+        publication.
         """
-        semantic = await self._select_semantic_link_spans(
-            text, items, context_name, evidence_by_bullet
+        if not text or not items:
+            return text
+        items_json = json.dumps(items[:140], ensure_ascii=False)
+        system = f"""You are a link enrichment agent. Add contextual internal links to the supplied text.
+
+Rules:
+1. Preserve every original character, word, heading, bullet, emphasis marker and newline. Only wrap existing text spans in Markdown links.
+2. Add one link for every distinct named story, research result, social post, product or repository that has a clear matching AVAILABLE ITEM.
+3. A bullet may contain multiple links when it references multiple supported items.
+4. Prefer short action/event phrases. Exact product, model and repository names may be one or two words.
+5. Never add source lists, parentheses, ellipses, labels such as 'read more', or text that was not already present.
+6. Never link generic glue, broad concepts or section headings. If uncertain, leave that reference unlinked.
+7. Use only supplied item IDs and categories. URL format: /?date={self.date}&category=CATEGORY#item-ITEMID
+8. Return JSON only, with exactly: {{"enriched_text":"complete text","links":[{{"phrase":"exact visible phrase","item_id":"id","category":"category"}}]}}
+9. Return the unchanged text and an empty links array when no reliable match exists.
+"""
+        nonce = new_fence_nonce()
+        payload = build_fenced_user_message(
+            f"AVAILABLE ITEMS:\n{items_json}\n\nTEXT TO ENRICH:\n{text}",
+            nonce,
+            task_line="Add only validated internal links to the fenced source data.",
         )
-        if semantic is not None:
-            return semantic
+        try:
+            response = await self.async_client.call_with_thinking(
+                messages=[{"role": "user", "content": payload}],
+                system=build_hardened_system(system, nonce),
+                profile=ThinkingLevel.QUICK,
+                max_tokens=8192,
+                temperature=0.0,
+                caller=f"link_enricher.{context_name}",
+            )
+            parsed = self._parse_aatf_enrichment_response(response.content)
+            enriched = parsed.get("enriched_text")
+            if not isinstance(enriched, str):
+                raise ValueError("enriched_text is missing")
+            validated = self._validate_aatf_enriched_text(text, enriched, items)
+            if validated and self._has_internal_links(validated):
+                logger.info("  %s: accepted %s validated AATF-style link(s)", context_name, validated.count("](/?date="))
+                return validated
+            logger.info("  %s: model returned no usable links; applying exact-match fallback", context_name)
+        except Exception as exc:
+            logger.warning("  %s: AATF-style enrichment unavailable; applying exact-match fallback: %s", context_name, exc)
         return self._inject_per_block_links(
             text, items, context_name, links_per_block, evidence_by_bullet
         )
+
+    @staticmethod
+    def _parse_aatf_enrichment_response(content: str) -> Dict[str, Any]:
+        """Parse the JSON envelope used by upstream AATF."""
+        value = (content or "").strip()
+        if value.startswith("```json"):
+            value = value[7:]
+        elif value.startswith("```"):
+            value = value[3:]
+        if value.endswith("```"):
+            value = value[:-3]
+        value = value.strip()
+        start, end = value.find("{"), value.rfind("}")
+        if start < 0 or end < start:
+            raise ValueError("enrichment response has no JSON object")
+        parsed = json.loads(value[start:end + 1])
+        if not isinstance(parsed, dict):
+            raise ValueError("enrichment response is not a JSON object")
+        return parsed
+
+    def _validate_aatf_enriched_text(
+        self, original: str, enriched: str, items: List[Dict[str, Any]],
+    ) -> Optional[str]:
+        """Accept only link-only transformations targeting eligible items."""
+        pattern = re.compile(r"\[([^\]]+)\]\((/\?date=([0-9-]+)&category=([\w-]+)#item-([\w-]+))\)")
+        links = list(pattern.finditer(enriched))
+        if not links:
+            return None
+        # Removing internal Markdown wrappers must restore the input byte for byte.
+        plain = pattern.sub(lambda match: match.group(1), enriched)
+        if plain != original:
+            logger.warning("Rejected enrichment because Gemini changed the original prose")
+            return None
+        eligible = {
+            (str(item.get("id")), str(item.get("category"))): item
+            for item in items
+        }
+        seen = set()
+        rejected = 0
+
+        def keep_or_unwrap(match: re.Match) -> str:
+            nonlocal rejected
+            label, _, date, category, item_id = match.groups()
+            item = eligible.get((item_id, category))
+            line_start = enriched.rfind("\n", 0, match.start()) + 1
+            is_heading = enriched[line_start:match.start()].lstrip().startswith("#")
+            key = (item_id, label.casefold())
+            if (
+                date != self.date
+                or item is None
+                or is_heading
+                or key in seen
+                or not self._label_identifies_item(label, item)
+            ):
+                rejected += 1
+                return label
+            seen.add(key)
+            return match.group(0)
+
+        sanitized = pattern.sub(keep_or_unwrap, enriched)
+        if rejected:
+            logger.warning("Removed %s invalid link(s) while preserving valid enrichment", rejected)
+        return sanitized if self._has_internal_links(sanitized) else None
+
+    @staticmethod
+    def _label_identifies_item(label: str, item: Dict[str, Any]) -> bool:
+        """Allow concise technical names while rejecting generic overlap."""
+        normalized = label.strip().casefold()
+        title = str(item.get("title") or "").casefold()
+        if re.fullmatch(r"[\w.-]+/[\w.-]+", normalized):
+            return normalized in title
+        words = re.findall(r"[a-z0-9][a-z0-9+._'-]*", normalized)
+        if len(words) == 1:
+            generic = {
+                "agent", "agents", "framework", "model", "models", "news",
+                "platform", "research", "system", "systems", "update",
+            }
+            return (
+                len(words[0]) >= 4
+                and words[0] not in generic
+                and words[0] in set(re.findall(r"[a-z0-9][a-z0-9+._'-]*", title))
+            )
+        meaningful = {word for word in words if len(word) >= 3 and word not in {"and", "for", "the", "with", "from"}}
+        title_words = set(re.findall(r"[a-z0-9][a-z0-9+._'-]*", title))
+        return len(meaningful & title_words) >= 2
 
     async def _select_semantic_link_spans(
         self, text: str, items: List[Dict[str, Any]], context_name: str,
@@ -640,6 +764,10 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         """Find the most specific literal title fragment present in ``text``."""
         repository = re.search(r"(?<![\w.-])([\w.-]+/[\w.-]+)(?![\w.-])", title)
         candidates = [repository.group(1)] if repository else []
+        if repository:
+            repository_name = repository.group(1).split("/", 1)[1]
+            if len(repository_name) >= 4:
+                candidates.append(repository_name)
 
         words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", title)
         # Longest fragments first. Two-word lexical overlap ("LLM APIs",
@@ -704,12 +832,15 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
             words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+.'’-]*", label)
             normalized = [word.lower().strip(".'’") for word in words]
             meaningful = [word for word in normalized if word not in generic_words]
+            technical_single = len(words) == 1 and bool(
+                re.search(r"[./_-]|\d|[a-z][A-Z]", label)
+            )
             if (
-                len(words) < 2
+                (len(words) < 2 and not technical_single)
                 or len(words) > 7
                 or normalized[0] in edge_stopwords
                 or normalized[-1] in edge_stopwords
-                or len(meaningful) < 2
+                or (len(meaningful) < 2 and not technical_single)
             ):
                 logger.warning("Removed generic internal-link label %r", label)
                 return label

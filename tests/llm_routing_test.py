@@ -62,6 +62,7 @@ class FakeRouteClient:
         route_profiles=None,
         caller_patterns=None,
         fallback_route_id=None,
+        allow_cross_route_fallback=True,
         route_priority=0,
     ):
         self.provider_id = provider_id
@@ -72,6 +73,7 @@ class FakeRouteClient:
         self.route_profiles = set(route_profiles or [])
         self.caller_patterns = list(caller_patterns or [])
         self.fallback_route_id = fallback_route_id
+        self.allow_cross_route_fallback = allow_cross_route_fallback
         self.route_priority = route_priority
 
     async def call(self, **kwargs):
@@ -137,6 +139,9 @@ class LLMRouteConfigTests(unittest.TestCase):
         self.assertEqual(routes["gemini-link-enrichment"].model, "gemini-3.5-flash-lite")
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_minute, 15)
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 500)
+        self.assertEqual(routes["gemini-link-enrichment"].max_output_tokens, 8192)
+        self.assertFalse(routes["gemini-link-enrichment"].allow_cross_route_fallback)
+        self.assertEqual(routes["gemini-link-enrichment"].profiles, ["QUICK"])
         self.assertNotIn(
             "link_enricher.*",
             routes["gemini-quality-fallback"].caller_patterns,
@@ -150,13 +155,14 @@ class LLMRouteConfigTests(unittest.TestCase):
                     route_profiles=route.profiles,
                     caller_patterns=route.caller_patterns,
                     fallback_route_id=route.fallback_route_id,
+                    allow_cross_route_fallback=route.allow_cross_route_fallback,
                     route_priority=route.priority,
                 )
                 for route in routes.values()
             ])
             link = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "links"}],
-                profile=ThinkingLevel.STANDARD,
+                profile=ThinkingLevel.QUICK,
                 caller="link_enricher.executive_summary",
             )
             summary = await router.call_with_thinking(
@@ -344,6 +350,37 @@ class LLMRouteConfigTests(unittest.TestCase):
 
 
 class AsyncLLMRouterTests(unittest.TestCase):
+    def test_route_can_disable_cross_provider_fallback(self):
+        async def run():
+            primary = FakeRouteClient(
+                "link-only",
+                failures=[
+                    httpx.ReadTimeout("first timeout"),
+                    httpx.ReadTimeout("second timeout"),
+                ],
+                allow_cross_route_fallback=False,
+                caller_patterns=["link_enricher.*"],
+                route_priority=100,
+            )
+            unrelated_paid = FakeRouteClient("unrelated-paid")
+            router = AsyncLLMRouter([primary, unrelated_paid])
+
+            with self.assertRaises(httpx.ReadTimeout):
+                await router.call(
+                    messages=[{"role": "user", "content": "links"}],
+                    caller="link_enricher.test",
+                )
+            with self.assertRaises(httpx.ReadTimeout):
+                await router.call(
+                    messages=[{"role": "user", "content": "links again"}],
+                    caller="link_enricher.test",
+                )
+
+            self.assertEqual(len(primary.calls), 2)
+            self.assertEqual(unrelated_paid.calls, [])
+
+        asyncio.run(run())
+
     def test_route_in_cooldown_is_skipped_when_fallback_is_healthy(self):
         async def run():
             primary = FakeRouteClient(
