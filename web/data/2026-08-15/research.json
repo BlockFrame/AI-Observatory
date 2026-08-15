@@ -1,0 +1,1782 @@
+{
+  "category": "research",
+  "date": "2026-08-15",
+  "category_summary": "### Executive Signal\n- Frontier model releases (**[Intern-S2-Preview](/?date=2026-08-15&category=research#item-cad87ae4eb2e)**, **[GLM-5.3](/?date=2026-08-15&category=research#item-40977c5313f2)**) and architectural breakthroughs (**[Full-bandwidth transformer](/?date=2026-08-15&category=research#item-02637e470023)**, **[Maglev](/?date=2026-08-15&category=research#item-a71e23a857a3)**) signal accelerating capability gains across scientific, agentic, and reasoning domains.\n\n### Priority Developments\n- **Frontier model cadence**: Intern-S2-P preview delivers a scientific agentic foundation fusing multimodal pretraining, multi-task RL, and memory; GLM-5.3 matches or surpasses prior frontier models, tightening regional capability gaps.\n- **Architecture innovation**: Full-bandwidth transformers expose top-layer hidden states back to earlier layers via latent feedback; Maglev couples prefiller and decoder training with sliding recurrent memory for long-context efficiency.\n- **Reasoning efficiency**: Gambit's thought-level beam search and CaRL's refusal incentives address compute–safety tradeoffs in chain-of-thought, enabling adaptive allocation and earlier termination on futile traces.\n- **Scientific and embodied AI**: [OmniScientist](/?date=2026-08-15&category=research#item-67ab663a06d6) extends the AI-scientist paradigm across modalities; [DreamX-Phi](/?date=2026-08-15&category=research#item-7ea3af86774c) fuses SE(3) geometric encoding with action-conditioned video for robotic manipulation.\n- **Infrastructure and self-improvement**: [LLMRouter](/?date=2026-08-15&category=research#item-9a4af9a9ed74) formalizes routing as sequential decision with unified benchmarks; [Spatial Memory Agent](/?date=2026-08-15&category=research#item-b848970599cf) shows frozen VLMs can self-improve via verifier-guided, parameter-free memory.\n\n### Leadership Implications\n- Prioritize integration of frontier-tier models and routing infrastructure to capture cost-quality gains across the model fleet.\n- Invest in evaluation harnesses for reasoning efficiency and embodied world models to secure next-cycle capabilities.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Frontier model releases (<strong><a href=\"/?date=2026-08-15&amp;category=research#item-cad87ae4eb2e\" class=\"internal-link\" rel=\"noopener noreferrer\">Intern-S2-Preview</a></strong>, <strong><a href=\"/?date=2026-08-15&amp;category=research#item-40977c5313f2\" class=\"internal-link\" rel=\"noopener noreferrer\">GLM-5.3</a></strong>) and architectural breakthroughs (<strong><a href=\"/?date=2026-08-15&amp;category=research#item-02637e470023\" class=\"internal-link\" rel=\"noopener noreferrer\">Full-bandwidth transformer</a></strong>, <strong><a href=\"/?date=2026-08-15&amp;category=research#item-a71e23a857a3\" class=\"internal-link\" rel=\"noopener noreferrer\">Maglev</a></strong>) signal accelerating capability gains across scientific, agentic, and reasoning domains.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Frontier model cadence</strong>: Intern-S2-P preview delivers a scientific agentic foundation fusing multimodal pretraining, multi-task RL, and memory; GLM-5.3 matches or surpasses prior frontier models, tightening regional capability gaps.</li>\n<li><strong>Architecture innovation</strong>: Full-bandwidth transformers expose top-layer hidden states back to earlier layers via latent feedback; Maglev couples prefiller and decoder training with sliding recurrent memory for long-context efficiency.</li>\n<li><strong>Reasoning efficiency</strong>: Gambit's thought-level beam search and CaRL's refusal incentives address compute–safety tradeoffs in chain-of-thought, enabling adaptive allocation and earlier termination on futile traces.</li>\n<li><strong>Scientific and embodied AI</strong>: <a href=\"/?date=2026-08-15&amp;category=research#item-67ab663a06d6\" class=\"internal-link\" rel=\"noopener noreferrer\">OmniScientist</a> extends the AI-scientist paradigm across modalities; <a href=\"/?date=2026-08-15&amp;category=research#item-7ea3af86774c\" class=\"internal-link\" rel=\"noopener noreferrer\">DreamX-Phi</a> fuses SE(3) geometric encoding with action-conditioned video for robotic manipulation.</li>\n<li><strong>Infrastructure and self-improvement</strong>: <a href=\"/?date=2026-08-15&amp;category=research#item-9a4af9a9ed74\" class=\"internal-link\" rel=\"noopener noreferrer\">LLMRouter</a> formalizes routing as sequential decision with unified benchmarks; <a href=\"/?date=2026-08-15&amp;category=research#item-b848970599cf\" class=\"internal-link\" rel=\"noopener noreferrer\">Spatial Memory Agent</a> shows frozen VLMs can self-improve via verifier-guided, parameter-free memory.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Prioritize integration of frontier-tier models and routing infrastructure to capture cost-quality gains across the model fleet.</li>\n<li>Invest in evaluation harnesses for reasoning efficiency and embodied world models to secure next-cycle capabilities.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "cad87ae4eb2e",
+      "40977c5313f2",
+      "02637e470023"
+    ],
+    [
+      "cad87ae4eb2e",
+      "40977c5313f2"
+    ],
+    [
+      "02637e470023",
+      "a71e23a857a3"
+    ],
+    [
+      "e5af1a01b419",
+      "bf33fee260e9"
+    ],
+    [
+      "67ab663a06d6",
+      "7ea3af86774c"
+    ],
+    [
+      "9a4af9a9ed74",
+      "b848970599cf"
+    ],
+    [
+      "9a4af9a9ed74",
+      "02637e470023",
+      "a71e23a857a3"
+    ],
+    [
+      "e5af1a01b419",
+      "bf33fee260e9",
+      "7ea3af86774c"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "World Models and Video Generation",
+      "description": "Interactive video world models, action-conditioned generation, streaming video diffusion, and agent-driven evaluation.",
+      "item_count": 9,
+      "example_items": [],
+      "importance": 78.0
+    },
+    {
+      "name": "Architecture and Efficiency",
+      "description": "Linear/hybrid attention, recurrent transformers, latent feedback, visual token pruning, and thought-level search.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 76.0
+    },
+    {
+      "name": "LLM Agents and Self-Improvement",
+      "description": "Agent harnesses, harness evolution, code agents, scientific agents, and skill extraction.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 74.0
+    },
+    {
+      "name": "Scientific AI",
+      "description": "Foundation models and omni-modal agentic systems targeting scientific reasoning and discovery.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 74.0
+    },
+    {
+      "name": "AI Safety, Calibration, and Alignment",
+      "description": "Reward hacking in review, miscalibrated reasoning, refusal training, and instruction-tuning side effects.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 73.0
+    },
+    {
+      "name": "Memory Systems for Long-Horizon Agents",
+      "description": "Persistent memory for world models, spatial experience memory, and segment-level memory consolidation.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 71.0
+    },
+    {
+      "name": "Benchmarking and Evaluation",
+      "description": "World model, robotics, and human-to-robot benchmarks plus LLM routing benchmarks.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "AI Impact and Empirical Measurement",
+      "description": "Studies and analyses quantifying the real-world effects of AI on discovery and research output.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "AI Safety and Adversarial Robustness",
+      "description": "Work probing vulnerabilities in AI systems, including novel attack vectors and defenses.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Frontier Language Models",
+      "description": "Analysis and commentary on state-of-the-art large language models from major and Chinese labs.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 34,
+  "items": [
+    {
+      "id": "cad87ae4eb2e",
+      "title": "Intern-S2-Preview: Scientific Agentic Foundation Model",
+      "content": "Intern-S2-Preview is a scientific agentic foundation model series that integrates multimodal pre-training, multi-task reinforcement learning, and memory-augmented extensions to support long-horizon scientific reasoning and forecasting.",
+      "url": "https://huggingface.co/papers/2608.13505",
+      "author": "Lei Bai, Jiaqi Cao, Chiyu Chen, Guanzhou Chen, Kai Chen, Guangran Cheng, Erfei Cui, Xuanlang Dai, Shengyuan Ding, Shangheng Du, Yanhui Duan, Yue Fan, Youqing Fang, Quan Gan, Yuanyuan Gao, Jiaye Ge, Lixin Gu, Yuzhe Gu, Qipeng Guo, Junjun He, Xin Hong, Ming Hu, Zhouqi Hua, Haian Huang, Junhao Huang, Zixian Huang, Minxi Jin, Lingkai Kong, Alexander Lam, Zehao Li, Zonglin Li, Tianhao Liang, Dahua Lin, Junyao Lin, Tianyang Lin, Zhouhan Lin, Jiangning Liu, Jin Liu, Kuikun Liu, Wenran Liu, Yifei Liu, Yuhong Liu, Yuhong Liu, Zhoumianze Liu, Ziyan Liu, Ziyu Liu, Haijun Lv, Han Lv, Chengqi Lyu, Le Ma, Ningsheng Ma, Zerun Ma, Haoyang Peng, Runyu Peng, Jifei Shan, Zixin Shang, Kou Shi, Xiang Shi, Qisheng Su, Xuerui Su, Hao Sun, Xiao Sun, Yanan Sun, Yu Sun, Huanze Tang, Yinghao Tang, Wenhui Tian, Zhongbo Tian, Bingli Wang, Haomin Wang, Jiarui Wang, Jingzhi Wang, Rui Wang, Xiquan Wang, Yi Wang, Zhecan Wang, Ziyi Wang, Zun Wang, Rubin Wei, Lianyi Wu, Wen Wu, Yue Wu, Yuhan Wu, Zhenyu Wu, Zijian Wu, Shuhao Xing, Jun Xu, Xingle Xu, Xuenan Xu, Xiangchao Yan, Ziang Yan, Bowen Yang, Danni Yang, Lin Yang, Zhiqi Yang, Qian Yao, Haochen Ye, Peng Ye, Jinhui Yin, Jiashuo Yu, Dingbo Yuan, Fei Yuan, Yuhang Zang, Bo Zhang, Chao Zhang, Chen Zhang, Hongjie Zhang, Junming Zhang, Wenlong Zhang, Wenwei Zhang, Yiming Zhang, Zhuo Zhang, Ziyang Zhang, Haiteng Zhao, Penghao Zhao, Yibo Zhao, Zhonghan Zhao, Zhihang Zhong, Bowen Zhou, Peiheng Zhou, Xin Zhou, Xinyu Zhou, Yunhua Zhou, Dongsheng Zhu, Yicheng Zou",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "multimodal pre-training",
+        "supervised fine-tuning",
+        "multi-task reinforcement learning",
+        "agentic RL",
+        "on-policy distillation",
+        "partial rollout",
+        "off-policy correction",
+        "adaptive length regularization",
+        "online speculative decoding",
+        "robust multi-task optimization",
+        "trace-aware experience assembly",
+        "time series modelling",
+        "Memory Decoder",
+        "memory-augmented"
+      ],
+      "summary": "Intern-S2-Preview is a scientific agentic foundation model series combining multimodal pre-training, multi-task reinforcement learning, and memory-augmented extensions for long-horizon scientific reasoning and forecasting. The work continues the Intern lineage's emphasis on domain-specialized generalists.",
+      "importance_score": 80.0,
+      "reasoning": "Large author list with strong institutional backing, integrated multimodal+RL+memory recipe, and explicit focus on long-horizon scientific workflows. Preview status and limited public benchmarks constrain scoring.",
+      "themes": [
+        "Foundation Models",
+        "Reinforcement Learning",
+        "Scientific AI",
+        "Multimodal"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13505",
+        "category_name": "multimodal pre-training, supervised fine-tuning, multi-task reinforcement learning",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13505"
+        },
+        "huggingface": {
+          "upvotes": 43,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Intern-S2-Preview is a scientific agentic foundation model series combining multimodal pre-training, multi-task reinforcement learning, and memory-augmented extensions for long-horizon scientific reasoning and forecasting. The work continues the Intern lineage's emphasis on domain-specialized generalists.</p>",
+      "content_html": "<p>Intern-S2-Preview is a scientific agentic foundation model series that integrates multimodal pre-training, multi-task reinforcement learning, and memory-augmented extensions to support long-horizon scientific reasoning and forecasting.</p>"
+    },
+    {
+      "id": "02637e470023",
+      "title": "Full-bandwidth transformer",
+      "content": "Full-bandwidth transformers use latent feedback of top-layer hidden states to improve reasoning and efficiency without altering the core architecture.",
+      "url": "https://huggingface.co/papers/2608.08888",
+      "author": "Xi Wang, Ziyang Cai, Zheng Zhan, Harry Dong, Ying Fan, Gustavo de Rosa, Tim Pearce, John Langford",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "autoregressive transformers",
+        "dense attention",
+        "latent feedback",
+        "gated linear unit",
+        "KV cache",
+        "scheduled multi-pass objective",
+        "teacher forcing",
+        "full-bandwidth transformer"
+      ],
+      "summary": "Full-bandwidth transformers use latent feedback paths that expose top-layer hidden states back to earlier layers without altering the core autoregressive architecture. The reported gains target reasoning quality and efficiency simultaneously.",
+      "importance_score": 78.0,
+      "reasoning": "Architectural novelty is meaningful: latent feedback in dense attention is a relatively unexplored design axis. Author list includes Tim Pearce and John Langford, lending credibility.",
+      "themes": [
+        "Architecture",
+        "Transformer Design",
+        "Reasoning"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.08888",
+        "category_name": "autoregressive transformers, dense attention, latent feedback",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.08888"
+        },
+        "huggingface": {
+          "upvotes": 9,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-09T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Full-bandwidth transformers use latent feedback paths that expose top-layer hidden states back to earlier layers without altering the core autoregressive architecture. The reported gains target reasoning quality and efficiency simultaneously.</p>",
+      "content_html": "<p>Full-bandwidth transformers use latent feedback of top-layer hidden states to improve reasoning and efficiency without altering the core architecture.</p>"
+    },
+    {
+      "id": "a71e23a857a3",
+      "title": "Maglev: Sliding Recurrent Memory",
+      "content": "A recurrent Transformer with fixed-size memory and coupled prefiller-decoder training improves long-context modeling while enabling efficient parallel training and reduced inference cost.",
+      "url": "https://huggingface.co/papers/2608.02870",
+      "author": "Bo Liu, Qiang Liu",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "recurrent Transformer",
+        "sliding-window attention",
+        "full attention",
+        "memory consistency loss",
+        "recurrent K/V injection",
+        "prefiller",
+        "decoder",
+        "parameter sharing"
+      ],
+      "summary": "Maglev is a recurrent Transformer with fixed-size sliding memory that couples prefiller and decoder training to combine long-context modeling with efficient parallel training. It targets the inference cost vs. context-length tradeoff.",
+      "importance_score": 76.0,
+      "reasoning": "Recurrent + sliding-window hybrid is a timely architecture pattern. The coupled prefiller-decoder training recipe is a concrete engineering contribution.",
+      "themes": [
+        "Architecture",
+        "Long Context",
+        "Efficiency"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.02870",
+        "category_name": "recurrent Transformer, sliding-window attention, full attention",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.02870"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-05T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Maglev is a recurrent Transformer with fixed-size sliding memory that couples prefiller and decoder training to combine long-context modeling with efficient parallel training. It targets the inference cost vs. context-length tradeoff.</p>",
+      "content_html": "<p>A recurrent Transformer with fixed-size memory and coupled prefiller-decoder training improves long-context modeling while enabling efficient parallel training and reduced inference cost.</p>"
+    },
+    {
+      "id": "7ea3af86774c",
+      "title": "DreamX-Phi 1.0: Action-Conditioned Video World Model for Robotic Manipulation",
+      "content": "DreamX-Phi 1.0 is an action-conditioned video world model for robotic manipulation that uses geometric attention encoding, depth estimation, object masks with a frozen teacher, and distillation to generate faithful future observations.",
+      "url": "https://huggingface.co/papers/2608.13489",
+      "author": "DreamX Team, Rui Chen, Xiangxiang Chu, Geng Li, Jifan Li, Qingfeng Shi, Datao Tang, Jing Tang, Jun Wang, Pengfei Zhang",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "action-conditioned video world model",
+        "SE(3) transformations",
+        "PRoPE-style geometric encoding",
+        "depth branch",
+        "SAM3 masks",
+        "V-JEPA teacher",
+        "distribution-matching distillation"
+      ],
+      "summary": "DreamX-Phi 1.0 is an action-conditioned video world model for robotic manipulation that injects SE(3) geometric encoding via PRoPE-style attention, augmented with depth estimation and object masks from a frozen teacher. Distillation enables faithful prediction of future observations from action sequences.",
+      "importance_score": 75.0,
+      "reasoning": "Combines geometric encoding, teacher distillation, and depth conditioning in a single system - a meaningful recipe for action-conditioned robotics world models. Strong relevance to embodied AI.",
+      "themes": [
+        "World Models",
+        "Robotics",
+        "Video Generation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13489",
+        "category_name": "action-conditioned video world model, SE(3) transformations, PRoPE-style geometric encoding",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13489"
+        },
+        "huggingface": {
+          "upvotes": 79,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/AMAP-ML/DreamX-Phi"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>DreamX-Phi 1.0 is an action-conditioned video world model for robotic manipulation that injects SE(3) geometric encoding via PRoPE-style attention, augmented with depth estimation and object masks from a frozen teacher. Distillation enables faithful prediction of future observations from action sequences.</p>",
+      "content_html": "<p>DreamX-Phi 1.0 is an action-conditioned video world model for robotic manipulation that uses geometric attention encoding, depth estimation, object masks with a frozen teacher, and distillation to generate faithful future observations.</p>"
+    },
+    {
+      "id": "bf33fee260e9",
+      "title": "Knowing When to Quit: Diagnosing and Training LLMs to Abort Futile Reasoning",
+      "content": "CaRL uses reinforcement learning with refusal incentives and hindsight augmentation to reduce futile reasoning in large language models while preserving task performance.",
+      "url": "https://huggingface.co/papers/2607.29211",
+      "author": "Xinyan Guan, Jiali Zeng, Chunlei Xin, Yaojie Lu, Hongyu Lin, Xianpei Han, Le Sun, Fandong Meng",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "futile reasoning",
+        "capability overreach",
+        "miscalibration",
+        "specious reasoning",
+        "CaRL",
+        "capability-aligned reinforcement learning",
+        "reward shaping",
+        "hindsight refusal augmentation"
+      ],
+      "summary": "CaRL trains LLMs to recognize and abort futile reasoning using RL with refusal incentives and hindsight augmentation, preserving task performance. It targets the overreach problem where models continue reasoning past the point of usefulness.",
+      "importance_score": 75.0,
+      "reasoning": "Timely alignment-relevant contribution: miscalibrated reasoning is a real safety/UX issue. Refusal-incentive + hindsight augmentation is a clean RL design.",
+      "themes": [
+        "AI Safety",
+        "Reasoning",
+        "Reinforcement Learning",
+        "Calibration"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2607.29211",
+        "category_name": "futile reasoning, capability overreach, miscalibration",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2607.29211"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-07-31T00:00:00.000Z",
+          "github_repo": "https://github.com/icip-cas/Knowing-When-to-Quit"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>CaRL trains LLMs to recognize and abort futile reasoning using RL with refusal incentives and hindsight augmentation, preserving task performance. It targets the overreach problem where models continue reasoning past the point of usefulness.</p>",
+      "content_html": "<p>CaRL uses reinforcement learning with refusal incentives and hindsight augmentation to reduce futile reasoning in large language models while preserving task performance.</p>"
+    },
+    {
+      "id": "e5af1a01b419",
+      "title": "Thought-Level Beam Search for Reasoning",
+      "content": "Gambit improves reasoning model efficiency by using thought-level beam search to dynamically allocate compute to promising reasoning traces under fixed hardware budgets.",
+      "url": "https://huggingface.co/papers/2608.08020",
+      "author": "Lijie Yang, Hongyin Luo, Jiawei Zhao, Tri Dao, Ravi Netravali",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "test-time compute scaling",
+        "large reasoning models",
+        "constrained compute allocation",
+        "partial trajectories",
+        "parallel sampling",
+        "subtractive pruning",
+        "thought-level beam search",
+        "Gambit",
+        "hidden states",
+        "hardware utilization"
+      ],
+      "summary": "Gambit applies beam search at the level of reasoning thoughts rather than tokens, dynamically allocating compute to promising traces under fixed hardware budgets. It targets efficient test-time compute scaling for reasoning models.",
+      "importance_score": 74.0,
+      "reasoning": "Important direction for reasoning efficiency; thought-level search is a natural unit for LRMs. Credible author list (Luo, Dao, Netravali).",
+      "themes": [
+        "Reasoning",
+        "Test-Time Compute",
+        "Search"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.08020",
+        "category_name": "test-time compute scaling, large reasoning models, constrained compute allocation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.08020"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-11T00:00:00.000Z",
+          "github_repo": "https://github.com/Dao-AILab/gambit-parallel-reasoning"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Gambit applies beam search at the level of reasoning thoughts rather than tokens, dynamically allocating compute to promising traces under fixed hardware budgets. It targets efficient test-time compute scaling for reasoning models.</p>",
+      "content_html": "<p>Gambit improves reasoning model efficiency by using thought-level beam search to dynamically allocate compute to promising reasoning traces under fixed hardware budgets.</p>"
+    },
+    {
+      "id": "b848970599cf",
+      "title": "Spatial Memory Agent: Experience-Grounded Procedure Memory for Spatial Intelligence",
+      "content": "A frozen vision-language model improves spatial reasoning by self-evolving through verified experience, reflection, and reusable memory retrieval without parameter updates or external tools.",
+      "url": "https://huggingface.co/papers/2608.12743",
+      "author": "Haokai Zhang, Yuhang Ding, Yunshu Zhou, Xinze Du, Shengtao Zhang, Zhiyue Zhao, Yuling Xi, Hao Chen",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "parameter-update-free self-evolution",
+        "verifier-guided reflection",
+        "Transfer Reliability Score",
+        "experience-grounded runtime framework",
+        "spatial memory agent",
+        "read-only deployment"
+      ],
+      "summary": "A frozen vision-language model improves spatial reasoning through a parameter-update-free self-evolution loop: verifier-guided reflection builds an experience memory that is retrieved at test time. Transfer Reliability Score filters low-confidence experience from being stored.",
+      "importance_score": 73.0,
+      "reasoning": "Notable demonstration that frozen VLMs can still self-improve via verified memory, avoiding costly fine-tuning. The reliability gating is a meaningful contribution to the test-time-evolution literature.",
+      "themes": [
+        "Spatial Reasoning",
+        "Memory Systems",
+        "Test-Time Adaptation"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12743",
+        "category_name": "parameter-update-free self-evolution, verifier-guided reflection, Transfer Reliability Score",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12743"
+        },
+        "huggingface": {
+          "upvotes": 30,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A frozen vision-language model improves spatial reasoning through a parameter-update-free self-evolution loop: verifier-guided reflection builds an experience memory that is retrieved at test time. Transfer Reliability Score filters low-confidence experience from being stored.</p>",
+      "content_html": "<p>A frozen vision-language model improves spatial reasoning by self-evolving through verified experience, reflection, and reusable memory retrieval without parameter updates or external tools.</p>"
+    },
+    {
+      "id": "8b49c4f51f9b",
+      "title": "Massive Activations in Hybrid Linear Attention Large Language Models: Pre-Attention Spikes and Inter-Spike Plateaus",
+      "content": "Massive activations in hybrid linear-attention LLMs exhibit pre-attention spikes and inter-spike plateaus governed by cancellation timing, with morphology recovering at full-attention limits.",
+      "url": "https://huggingface.co/papers/2608.12149",
+      "author": "Zunhai Su, Bohan Sun, Xialie Zhuang, Shuibai Zhang, He Xiao, Jing Xiong, Hengyuan Zhang, Zhongzhu Zhou, Tiantian Zhang, Ngai Wong, Chuan-Wei Kuo",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "massive activations",
+        "layer-interleaved HLA LLMs",
+        "pre-attention spikes",
+        "inter-spike plateaus",
+        "linear attention",
+        "full attention",
+        "GDN",
+        "output gating",
+        "systematic-outlier analysis"
+      ],
+      "summary": "Analyzes massive activation patterns in hybrid linear-attention LLMs, identifying pre-attention spikes and inter-spike plateaus whose morphology depends on cancellation timing and recovers the classical shape at full-attention limits. The work provides mechanistic insight into an emerging architecture class.",
+      "importance_score": 73.0,
+      "reasoning": "Mechanistic interpretability for a timely architecture (HLA / linear attention hybrids). Strong theoretical framing; relevance will grow as hybrid-attention models proliferate.",
+      "themes": [
+        "Mechanistic Interpretability",
+        "Linear Attention",
+        "Architecture Analysis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12149",
+        "category_name": "massive activations, layer-interleaved HLA LLMs, pre-attention spikes",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12149"
+        },
+        "huggingface": {
+          "upvotes": 17,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": "https://github.com/StartluxLabs/Massive-Activations-HLA"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Analyzes massive activation patterns in hybrid linear-attention LLMs, identifying pre-attention spikes and inter-spike plateaus whose morphology depends on cancellation timing and recovers the classical shape at full-attention limits. The work provides mechanistic insight into an emerging architecture class.</p>",
+      "content_html": "<p>Massive activations in hybrid linear-attention LLMs exhibit pre-attention spikes and inter-spike plateaus governed by cancellation timing, with morphology recovering at full-attention limits.</p>"
+    },
+    {
+      "id": "67ab663a06d6",
+      "title": "OmniScientist: An Omni-Modal Omni-Discipline AI Scientist",
+      "content": "OmniScientist is an end-to-end omni-modal AI scientist that performs multidisciplinary research directly from heterogeneous raw evidence using autonomous agents and lifecycle-wide perception, improving evidence-grounded discovery across diverse scientific modalities.",
+      "url": "https://huggingface.co/papers/2608.13558",
+      "author": "Bobo Li, Hao Fei, Tianjie Ju, Mong-Li Lee, Wynne Hsu",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "omni-modal AI scientist",
+        "perception layer",
+        "autonomous agents",
+        "deterministic pipeline",
+        "idea checks",
+        "rigour checks",
+        "claim checks",
+        "raw evidence",
+        "lifecycle-wide perception",
+        "multidisciplinary research"
+      ],
+      "summary": "OmniScientist is an end-to-end omni-modal AI scientist system that takes heterogeneous raw evidence and runs autonomous agents across the research lifecycle with lifecycle-wide perception. It targets evidence-grounded scientific discovery across diverse modalities.",
+      "importance_score": 73.0,
+      "reasoning": "Ambitious system paper extending the AI-scientist paradigm to omni-modal inputs. Evaluation depth will determine its lasting impact.",
+      "themes": [
+        "Scientific AI",
+        "Agents",
+        "Multimodal"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13558",
+        "category_name": "omni-modal AI scientist, perception layer, autonomous agents",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13558"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>OmniScientist is an end-to-end omni-modal AI scientist system that takes heterogeneous raw evidence and runs autonomous agents across the research lifecycle with lifecycle-wide perception. It targets evidence-grounded scientific discovery across diverse modalities.</p>",
+      "content_html": "<p>OmniScientist is an end-to-end omni-modal AI scientist that performs multidisciplinary research directly from heterogeneous raw evidence using autonomous agents and lifecycle-wide perception, improving evidence-grounded discovery across diverse scientific modalities.</p>"
+    },
+    {
+      "id": "38855d8e7d9f",
+      "title": "Context-Matched Distillation: Teacher Causality for Autoregressive Video Distillation",
+      "content": "Context-Matched Distillation aligns teacher supervision with causal generation context for few-step autoregressive video models, improving control adherence and long-video quality.",
+      "url": "https://huggingface.co/papers/2608.13391",
+      "author": "Hmrishav Bandyopadhyay, Xuanchi Ren, Zijian Huang, Jay Zhangjie Wu, Tianshi Cao, Ruilong Li, Bryan Chu, Sanja Fidler, Yi-Zhe Song, Zian Wang",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "autoregressive video generation",
+        "few-step distillation",
+        "video distribution matching distillation",
+        "causal teacher",
+        "Context-Matched Distillation",
+        "Prefix Scoring",
+        "Prefix Corruption",
+        "camera-conditioned distillation"
+      ],
+      "summary": "Context-Matched Distillation aligns teacher supervision with the causal generation context of autoregressive video models, improving few-step video quality and control adherence. It targets the unique teacher-student mismatch in causal video generation.",
+      "importance_score": 73.0,
+      "reasoning": "Identifies and addresses a real mismatch problem in AR video distillation. Strong relevance as AR video models gain traction.",
+      "themes": [
+        "Video Generation",
+        "Distillation",
+        "Autoregressive Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13391",
+        "category_name": "autoregressive video generation, few-step distillation, video distribution matching distillation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13391"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Context-Matched Distillation aligns teacher supervision with the causal generation context of autoregressive video models, improving few-step video quality and control adherence. It targets the unique teacher-student mismatch in causal video generation.</p>",
+      "content_html": "<p>Context-Matched Distillation aligns teacher supervision with causal generation context for few-step autoregressive video models, improving control adherence and long-video quality.</p>"
+    },
+    {
+      "id": "9a4af9a9ed74",
+      "title": "LLMRouter: Unified Infrastructure for Developing, Evaluating, and Deploying LLM Routers",
+      "content": "LLM routing is formalized as a sequential decision process with a unified benchmark and modular infrastructure to compare and improve cost-effective model selection.",
+      "url": "https://huggingface.co/papers/2608.06867",
+      "author": "Tao Feng, Fangxu Yu, Haozhen Zhang, Zhongjie Dai, Liangqi Yuan, Zijie Lei, Weizhi Zhang, Kunlun Zhu, Haodong Yue, Keyang Xuan, Ge Liu, Jiaxuan You",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "LLM routing",
+        "context encoders",
+        "model encoders",
+        "scoring functions",
+        "decision rules",
+        "learning signals",
+        "multi-turn routing",
+        "personalized routing",
+        "xRouteBench",
+        "LLMRouter",
+        "learned routers",
+        "user-conditioned routing"
+      ],
+      "summary": "LLMRouter formalizes model routing as a sequential decision process and provides a unified benchmark plus modular infrastructure to compare and improve cost-effective LLM selection. It targets a real production pain point: choosing among many heterogeneous models under varying cost-quality constraints.",
+      "importance_score": 72.0,
+      "reasoning": "Practically impactful infrastructure paper with a clean formalization and benchmark. Routing is increasingly important as model fleets grow, but the novelty over prior routers is moderate.",
+      "themes": [
+        "LLM Routing",
+        "Inference Efficiency",
+        "Benchmarking"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.06867",
+        "category_name": "LLM routing, context encoders, model encoders",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.06867"
+        },
+        "huggingface": {
+          "upvotes": 91,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-07T00:00:00.000Z",
+          "github_repo": "https://github.com/ulab-uiuc/LLMRouter"
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LLMRouter formalizes model routing as a sequential decision process and provides a unified benchmark plus modular infrastructure to compare and improve cost-effective LLM selection. It targets a real production pain point: choosing among many heterogeneous models under varying cost-quality constraints.</p>",
+      "content_html": "<p>LLM routing is formalized as a sequential decision process with a unified benchmark and modular infrastructure to compare and improve cost-effective model selection.</p>"
+    },
+    {
+      "id": "097bf56c41f8",
+      "title": "DarwinX: Evolving Agent Harnesses Through Natural Selection",
+      "content": "DarwinX evolves agent harnesses via population selection with frozen models, improving verified performance across benchmarks without benchmark-specific patches.",
+      "url": "https://huggingface.co/papers/2608.07545",
+      "author": "Yifan Zhang, Yutong Dai, Juntao Tan, Luyu Yang, Rishi Mullur, Thai Hoang, Zhiyuan Hu, James Zhu, Phil Mui, Silvio Savarese, Ran Xu, Zeyuan Chen",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "LLM agent",
+        "harness",
+        "self-improvement",
+        "population selection",
+        "preserve-and-extend contract",
+        "archive",
+        "recombination",
+        "verifier",
+        "DarwinX"
+      ],
+      "summary": "DarwinX applies a population-selection evolutionary loop to agent harnesses while keeping the underlying model frozen, yielding verified gains across benchmarks without hand-crafted per-benchmark patches. The framing as 'natural selection over harnesses' is a clean abstraction.",
+      "importance_score": 72.0,
+      "reasoning": "Interesting meta-level contribution: harness evolution decoupled from model training. Useful for deployment, but evaluation breadth and theoretical claims are limited.",
+      "themes": [
+        "LLM Agents",
+        "Self-Improvement",
+        "Evolutionary Search"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.07545",
+        "category_name": "LLM agent, harness, self-improvement",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.07545"
+        },
+        "huggingface": {
+          "upvotes": 59,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-07-31T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>DarwinX applies a population-selection evolutionary loop to agent harnesses while keeping the underlying model frozen, yielding verified gains across benchmarks without hand-crafted per-benchmark patches. The framing as 'natural selection over harnesses' is a clean abstraction.</p>",
+      "content_html": "<p>DarwinX evolves agent harnesses via population selection with frozen models, improving verified performance across benchmarks without benchmark-specific patches.</p>"
+    },
+    {
+      "id": "54fed7c449fd",
+      "title": "PlayWorld: Benchmarking World Models with Agent Players over Long-Horizon Objectives",
+      "content": "PlayWorld benchmarks interactive video world models by using multi-modal agents to pursue long-horizon objectives, evaluating geometry consistency, interaction fidelity, and state evolution.",
+      "url": "https://huggingface.co/papers/2608.13552",
+      "author": "Kaixin Ding, Xi Chen, Minghong Cai, Zhiyuan Xu, Yiyang Wang, Yuxiang Lu, Junyi Li, Shuyang Chen, Yuan Gao, Xin Tao, Pengfei Wan, Hengshuang Zhao",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "world models",
+        "multi-modal Agent Players",
+        "PlayWorld",
+        "geometry consistency",
+        "interaction fidelity",
+        "out-of-sight evolution",
+        "insight evolution"
+      ],
+      "summary": "PlayWorld evaluates interactive video world models by deploying multi-modal agents that pursue long-horizon objectives, measuring geometry consistency, interaction fidelity, and state evolution. It shifts world-model evaluation from passive observation to agent-driven testing.",
+      "importance_score": 72.0,
+      "reasoning": "Methodologically valuable benchmark: agent-driven evaluation probes properties that static prompts miss. Useful for the field but lacks broad leaderboard comparison at launch.",
+      "themes": [
+        "World Models",
+        "Benchmarking",
+        "Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13552",
+        "category_name": "world models, multi-modal Agent Players, PlayWorld",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13552"
+        },
+        "huggingface": {
+          "upvotes": 35,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/kxding/PlayWorld"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>PlayWorld evaluates interactive video world models by deploying multi-modal agents that pursue long-horizon objectives, measuring geometry consistency, interaction fidelity, and state evolution. It shifts world-model evaluation from passive observation to agent-driven testing.</p>",
+      "content_html": "<p>PlayWorld benchmarks interactive video world models by using multi-modal agents to pursue long-horizon objectives, evaluating geometry consistency, interaction fidelity, and state evolution.</p>"
+    },
+    {
+      "id": "995c0eae74dd",
+      "title": "LycheeMemory V2: Efficient Long-Term Memory for LLM Agents via Semantic Segment-Level Consolidation",
+      "content": "LycheeMemory V2 improves long-term agent memory by batching interactions into semantic segments for efficient consolidation and structured retrieval, reducing construction costs while maintaining high accuracy.",
+      "url": "https://huggingface.co/papers/2608.12990",
+      "author": "Dongfang Li, Zixuan Liu, Junmai Wang, Jiahe Huang, Fuhao Li, Bonian Jia, Baotian Hu, Min Zhang",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "long-horizon LLM agents",
+        "long-term memory",
+        "semantic segment-level consolidation",
+        "typed memory records",
+        "query-planned evidence retrieval",
+        "LoCoMo",
+        "LongMemEval-S"
+      ],
+      "summary": "LycheeMemory V2 batches agent interactions into semantic segments for efficient consolidation and structured retrieval, reducing memory-construction cost while preserving long-horizon accuracy. It targets the practical cost of long-term agent memory at scale.",
+      "importance_score": 71.0,
+      "reasoning": "Solid engineering contribution with clear cost-quality tradeoffs documented. V2 implies meaningful iteration over the original.",
+      "themes": [
+        "Memory Systems",
+        "Agents",
+        "Efficiency"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12990",
+        "category_name": "long-horizon LLM agents, long-term memory, semantic segment-level consolidation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12990"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/LycheeMem/LycheeMem"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LycheeMemory V2 batches agent interactions into semantic segments for efficient consolidation and structured retrieval, reducing memory-construction cost while preserving long-horizon accuracy. It targets the practical cost of long-term agent memory at scale.</p>",
+      "content_html": "<p>LycheeMemory V2 improves long-term agent memory by batching interactions into semantic segments for efficient consolidation and structured retrieval, reducing construction costs while maintaining high accuracy.</p>"
+    },
+    {
+      "id": "40b7cb8a1fdc",
+      "title": "How Can Rhetoric Reward-Hack AI Reviewers? Dissecting Rhetorical Sensitivity in AI-Based Peer Review",
+      "content": "Rhetorical framing significantly biases AI scientific review scores in structured ways, with effects shaped by reviewer identity, score range, and evaluation strictness rather than rewriting complexity.",
+      "url": "https://huggingface.co/papers/2608.08975",
+      "author": "Ming Li, Chenguang Wang, Xirui Li, Xinyue Zeng, Dianqi Li, Peng Shi, Dawei Zhou, Tianyi Zhou",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "reward hacking",
+        "rhetorical dimensions",
+        "LLM reviewers",
+        "evidence framing",
+        "novelty stance",
+        "scope framing",
+        "joint rewriting",
+        "recursive rewriting",
+        "reviewer-guided rewriting",
+        "strict review protocol"
+      ],
+      "summary": "This study dissects how rhetorical framing systematically biases LLM scientific peer review scores, with effects shaped by reviewer identity, score range, and strictness rather than by rewriting complexity. It provides an empirical map of reward-hacking surfaces in AI-assisted review.",
+      "importance_score": 70.0,
+      "reasoning": "Important empirical finding for AI-assisted peer review integrity; well-scoped analysis. Limited by dataset size and reviewer model coverage, but the message is actionable.",
+      "themes": [
+        "AI Safety",
+        "Reward Hacking",
+        "Evaluation",
+        "LLM Reviewers"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.08975",
+        "category_name": "reward hacking, rhetorical dimensions, LLM reviewers",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.08975"
+        },
+        "huggingface": {
+          "upvotes": 39,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-10T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>This study dissects how rhetorical framing systematically biases LLM scientific peer review scores, with effects shaped by reviewer identity, score range, and strictness rather than by rewriting complexity. It provides an empirical map of reward-hacking surfaces in AI-assisted review.</p>",
+      "content_html": "<p>Rhetorical framing significantly biases AI scientific review scores in structured ways, with effects shaped by reviewer identity, score range, and evaluation strictness rather than rewriting complexity.</p>"
+    },
+    {
+      "id": "88886160806e",
+      "title": "SKILLER: Language-Level Reinforcement Learning for Reusable Skill Extraction in Small Language Models",
+      "content": "SKILLER is a reinforcement learning framework that automatically generates tailored skills for small open-source models to reduce inference costs while maintaining high task performance.",
+      "url": "https://huggingface.co/papers/2608.10538",
+      "author": "Chenhao Dang, Siyuan Xiong, Conghui He, Weijia Li",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "agent skills",
+        "reinforcement learning",
+        "natural-language-driven RL",
+        "actor-critic",
+        "small-model agent system",
+        "SKILLER",
+        "open-source models",
+        "skill generation"
+      ],
+      "summary": "SKILLER is a reinforcement learning framework that automatically generates natural-language skills for small open-source models, targeting cost-effective deployment while preserving task performance. The skills are language-level, making them inspectable and reusable.",
+      "importance_score": 70.0,
+      "reasoning": "Pragmatic contribution for the small-model deployment ecosystem. RL-driven skill extraction is a useful addition to prompt/distillation toolkits.",
+      "themes": [
+        "Reinforcement Learning",
+        "Small Language Models",
+        "Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.10538",
+        "category_name": "agent skills, reinforcement learning, natural-language-driven RL",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.10538"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-11T00:00:00.000Z",
+          "github_repo": "https://github.com/DANG-ai/SKILLER"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>SKILLER is a reinforcement learning framework that automatically generates natural-language skills for small open-source models, targeting cost-effective deployment while preserving task performance. The skills are language-level, making them inspectable and reusable.</p>",
+      "content_html": "<p>SKILLER is a reinforcement learning framework that automatically generates tailored skills for small open-source models to reduce inference costs while maintaining high task performance.</p>"
+    },
+    {
+      "id": "79791986df1b",
+      "title": "Hybrid-Policy Self-Editing for Composable Unstructured Knowledge Editing",
+      "content": "HPSE improves unstructured knowledge editing by distilling from hybrid rollouts that insert missing facts into the model's reasoning paths, enabling composable multi-hop reasoning.",
+      "url": "https://huggingface.co/papers/2608.11660",
+      "author": "Tianci Liu, Zihan Dong, Tianchun Li, Yi-Chung Chen, Qiming Cao, Xingchen Wang, Shiyang Wang, Zichen Miao, Linjun Zhang, Haoyu Wang, Jing Gao",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "large language models",
+        "knowledge editing",
+        "unstructured knowledge editing",
+        "composability",
+        "self-distillation",
+        "in-context learning",
+        "hybrid rollout",
+        "on-policy distillation",
+        "multi-hop reasoning"
+      ],
+      "summary": "HPSE improves unstructured knowledge editing by distilling from hybrid rollouts that explicitly insert missing facts into the model's reasoning paths, enabling composable multi-hop edits. The hybrid-rollout training signal is the main contribution.",
+      "importance_score": 69.0,
+      "reasoning": "Addresses a known weakness in knowledge editing (composability over unstructured text). Methodologically clean but scope is limited.",
+      "themes": [
+        "Knowledge Editing",
+        "Language Models"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11660",
+        "category_name": "large language models, knowledge editing, unstructured knowledge editing",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11660"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>HPSE improves unstructured knowledge editing by distilling from hybrid rollouts that explicitly insert missing facts into the model's reasoning paths, enabling composable multi-hop edits. The hybrid-rollout training signal is the main contribution.</p>",
+      "content_html": "<p>HPSE improves unstructured knowledge editing by distilling from hybrid rollouts that insert missing facts into the model's reasoning paths, enabling composable multi-hop reasoning.</p>"
+    },
+    {
+      "id": "1bd5f76e0ca5",
+      "title": "AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design",
+      "content": "AutoDesign uses a meta-harness optimizer to recursively improve a code agent for structured media generation, achieving state-of-the-art results on paper-to-poster synthesis.",
+      "url": "https://huggingface.co/papers/2608.13560",
+      "author": "Yaxin Luo, Haobin Jiang, Jialv Zou, Xu Huang, Wenhao Yan, Haodong Li, Zhengrong Yue, Jing Li, Xiaofu Chen, Xiaohan Zhao, Jiacheng Liu, Jiacheng Cui, Zhiqiang Shen, Xiaotong Li",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "meta-harness optimizer",
+        "code agent",
+        "DesignHarness",
+        "rollout feedback",
+        "long-horizon agentic process"
+      ],
+      "summary": "AutoDesign uses a meta-harness optimizer that recursively improves a code agent for structured media generation, claiming state-of-the-art on paper-to-poster synthesis. The recursive harness-improvement loop is the central technical idea.",
+      "importance_score": 68.0,
+      "reasoning": "Narrow but well-executed: a clean meta-harness pattern applied to a constrained task. SOTA on one benchmark; generality across other design tasks remains to be shown.",
+      "themes": [
+        "Agents",
+        "Meta-Learning",
+        "Code Generation"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13560",
+        "category_name": "meta-harness optimizer, code agent, DesignHarness",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13560"
+        },
+        "huggingface": {
+          "upvotes": 33,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/Yaxin9Luo/AutoDesign"
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>AutoDesign uses a meta-harness optimizer that recursively improves a code agent for structured media generation, claiming state-of-the-art on paper-to-poster synthesis. The recursive harness-improvement loop is the central technical idea.</p>",
+      "content_html": "<p>AutoDesign uses a meta-harness optimizer to recursively improve a code agent for structured media generation, achieving state-of-the-art results on paper-to-poster synthesis.</p>"
+    },
+    {
+      "id": "ae809196ae86",
+      "title": "LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time",
+      "content": "LiveAnimate enables real-time, long-form pose-driven human animation via a 14B-parameter video diffusion transformer with specialized training, bounded attention caching, and sequence parallelism.",
+      "url": "https://huggingface.co/papers/2608.11745",
+      "author": "Yuxuan Zhang, Haozhong Xiong, Yubo Huang, Jiayi Song, Jinpeng Yu, Haofan Wang, Jiaming Liu, Ruihua Huang, Liwei Wang",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Diffusion Transformer (DiT)",
+        "Reference-Anchored Teacher-Forcing Adaptation",
+        "Block-wise Self-Forcing Distillation",
+        "Pose-Retrieval Sink Attention (PR-Sink)",
+        "Static Sink",
+        "Dynamic Sink",
+        "Rolling Window",
+        "Ulysses sequence parallelism",
+        "operator fusion"
+      ],
+      "summary": "LiveAnimate is a 14B-parameter pose-driven video diffusion transformer supporting real-time long-form human animation, using bounded attention caching and sequence parallelism for streaming. It targets the practical bottleneck of long-form stable character animation.",
+      "importance_score": 68.0,
+      "reasoning": "Solid systems contribution for long-form streaming video; the engineering details (block-wise distillation, sequence parallelism) matter more than the algorithmic novelty.",
+      "themes": [
+        "Video Generation",
+        "Diffusion Transformers",
+        "Streaming"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11745",
+        "category_name": "Diffusion Transformer (DiT), Reference-Anchored Teacher-Forcing Adaptation, Block-wise Self-Forcing Distillation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11745"
+        },
+        "huggingface": {
+          "upvotes": 11,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/liveanimate/LiveAnimate"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LiveAnimate is a 14B-parameter pose-driven video diffusion transformer supporting real-time long-form human animation, using bounded attention caching and sequence parallelism for streaming. It targets the practical bottleneck of long-form stable character animation.</p>",
+      "content_html": "<p>LiveAnimate enables real-time, long-form pose-driven human animation via a 14B-parameter video diffusion transformer with specialized training, bounded attention caching, and sequence parallelism.</p>"
+    },
+    {
+      "id": "fc272a37d41e",
+      "title": "AVA-Encoder: Towards Agent-Native Video Representation Learning",
+      "content": "AVA-Encoder learns structured video representations via agentic auto-encoding using knowledge graphs to enable cinematic video generation and reasoning with reduced token usage.",
+      "url": "https://huggingface.co/papers/2608.12313",
+      "author": "Chuyue Li, Jinpeng Yu, Haozhe Wang, Tian Xueyun, Zhijing Zhang, Bingnan Li, Shuqi Gu, Kan Ren, Jiaming Liu, Ruihua Hua",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Agentic Video Auto-Encoder",
+        "AVA-Encoder",
+        "agent-native video representations",
+        "knowledge graph",
+        "agentic auto-encoding",
+        "textual-gradient optimization",
+        "Data-Independent Encoding Policy Pseudo-Training",
+        "Data-Dependent KG Representation Refinement"
+      ],
+      "summary": "AVA-Encoder learns structured video representations through agentic auto-encoding guided by knowledge graphs, enabling cinematic video generation and reasoning with reduced token usage. The 'agent-native' framing ties representation learning to downstream agent utility.",
+      "importance_score": 67.0,
+      "reasoning": "Interesting conceptual contribution linking KG-driven autoencoders to agent downstream tasks. Empirical scope appears limited relative to the conceptual ambition.",
+      "themes": [
+        "Video Generation",
+        "Representation Learning",
+        "Knowledge Graphs"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12313",
+        "category_name": "Agentic Video Auto-Encoder, AVA-Encoder, agent-native video representations",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12313"
+        },
+        "huggingface": {
+          "upvotes": 6,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>AVA-Encoder learns structured video representations through agentic auto-encoding guided by knowledge graphs, enabling cinematic video generation and reasoning with reduced token usage. The 'agent-native' framing ties representation learning to downstream agent utility.</p>",
+      "content_html": "<p>AVA-Encoder learns structured video representations via agentic auto-encoding using knowledge graphs to enable cinematic video generation and reasoning with reduced token usage.</p>"
+    },
+    {
+      "id": "e836414a4796",
+      "title": "Are You Sure You're Sure? On the Impact of Instruction Tuning on Confidence and Lexical Diversity",
+      "content": "Instruction tuning changes model confidence and reduces rationale diversity without improving calibration, indicating distinct effects on reasoning and certainty.",
+      "url": "https://huggingface.co/papers/2608.13430",
+      "author": "Irina Proskurina, Mayank Kumar, Oyindolapo O. Komolafe",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "instruction-tuned language models",
+        "verbalized overconfidence",
+        "question answering",
+        "lexical diversity",
+        "rationale diversity",
+        "likelihood-based calibration"
+      ],
+      "summary": "Empirically analyzes how instruction tuning changes LLM confidence verbalization and rationale diversity in QA, finding that instruction tuning reduces rationale diversity without improving calibration. It separates effects on reasoning versus certainty.",
+      "importance_score": 67.0,
+      "reasoning": "Useful diagnostic study for understanding SFT side effects; methodology is straightforward but the findings are notable.",
+      "themes": [
+        "Instruction Tuning",
+        "Calibration",
+        "Evaluation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13430",
+        "category_name": "instruction-tuned language models, verbalized overconfidence, question answering",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13430"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Empirically analyzes how instruction tuning changes LLM confidence verbalization and rationale diversity in QA, finding that instruction tuning reduces rationale diversity without improving calibration. It separates effects on reasoning versus certainty.</p>",
+      "content_html": "<p>Instruction tuning changes model confidence and reduces rationale diversity without improving calibration, indicating distinct effects on reasoning and certainty.</p>"
+    },
+    {
+      "id": "5ec5b464e33c",
+      "title": "Alaya-EVOKE: From Linear-Scaling Supervision to Endless World",
+      "content": "Evoke is an interactive world model that uses external persistent memory and a redesigned long-horizon teacher to enable responsive, open-ended video generation with bounded context and low latency.",
+      "url": "https://huggingface.co/papers/2608.13546",
+      "author": "Yuanyang Yin, Gongxuan Wang, Yifan Zhan, Chuanhao Li, Kaipeng Zhang, Feng Zhao",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "world models",
+        "denoiser context",
+        "key-value cache",
+        "external world state bank",
+        "sparse attention",
+        "chunk-wise grouping",
+        "linear attention",
+        "self-forced rollouts",
+        "classifier-free guidance",
+        "distribution-matching objective"
+      ],
+      "summary": "Alaya-EVOKE introduces an interactive video world model that uses external persistent memory and a redesigned long-horizon teacher to enable open-ended video generation with bounded context and low latency. The approach decouples memory from the denoiser via key-value caching, addressing a core scalability bottleneck in interactive world models.",
+      "importance_score": 65.0,
+      "reasoning": "Solid contribution to world-model architecture; persistent memory and long-horizon teacher are useful design ideas but incremental over prior persistent-memory video systems. No major-lab backing.",
+      "themes": [
+        "World Models",
+        "Video Generation",
+        "Long-Horizon Memory"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13546",
+        "category_name": "world models, denoiser context, key-value cache",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13546"
+        },
+        "huggingface": {
+          "upvotes": 102,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Alaya-EVOKE introduces an interactive video world model that uses external persistent memory and a redesigned long-horizon teacher to enable open-ended video generation with bounded context and low latency. The approach decouples memory from the denoiser via key-value caching, addressing a core scalability bottleneck in interactive world models.</p>",
+      "content_html": "<p>Evoke is an interactive world model that uses external persistent memory and a redesigned long-horizon teacher to enable responsive, open-ended video generation with bounded context and low latency.</p>"
+    },
+    {
+      "id": "ded682c34824",
+      "title": "UniSwap: Streaming Audio-Visual Identity Swapping for Talking Videos",
+      "content": "UniSwap enables synchronized appearance and voice replacement in talking videos through a unified streaming audio-visual diffusion transformer with specialized training and inference adaptations.",
+      "url": "https://huggingface.co/papers/2608.11752",
+      "author": "Yuxuan Zhang, Haozhong Xiong, Jiayi Song, Jinpeng Yu, Yang Shi, Jiaming Liu, Ruihua Huang, Liwei Wang",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "audio-visual diffusion transformer",
+        "swap-and-reconstruct pipeline",
+        "In-context Pretraining",
+        "Conditional Streaming Adaptation",
+        "block-causal KV-cached generation",
+        "Efficient Self-forcing DMD",
+        "Multi-LoRA Switching",
+        "Feature-RoPE Decomposition",
+        "denoising steps"
+      ],
+      "summary": "UniSwap performs synchronized appearance and voice replacement in talking videos using a unified streaming audio-visual diffusion transformer, with specialized training and inference adaptations for streaming deployment. It targets the talking-head synthesis use case end-to-end.",
+      "importance_score": 65.0,
+      "reasoning": "Application-focused paper with reasonable engineering novelty (streaming A/V DiT). Limited methodological novelty over prior face/voice swap pipelines.",
+      "themes": [
+        "Video Generation",
+        "Audio-Visual",
+        "Diffusion Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11752",
+        "category_name": "audio-visual diffusion transformer, swap-and-reconstruct pipeline, In-context Pretraining",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11752"
+        },
+        "huggingface": {
+          "upvotes": 12,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/uniswap-av/UniSwap"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>UniSwap performs synchronized appearance and voice replacement in talking videos using a unified streaming audio-visual diffusion transformer, with specialized training and inference adaptations for streaming deployment. It targets the talking-head synthesis use case end-to-end.</p>",
+      "content_html": "<p>UniSwap enables synchronized appearance and voice replacement in talking videos through a unified streaming audio-visual diffusion transformer with specialized training and inference adaptations.</p>"
+    },
+    {
+      "id": "da8120f6cd83",
+      "title": "H2R-Bench: Benchmarking Human-to-Robot Manipulation Video Generation in World Models",
+      "content": "H2R-Bench evaluates video generation models on transforming human manipulation videos into robot-centric demonstrations across embodiment constraints and interaction fidelity.",
+      "url": "https://huggingface.co/papers/2608.13049",
+      "author": "Dingyi Rong, Yue Shi, Chaofan Ma, Jiezhang Cao, Zongrui Wang, Zeyu Zhang, Yao Mu, Guangtao Zhai, Ning Liu",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "video world models",
+        "cross-embodiment transfer",
+        "human-to-robot manipulation",
+        "egocentric video",
+        "embodiment constraints",
+        "functional contact",
+        "action events",
+        "goal-state completion"
+      ],
+      "summary": "H2R-Bench evaluates video generation models on transforming human manipulation videos into robot-centric demonstrations under embodiment constraints and interaction fidelity requirements. It bridges human video datasets and robot learning.",
+      "importance_score": 65.0,
+      "reasoning": "Useful benchmark with a clear motivation. Methodological novelty is modest - it is primarily an evaluation contribution.",
+      "themes": [
+        "Benchmarking",
+        "Robotics",
+        "Video Generation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13049",
+        "category_name": "video world models, cross-embodiment transfer, human-to-robot manipulation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13049"
+        },
+        "huggingface": {
+          "upvotes": 6,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/Rongdingyi/H2R-Bench"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>H2R-Bench evaluates video generation models on transforming human manipulation videos into robot-centric demonstrations under embodiment constraints and interaction fidelity requirements. It bridges human video datasets and robot learning.</p>",
+      "content_html": "<p>H2R-Bench evaluates video generation models on transforming human manipulation videos into robot-centric demonstrations across embodiment constraints and interaction fidelity.</p>"
+    },
+    {
+      "id": "75991b9fb7df",
+      "title": "Have We Seen an Acceleration in Discoveries?",
+      "content": "Q: How much has discovery accelerated? LLMs have shown the ability to make novel discoveries across many domains. How much has this affected the aggregate discovery rate? In the figures below we plot all the data sources we can find, and make some very loose observations: Discovery of cyber vulnerabilities has accelerated sharply. Discovery of math results has accelerated somewhat. However this is harder to objectively measure. Discovery of optimizations has not shown a dramatic acceleration. These conclusions are based only on public discoveries. It is quite plausible that AI labs are making discoveries internally that they are not disclosing. Thanks. Thanks to Greg Burnham for extremely helpful comments. Overview We are just looking for slope changes. AI-assisted discoveries are often announced, but their significance is hard to assess. Here we look for slope changes in various metrics of discovery to see if we can detect an acceleration. For concreteness, we highlight January 2026 as a potential breakpoint at which the effects of AI might become observable. Some data sources record whether a discovery was AI-assisted or AI-contributed, but our primary focus is overall acceleration. We use the word “discovery” to refer to any advance in the state of public knowledge, including new inventions or rewriting algorithms to be more efficient. Monitoring aggregate discoveries is useful because it reflects real-world utility. Additionally aggregate discoveries can reflect either AI automation or augmentation. Note on the data. The analysis below plots time series of discoveries across many different problems. The data collection and analysis was all performed by agents. We have done our best to audit the results but mistakes likely remain. These are all difficult data series to interpret, we would love to get pointers on corrections. The source material is in this repository, and it is set up so we can keep updating them over time. Discovery of vulnerabilities: sharp acceleration. The rate of vulnerabilities reported across many projects has dramatically accelerated in 2026 compared with 2025, both for specific projects (cURL, OpenSSL, Firefox, and Microsoft) and for aggregate vulnerability databases (the US NVD, and OSV). On cURL and OpenSSL most of the extra 2026 disclosures are AI-marked; on Firefox, Microsoft, and the aggregates, AI credits are a small share of the rise. Some of the data sources give ratings of severity: in general higher-severity categories show lower acceleration, but there is still acceleration. It is notable that databases tracking exploited vulnerabilities (CISA and Vulncheck KEVs) show significantly lower year-over-year growth than the databases of known vulnerabilities. Discovery in mathematics: likely acceleration, but it’s hard to benchmark. AI is clearly contributing to more work being done (arXiv submissions have doubled in some areas in less than 12 months) but quantifying the value of those contributions is difficult. A crude metric is the rate of solving open problems from pre-existing lists: Hilbert, Millennium, Smale, The Open Problems Project, and Ben Green’s 100 open problems. Three problems from these lists were solved with AI in 2026: the Jacobian conjecture from Smale’s list, Problem 44 from Green’s list (the halving sieve), and the sofic half of Green’s Problem 100. This is some evidence of acceleration, but it is weak.1 The Erdős list contains many more problems. There appears to be a clear acceleration in solutions, but it is challenging to construct a reliable historical baseline. Another strategy for quantifying mathematical progress would be to look at tightening of bounds: sphere-packing, analytic number theory exponents, combinatorics constants. We collected some data on these in the repo but don’t feel we understand them well enough to draw any conclusions about velocity. Discovery of optimizations: no clear acceleration. We collected historical time series for algorithmic efficiency across seven problems (CIFAR-10, Hutter compression, Gurobi mixed-integer programming, MIPLIB, nanoGPT, Stockfish, and the matrix-multiplication exponent), which have relatively dense histories of discoveries. Two of these series — nanoGPT and CIFAR-10 — include LLM-driven contributions to the plotted records, but none show a clear change in slope comparable to the changes in vulnerability or mathematical discovery. Thus the public record of overall algorithmic optimization does not yet show an appreciable acceleration. This is perhaps surprising. There has been a lot of recent excitement about LLM-driven optimization. In January 2026 Yuksekgonul et al. reported advancing the frontier on 5 optimization problems (“every problem we attempted”) with a simple model and trivial expenditure on inference-time compute. We would have expected this technology to have led to significant acceleration in overall progress and it’s somewhat of a puzzle why we have not seen this. Additionally AI labs have made many announcements of using their own AI tools to find internal algorithmic efficiencies.2 Why is AI accelerating some domains more than others? This is perhaps the most interesting question in the world right now, and understanding the answer could give substantial insight into the imminence of RSI. Some candidates: Variation in inference expenditure. The disproportionate growth in discovery of vulnerabilities could be simply due to people spending a ton of money on using LLMs for discovering vulnerabilities (or even just spending money on traditional vulnerability discovery, through fear).3 Variation in difficulty for LLMs. LLMs may be more or less effective at discovery in different domains, relative to humans. This could be downstream of variation in training expenditure between different domains. It could also be due to the intrinsic nature of the task, for example the shape of the problem space, or how costly it is to train on. Variation in disclosure. As mentioned above, we might observe less progress in some domains in part because progress is being kept confidential. This seems plausible for AI-related algorithmic progress. Variation in data quality. The domains with fast observed progress might be those for which we have higher quality data, e.g. if it is hard to track discoveries, this will tend to flatten any observed acceleration. We hope to write a follow-up post going through these theories in more detail, and relating these facts to apple-picking and other theories of AI discovery. Many discoveries claim to have been made without expert prompting. On the surface many discoveries have been made by LLMs prompted in generic ways, which did not seem to encode problem-specific expertise. However this can hide expertise used in choosing problems, in training, and in verifying solutions. Here we just give quotes, and generally leave interpretation for another time. Anthropic’s Riemann result: “Jarred Sumner, an Anthropic staff member (and non-mathematician), prompted Claude to “take a real stab” at the hypothesis itself, leaving the mathematical choices from there up to the model.” Google DeepMind’s AlphaEvolve paper says: “in contrast to [traditional computational or theoretical methods performed by human experts], we have found that AlphaEvolve can be readily scaled up to study large classes of problems at a time, without requiring extensive expert supervision for each new problem.” Mythos Preview’s announcement says: “We then invoke Claude Code with Mythos Preview, and prompt it with a paragraph that essentially amounts to “Please find a security vulnerability in this program.” … Engineers at Anthropic with no formal security training have asked Mythos Preview to find remote code execution vulnerabilities overnight, and woken up the following morning to a complete, working exploit.” Hiverge says, in announcing its new record on CIFAR-10: “domain expertise is no longer a prerequisite for breakthrough results.” Acceleration might be occurring inside labs. It’s possible that the rate of discoveries is accelerating more rapidly than we observe in public data. Concretely, it seems quite plausible that AI labs are making algorithmic efficiency discoveries at an increasing rate but not disclosing them. It is clear that at least some labs are constraining the ability of public versions of models to contribute to algorithmic discoveries.4 Discovery in Vulnerabilities cURL CVEs: dramatic acceleration cURL vulnerabilities grew from 9 in 2025 to 36 through 2026-06-24. 15 of the 36 are AI-marked (42%); 14 of those 15 name an AI-security employer rather than a method. The Low-severity share fell from 7 of 9 in 2025 to 22 of 36 in 2026. AI-marked findings are more often Low (12 of 15) than the rest (10 of 21). Firefox CVEs: dramatic acceleration Firefox CVEs (Common Vulnerabilities and Exposures) grew from 210 in 2025 to 342 through 2026-08-04. 37 of the 342 (11%) are AI-marked; 32 of those name an AI system or method. Firefox endorses the seriousness of AI-found bugs and vulnerabilities in a March blog post. OpenSSL vulnerability disclosures: dramatic acceleration OpenSSL grew from 6 CVEs in all of 2025 to 39 through 2026-08-05. 18 of the 39 are corroborated AI discoveries, and another 9 are AI-affiliated with the method unverified. Microsoft security-update CVEs: dramatic acceleration Microsoft-issued CVEs grew from 1,243 in all of 2025 to 1,927 through 2026-08-11, annualizing to about 2.5 times the 2025 rate.5 Only 26 of the 2026 CVEs carry any AI marker, 1.3% of the total. CVEs are batched by Patch Tuesday and dated when fixed and disclosed, not when found. US National Vulnerability Database CVEs: acceleration As of early August, the number of 2026 CVEs already equals the 2025 total. Open-source CVEs: acceleration Google maintains an Open Source Vulnerability (OSV) database. As of early August, the number of OSVs already significantly exceeds the 2025 count. CISA Known Exploited Vulnerabilities: small acceleration The Cybersecurity and Infrastructure Security Agency (CISA) maintains a list of Known Exploited Vulnerabilities (KEV), a subset of known vulnerabilities. As of early August, we appear to be on track to exceed 2025’s total, but the growth is clearly lower than that of CVEs. It’s important to note that the record of an exploited vulnerability can lag its discovery. Vulncheck Known Exploited Vulnerabilities: small acceleration Vulncheck publishes statistics on exploitation, which casts a wider net than CISA. The figure shows both CVEs (vulnerabilities discovered) and KEVs (vulnerabilities exploited). Vulncheck’s State of Exploitation, 1H 2026 says: “While the first half of 2026 saw a 10% increase in KEVs compared to the prior six months, CVE volume grew at a much faster rate of 45%, resulting in a significant drop in the KEV-to-CVE ratio. Of course, exploitation often occurs months or even years after a vulnerability is disclosed, so it’s still too early to determine whether exploitation volumes will eventually follow the same growth trend as CVE issuance or level off at current rates. We’ll have to wait and see how publicly available Frontier AI Cyber models continue to progress over the next year.” Discovery in Math Problems arXiv submissions: dramatic acceleration Mathematics submissions to arXiv have dramatically accelerated, with big variations by subfield. Combinatorics (math.CO) rose from 377 submissions in January 2026 to 743 in July, roughly doubling over those months (the 2025 monthly average was 368). This metric clearly cannot be taken as an index of discoveries, but it is a useful starting point. Erdős problems: some acceleration, weakly dated Paul Erdős stated many unsolved problems or conjectures. Lists of problems and solutions are maintained at Thomas Bloom’s erdosproblems.com and Terence Tao’s Erdős Problem tracker. The figure shows a crude time series which imputes solution date from the year of the paper cited in Bloom’s resolution wiki. This is done against Bloom’s warning,6 so it should be taken as very weak evidence for acceleration pending a more thorough dating. The reconstructed time series shows an overall acceleration in 2024, and a further increase in 2026 associated with an explosion in AI-attributed solutions. We do not have a good explanation for the increase in solution rate in 2024. Many of the solutions appear in distinct arXiv papers, and it is unclear whether they were AI-accelerated. In April 2026 Thomas Bloom posted a list of top 10 ‘most important’ Erdős Problems. The list doesn’t lend itself well to quantifying progress, in part because some of the problems are combined, and because some problems are technically already resolved but included because they point to interesting areas. However it is notable that the list includes the unit distance conjecture, resolved shortly after the list was posted. Hilbert’s problems: too sparse Hilbert’s twenty-three problems were presented in 1900 (split into 28 rows to account for subquestions). Twelve rows have dated resolutions, ending with Hales’s computer-assisted sphere-packing proof in 1998; seven remain open and nine are disputed, partial, or vague. No solutions are AI-attributed. Millennium Prize Problems: too sparse The Clay Mathematics Institute selected seven problems in 2000 and offered a $1 million prize for each. Only the Poincaré conjecture has been resolved, by Perelman’s work in 2002–2003; the other six remain open. Smale’s problems: one AI-assisted resolution Smale’s 1998 list of eighteen “problems for the next century” is a modern successor to Hilbert’s list. Five rows have been resolved. One was resolved with AI help: Alpöge and Claude Fable’s 2026 counterexample to the Jacobian conjecture in dimensions three and above. The Open Problems Project: no clear acceleration The Open Problems Project is a maintained list of seventy-eight computational-geometry problems, many asking for an algorithm, a complexity bound, or an NP-hardness proof. Seventeen rows have been resolved: thirteen by 2010, followed by isolated resolutions in 2015, 2019, 2023, and 2024. None is AI-attributed. The recent pace is slower, not faster, although missing dates for when problems entered the list prevent treating this as a clean fixed-cohort solve rate. Ben Green’s 100 open problems: possible acceleration Ben Green’s 100 open problems is a working list in additive combinatorics, number theory, discrete geometry, and harmonic analysis, circulated since 2018 and revised by Green himself. Of 101 scored rows, 13 have dated resolutions from 2019 to 2025, a steady rate of just under two per year. The figure is Green’s December 2025 revision, so later events are not in the bars. After that revision, Liam Price and GPT-5.4 Pro resolved Problem 44 (also Erdős #1202) in the negative, OpenAI Astra constructed a non-sofic group, answering the sofic half of Problem 100 (the hyperlinear half remains open), and Ma, Tang and Xu resolved Problem 90. Green has not yet marked these headings solved. Discovery in Algorithms NanoGPT speedrun: AI contributions, acceleration unclear nanoGPT is a collective competition to minimize the training time for an LLM to reach a specific loss on held-out text, given fixed hardware. We can benchmark progress back to GPT-2, and the overall reduction in training time over 2019-2026 has been estimated at about 700-fold.7 There have been five AI-attributed contributions. Taken at face value, they have contributed a fairly small share of the overall progress. Jerry Tworek says: “Given how many tokens have been spent on nanogpt speedruns and not much coming out of it yet, we have at least a few nights of good sleep ahead.” It is difficult to judge whether there has been an acceleration. Progress in 2024 mostly involved catching up with the frontier. There was little progress from January through August 2025, but since September 2025 there has been regular progress (see Manish Shetty’s discussion of the history of nanoGPT here). It is conceivable that the acceleration in late 2025 and early 2026 was due to unattributed AI use. CIFAR-10 speedrun: AI contributions, acceleration unclear A public competition to reach 94% test accuracy on CIFAR-10 in as little wall-clock time as possible, on a single A100. The newest acknowledged record is AI-set: Hiverge’s engine cut the previous 2.59-second record by about 23%. A later 1.828-second claim (Fulcrum/Fable) is unacknowledged and has specification-gaming caveats. The two recent contributions are not outstandingly large by historical standards. Hutter Prize compression: too sparse A prize for compressing a fixed 1 GB Wikipedia dump, scored on compressed size plus the decompressor, under a single-CPU time and memory cap (no GPUs). The corpus has been frozen since 2006. No entry claims a language model wrote the compressor. The leaderboard has not moved since October 2023. Gurobi mixed-integer programming: no acceleration Gurobi reruns each new solver release on the same machine and the same model set, so the series is a vendor-reported speedup with hardware held fixed. Four annual releases (2022–2025) gained 13%, 8.6%, 13.1%, and 0.6%, a cumulative factor of about 1.4 since version 9.5. None of the announcements credits AI. The release is only annual, so we may see big speedups in 2026. The current pace of improvement seems to be slower than previously. Grace (2013) says “some mixed integer programming (MIP) algorithms, run on modern MIP instances with modern hardware, have roughly doubled in speed each year”. MIPLIB solution frontier: no acceleration MIPLIB is a standard public library of mixed-integer programs. Maintainers accept improved solutions to open instances and periodically publish a new solution file, so the series is a history of public frontier updates rather than a timestamped lab notebook. Across 28 releases, the log reports hundreds of better incumbents plus a smaller number of first feasible solutions and optimality proofs. Submitters are not labelled consistently enough to count AI contributions; none are stated. The largest waves were in late 2019 and early 2020. Later years remain active but do not show a rising rate. Stockfish Elo: no acceleration Stockfish is an open-source chess engine. A third party plays every development build 20,000 times against a frozen opponent (Stockfish 15), using one machine and one time control, so the series is pure software progress on a fixed Elo scale. About 675 Elo of software gain from 2013 to 2026, averaging around 50 Elo a year. Exactly one master commit credits a language model (a 0.6% speed patch in July 2026, not an Elo record); no Elo gain in the series is AI-attributed. There is no sign of acceleration. Matrix-multiplication exponent ω: no acceleration The exponent $\\omega$ is the best proved asymptotic upper bound on the number of operations needed to multiply two $n \\times n$ matrices. The record fell from 2.8074 in 1969 to 2.3755 in 1990. The six improvements after 2010 moved it only 0.0024, from 2.3737 to 2.371339 in 2024. Every step is a human proof, and there is no sign of acceleration. AI has improved algorithms for finite matrix sizes, but not for the asymptotic exponent. Notes Just last year it was notable that LLMs had not contributed much to knowledge. Many people were commenting on the lack of notable contributions by LLMs to knowledge. Dwarkesh Patel asked in April 2025: “despite having basically every known fact about the world memorized, these models haven’t, as far as I know, made a single new discovery” One possible explanation is the shift from LLMs trained on human-generated data to LLMs trained directly against the real world (RLVR). See the discussion in this January 2026 post on knowledge-creating versus knowledge-sharing LLMs. Most science can’t be judged with a single number. The work of most scientists can’t be judged with a single scalar. Physicists, chemists, and biologists are typically judged by their peers on qualitative grounds. When we do have a single number (either a set of problems, an upper or lower bound, or a measure of efficiency), it is generally based on problems with cheap validation. Measuring an LLM’s ability to make discoveries is hard. In principle we could measure an LLM’s discovery ability offline by giving it a problem and asking for a new result, e.g. a benchmark for discoveries or optimizations. In practice these are difficult to interpret for many reasons: problem selection and significance, contamination, inference-time scaling, and the division of work between models, scaffolds, and human experts. One extreme view by a mathematician, Bartosz Naskręcki in August 2026: “At this pace we should expect about 1000+ conjectures proved every month and growing faster with each cycle … we should end this year with a pile of at least a million proven conjectures and solved open problems. The end of 2026 will mark a significant moment in human history where we will have almost all, say 99% of the current questions completely solved (new will be asked but I fix the bar) and not so many of them actually understood by humans at all.” &#8617; Google DeepMind’s May 2025 AlphaEvolve announcement said: “By finding smarter ways to divide a large matrix multiplication operation into more manageable subproblems, it sped up this vital kernel in Gemini’s architecture by 23%, leading to a 1% reduction in Gemini’s training time.” OpenAI’s GPT-5.6 post said: “GPT‑5.6 Sol launched and monitored the speculator training process … [t]he resulting improvements increased token-generation efficiency by more than 15%.” &#8617; E.g. Anthropic announced in April that it is donating up to $100M worth of Mythos Preview credits for discovering and fixing vulnerabilities; other labs have similar programs. &#8617; Anthropic’s Fable 5 system card said: “we’ve implemented new interventions that limit Claude’s effectiveness for requests targeting frontier LLM development (for example, on building pretraining pipelines, distributed training infrastructure, or ML accelerator design).” Originally the fallback was silent, subsequently it became explicit. &#8617; Microsoft wrote in July 2026: “As AI helps defenders discover more issues, customers will see a higher volume of security updates included in each security release.” See Evolving Windows vulnerability management to meet the speed of AI-powered discovery. &#8617; Thomas Bloom’s erdosproblems.com says: “This is not intended as a record of when the solutions actually happened, or how quickly problems are being solved - they may have been solved weeks, months, or decades earlier, but it took time to verify or just be notified about the solution. This is just when their status was changed on this site, and has no meaning beyond that.” &#8617; Parker Whitfill estimated a 700X compute efficiency gain over 2019-2026. &#8617;",
+      "url": "https://metr.org/notes/2026-08-14-llm-contribution-to-discoveries/",
+      "author": "Unknown",
+      "published": "2026-08-14T03:00:00",
+      "source": "METR",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "METR examines public time-series of scientific and technical discoveries across cyber vulnerabilities, mathematical results, and optimizations to assess whether AI assistance has measurably accelerated discovery rates, using January 2026 as a hypothesized breakpoint. They observe a sharp acceleration in cyber vulnerability discovery, modest gains in math, and little change in optimization, while noting that internal AI-lab discoveries are invisible to public data.",
+      "importance_score": 65.0,
+      "reasoning": "Empirical analysis from METR, a credible and methodologically careful research org, on a question with high policy and field-level significance. The honest framing about the difficulty of measurement and the caveats about non-public work strengthen the piece. Impact is constrained by data availability and the inherent ambiguity in attributing slope changes to AI, but it is one of the more substantive attempts to quantify AI's effect on discovery output.",
+      "themes": [
+        "AI Impact Measurement",
+        "Empirical Analysis",
+        "Scientific Discovery",
+        "Cyber Security"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://metr.org/feed.xml",
+        "source_index_url": "",
+        "raw_summary": "<!-- Figures vendored from github.com/tecunningham/ai-discovery-data. -->  <div class=\"discovery-note\"> <dl> <dt>Q: How much has discovery accelerated?</dt> <dd>LLMs have shown the ability to make novel discoveries across many domains. How much has this affected the aggregate discovery rate? In the figures below we plot all the data sources we can find, and make some very loose observations: <ol> <li><strong>Discovery of cyber vulnerabilities has accelerated sharply.</strong></li> <li><strong>Di",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>METR examines public time-series of scientific and technical discoveries across cyber vulnerabilities, mathematical results, and optimizations to assess whether AI assistance has measurably accelerated discovery rates, using January 2026 as a hypothesized breakpoint. They observe a sharp acceleration in cyber vulnerability discovery, modest gains in math, and little change in optimization, while noting that internal AI-lab discoveries are invisible to public data.</p>",
+      "content_html": "<p>Q: How much has discovery accelerated? LLMs have shown the ability to make novel discoveries across many domains. How much has this affected the aggregate discovery rate? In the figures below we plot all the data sources we can find, and make some very loose observations: Discovery of cyber vulnerabilities has accelerated sharply. Discovery of math results has accelerated somewhat. However this is harder to objectively measure. Discovery of optimizations has not shown a dramatic acceleration. These conclusions are based only on public discoveries. It is quite plausible that AI labs are making discoveries internally that they are not disclosing. Thanks. Thanks to Greg Burnham for extremely helpful comments. Overview We are just looking for slope changes. AI-assisted discoveries are often announced, but their significance is hard to assess. Here we look for slope changes in various metrics of discovery to see if we can detect an acceleration. For concreteness, we highlight January 2026 as a potential breakpoint at which the effects of AI might become observable. Some data sources record whether a discovery was AI-assisted or AI-contributed, but our primary focus is overall acceleration. We use the word “discovery” to refer to any advance in the state of public knowledge, including new inventions or rewriting algorithms to be more efficient. Monitoring aggregate discoveries is useful because it reflects real-world utility. Additionally aggregate discoveries can reflect either AI automation or augmentation. Note on the data. The analysis below plots time series of discoveries across many different problems. The data collection and analysis was all performed by agents. We have done our best to audit the results but mistakes likely remain. These are all difficult data series to interpret, we would love to get pointers on corrections. The source material is in this repository, and it is set up so we can keep updating them over time. Discovery of vulnerabilities: sharp acceleration. The rate of vulnerabilities reported across many projects has dramatically accelerated in 2026 compared with 2025, both for specific projects (cURL, OpenSSL, Firefox, and Microsoft) and for aggregate vulnerability databases (the US NVD, and OSV). On cURL and OpenSSL most of the extra 2026 disclosures are AI-marked; on Firefox, Microsoft, and the aggregates, AI credits are a small share of the rise. Some of the data sources give ratings of severity: in general higher-severity categories show lower acceleration, but there is still acceleration. It is notable that databases tracking exploited vulnerabilities (CISA and Vulncheck KEVs) show significantly lower year-over-year growth than the databases of known vulnerabilities. Discovery in mathematics: likely acceleration, but it’s hard to benchmark. AI is clearly contributing to more work being done (arXiv submissions have doubled in some areas in less than 12 months) but quantifying the value of those contributions is difficult. A crude metric is the rate of solving open problems from pre-existing lists: Hilbert, Millennium, Smale, The Open Problems Project, and Ben Green’s 100 open problems. Three problems from these lists were solved with AI in 2026: the Jacobian conjecture from Smale’s list, Problem 44 from Green’s list (the halving sieve), and the sofic half of Green’s Problem 100. This is some evidence of acceleration, but it is weak.1 The Erdős list contains many more problems. There appears to be a clear acceleration in solutions, but it is challenging to construct a reliable historical baseline. Another strategy for quantifying mathematical progress would be to look at tightening of bounds: sphere-packing, analytic number theory exponents, combinatorics constants. We collected some data on these in the repo but don’t feel we understand them well enough to draw any conclusions about velocity. Discovery of optimizations: no clear acceleration. We collected historical time series for algorithmic efficiency across seven problems (CIFAR-10, Hutter compression, Gurobi mixed-integer programming, MIPLIB, nanoGPT, Stockfish, and the matrix-multiplication exponent), which have relatively dense histories of discoveries. Two of these series — nanoGPT and CIFAR-10 — include LLM-driven contributions to the plotted records, but none show a clear change in slope comparable to the changes in vulnerability or mathematical discovery. Thus the public record of overall algorithmic optimization does not yet show an appreciable acceleration. This is perhaps surprising. There has been a lot of recent excitement about LLM-driven optimization. In January 2026 Yuksekgonul et al. reported advancing the frontier on 5 optimization problems (“every problem we attempted”) with a simple model and trivial expenditure on inference-time compute. We would have expected this technology to have led to significant acceleration in overall progress and it’s somewhat of a puzzle why we have not seen this. Additionally AI labs have made many announcements of using their own AI tools to find internal algorithmic efficiencies.2 Why is AI accelerating some domains more than others? This is perhaps the most interesting question in the world right now, and understanding the answer could give substantial insight into the imminence of RSI. Some candidates: Variation in inference expenditure. The disproportionate growth in discovery of vulnerabilities could be simply due to people spending a ton of money on using LLMs for discovering vulnerabilities (or even just spending money on traditional vulnerability discovery, through fear).3 Variation in difficulty for LLMs. LLMs may be more or less effective at discovery in different domains, relative to humans. This could be downstream of variation in training expenditure between different domains. It could also be due to the intrinsic nature of the task, for example the shape of the problem space, or how costly it is to train on. Variation in disclosure. As mentioned above, we might observe less progress in some domains in part because progress is being kept confidential. This seems plausible for AI-related algorithmic progress. Variation in data quality. The domains with fast observed progress might be those for which we have higher quality data, e.g. if it is hard to track discoveries, this will tend to flatten any observed acceleration. We hope to write a follow-up post going through these theories in more detail, and relating these facts to apple-picking and other theories of AI discovery. Many discoveries claim to have been made without expert prompting. On the surface many discoveries have been made by LLMs prompted in generic ways, which did not seem to encode problem-specific expertise. However this can hide expertise used in choosing problems, in training, and in verifying solutions. Here we just give quotes, and generally leave interpretation for another time. Anthropic’s Riemann result: “Jarred Sumner, an Anthropic staff member (and non-mathematician), prompted Claude to “take a real stab” at the hypothesis itself, leaving the mathematical choices from there up to the model.” Google DeepMind’s AlphaEvolve paper says: “in contrast to [traditional computational or theoretical methods performed by human experts], we have found that AlphaEvolve can be readily scaled up to study large classes of problems at a time, without requiring extensive expert supervision for each new problem.” Mythos Preview’s announcement says: “We then invoke Claude Code with Mythos Preview, and prompt it with a paragraph that essentially amounts to “Please find a security vulnerability in this program.” … Engineers at Anthropic with no formal security training have asked Mythos Preview to find remote code execution vulnerabilities overnight, and woken up the following morning to a complete, working exploit.” Hiverge says, in announcing its new record on CIFAR-10: “domain expertise is no longer a prerequisite for breakthrough results.” Acceleration might be occurring inside labs. It’s possible that the rate of discoveries is accelerating more rapidly than we observe in public data. Concretely, it seems quite plausible that AI labs are making algorithmic efficiency discoveries at an increasing rate but not disclosing them. It is clear that at least some labs are constraining the ability of public versions of models to contribute to algorithmic discoveries.4 Discovery in Vulnerabilities cURL CVEs: dramatic acceleration cURL vulnerabilities grew from 9 in 2025 to 36 through 2026-06-24. 15 of the 36 are AI-marked (42%); 14 of those 15 name an AI-security employer rather than a method. The Low-severity share fell from 7 of 9 in 2025 to 22 of 36 in 2026. AI-marked findings are more often Low (12 of 15) than the rest (10 of 21). Firefox CVEs: dramatic acceleration Firefox CVEs (Common Vulnerabilities and Exposures) grew from 210 in 2025 to 342 through 2026-08-04. 37 of the 342 (11%) are AI-marked; 32 of those name an AI system or method. Firefox endorses the seriousness of AI-found bugs and vulnerabilities in a March blog post. OpenSSL vulnerability disclosures: dramatic acceleration OpenSSL grew from 6 CVEs in all of 2025 to 39 through 2026-08-05. 18 of the 39 are corroborated AI discoveries, and another 9 are AI-affiliated with the method unverified. Microsoft security-update CVEs: dramatic acceleration Microsoft-issued CVEs grew from 1,243 in all of 2025 to 1,927 through 2026-08-11, annualizing to about 2.5 times the 2025 rate.5 Only 26 of the 2026 CVEs carry any AI marker, 1.3% of the total. CVEs are batched by Patch Tuesday and dated when fixed and disclosed, not when found. US National Vulnerability Database CVEs: acceleration As of early August, the number of 2026 CVEs already equals the 2025 total. Open-source CVEs: acceleration Google maintains an Open Source Vulnerability (OSV) database. As of early August, the number of OSVs already significantly exceeds the 2025 count. CISA Known Exploited Vulnerabilities: small acceleration The Cybersecurity and Infrastructure Security Agency (CISA) maintains a list of Known Exploited Vulnerabilities (KEV), a subset of known vulnerabilities. As of early August, we appear to be on track to exceed 2025’s total, but the growth is clearly lower than that of CVEs. It’s important to note that the record of an exploited vulnerability can lag its discovery. Vulncheck Known Exploited Vulnerabilities: small acceleration Vulncheck publishes statistics on exploitation, which casts a wider net than CISA. The figure shows both CVEs (vulnerabilities discovered) and KEVs (vulnerabilities exploited). Vulncheck’s State of Exploitation, 1H 2026 says: “While the first half of 2026 saw a 10% increase in KEVs compared to the prior six months, CVE volume grew at a much faster rate of 45%, resulting in a significant drop in the KEV-to-CVE ratio. Of course, exploitation often occurs months or even years after a vulnerability is disclosed, so it’s still too early to determine whether exploitation volumes will eventually follow the same growth trend as CVE issuance or level off at current rates. We’ll have to wait and see how publicly available Frontier AI Cyber models continue to progress over the next year.” Discovery in Math Problems arXiv submissions: dramatic acceleration Mathematics submissions to arXiv have dramatically accelerated, with big variations by subfield. Combinatorics (math.CO) rose from 377 submissions in January 2026 to 743 in July, roughly doubling over those months (the 2025 monthly average was 368). This metric clearly cannot be taken as an index of discoveries, but it is a useful starting point. Erdős problems: some acceleration, weakly dated Paul Erdős stated many unsolved problems or conjectures. Lists of problems and solutions are maintained at Thomas Bloom’s erdosproblems.com and Terence Tao’s Erdős Problem tracker. The figure shows a crude time series which imputes solution date from the year of the paper cited in Bloom’s resolution wiki. This is done against Bloom’s warning,6 so it should be taken as very weak evidence for acceleration pending a more thorough dating. The reconstructed time series shows an overall acceleration in 2024, and a further increase in 2026 associated with an explosion in AI-attributed solutions. We do not have a good explanation for the increase in solution rate in 2024. Many of the solutions appear in distinct arXiv papers, and it is unclear whether they were AI-accelerated. In April 2026 Thomas Bloom posted a list of top 10 ‘most important’ Erdős Problems. The list doesn’t lend itself well to quantifying progress, in part because some of the problems are combined, and because some problems are technically already resolved but included because they point to interesting areas. However it is notable that the list includes the unit distance conjecture, resolved shortly after the list was posted. Hilbert’s problems: too sparse Hilbert’s twenty-three problems were presented in 1900 (split into 28 rows to account for subquestions). Twelve rows have dated resolutions, ending with Hales’s computer-assisted sphere-packing proof in 1998; seven remain open and nine are disputed, partial, or vague. No solutions are AI-attributed. Millennium Prize Problems: too sparse The Clay Mathematics Institute selected seven problems in 2000 and offered a $1 million prize for each. Only the Poincaré conjecture has been resolved, by Perelman’s work in 2002–2003; the other six remain open. Smale’s problems: one AI-assisted resolution Smale’s 1998 list of eighteen “problems for the next century” is a modern successor to Hilbert’s list. Five rows have been resolved. One was resolved with AI help: Alpöge and Claude Fable’s 2026 counterexample to the Jacobian conjecture in dimensions three and above. The Open Problems Project: no clear acceleration The Open Problems Project is a maintained list of seventy-eight computational-geometry problems, many asking for an algorithm, a complexity bound, or an NP-hardness proof. Seventeen rows have been resolved: thirteen by 2010, followed by isolated resolutions in 2015, 2019, 2023, and 2024. None is AI-attributed. The recent pace is slower, not faster, although missing dates for when problems entered the list prevent treating this as a clean fixed-cohort solve rate. Ben Green’s 100 open problems: possible acceleration Ben Green’s 100 open problems is a working list in additive combinatorics, number theory, discrete geometry, and harmonic analysis, circulated since 2018 and revised by Green himself. Of 101 scored rows, 13 have dated resolutions from 2019 to 2025, a steady rate of just under two per year. The figure is Green’s December 2025 revision, so later events are not in the bars. After that revision, Liam Price and GPT-5.4 Pro resolved Problem 44 (also Erdős #1202) in the negative, OpenAI Astra constructed a non-sofic group, answering the sofic half of Problem 100 (the hyperlinear half remains open), and Ma, Tang and Xu resolved Problem 90. Green has not yet marked these headings solved. Discovery in Algorithms NanoGPT speedrun: AI contributions, acceleration unclear nanoGPT is a collective competition to minimize the training time for an LLM to reach a specific loss on held-out text, given fixed hardware. We can benchmark progress back to GPT-2, and the overall reduction in training time over 2019-2026 has been estimated at about 700-fold.7 There have been five AI-attributed contributions. Taken at face value, they have contributed a fairly small share of the overall progress. Jerry Tworek says: “Given how many tokens have been spent on nanogpt speedruns and not much coming out of it yet, we have at least a few nights of good sleep ahead.” It is difficult to judge whether there has been an acceleration. Progress in 2024 mostly involved catching up with the frontier. There was little progress from January through August 2025, but since September 2025 there has been regular progress (see Manish Shetty’s discussion of the history of nanoGPT here). It is conceivable that the acceleration in late 2025 and early 2026 was due to unattributed AI use. CIFAR-10 speedrun: AI contributions, acceleration unclear A public competition to reach 94% test accuracy on CIFAR-10 in as little wall-clock time as possible, on a single A100. The newest acknowledged record is AI-set: Hiverge’s engine cut the previous 2.59-second record by about 23%. A later 1.828-second claim (Fulcrum/Fable) is unacknowledged and has specification-gaming caveats. The two recent contributions are not outstandingly large by historical standards. Hutter Prize compression: too sparse A prize for compressing a fixed 1 GB Wikipedia dump, scored on compressed size plus the decompressor, under a single-CPU time and memory cap (no GPUs). The corpus has been frozen since 2006. No entry claims a language model wrote the compressor. The leaderboard has not moved since October 2023. Gurobi mixed-integer programming: no acceleration Gurobi reruns each new solver release on the same machine and the same model set, so the series is a vendor-reported speedup with hardware held fixed. Four annual releases (2022–2025) gained 13%, 8.6%, 13.1%, and 0.6%, a cumulative factor of about 1.4 since version 9.5. None of the announcements credits AI. The release is only annual, so we may see big speedups in 2026. The current pace of improvement seems to be slower than previously. Grace (2013) says “some mixed integer programming (MIP) algorithms, run on modern MIP instances with modern hardware, have roughly doubled in speed each year”. MIPLIB solution frontier: no acceleration MIPLIB is a standard public library of mixed-integer programs. Maintainers accept improved solutions to open instances and periodically publish a new solution file, so the series is a history of public frontier updates rather than a timestamped lab notebook. Across 28 releases, the log reports hundreds of better incumbents plus a smaller number of first feasible solutions and optimality proofs. Submitters are not labelled consistently enough to count AI contributions; none are stated. The largest waves were in late 2019 and early 2020. Later years remain active but do not show a rising rate. Stockfish Elo: no acceleration Stockfish is an open-source chess engine. A third party plays every development build 20,000 times against a frozen opponent (Stockfish 15), using one machine and one time control, so the series is pure software progress on a fixed Elo scale. About 675 Elo of software gain from 2013 to 2026, averaging around 50 Elo a year. Exactly one master commit credits a language model (a 0.6% speed patch in July 2026, not an Elo record); no Elo gain in the series is AI-attributed. There is no sign of acceleration. Matrix-multiplication exponent ω: no acceleration The exponent $\\omega$ is the best proved asymptotic upper bound on the number of operations needed to multiply two $n \\times n$ matrices. The record fell from 2.8074 in 1969 to 2.3755 in 1990. The six improvements after 2010 moved it only 0.0024, from 2.3737 to 2.371339 in 2024. Every step is a human proof, and there is no sign of acceleration. AI has improved algorithms for finite matrix sizes, but not for the asymptotic exponent. Notes Just last year it was notable that LLMs had not contributed much to knowledge. Many people were commenting on the lack of notable contributions by LLMs to knowledge. Dwarkesh Patel asked in April 2025: “despite having basically every known fact about the world memorized, these models haven’t, as far as I know, made a single new discovery” One possible explanation is the shift from LLMs trained on human-generated data to LLMs trained directly against the real world (RLVR). See the discussion in this January 2026 post on knowledge-creating versus knowledge-sharing LLMs. Most science can’t be judged with a single number. The work of most scientists can’t be judged with a single scalar. Physicists, chemists, and biologists are typically judged by their peers on qualitative grounds. When we do have a single number (either a set of problems, an upper or lower bound, or a measure of efficiency), it is generally based on problems with cheap validation. Measuring an LLM’s ability to make discoveries is hard. In principle we could measure an LLM’s discovery ability offline by giving it a problem and asking for a new result, e.g. a benchmark for discoveries or optimizations. In practice these are difficult to interpret for many reasons: problem selection and significance, contamination, inference-time scaling, and the division of work between models, scaffolds, and human experts. One extreme view by a mathematician, Bartosz Naskręcki in August 2026: “At this pace we should expect about 1000+ conjectures proved every month and growing faster with each cycle … we should end this year with a pile of at least a million proven conjectures and solved open problems. The end of 2026 will mark a significant moment in human history where we will have almost all, say 99% of the current questions completely solved (new will be asked but I fix the bar) and not so many of them actually understood by humans at all.” ↩ Google DeepMind’s May 2025 AlphaEvolve announcement said: “By finding smarter ways to divide a large matrix multiplication operation into more manageable subproblems, it sped up this vital kernel in Gemini’s architecture by 23%, leading to a 1% reduction in Gemini’s training time.” OpenAI’s GPT-5.6 post said: “GPT‑5.6 Sol launched and monitored the speculator training process … [t]he resulting improvements increased token-generation efficiency by more than 15%.” ↩ E.g. Anthropic announced in April that it is donating up to $100M worth of Mythos Preview credits for discovering and fixing vulnerabilities; other labs have similar programs. ↩ Anthropic’s Fable 5 system card said: “we’ve implemented new interventions that limit Claude’s effectiveness for requests targeting frontier LLM development (for example, on building pretraining pipelines, distributed training infrastructure, or ML accelerator design).” Originally the fallback was silent, subsequently it became explicit. ↩ Microsoft wrote in July 2026: “As AI helps defenders discover more issues, customers will see a higher volume of security updates included in each security release.” See Evolving Windows vulnerability management to meet the speed of AI-powered discovery. ↩ Thomas Bloom’s erdosproblems.com says: “This is not intended as a record of when the solutions actually happened, or how quickly problems are being solved - they may have been solved weeks, months, or decades earlier, but it took time to verify or just be notified about the solution. This is just when their status was changed on this site, and has no meaning beyond that.” ↩ Parker Whitfill estimated a 700X compute efficiency gain over 2019-2026. ↩</p>"
+    },
+    {
+      "id": "99a94ebf81a6",
+      "title": "From Inaudible Inputs to Model Failures: Low-Frequency Safety Risks in LALMs",
+      "content": "Researchers propose a black-box red-teaming method using inaudible low-frequency waveforms to expose vulnerabilities in audio-language models, alongside a defense that detects distribution shifts and requests a second recording to recover accuracy.",
+      "url": "https://huggingface.co/papers/2608.09158",
+      "author": "Yuanhe Zhang, Weiliu Wang, Jie Ren, Liang Lin, Zhenhong Zhou, Haoran Gao, Kun Wang, Chen Li, Li Sun, Sen Su",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Large audio-language models",
+        "Intermittent Low-Frequency Lockout",
+        "Sentence Attention Scale Estimation",
+        "Frequency Confusion Transfer",
+        "Distributional Requery Guard",
+        "low-frequency red teaming",
+        "black-box attack"
+      ],
+      "summary": "The authors propose a black-box red-teaming technique using inaudible low-frequency waveforms to attack Large Audio-Language Models, exposing a previously under-explored attack surface, alongside a defense that detects distribution shifts and requests a second recording to recover accuracy. The work surfaces a new modality-specific safety risk and proposes a practical mitigation, though the defense is necessarily a band-aid rather than a root-cause fix.",
+      "importance_score": 58.0,
+      "reasoning": "Novel attack vector targeting audio-language models at the signal level, which is a relatively underexplored area compared to text or image jailbreaks. The dual contribution of attack plus defense strengthens the paper. Reasonable methodology, but the scope is limited to audio LLMs and the proposed mitigation introduces latency and UX costs. Solid mid-tier safety paper.",
+      "themes": [
+        "AI Safety",
+        "Adversarial Machine Learning",
+        "Audio-Language Models",
+        "Red Teaming"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.09158",
+        "category_name": "Large audio-language models, Intermittent Low-Frequency Lockout, Sentence Attention Scale Estimation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.09158"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-10T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The authors propose a black-box red-teaming technique using inaudible low-frequency waveforms to attack Large Audio-Language Models, exposing a previously under-explored attack surface, alongside a defense that detects distribution shifts and requests a second recording to recover accuracy. The work surfaces a new modality-specific safety risk and proposes a practical mitigation, though the defense is necessarily a band-aid rather than a root-cause fix.</p>",
+      "content_html": "<p>Researchers propose a black-box red-teaming method using inaudible low-frequency waveforms to expose vulnerabilities in audio-language models, alongside a defense that detects distribution shifts and requests a second recording to recover accuracy.</p>"
+    },
+    {
+      "id": "e5301831377e",
+      "title": "PixSDS: Why Latent SDS Makes Noisy Pixels",
+      "content": "PixSDS fixes VAE-induced pixel drift in latent score distillation sampling by guiding optimization with decoded image directions, reducing artifacts in text-to-3D generation.",
+      "url": "https://huggingface.co/papers/2608.12997",
+      "author": "Vsevolod Skorokhodov",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Score Distillation Sampling",
+        "latent SDS",
+        "VAE-induced pixel drift",
+        "VAE encoder",
+        "PixSDS",
+        "gradient repair",
+        "text-to-3D generation"
+      ],
+      "summary": "PixSDS diagnoses and fixes VAE-induced pixel drift in latent Score Distillation Sampling by guiding optimization with decoded image directions rather than latent gradients, reducing visual artifacts in text-to-3D generation. The author is a known contributor to generative modeling research, lending credibility to the diagnosis of a widely reported artifact class.",
+      "importance_score": 57.0,
+      "reasoning": "Targets a concrete and well-known failure mode (pixel drift / blurriness) in latent SDS pipelines that affects a large body of text-to-3D work. The fix is conceptually simple and likely widely adopted if validated, which raises practical importance. Methodological clarity and author reputation support the score, though the contribution is incremental rather than architectural.",
+      "themes": [
+        "3D Generation",
+        "Score Distillation Sampling",
+        "Text-to-3D",
+        "Diffusion Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12997",
+        "category_name": "Score Distillation Sampling, latent SDS, VAE-induced pixel drift",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12997"
+        },
+        "huggingface": {
+          "upvotes": 0,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/sevashasla/PixSDS"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>PixSDS diagnoses and fixes VAE-induced pixel drift in latent Score Distillation Sampling by guiding optimization with decoded image directions rather than latent gradients, reducing visual artifacts in text-to-3D generation. The author is a known contributor to generative modeling research, lending credibility to the diagnosis of a widely reported artifact class.</p>",
+      "content_html": "<p>PixSDS fixes VAE-induced pixel drift in latent score distillation sampling by guiding optimization with decoded image directions, reducing artifacts in text-to-3D generation.</p>"
+    },
+    {
+      "id": "40977c5313f2",
+      "title": "GLM-5.3: How Chinese labs keep stride with the frontier",
+      "content": "Housekeeping: I&#8217;m traveling so cannot make a voiceover for this post. EDIT &#8212; I added a bullet point 5 on the Chinese data industry after sending the email out.Today, Z.ai announced their GLM-5.3 model, currently only available in the coding plan, coming soon to their API and in two weeks&#8217; time to Hugging Face (open weights). This model looks exceptional, with a somewhat astounding increase in scores. On many benchmarks the model has surpassed Moonshot AI&#8217;s Kimi K3 and on some it&#8217;s surpassed Claude Fable 5 or GPT-5.6-Sol.Here&#8217;s a more complete comparison:This puts the model more or less at the frontier of agentic coding benchmarks, with only ~750B parameters &#8211; a third of Kimi K3! The Z.ai blog post is rather straightforward, and starts with a bold sentence:Scaling post-training is all we did for GLM-5.3.GLM-5.3 is the same base model as GLM-5.2 with substantially extended post-training. To risk a broad oversimplification, Z.ai seems to have a strength in post-training when compared to Kimi, which is more of a pretraining masterpiece. Following this release there have been a lot of discussions wondering how China can keep up so well? How can such a small model be matching the leading public American models? Are these results real?Subscribe nowThe simplest explanation is that Z.ai is very good at what they do &#8211; it&#8217;s worth recalling that they&#8217;ve been working on this line of models longer than almost anyone in the industry. Here&#8217;s a brief history of the GLM models.Zhipu AI Founded &#8211; 2019GLM (General Language Model) &#8212; March 2021 &#8212; released by THUDM, Tsinghua University&#8217;s Data Mining / Knowledge Engineering group. WeightsGLM-130B &#8212; August 2022 &#8212; Scaled version. Technical report for GLM-130B through GLM-4 &#8212; WeightsChatGLM &#8212; March 14, 2023 &#8212; first chat version. WeightsChatGLM2 &#8212; June 25, 2023 &#8212; WeightsChatGLM3 &#8212; October 27, 2023 &#8212; WeightsGLM-4 &#8212; January 16, 2024 &#8212; rebranded as just GLM; open-weight GLM-4-9B followed in June. WeightsGLM-5 &#8212; February 11, 2026 &#8212; latest major generation. WeightsGLM 5.2, released on June 22 of this year, was a big deal &#8211; weeks after the release, I regularly heard from AI researchers I know who still used the model due to its speed (some deploy the model on internal clusters for faster speeds than public offerings) and simplicity (as a model with no rollbacks, etc., when working on frontier AI systems). GLM-5.2 altogether stood up to the hype.I&#8217;ve been going through some of the same denial myself, thinking &#8220;how do they keep doing this? Surely the models aren&#8217;t as good as they look.&#8221; There&#8217;s something a bit off-putting with how the American companies have such a commanding resource lead, but can&#8217;t seem to pull away in capabilities. The common answer is distillation, which I&#8217;ve written at length about, but I deem not to be the major factor. On that note, there was a recent paper that showed simple methods for extracting the reasoning traces from frontier models &#8211; this is the sort of thing that Chinese labs could definitely use at scale. I&#8217;m confused why the labs in the U.S. haven&#8217;t patched this behavior faster; instead they&#8217;re running to the government asking for policy help. It doesn&#8217;t add up for me.Z.ai&#8217;s blog is direct and matches with an RL-dominated training regime. They say they used &#8220;more environments, more diverse tasks, and more compute spent training on them.&#8221; One does not simply &#8220;distill&#8221; RL environments, infrastructure to run them at scale, or algorithms to mix them together effectively.Interconnects AI is a reader-supported publication. Consider becoming a subscriber.So, how do the Chinese labs do it if not distillation? Are they benchmaxxing? An accepted definition of benchmaxxing is focusing the model on the test sets, such that the real-world performance meaningfully differs from the on-paper scores. The determining factors are much more big picture than technical (yes, the technical details definitely matter, but are harder to differentiate from lab to lab):The time to release for Z.ai is likely days, not months as with OpenAI or Anthropic. It is very, very likely that OpenAI and Anthropic have far better internal models than Z.ai and Moonshot AI. Still, these American companies tend to take months to release their models to the public, which massively flatters the Chinese labs in adoption decisions at the frontier. To put it simply &#8211; the Chinese labs use all the time that American labs do pre-release testing to keep hillclimbing on benchmarks (SpaceXAI is likely far closer to the Chinese labs here). With the pace of progress being so fast, this is likely the largest determining factor of why Chinese labs stay at the frontier. This, so far, has been economically acceptable for the American labs, as they&#8217;ve still had massive demand for their models.As model self-improvement loops ramp up within the labs building LLMs, if any of these feedback loops require user data, this faster release cycle could massively favor the Chinese labs, giving their offerings longer lifespans before the next vastly superior model comes out, undercutting demand for their models.These are very clearly the race dynamics that many in the industry worry about. With so many labs building frontier models in the envelope of leading capabilities, it is hard to see this abating in the near future.Yes, Z.ai probably cares slightly more about public benchmarks than OpenAI or Anthropic. These benchmarks, e.g. scoring highly on the Artificial Analysis Intelligence Index, or similar aggregators, have a very direct impact on their stock price. They in many ways need to do this to keep raising capital and maintain team morale, as being the scrappy underdog matching American giants is a wonderful story. Subtle benchmaxxing does not need to come out of desperation or any similar pressures. It&#8217;s the industry standard across a remarkable number of labs. Many companies&#8217; data acquisition strategy is to buy data on the benchmarks they&#8217;re behind on.Z.ai is not benchmaxxing to the point where GLM-5.3 is fried (at least not intentionally, and they&#8217;ll check for it). Every lab is dealing with the rough edges of scaling RL right now. Anthropic&#8217;s Opus 5 and Sonnet 5 models have very mixed reputations, despite the incredible benchmark scores. Everyone in the industry is in the same boat, so some model weights end up being easier to use than others, but the benchmark scores in their release blogs are the real deal.GLM-5.3 is likely a narrower model than Claude Fable or GPT Sol. When GPT-5.2 was released, it had mixed reviews outside of agentic coding. At the same time, OpenAI and Anthropic support very large businesses with countless use-cases for their models. This is a benefit of being a company earlier in their adoption curve &#8211; you can target the most valuable use-cases. Within post-training, caring about a bit less will make assembling the final model far easier.I&#8217;m overstating this a bit, as Z.ai reportedly reached $1B of ARR on the back of a strong on-premises deployment business.Similarly, the flagship GLM models have not had visual capabilities. Being text-only definitely helps Z.ai get more competitive scores, but it is a more competitive space. On the other side of things are models like Inkling-Small, which is designed to be omnimodal.(ADDED) The RL data industry is taking off in China. Many sources and rumor-mills we&#8217;re following have been mentioning how the data industry is taking off in China &#8212; very much driven by American data companies selling to Chinese model labs. This could look like Chinese labs buying many of the same RL environments that are used by American frontier labs, and releasing the downstream RL&#8217;d model sooner. We still have large error bars on the scale and impact of this market, but it is certainly becoming important.Z.ai is an extremely skilled LLM organization &#8211; one that is likely far more compute efficient than OpenAI / Anthropic. This needs repeating. These folks are very good at what they do. The company has very close ties to Tsinghua University, which is home to many of the best Chinese computer scientists. This abundant, eager talent pool is as central to their success as it is for any Western counterpart.Altogether, it seems like a perfectly good strategy they&#8217;re executing with the GLM line of models. Congrats on the release! I&#8217;m excited for the weights to be out so I can do more extended testing (I tend to use American open-weight inference services like Fireworks or Baseten).Leave a commentThis is another step towards the inevitable proliferation of very strong cyber capabilities across the economy. Z.ai has acknowledged this, saying:GLM-5.3 is our most capable model to date for cybersecurity tasks. It delivers substantial improvements in vulnerability discovery, exploit analysis, and complex multistep security tasks. These capabilities can help defenders identify weaknesses earlier, validate risks, and accelerate remediation.They also create clear dual-use risks. We are therefore taking a staged approach to release. Selected security partners will first evaluate GLM-5.3 in controlled settings. Broader access and API availability will follow. Once the necessary safety evaluations and release preparations are complete, we will publish GLM-5.3&#8217;s complete model weights.They go on to acknowledge how they&#8217;re monitoring inference on their platforms via a request classifier and chain of thought monitoring (on top of model alignment). The devil is in the details here, and it is unclear the level of execution every AI lab will have here. The capability diffusion is determined by the lowest common denominator.At the end of the day, this type of safety barely matters when true open-weights are coming. If not GLM-5.3, then another model. The size of the models with these capabilities is reducing over time, becoming easier to modify and deploy (potentially without safeguards). Z.ai does some of the right things, including pushing for more vulnerability discovery and proactive management, but any single company is far from being able to handle this on their own.We need industrial-scale guidance led by the government or industry coalitions to immediately prepare for this transition across all software.",
+      "url": "https://www.interconnects.ai/p/glm-53-how-chinese-labs-keep-stride",
+      "author": "Nathan Lambert",
+      "published": "2026-08-14T17:23:35",
+      "source": "Interconnects AI",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Nathan Lambert analyzes Z.ai's newly announced GLM-5.3 model, noting that it matches or surpasses Kimi K3 and approaches Claude Fable 5 and GPT-5.6-Sol on agentic coding benchmarks at roughly 750B parameters, and frames Z.ai as comparatively stronger in post-training than Moonshot. The post is commentary and contextualization rather than original research, but it provides one of the first clear cross-lab benchmarks of the new release.",
+      "importance_score": 52.0,
+      "reasoning": "GLM-5.3 is a newly released frontier-tier model (announced on the coverage date), so the post is timely and informative. It is a commentary piece rather than original work, which caps the score, but Lambert's framing of post-training versus pretraining strengths across Chinese labs is a useful synthesis. Scores reflect the timeliness of the model release more than the novelty of the analysis.",
+      "themes": [
+        "Language Models",
+        "Frontier Models",
+        "Post-Training",
+        "Open Weights"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.interconnects.ai/feed",
+        "source_index_url": "",
+        "raw_summary": "Hint: It&#8217;s really not a distillation story.",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Nathan Lambert analyzes Z.ai's newly announced GLM-5.3 model, noting that it matches or surpasses Kimi K3 and approaches Claude Fable 5 and GPT-5.6-Sol on agentic coding benchmarks at roughly 750B parameters, and frames Z.ai as comparatively stronger in post-training than Moonshot. The post is commentary and contextualization rather than original research, but it provides one of the first clear cross-lab benchmarks of the new release.</p>",
+      "content_html": "<p>Housekeeping: I’m traveling so cannot make a voiceover for this post. EDIT — I added a bullet point 5 on the Chinese data industry after sending the email out.Today, Z.ai announced their GLM-5.3 model, currently only available in the coding plan, coming soon to their API and in two weeks’ time to Hugging Face (open weights). This model looks exceptional, with a somewhat astounding increase in scores. On many benchmarks the model has surpassed Moonshot AI’s Kimi K3 and on some it’s surpassed Claude Fable 5 or GPT-5.6-Sol.Here’s a more complete comparison:This puts the model more or less at the frontier of agentic coding benchmarks, with only ~750B parameters – a third of Kimi K3! The Z.ai blog post is rather straightforward, and starts with a bold sentence:Scaling post-training is all we did for GLM-5.3.GLM-5.3 is the same base model as GLM-5.2 with substantially extended post-training. To risk a broad oversimplification, Z.ai seems to have a strength in post-training when compared to Kimi, which is more of a pretraining masterpiece. Following this release there have been a lot of discussions wondering how China can keep up so well? How can such a small model be matching the leading public American models? Are these results real?Subscribe nowThe simplest explanation is that Z.ai is very good at what they do – it’s worth recalling that they’ve been working on this line of models longer than almost anyone in the industry. Here’s a brief history of the GLM models.Zhipu AI Founded – 2019GLM (General Language Model) — March 2021 — released by THUDM, Tsinghua University’s Data Mining / Knowledge Engineering group. WeightsGLM-130B — August 2022 — Scaled version. Technical report for GLM-130B through GLM-4 — WeightsChatGLM — March 14, 2023 — first chat version. WeightsChatGLM2 — June 25, 2023 — WeightsChatGLM3 — October 27, 2023 — WeightsGLM-4 — January 16, 2024 — rebranded as just GLM; open-weight GLM-4-9B followed in June. WeightsGLM-5 — February 11, 2026 — latest major generation. WeightsGLM 5.2, released on June 22 of this year, was a big deal – weeks after the release, I regularly heard from AI researchers I know who still used the model due to its speed (some deploy the model on internal clusters for faster speeds than public offerings) and simplicity (as a model with no rollbacks, etc., when working on frontier AI systems). GLM-5.2 altogether stood up to the hype.I’ve been going through some of the same denial myself, thinking “how do they keep doing this? Surely the models aren’t as good as they look.” There’s something a bit off-putting with how the American companies have such a commanding resource lead, but can’t seem to pull away in capabilities. The common answer is distillation, which I’ve written at length about, but I deem not to be the major factor. On that note, there was a recent paper that showed simple methods for extracting the reasoning traces from frontier models – this is the sort of thing that Chinese labs could definitely use at scale. I’m confused why the labs in the U.S. haven’t patched this behavior faster; instead they’re running to the government asking for policy help. It doesn’t add up for me.Z.ai’s blog is direct and matches with an RL-dominated training regime. They say they used “more environments, more diverse tasks, and more compute spent training on them.” One does not simply “distill” RL environments, infrastructure to run them at scale, or algorithms to mix them together effectively.Interconnects AI is a reader-supported publication. Consider becoming a subscriber.So, how do the Chinese labs do it if not distillation? Are they benchmaxxing? An accepted definition of benchmaxxing is focusing the model on the test sets, such that the real-world performance meaningfully differs from the on-paper scores. The determining factors are much more big picture than technical (yes, the technical details definitely matter, but are harder to differentiate from lab to lab):The time to release for Z.ai is likely days, not months as with OpenAI or Anthropic. It is very, very likely that OpenAI and Anthropic have far better internal models than Z.ai and Moonshot AI. Still, these American companies tend to take months to release their models to the public, which massively flatters the Chinese labs in adoption decisions at the frontier. To put it simply – the Chinese labs use all the time that American labs do pre-release testing to keep hillclimbing on benchmarks (SpaceXAI is likely far closer to the Chinese labs here). With the pace of progress being so fast, this is likely the largest determining factor of why Chinese labs stay at the frontier. This, so far, has been economically acceptable for the American labs, as they’ve still had massive demand for their models.As model self-improvement loops ramp up within the labs building LLMs, if any of these feedback loops require user data, this faster release cycle could massively favor the Chinese labs, giving their offerings longer lifespans before the next vastly superior model comes out, undercutting demand for their models.These are very clearly the race dynamics that many in the industry worry about. With so many labs building frontier models in the envelope of leading capabilities, it is hard to see this abating in the near future.Yes, Z.ai probably cares slightly more about public benchmarks than OpenAI or Anthropic. These benchmarks, e.g. scoring highly on the Artificial Analysis Intelligence Index, or similar aggregators, have a very direct impact on their stock price. They in many ways need to do this to keep raising capital and maintain team morale, as being the scrappy underdog matching American giants is a wonderful story. Subtle benchmaxxing does not need to come out of desperation or any similar pressures. It’s the industry standard across a remarkable number of labs. Many companies’ data acquisition strategy is to buy data on the benchmarks they’re behind on.Z.ai is not benchmaxxing to the point where GLM-5.3 is fried (at least not intentionally, and they’ll check for it). Every lab is dealing with the rough edges of scaling RL right now. Anthropic’s Opus 5 and Sonnet 5 models have very mixed reputations, despite the incredible benchmark scores. Everyone in the industry is in the same boat, so some model weights end up being easier to use than others, but the benchmark scores in their release blogs are the real deal.GLM-5.3 is likely a narrower model than Claude Fable or GPT Sol. When GPT-5.2 was released, it had mixed reviews outside of agentic coding. At the same time, OpenAI and Anthropic support very large businesses with countless use-cases for their models. This is a benefit of being a company earlier in their adoption curve – you can target the most valuable use-cases. Within post-training, caring about a bit less will make assembling the final model far easier.I’m overstating this a bit, as Z.ai reportedly reached $1B of ARR on the back of a strong on-premises deployment business.Similarly, the flagship GLM models have not had visual capabilities. Being text-only definitely helps Z.ai get more competitive scores, but it is a more competitive space. On the other side of things are models like Inkling-Small, which is designed to be omnimodal.(ADDED) The RL data industry is taking off in China. Many sources and rumor-mills we’re following have been mentioning how the data industry is taking off in China — very much driven by American data companies selling to Chinese model labs. This could look like Chinese labs buying many of the same RL environments that are used by American frontier labs, and releasing the downstream RL’d model sooner. We still have large error bars on the scale and impact of this market, but it is certainly becoming important.Z.ai is an extremely skilled LLM organization – one that is likely far more compute efficient than OpenAI / Anthropic. This needs repeating. These folks are very good at what they do. The company has very close ties to Tsinghua University, which is home to many of the best Chinese computer scientists. This abundant, eager talent pool is as central to their success as it is for any Western counterpart.Altogether, it seems like a perfectly good strategy they’re executing with the GLM line of models. Congrats on the release! I’m excited for the weights to be out so I can do more extended testing (I tend to use American open-weight inference services like Fireworks or Baseten).Leave a commentThis is another step towards the inevitable proliferation of very strong cyber capabilities across the economy. Z.ai has acknowledged this, saying:GLM-5.3 is our most capable model to date for cybersecurity tasks. It delivers substantial improvements in vulnerability discovery, exploit analysis, and complex multistep security tasks. These capabilities can help defenders identify weaknesses earlier, validate risks, and accelerate remediation.They also create clear dual-use risks. We are therefore taking a staged approach to release. Selected security partners will first evaluate GLM-5.3 in controlled settings. Broader access and API availability will follow. Once the necessary safety evaluations and release preparations are complete, we will publish GLM-5.3’s complete model weights.They go on to acknowledge how they’re monitoring inference on their platforms via a request classifier and chain of thought monitoring (on top of model alignment). The devil is in the details here, and it is unclear the level of execution every AI lab will have here. The capability diffusion is determined by the lowest common denominator.At the end of the day, this type of safety barely matters when true open-weights are coming. If not GLM-5.3, then another model. The size of the models with these capabilities is reducing over time, becoming easier to modify and deploy (potentially without safeguards). Z.ai does some of the right things, including pushing for more vulnerability discovery and proactive management, but any single company is far from being able to handle this on their own.We need industrial-scale guidance led by the government or industry coalitions to immediately prepare for this transition across all software.</p>"
+    },
+    {
+      "id": "ddd1fcdc3d5e",
+      "title": "Specification-first convergence with an AI coding agent: a case study of dismantling a core architectural invariant across 189 files in a 717k-line codebase with no test oracle and no human code review",
+      "content": "This paper reports a single, fully instrumented case study of a large-scale architectural refactoring by an AI coding agent under a specification-first protocol, with no human review of the generated code and no pre-existing oracle to validate the target behaviour. The task, dismantling a central invariant across a large interdependent codebase, was assessed by the author as effectively infeasible through incremental refactoring, the kind of change that conventionally calls for a rewrite instead. Under the protocol described here, the agent completed it successfully. The system is a 717,725-line production TypeScript application across 3,648 files. The task required dismantling a core lifetime invariant: the guarantee that a UI panel remains open for the duration of an AI request. The target behaviour was that a streaming generation survives the closing of its panel and can be reattached, on reopening, to the same live stream with no loss or duplication. The protocol: formal specification by the agent, 14 refinement cycles auditing that specification against the source code, atomic implementation, a compile/test feedback loop, then 17 verification cycles auditing the code against the frozen specification. Across 31 audit passes, 201 defects were corrected before any human executed the program. The convergence criterion was empirical: two consecutive verification passes returning zero findings. The change touched 189 files (31 new); with the extraction phase, the two commits total 288 files, 34,770 insertions, 16,422 deletions. Across the first and roughly thirty later sessions, the software behaved as specified, no bug observed. Elapsed: three days; cost: USD 2,430. The full specification and raw session logs, 1,500+ pages in French, are published as evidence, allowing inspection of the process and submission to a language model for consistency checking.",
+      "url": "https://huggingface.co/papers/2608.12440",
+      "author": "Joel Abenhaim",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [],
+      "summary": "A single-case empirical study reporting that an AI coding agent, operating under a specification-first protocol with no human code review and no pre-existing test oracle, dismantled a core lifetime invariant across 189 files in a 717k-line TypeScript application, a change the author considered effectively infeasible through incremental refactoring. The paper contributes a detailed instrumentation trace rather than a new method, illustrating that specification-first agentic workflows can handle large architectural refactors under specific conditions.",
+      "importance_score": 40.0,
+      "reasoning": "Single-author, n=1 case study limits generalizability, and the contribution is observational rather than methodological. However, the scale (717k lines, 189 files, cross-architectural change) and the protocol details (no oracle, no human review) make it a useful data point about the current ceiling of agentic coding workflows. Below average for novelty but above average for practical insight.",
+      "themes": [
+        "AI Coding Agents",
+        "Software Engineering",
+        "Agentic Systems"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12440",
+        "category_name": "",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12440"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A single-case empirical study reporting that an AI coding agent, operating under a specification-first protocol with no human code review and no pre-existing test oracle, dismantled a core lifetime invariant across 189 files in a 717k-line TypeScript application, a change the author considered effectively infeasible through incremental refactoring. The paper contributes a detailed instrumentation trace rather than a new method, illustrating that specification-first agentic workflows can handle large architectural refactors under specific conditions.</p>",
+      "content_html": "<p>This paper reports a single, fully instrumented case study of a large-scale architectural refactoring by an AI coding agent under a specification-first protocol, with no human review of the generated code and no pre-existing oracle to validate the target behaviour. The task, dismantling a central invariant across a large interdependent codebase, was assessed by the author as effectively infeasible through incremental refactoring, the kind of change that conventionally calls for a rewrite instead. Under the protocol described here, the agent completed it successfully. The system is a 717,725-line production TypeScript application across 3,648 files. The task required dismantling a core lifetime invariant: the guarantee that a UI panel remains open for the duration of an AI request. The target behaviour was that a streaming generation survives the closing of its panel and can be reattached, on reopening, to the same live stream with no loss or duplication. The protocol: formal specification by the agent, 14 refinement cycles auditing that specification against the source code, atomic implementation, a compile/test feedback loop, then 17 verification cycles auditing the code against the frozen specification. Across 31 audit passes, 201 defects were corrected before any human executed the program. The convergence criterion was empirical: two consecutive verification passes returning zero findings. The change touched 189 files (31 new); with the extraction phase, the two commits total 288 files, 34,770 insertions, 16,422 deletions. Across the first and roughly thirty later sessions, the software behaved as specified, no bug observed. Elapsed: three days; cost: USD 2,430. The full specification and raw session logs, 1,500+ pages in French, are published as evidence, allowing inspection of the process and submission to a language model for consistency checking.</p>"
+    },
+    {
+      "id": "ef05695902fe",
+      "title": "Mitigating Gender Bias in English to Romanian Machine Translation",
+      "content": "A hybrid pipeline combining LLM gender classification with tag-aware neural translation improves gender accuracy in English-to-Romanian machine translation.",
+      "url": "https://huggingface.co/papers/2608.08606",
+      "author": "Ioana Grigore, Sergiu Nisioi",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "large language model",
+        "gender classification",
+        "neural machine translation",
+        "Transformer",
+        "gender hint tags",
+        "gender disambiguation",
+        "WinoMT",
+        "WinoGender"
+      ],
+      "summary": "The authors combine an LLM-based gender classifier with tag-aware neural machine translation in a hybrid pipeline to improve gender accuracy in English-to-Romanian translation, addressing a known bias problem for a low-resource target language.",
+      "importance_score": 35.0,
+      "reasoning": "Useful contribution to bias mitigation in MT for an under-served language pair, but the methodology (LLM classification plus existing tag-aware NMT) is incremental. Impact is primarily regional and limited to the specific language pair and gender dimension.",
+      "themes": [
+        "Machine Translation",
+        "Bias and Fairness",
+        "Low-Resource Languages"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.08606",
+        "category_name": "large language model, gender classification, neural machine translation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.08606"
+        },
+        "huggingface": {
+          "upvotes": 0,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-09T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The authors combine an LLM-based gender classifier with tag-aware neural machine translation in a hybrid pipeline to improve gender accuracy in English-to-Romanian translation, addressing a known bias problem for a low-resource target language.</p>",
+      "content_html": "<p>A hybrid pipeline combining LLM gender classification with tag-aware neural translation improves gender accuracy in English-to-Romanian machine translation.</p>"
+    },
+    {
+      "id": "808dfbcc6f33",
+      "title": "CW-BASS v2: Saturation-Aware Pseudo-Label Selection for Semi-Supervised Segmentation under Foundation-Model Teachers",
+      "content": "CW-BASS v2 selects pseudo-labels by measuring teacher reliability on held-out data and applying either strict filtering or an adaptive floor to avoid confirmation bias under saturated confidence.",
+      "url": "https://huggingface.co/papers/2608.12773",
+      "author": "Ebenezer Tarubinga",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "semi-supervised semantic segmentation",
+        "pseudo-label selection",
+        "DINOv2",
+        "self-supervised foundation encoders",
+        "confidence saturation",
+        "held-out calibration",
+        "adaptive confidence floor",
+        "confirmation bias",
+        "mIoU"
+      ],
+      "summary": "CW-BASS v2 extends a pseudo-label selection strategy for semi-supervised semantic segmentation by measuring teacher reliability on held-out data and applying either strict filtering or an adaptive floor when teacher confidence saturates, aiming to reduce confirmation bias from foundation-model teachers such as DINOv2.",
+      "importance_score": 33.0,
+      "reasoning": "Applied contribution to semi-supervised segmentation with a sensible bias-correction mechanism, but incremental over prior pseudo-label filtering work. Single author and no headline benchmark gains mentioned; useful for practitioners but unlikely to shift the field.",
+      "themes": [
+        "Semi-Supervised Learning",
+        "Semantic Segmentation",
+        "Foundation Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12773",
+        "category_name": "semi-supervised semantic segmentation, pseudo-label selection, DINOv2",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12773"
+        },
+        "huggingface": {
+          "upvotes": 0,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/psychofict/CW-BASS-v2"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>CW-BASS v2 extends a pseudo-label selection strategy for semi-supervised semantic segmentation by measuring teacher reliability on held-out data and applying either strict filtering or an adaptive floor when teacher confidence saturates, aiming to reduce confirmation bias from foundation-model teachers such as DINOv2.</p>",
+      "content_html": "<p>CW-BASS v2 selects pseudo-labels by measuring teacher reliability on held-out data and applying either strict filtering or an adaptive floor to avoid confirmation bias under saturated confidence.</p>"
+    },
+    {
+      "id": "780a3a2dbf41",
+      "title": "RibAssist 3D: Biplanar Rib-Fracture Detection, Addressing, and Selective 3D Localization from CT-Derived Projections",
+      "content": "Cross-view pairing of rib fractures in orthogonal CT projections enables accurate 3D localization, but correspondence confidence remains the primary bottleneck.",
+      "url": "https://huggingface.co/papers/2608.06914",
+      "author": "Kabila Haile Soboka",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "cross-view correspondence",
+        "orthogonal projections",
+        "triangulation",
+        "3D localization",
+        "confidence-gated abstention",
+        "factorial analysis",
+        "rib fracture detection"
+      ],
+      "summary": "RibAssist 3D uses cross-view pairing of rib fractures across orthogonal CT-derived projections to achieve accurate 3D localization, while explicitly identifying correspondence confidence as the primary remaining bottleneck. The approach reduces reliance on full 3D CT processing by working from biplanar projections.",
+      "importance_score": 32.0,
+      "reasoning": "Niche medical imaging application with a clinically relevant target (rib fracture localization). The honest identification of the correspondence bottleneck is commendable but the paper does not propose a new technique to address it, limiting methodological contribution.",
+      "themes": [
+        "Medical Imaging",
+        "Computer Vision",
+        "3D Reconstruction"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.06914",
+        "category_name": "cross-view correspondence, orthogonal projections, triangulation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.06914"
+        },
+        "huggingface": {
+          "upvotes": 0,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-10T00:00:00.000Z",
+          "github_repo": "https://github.com/kabJhai/RibAssist-3D"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>RibAssist 3D uses cross-view pairing of rib fractures across orthogonal CT-derived projections to achieve accurate 3D localization, while explicitly identifying correspondence confidence as the primary remaining bottleneck. The approach reduces reliance on full 3D CT processing by working from biplanar projections.</p>",
+      "content_html": "<p>Cross-view pairing of rib fractures in orthogonal CT projections enables accurate 3D localization, but correspondence confidence remains the primary bottleneck.</p>"
+    },
+    {
+      "id": "6d0ffa154056",
+      "title": "An AI4AI Framework for Visual Token Pruning",
+      "content": "AutoPrune uses large language models to automatically design visual-token pruning policies for multimodal models via a domain-specific language and residual search formulation, achieving high efficiency with minimal performance loss.",
+      "url": "https://huggingface.co/papers/2608.07193",
+      "author": "Zhen Liu, Wenli Huang, Wei Song, Yuhan Liu, Zhiqin Yang, Jingwen Fu",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "visual-token pruning",
+        "multimodal large language models",
+        "AutoPrune",
+        "TPDSL",
+        "token pruning domain-specific language",
+        "residual modification",
+        "base policy",
+        "FLOPs",
+        "prefill latency"
+      ],
+      "summary": "AutoPrune uses large language models to automatically design visual-token pruning policies for multimodal models via a domain-specific language and residual search formulation, achieving high efficien...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.07193",
+        "category_name": "visual-token pruning, multimodal large language models, AutoPrune",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.07193"
+        },
+        "huggingface": {
+          "upvotes": 7,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-07T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>AutoPrune uses large language models to automatically design visual-token pruning policies for multimodal models via a domain-specific language and residual search formulation, achieving high efficien...</p>",
+      "content_html": "<p>AutoPrune uses large language models to automatically design visual-token pruning policies for multimodal models via a domain-specific language and residual search formulation, achieving high efficiency with minimal performance loss.</p>"
+    },
+    {
+      "id": "509b8df1c42b",
+      "title": "TailBooster: A Dual-Layer Generative Framework for Extreme Value Augmentation with Operational Validity Enforcement",
+      "content": "TailBooster uses a dual-layer generative framework with statistical tail extraction and deep autoencoder cleaning to synthesize operationally valid extreme air-transport events, substantially improving extreme-event prediction accuracy.",
+      "url": "https://huggingface.co/papers/2608.11951",
+      "author": "Karim Aly, Alexei Sharpanskykh, Jacco Hoekstra",
+      "published": "2026-08-14T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Tabular Variational Autoencoder",
+        "autoencoder-based cleaning",
+        "interquartile range",
+        "synthetic data augmentation",
+        "extreme-event prediction",
+        "mixed-type tabular data",
+        "operational validity"
+      ],
+      "summary": "TailBooster introduces a dual-layer generative framework combining statistical tail extraction with deep autoencoder cleaning to synthesize operationally valid extreme air-transport events, improving extreme-event prediction accuracy. The method targets a well-known problem in tabular data where extreme values are underrepresented and standard generative models produce implausible samples.",
+      "importance_score": 28.0,
+      "reasoning": "Domain-specific contribution focused on air-transport analytics with limited methodological novelty beyond combining existing techniques (VAE-based cleaning plus IQR tail filtering). The narrow application domain and lack of comparison to broader extreme-value ML methods reduce broader impact.",
+      "themes": [
+        "Tabular Data",
+        "Generative Models",
+        "Extreme Value Modeling"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11951",
+        "category_name": "Tabular Variational Autoencoder, autoencoder-based cleaning, interquartile range",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11951"
+        },
+        "huggingface": {
+          "upvotes": 1,
+          "selected_at": "2026-08-14T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>TailBooster introduces a dual-layer generative framework combining statistical tail extraction with deep autoencoder cleaning to synthesize operationally valid extreme air-transport events, improving extreme-event prediction accuracy. The method targets a well-known problem in tabular data where extreme values are underrepresented and standard generative models produce implausible samples.</p>",
+      "content_html": "<p>TailBooster uses a dual-layer generative framework with statistical tail extraction and deep autoencoder cleaning to synthesize operationally valid extreme air-transport events, substantially improving extreme-event prediction accuracy.</p>"
+    }
+  ]
+}
