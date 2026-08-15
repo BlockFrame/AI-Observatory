@@ -2744,10 +2744,19 @@ class AsyncLLMRouter:
                     if reason is not None:
                         self._record_route_failure(client, reason, error)
 
-                    if same_provider_retry == 0 and self._should_retry_same_provider(
-                        error,
-                        reason,
-                        elapsed_seconds,
+                    is_link_enrichment = (caller or "").startswith((
+                        "link_enricher.",
+                        "link_enricher_fallback.",
+                        "link_enricher_paid.",
+                    ))
+                    if (
+                        same_provider_retry == 0
+                        and not is_link_enrichment
+                        and self._should_retry_same_provider(
+                            error,
+                            reason,
+                            elapsed_seconds,
+                        )
                     ):
                         same_provider_retry = 1
                         retry_reason = reason

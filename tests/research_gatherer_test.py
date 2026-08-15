@@ -2,6 +2,7 @@
 
 import tempfile
 import unittest
+import asyncio
 from time import struct_time
 from datetime import datetime, timedelta
 from unittest.mock import Mock, patch
@@ -88,6 +89,35 @@ class ResearchGathererTest(unittest.TestCase):
         self.assertIsInstance(posts, list)
         self.assertEqual(len(posts), 1)
         self.assertEqual(posts[0].title, "A current research result")
+
+    @patch("agents.gatherers.research_gatherer.feedparser.parse")
+    @patch("agents.gatherers.research_gatherer.requests.get")
+    def test_meta_research_feed_uses_requested_canonical_source(self, mock_get, mock_parse):
+        response = Mock(content=b"<rss />")
+        response.raise_for_status.return_value = None
+        mock_get.return_value = response
+        mock_parse.return_value = Mock(
+            bozo=False,
+            feed={"title": "Engineering at Meta"},
+            entries=[{
+                "title": "Current Meta AI result",
+                "link": "https://engineering.fb.com/current",
+                "summary": "A useful result.",
+                "published_parsed": struct_time((2026, 7, 10, 12, 0, 0, 3, 191, -1)),
+                "tags": [],
+            }],
+        )
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+
+        posts = gatherer._fetch_research_feed(
+            "https://engineering.fb.com/category/ai-research/feed/"
+        )
+
+        self.assertEqual(posts[0].source, "Meta AI Research")
+        self.assertEqual(
+            posts[0].metadata["source_index_url"],
+            "https://ai.meta.com/research/",
+        )
 
     def test_alphaxiv_record_filters_and_extracts_structured_summary(self):
         gatherer = self._gatherer_for_coverage("2026-07-10")
@@ -193,6 +223,59 @@ class ResearchGathererTest(unittest.TestCase):
         self.assertTrue(gatherer._is_openai_research_entry(["Security"]))
         self.assertFalse(gatherer._is_openai_research_entry(["Product"]))
         self.assertFalse(gatherer._is_openai_research_entry([]))
+
+    def test_anthropic_web_parser_keeps_only_exact_coverage_date(self):
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+        html = """
+        <a href="/research/current"><time>Jul 10, 2026</time>
+          <span class="publication-title">Current safety research</span></a>
+        <a href="/research/old"><time>Jul 9, 2026</time>
+          <span class="publication-title">Old safety research</span></a>
+        <a href="/research/team/alignment">Alignment</a>
+        """
+
+        items, candidates = gatherer._extract_anthropic_research(
+            "https://www.anthropic.com/research", html
+        )
+
+        self.assertEqual(candidates, 2)
+        self.assertEqual([item.title for item in items], ["Current safety research"])
+        self.assertEqual(items[0].source, "Anthropic Research")
+        self.assertEqual(items[0].metadata["scraper_type"], "deterministic_html")
+
+    def test_epoch_web_parser_extracts_summary_and_author(self):
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+        html = """
+        <div class="card-article-listing">
+          <span class="badge-text">Report</span><span class="badge-text">Jul. 10, 2026</span>
+          <a href="/publications/current"></a>
+          <span class="button-text"><span class="trim">Current compute report</span></span>
+          <div class="body-3">A concise finding.</div><p class="card-author">By Ada</p>
+        </div>
+        """
+
+        items, candidates = gatherer._extract_epoch_research(
+            "https://epoch.ai/latest", html
+        )
+
+        self.assertEqual(candidates, 1)
+        self.assertEqual(items[0].content, "A concise finding.")
+        self.assertEqual(items[0].author, "Ada")
+
+    def test_web_source_failure_is_visible_and_non_fatal(self):
+        gatherer = self._gatherer_for_coverage("2026-07-10")
+        gatherer.research_web_sources = ["https://epoch.ai/latest"]
+
+        with patch.object(
+            gatherer, "_fetch_research_web_source", side_effect=RuntimeError("offline")
+        ):
+            items = asyncio.run(gatherer._collect_research_web_sources())
+
+        self.assertEqual(items, [])
+        self.assertEqual(
+            gatherer.collection_status["https://epoch.ai/latest"]["status"],
+            "failed",
+        )
 
 
 if __name__ == "__main__":

@@ -1105,6 +1105,11 @@ class MainOrchestrator:
                         ),
                     }
 
+        research_gatherer = self.gatherers.get('research')
+        if research_gatherer and hasattr(research_gatherer, 'get_collection_status'):
+            for url, status in research_gatherer.get_collection_status().items():
+                collection_status[url] = status
+
         # Phase 2: Run news gatherer with social posts for link following
         logger.info("  Phase 2: Gathering news with link following...")
         social_posts = results.get('social', [])

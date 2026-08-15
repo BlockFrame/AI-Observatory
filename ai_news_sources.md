@@ -4,8 +4,8 @@ This document describes sources that are wired into the current pipeline. The fi
 
 ## AI News
 
-- `config/rss_feeds.txt`: 36 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts. The Tech & Media group includes MarkTechPost's category-specific Tech News feed. NVIDIA Research is excluded because its feed can assign current update timestamps to historical publications.
-- `config/web_scraper_sources.txt`: 8 direct web pages used where no reliable feed is available: Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, ElevenLabs, Aleph Alpha, and Artificial Analysis. Aleph Alpha and Artificial Analysis use deterministic, date-validated HTML extractors and consume no LLM calls.
+- `config/rss_feeds.txt`: 43 RSS/Atom feeds from AI labs, technology publications, engineering blogs, policy sources, and industry analysts. Active additions include Hugging Face Blog, OECD.AI, Databricks, EU Digital Strategy, EDPB, AI Laws by State, and AI Law Tracker. Broad EU/EDPB feeds are narrowed to AI-policy entries; Databricks is narrowed to AI/ML/model/agent posts; AI Law Tracker retains only news and the weekly digest.
+- `config/web_scraper_sources.txt`: 13 direct web pages used where no reliable feed is available. Alongside Anthropic, Cohere, Lovable, CopilotKit, Microsoft Copilot, ElevenLabs, Aleph Alpha, and Artificial Analysis, News now includes Kimi, NIST CAISI, The Batch, MiniMax News, and Z.ai's official dated release stream. The five new routes use deterministic, exact-date extraction and consume no LLM calls; MiniMax uses the public structured endpoint behind its official News index. Z.ai's `/blog` has no discoverable index/feed, so the official release page is used for reliable daily discovery.
 - Hacker News: current stories collected through the Algolia API and filtered for AI relevance.
 - Links from X: `LinkFollower` expands `t.co` redirects and collects qualifying linked articles.
 
@@ -15,7 +15,9 @@ News filtering is deterministic-first. If the LLM relevance filter returns inval
 
 - Hugging Face Daily Papers for date-addressable curated papers.
 - AlphaXiv Trending for recent rolling-window signals.
-- `config/research_feeds.txt`: 19 research and technical feeds, including the research-tagged subset of OpenAI's canonical feed. The OpenAI Research index is recorded as the editorial source of truth.
+- `config/research_feeds.txt`: 20 configured routes: 19 research/technical feeds plus the LessWrong GraphQL marker. They include the research-tagged subset of OpenAI's canonical feed and Meta's official AI Research engineering feed.
+- `config/research_web_sources.txt`: 4 deterministic, date-validated hubs: Anthropic Research, Anthropic Economic Futures, Arena Research, and Epoch AI. These collectors make no LLM calls and discard undated entries. Kimi, OECD.AI, and NIST CAISI are intentionally classified as News.
+- `config/research_reference_sources.txt`: authoritative non-daily hubs for Meta AI Research, Microsoft AIEI, OECD.AI, Stanford HAI AI Index, EU AI Office, the EC AI Act, GovAI, AI Laws by State, and AI Law Tracker. These pages ground source coverage but are not emitted as fresh daily items merely because a static page changed.
 - LessWrong through its GraphQL endpoint for date-range queries. The LessWrong feed entry in `research_feeds.txt` selects this special route; collection is not performed through ordinary RSS.
 
 AlphaXiv cannot provide arbitrary historical snapshots beyond its supported ranking windows. Hugging Face remains the primary source for older backfills.

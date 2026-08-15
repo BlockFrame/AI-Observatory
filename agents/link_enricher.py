@@ -7,7 +7,6 @@ references in summary text and inject markdown links pointing to
 the corresponding items on the site.
 """
 
-import asyncio
 import json
 import logging
 import re
@@ -73,7 +72,8 @@ class LinkEnricher:
         """
         Enrich all summary text with internal links.
 
-        Runs all enrichment tasks in parallel for efficiency.
+        Runs three sequential enrichment batches so provider health can be
+        re-evaluated between calls and the free-tier RPD budget is preserved.
         - Executive summary: can link to items from ANY category
         - Category summaries: can ONLY link to items from that category
         - Topic descriptions: can link to items from ANY category
@@ -103,16 +103,15 @@ class LinkEnricher:
                 items_by_category[cat] = []
             items_by_category[cat].append(item)
 
-        # Prepare all enrichment tasks for parallel execution
-        tasks = []
-        task_keys: List[Tuple[str, Any]] = []
+        executive_documents = [{
+            "id": "executive",
+            "text": executive_summary,
+            "items": all_items,
+            "evidence_by_bullet": executive_summary_evidence or [],
+            "max_links_per_block": 4,
+        }]
 
-        # Executive summary task (all items available)
-        tasks.append(self._enrich_text(
-            executive_summary, all_items, "executive summary",
-            evidence_by_bullet=executive_summary_evidence,
-        ))
-        task_keys.append(('exec', None))
+        category_documents = []
 
         # Category summary tasks (ONLY items from that category)
         for category, report in category_reports.items():
@@ -125,16 +124,19 @@ class LinkEnricher:
                         if hasattr(report, 'category_summary_evidence')
                         else report.get('category_summary_evidence', [])
                     )
-                    tasks.append(self._enrich_text(
-                        summary, category_items, f"{category} summary",
-                        evidence_by_bullet=evidence,
-                    ))
-                    task_keys.append(('category', category))
+                    category_documents.append({
+                        "id": f"category:{category}",
+                        "category": category,
+                        "text": summary,
+                        "items": category_items,
+                        "evidence_by_bullet": evidence or [],
+                        "max_links_per_block": 4,
+                    })
                 else:
                     # No items for this category, skip enrichment
                     logger.debug(f"  {category} summary: no items available, skipping")
 
-        # Topic description tasks (all items available)
+        topic_documents = []
         for i, topic in enumerate(top_topics):
             description = topic.description if hasattr(topic, 'description') else topic.get('description', '')
             if description:
@@ -146,43 +148,347 @@ class LinkEnricher:
                 topic_items = [
                     item for item in all_items if item.get('id') in set(representative_ids)
                 ]
-                tasks.append(self._enrich_text(
-                    description,
-                    topic_items or all_items,
-                    f"topic: {topic_name}",
-                    links_per_block=2,
-                ))
-                task_keys.append(('topic', i))
+                topic_documents.append({
+                    "id": f"topic:{i}",
+                    "topic_index": i,
+                    "topic_name": topic_name,
+                    "text": description,
+                    "items": topic_items or all_items,
+                    "evidence_by_bullet": [],
+                    "required_item_ids": [
+                        str(item_id) for item_id in representative_ids
+                        if any(str(item.get("id")) == str(item_id) for item in (topic_items or all_items))
+                    ],
+                    "max_links_per_block": 6,
+                })
 
-        logger.info(f"  Running {len(tasks)} enrichment tasks in parallel...")
-
-        # Run all tasks in parallel
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-
-        # Process results
-        enriched_exec = executive_summary
-        enriched_categories: Dict[str, str] = {}
-        enriched_topics = list(top_topics)  # Make a copy to modify
-
-        for (key_type, key_value), result in zip(task_keys, results):
-            if isinstance(result, Exception):
-                logger.error(f"Link enrichment failed for {key_type}/{key_value}: {result}")
+        batch_specs = [
+            ("executive", executive_documents),
+            ("categories", category_documents),
+            ("topics", topic_documents),
+        ]
+        enriched_by_document: Dict[str, str] = {}
+        for batch_name, documents in batch_specs:
+            if not documents:
                 continue
+            logger.info(
+                "  Running %s enrichment batch with %s document(s)",
+                batch_name,
+                len(documents),
+            )
+            try:
+                enriched_by_document.update(
+                    await self._enrich_document_batch(documents, batch_name)
+                )
+            except Exception as exc:
+                # Enrichment is intentionally fail-open: generation has already
+                # been paid for, so an unavailable copy editor must not block it.
+                logger.warning("  %s enrichment batch failed open: %s", batch_name, exc)
 
-            if key_type == 'exec':
-                enriched_exec = result
-            elif key_type == 'category':
-                enriched_categories[key_value] = result
-            elif key_type == 'topic':
-                topic = enriched_topics[key_value]
-                if hasattr(topic, 'description'):
-                    topic.description = result
-                    topic.description_html = self._markdown_links_to_html(result)
-                else:
-                    topic['description'] = result
-                    topic['description_html'] = self._markdown_links_to_html(result)
+        enriched_exec = enriched_by_document.get("executive", executive_summary)
+        enriched_categories: Dict[str, str] = {
+            document["category"]: enriched_by_document.get(document["id"], document["text"])
+            for document in category_documents
+        }
+        enriched_topics = list(top_topics)  # Make a copy to modify
+        for document in topic_documents:
+            result = enriched_by_document.get(document["id"], document["text"])
+            topic = enriched_topics[document["topic_index"]]
+            if hasattr(topic, 'description'):
+                topic.description = result
+                topic.description_html = self._markdown_links_to_html(result)
+            else:
+                topic['description'] = result
+                topic['description_html'] = self._markdown_links_to_html(result)
 
         return enriched_exec, enriched_categories, enriched_topics
+
+    async def _enrich_document_batch(
+        self,
+        documents: List[Dict[str, Any]],
+        batch_name: str,
+    ) -> Dict[str, str]:
+        """Enrich a document batch through Gemini, then targeted fallbacks.
+
+        The model selects verbatim spans only; Python inserts the Markdown.
+        This keeps output compact, prevents prose rewrites and lets a second
+        provider work exclusively on blocks the first provider left uncovered.
+        """
+        prepared = self._prepare_enrichment_documents(documents)
+        if not prepared:
+            return {document["id"]: document["text"] for document in documents}
+
+        enriched = {document["id"]: document["text"] for document in documents}
+        stages = (
+            ("primary", f"link_enricher.batch.{batch_name}"),
+            ("gemini_fallback", f"link_enricher_fallback.batch.{batch_name}"),
+            ("paid_fallback", f"link_enricher_paid.batch.{batch_name}"),
+        )
+        remaining = prepared
+        for stage_name, caller in stages:
+            if not remaining:
+                break
+            selections = await self._request_link_selections(
+                remaining,
+                caller=caller,
+                stage_name=stage_name,
+            )
+            if selections:
+                enriched = self._apply_link_selections(enriched, remaining, selections)
+            remaining = self._uncovered_documents(remaining, enriched)
+
+        # Exact canonical/title matches remain a zero-cost final fallback. It
+        # never appends source lists and never links generic keyword overlap.
+        for document in prepared:
+            document_id = document["id"]
+            if not self._document_has_uncovered_blocks(document, enriched[document_id]):
+                continue
+            enriched[document_id] = self._inject_per_block_links(
+                enriched[document_id],
+                document["items"],
+                document_id,
+                evidence_by_bullet=document.get("evidence_by_bullet"),
+            )
+
+        total_blocks = sum(len(document["blocks"]) for document in prepared)
+        uncovered = sum(
+            len(self._uncovered_blocks(document, enriched[document["id"]]))
+            for document in prepared
+        )
+        logger.info(
+            "  %s enrichment coverage: %s/%s blocks linked; %s published without links",
+            batch_name,
+            total_blocks - uncovered,
+            total_blocks,
+            uncovered,
+        )
+        if uncovered:
+            logger.warning(
+                "  %s enrichment remained incomplete after all fallbacks: %s",
+                batch_name,
+                ", ".join(
+                    f"{document['id']}:{block['line']}"
+                    for document in prepared
+                    for block in self._uncovered_blocks(document, enriched[document["id"]])
+                ),
+            )
+        return enriched
+
+    def _prepare_enrichment_documents(
+        self,
+        documents: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        """Normalize linkable blocks and their authoritative candidate IDs."""
+        prepared = []
+        for source in documents:
+            text = str(source.get("text") or "")
+            items = [item for item in source.get("items", []) if item.get("id")]
+            if not text or not items:
+                continue
+            item_ids = {str(item["id"]) for item in items}
+            evidence = source.get("evidence_by_bullet") or []
+            document_required_ids = [
+                str(item_id) for item_id in source.get("required_item_ids", [])
+                if str(item_id) in item_ids
+            ]
+            blocks = []
+            bullet_index = 0
+            for line_number, line in enumerate(text.splitlines()):
+                stripped = line.strip()
+                is_bullet = stripped.startswith(("- ", "* "))
+                structured_ids = []
+                if is_bullet and bullet_index < len(evidence):
+                    structured_ids = [
+                        str(item_id) for item_id in evidence[bullet_index]
+                        if str(item_id) in item_ids
+                    ]
+                elif not is_bullet:
+                    structured_ids = document_required_ids
+                if is_bullet:
+                    bullet_index += 1
+                visible = re.sub(r"^[*-]\s+", "", stripped)
+                if not visible or stripped.startswith("#") or len(visible) < 20:
+                    continue
+                blocks.append({
+                    "line": line_number,
+                    "text": line,
+                    # Empty/missing evidence must not blind enrichment. This
+                    # specifically covers legacy reports and sanitized News.
+                    "allowed_item_ids": structured_ids or sorted(item_ids),
+                    "required_item_ids": structured_ids,
+                    "max_links": int(source.get("max_links_per_block") or 4),
+                })
+            if blocks:
+                prepared.append({**source, "items": items, "blocks": blocks})
+        return prepared
+
+    async def _request_link_selections(
+        self,
+        documents: List[Dict[str, Any]],
+        caller: str,
+        stage_name: str,
+    ) -> List[Dict[str, Any]]:
+        """Request compact exact-span selections from one routed provider."""
+        items_by_id: Dict[str, Dict[str, Any]] = {}
+        for document in documents:
+            for item in document["items"]:
+                items_by_id[str(item["id"])] = {
+                    key: item.get(key, "")
+                    for key in ("id", "category", "title", "summary")
+                }
+        payload = {
+            "documents": [
+                {
+                    "document_id": document["id"],
+                    "blocks": document["blocks"],
+                }
+                for document in documents
+            ],
+            "items": list(items_by_id.values()),
+        }
+        system = (
+            "You are a source-link editor. Return one JSON object only with exactly this schema: "
+            "{\"selections\":[{\"document_id\":\"id\",\"line\":0,\"item_id\":\"id\","
+            "\"exact_span\":\"verbatim text\"}]}. Do not return Markdown, prose, URLs or extra keys. "
+            "Select every distinct named story, paper, post, product, model or repository that has clear support. "
+            "Multiple selections per block are expected for 1:N references. exact_span must already occur verbatim "
+            "in that block and should be the shortest distinctive name or action phrase, normally 1-12 words. "
+            "Use only the block's allowed_item_ids. Never select headings, generic concepts, connective language, "
+            "business implications, source labels or punctuation. Return an empty selections array when uncertain."
+        )
+        nonce = new_fence_nonce()
+        user_message = build_fenced_user_message(
+            json.dumps(payload, ensure_ascii=False),
+            nonce,
+            task_line="Select grounded link spans from the fenced source data.",
+        )
+        try:
+            response = await self.async_client.call_with_thinking(
+                messages=[{"role": "user", "content": user_message}],
+                system=build_hardened_system(system, nonce),
+                profile=ThinkingLevel.STANDARD,
+                max_tokens=12288,
+                temperature=0.0,
+                caller=caller,
+            )
+            parsed = self._parse_aatf_enrichment_response(response.content)
+            if set(parsed) != {"selections"} or not isinstance(parsed["selections"], list):
+                raise ValueError("link selection response does not match the required schema")
+            logger.info(
+                "  %s returned %s candidate link selection(s)",
+                stage_name,
+                len(parsed["selections"]),
+            )
+            return parsed["selections"]
+        except Exception as exc:
+            logger.warning("  %s link selection unavailable: %s", stage_name, exc)
+            return []
+
+    def _apply_link_selections(
+        self,
+        enriched: Dict[str, str],
+        documents: List[Dict[str, Any]],
+        selections: List[Dict[str, Any]],
+    ) -> Dict[str, str]:
+        """Validate selections and inject links without allowing prose edits."""
+        document_by_id = {document["id"]: document for document in documents}
+        accepted_by_line: Dict[Tuple[str, int], List[Tuple[int, int, str, Dict[str, Any]]]] = {}
+        seen = set()
+        for selection in selections:
+            if not isinstance(selection, dict) or set(selection) != {
+                "document_id", "line", "item_id", "exact_span"
+            }:
+                continue
+            document_id = str(selection.get("document_id") or "")
+            line_number = selection.get("line")
+            item_id = str(selection.get("item_id") or "")
+            span = str(selection.get("exact_span") or "").strip()
+            document = document_by_id.get(document_id)
+            if not document or not isinstance(line_number, int) or not span:
+                continue
+            block = next(
+                (entry for entry in document["blocks"] if entry["line"] == line_number),
+                None,
+            )
+            item = next(
+                (entry for entry in document["items"] if str(entry.get("id")) == item_id),
+                None,
+            )
+            if not block or not item or item_id not in block["allowed_item_ids"]:
+                continue
+            words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._/'’-]*", span)
+            if not (1 <= len(words) <= 12) or not self._span_is_grounded_in_item(span, item):
+                continue
+            current_line = enriched[document_id].splitlines()[line_number]
+            match = self._find_unlinked_span(current_line, span)
+            key = (document_id, line_number, item_id, span.casefold())
+            if not match or key in seen or f"#item-{item_id}" in current_line:
+                continue
+            entries = accepted_by_line.setdefault((document_id, line_number), [])
+            existing_links = current_line.count("](/?date=")
+            if existing_links + len(entries) >= block["max_links"]:
+                continue
+            if any(not (match.end() <= start or match.start() >= end) for start, end, _, _ in entries):
+                continue
+            entries.append((match.start(), match.end(), span, item))
+            seen.add(key)
+
+        accepted = 0
+        for (document_id, line_number), entries in accepted_by_line.items():
+            lines = enriched[document_id].splitlines()
+            line = lines[line_number]
+            for start, end, _span, item in sorted(entries, reverse=True):
+                url = f"/?date={self.date}&category={item['category']}#item-{item['id']}"
+                line = f"{line[:start]}[{line[start:end]}]({url}){line[end:]}"
+                accepted += 1
+            lines[line_number] = line
+            enriched[document_id] = "\n".join(lines)
+        logger.info("  Accepted %s validated exact-span link(s)", accepted)
+        return enriched
+
+    @staticmethod
+    def _find_unlinked_span(line: str, span: str) -> Optional[re.Match]:
+        """Find a case-insensitive span that is not already inside a link."""
+        linked_ranges = [
+            (match.start(), match.end())
+            for match in re.finditer(r"\[[^\]]+\]\(/\?date=[^)]+\)", line)
+        ]
+        for match in re.finditer(re.escape(span), line, re.I):
+            if not any(match.start() >= start and match.end() <= end for start, end in linked_ranges):
+                return match
+        return None
+
+    def _uncovered_documents(
+        self,
+        documents: List[Dict[str, Any]],
+        enriched: Dict[str, str],
+    ) -> List[Dict[str, Any]]:
+        """Return copies containing only blocks still lacking any source link."""
+        remaining = []
+        for document in documents:
+            blocks = self._uncovered_blocks(document, enriched[document["id"]])
+            if blocks:
+                remaining.append({**document, "text": enriched[document["id"]], "blocks": blocks})
+        return remaining
+
+    def _uncovered_blocks(self, document: Dict[str, Any], text: str) -> List[Dict[str, Any]]:
+        lines = text.splitlines()
+        uncovered = []
+        for block in document["blocks"]:
+            if block["line"] >= len(lines):
+                uncovered.append(block)
+                continue
+            line = lines[block["line"]]
+            required_ids = block.get("required_item_ids") or []
+            if required_ids:
+                if any(f"#item-{item_id}" not in line for item_id in required_ids):
+                    uncovered.append(block)
+            elif not self._has_internal_links(line):
+                uncovered.append(block)
+        return uncovered
+
+    def _document_has_uncovered_blocks(self, document: Dict[str, Any], text: str) -> bool:
+        return bool(self._uncovered_blocks(document, text))
 
     # How many items per category to expose to the link-enrichment LLM.
     # The executive summary is generated with visibility into category summaries
@@ -253,7 +559,7 @@ class LinkEnricher:
                         'id': item_id,
                         'title': normalize_untrusted_text(title)[:300],
                         'category': category,
-                        'summary': summary[:200] if summary else ''
+                        'summary': normalize_untrusted_text(summary)[:200] if summary else ''
                     })
                     added_for_category += 1
 
@@ -493,10 +799,11 @@ Rules:
 
     @staticmethod
     def _span_is_grounded_in_item(span: str, item: Dict[str, Any]) -> bool:
-        """Require two distinctive words shared with the selected item's title.
+        """Require a distinctive exact name or title overlap.
 
         This local check prevents a model from attaching an allowed-but-
-        irrelevant source to a plausible phrase in the bullet.
+        irrelevant source while retaining short technical names such as
+        ``Qwen3.8``, ``Orca`` and repository basenames.
         """
         stopwords = {
             "about", "agent", "agents", "and", "are", "for", "from", "into", "its",
@@ -507,7 +814,21 @@ Rules:
                 token.lower() for token in re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", value)
                 if len(token) >= 4 and token.lower() not in stopwords
             }
-        overlap = distinctive(span) & distinctive(str(item.get("title") or ""))
+        title = str(item.get("title") or "")
+        if LinkEnricher._label_identifies_item(span, item):
+            return True
+        normalized_span = re.sub(r"\s+", " ", span.strip().casefold())
+        normalized_title = re.sub(r"\s+", " ", title.strip().casefold())
+        span_tokens = re.findall(r"[a-z0-9][a-z0-9+._'-]*", normalized_span)
+        has_distinctive_token = any(
+            (len(token) >= 4 and token not in stopwords)
+            or any(character.isdigit() for character in token)
+            or any(character in token for character in (".", "+", "/"))
+            for token in span_tokens
+        )
+        if normalized_span in normalized_title and has_distinctive_token:
+            return True
+        overlap = distinctive(span) & distinctive(title)
         return len(overlap) >= 2
 
     async def _enrich_text_with_llm(

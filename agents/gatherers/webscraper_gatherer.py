@@ -3,12 +3,13 @@ import json
 import logging
 import asyncio
 import re
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
+from dateutil import parser as date_parser
 
 from ..base import BaseGatherer, CollectedItem, deduplicate_items, extract_json_str
 from ..llm_client import AnthropicClient
@@ -85,6 +86,25 @@ class WebScraperGatherer(BaseGatherer):
             return await asyncio.to_thread(fetch)
         except Exception as e:
             logger.error(f"Failed to fetch {url}: {e}")
+            return None
+
+    async def _fetch_json(self, url: str) -> Optional[Dict[str, Any]]:
+        """Fetch a small public JSON endpoint without consuming an LLM call."""
+        import requests
+        try:
+            def fetch():
+                response = requests.get(
+                    url,
+                    headers={"User-Agent": os.getenv("NEWS_USER_AGENT", "AI-News-Aggregator/1.0")},
+                    timeout=15.0,
+                )
+                response.raise_for_status()
+                return response.json()
+
+            payload = await asyncio.to_thread(fetch)
+            return payload if isinstance(payload, dict) else None
+        except Exception as exc:
+            logger.error("Failed to fetch JSON %s: %s", url, exc)
             return None
 
     async def _extract_news_with_llm(self, url: str, text: str) -> List[CollectedItem]:
@@ -206,6 +226,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
         article_url: str,
         published: datetime,
         summary: str,
+        source_group: str = "Tech & Media",
     ) -> CollectedItem:
         """Normalize a dated article extracted without an LLM."""
         return CollectedItem(
@@ -219,7 +240,7 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
             source_type="web_scraper",
             metadata={
                 "scraper_type": "deterministic_html",
-                "source_group": "Tech & Media",
+                "source_group": source_group,
             },
             keywords=self.extract_keywords(f"{title} {summary}"),
         )
@@ -307,6 +328,215 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
                 break
         return items
 
+    @staticmethod
+    def _parse_visible_date(value: str) -> Optional[datetime]:
+        """Parse an explicit source date; never infer a missing date."""
+        cleaned = re.sub(r'^Updated\s+', '', (value or '').strip(), flags=re.I)
+        if not cleaned:
+            return None
+        try:
+            return date_parser.parse(cleaned, fuzzy=False).replace(tzinfo=None)
+        except (ValueError, TypeError, OverflowError):
+            return None
+
+    def _keep_dated_news(
+        self,
+        *,
+        source: str,
+        source_group: str,
+        title: str,
+        article_url: str,
+        published: datetime,
+        summary: str = "",
+    ) -> Optional[CollectedItem]:
+        self._last_extract_candidates += 1
+        if not self.is_in_date_range(published):
+            self._last_out_of_window += 1
+            return None
+        return self._build_deterministic_item(
+            source=source,
+            source_group=source_group,
+            title=title,
+            article_url=article_url,
+            published=published,
+            summary=summary,
+        )
+
+    def _extract_kimi_news(self, url: str, html: str) -> List[CollectedItem]:
+        """Extract Kimi's dated model and product announcements as News."""
+        soup = BeautifulSoup(html, "html.parser")
+        items: List[CollectedItem] = []
+        seen = set()
+        for card in soup.select('.menu-card'):
+            anchor = card.find('a', href=True)
+            date_element = card.select_one('.card-date')
+            heading = card.find(['h2', 'h3', 'h4'])
+            if not anchor or not date_element or not heading:
+                continue
+            article_url = urljoin(url, anchor['href']).split('#')[0]
+            if article_url in seen or '/blog/' not in article_url:
+                continue
+            published = self._parse_visible_date(date_element.get_text(' ', strip=True))
+            if not published:
+                self._last_date_parse_failures += 1
+                continue
+            seen.add(article_url)
+            item = self._keep_dated_news(
+                source="Kimi Blog",
+                source_group="AI Labs & Platforms",
+                title=heading.get_text(' ', strip=True),
+                article_url=article_url,
+                published=published,
+            )
+            if item:
+                items.append(item)
+        return items[:self.max_deterministic_articles_per_site]
+
+    def _extract_nist_news(self, url: str, html: str) -> List[CollectedItem]:
+        """Extract dated CAISI updates from the official NIST hub."""
+        soup = BeautifulSoup(html, "html.parser")
+        items: List[CollectedItem] = []
+        seen = set()
+        for time_element in soup.find_all('time', attrs={'datetime': True}):
+            container = time_element.find_parent('header')
+            anchor = container.find('a', href=True) if container else None
+            heading = container.find(['h2', 'h3', 'h4']) if container else None
+            published = self._parse_visible_date(time_element.get('datetime', ''))
+            if not anchor or not heading or not published:
+                continue
+            article_url = urljoin(url, anchor['href']).split('#')[0]
+            if article_url in seen:
+                continue
+            seen.add(article_url)
+            item = self._keep_dated_news(
+                source="NIST CAISI",
+                source_group="Policy & Regulation",
+                title=heading.get_text(' ', strip=True),
+                article_url=article_url,
+                published=published,
+            )
+            if item:
+                items.append(item)
+        return items[:self.max_deterministic_articles_per_site]
+
+    def _extract_the_batch(self, url: str, html: str) -> List[CollectedItem]:
+        """Extract dated weekly issues from DeepLearning.AI's The Batch."""
+        soup = BeautifulSoup(html, "html.parser")
+        items: List[CollectedItem] = []
+        seen = set()
+        for article in soup.find_all('article'):
+            anchor = article.select_one('a[href*="/the-batch/issue-"]')
+            heading = article.find(['h2', 'h3'])
+            date_anchor = article.select_one('a[href*="/the-batch/tag/"]')
+            if not anchor or not heading or not date_anchor:
+                continue
+            article_url = urljoin(url, anchor.get('href', '')).split('#')[0]
+            if article_url in seen:
+                continue
+            published = self._parse_visible_date(date_anchor.get_text(' ', strip=True))
+            if not published:
+                self._last_date_parse_failures += 1
+                continue
+            seen.add(article_url)
+            paragraph = article.find('p')
+            item = self._keep_dated_news(
+                source="The Batch",
+                source_group="Tech & Media",
+                title=heading.get_text(' ', strip=True),
+                article_url=article_url,
+                published=published,
+                summary=paragraph.get_text(' ', strip=True) if paragraph else '',
+            )
+            if item:
+                items.append(item)
+        return items[:self.max_deterministic_articles_per_site]
+
+    async def _extract_minimax_news(self, url: str) -> List[CollectedItem]:
+        """Collect MiniMax News through the public endpoint used by its index."""
+        items: List[CollectedItem] = []
+        seen = set()
+        for page in range(1, 6):
+            payload = await self._fetch_json(
+                f"https://www.minimax.io/api/news?page={page}&locale=en"
+            )
+            if not payload or not isinstance(payload.get('data'), list):
+                self._last_extract_error = 'MiniMax News API returned an invalid payload'
+                break
+            page_dates: List[datetime] = []
+            for record in payload['data']:
+                raw_date = record.get('publishDate')
+                try:
+                    if isinstance(raw_date, (int, float)):
+                        published = datetime.fromtimestamp(raw_date / 1000, timezone.utc).replace(tzinfo=None)
+                    else:
+                        published = date_parser.parse(str(raw_date)).replace(tzinfo=None)
+                except (ValueError, TypeError, OverflowError):
+                    self._last_date_parse_failures += 1
+                    continue
+                page_dates.append(published)
+                slug = str(record.get('slug') or '').strip()
+                title = str(record.get('title') or '').strip()
+                if not slug or not title:
+                    continue
+                article_url = urljoin(url, f"/news/{slug}")
+                if article_url in seen:
+                    continue
+                seen.add(article_url)
+                item = self._keep_dated_news(
+                    source="MiniMax News",
+                    source_group="AI Labs & Platforms",
+                    title=title,
+                    article_url=article_url,
+                    published=published,
+                    summary=str(record.get('summary') or ''),
+                )
+                if item:
+                    items.append(item)
+            if items or not payload.get('hasMore'):
+                break
+            if page_dates and max(page_dates) < self.start_time:
+                break
+        return items[:self.max_deterministic_articles_per_site]
+
+    async def _extract_zai_releases(self, url: str, html: str) -> List[CollectedItem]:
+        """Discover dated Z.ai releases, preferring the matching official blog URL."""
+        soup = BeautifulSoup(html, "html.parser")
+        items: List[CollectedItem] = []
+        for update in soup.select('div.update[id]'):
+            published = self._parse_visible_date(update.get('id', ''))
+            title_element = update.select_one('[data-component-part="update-description"]')
+            if not published or not title_element:
+                continue
+            title = title_element.get_text(' ', strip=True)
+            content = update.select_one('[data-component-part="update-content"]')
+            if not title:
+                continue
+            self._last_extract_candidates += 1
+            if not self.is_in_date_range(published):
+                self._last_out_of_window += 1
+                continue
+            link = content.find('a', href=True) if content else None
+            article_url = urljoin(url, link['href']) if link else f"{url}#{update['id']}"
+            # Z.ai has individual blog pages but no /blog index or sitemap.
+            # Model-release slugs follow the normalized model name; probe the
+            # candidate and fall back to the official documentation link.
+            blog_slug = re.sub(r'[^a-z0-9.]+', '-', title.lower()).strip('-')
+            blog_slug = re.sub(r'-series$', '', blog_slug)
+            blog_url = f"https://z.ai/blog/{blog_slug}"
+            if await self._fetch_html(blog_url):
+                article_url = blog_url
+            item = self._build_deterministic_item(
+                source="Z.ai Blog / Releases",
+                source_group="AI Labs & Platforms",
+                title=title,
+                article_url=article_url,
+                published=published,
+                summary=content.get_text(' ', strip=True) if content else '',
+            )
+            if item:
+                items.append(item)
+        return items[:self.max_deterministic_articles_per_site]
+
     async def _extract_deterministic_news(
         self, url: str, html: str,
     ) -> Optional[List[CollectedItem]]:
@@ -320,6 +550,16 @@ Do not include any other text, markdown formatting, or preamble. Just the JSON a
             return self._extract_artificial_analysis(url, html)
         if url.rstrip("/") == "https://aleph-alpha.com/en/blog":
             return await self._extract_aleph_alpha(url, html)
+        if url.rstrip("/") == "https://www.kimi.com/blog":
+            return self._extract_kimi_news(url, html)
+        if url.rstrip("/") == "https://www.nist.gov/caisi":
+            return self._extract_nist_news(url, html)
+        if url.rstrip("/") == "https://www.deeplearning.ai/the-batch":
+            return self._extract_the_batch(url, html)
+        if url.rstrip("/") == "https://www.minimax.io/news":
+            return await self._extract_minimax_news(url)
+        if url.rstrip("/") == "https://docs.z.ai/release-notes/new-released":
+            return await self._extract_zai_releases(url, html)
         self._last_extract_completed = False
         return None
 

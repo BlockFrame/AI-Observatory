@@ -69,6 +69,8 @@ Source lists are configuration-driven:
 - `config/rss_feeds.txt`
 - `config/web_scraper_sources.txt`
 - `config/research_feeds.txt`
+- `config/research_web_sources.txt`
+- `config/research_reference_sources.txt`
 - `config/twitter_accounts.txt`
 
 ## LLM routing

@@ -48,6 +48,70 @@ class SourceInventoryTests(unittest.TestCase):
         self.assertIn("NVIDIAAI", accounts)
         self.assertNotIn("nvidia", accounts)
 
+    def test_requested_research_sources_have_active_or_reference_routes(self):
+        active = "\n".join(
+            (ROOT / "config" / name).read_text(encoding="utf-8")
+            for name in (
+                "rss_feeds.txt",
+                "web_scraper_sources.txt",
+                "research_feeds.txt",
+                "research_web_sources.txt",
+            )
+        )
+        references = (ROOT / "config" / "research_reference_sources.txt").read_text(
+            encoding="utf-8"
+        )
+
+        for expected in (
+            "anthropic.com/research",
+            "anthropic.com/economic-futures",
+            "huggingface.co/blog/feed.xml",
+            "kimi.com/blog",
+            "engineering.fb.com/category/ai-research/feed",
+            "wp.oecd.ai/feed",
+            "arena.ai/blog/category/research",
+            "epoch.ai/latest",
+            "nist.gov/caisi",
+            "edpb.europa.eu/rss.xml",
+        ):
+            self.assertIn(expected, active)
+        for expected in (
+            "ai.meta.com/research",
+            "microsoft.com/en-us/research/group/aiei",
+            "hai.stanford.edu/ai-index",
+            "digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+            "governance.ai/research",
+        ):
+            self.assertIn(expected, references)
+
+    def test_kimi_oecd_and_nist_are_news_not_research(self):
+        news = "\n".join(
+            (ROOT / "config" / name).read_text(encoding="utf-8")
+            for name in ("rss_feeds.txt", "web_scraper_sources.txt")
+        )
+        research = "\n".join(
+            (ROOT / "config" / name).read_text(encoding="utf-8")
+            for name in ("research_feeds.txt", "research_web_sources.txt")
+        )
+
+        for source in ("kimi.com/blog", "wp.oecd.ai/feed", "nist.gov/caisi"):
+            self.assertIn(source, news)
+            self.assertNotIn(source, research)
+
+    def test_new_ai_news_sources_are_configured(self):
+        news = "\n".join(
+            (ROOT / "config" / name).read_text(encoding="utf-8")
+            for name in ("rss_feeds.txt", "web_scraper_sources.txt")
+        )
+
+        for source in (
+            "deeplearning.ai/the-batch",
+            "databricks.com/blog/feed.xml",
+            "minimax.io/news",
+            "docs.z.ai/release-notes/new-released",
+        ):
+            self.assertIn(source, news)
+
 
 class ValidatorCliTests(unittest.TestCase):
     def test_validator_cli_imports_project_modules_without_pythonpath(self):
@@ -81,6 +145,15 @@ class ValidatorCliTests(unittest.TestCase):
         self.assertLess(upload_index, cleanup_index)
         self.assertIn("web/data/*/summary.json", workflow)
         self.assertIn("web/data/*/endpoint_status.json", workflow)
+
+    def test_gathering_cache_hashes_all_source_configs(self):
+        workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("'config/web_scraper_sources.txt'", workflow)
+        self.assertIn("'config/research_web_sources.txt'", workflow)
+        self.assertNotIn("gathering-v2-", workflow)
 
     def test_workflow_checks_paid_price_before_setup_and_collection(self):
         workflow = (ROOT / ".github" / "workflows" / "daily-pipeline.yml").read_text(

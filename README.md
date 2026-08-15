@@ -31,11 +31,11 @@ The pipeline is designed to degrade safely: provider fallbacks, checkpoints, sch
 ```mermaid
 flowchart LR
     subgraph Sources[Current sources]
-        RSS[36 news feeds]
-        WEB[8 direct web sources]
+        RSS[43 news feeds]
+        WEB[13 direct web sources]
         HN[Hacker News]
         PAPERS[HF Papers + AlphaXiv]
-        RESEARCH[19 research feeds + LessWrong]
+        RESEARCH[19 feeds + LessWrong + 4 dated hubs]
         X[X via GetXAPI]
         GH[GitHub Trending]
     end
@@ -68,8 +68,8 @@ The configuration files—not this table—are the source of truth. Counts refle
 
 | Category | Active inputs | Collection path | Notes |
 |---|---|---|---|
-| **AI News** | 36 RSS/Atom feeds, 8 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Includes the Tech & Media group: Aleph Alpha, MarkTechPost, and Artificial Analysis. NVIDIA Research is excluded because its update timestamps do not reliably represent publication dates. |
-| **Research** | Hugging Face Daily Papers, AlphaXiv Trending, 19 research feeds, LessWrong | `ResearchGatherer` | LessWrong uses GraphQL for date-range collection; OpenAI's canonical feed is filtered to research-relevant tags. |
+| **AI News** | 43 RSS/Atom feeds, 13 direct web pages, Hacker News, links expanded from X posts | `NewsGatherer`, `WebScraperGatherer`, `HackerNewsGatherer`, `LinkFollower` | Includes Kimi, OECD.AI, NIST CAISI, The Batch, Databricks AI-filtered posts, MiniMax News, and Z.ai's official release stream. New direct sources use exact-date deterministic parsing and no LLM calls. |
+| **Research** | Hugging Face Daily Papers, AlphaXiv Trending, 19 RSS/Atom feeds, LessWrong, 4 dated web hubs | `ResearchGatherer` | Includes Anthropic Research and Economic Futures, Arena, Epoch AI, Meta AI Research, and OpenAI Research-tagged entries. HTML hubs use deterministic exact-date parsing and no LLM calls. |
 | **Social** | 170 configured X accounts | `SocialGatherer` | `@NVIDIAAI` is retained while the broader corporate `@nvidia` account is excluded. GetXAPI queries at most 20 accounts per paid request. |
 | **GitHub Trending** | GitHub Trending | `GitHubTrendingGatherer` | Repositories are analyzed as a separate report category. |
 
@@ -184,6 +184,8 @@ See [Quick start](QUICK_START.md) for setup details and [Deployment guide](DEPLO
 | `config/prompts.yaml` | Analysis, synthesis, and enrichment prompt contracts |
 | `config/rss_feeds.txt` | AI News RSS/Atom feeds |
 | `config/research_feeds.txt` | Research feeds and LessWrong routing entry |
+| `config/research_web_sources.txt` | Deterministic, date-verifiable Research pages without feeds |
+| `config/research_reference_sources.txt` | Authoritative static hubs excluded from daily collection |
 | `config/twitter_accounts.txt` | X accounts queried through GetXAPI |
 | `config/web_scraper_sources.txt` | Direct pages for sources without usable feeds |
 | `config/ecosystem_context.yaml` | Grounding context used by synthesis |

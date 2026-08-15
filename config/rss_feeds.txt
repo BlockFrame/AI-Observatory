@@ -20,10 +20,26 @@ https://www.theregister.com/software/ai_ml/headlines.atom  proxy=off
 https://www.newscientist.com/subject/artificial-intelligence/feed/
 https://aibusiness.com/rss.xml
 
+# Platforms and policy / regulation
+https://huggingface.co/blog/feed.xml
+# Broad official institutional feeds are narrowed in NewsGatherer to dated
+# AI-policy entries. AI Law Tracker is narrowed to actual /news/ updates and
+# its weekly digest, excluding noisy jurisdiction-profile refreshes.
+https://digital-strategy.ec.europa.eu/en/rss.xml
+https://www.edpb.europa.eu/rss.xml
+https://www.ailawsbystate.com/blog/rss.xml
+https://ai-law-tracker.com/feed.xml
+# OECD.AI's official AI Wonk feed is editorial/news analysis, so it belongs in
+# News rather than Research.
+https://wp.oecd.ai/feed/
+
 # Tech & Media
 # The category-specific feed avoids unrelated MarkTechPost sections while
 # preserving canonical article URLs and publication timestamps.
 https://www.marktechpost.com/category/tech-news/feed/  proxy=off
+# Databricks exposes one broad corporate feed. NewsGatherer retains only
+# AI/ML/model/agent entries from it.
+https://www.databricks.com/blog/feed.xml
 # analyticsindiamag.com decommissioned their RSS feed (all candidate paths
 # now return the site HTML; verified 2026-04-17). Removed to silence warnings.
 # https://analyticsindiamag.com/feed/

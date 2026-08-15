@@ -20,8 +20,11 @@ from typing import Any, Dict, List, Optional
 
 import feedparser
 import requests
+from bs4 import BeautifulSoup
+from dateutil import parser as date_parser
+from urllib.parse import urljoin, urlparse
 
-from ..base import BaseGatherer, CollectedItem
+from ..base import BaseGatherer, CollectedItem, deduplicate_items
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[2] / 'scripts'
 if str(SCRIPTS_DIR) not in sys.path:
@@ -39,6 +42,13 @@ logger = logging.getLogger(__name__)
 # Network timeout (seconds) for research blog feed fetches. feedparser.parse(url) has no
 # network timeout, so a single unresponsive feed would hang the whole gatherer (and Phase 1).
 RESEARCH_FEED_TIMEOUT = float(os.getenv('RESEARCH_FEED_TIMEOUT', '20'))
+
+RESEARCH_FEED_SOURCE_METADATA = {
+    'https://engineering.fb.com/category/ai-research/feed/': {
+        'source': 'Meta AI Research',
+        'source_index_url': 'https://ai.meta.com/research/',
+    },
+}
 
 
 class ResearchGatherer(BaseGatherer):
@@ -99,6 +109,8 @@ class ResearchGatherer(BaseGatherer):
         # Load research blog feeds (with optional per-feed routing directives)
         self.research_feed_specs = self.load_config_feeds('research_feeds.txt')
         self.research_feeds = [spec.url for spec in self.research_feed_specs]
+        self.research_web_sources = self.load_config_list('research_web_sources.txt')
+        self.collection_status: Dict[str, Dict[str, Any]] = {}
         if self.research_feeds:
             logger.info(f"Loaded {len(self.research_feeds)} research blog feeds")
         # Direct session for feeds tagged proxy=off. trust_env=False makes requests
@@ -121,22 +133,250 @@ class ResearchGatherer(BaseGatherer):
         # Paper APIs and research blogs are independent, so collect them together.
         paper_task = self._collect_trending_papers()
         research_blog_task = self._collect_research_blogs()
+        research_web_task = self._collect_research_web_sources()
 
-        papers, blog_posts = await asyncio.gather(paper_task, research_blog_task)
+        papers, blog_posts, web_posts = await asyncio.gather(
+            paper_task, research_blog_task, research_web_task
+        )
 
-        all_items = papers + blog_posts
+        all_items = deduplicate_items(papers + blog_posts + web_posts)
 
         logger.info(
-            "Total research items: %s (%s trending papers, %s blog posts)",
+            "Total research items: %s (%s trending papers, %s feed posts, %s web posts)",
             len(all_items),
             len(papers),
             len(blog_posts),
+            len(web_posts),
         )
 
         # Save to file
         self.save_to_file(all_items, f'research_{self.target_date}.json')
 
         return all_items
+
+    def get_collection_status(self) -> Dict[str, Dict[str, Any]]:
+        """Return status for deterministic Research web sources."""
+        return self.collection_status
+
+    async def _collect_research_web_sources(self) -> List[CollectedItem]:
+        """Collect date-verifiable Research hubs that do not publish feeds."""
+        if not self.research_web_sources:
+            return []
+        self.collection_status = {
+            url: {'status': 'pending', 'count': 0, 'error': None}
+            for url in self.research_web_sources
+        }
+        loop = asyncio.get_running_loop()
+        tasks = [
+            loop.run_in_executor(None, self._fetch_research_web_source, url)
+            for url in self.research_web_sources
+        ]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        posts: List[CollectedItem] = []
+        for url, result in zip(self.research_web_sources, results):
+            if isinstance(result, Exception):
+                self.collection_status[url].update({
+                    'status': 'failed',
+                    'error': f'{type(result).__name__}: {result}',
+                })
+                logger.error("Research web source failed %s: %s", url, result)
+                continue
+            posts.extend(result)
+        return deduplicate_items(posts)
+
+    def _fetch_research_web_source(self, url: str) -> List[CollectedItem]:
+        """Fetch one known Research hub and parse only explicit publication dates."""
+        headers = {
+            'Accept': 'text/html,application/xhtml+xml',
+            'User-Agent': os.environ.get('NEWS_USER_AGENT') or LESSWRONG_USER_AGENT,
+        }
+        response = requests.get(url, headers=headers, timeout=RESEARCH_FEED_TIMEOUT)
+        response.raise_for_status()
+        items, candidates = self._extract_research_web_source(url, response.text)
+        self.collection_status[url].update({
+            'status': 'success',
+            'count': len(items),
+            'reason_code': 'no_items_in_window' if candidates and not items else None,
+            'error': None,
+        })
+        logger.info(
+            "Research web source %s retained %s/%s dated candidates",
+            url, len(items), candidates,
+        )
+        return items
+
+    def _extract_research_web_source(
+        self, url: str, html: str,
+    ) -> tuple[List[CollectedItem], int]:
+        """Route a configured Research hub to its deterministic HTML parser."""
+        host = urlparse(url).netloc.lower()
+        if host == 'www.anthropic.com':
+            return self._extract_anthropic_research(url, html)
+        if host == 'arena.ai':
+            return self._extract_arena_research(url, html)
+        if host == 'epoch.ai':
+            return self._extract_epoch_research(url, html)
+        raise ValueError(f'No deterministic Research parser registered for {url}')
+
+    def _research_web_item(
+        self,
+        *,
+        source: str,
+        source_index_url: str,
+        title: str,
+        article_url: str,
+        published: datetime,
+        summary: str = '',
+        tags: Optional[List[str]] = None,
+    ) -> CollectedItem:
+        return CollectedItem(
+            id=self.generate_id(article_url, title),
+            title=title.strip(),
+            content=summary.strip(),
+            url=article_url,
+            author=source,
+            published=published.isoformat(),
+            source=source,
+            source_type='research_blog',
+            tags=tags or [],
+            metadata={
+                'source_index_url': source_index_url,
+                'scraper_type': 'deterministic_html',
+            },
+            keywords=self.extract_keywords(f'{title} {summary}'),
+        )
+
+    @staticmethod
+    def _parse_visible_date(value: str) -> Optional[datetime]:
+        cleaned = re.sub(r'^Updated\s+', '', (value or '').strip(), flags=re.I)
+        if not cleaned:
+            return None
+        try:
+            return date_parser.parse(cleaned, fuzzy=False).replace(tzinfo=None)
+        except (ValueError, TypeError, OverflowError):
+            return None
+
+    def _retain_web_item(self, item: CollectedItem, items: List[CollectedItem]) -> None:
+        published = datetime.fromisoformat(item.published)
+        if self.is_in_date_range(published):
+            items.append(item)
+
+    def _extract_anthropic_research(
+        self, url: str, html: str,
+    ) -> tuple[List[CollectedItem], int]:
+        soup = BeautifulSoup(html, 'html.parser')
+        items: List[CollectedItem] = []
+        seen = set()
+        candidates = 0
+        for anchor in soup.select('a[href]'):
+            article_url = urljoin(url, anchor.get('href', '')).split('#')[0]
+            path = urlparse(article_url).path
+            if article_url in seen or '/research/team/' in path:
+                continue
+            if not (path.startswith('/research/') or (
+                urlparse(url).path.rstrip('/') == '/economic-futures'
+                and path.startswith('/news/')
+            )):
+                continue
+            time_element = anchor.find('time')
+            published = self._parse_visible_date(
+                time_element.get_text(' ', strip=True) if time_element else ''
+            )
+            if not published:
+                continue
+            title_element = anchor.select_one(
+                '[class*="title"], h1, h2, h3, h4'
+            )
+            title = title_element.get_text(' ', strip=True) if title_element else ''
+            if not title:
+                continue
+            seen.add(article_url)
+            candidates += 1
+            subject = anchor.select_one('[class*="subject"]')
+            item = self._research_web_item(
+                source=(
+                    'Anthropic Economic Futures'
+                    if urlparse(url).path.rstrip('/') == '/economic-futures'
+                    else 'Anthropic Research'
+                ),
+                source_index_url=url,
+                title=title,
+                article_url=article_url,
+                published=published,
+                tags=[subject.get_text(' ', strip=True)] if subject else [],
+            )
+            self._retain_web_item(item, items)
+        return items, candidates
+
+    def _extract_arena_research(
+        self, url: str, html: str,
+    ) -> tuple[List[CollectedItem], int]:
+        soup = BeautifulSoup(html, 'html.parser')
+        items: List[CollectedItem] = []
+        seen = set()
+        candidates = 0
+        date_pattern = re.compile(
+            r'\b(\d{1,2}\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)'
+            r'(?:uary|ruary|ch|il|e|y|ust|tember|ober|ember|ember)?\s+20\d{2})\b',
+            re.I,
+        )
+        for anchor in soup.select('a[href^="/blog/"]'):
+            heading = anchor.find('h3')
+            match = date_pattern.search(anchor.get_text(' ', strip=True))
+            if not heading or not match:
+                continue
+            article_url = urljoin(url, anchor['href']).split('#')[0]
+            if article_url in seen:
+                continue
+            published = self._parse_visible_date(match.group(1))
+            if not published:
+                continue
+            seen.add(article_url)
+            candidates += 1
+            description = anchor.find('p')
+            item = self._research_web_item(
+                source='Arena Research',
+                source_index_url=url,
+                title=heading.get_text(' ', strip=True),
+                article_url=article_url,
+                published=published,
+                summary=description.get_text(' ', strip=True) if description else '',
+            )
+            self._retain_web_item(item, items)
+        return items, candidates
+
+    def _extract_epoch_research(
+        self, url: str, html: str,
+    ) -> tuple[List[CollectedItem], int]:
+        soup = BeautifulSoup(html, 'html.parser')
+        items: List[CollectedItem] = []
+        candidates = 0
+        for card in soup.select('.card-article-listing'):
+            anchor = card.find('a', href=True)
+            badges = [badge.get_text(' ', strip=True) for badge in card.select('.badge-text')]
+            published = next(
+                (parsed for parsed in map(self._parse_visible_date, badges) if parsed),
+                None,
+            )
+            title_element = card.select_one('.button-text .trim')
+            if not anchor or not published or not title_element:
+                continue
+            candidates += 1
+            description = card.select_one('.body-3')
+            author = card.select_one('.card-author')
+            item = self._research_web_item(
+                source='Epoch AI',
+                source_index_url=url,
+                title=title_element.get_text(' ', strip=True),
+                article_url=urljoin(url, anchor['href']).split('#')[0],
+                published=published,
+                summary=description.get_text(' ', strip=True) if description else '',
+                tags=[badges[0]] if badges else [],
+            )
+            if author:
+                item.author = re.sub(r'^By\s+', '', author.get_text(' ', strip=True))
+            self._retain_web_item(item, items)
+        return items, candidates
 
     async def _collect_trending_papers(self) -> List[CollectedItem]:
         """Collect and merge Hugging Face Daily Papers and AlphaXiv trends."""
@@ -673,6 +913,9 @@ class ResearchGatherer(BaseGatherer):
                     logger.warning(f"Feed warning for {feed_url}: {exc}")
 
             feed_title = feed.feed.get('title', 'Research Blog')
+            source_metadata = RESEARCH_FEED_SOURCE_METADATA.get(
+                feed_url.rstrip('/') + '/', {}
+            )
             is_trend_feed = self._is_trend_research_feed(feed_url, feed_title)
             is_openai_research_feed = self.OPENAI_RESEARCH_FEED_MARKER in feed_url.lower()
             trend_filtered = 0
@@ -738,14 +981,19 @@ class ResearchGatherer(BaseGatherer):
                         url=url,
                         author=author,
                         published=pub_date.isoformat(),
-                        source='OpenAI Research' if is_openai_research_feed else feed_title,
+                        source=(
+                            'OpenAI Research'
+                            if is_openai_research_feed
+                            else source_metadata.get('source', feed_title)
+                        ),
                         source_type='research_blog',
                         tags=tags,
                         metadata={
                             'feed_url': feed_url,
                             'source_index_url': (
                                 'https://openai.com/it-IT/research/'
-                                if is_openai_research_feed else ''
+                                if is_openai_research_feed
+                                else source_metadata.get('source_index_url', '')
                             ),
                             'raw_summary': entry.get('summary', '')[:500]
                         },

@@ -266,7 +266,11 @@ class CostTracker:
                 return category
         if normalized.startswith("orchestrator."):
             return "orchestration"
-        if normalized.startswith("link_enricher."):
+        if normalized.startswith((
+            "link_enricher.",
+            "link_enricher_fallback.",
+            "link_enricher_paid.",
+        )):
             return "cross_category_enrichment"
         if normalized.startswith("ecosystem_context."):
             return "ecosystem"

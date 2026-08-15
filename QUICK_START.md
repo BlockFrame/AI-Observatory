@@ -81,6 +81,8 @@ Open the local URL printed by Vite. The frontend reads generated data from `web/
 - News feeds: `config/rss_feeds.txt`
 - Direct pages: `config/web_scraper_sources.txt`
 - Research: `config/research_feeds.txt`
+- Dated Research pages: `config/research_web_sources.txt`
+- Static Research references: `config/research_reference_sources.txt`
 - X accounts: `config/twitter_accounts.txt`
 
 See [Active source inventory](ai_news_sources.md) before adding a new source type.

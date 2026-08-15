@@ -7,9 +7,10 @@ Combines RSS collection with smart link following from social media posts.
 import asyncio
 import logging
 import os
+import re
 from datetime import datetime
 from typing import List, Optional
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 
 import feedparser
 import requests
@@ -34,7 +35,69 @@ FEED_SOURCE_METADATA = {
         "source": "MarkTechPost",
         "source_group": "Tech & Media",
     },
+    "https://huggingface.co/blog/feed.xml/": {
+        "source": "Hugging Face Blog",
+        "source_group": "AI Labs & Platforms",
+    },
+    "https://digital-strategy.ec.europa.eu/en/rss.xml/": {
+        "source": "EU AI Office / Digital Strategy",
+        "source_group": "Policy & Regulation",
+        "filter": "ai_policy",
+    },
+    "https://www.edpb.europa.eu/rss.xml/": {
+        "source": "European Data Protection Board",
+        "source_group": "Policy & Regulation",
+        "filter": "ai_policy",
+    },
+    "https://www.ailawsbystate.com/blog/rss.xml/": {
+        "source": "AI Laws by State",
+        "source_group": "Policy & Regulation",
+    },
+    "https://ai-law-tracker.com/feed.xml/": {
+        "source": "AI Law Tracker",
+        "source_group": "Policy & Regulation",
+        "filter": "law_tracker_news",
+    },
+    "https://wp.oecd.ai/feed/": {
+        "source": "OECD.AI",
+        "source_group": "Policy & Regulation",
+    },
+    "https://www.databricks.com/blog/feed.xml/": {
+        "source": "Databricks AI Blog",
+        "source_group": "AI Labs & Platforms",
+        "filter": "ai_technology",
+    },
 }
+
+AI_POLICY_PATTERNS = (
+    r"\bai\b",
+    r"\bartificial intelligence\b",
+    r"\bai act\b",
+    r"\bai office\b",
+    r"\bgeneral-purpose ai\b",
+    r"\bgenerative ai\b",
+    r"\bmachine learning\b",
+    r"\balgorithmic\b",
+    r"\bautomated decision",
+    r"\bfacial recognition\b",
+    r"\bdeepfake",
+)
+
+AI_TECHNOLOGY_PATTERNS = AI_POLICY_PATTERNS + (
+    r"\bml\b",
+    r"\bllm(?:s)?\b",
+    r"\blarge language model",
+    r"\bfoundation model",
+    r"\bmodel serving\b",
+    r"\bagent(?:ic|s)?\b",
+    r"\bdeep learning\b",
+    r"\bneural network",
+    r"\bembedding(?:s)?\b",
+    r"\bvector search\b",
+    r"\bmosaic ai\b",
+    r"\bmlflow\b",
+    r"\bdatabricks genie\b",
+)
 
 
 class NewsGatherer(BaseGatherer):
@@ -206,11 +269,19 @@ class NewsGatherer(BaseGatherer):
                         content = entry.description
 
                     # Strip HTML tags from content
-                    import re
                     content_text = re.sub(r'<[^>]+>', '', content)
 
                     title = entry.get('title', 'No Title')
                     url = entry.get('link', '')
+                    tags = [
+                        tag.term for tag in entry.get('tags', [])
+                        if getattr(tag, 'term', None)
+                    ]
+
+                    if not self._entry_allowed(
+                        source_metadata.get('filter'), title, content_text, tags, url
+                    ):
+                        continue
 
                     article = CollectedItem(
                         id=self.generate_id(url, title),
@@ -221,7 +292,7 @@ class NewsGatherer(BaseGatherer):
                         published=pub_date.isoformat(),
                         source=feed_title,
                         source_type='rss',
-                        tags=[tag.term for tag in entry.get('tags', [])],
+                        tags=tags,
                         metadata={
                             'feed_url': feed_url,
                             'raw_summary': entry.get('summary', '')[:500],
@@ -244,6 +315,28 @@ class NewsGatherer(BaseGatherer):
             logger.error(f"Error fetching feed {feed_url}: {e}")
 
         return articles
+
+    @staticmethod
+    def _entry_allowed(
+        filter_name: Optional[str],
+        title: str,
+        content: str,
+        tags: List[str],
+        url: str,
+    ) -> bool:
+        """Apply narrow source-specific filters to broad institutional feeds."""
+        if not filter_name:
+            return True
+        if filter_name == 'law_tracker_news':
+            return '/news/' in url or url.rstrip('/').endswith('/this-week')
+        if filter_name == 'ai_policy':
+            text = f"{title} {content} {' '.join(tags)}".lower()
+            return any(re.search(pattern, text) for pattern in AI_POLICY_PATTERNS)
+        if filter_name == 'ai_technology':
+            text = f"{title} {content} {' '.join(tags)}".lower()
+            return any(re.search(pattern, text) for pattern in AI_TECHNOLOGY_PATTERNS)
+        logger.warning("Unknown News feed filter %r; excluding entry", filter_name)
+        return False
 
     def _parse_date(self, date_struct) -> datetime:
         """Parse date from feedparser date structure."""

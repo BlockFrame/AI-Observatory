@@ -27,6 +27,11 @@ from generators.json_generator import JSONGenerator
 from scripts.validate_report import validate
 
 
+def _fenced_json_payload(message: str):
+    payload = message.split(">\n", 1)[1].rsplit("\n</source_data", 1)[0]
+    return json.loads(payload)
+
+
 class ScraperResilienceTests(unittest.TestCase):
     def test_marktechpost_feed_gets_canonical_tech_media_metadata(self):
         gatherer = NewsGatherer(target_date="2026-08-14", llm_client=MagicMock())
@@ -47,6 +52,63 @@ class ScraperResilienceTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0].source, "MarkTechPost")
         self.assertEqual(items[0].metadata["source_group"], "Tech & Media")
+
+    def test_policy_feed_filters_non_ai_entries(self):
+        gatherer = NewsGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        response = MagicMock()
+        response.content = b"""<?xml version="1.0"?><rss version="2.0"><channel>
+        <title>Institutional News</title>
+        <item><title>AI Act implementation update</title><link>https://example.eu/ai</link>
+        <pubDate>Thu, 13 Aug 2026 12:00:00 +0000</pubDate><description>Policy details</description></item>
+        <item><title>Connectivity funding update</title><link>https://example.eu/network</link>
+        <pubDate>Thu, 13 Aug 2026 12:00:00 +0000</pubDate><description>Broadband details</description></item>
+        </channel></rss>"""
+        response.headers = {"content-type": "application/rss+xml"}
+        response.raise_for_status.return_value = None
+
+        with patch.object(gatherer.feed_session, "get", return_value=response):
+            items = gatherer._fetch_feed(
+                "https://digital-strategy.ec.europa.eu/en/rss.xml"
+            )
+
+        self.assertEqual([item.title for item in items], ["AI Act implementation update"])
+        self.assertEqual(items[0].source, "EU AI Office / Digital Strategy")
+
+    def test_law_tracker_feed_keeps_news_not_profile_refreshes(self):
+        self.assertTrue(NewsGatherer._entry_allowed(
+            "law_tracker_news", "Material change", "", [],
+            "https://ai-law-tracker.com/news/material-change",
+        ))
+        self.assertFalse(NewsGatherer._entry_allowed(
+            "law_tracker_news", "State profile", "", [],
+            "https://ai-law-tracker.com/laws/california",
+        ))
+
+    def test_ai_technology_filter_keeps_ai_and_rejects_generic_data_posts(self):
+        self.assertTrue(NewsGatherer._entry_allowed(
+            "ai_technology", "Mosaic AI agent evaluation", "", [], "https://example.com/ai"
+        ))
+        self.assertFalse(NewsGatherer._entry_allowed(
+            "ai_technology", "Quarterly platform maintenance", "SQL warehouse update", [],
+            "https://example.com/data",
+        ))
+
+    def test_oecd_feed_is_classified_as_policy_news(self):
+        gatherer = NewsGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        response = MagicMock()
+        response.content = b"""<?xml version="1.0"?><rss version="2.0"><channel>
+        <title>AI Wonk</title><item><title>Current OECD AI update</title>
+        <link>https://wp.oecd.ai/current</link>
+        <pubDate>Thu, 13 Aug 2026 12:00:00 +0000</pubDate>
+        <description>Policy analysis</description></item></channel></rss>"""
+        response.headers = {"content-type": "application/rss+xml"}
+        response.raise_for_status.return_value = None
+
+        with patch.object(gatherer.feed_session, "get", return_value=response):
+            items = gatherer._fetch_feed("https://wp.oecd.ai/feed/")
+
+        self.assertEqual(items[0].source, "OECD.AI")
+        self.assertEqual(items[0].metadata["source_group"], "Policy & Regulation")
 
     def test_artificial_analysis_deterministic_parser_keeps_only_coverage_date(self):
         gatherer = WebScraperGatherer(
@@ -101,6 +163,101 @@ class ScraperResilienceTests(unittest.TestCase):
             self.assertEqual(items[0].content, "Current details")
             self.assertEqual(items[0].metadata["source_group"], "Tech & Media")
             llm.call.assert_not_called()
+
+        asyncio.run(run())
+
+    def test_kimi_parser_is_classified_as_news_and_requires_visible_date(self):
+        gatherer = WebScraperGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        html = """
+        <div class="menu-card"><a href="/blog/current"></a>
+          <h4>Current model announcement</h4><p class="card-date">2026/08/13</p></div>
+        <div class="menu-card"><a href="/blog/undated"></a>
+          <h4>Undated announcement</h4></div>
+        """
+
+        items = gatherer._extract_kimi_news("https://www.kimi.com/blog/", html)
+
+        self.assertEqual([item.title for item in items], ["Current model announcement"])
+        self.assertEqual(items[0].source, "Kimi Blog")
+        self.assertEqual(items[0].metadata["source_group"], "AI Labs & Platforms")
+
+    def test_nist_parser_is_classified_as_policy_news(self):
+        gatherer = WebScraperGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        html = """
+        <header><h3><a href="/news-events/news/current">Current CAISI update</a></h3>
+          <time datetime="2026-08-13">August 13, 2026</time></header>
+        <header><h3><a href="/news-events/news/old">Old CAISI update</a></h3>
+          <time datetime="2026-08-12">August 12, 2026</time></header>
+        """
+
+        items = gatherer._extract_nist_news("https://www.nist.gov/caisi", html)
+
+        self.assertEqual([item.title for item in items], ["Current CAISI update"])
+        self.assertEqual(items[0].metadata["source_group"], "Policy & Regulation")
+
+    def test_the_batch_parser_keeps_current_dated_issue(self):
+        gatherer = WebScraperGatherer(target_date="2026-08-14", llm_client=MagicMock())
+        html = """
+        <article><a href="/the-batch/issue-366"></a>
+          <a href="/the-batch/tag/aug-13-2026">Aug 13, 2026</a>
+          <h3>Current weekly AI briefing</h3><p>Concise issue summary.</p></article>
+        """
+
+        items = gatherer._extract_the_batch("https://www.deeplearning.ai/the-batch", html)
+
+        self.assertEqual([item.title for item in items], ["Current weekly AI briefing"])
+        self.assertEqual(items[0].source, "The Batch")
+
+    def test_minimax_news_uses_structured_api_and_exact_date(self):
+        async def run():
+            gatherer = WebScraperGatherer(target_date="2026-08-14", llm_client=MagicMock())
+            payload = {
+                "data": [
+                    {
+                        "title": "Current MiniMax release",
+                        "slug": "current-release",
+                        "summary": "A model update.",
+                        "publishDate": "2026-08-13T08:00:00Z",
+                    },
+                    {
+                        "title": "Old MiniMax release",
+                        "slug": "old-release",
+                        "publishDate": "2026-08-12T08:00:00Z",
+                    },
+                ],
+                "hasMore": False,
+            }
+            with patch.object(gatherer, "_fetch_json", return_value=payload):
+                items = await gatherer._extract_minimax_news("https://www.minimax.io/news")
+
+            self.assertEqual([item.title for item in items], ["Current MiniMax release"])
+            self.assertEqual(items[0].source, "MiniMax News")
+
+        asyncio.run(run())
+
+    def test_zai_release_parser_keeps_current_dated_release(self):
+        async def run():
+            gatherer = WebScraperGatherer(target_date="2026-08-14", llm_client=MagicMock())
+            html = """
+            <div class="update" id="2026-08-13">
+              <div data-component-part="update-description">GLM Next</div>
+              <div data-component-part="update-content"><p>New agent model.</p>
+                <a href="/guides/llm/glm-next">documentation</a></div>
+            </div>
+            <div class="update" id="2026-08-12">
+              <div data-component-part="update-description">Old GLM</div>
+              <div data-component-part="update-content"><p>Old model.</p></div>
+            </div>
+            """
+
+            with patch.object(gatherer, "_fetch_html", return_value="<html></html>"):
+                items = await gatherer._extract_zai_releases(
+                    "https://docs.z.ai/release-notes/new-released", html
+                )
+
+            self.assertEqual([item.title for item in items], ["GLM Next"])
+            self.assertEqual(items[0].url, "https://z.ai/blog/glm-next")
+            self.assertEqual(items[0].source, "Z.ai Blog / Releases")
 
         asyncio.run(run())
 
@@ -554,6 +711,22 @@ class CategorySummaryRoutingTests(unittest.TestCase):
 
 
 class LLMTelemetryTests(unittest.TestCase):
+    def test_paid_link_fallback_stays_in_enrichment_telemetry_scope(self):
+        tracker = CostTracker("test-model")
+        tracker.record_call(
+            caller="link_enricher_paid.batch.executive",
+            usage={"input_tokens": 100, "output_tokens": 20},
+            model="minimax/minimax-m3",
+            provider_id="openrouter-minimax-link-fallback",
+        )
+
+        telemetry = tracker.get_llm_telemetry()
+
+        self.assertEqual(
+            telemetry["pipeline_scopes"]["cross_category_enrichment"]["successful_calls"],
+            1,
+        )
+
     def test_openrouter_minimax_promotional_cost_is_provider_specific(self):
         tracker = CostTracker("test-model")
         tracker.record_call(
@@ -969,6 +1142,188 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             items = [{"id": "prime", "category": "github_trending", "title": "PrimeIntellect-ai/prime-agent", "summary": ""}]
             enriched = await enricher._enrich_text(text, items, "topic: agents")
             self.assertIn("#item-prime", enriched)
+
+        asyncio.run(run())
+
+    def test_enrich_all_uses_three_sequential_standard_reasoning_batches(self):
+        class SelectionClient:
+            def __init__(self):
+                self.calls = []
+
+            async def call_with_thinking(self, **kwargs):
+                self.calls.append(kwargs)
+                payload = _fenced_json_payload(kwargs["messages"][0]["content"])
+                items = {str(item["id"]): item for item in payload["items"]}
+                selections = []
+                for document in payload["documents"]:
+                    for block in document["blocks"]:
+                        for item_id in block["allowed_item_ids"]:
+                            title = items[item_id]["title"]
+                            if title.lower() in block["text"].lower():
+                                selections.append({
+                                    "document_id": document["document_id"],
+                                    "line": block["line"],
+                                    "item_id": item_id,
+                                    "exact_span": title,
+                                })
+                                break
+                return SimpleNamespace(content=json.dumps({"selections": selections}))
+
+        async def run():
+            client = SelectionClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            report = {
+                "all_items": [{
+                    "item": {"id": "news", "title": "OpenAI Responses API"},
+                    "summary": "Enterprise agent controls",
+                }],
+                "category_summary": "- OpenAI Responses API improves enterprise agent controls.",
+                "category_summary_evidence": [["news"]],
+            }
+            topics = [{
+                "name": "Agent APIs",
+                "description": "OpenAI Responses API changes enterprise orchestration economics.",
+                "representative_items": ["news"],
+            }]
+
+            executive, categories, enriched_topics = await enricher.enrich_all(
+                "- OpenAI Responses API changes enterprise procurement.",
+                {"news": report},
+                topics,
+                executive_summary_evidence=[["news"]],
+            )
+
+            self.assertEqual(len(client.calls), 3)
+            self.assertEqual(
+                [call["caller"] for call in client.calls],
+                [
+                    "link_enricher.batch.executive",
+                    "link_enricher.batch.categories",
+                    "link_enricher.batch.topics",
+                ],
+            )
+            self.assertTrue(all(call["profile"] == ThinkingLevel.STANDARD for call in client.calls))
+            self.assertTrue(all(call["max_tokens"] == 12288 for call in client.calls))
+            self.assertIn("#item-news", executive)
+            self.assertIn("#item-news", categories["news"])
+            self.assertIn("#item-news", enriched_topics[0]["description"])
+
+        asyncio.run(run())
+
+    def test_gemini_fallback_receives_only_missing_one_to_many_evidence(self):
+        class StagedClient:
+            def __init__(self):
+                self.calls = []
+
+            async def call_with_thinking(self, **kwargs):
+                self.calls.append(kwargs)
+                caller = kwargs["caller"]
+                item_id = "one" if caller.startswith("link_enricher.batch") else "two"
+                span = "OpenAI Responses API" if item_id == "one" else "Anthropic Claude controls"
+                return SimpleNamespace(content=json.dumps({"selections": [{
+                    "document_id": "executive",
+                    "line": 0,
+                    "item_id": item_id,
+                    "exact_span": span,
+                }]}))
+
+        async def run():
+            client = StagedClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            documents = [{
+                "id": "executive",
+                "text": "- OpenAI Responses API and Anthropic Claude controls reshape enterprise agents.",
+                "items": [
+                    {"id": "one", "category": "news", "title": "OpenAI Responses API", "summary": ""},
+                    {"id": "two", "category": "news", "title": "Anthropic Claude controls", "summary": ""},
+                ],
+                "evidence_by_bullet": [["one", "two"]],
+                "max_links_per_block": 4,
+            }]
+
+            enriched = await enricher._enrich_document_batch(documents, "executive")
+
+            self.assertEqual(enriched["executive"].count("#item-"), 2)
+            self.assertEqual(len(client.calls), 2)
+            self.assertEqual(client.calls[1]["caller"], "link_enricher_fallback.batch.executive")
+            fallback_payload = _fenced_json_payload(client.calls[1]["messages"][0]["content"])
+            self.assertEqual(len(fallback_payload["documents"][0]["blocks"]), 1)
+
+        asyncio.run(run())
+
+    def test_paid_fallback_runs_only_after_both_gemini_stages_leave_block_uncovered(self):
+        class StagedClient:
+            def __init__(self):
+                self.callers = []
+
+            async def call_with_thinking(self, **kwargs):
+                caller = kwargs["caller"]
+                self.callers.append(caller)
+                selections = []
+                if caller.startswith("link_enricher_paid"):
+                    selections = [{
+                        "document_id": "topic:0",
+                        "line": 0,
+                        "item_id": "semantica",
+                        "exact_span": "Semantica",
+                    }]
+                return SimpleNamespace(content=json.dumps({"selections": selections}))
+
+        async def run():
+            client = StagedClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            documents = [{
+                "id": "topic:0",
+                "text": "Semantica strengthens accountable agent orchestration.",
+                "items": [{
+                    "id": "semantica",
+                    "category": "github_trending",
+                    "title": "semantica-agi/semantica",
+                    "summary": "Accountable agents",
+                }],
+                "required_item_ids": ["semantica"],
+            }]
+
+            enriched = await enricher._enrich_document_batch(documents, "topics")
+
+            self.assertEqual(client.callers, [
+                "link_enricher.batch.topics",
+                "link_enricher_fallback.batch.topics",
+                "link_enricher_paid.batch.topics",
+            ])
+            self.assertIn("[Semantica]", enriched["topic:0"])
+
+        asyncio.run(run())
+
+    def test_all_enrichment_providers_can_fail_without_blocking_publication(self):
+        class FailingClient:
+            def __init__(self):
+                self.calls = 0
+
+            async def call_with_thinking(self, **_kwargs):
+                self.calls += 1
+                raise RuntimeError("provider unavailable")
+
+        async def run():
+            client = FailingClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            text = "- Procurement priorities shift as agent platforms consolidate."
+            documents = [{
+                "id": "executive",
+                "text": text,
+                "items": [{
+                    "id": "source",
+                    "category": "news",
+                    "title": "A source title absent from the prose",
+                    "summary": "",
+                }],
+                "evidence_by_bullet": [["source"]],
+            }]
+
+            enriched = await enricher._enrich_document_batch(documents, "executive")
+
+            self.assertEqual(client.calls, 3)
+            self.assertEqual(enriched["executive"], text)
 
         asyncio.run(run())
 

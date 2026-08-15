@@ -103,6 +103,10 @@ class HTTP410(Exception):
     status_code = 410
 
 
+class HTTP503(Exception):
+    status_code = 503
+
+
 class HTTP429RPD(Exception):
     status_code = 429
 
@@ -141,20 +145,30 @@ class LLMRouteConfigTests(unittest.TestCase):
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_minute, 15)
         self.assertEqual(routes["gemini-link-enrichment"].tokens_per_minute, 250000)
         self.assertEqual(routes["gemini-link-enrichment"].requests_per_day, 20)
-        self.assertEqual(routes["gemini-link-enrichment"].max_output_tokens, 32768)
+        self.assertEqual(routes["gemini-link-enrichment"].max_output_tokens, 16384)
         self.assertEqual(
             routes["gemini-link-enrichment"].fallback_route_id,
             "gemini-link-enrichment-fallback-3.6",
         )
         self.assertFalse(routes["gemini-link-enrichment"].allow_cross_route_fallback)
-        self.assertEqual(routes["gemini-link-enrichment"].profiles, ["DEEP"])
+        self.assertEqual(routes["gemini-link-enrichment"].profiles, ["STANDARD"])
         link_fallback = routes["gemini-link-enrichment-fallback-3.6"]
         self.assertEqual(link_fallback.model, "gemini-3.6-flash")
         self.assertEqual(link_fallback.requests_per_minute, 15)
         self.assertEqual(link_fallback.tokens_per_minute, 250000)
         self.assertEqual(link_fallback.requests_per_day, 20)
         self.assertFalse(link_fallback.allow_cross_route_fallback)
-        self.assertEqual(link_fallback.profiles, ["DEEP"])
+        self.assertEqual(link_fallback.profiles, ["STANDARD"])
+        self.assertIn("link_enricher_fallback.*", link_fallback.caller_patterns)
+        paid_link_fallback = routes["openrouter-minimax-link-fallback"]
+        self.assertEqual(paid_link_fallback.model, "minimax/minimax-m3")
+        self.assertEqual(paid_link_fallback.profiles, ["STANDARD"])
+        self.assertEqual(paid_link_fallback.max_output_tokens, 16384)
+        self.assertFalse(paid_link_fallback.allow_cross_route_fallback)
+        self.assertEqual(
+            paid_link_fallback.caller_patterns,
+            ["link_enricher_paid.*"],
+        )
         self.assertNotIn(
             "link_enricher.*",
             routes["gemini-quality-fallback"].caller_patterns,
@@ -175,8 +189,13 @@ class LLMRouteConfigTests(unittest.TestCase):
             ])
             link = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "links"}],
-                profile=ThinkingLevel.DEEP,
+                profile=ThinkingLevel.STANDARD,
                 caller="link_enricher.executive_summary",
+            )
+            paid_link = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "missing links"}],
+                profile=ThinkingLevel.STANDARD,
+                caller="link_enricher_paid.batch.executive",
             )
             summary = await router.call_with_thinking(
                 messages=[{"role": "user", "content": "summary"}],
@@ -194,6 +213,7 @@ class LLMRouteConfigTests(unittest.TestCase):
                 caller="news_analyzer.small_batch",
             )
             self.assertEqual(link.content, "gemini-link-enrichment")
+            self.assertEqual(paid_link.content, "openrouter-minimax-link-fallback")
             self.assertEqual(summary.content, "openrouter-minimax-complex")
             self.assertEqual(small_news.content, "openrouter-minimax-complex")
             self.assertEqual(bulk.content, "openrouter-minimax-bulk")
@@ -225,7 +245,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             with self.assertRaises(ProviderQuotaExhaustedError):
                 await router.call_with_thinking(
                     messages=[{"role": "user", "content": "links"}],
-                    profile=ThinkingLevel.DEEP,
+                    profile=ThinkingLevel.STANDARD,
                     caller="link_enricher.executive_summary",
                 )
             calls = {
@@ -243,7 +263,7 @@ class LLMRouteConfigTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 await router.call_with_thinking(
                     messages=[{"role": "user", "content": "more links"}],
-                    profile=ThinkingLevel.DEEP,
+                    profile=ThinkingLevel.STANDARD,
                     caller="link_enricher.news_summary",
                 )
             calls_after = {
@@ -418,6 +438,37 @@ class LLMRouteConfigTests(unittest.TestCase):
 
 
 class AsyncLLMRouterTests(unittest.TestCase):
+    def test_link_enrichment_503_fails_over_without_spending_same_route_retry(self):
+        async def run():
+            primary = FakeRouteClient(
+                "gemini-link-enrichment",
+                failures=[HTTP503("service unavailable")],
+                fallback_route_id="gemini-link-enrichment-fallback-3.6",
+                caller_patterns=["link_enricher.*"],
+                route_profiles=["STANDARD"],
+                route_priority=120,
+            )
+            fallback = FakeRouteClient(
+                "gemini-link-enrichment-fallback-3.6",
+                caller_patterns=["link_enricher.*"],
+                route_profiles=["STANDARD"],
+                route_priority=119,
+            )
+            router = AsyncLLMRouter([primary, fallback])
+
+            response = await router.call_with_thinking(
+                messages=[{"role": "user", "content": "links"}],
+                profile=ThinkingLevel.STANDARD,
+                caller="link_enricher.batch.executive",
+            )
+
+            self.assertEqual(response.content, "gemini-link-enrichment-fallback-3.6")
+            self.assertEqual(len(primary.calls), 1)
+            self.assertEqual(len(fallback.calls), 1)
+            self.assertEqual(fallback.calls[0]["routing_context"]["same_provider_retry"], 0)
+
+        asyncio.run(run())
+
     def test_route_can_disable_cross_provider_fallback(self):
         async def run():
             primary = FakeRouteClient(
