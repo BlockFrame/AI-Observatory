@@ -1,0 +1,825 @@
+{
+  "category": "news",
+  "date": "2026-08-16",
+  "category_summary": "### Executive Signal\n- Investor pushback has forced Nvidia to roughly halve its OpenAI data-center commitment, signaling that the AI infrastructure cycle is now financially constrained even as frontier capabilities (robotics sim, perception) and governance risks continue to advance.\n\n### Priority Developments\n- **Capital reset:** [Nvidia cut its OpenAI guarantee](/?date=2026-08-16&category=news#item-152d977eb036) from ~$250B to under $120B after investor pressure, reframing hyperscale AI capex assumptions.\n- **Capability reality check:** PerceptionBench shows no frontier model exceeds 60% on isolated visual perception, while World Labs' robotics simulation engine advances training-scale data generation.\n- **Safety and legal exposure:** Alleged Grok misuse for CSAM and a sanctioned court-filing prompt injection set new precedents for liability and adversarial AI control.\n- **Data governance under pressure:** Twitch's retroactive opt-out and [suspected AI-firm bulk book orders](/?date=2026-08-16&category=news#item-1d99b6190723) expose fragile consent and copyright pipelines.\n\n### Leadership Implications\n- Recalibrate multi-year compute and capex commitments against shifting investor risk tolerance; stress-test contingent obligations with frontier-model labs.\n- Establish red-team coverage for prompt-injection, image-misuse, and data-provenance vectors before deploying agents in legal, customer, or training-pipeline contexts.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Investor pushback has forced Nvidia to roughly halve its OpenAI data-center commitment, signaling that the AI infrastructure cycle is now financially constrained even as frontier capabilities (robotics sim, perception) and governance risks continue to advance.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Capital reset:</strong> <a href=\"/?date=2026-08-16&amp;category=news#item-152d977eb036\" class=\"internal-link\" rel=\"noopener noreferrer\">Nvidia cut its OpenAI guarantee</a> from ~$250B to under $120B after investor pressure, reframing hyperscale AI capex assumptions.</li>\n<li><strong>Capability reality check:</strong> PerceptionBench shows no frontier model exceeds 60% on isolated visual perception, while World Labs' robotics simulation engine advances training-scale data generation.</li>\n<li><strong>Safety and legal exposure:</strong> Alleged Grok misuse for CSAM and a sanctioned court-filing prompt injection set new precedents for liability and adversarial AI control.</li>\n<li><strong>Data governance under pressure:</strong> Twitch's retroactive opt-out and <a href=\"/?date=2026-08-16&amp;category=news#item-1d99b6190723\" class=\"internal-link\" rel=\"noopener noreferrer\">suspected AI-firm bulk book orders</a> expose fragile consent and copyright pipelines.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Recalibrate multi-year compute and capex commitments against shifting investor risk tolerance; stress-test contingent obligations with frontier-model labs.</li>\n<li>Establish red-team coverage for prompt-injection, image-misuse, and data-provenance vectors before deploying agents in legal, customer, or training-pipeline contexts.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "152d977eb036",
+      "a3e3adaae034",
+      "80031a695b68"
+    ],
+    [
+      "152d977eb036"
+    ],
+    [
+      "a3e3adaae034",
+      "80031a695b68"
+    ],
+    [
+      "51fedc873e11",
+      "7d61c05a069c"
+    ],
+    [
+      "cb8f90e30e60",
+      "1d99b6190723"
+    ],
+    [
+      "152d977eb036"
+    ],
+    [
+      "7d61c05a069c",
+      "51fedc873e11",
+      "cb8f90e30e60"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "AI business and investment",
+      "description": "Large-scale financial moves including Nvidia's revised OpenAI commitment, Anthropic's revenue claims, and SpaceX's Cursor acquisition.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 85.0
+    },
+    {
+      "name": "AI safety and misuse",
+      "description": "Incidents and tooling around harmful AI outputs, including Grok CSAM misuse allegations and watermarking disclosures.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "AI policy and regulation",
+      "description": "Legal and regulatory developments from Colorado, Singapore, South Korea, and US courts including prompt-injection sanctions.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Copyright and training data",
+      "description": "Stories on AI-generated books, secondhand book bulk orders, and evidence for copyright litigation.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Robotics and embodied AI",
+      "description": "World Labs' simulation engine for robot training.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Benchmarks and evaluation",
+      "description": "PerceptionBench revealing visual perception gaps in multimodal models.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 48.0
+    },
+    {
+      "name": "Developer tools and agents",
+      "description": "Flue v2, ThoughtDAG, Yadda 3.0.0 and other agent/developer tooling launches.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 30.0
+    }
+  ],
+  "total_items": 18,
+  "items": [
+    {
+      "id": "152d977eb036",
+      "title": "Investor pressure forces Nvidia to shrink its OpenAI bet just as Anthropic's numbers defy bubble warnings",
+      "content": "\n        Nvidia has cut its guarantee for OpenAI's planned data center in Ohio nearly in half, from $250 billion to just under $120 billion, after investors pushed back on the risk. Meanwhile, Anthropic is complicating the AI bubble debate with revenue that jumped from $4.7 billion to $11.5 billion in a single quarter.\nThe article Investor pressure forces Nvidia to shrink its OpenAI bet just as Anthropic&#039;s numbers defy bubble warnings appeared first on The Decoder.",
+      "url": "https://the-decoder.com/investor-pressure-forces-nvidia-to-shrink-its-openai-bet-just-as-anthropics-numbers-defy-bubble-warnings/",
+      "author": "Matthias Bastian",
+      "published": "2026-08-15T15:41:02",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Anthropic",
+        "Nvidia",
+        "OpenAI"
+      ],
+      "summary": "Nvidia has halved its guarantee for OpenAI's planned Ohio data center from $250B to just under $120B after investor pushback on risk exposure. In contrast, Anthropic's quarterly revenue reportedly jumped from $4.7B to $11.5B, complicating the AI bubble narrative.",
+      "importance_score": 85.0,
+      "reasoning": "Very high financial significance: a near-halving of one of the largest AI infrastructure commitments alongside a dramatic revenue claim for a leading lab. These figures reshape the AI investment and competitive landscape if accurate.",
+      "themes": [
+        "AI infrastructure",
+        "investment",
+        "competitive dynamics",
+        "compute"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"Transparent sphere with glowing network of connected dots, surrounded by blurred points of light, symbolizes AI bubble in the financial market.\" class=\"attachment-full size-full wp-post-image\" height=\"816\" src=\"https://the-decoder.com/wp-content/uploads/2024/10/ai_bubble_neural_network.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1456\" /></p>\n<p>        Nvidia has cut its guarantee for OpenAI's planned data center in Ohio nearly in half, from $250 billion to just under $12",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Nvidia has halved its guarantee for OpenAI's planned Ohio data center from $250B to just under $120B after investor pushback on risk exposure. In contrast, Anthropic's quarterly revenue reportedly jumped from $4.7B to $11.5B, complicating the AI bubble narrative.</p>",
+      "content_html": "<p>Nvidia has cut its guarantee for OpenAI's planned data center in Ohio nearly in half, from $250 billion to just under $120 billion, after investors pushed back on the risk. Meanwhile, Anthropic is complicating the AI bubble debate with revenue that jumped from $4.7 billion to $11.5 billion in a single quarter.</p>\n<p>The article Investor pressure forces Nvidia to shrink its OpenAI bet just as Anthropic's numbers defy bubble warnings appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "51fedc873e11",
+      "title": "Woman claims her stepfather used Grok to transform childhood photo into explicit imagery",
+      "content": "The woman claimed that AI tools are \"taking everyday life and turning it into child sexual abuse.\"",
+      "url": "https://techcrunch.com/2026/08/15/woman-claims-her-stepfather-used-grok-to-transform-childhood-photo-into-explicit-imagery/",
+      "author": "Anthony Ha",
+      "published": "2026-08-15T21:29:19",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Government & Policy",
+        "Grok",
+        "SpaceX",
+        "x.ai"
+      ],
+      "summary": "A woman alleges her stepfather used xAI's Grok to transform a childhood photograph into explicit imagery, illustrating how image-generation AI is being misused for child sexual abuse material. The case adds to the mounting evidence that consumer-facing image tools require stronger safeguards.",
+      "importance_score": 58.0,
+      "reasoning": "High-impact safety and societal story involving misuse of a deployed frontier model. Not a new release (Grok-4.6 GA 2026-08-12), but a salient real-world harm case likely to drive policy and product-safety pressure.",
+      "themes": [
+        "AI safety",
+        "misuse",
+        "content moderation",
+        "policy pressure"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "The woman claimed that AI tools are \"taking everyday life and turning it into child sexual abuse.\"",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A woman alleges her stepfather used xAI's Grok to transform a childhood photograph into explicit imagery, illustrating how image-generation AI is being misused for child sexual abuse material. The case adds to the mounting evidence that consumer-facing image tools require stronger safeguards.</p>",
+      "content_html": "<p>The woman claimed that AI tools are \"taking everyday life and turning it into child sexual abuse.\"</p>"
+    },
+    {
+      "id": "80031a695b68",
+      "title": "World Labs turns one real-world robot task into thousands of simulated variations for training",
+      "content": "\n        World Labs, the startup founded by AI pioneer Fei-Fei Li, has unveiled a simulation engine that trains robot controllers entirely in virtual environments. From a single real-world task, the system generates thousands of controlled variations. The trained models then ran for one hour each on five different robot platforms without human intervention. How well the results hold up in more complex everyday situations remains to be seen.\nThe article World Labs turns one real-world robot task into thousands of simulated variations for training appeared first on The Decoder.",
+      "url": "https://the-decoder.com/world-labs-turns-one-real-world-robot-task-into-thousands-of-simulated-variations-for-training/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-15T07:30:48",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "Robotics",
+        "Robots"
+      ],
+      "summary": "World Labs, the startup founded by Fei-Fei Li, has unveiled a simulation engine that generates thousands of controlled virtual variations from a single real-world robot task to train controllers entirely in simulation. Trained models ran autonomously for one hour across five robot platforms.",
+      "importance_score": 58.0,
+      "reasoning": "Significant robotics research and capability claim from a prominent lab, but evidence is limited to controlled settings; the system has not yet been validated in complex real-world environments.",
+      "themes": [
+        "robotics",
+        "simulation",
+        "embodied AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"753\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/worldlabs-r2s2r-06-scenix-brand.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1280\" /></p>\n<p>        World Labs, the startup founded by AI pioneer Fei-Fei Li, has unveiled a simulation engine that trains robot controllers entirely in virtual environments. From a single real-world task, the system generates thousands of controlled variations. The trained mo",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>World Labs, the startup founded by Fei-Fei Li, has unveiled a simulation engine that generates thousands of controlled virtual variations from a single real-world robot task to train controllers entirely in simulation. Trained models ran autonomously for one hour across five robot platforms.</p>",
+      "content_html": "<p>World Labs, the startup founded by AI pioneer Fei-Fei Li, has unveiled a simulation engine that trains robot controllers entirely in virtual environments. From a single real-world task, the system generates thousands of controlled variations. The trained models then ran for one hour each on five different robot platforms without human intervention. How well the results hold up in more complex everyday situations remains to be seen.</p>\n<p>The article World Labs turns one real-world robot task into thousands of simulated variations for training appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "6b1b1fa9bccd",
+      "title": "SpaceX officially closes its Cursor acquisition",
+      "content": "AI coding startup Cursor is now officially a part of SpaceX.",
+      "url": "https://techcrunch.com/2026/08/15/spacex-officially-closes-its-cursor-acquisition/",
+      "author": "Anthony Ha",
+      "published": "2026-08-15T16:30:00",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "Startups",
+        "AI",
+        "Elon Musk",
+        "SpaceX",
+        "cursor"
+      ],
+      "summary": "SpaceX has officially closed its acquisition of AI coding startup Cursor, formally folding one of the most-used AI coding assistants into the Elon Musk-owned space and AI conglomerate. The deal signals SpaceX's deepening commitment to AI developer tooling.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: Today's TechCrunch article reports the same acquisition closure that was already announced via SpaceX/Cursor's own Twitter post on the same day.] Major M&A involving a high-profile AI coding product and SpaceX, with strategic implications for AI developer tooling and Musk's broader xAI ecosystem. Confirmed close is newsworthy but not a model release.",
+      "themes": [
+        "M&A",
+        "AI coding",
+        "industry consolidation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "Today's TechCrunch article reports the same acquisition closure that was already announced via SpaceX/Cursor's own Twitter post on the same day.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 0,
+        "matched_prior_items": [
+          {
+            "id": "5d8201d1c41f",
+            "date": "2026-08-15",
+            "category": "social",
+            "title": "Cursor is now part of @SpaceX. \n\nToday, we have officially closed our acquisition. We will join the ...",
+            "source": "Twitter",
+            "url": "https://twitter.com/cursor_ai/status/2088249881718919393"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "AI coding startup Cursor is now officially a part of SpaceX.",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "Today's TechCrunch article reports the same acquisition closure that was already announced via SpaceX/Cursor's own Twitter post on the same day.",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 0,
+          "matched_prior_items": [
+            {
+              "id": "5d8201d1c41f",
+              "date": "2026-08-15",
+              "category": "social",
+              "title": "Cursor is now part of @SpaceX. \n\nToday, we have officially closed our acquisition. We will join the ...",
+              "source": "Twitter",
+              "url": "https://twitter.com/cursor_ai/status/2088249881718919393"
+            }
+          ]
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>SpaceX has officially closed its acquisition of AI coding startup Cursor, formally folding one of the most-used AI coding assistants into the Elon Musk-owned space and AI conglomerate. The deal signals SpaceX's deepening commitment to AI developer tooling.</p>",
+      "content_html": "<p>AI coding startup Cursor is now officially a part of SpaceX.</p>"
+    },
+    {
+      "id": "0ce4b5d2face",
+      "title": "AI Law — This Week (August 10 – August 16, 2026)",
+      "content": "156 AI-law developments across federal, state, and global jurisdictions for the week of August 10 – August 16, 2026. Every item links to its original source.Highlights:Colorado: Colorado Releases Proposed Rules for Its AI and Chatbot Safety Laws: These Create More Operational Work than the Statutes Suggest (2026-08-15)Singapore: Singapore tightens sexual offences laws, criminalises non-consensual AI-generated intimate images (2026-08-15)South Korea: South Korea Bills Make Employers Pay When AI Cuts Jobs, Not AI Vendors (2026-08-15)France (EU): Why Guyana cyber laws need an AI renaissance (2026-08-15)U.S. Federal: Senate Judiciary Hearing Reveals Bipartisan Support for Federal Action on AI-Driven “Surveillance Pricing” (2026-08-14)California: AI Legislative Update: August 14, 2026 (2026-08-14)Full weekly digest →",
+      "url": "https://ai-law-tracker.com/this-week",
+      "author": "Unknown",
+      "published": "2026-08-15T00:00:00",
+      "source": "AI Law Tracker",
+      "source_type": "rss",
+      "tags": [
+        "Weekly Digest"
+      ],
+      "summary": "Weekly AI law digest covering 156 developments across federal, state, and global jurisdictions, with highlights including Colorado's proposed AI and chatbot safety rules, Singapore criminalizing non-consensual AI-generated intimate images, and a South Korea bill making employers liable for AI-driven job losses.",
+      "importance_score": 52.0,
+      "reasoning": "[Freshness check: main claim overlaps prior social coverage from 2026-08-09] Compact but wide-ranging policy roundup. The highlighted items (Singapore CSAM-style law, Colorado rules, South Korea employer liability) are individually consequential for AI governance.",
+      "themes": [
+        "AI policy",
+        "regulation",
+        "global governance"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior social coverage from 2026-08-09",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 6,
+        "matched_prior_items": [
+          {
+            "id": "f303160176b2",
+            "date": "2026-08-09",
+            "category": "social",
+            "title": "We’ll make Mars pay for it.",
+            "source": "Twitter",
+            "url": "https://twitter.com/tunguz/status/2086189755809874326"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://ai-law-tracker.com/feed.xml",
+        "raw_summary": "<p>156 AI-law developments across federal, state, and global jurisdictions for the week of August 10 – August 16, 2026. Every item links to its original source.</p><p><strong>Highlights:</strong></p><ul><li>Colorado: <a href=\"https://news.google.com/rss/articles/CBMiggJBVV95cUxQblNjaGlsV2NpUVEzWGZXUUhOUzR4cVhtWlZXSnFXTFFzUWVfbEZGR0tkUms3LW11SkRJYWM4SjBQSERONHoxVWdPVEtjYTNsLV9qZE9rYTEta1NuWENWRlNPdXdUYkZleDBzOEpzWlJLUHB4UW9Mdi14RFlJZEl3Qlgwa1FEbENNdGg5Mlp6N010ZzQyTlQ4VmpsY1BBbkZUUElUQmRpY0E2SDJ5e",
+        "source_group": "Policy & Regulation",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior social coverage from 2026-08-09",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 6,
+          "matched_prior_items": [
+            {
+              "id": "f303160176b2",
+              "date": "2026-08-09",
+              "category": "social",
+              "title": "We’ll make Mars pay for it.",
+              "source": "Twitter",
+              "url": "https://twitter.com/tunguz/status/2086189755809874326"
+            }
+          ]
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Weekly AI law digest covering 156 developments across federal, state, and global jurisdictions, with highlights including Colorado's proposed AI and chatbot safety rules, Singapore criminalizing non-consensual AI-generated intimate images, and a South Korea bill making employers liable for AI-driven job losses.</p>",
+      "content_html": "<p>156 AI-law developments across federal, state, and global jurisdictions for the week of August 10 – August 16, 2026. Every item links to its original source.Highlights:Colorado: Colorado Releases Proposed Rules for Its AI and Chatbot Safety Laws: These Create More Operational Work than the Statutes Suggest (2026-08-15)Singapore: Singapore tightens sexual offences laws, criminalises non-consensual AI-generated intimate images (2026-08-15)South Korea: South Korea Bills Make Employers Pay When AI Cuts Jobs, Not AI Vendors (2026-08-15)France (EU): Why Guyana cyber laws need an AI renaissance (2026-08-15)U.S. Federal: Senate Judiciary Hearing Reveals Bipartisan Support for Federal Action on AI-Driven “Surveillance Pricing” (2026-08-14)California: AI Legislative Update: August 14, 2026 (2026-08-14)Full weekly digest →</p>"
+    },
+    {
+      "id": "90d34bf591ea",
+      "title": "Anthropic shares more details about how Claude’s new watermarks will work",
+      "content": "How will the watermarking actually work? Can it be hidden with editing? And how does this affect code?",
+      "url": "https://techcrunch.com/2026/08/15/anthropic-shares-more-details-about-how-claudes-new-watermarks-will-work/",
+      "author": "Anthony Ha",
+      "published": "2026-08-15T18:58:39",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Anthropic",
+        "Claude"
+      ],
+      "summary": "Anthropic has disclosed more technical details about how watermarks for Claude-generated outputs will work, including questions about editing evasion and code outputs. The move signals a near-term deployment of provenance tooling on a major model line.",
+      "importance_score": 50.0,
+      "reasoning": "[Freshness check: Claude's watermarking was already covered by the official Help Center article on 2026-08-12; today's piece just elaborates on the same feature with additional technical color and Q&A-style commentary.] Significant for AI provenance and accountability, and a notable product-feature reveal from a frontier lab. Not a model release itself; the underlying Claude models predate the coverage date.",
+      "themes": [
+        "watermarking",
+        "provenance",
+        "responsible AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "Claude's watermarking was already covered by the official Help Center article on 2026-08-12; today's piece just elaborates on the same feature with additional technical color and Q&A-style commentary.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 37,
+        "matched_prior_items": [
+          {
+            "id": "1ff0d6c71ead",
+            "date": "2026-07-09",
+            "category": "news",
+            "title": "You Will Soon Use Claude Cowork on Your Phone",
+            "source": "aibusiness",
+            "url": "https://aibusiness.com/agentic-ai/you-will-soon-use-claude-cowork-your-phone"
+          },
+          {
+            "id": "042fb889688a",
+            "date": "2026-08-12",
+            "category": "news",
+            "title": "How Claude marks AI-generated content | Claude Help Center",
+            "source": "support.claude.com",
+            "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "How will the watermarking actually work? Can it be hidden with editing? And how does this affect code?",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "Claude's watermarking was already covered by the official Help Center article on 2026-08-12; today's piece just elaborates on the same feature with additional technical color and Q&A-style commentary.",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 37,
+          "matched_prior_items": [
+            {
+              "id": "1ff0d6c71ead",
+              "date": "2026-07-09",
+              "category": "news",
+              "title": "You Will Soon Use Claude Cowork on Your Phone",
+              "source": "aibusiness",
+              "url": "https://aibusiness.com/agentic-ai/you-will-soon-use-claude-cowork-your-phone"
+            },
+            {
+              "id": "042fb889688a",
+              "date": "2026-08-12",
+              "category": "news",
+              "title": "How Claude marks AI-generated content | Claude Help Center",
+              "source": "support.claude.com",
+              "url": "https://support.claude.com/en/articles/16266773-how-claude-marks-ai-generated-content"
+            }
+          ]
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Anthropic has disclosed more technical details about how watermarks for Claude-generated outputs will work, including questions about editing evasion and code outputs. The move signals a near-term deployment of provenance tooling on a major model line.</p>",
+      "content_html": "<p>How will the watermarking actually work? Can it be hidden with editing? And how does this affect code?</p>"
+    },
+    {
+      "id": "a3e3adaae034",
+      "title": "New benchmark confirms AI models still perform poorly at visual perception",
+      "content": "\n        Moonshot AI's PerceptionBench tests how well multimodal AI models can actually \"see,\" separate from logical reasoning. No frontier model reaches 60 percent accuracy, and GPT-5.6 Sol leads by a narrow margin. Many supposed reasoning errors actually happen as early as the image-reading stage.\nThe article New benchmark confirms AI models still perform poorly at visual perception appeared first on The Decoder.",
+      "url": "https://the-decoder.com/new-benchmark-confirms-ai-models-still-perform-poorly-at-visual-perception/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-15T05:30:18",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "Kimi",
+        "Moonshot AI"
+      ],
+      "summary": "Moonshot AI's PerceptionBench isolates visual perception from logical reasoning and finds no frontier model exceeds 60% accuracy, with GPT-5.6 Sol leading narrowly. Many apparent reasoning failures actually originate at the image-reading stage.",
+      "importance_score": 48.0,
+      "reasoning": "Useful diagnostic benchmark with concrete ranking of existing models (GPT-5.6 Sol GA 2026-06-26, so not a new release). Highlights a meaningful capability gap in multimodal systems.",
+      "themes": [
+        "benchmarks",
+        "multimodal AI",
+        "evaluation"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"Four clocks and colorful stacked cubes set against abstract shapes illustrate phases of time and modular process steps.\" class=\"attachment-full size-full wp-post-image\" height=\"1047\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/perceptionbench-nano-banana-pro.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1920\" /></p>\n<p>        Moonshot AI's PerceptionBench tests how well multimodal AI models can actually \"see,\" separate from logical reasoning. No frontier model ",
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Moonshot AI's PerceptionBench isolates visual perception from logical reasoning and finds no frontier model exceeds 60% accuracy, with GPT-5.6 Sol leading narrowly. Many apparent reasoning failures actually originate at the image-reading stage.</p>",
+      "content_html": "<p>Moonshot AI's PerceptionBench tests how well multimodal AI models can actually \"see,\" separate from logical reasoning. No frontier model reaches 60 percent accuracy, and GPT-5.6 Sol leads by a narrow margin. Many supposed reasoning errors actually happen as early as the image-reading stage.</p>\n<p>The article New benchmark confirms AI models still perform poorly at visual perception appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "7d61c05a069c",
+      "title": "Plaintiff hid invisible AI instructions in court filings to secretly influence automated review",
+      "content": "\n        A plaintiff in Connecticut embedded invisible prompt injections in court filings, formatted in 3-point white text on a white background, to manipulate a potential AI review system. Judge Spader compared the attempt to secretly tampering with a jury and revoked the plaintiff's electronic filing privileges. The court stressed that Connecticut doesn't use AI to review filings, but the intent alone was enough to warrant sanctions.\nThe article Plaintiff hid invisible AI instructions in court filings to secretly influence automated review appeared first on The Decoder.",
+      "url": "https://the-decoder.com/plaintiff-hid-invisible-ai-instructions-in-court-filings-to-secretly-influence-automated-review/",
+      "author": "Tomislav Bezmalinović",
+      "published": "2026-08-15T08:00:45",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI and society",
+        "Artificial Intelligence",
+        "AI and law",
+        "Prompt Injection"
+      ],
+      "summary": "A Connecticut plaintiff embedded invisible prompt injections in court filings using 3-point white text to manipulate a potential AI review system. Judge Spader compared the tactic to jury tampering and revoked the plaintiff's electronic filing privileges.",
+      "importance_score": 45.0,
+      "reasoning": "Notable legal precedent on prompt injection in adversarial settings. Important for courts and AI tool deployment, though confined to a single state-court ruling.",
+      "themes": [
+        "prompt injection",
+        "legal system",
+        "AI governance"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"A Trojan horse made from court documents feeds data into an AI chip, surrounded by symbols of justice such as the scales and the gavel.\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/trojanisches-pferd-prompt-injection.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        A plaintiff in Connecticut embedded invisible prompt injections in court filings, formatted in 3-point white text on a",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A Connecticut plaintiff embedded invisible prompt injections in court filings using 3-point white text to manipulate a potential AI review system. Judge Spader compared the tactic to jury tampering and revoked the plaintiff's electronic filing privileges.</p>",
+      "content_html": "<p>A plaintiff in Connecticut embedded invisible prompt injections in court filings, formatted in 3-point white text on a white background, to manipulate a potential AI review system. Judge Spader compared the attempt to secretly tampering with a jury and revoked the plaintiff's electronic filing privileges. The court stressed that Connecticut doesn't use AI to review filings, but the intent alone was enough to warrant sanctions.</p>\n<p>The article Plaintiff hid invisible AI instructions in court filings to secretly influence automated review appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "49d71ba4c866",
+      "title": "The \"tragedy of the cognitive commons\" explains how rational AI adoption could destroy entire professions' expertise",
+      "content": "\n        A new research paper frames AI adoption as a \"tragedy of the cognitive commons.\" Every company that cuts entry-level jobs benefits individually, but the collective expertise of entire professions erodes. The consequences may not become visible until 2030 to 2045, when today's missing junior talent should have become tomorrow's experienced workforce.\nThe article The &quot;tragedy of the cognitive commons&quot; explains how rational AI adoption could destroy entire professions&#039; expertise appeared first on The Decoder.",
+      "url": "https://the-decoder.com/the-tragedy-of-the-cognitive-commons-explains-how-rational-ai-adoption-could-destroy-entire-professions-expertise/",
+      "author": "Matthias Bastian",
+      "published": "2026-08-15T06:00:52",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI and society",
+        "Artificial Intelligence",
+        "AI and jobs",
+        "AI research",
+        "Jobs"
+      ],
+      "summary": "A new research paper frames AI adoption as a 'tragedy of the cognitive commons,' arguing that individually rational cuts to entry-level work collectively erode professional expertise over decades. The authors project consequences materializing between 2030 and 2045.",
+      "importance_score": 40.0,
+      "reasoning": "Conceptual and policy-oriented analysis rather than new technical capability. Useful framing for workforce and education debates, but not directly actionable for frontier AI development.",
+      "themes": [
+        "labor economics",
+        "workforce",
+        "AI policy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/ai_jobs_young_people_cognitive_decline.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        A new research paper frames AI adoption as a \"tragedy of the cognitive commons.\" Every company that cuts entry-level jobs benefits individually, but the collective expertise of entire professions erodes. The consequences may not become visible until ",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A new research paper frames AI adoption as a 'tragedy of the cognitive commons,' arguing that individually rational cuts to entry-level work collectively erode professional expertise over decades. The authors project consequences materializing between 2030 and 2045.</p>",
+      "content_html": "<p>A new research paper frames AI adoption as a \"tragedy of the cognitive commons.\" Every company that cuts entry-level jobs benefits individually, but the collective expertise of entire professions erodes. The consequences may not become visible until 2030 to 2045, when today's missing junior talent should have become tomorrow's experienced workforce.</p>\n<p>The article The \"tragedy of the cognitive commons\" explains how rational AI adoption could destroy entire professions' expertise appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "8007d43fb9b9",
+      "title": "AI in drug discovery – what it is, where we stand and the path forward",
+      "content": "https:&#x2F;&#x2F;www.nature.com&#x2F;articles&#x2F;s41573-026-01496-2",
+      "url": "https://www.science.org/content/blog-post/so-how-ai-drug-discovery-doing-really",
+      "author": "AnodicElegy",
+      "published": "2026-08-15T19:12:53+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "A Science magazine blog post and Nature review assess the current state of AI in drug discovery, summarizing what has and has not worked in real-world pipelines. The piece serves as a sober status update rather than a breakthrough announcement.",
+      "importance_score": 40.0,
+      "reasoning": "Useful synthesis of an applied AI domain, but largely commentary and review content rather than new capability.",
+      "themes": [
+        "AI for science",
+        "drug discovery",
+        "review"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 121,
+        "hn_comments": 61,
+        "hn_url": "https://news.ycombinator.com/item?id=49313367",
+        "type": "story",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A Science magazine blog post and Nature review assess the current state of AI in drug discovery, summarizing what has and has not worked in real-world pipelines. The piece serves as a sober status update rather than a breakthrough announcement.</p>",
+      "content_html": "<p>https://www.nature.com/articles/s41573-026-01496-2</p>"
+    },
+    {
+      "id": "cb8f90e30e60",
+      "title": "Amazon Can Use Your Twitch Content to Train Its AI—Unless You Opt Out",
+      "content": "When Twitch announced that streamers could opt out, thousands of users questioned why their content was being used to train AI models in the first place.",
+      "url": "https://www.wired.com/story/amazon-uses-your-twitch-content-to-train-its-ai-how-to-opt-out/",
+      "author": "Fernanda González",
+      "published": "2026-08-15T09:00:00",
+      "source": "Feed: Artificial Intelligence Latest",
+      "source_type": "rss",
+      "tags": [
+        "Gear",
+        "Gear / How To and Advice",
+        "Twitch",
+        "generative AI",
+        "artificial intelligence",
+        "Amazon",
+        "privacy",
+        "Change This Setting"
+      ],
+      "summary": "Amazon's Twitch announced an opt-out for streamers whose content was being used to train AI models, prompting backlash from thousands of users about the default-on data usage. The story highlights growing tension over consent in AI training pipelines.",
+      "importance_score": 38.0,
+      "reasoning": "Notable privacy and data-governance story involving a major platform, but not a model release or frontier capability advance. Reflects ongoing industry pattern of opt-out AI training.",
+      "themes": [
+        "data governance",
+        "privacy",
+        "platform policy"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.wired.com/feed/tag/ai/latest/rss",
+        "raw_summary": "When Twitch announced that streamers could opt out, thousands of users questioned why their content was being used to train AI models in the first place.",
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Amazon's Twitch announced an opt-out for streamers whose content was being used to train AI models, prompting backlash from thousands of users about the default-on data usage. The story highlights growing tension over consent in AI training pipelines.</p>",
+      "content_html": "<p>When Twitch announced that streamers could opt out, thousands of users questioned why their content was being used to train AI models in the first place.</p>"
+    },
+    {
+      "id": "1d99b6190723",
+      "title": "Secondhand booksellers in UK and Ireland suspect AI firms behind ‘strange’ bulk orders",
+      "content": "Development comes after Anthropic was found to have spent millions on books to scan for ‘data acquisition’Secondhand booksellers in the UK and Ireland are reporting a flurry of bulk orders from mystery buyers, amid speculation AI companies are acquiring the tomes for their data.Bookshops contacted by the Guardian say they have been receiving orders from buyers in the US, Canada, continental Europe and the UK. The increase has been replicated around the world, with booksellers in the US, Australia and Europe also reporting unusual orders. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/aug/15/uk-ireland-booksellers-suspect-ai-companies-bulk-orders-data-acquisition",
+      "author": "Dan Milmo Global technology editor",
+      "published": "2026-08-15T08:00:51",
+      "source": "AI (artificial intelligence) | The Guardian",
+      "source_type": "rss",
+      "tags": [
+        "AI (artificial intelligence)",
+        "Books",
+        "Culture",
+        "Computing",
+        "Technology",
+        "Amazon",
+        "Anthropic",
+        "Internet",
+        "E-commerce",
+        "Retail industry",
+        "Business"
+      ],
+      "summary": "Secondhand bookshops in the UK and Ireland report surges of bulk orders from mystery buyers in the US, Canada, and Europe, which they suspect are AI companies acquiring books to scan. The trend follows reporting that Anthropic spent millions on books for data acquisition.",
+      "importance_score": 35.0,
+      "reasoning": "Interesting data-sourcing pattern with implications for copyright and training pipelines, but mostly anecdotal and follow-up coverage rather than a confirmed new development.",
+      "themes": [
+        "data acquisition",
+        "copyright",
+        "training data"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "raw_summary": "<p>Development comes after Anthropic was found to have spent millions on books to scan for ‘data acquisition’</p><p>Secondhand booksellers in the UK and Ireland are reporting a flurry of bulk orders from mystery buyers, amid speculation AI companies are acquiring the tomes for their data.</p><p>Bookshops contacted by the Guardian say they have been receiving orders from buyers in the US, Canada, continental Europe and the UK. The increase has been replicated around the world, with booksellers in",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Secondhand bookshops in the UK and Ireland report surges of bulk orders from mystery buyers in the US, Canada, and Europe, which they suspect are AI companies acquiring books to scan. The trend follows reporting that Anthropic spent millions on books for data acquisition.</p>",
+      "content_html": "<p>Development comes after Anthropic was found to have spent millions on books to scan for ‘data acquisition’Secondhand booksellers in the UK and Ireland are reporting a flurry of bulk orders from mystery buyers, amid speculation AI companies are acquiring the tomes for their data.Bookshops contacted by the Guardian say they have been receiving orders from buyers in the US, Canada, continental Europe and the UK. The increase has been replicated around the world, with booksellers in the US, Australia and Europe also reporting unusual orders. Continue reading...</p>"
+    },
+    {
+      "id": "d1730804a18a",
+      "title": "React for Agents: Astro Creator Brings Hooks to his Meta-Harness, Flue",
+      "content": "Agent frameworks for developers are still at an early stage, with the likes of Vercel&#8217;s eve and Fred Schott&#8217;s Flue &#8212; both launched this year &#8212; setting the early template.Schott is the creator of the web framework Astro, which led to his company being acquired by Cloudflare in January. He&#8217;s just released version 2 of Flue, its first stable release, which has as its foundation React-style &#8220;Agent Hooks.&#8221;In Flue, an agent is represented by a JavaScript function. This function &#8220;re-renders on every turn,&#8221; meaning before every model call.The addition of hooks came after Schott realized that React&#8217;s composability would be a great fit for agent development.&#8220;I originally tweeted that we were building the Astro for agents or the Next.js for agents,&#8221; he told us. &#8220;But then I realized: maybe no one has even built the React for agents.&#8221;Editor&#8217;s Note: we last talked about the React for Agents with Bret Taylor, CEO of Sierra and Chairman of OpenAI:&#8220;We&#8217;re still trying to figure out who the reactive agents are and the jury is still out&#8230; We&#8217;re sort of in the jQuery era of agents, not the react era.&#8221; Hooks are authored in TypeScript. According to the Flue 2 launch post, they &#8220;let you build dynamic agents that can manage their own state, listen to agent lifecycle events, and even attach different resources and capabilities dynamically to enhance themselves at runtime.&#8221;There are 16 built-in hooks in Flue 2, including useSkill(), useTool(), useSubagent(). You can also add custom hooks.How Flue evolved via React-style hooks; diagram by Richard MacManusWhat hooks open up for developers is that they make an agent much more dynamic, by allowing its configuration to change as a conversation or workflow progresses. Schott said this is needed to build &#8220;real support bots, real triage bots,&#8221; because they can&#8217;t be fully configured in advance. The agent can&#8217;t just be static &#8212; it has to adapt in real-time to what the user wants or the situation demands.Agent hooks bring those capabilities to Flue. For example, a support agent might bring in an account management tool after first verifying a user.File based magic is an antipatternSchott&#8217;s thinking about how to build an agent framework has evolved rapidly since he publicly launched Flue 1 in early May. Initially, he wanted to take existing web framework concepts and apply them to his new agent framework. He uses file-based routing as an example.&#8220;So we kind of naively ported that over to Flue, thinking &#8212; great, well, I&#8217;ll put your five agents in these five files, and that&#8217;ll be the five routes that they expose. But for a lot of people building with Flue, especially the bigger customers, their whole company is one agent. They don&#8217;t care about routing. There&#8217;s one agent.&#8221;So after the first Flue users showed these early patterns, composability became front of mind for Schott. That led him back to React.&#8220;As you can see from the Flue 2 API, we&#8217;re taking it more from React [...] than we are from Astro or Next.js &#8212; where it&#8217;s less about routing and these website concepts and more about, at its base level, how do you compose an agent on many different things?&#8221;Flue&#8217;s central proposition: agents need a harnessA key concept in Flue is that an agent must have a harness &#8212; meaning that it&#8217;s in an environment where it has access to the context and capabilities needed to accomplish various tasks.&#8220;Instead of you and your code driving the LLM and telling it what to do with scripts, you&#8217;re putting the agent into this harness, and it is able to drive itself and work through problems,&#8221; explained Schott.Flue is built on top of Pi, an open source minimal harness. Essentially, Flue is an opinionated take on Pi &#8212; adding features that Schott thinks are helpful to developers building agents. For example: hosted agents in Flue 2 are now built with Vite, an open source build tool.Indeed, Schott likens Pi&#8217;s role to the foundational role that Vite now plays beneath Astro.&#8220;I think Pi can serve that role, where it&#8217;s the right abstraction &#8212; it doesn&#8217;t do too much, but it gives the right APIs that then we can go and say, well, let&#8217;s have an opinionated take on this that does more.&#8221;Building on Pi meant committing to having a built-in agent harness.&#8220;Our early bet was that the harness is actually not a feature, but it&#8217;s fundamental to what you think an agent is,&#8221; Schott said. &#8220;There is no agent without a harness.&#8221;Building Flue agents with coding agentsThe Flue project began earlier this year within the Astro repository, as an issue-triage system. At first, it was an LLM-driven script or workflow reviewing issues. But then, explained Schott, it gained the ability to take actions in the repo.&#8220;It started to transition from just automation in a repo to wanting to take the Claude Code experience, make it headless, make it hostable and run it in the cloud.&#8221;So that&#8217;s when the idea of a harness as anchor emerged. Indeed, in his v1 launch post in early May, Schott described Flue as &#8220;like Claude Code, but 100% headless and programmable.&#8221;I myself tested out Flue using Claude Code, which guided me through setting up my first Flue agent. And Schott confirmed this is how many developers use Flue.&#8220;We very much are building for them,&#8221; he said, regarding AI coding agents. &#8220;Our whole onboarding flow is that, you know, pass this prompt to your agent, it&#8217;s gonna guide you through it. All of our docs have markdown support.&#8221;Where Flue fits in the agent development stackThe closest comparison to Flue is Vercel&#8217;s eve, which also treats the harness as foundational. Vercel and Cloudflare have been known to beef in public, but Schott is generous in his opinion of eve.&#8220;Eve, I think, is the most directly competitive,&#8221; Schott said. &#8220;It came around at the same time, so it had that same take that a harness is built-in.&#8221;Schott also referenced what he called the &#8220;OG agent frameworks,&#8221; which came before Flue and so weren&#8217;t created with a harness as the central concept. He listed Vercel&#8217;s AI SDK, Cloudflare&#8217;s Agents SDK, and Mastra (developed by the same team that built Gatsby, a web framework predating Astro).While these &#8220;OG agent frameworks&#8221; are all adding harnesses now, Schott considers that an added feature &#8212; whereas Flue and eve both have built-in harnesses.I asked where Flue sits compared to emerging &#8220;meta-harnesses,&#8221; like Databricks&#8217; Omnigent and perhaps even the self-improving Exo harness.Note: we&#8217;re also publishing our interview with Exo coauthor Alex Krentsel this weekend; it&#8217;s worth a watch and has a bonus discussion on OpenClaw architecture!Schott rightly noted that there&#8217;s confusion about what the term meta-harness even means at this early stage. Regardless, he thinks having one API for working across all harnesses would muddle the story for Flue. His framework specifically defines how skills work in Flue, how subagents work, and so on. As he put it, &#8220;the framework [Flue] and the harness are very intertwined.&#8221;He personally finds the meta-harness discussion fascinating, and has played with Exo, but says it&#8217;s &#8220;a different interest scenario that isn&#8217;t really related to hosted agents.&#8221;The Cloudflare connectionThroughout the interview, Schott referenced being able to take advantage of his employer Cloudflare&#8217;s tooling and infrastructure. But he was also very clear that Flue is an &#8220;open source framework for every host,&#8221; as he put it, and he wants it to stay that way.&#8220;The best tools are the ones that float above the host,&#8221; he said. &#8220;That opens the door for the most developer adoption and the most innovation.&#8221;Host portability is one of Flue&#8217;s defining principles &#8212; and perhaps that&#8217;s where the fundamental difference to Vercel&#8217;s eve is. While eve can also be self-hosted, it is optimized to take advantage of Vercel&#8217;s many features. Of course that&#8217;s a known playbook of Vercel, which does the same thing with Next.js.All that said, Vercel itself has shown that a Flue agent can be deployed on Vercel. So the two companies can play nice together.I also mentioned LangChain&#8217;s new Managed Deep Agents offering as an example of hosted agent platforms coming onto the market. However, Schott said a managed agents product is not currently on Flue&#8217;s roadmap.&#8220;It&#8217;s so early for us, we&#8217;re just focused on building the best harness,&#8221; he said.Links to find Flue and Fred online; Richard is at @ricmac. This is a new written interview series we are trying out for subscribers &#8212; let us know your feedback!",
+      "url": "https://www.latent.space/p/flue-2",
+      "author": "Richard MacManus",
+      "published": "2026-08-15T15:46:22",
+      "source": "Latent.Space",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Fred Schott, creator of the Astro web framework, has released Flue v2, an agent development harness built around React-style 'Agent Hooks' where each agent re-renders before every model call. The release targets composability for multi-agent applications.",
+      "importance_score": 32.0,
+      "reasoning": "Incremental but interesting developer-tools release for agent frameworks. Important mainly for the developer-tools niche, not a frontier-capability shift.",
+      "themes": [
+        "developer tools",
+        "agent frameworks"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.latent.space/feed",
+        "raw_summary": "Flue 2 takes its inspiration from React. Creator Fred Schott, of Astro fame, tells Latent Space why he added hooks and why agents are defined by their harnesses.",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Fred Schott, creator of the Astro web framework, has released Flue v2, an agent development harness built around React-style 'Agent Hooks' where each agent re-renders before every model call. The release targets composability for multi-agent applications.</p>",
+      "content_html": "<p>Agent frameworks for developers are still at an early stage, with the likes of Vercel’s eve and Fred Schott’s Flue — both launched this year — setting the early template.Schott is the creator of the web framework Astro, which led to his company being acquired by Cloudflare in January. He’s just released version 2 of Flue, its first stable release, which has as its foundation React-style “Agent Hooks.”In Flue, an agent is represented by a JavaScript function. This function “re-renders on every turn,” meaning before every model call.The addition of hooks came after Schott realized that React’s composability would be a great fit for agent development.“I originally tweeted that we were building the Astro for agents or the Next.js for agents,” he told us. “But then I realized: maybe no one has even built the React for agents.”Editor’s Note: we last talked about the React for Agents with Bret Taylor, CEO of Sierra and Chairman of OpenAI:“We’re still trying to figure out who the reactive agents are and the jury is still out… We’re sort of in the jQuery era of agents, not the react era.” Hooks are authored in TypeScript. According to the Flue 2 launch post, they “let you build dynamic agents that can manage their own state, listen to agent lifecycle events, and even attach different resources and capabilities dynamically to enhance themselves at runtime.”There are 16 built-in hooks in Flue 2, including useSkill(), useTool(), useSubagent(). You can also add custom hooks.How Flue evolved via React-style hooks; diagram by Richard MacManusWhat hooks open up for developers is that they make an agent much more dynamic, by allowing its configuration to change as a conversation or workflow progresses. Schott said this is needed to build “real support bots, real triage bots,” because they can’t be fully configured in advance. The agent can’t just be static — it has to adapt in real-time to what the user wants or the situation demands.Agent hooks bring those capabilities to Flue. For example, a support agent might bring in an account management tool after first verifying a user.File based magic is an antipatternSchott’s thinking about how to build an agent framework has evolved rapidly since he publicly launched Flue 1 in early May. Initially, he wanted to take existing web framework concepts and apply them to his new agent framework. He uses file-based routing as an example.“So we kind of naively ported that over to Flue, thinking — great, well, I’ll put your five agents in these five files, and that’ll be the five routes that they expose. But for a lot of people building with Flue, especially the bigger customers, their whole company is one agent. They don’t care about routing. There’s one agent.”So after the first Flue users showed these early patterns, composability became front of mind for Schott. That led him back to React.“As you can see from the Flue 2 API, we’re taking it more from React [...] than we are from Astro or Next.js — where it’s less about routing and these website concepts and more about, at its base level, how do you compose an agent on many different things?”Flue’s central proposition: agents need a harnessA key concept in Flue is that an agent must have a harness — meaning that it’s in an environment where it has access to the context and capabilities needed to accomplish various tasks.“Instead of you and your code driving the LLM and telling it what to do with scripts, you’re putting the agent into this harness, and it is able to drive itself and work through problems,” explained Schott.Flue is built on top of Pi, an open source minimal harness. Essentially, Flue is an opinionated take on Pi — adding features that Schott thinks are helpful to developers building agents. For example: hosted agents in Flue 2 are now built with Vite, an open source build tool.Indeed, Schott likens Pi’s role to the foundational role that Vite now plays beneath Astro.“I think Pi can serve that role, where it’s the right abstraction — it doesn’t do too much, but it gives the right APIs that then we can go and say, well, let’s have an opinionated take on this that does more.”Building on Pi meant committing to having a built-in agent harness.“Our early bet was that the harness is actually not a feature, but it’s fundamental to what you think an agent is,” Schott said. “There is no agent without a harness.”Building Flue agents with coding agentsThe Flue project began earlier this year within the Astro repository, as an issue-triage system. At first, it was an LLM-driven script or workflow reviewing issues. But then, explained Schott, it gained the ability to take actions in the repo.“It started to transition from just automation in a repo to wanting to take the Claude Code experience, make it headless, make it hostable and run it in the cloud.”So that’s when the idea of a harness as anchor emerged. Indeed, in his v1 launch post in early May, Schott described Flue as “like Claude Code, but 100% headless and programmable.”I myself tested out Flue using Claude Code, which guided me through setting up my first Flue agent. And Schott confirmed this is how many developers use Flue.“We very much are building for them,” he said, regarding AI coding agents. “Our whole onboarding flow is that, you know, pass this prompt to your agent, it’s gonna guide you through it. All of our docs have markdown support.”Where Flue fits in the agent development stackThe closest comparison to Flue is Vercel’s eve, which also treats the harness as foundational. Vercel and Cloudflare have been known to beef in public, but Schott is generous in his opinion of eve.“Eve, I think, is the most directly competitive,” Schott said. “It came around at the same time, so it had that same take that a harness is built-in.”Schott also referenced what he called the “OG agent frameworks,” which came before Flue and so weren’t created with a harness as the central concept. He listed Vercel’s AI SDK, Cloudflare’s Agents SDK, and Mastra (developed by the same team that built Gatsby, a web framework predating Astro).While these “OG agent frameworks” are all adding harnesses now, Schott considers that an added feature — whereas Flue and eve both have built-in harnesses.I asked where Flue sits compared to emerging “meta-harnesses,” like Databricks’ Omnigent and perhaps even the self-improving Exo harness.Note: we’re also publishing our interview with Exo coauthor Alex Krentsel this weekend; it’s worth a watch and has a bonus discussion on OpenClaw architecture!Schott rightly noted that there’s confusion about what the term meta-harness even means at this early stage. Regardless, he thinks having one API for working across all harnesses would muddle the story for Flue. His framework specifically defines how skills work in Flue, how subagents work, and so on. As he put it, “the framework [Flue] and the harness are very intertwined.”He personally finds the meta-harness discussion fascinating, and has played with Exo, but says it’s “a different interest scenario that isn’t really related to hosted agents.”The Cloudflare connectionThroughout the interview, Schott referenced being able to take advantage of his employer Cloudflare’s tooling and infrastructure. But he was also very clear that Flue is an “open source framework for every host,” as he put it, and he wants it to stay that way.“The best tools are the ones that float above the host,” he said. “That opens the door for the most developer adoption and the most innovation.”Host portability is one of Flue’s defining principles — and perhaps that’s where the fundamental difference to Vercel’s eve is. While eve can also be self-hosted, it is optimized to take advantage of Vercel’s many features. Of course that’s a known playbook of Vercel, which does the same thing with Next.js.All that said, Vercel itself has shown that a Flue agent can be deployed on Vercel. So the two companies can play nice together.I also mentioned LangChain’s new Managed Deep Agents offering as an example of hosted agent platforms coming onto the market. However, Schott said a managed agents product is not currently on Flue’s roadmap.“It’s so early for us, we’re just focused on building the best harness,” he said.Links to find Flue and Fred online; Richard is at @ricmac. This is a new written interview series we are trying out for subscribers — let us know your feedback!</p>"
+    },
+    {
+      "id": "7de3e877c8a1",
+      "title": "Show HN: ThoughtDAG – An editable context graph for LLM conversations",
+      "content": "Show HN: ThoughtDAG – An editable context graph for LLM conversations",
+      "url": "https://chenxiachan.github.io/thoughtdag/",
+      "author": "chatchan",
+      "published": "2026-08-15T04:42:07+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "ThoughtDAG is a new open tool that presents LLM conversation context as an editable directed acyclic graph, allowing users to inspect and modify the context structure. It is presented as a Show HN project.",
+      "importance_score": 28.0,
+      "reasoning": "Niche developer/UX tool for prompt and context engineering. Interesting concept but small-scale launch with unclear adoption.",
+      "themes": [
+        "developer tools",
+        "context engineering"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 115,
+        "hn_comments": 55,
+        "hn_url": "https://news.ycombinator.com/item?id=49307700",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>ThoughtDAG is a new open tool that presents LLM conversation context as an editable directed acyclic graph, allowing users to inspect and modify the context structure. It is presented as a Show HN project.</p>",
+      "content_html": "<p>Show HN: ThoughtDAG – An editable context graph for LLM conversations</p>"
+    },
+    {
+      "id": "662bab490cbf",
+      "title": "AI has access to a vastly larger working memory than the human brain",
+      "content": "AI has access to a vastly larger working memory than the human brain",
+      "url": "https://davidepiffer.com/p/ai-isnt-outthinking-mathematicians",
+      "author": "rzk",
+      "published": "2026-08-15T18:13:02+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "An essay argues that AI systems effectively have access to vastly larger working memory than the human brain, and that this factor—not raw reasoning—largely explains observed performance differences on certain mathematical and analytical tasks.",
+      "importance_score": 25.0,
+      "reasoning": "Opinion/analytical blog post; not a research paper with novel empirical results. Useful framing but not a frontier development.",
+      "themes": [
+        "opinion",
+        "cognitive science",
+        "LLM capabilities"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 456,
+        "hn_comments": 394,
+        "hn_url": "https://news.ycombinator.com/item?id=49312845",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>An essay argues that AI systems effectively have access to vastly larger working memory than the human brain, and that this factor—not raw reasoning—largely explains observed performance differences on certain mathematical and analytical tasks.</p>",
+      "content_html": "<p>AI has access to a vastly larger working memory than the human brain</p>"
+    },
+    {
+      "id": "2898bfa094bd",
+      "title": "Yadda 3.0.0: BDD in the Age of AI Agents",
+      "content": "Yadda 3.0.0: BDD in the Age of AI Agents",
+      "url": "http://www.stephen-cresswell.com/2026/08/15/Yadda-3.0.0-BDD-in-the-Age-of-AI-Agents.html",
+      "author": "scresswell",
+      "published": "2026-08-15T13:43:46+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "Yadda 3.0.0 is a new release of a BDD testing framework updated for the era of AI agents, integrating agent-friendly patterns into the existing behavior-driven development workflow.",
+      "importance_score": 18.0,
+      "reasoning": "Minor open-source release in a testing framework; not frontier-AI relevant at the capability or model level.",
+      "themes": [
+        "open source",
+        "testing",
+        "developer tools"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 59,
+        "hn_comments": 27,
+        "hn_url": "https://news.ycombinator.com/item?id=49310495",
+        "type": "story",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Yadda 3.0.0 is a new release of a BDD testing framework updated for the era of AI agents, integrating agent-friendly patterns into the existing behavior-driven development workflow.</p>",
+      "content_html": "<p>Yadda 3.0.0: BDD in the Age of AI Agents</p>"
+    },
+    {
+      "id": "9c0940315b1d",
+      "title": "ChapterPal — AI-assisted reading and note-taking",
+      "content": "",
+      "url": "https://www.chapterpal.com/s/af6b7709/model-discovery-agent-llm-assisted-bayesian-experiment-design-for-data-efficient-discovery-of-mechanistic-world-models",
+      "author": "",
+      "published": "2026-08-16T01:23:06.011961",
+      "source": "www.chapterpal.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "ChapterPal is an AI-assisted reading and note-taking service surfaced through a linked article. Limited detail is available in the source data.",
+      "importance_score": 10.0,
+      "reasoning": "Thin source content; treated as a low-priority product listing.",
+      "themes": [
+        "productivity tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/burkov/status/2088750077678399615",
+          "post_author": "@burkov"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>ChapterPal is an AI-assisted reading and note-taking service surfaced through a linked article. Limited detail is available in the source data.</p>",
+      "content_html": ""
+    },
+    {
+      "id": "6c5d7f8791fb",
+      "title": "AI-generated books are flooding Amazon and tanking sales for human authors",
+      "content": "\n        AI-generated books make up 20 percent of Amazon's self-published catalog but bring in only 12 percent of sales. A new study finds that revenue per book is dropping for human-written titles too, in seven of eight genres. The findings could give copyright plaintiffs the market-harm data their cases against AI companies have been missing.\nThe article AI-generated books are flooding Amazon and tanking sales for human authors appeared first on The Decoder.",
+      "url": "https://the-decoder.com/ai-generated-books-are-flooding-amazon-and-tanking-sales-for-human-authors/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-15T11:00:50",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence"
+      ],
+      "summary": "",
+      "importance_score": 0.0,
+      "reasoning": "Duplicate placeholder, ignored.",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"Mass production of AI-generated books on an assembly line ahead of the launch of Amazon&#039;s Kindle website.\" class=\"attachment-full size-full wp-post-image\" height=\"1047\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/AI-generated-books-dilute-Amazon-Kindle-Nano-Banana-Pro.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1920\" /></p>\n<p>        AI-generated books make up 20 percent of Amazon's self-published catalog but bring in only 12 percent of sales. A new stud",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "",
+      "content_html": "<p>AI-generated books make up 20 percent of Amazon's self-published catalog but bring in only 12 percent of sales. A new study finds that revenue per book is dropping for human-written titles too, in seven of eight genres. The findings could give copyright plaintiffs the market-harm data their cases against AI companies have been missing.</p>\n<p>The article AI-generated books are flooding Amazon and tanking sales for human authors appeared first on The Decoder.</p>"
+    }
+  ]
+}
