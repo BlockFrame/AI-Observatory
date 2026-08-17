@@ -1,0 +1,1005 @@
+{
+  "category": "github_trending",
+  "date": "2026-08-17",
+  "category_summary": "### Executive Signal\n- **Distributed AI infrastructure** is consolidating: tiny edge models, low-memory fine-tuning, and agent-native CLIs signal a strategic shift from centralized cloud AI to deployable, sovereign, cost-efficient AI stacks.\n\n### Priority Developments\n- **Local-first AI compute** (unsloth, Soup, needle) removes the 80GB-GPU barrier; enterprises can fine-tune and run models on commodity hardware, collapsing inference cost and unlocking on-prem sovereignty.\n- **Agent-native software architectures** ([ToolJet](/?date=2026-08-17&category=github_trending#item-418cb2f03276), [CLI-Anything](/?date=2026-08-17&category=github_trending#item-02fa09d11035)) redefine internal tooling; AI agents become first-class users of APIs, dashboards, and CLIs, compressing application-development cycles dramatically.\n- **AI security testing matures** (Strix) as enterprises deploy autonomous agents; penetration-testing AI is no longer optional—vulnerability discovery must match the velocity of AI-generated code.\n- **Automated content production** ([MoneyPrinterTurbo](/?date=2026-08-17&category=github_trending#item-098efe0dd09d)) operationalizes generative media; marketing and CX functions gain end-to-end video pipelines that compress campaign cycles from weeks to hours.\n- **Composable developer platforms** (omarchy, cordis, [public-apis](/?date=2026-08-17&category=github_trending#item-9817878392bd)) show how standardized environments, spatiotemporal frameworks, and API registries accelerate AI-feature shipping across teams.\n\n### Leadership Implications\n- **Fund an AI-sovereignty roadmap**: budget for on-prem fine-tuning, edge-model deployment, and an internal LLM platform to cut token costs and regulatory exposure within 12 months.\n- **Establish an AI-agent governance and security office**: mandate pen-testing of AI features, audit agent permissions, and codify approval gates before scaling agent-driven automation.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li><strong>Distributed AI infrastructure</strong> is consolidating: tiny edge models, low-memory fine-tuning, and agent-native CLIs signal a strategic shift from centralized cloud AI to deployable, sovereign, cost-efficient AI stacks.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Local-first AI compute</strong> (unsloth, Soup, needle) removes the 80GB-GPU barrier; enterprises can fine-tune and run models on commodity hardware, collapsing inference cost and unlocking on-prem sovereignty.</li>\n<li><strong>Agent-native software architectures</strong> (<a href=\"/?date=2026-08-17&amp;category=github_trending#item-418cb2f03276\" class=\"internal-link\" rel=\"noopener noreferrer\">ToolJet</a>, <a href=\"/?date=2026-08-17&amp;category=github_trending#item-02fa09d11035\" class=\"internal-link\" rel=\"noopener noreferrer\">CLI-Anything</a>) redefine internal tooling; AI agents become first-class users of APIs, dashboards, and CLIs, compressing application-development cycles dramatically.</li>\n<li><strong>AI security testing matures</strong> (Strix) as enterprises deploy autonomous agents; penetration-testing AI is no longer optional—vulnerability discovery must match the velocity of AI-generated code.</li>\n<li><strong>Automated content production</strong> (<a href=\"/?date=2026-08-17&amp;category=github_trending#item-098efe0dd09d\" class=\"internal-link\" rel=\"noopener noreferrer\">MoneyPrinterTurbo</a>) operationalizes generative media; marketing and CX functions gain end-to-end video pipelines that compress campaign cycles from weeks to hours.</li>\n<li><strong>Composable developer platforms</strong> (omarchy, cordis, <a href=\"/?date=2026-08-17&amp;category=github_trending#item-9817878392bd\" class=\"internal-link\" rel=\"noopener noreferrer\">public-apis</a>) show how standardized environments, spatiotemporal frameworks, and API registries accelerate AI-feature shipping across teams.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li><strong>Fund an AI-sovereignty roadmap</strong>: budget for on-prem fine-tuning, edge-model deployment, and an internal LLM platform to cut token costs and regulatory exposure within 12 months.</li>\n<li><strong>Establish an AI-agent governance and security office</strong>: mandate pen-testing of AI features, audit agent permissions, and codify approval gates before scaling agent-driven automation.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "8acdb0477bef",
+      "402019fc9892",
+      "8e5ef86b8945"
+    ],
+    [
+      "8acdb0477bef",
+      "402019fc9892",
+      "8e5ef86b8945"
+    ],
+    [
+      "418cb2f03276",
+      "02fa09d11035"
+    ],
+    [
+      "450c713e553a"
+    ],
+    [
+      "098efe0dd09d"
+    ],
+    [
+      "cf55b188ecff",
+      "3fb34729401c",
+      "9817878392bd"
+    ],
+    [
+      "8acdb0477bef",
+      "402019fc9892"
+    ],
+    [
+      "450c713e553a",
+      "418cb2f03276",
+      "02fa09d11035"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+      "item_count": 4,
+      "example_items": [
+        "9817878392bd",
+        "450c713e553a",
+        "3fb34729401c"
+      ],
+      "importance": 88.0
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+      "item_count": 5,
+      "example_items": [
+        "9817878392bd",
+        "450c713e553a",
+        "3fb34729401c"
+      ],
+      "importance": 85.0
+    }
+  ],
+  "total_items": 24,
+  "items": [
+    {
+      "id": "9817878392bd",
+      "title": "public-apis/public-apis",
+      "content": "GitHub Repository: public-apis/public-apis\nDescription: A collective list of free APIs\nLanguage: Python\nStars Today: 1,588",
+      "url": "https://github.com/public-apis/public-apis",
+      "author": "public-apis",
+      "published": "2026-08-17T05:31:03.710696+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 1,588 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (1,588 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "public-apis/public-apis",
+        "stars": 0,
+        "stars_today": "1,588",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.710696+00:00",
+        "hn_score": 1588,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 1,588 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: public-apis/public-apis</p>\n<p>Description: A collective list of free APIs</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,588</p>"
+    },
+    {
+      "id": "450c713e553a",
+      "title": "usestrix/strix",
+      "content": "GitHub Repository: usestrix/strix\nDescription: Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.\nLanguage: Python\nStars Today: 856",
+      "url": "https://github.com/usestrix/strix",
+      "author": "usestrix",
+      "published": "2026-08-17T05:31:04.797799+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 856 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (856 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "usestrix/strix",
+        "stars": 0,
+        "stars_today": "856",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.797799+00:00",
+        "hn_score": 856,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 856 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: usestrix/strix</p>\n<p>Description: Open-source AI penetration testing tool to find and fix your app’s vulnerabilities.</p>\n<p>Language: Python</p>\n<p>Stars Today: 856</p>"
+    },
+    {
+      "id": "3fb34729401c",
+      "title": "cordiverse/cordis",
+      "content": "GitHub Repository: cordiverse/cordis\nDescription: Meta-Framework of Spatiotemporal Composability\nLanguage: TypeScript\nStars Today: 720",
+      "url": "https://github.com/cordiverse/cordis",
+      "author": "cordiverse",
+      "published": "2026-08-17T05:31:03.709197+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 720 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 96,
+      "reasoning": "Ranked on current community velocity (720 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "cordiverse/cordis",
+        "stars": 0,
+        "stars_today": "720",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.709197+00:00",
+        "hn_score": 720,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 720 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: cordiverse/cordis</p>\n<p>Description: Meta-Framework of Spatiotemporal Composability</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 720</p>"
+    },
+    {
+      "id": "8acdb0477bef",
+      "title": "unslothai/unsloth",
+      "content": "GitHub Repository: unslothai/unsloth\nDescription: Local UI to run and train LLMs and diffusion models, including Qwen3.8, Kimi K3, MiniMax-H3, Gemma 4, DeepSeek-V4, FLUX and more.\nLanguage: Python\nStars Today: 572",
+      "url": "https://github.com/unslothai/unsloth",
+      "author": "unslothai",
+      "published": "2026-08-17T05:31:03.709935+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 572 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 88,
+      "reasoning": "Ranked on current community velocity (572 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "unslothai/unsloth",
+        "stars": 0,
+        "stars_today": "572",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.709935+00:00",
+        "hn_score": 572,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 572 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: unslothai/unsloth</p>\n<p>Description: Local UI to run and train LLMs and diffusion models, including Qwen3.8, Kimi K3, MiniMax-H3, Gemma 4, DeepSeek-V4, FLUX and more.</p>\n<p>Language: Python</p>\n<p>Stars Today: 572</p>"
+    },
+    {
+      "id": "098efe0dd09d",
+      "title": "harry0703/MoneyPrinterTurbo",
+      "content": "GitHub Repository: harry0703/MoneyPrinterTurbo\nDescription: 利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.\nLanguage: Python\nStars Today: 494",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+      "author": "harry0703",
+      "published": "2026-08-17T05:31:04.795594+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 494 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 84,
+      "reasoning": "Ranked on current community velocity (494 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "harry0703/MoneyPrinterTurbo",
+        "stars": 0,
+        "stars_today": "494",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.795594+00:00",
+        "hn_score": 494,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 494 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: harry0703/MoneyPrinterTurbo</p>\n<p>Description: 利用 AI 大模型和自动化工作流，根据主题或关键词一键生成高清短视频。Generate HD short videos from a topic or keyword with an automated AI workflow.</p>\n<p>Language: Python</p>\n<p>Stars Today: 494</p>"
+    },
+    {
+      "id": "418cb2f03276",
+      "title": "ToolJet/ToolJet",
+      "content": "GitHub Repository: ToolJet/ToolJet\nDescription: ToolJet is the open-source foundation of ToolJet AI - the enterprise app generation platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀\nLanguage: JavaScript\nStars Today: 452",
+      "url": "https://github.com/ToolJet/ToolJet",
+      "author": "ToolJet",
+      "published": "2026-08-17T05:31:03.711149+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 452 stars today indicate strong developer attention. **Enterprise lens:** evaluate the JavaScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 82,
+      "reasoning": "Ranked on current community velocity (452 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "JavaScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "ToolJet/ToolJet",
+        "stars": 0,
+        "stars_today": "452",
+        "language": "JavaScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.711149+00:00",
+        "hn_score": 452,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 452 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the JavaScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: ToolJet/ToolJet</p>\n<p>Description: ToolJet is the open-source foundation of ToolJet AI - the enterprise app generation platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 452</p>"
+    },
+    {
+      "id": "8e5ef86b8945",
+      "title": "cactus-compute/needle",
+      "content": "GitHub Repository: cactus-compute/needle\nDescription: 14MB foundation model for tiny devices; phones, wearables, smart home, and robots.\nLanguage: Python\nStars Today: 443",
+      "url": "https://github.com/cactus-compute/needle",
+      "author": "cactus-compute",
+      "published": "2026-08-17T05:31:03.711494+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 443 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 82,
+      "reasoning": "Ranked on current community velocity (443 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "cactus-compute/needle",
+        "stars": 0,
+        "stars_today": "443",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.711494+00:00",
+        "hn_score": 443,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 443 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: cactus-compute/needle</p>\n<p>Description: 14MB foundation model for tiny devices; phones, wearables, smart home, and robots.</p>\n<p>Language: Python</p>\n<p>Stars Today: 443</p>"
+    },
+    {
+      "id": "402019fc9892",
+      "title": "MakazhanAlpamys/Soup",
+      "content": "GitHub Repository: MakazhanAlpamys/Soup\nDescription: Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.\nLanguage: Python\nStars Today: 443",
+      "url": "https://github.com/MakazhanAlpamys/Soup",
+      "author": "MakazhanAlpamys",
+      "published": "2026-08-17T05:31:04.796531+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 443 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 82,
+      "reasoning": "Ranked on current community velocity (443 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "MakazhanAlpamys/Soup",
+        "stars": 0,
+        "stars_today": "443",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.796531+00:00",
+        "hn_score": 443,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 443 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: MakazhanAlpamys/Soup</p>\n<p>Description: Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.</p>\n<p>Language: Python</p>\n<p>Stars Today: 443</p>"
+    },
+    {
+      "id": "02fa09d11035",
+      "title": "HKUDS/CLI-Anything",
+      "content": "GitHub Repository: HKUDS/CLI-Anything\nDescription: \"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/\nLanguage: Python\nStars Today: 384",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "author": "HKUDS",
+      "published": "2026-08-17T05:31:04.794896+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 384 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 79,
+      "reasoning": "Ranked on current community velocity (384 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "HKUDS/CLI-Anything",
+        "stars": 0,
+        "stars_today": "384",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.794896+00:00",
+        "hn_score": 384,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 384 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: HKUDS/CLI-Anything</p>\n<p>Description: \"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/</p>\n<p>Language: Python</p>\n<p>Stars Today: 384</p>"
+    },
+    {
+      "id": "cf55b188ecff",
+      "title": "basecamp/omarchy",
+      "content": "GitHub Repository: basecamp/omarchy\nDescription: Beautiful, Modern & Opinionated Linux\nLanguage: Shell\nStars Today: 270",
+      "url": "https://github.com/basecamp/omarchy",
+      "author": "basecamp",
+      "published": "2026-08-17T05:31:03.709557+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 270 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 73,
+      "reasoning": "Ranked on current community velocity (270 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Shell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "basecamp/omarchy",
+        "stars": 0,
+        "stars_today": "270",
+        "language": "Shell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.709557+00:00",
+        "hn_score": 270,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 270 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Shell project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: basecamp/omarchy</p>\n<p>Description: Beautiful, Modern &amp; Opinionated Linux</p>\n<p>Language: Shell</p>\n<p>Stars Today: 270</p>"
+    },
+    {
+      "id": "366ce4c44dc6",
+      "title": "megadose/holehe",
+      "content": "GitHub Repository: megadose/holehe\nDescription: holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.\nLanguage: Python\nStars Today: 231",
+      "url": "https://github.com/megadose/holehe",
+      "author": "megadose",
+      "published": "2026-08-17T05:31:04.796217+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 231 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 71,
+      "reasoning": "Ranked on current community velocity (231 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "megadose/holehe",
+        "stars": 0,
+        "stars_today": "231",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.796217+00:00",
+        "hn_score": 231,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 231 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: megadose/holehe</p>\n<p>Description: holehe allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.</p>\n<p>Language: Python</p>\n<p>Stars Today: 231</p>"
+    },
+    {
+      "id": "e9340550ac2f",
+      "title": "yt-dlp/yt-dlp",
+      "content": "GitHub Repository: yt-dlp/yt-dlp\nDescription: A feature-rich command-line audio/video downloader\nLanguage: Python\nStars Today: 216",
+      "url": "https://github.com/yt-dlp/yt-dlp",
+      "author": "yt-dlp",
+      "published": "2026-08-17T05:31:04.796832+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 216 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 70,
+      "reasoning": "Ranked on current community velocity (216 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "yt-dlp/yt-dlp",
+        "stars": 0,
+        "stars_today": "216",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.796832+00:00",
+        "hn_score": 216,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 216 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: yt-dlp/yt-dlp</p>\n<p>Description: A feature-rich command-line audio/video downloader</p>\n<p>Language: Python</p>\n<p>Stars Today: 216</p>"
+    },
+    {
+      "id": "f46d4cab5e62",
+      "title": "chaitanyagiri/munder-difflin",
+      "content": "GitHub Repository: chaitanyagiri/munder-difflin\nDescription: local multi-agent harness\nLanguage: TypeScript\nStars Today: 181",
+      "url": "https://github.com/chaitanyagiri/munder-difflin",
+      "author": "chaitanyagiri",
+      "published": "2026-08-17T05:31:05.501698+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 181 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 69,
+      "reasoning": "Ranked on current community velocity (181 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "chaitanyagiri/munder-difflin",
+        "stars": 0,
+        "stars_today": "181",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:05.501698+00:00",
+        "hn_score": 181,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 181 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: chaitanyagiri/munder-difflin</p>\n<p>Description: local multi-agent harness</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 181</p>"
+    },
+    {
+      "id": "1df29669a1e8",
+      "title": "OpenCut-app/OpenCut",
+      "content": "GitHub Repository: OpenCut-app/OpenCut\nDescription: The open-source CapCut alternative\nLanguage: TypeScript\nStars Today: 150",
+      "url": "https://github.com/OpenCut-app/OpenCut",
+      "author": "OpenCut-app",
+      "published": "2026-08-17T05:31:03.710317+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 150 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 67,
+      "reasoning": "Ranked on current community velocity (150 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "OpenCut-app/OpenCut",
+        "stars": 0,
+        "stars_today": "150",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:03.710317+00:00",
+        "hn_score": 150,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 150 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: OpenCut-app/OpenCut</p>\n<p>Description: The open-source CapCut alternative</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 150</p>"
+    },
+    {
+      "id": "14c56d41c7fd",
+      "title": "cursor/plugins",
+      "content": "GitHub Repository: cursor/plugins\nDescription: Cursor plugin specification and official plugins\nLanguage: TypeScript\nStars Today: 144",
+      "url": "https://github.com/cursor/plugins",
+      "author": "cursor",
+      "published": "2026-08-17T05:31:05.500688+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 144 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 67,
+      "reasoning": "Ranked on current community velocity (144 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "cursor/plugins",
+        "stars": 0,
+        "stars_today": "144",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:05.500688+00:00",
+        "hn_score": 144,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 144 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: cursor/plugins</p>\n<p>Description: Cursor plugin specification and official plugins</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 144</p>"
+    },
+    {
+      "id": "4a1047f100d5",
+      "title": "CodebuffAI/freebuff",
+      "content": "GitHub Repository: CodebuffAI/freebuff\nDescription: The free coding agent\nLanguage: TypeScript\nStars Today: 141",
+      "url": "https://github.com/CodebuffAI/freebuff",
+      "author": "CodebuffAI",
+      "published": "2026-08-17T05:31:05.501006+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 141 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 67,
+      "reasoning": "Ranked on current community velocity (141 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "CodebuffAI/freebuff",
+        "stars": 0,
+        "stars_today": "141",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:05.501006+00:00",
+        "hn_score": 141,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 141 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: CodebuffAI/freebuff</p>\n<p>Description: The free coding agent</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 141</p>"
+    },
+    {
+      "id": "95aaf4f17da3",
+      "title": "google-research/timesfm",
+      "content": "GitHub Repository: google-research/timesfm\nDescription: TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.\nLanguage: Python\nStars Today: 109",
+      "url": "https://github.com/google-research/timesfm",
+      "author": "google-research",
+      "published": "2026-08-17T05:31:04.798479+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 109 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 65,
+      "reasoning": "Ranked on current community velocity (109 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "google-research/timesfm",
+        "stars": 0,
+        "stars_today": "109",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.798479+00:00",
+        "hn_score": 109,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 109 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: google-research/timesfm</p>\n<p>Description: TimesFM (Time Series Foundation Model) is a pretrained time-series foundation model developed by Google Research for time-series forecasting.</p>\n<p>Language: Python</p>\n<p>Stars Today: 109</p>"
+    },
+    {
+      "id": "a5f04acb12b4",
+      "title": "remotion-dev/remotion",
+      "content": "GitHub Repository: remotion-dev/remotion\nDescription: 🎥 Make videos programmatically with React\nLanguage: TypeScript\nStars Today: 87",
+      "url": "https://github.com/remotion-dev/remotion",
+      "author": "remotion-dev",
+      "published": "2026-08-17T05:31:05.501395+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 87 stars today indicate strong developer attention. **Enterprise lens:** evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (87 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "remotion-dev/remotion",
+        "stars": 0,
+        "stars_today": "87",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:05.501395+00:00",
+        "hn_score": 87,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 87 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the TypeScript project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: remotion-dev/remotion</p>\n<p>Description: 🎥 Make videos programmatically with React</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 87</p>"
+    },
+    {
+      "id": "1f6159f76f6d",
+      "title": "jundot/omlx",
+      "content": "GitHub Repository: jundot/omlx\nDescription: LLM inference server with continuous batching & SSD caching for Apple Silicon — managed from the macOS menu bar\nLanguage: Python\nStars Today: 60",
+      "url": "https://github.com/jundot/omlx",
+      "author": "jundot",
+      "published": "2026-08-17T05:31:04.798154+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 60 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (60 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "jundot/omlx",
+        "stars": 0,
+        "stars_today": "60",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.798154+00:00",
+        "hn_score": 60,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 60 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: jundot/omlx</p>\n<p>Description: LLM inference server with continuous batching &amp; SSD caching for Apple Silicon — managed from the macOS menu bar</p>\n<p>Language: Python</p>\n<p>Stars Today: 60</p>"
+    },
+    {
+      "id": "1c5d09d5ee06",
+      "title": "smicallef/spiderfoot",
+      "content": "GitHub Repository: smicallef/spiderfoot\nDescription: SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.\nLanguage: Python\nStars Today: 54",
+      "url": "https://github.com/smicallef/spiderfoot",
+      "author": "smicallef",
+      "published": "2026-08-17T05:31:04.795903+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 54 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (54 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "smicallef/spiderfoot",
+        "stars": 0,
+        "stars_today": "54",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.795903+00:00",
+        "hn_score": 54,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 54 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: smicallef/spiderfoot</p>\n<p>Description: SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.</p>\n<p>Language: Python</p>\n<p>Stars Today: 54</p>"
+    },
+    {
+      "id": "7ac8809dae5b",
+      "title": "0xSero/ai-data-extraction",
+      "content": "GitHub Repository: 0xSero/ai-data-extraction\nDescription: extract all your personal data history from cursor, codex, claude-code, windsurf, and trae\nLanguage: Python\nStars Today: 51",
+      "url": "https://github.com/0xSero/ai-data-extraction",
+      "author": "0xSero",
+      "published": "2026-08-17T05:31:04.798814+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 51 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (51 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "0xSero/ai-data-extraction",
+        "stars": 0,
+        "stars_today": "51",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.798814+00:00",
+        "hn_score": 51,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 51 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: 0xSero/ai-data-extraction</p>\n<p>Description: extract all your personal data history from cursor, codex, claude-code, windsurf, and trae</p>\n<p>Language: Python</p>\n<p>Stars Today: 51</p>"
+    },
+    {
+      "id": "9e753ce10ffa",
+      "title": "THUDM/slime",
+      "content": "GitHub Repository: THUDM/slime\nDescription: slime is an LLM post-training framework for RL Scaling.\nLanguage: Python\nStars Today: 31",
+      "url": "https://github.com/THUDM/slime",
+      "author": "THUDM",
+      "published": "2026-08-17T05:31:04.797134+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 31 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (31 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "THUDM/slime",
+        "stars": 0,
+        "stars_today": "31",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.797134+00:00",
+        "hn_score": 31,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 31 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: THUDM/slime</p>\n<p>Description: slime is an LLM post-training framework for RL Scaling.</p>\n<p>Language: Python</p>\n<p>Stars Today: 31</p>"
+    },
+    {
+      "id": "87c91f88a10d",
+      "title": "newton-physics/newton",
+      "content": "GitHub Repository: newton-physics/newton\nDescription: An open-source, GPU-accelerated physics simulation engine built upon NVIDIA Warp, specifically targeting roboticists and simulation researchers.\nLanguage: Python\nStars Today: 35",
+      "url": "https://github.com/newton-physics/newton",
+      "author": "newton-physics",
+      "published": "2026-08-17T05:31:04.797453+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 35 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (35 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "newton-physics/newton",
+        "stars": 0,
+        "stars_today": "35",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.797453+00:00",
+        "hn_score": 35,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 35 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: newton-physics/newton</p>\n<p>Description: An open-source, GPU-accelerated physics simulation engine built upon NVIDIA Warp, specifically targeting roboticists and simulation researchers.</p>\n<p>Language: Python</p>\n<p>Stars Today: 35</p>"
+    },
+    {
+      "id": "15ae608f1082",
+      "title": "xai-org/grok-1",
+      "content": "GitHub Repository: xai-org/grok-1\nDescription: Grok open release\nLanguage: Python\nStars Today: 15",
+      "url": "https://github.com/xai-org/grok-1",
+      "author": "xai-org",
+      "published": "2026-08-17T05:31:04.795214+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 15 stars today indicate strong developer attention. **Enterprise lens:** evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (15 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "xai-org/grok-1",
+        "stars": 0,
+        "stars_today": "15",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-17T05:31:04.795214+00:00",
+        "hn_score": 15,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 15 stars today indicate strong developer attention. <strong>Enterprise lens:</strong> evaluate the Python project's maturity, governance, integration surface, and operating cost before production adoption.</p>",
+      "content_html": "<p>GitHub Repository: xai-org/grok-1</p>\n<p>Description: Grok open release</p>\n<p>Language: Python</p>\n<p>Stars Today: 15</p>"
+    }
+  ]
+}
