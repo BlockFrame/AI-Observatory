@@ -1,4 +1,4 @@
-# Wiredframe Radar — Strategic TODO
+# Roadmap and backlog
 
 Questo documento contiene lo stato aggiornato delle attività strategiche per **Wiredframe Radar**.
 
@@ -25,11 +25,10 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per **
 - [ ] **AI Research**: Aggiungere nuovi feed arXiv (es. cs.CL, cs.CV, cs.AI) e blog accademici universitari (Stanford, MIT, Oxford, CMU, Berkeley) (`config/research_feeds.txt`).
 - [ ] **Twitter / X Profiles**: Espandere la lista degli account monitorati (`config/twitter_accounts.txt`) includendo key opinion leader (AI safety, LLM eval, agentic frameworks) e founder di startup AI emergenti.
 
-### 2. 📖 Restyling & Refactoring del `README.md`
-- [ ] Revisione completa del `README.md` per renderlo executive-grade e orientato alla community open-source.
-- [ ] Inserimento dei badge ufficiali aggiornati (GitHub Actions status, Licenza Apache 2.0, Tech Stack, GitHub Sponsors).
-- [ ] Aggiornamento dell'Architecture Overview, Quick Start e sezione Contributi rimuovendo riferimenti obsoleti.
-- [ ] Integrazione del welcome message e della sezione GitHub Sponsorships ufficiale per `BlockFrame`.
+### 2. 📖 Community documentation
+- [x] Revisione del `README.md` e consolidamento della documentazione pubblica in `docs/`.
+- [x] Normalizzazione della struttura, dei link e della naming convention documentale.
+- [ ] Valutare GitHub Sponsors quando il programma di sponsorship di `BlockFrame` sarà attivo.
 
 ### 3. 📚 Creazione GitHub Wiki (`docs/wiki/`)
 - [ ] Creazione della struttura documentale per la **GitHub Wiki** del repository (nella directory `docs/wiki/`).
@@ -39,7 +38,7 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per **
 - [ ] **Guide all'Integrazione & API**: Documentazione del server MCP locale e degli export dati (`ai-index.json`, `llms.txt`).
 
 ### 4. 🗺️ Elaborazione Roadmap Strategica
-- [ ] Stesura del documento **Roadmap Q3-Q4 2026** (`docs/ROADMAP.md`):
+- [ ] Evolvere questo documento nella roadmap Q3-Q4 2026:
   - **Fase 1 — Core & Infrastructure**: Notifiche Discord per breaking news.
   - **Fase 2 — Data Expansion & Quality**: Supporto per la nuova categoria "Regulatory & Ethics", deduplicazione cross-fonte avanzata.
   - **Fase 3 — Community & Ecosystem**: GitHub Wiki, sponsorship hub, SDK client, integrazione MCP completa per AI IDE.

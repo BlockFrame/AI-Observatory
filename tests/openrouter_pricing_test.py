@@ -3,7 +3,7 @@ import unittest
 from decimal import Decimal
 from unittest.mock import patch
 
-from openrouter_pricing import (
+from agents.openrouter_pricing import (
     OPENROUTER_COMPLEX_MODEL,
     OpenRouterPriceGuardError,
     eligible_endpoints,

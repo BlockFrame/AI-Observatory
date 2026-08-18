@@ -40,4 +40,4 @@ Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, and Slack are not cur
 - GitHub Actions and Vercel
 - JSON-based versioned report storage
 
-For implementation details, see [Architecture](architecture.md), [README](README.md), and [Roadmap](TODO.md).
+For implementation details, see the [architecture](architecture.md), the [project README](../README.md), and the [roadmap](roadmap.md).

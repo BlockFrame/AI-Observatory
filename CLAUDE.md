@@ -1,5 +1,5 @@
-# CLAUDE.md
+# Claude Code compatibility
 
-The canonical repository instructions are maintained in [AGENTS.md](AGENTS.md). Follow that document for architecture, active sources, safe test commands, provider routing, evidence-grounding requirements, telemetry, and publishing rules.
+Claude Code reads `CLAUDE.md` automatically. The canonical repository instructions are maintained in [AGENTS.md](AGENTS.md); this compatibility file intentionally redirects there so every coding agent follows the same architecture, safety, testing, routing, and publishing rules.
 
-Do not duplicate those details here: keeping one operational guide prevents source and provider documentation from drifting out of date.
+Do not duplicate operational guidance here. A single source of truth prevents source and provider documentation from drifting out of date.

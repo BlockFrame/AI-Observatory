@@ -6,7 +6,7 @@ Repository guidance for coding agents working on Wiredframe Radar.
 
 Wiredframe Radar is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
 
-Active source details live in `ai_news_sources.md`. Do not describe Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, or Slack as supported sources.
+Active source details live in `docs/sources.md`. Do not describe Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, or Slack as supported sources.
 
 ## Safety and quota rules
 
@@ -53,7 +53,7 @@ The pipeline is coordinated by `agents/orchestrator.py`:
 7. Serialize static reports and machine-readable discovery artifacts.
 8. Validate before a generated report may be committed.
 
-See `architecture.md` for diagrams and failure boundaries.
+See `docs/architecture.md` for diagrams and failure boundaries.
 
 ## Active gatherers
 
@@ -127,7 +127,7 @@ web/data/<date>/          Generated report artifacts
 
 ## Adding a source or agent
 
-For a source, update the appropriate config file, implement date-window behavior, expose source status, add empty/error tests, and update `ai_news_sources.md` plus the README source table.
+For a source, update the appropriate config file, implement date-window behavior, expose source status, add empty/error tests, and update `docs/sources.md` plus the README source table.
 
 For a gatherer, extend `BaseGatherer` and return `List[CollectedItem]`. For an analyzer, extend `BaseAnalyzer`, preserve item-ID coverage, and return a valid `CategoryReport`. Register new components in `MainOrchestrator` and add mocked failure-path tests.
 

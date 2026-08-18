@@ -4,7 +4,7 @@
 
 ### R[AI]DAR — evidence-linked daily intelligence on the AI ecosystem
 
-[Live Radar](https://radar.wiredframe.xyz) · [Architecture](architecture.md) · [Quick start](QUICK_START.md) · [Deployment](DEPLOYMENT_GUIDE.md) · [Roadmap](TODO.md)
+[Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [Roadmap](docs/roadmap.md)
 
 ![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/wiredframe-radar/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
@@ -73,7 +73,7 @@ The configuration files—not this table—are the source of truth. Counts refle
 | **Social** | 170 configured X accounts | `SocialGatherer` | `@NVIDIAAI` is retained while the broader corporate `@nvidia` account is excluded. GetXAPI queries at most 20 accounts per paid request. |
 | **GitHub Trending** | GitHub Trending | `GitHubTrendingGatherer` | Repositories are analyzed as a separate report category. |
 
-Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, and Slack are **not active pipeline sources**. See [AI news sources](ai_news_sources.md) for maintenance rules and the exact configuration entry points.
+Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, and Slack are **not active pipeline sources**. See the [source inventory](docs/sources.md) for maintenance rules and the exact configuration entry points.
 
 ## 🧠 LLM strategy
 
@@ -174,7 +174,7 @@ python run_pipeline.py --resume-from 4.5
 python scripts/validate_report.py --web-dir ./web --date 2026-08-10
 ```
 
-See [Quick start](QUICK_START.md) for setup details and [Deployment guide](DEPLOYMENT_GUIDE.md) for GitHub Actions and Vercel.
+See [Getting started](docs/getting-started.md) for setup details and the [deployment guide](docs/deployment.md) for GitHub Actions and Vercel.
 
 ## ⚙️ Configuration
 
@@ -221,6 +221,7 @@ The GitHub Actions workflow runs the critical regression suite before any paid A
 ```text
 agents/                 Gatherers, analyzers, routing, orchestration and guards
 config/                 Providers, prompts, feeds and grounding data
+docs/                   Architecture, operations, sources and roadmap
 frontend/               SvelteKit application
 generators/             JSON and optional visual-output generation
 scripts/                Validation, deployment and operational utilities
@@ -231,7 +232,7 @@ web/data/<date>/         Versioned reports and telemetry
 
 ## 🤝 Contributing
 
-Keep changes evidence-preserving and quota-aware. When adding a source, update its configuration file and [source inventory](ai_news_sources.md). When changing synthesis, add a mocked regression test that proves current-item grounding and failure behavior.
+Keep changes evidence-preserving and quota-aware. When adding a source, update its configuration file and [source inventory](docs/sources.md). When changing synthesis, add a mocked regression test that proves current-item grounding and failure behavior. See the [contribution guide](.github/CONTRIBUTING.md) before opening a pull request.
 
 ## 📄 License
 

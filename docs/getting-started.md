@@ -85,4 +85,15 @@ Open the local URL printed by Vite. The frontend reads generated data from `web/
 - Static Research references: `config/research_reference_sources.txt`
 - X accounts: `config/twitter_accounts.txt`
 
-See [Active source inventory](ai_news_sources.md) before adding a new source type.
+See the [active source inventory](sources.md) before adding a new source type.
+
+## Optional MCP server
+
+The local MCP interface has a small additional dependency set:
+
+```bash
+python -m pip install -r requirements/mcp.txt
+python mcp_server.py
+```
+
+The server reads the versioned reports under `web/data/` and does not call paid providers.
