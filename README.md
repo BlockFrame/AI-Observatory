@@ -1,19 +1,19 @@
 <div align="center">
 
-# AI Observatory
+# Wiredframe Radar
 
-### Daily, evidence-grounded intelligence on the AI ecosystem
+### R[AI]DAR — evidence-linked daily intelligence on the AI ecosystem
 
-[Live Observatory](https://ai-observatory.vercel.app) · [Architecture](architecture.md) · [Quick start](QUICK_START.md) · [Deployment](DEPLOYMENT_GUIDE.md) · [Roadmap](TODO.md)
+[Live Radar](https://radar.wiredframe.xyz) · [Architecture](architecture.md) · [Quick start](QUICK_START.md) · [Deployment](DEPLOYMENT_GUIDE.md) · [Roadmap](TODO.md)
 
-![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/AI-Observatory/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
+![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/wiredframe-radar/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-5-FF3E00?logo=svelte&logoColor=white)
-![License](https://img.shields.io/github/license/BlockFrame/AI-Observatory)
+![License](https://img.shields.io/github/license/BlockFrame/wiredframe-radar)
 
 </div>
 
-AI Observatory turns a broad daily signal stream into a concise, traceable briefing for executives, strategists, researchers, and builders. It collects current material, filters and ranks it, detects themes spanning multiple categories, generates an evidence-backed executive summary, validates the report, and publishes a static site.
+Wiredframe Radar turns a broad daily signal stream into a concise, traceable briefing for executives, strategists, researchers, and builders. It collects current material, filters and ranks it, detects themes spanning multiple categories, generates an evidence-backed executive summary, validates the report, and publishes a static site.
 
 The pipeline is designed to degrade safely: provider fallbacks, checkpoints, schema validation, deterministic editorial checks, and a publish gate prevent a superficially successful run from replacing the last good report with incomplete output.
 
@@ -145,8 +145,8 @@ Key safeguards include:
 Requirements: Python 3.11+, Node.js 20+, and API keys for the routes you enable.
 
 ```bash
-git clone https://github.com/BlockFrame/AI-Observatory.git
-cd AI-Observatory
+git clone https://github.com/BlockFrame/wiredframe-radar.git
+cd wiredframe-radar
 
 python3.11 -m venv .venv
 source .venv/bin/activate
@@ -235,4 +235,4 @@ Keep changes evidence-preserving and quota-aware. When adding a source, update i
 
 ## 📄 License
 
-Licensed under the [Apache License 2.0](LICENSE). AI Observatory evolved from the open-source `ai-news-aggregator` project and now maintains its own collection, reliability, routing, editorial, and publishing architecture.
+Licensed under the [Apache License 2.0](LICENSE). Wiredframe Radar evolved from the open-source `ai-news-aggregator` project and now maintains its own collection, reliability, routing, editorial, and publishing architecture.

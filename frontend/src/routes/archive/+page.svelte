@@ -7,6 +7,7 @@
 	import Calendar from '$lib/components/calendar/Calendar.svelte';
 	import LoadingSpinner from '$lib/components/common/LoadingSpinner.svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
+	import PageMeta from '$lib/components/seo/PageMeta.svelte';
 
 	let index: DataIndex | null = null;
 	let loading = true;
@@ -26,9 +27,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Archive | AI Observatory</title>
-</svelte:head>
+<PageMeta title="Briefing Archive" description="Browse Wiredframe Radar daily AI intelligence briefings by date." path="/archive" />
 
 <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">

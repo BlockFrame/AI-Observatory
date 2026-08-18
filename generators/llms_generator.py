@@ -23,7 +23,7 @@ def _base_url() -> str:
     repo = os.getenv("GITHUB_REPOSITORY", "")
     if repo:
         return f"https://raw.githubusercontent.com/{repo}/main"
-    return "https://raw.githubusercontent.com/{GITHUB_USER}/{REPO_NAME}/main"
+    return "https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main"
 
 
 def generate_llms_txt(data_dir: Path = Path("web/data")) -> str:
@@ -33,7 +33,7 @@ def generate_llms_txt(data_dir: Path = Path("web/data")) -> str:
     date_lines = [f"- {d}: {base_url}/web/data/{d}/summary.json" for d in dates[:60]]
     content = "\n".join(
         [
-            "# AI News Aggregator — Daily Intelligence Digest",
+            "# Wiredframe Radar — Daily AI Intelligence",
             "",
             "> Daily AI intelligence digest: news, papers, repos, HN, social signals.",
             "> Multi-agent analysis with adaptive thinking (MAP-REDUCE).",
@@ -72,8 +72,8 @@ def generate_ai_index_json(data_dir: Path = Path("web/data")) -> str:
     base_url = _base_url()
     dates = get_available_dates(data_dir)
     payload: Dict = {
-        "project": "AI News Aggregator",
-        "description": "Daily AI intelligence digest with multi-agent analysis",
+        "project": "Wiredframe Radar",
+        "description": "Evidence-linked daily AI intelligence with multi-agent analysis",
         "base_url": f"{base_url}/web/data",
         "categories": {
             "summary": "summary.json",

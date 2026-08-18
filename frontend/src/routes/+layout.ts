@@ -1,6 +1,4 @@
-// Disable SSR for the entire app — this is a static SPA.
-// Without this, refreshing on /tools or /models causes SvelteKit 
-// to attempt server-side rendering which fails because these pages
-// fetch data client-side in onMount().
-export const ssr = false;
+// Prerender public pages with their metadata and visible content so crawlers
+// do not have to execute JavaScript to understand the site.
+export const ssr = true;
 export const prerender = true;

@@ -1,10 +1,13 @@
-<svelte:head>
-	<title>About | AI Observatory</title>
-</svelte:head>
+<script lang="ts">
+	import PageMeta from '$lib/components/seo/PageMeta.svelte';
+	import { SITE } from '$lib/config/site';
+</script>
+
+<PageMeta title="About" description="How Wiredframe Radar turns daily AI signals into concise, evidence-linked strategic intelligence." path="/about" />
 
 <div class="max-w-4xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">
-		About AI News Daily
+		About Wiredframe Radar
 	</h1>
 
 	<!-- About This Project -->
@@ -14,7 +17,7 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>AI Observatory</strong> is a solution of the <a href="https://www.wiredframe.xyz/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a> that delivers strategic daily briefings on AI/ML developments,
+				<strong>Wiredframe Radar</strong> is a solution of the <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a> that delivers strategic daily briefings on AI/ML developments,
 				helping you stay current with the fast-moving world of artificial intelligence.
 			</p>
 			<p>
@@ -28,7 +31,7 @@
 				to gather, analyze, and synthesize content from diverse sources into coherent daily reports.
 			</p>
 			<p>
-				Originally developed as an internal tool, it is now open-sourced so others can run their own instances or contribute improvements. You can explore the source code on <a href="https://github.com/BlockFrame/AI-Observatory" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.
+				Originally developed as an internal tool, it is now open-sourced so others can run their own instances or contribute improvements. You can explore the source code on <a href={SITE.githubUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.
 			</p>
 		</div>
 	</section>
@@ -92,7 +95,7 @@
 						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">MCP Server</div>
 					</div>
 				</div>
-				<div class="text-center text-xs text-on-surface-variant mt-6">AI Observatory Pipeline Architecture</div>
+				<div class="text-center text-xs text-on-surface-variant mt-6">Wiredframe Radar Pipeline Architecture</div>
 			</div>
 			<p>Each day, the pipeline runs through several phases:</p>
 			<ol>
@@ -172,7 +175,7 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				Beyond the daily news synthesis, the AI Observatory hosts curated directories to help you navigate the ecosystem:
+				Beyond the daily news synthesis, Wiredframe Radar hosts curated directories to help you navigate the ecosystem:
 			</p>
 			<ul>
 				<li><strong>Tools Directory:</strong> A categorized index of the most useful AI applications, frameworks, and developer tools.</li>
@@ -200,7 +203,7 @@
 			</p>
 			<p>
 				<a
-					href="https://github.com/BlockFrame/AI-Observatory"
+					href={SITE.githubUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="inline-flex items-center gap-2 text-primary hover:underline font-semibold"
@@ -208,7 +211,7 @@
 					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
 						<path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
 					</svg>
-					BlockFrame/AI-Observatory
+					BlockFrame/wiredframe-radar
 				</a>
 			</p>
 			<p>

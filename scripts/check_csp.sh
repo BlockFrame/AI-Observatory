@@ -1,5 +1,5 @@
 #!/bin/bash
-# CSP regression check for the AI News Aggregator web container.
+# CSP regression check for the Wiredframe Radar web container.
 #
 # Verifies the split-CSP contract:
 #   - The nginx header must NOT carry script authority (no script-src, no

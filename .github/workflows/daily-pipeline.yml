@@ -44,7 +44,7 @@ concurrency:
 jobs:
   daily-pipeline:
     name: Generate and publish daily data
-    if: github.repository == 'BlockFrame/AI-Observatory'
+    if: github.repository == 'BlockFrame/wiredframe-radar'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     env:
@@ -66,7 +66,7 @@ jobs:
       MULLVAD_ACCOUNT: ${{ secrets.MULLVAD_ACCOUNT }}
       MULLVAD_WG_PRIVATE_KEY: ${{ secrets.MULLVAD_WG_PRIVATE_KEY }}
       MULLVAD_RELAY_FILTER: ${{ vars.MULLVAD_RELAY_FILTER || 'us' }}
-      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://ai-observatory.vercel.app' }}
+      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://radar.wiredframe.xyz' }}
       PIPELINE_COMMIT_PATHS: ${{ vars.PIPELINE_COMMIT_PATHS || 'web/data llms.txt ai-index.json config/model_releases.yaml config/ecosystem_context.yaml' }}
       PIPELINE_IMAGE_MODEL: ${{ vars.PIPELINE_IMAGE_MODEL || 'gemini-3-pro-image-preview' }}
       LLM_TRUST_ENV_PROXY: ${{ vars.LLM_TRUST_ENV_PROXY || 'false' }}

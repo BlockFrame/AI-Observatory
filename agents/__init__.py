@@ -1,5 +1,5 @@
 """
-AI News Aggregator - Multi-Agent System
+Wiredframe Radar - Multi-Agent System
 
 This module contains the agent-based architecture for collecting and analyzing
 AI/ML news from multiple sources.

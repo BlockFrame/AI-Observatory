@@ -1,4 +1,4 @@
-# AI News Aggregator — Daily Intelligence Digest
+# Wiredframe Radar — Daily AI Intelligence
 
 > Daily AI intelligence digest: news, papers, repos, HN, social signals.
 > Multi-agent analysis with adaptive thinking (MAP-REDUCE).
@@ -6,7 +6,7 @@
 
 ## Data structure
 All daily data is available as JSON at /web/data/{YYYY-MM-DD}/{category}.json
-Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/
+Base URL: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/
 
 ### Categories
 - summary.json — Executive summary + top items (500-800 words)
@@ -16,66 +16,66 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 - github_trending.json — Trending AI repositories
 
 ## Available dates (234 total)
-- 2026-08-18: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-18/summary.json
-- 2026-08-17: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-17/summary.json
-- 2026-08-16: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-16/summary.json
-- 2026-08-15: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-15/summary.json
-- 2026-08-14: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-14/summary.json
-- 2026-08-13: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-13/summary.json
-- 2026-08-12: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-12/summary.json
-- 2026-08-11: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-11/summary.json
-- 2026-08-10: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-10/summary.json
-- 2026-08-09: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-09/summary.json
-- 2026-08-08: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-08/summary.json
-- 2026-08-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-07/summary.json
-- 2026-08-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-06/summary.json
-- 2026-08-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-05/summary.json
-- 2026-08-04: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-04/summary.json
-- 2026-08-03: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-03/summary.json
-- 2026-08-02: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-02/summary.json
-- 2026-08-01: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-08-01/summary.json
-- 2026-07-31: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-31/summary.json
-- 2026-07-30: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-30/summary.json
-- 2026-07-29: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-29/summary.json
-- 2026-07-28: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-28/summary.json
-- 2026-07-27: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-27/summary.json
-- 2026-07-26: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-26/summary.json
-- 2026-07-25: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-25/summary.json
-- 2026-07-24: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-24/summary.json
-- 2026-07-23: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-23/summary.json
-- 2026-07-22: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-22/summary.json
-- 2026-07-21: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-21/summary.json
-- 2026-07-20: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-20/summary.json
-- 2026-07-19: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-19/summary.json
-- 2026-07-16: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-16/summary.json
-- 2026-07-15: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-15/summary.json
-- 2026-07-14: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-14/summary.json
-- 2026-07-13: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-13/summary.json
-- 2026-07-12: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-12/summary.json
-- 2026-07-11: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-11/summary.json
-- 2026-07-10: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-10/summary.json
-- 2026-07-09: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-09/summary.json
-- 2026-07-08: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-08/summary.json
-- 2026-07-07: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-07/summary.json
-- 2026-07-06: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-06/summary.json
-- 2026-07-05: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-05/summary.json
-- 2026-07-04: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-04/summary.json
-- 2026-07-03: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-03/summary.json
-- 2026-07-02: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-02/summary.json
-- 2026-07-01: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-07-01/summary.json
-- 2026-06-30: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-30/summary.json
-- 2026-06-29: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-29/summary.json
-- 2026-06-28: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-28/summary.json
-- 2026-06-27: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-27/summary.json
-- 2026-06-26: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-26/summary.json
-- 2026-06-25: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-25/summary.json
-- 2026-06-24: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-24/summary.json
-- 2026-06-23: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-23/summary.json
-- 2026-06-22: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-22/summary.json
-- 2026-06-21: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-21/summary.json
-- 2026-06-20: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-20/summary.json
-- 2026-06-19: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-19/summary.json
-- 2026-06-18: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/data/2026-06-18/summary.json
+- 2026-08-18: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-18/summary.json
+- 2026-08-17: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-17/summary.json
+- 2026-08-16: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-16/summary.json
+- 2026-08-15: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-15/summary.json
+- 2026-08-14: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-14/summary.json
+- 2026-08-13: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-13/summary.json
+- 2026-08-12: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-12/summary.json
+- 2026-08-11: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-11/summary.json
+- 2026-08-10: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-10/summary.json
+- 2026-08-09: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-09/summary.json
+- 2026-08-08: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-08/summary.json
+- 2026-08-07: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-07/summary.json
+- 2026-08-06: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-06/summary.json
+- 2026-08-05: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-05/summary.json
+- 2026-08-04: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-04/summary.json
+- 2026-08-03: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-03/summary.json
+- 2026-08-02: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-02/summary.json
+- 2026-08-01: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-01/summary.json
+- 2026-07-31: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-31/summary.json
+- 2026-07-30: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-30/summary.json
+- 2026-07-29: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-29/summary.json
+- 2026-07-28: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-28/summary.json
+- 2026-07-27: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-27/summary.json
+- 2026-07-26: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-26/summary.json
+- 2026-07-25: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-25/summary.json
+- 2026-07-24: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-24/summary.json
+- 2026-07-23: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-23/summary.json
+- 2026-07-22: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-22/summary.json
+- 2026-07-21: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-21/summary.json
+- 2026-07-20: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-20/summary.json
+- 2026-07-19: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-19/summary.json
+- 2026-07-16: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-16/summary.json
+- 2026-07-15: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-15/summary.json
+- 2026-07-14: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-14/summary.json
+- 2026-07-13: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-13/summary.json
+- 2026-07-12: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-12/summary.json
+- 2026-07-11: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-11/summary.json
+- 2026-07-10: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-10/summary.json
+- 2026-07-09: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-09/summary.json
+- 2026-07-08: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-08/summary.json
+- 2026-07-07: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-07/summary.json
+- 2026-07-06: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-06/summary.json
+- 2026-07-05: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-05/summary.json
+- 2026-07-04: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-04/summary.json
+- 2026-07-03: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-03/summary.json
+- 2026-07-02: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-02/summary.json
+- 2026-07-01: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-07-01/summary.json
+- 2026-06-30: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-30/summary.json
+- 2026-06-29: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-29/summary.json
+- 2026-06-28: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-28/summary.json
+- 2026-06-27: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-27/summary.json
+- 2026-06-26: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-26/summary.json
+- 2026-06-25: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-25/summary.json
+- 2026-06-24: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-24/summary.json
+- 2026-06-23: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-23/summary.json
+- 2026-06-22: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-22/summary.json
+- 2026-06-21: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-21/summary.json
+- 2026-06-20: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-20/summary.json
+- 2026-06-19: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-19/summary.json
+- 2026-06-18: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-18/summary.json
 
 ## Quick query patterns
 - "What happened today?" → fetch /web/data/{today}/summary.json
@@ -85,4 +85,4 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/web/d
 - "Cross-day story tracking" → fetch summary.json for last 7 days, compare topics
 
 ## Machine-readable index
-For structured access, fetch: https://raw.githubusercontent.com/BlockFrame/AI-Observatory/main/ai-index.json
+For structured access, fetch: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/ai-index.json

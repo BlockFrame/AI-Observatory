@@ -8,6 +8,7 @@
  */
 
 import DOMPurify from 'dompurify';
+import { browser } from '$app/environment';
 
 // Allowlist of safe HTML tags (matches backend ALLOWED_TAGS)
 const ALLOWED_TAGS = ['a', 'strong', 'em', 'p', 'ul', 'li', 'h2', 'h3', 'h4', 'br'];
@@ -35,6 +36,11 @@ export function isSafeUrl(url: string | undefined | null): boolean {
  */
 export function sanitizeHtml(html: string): string {
 	if (!html) return '';
+
+	// Prerendered HTML comes from repository-owned, backend-sanitized JSON.
+	// DOMPurify needs a browser DOM; the hydrated client sanitizes the same
+	// content again before any client-side rendering.
+	if (!browser) return html;
 
 	return DOMPurify.sanitize(html, {
 		ALLOWED_TAGS,

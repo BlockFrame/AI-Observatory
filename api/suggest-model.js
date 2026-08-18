@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO || 'stefanorossi/AI-Observatory';
+  const repo = process.env.GITHUB_REPO || 'BlockFrame/wiredframe-radar';
 
   if (!token) {
     console.error('GITHUB_TOKEN is not configured in Vercel environment variables');
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   try {
     const issueTitle = `New Model Suggestion: ${name} (${maker})`;
-    const issueBody = `### Model Suggestion\n\n**Model Name:** ${name}\n**Maker / Provider:** ${maker}\n**Link / URL:** ${url || 'Not provided'}\n\n**Details / Description:**\n${description || 'No description provided.'}\n\n---\n*Submitted via AI-Observatory Models Directory*`;
+    const issueBody = `### Model Suggestion\n\n**Model Name:** ${name}\n**Maker / Provider:** ${maker}\n**Link / URL:** ${url || 'Not provided'}\n\n**Details / Description:**\n${description || 'No description provided.'}\n\n---\n*Submitted via Wiredframe Radar Models Directory*`;
 
     const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
       method: 'POST',

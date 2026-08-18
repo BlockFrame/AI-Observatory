@@ -29,7 +29,7 @@ def main() -> int:
     url = f"https://openrouter.ai/api/v1/models/{model}/endpoints"
     headers = {
         "Accept": "application/json",
-        "User-Agent": "AI-Observatory-price-preflight/1.0",
+        "User-Agent": "Wiredframe-Radar-price-preflight/1.0",
     }
     api_key = os.getenv("OPENROUTER_API_KEY", "").strip()
     if api_key:

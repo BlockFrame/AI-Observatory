@@ -44,7 +44,7 @@ concurrency:
 jobs:
   watchdog:
     name: Validate published report and recover
-    if: github.repository == 'BlockFrame/AI-Observatory'
+    if: github.repository == 'BlockFrame/wiredframe-radar'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

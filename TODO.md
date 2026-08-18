@@ -1,6 +1,6 @@
-# AI Observatory — Strategic TODO
+# Wiredframe Radar — Strategic TODO
 
-Questo documento contiene lo stato aggiornato delle attività strategiche per l'**AI Observatory**.
+Questo documento contiene lo stato aggiornato delle attività strategiche per **Wiredframe Radar**.
 
 ---
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Preflight diagnostic for AI News Aggregator pipeline
+# Preflight diagnostic for Wiredframe Radar pipeline
 # READ-ONLY check - does NOT modify anything
 # Reports potential issues that could prevent the morning pipeline run
 
@@ -10,7 +10,7 @@ ISSUES=()
 cd "$PROJECT_DIR"
 
 echo "=========================================="
-echo "AI News Aggregator Preflight Diagnostic"
+echo "Wiredframe Radar Preflight Diagnostic"
 echo "$(date)"
 echo "=========================================="
 echo ""

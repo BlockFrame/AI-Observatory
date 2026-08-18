@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Repository guidance for coding agents working on AI Observatory.
+Repository guidance for coding agents working on Wiredframe Radar.
 
 ## Project
 
-AI Observatory is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
+Wiredframe Radar is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
 
 Active source details live in `ai_news_sources.md`. Do not describe Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, or Slack as supported sources.
 
@@ -135,4 +135,4 @@ For a gatherer, extend `BaseGatherer` and return `List[CollectedItem]`. For an a
 
 `.github/workflows/daily-pipeline.yml` runs the critical mocked tests before paid calls, generates the report, applies the publish gate, and commits only validated public artifacts. Failed runs restore the last good report.
 
-The workflow is guarded for `BlockFrame/AI-Observatory`. Do not enable scheduled publishing in a fork without intentionally changing repository guards, secrets, signing, and output ownership.
+The workflow is guarded for `BlockFrame/wiredframe-radar`. Do not enable scheduled publishing in a fork without intentionally changing repository guards, secrets, signing, and output ownership.

@@ -2,11 +2,11 @@
 
 ## Purpose
 
-AI Observatory produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
+Wiredframe Radar produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
 
 ## Current product
 
-- Static SvelteKit observatory at `https://ai-observatory.vercel.app`
+- Static SvelteKit site at `https://radar.wiredframe.xyz`
 - Daily categories: AI News, Research, Social signals from X, GitHub Trending
 - Machine-readable `summary.json`, `llms.txt`, `ai-index.json`, and MCP interface
 - Automated generation and publishing through GitHub Actions

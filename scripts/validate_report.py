@@ -21,7 +21,7 @@ Usage
   python3 scripts/validate_report.py --web-dir ./web --date 2026-06-02
 
   # Validate the live published report (watchdog):
-  python3 scripts/validate_report.py --url https://ai-observatory.vercel.app --date 2026-06-02
+  python3 scripts/validate_report.py --url https://radar.wiredframe.xyz --date 2026-06-02
 
 Exit codes
 ----------
@@ -357,7 +357,7 @@ def main() -> int:
     src.add_argument("--web-dir", help="Local web dir containing data/<date>/summary.json")
     src.add_argument(
         "--url",
-        help="Base URL of the published site, e.g. https://ai-observatory.vercel.app",
+        help="Base URL of the published site, e.g. https://radar.wiredframe.xyz",
     )
     p.add_argument("--date", help="Report date YYYY-MM-DD (default: today in America/New_York)")
     p.add_argument("--json", action="store_true", help="Emit machine-readable JSON result")

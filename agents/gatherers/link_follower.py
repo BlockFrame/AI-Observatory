@@ -124,7 +124,7 @@ class LinkFollower:
         try:
             response = requests.head(
                 url,
-                headers={'User-Agent': 'Mozilla/5.0 (compatible; AI-Observatory/1.0)'},
+                headers={'User-Agent': 'Mozilla/5.0 (compatible; Wiredframe-Radar/1.0)'},
                 timeout=min(self.timeout, 10.0),
                 allow_redirects=True,
             )

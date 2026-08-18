@@ -106,7 +106,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <h3 class="text-lg font-medium text-white mb-2">Thank you!</h3>
-                        <p class="text-[#b2b8cf]">Your feedback helps us improve AI Observatory.</p>
+                        <p class="text-[#b2b8cf]">Your feedback helps us improve Wiredframe Radar.</p>
                     </div>
                 {:else}
                     <form on:submit|preventDefault={handleSubmit} class="space-y-4">

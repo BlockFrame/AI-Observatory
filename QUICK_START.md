@@ -10,8 +10,8 @@
 ## Install
 
 ```bash
-git clone https://github.com/BlockFrame/AI-Observatory.git
-cd AI-Observatory
+git clone https://github.com/BlockFrame/wiredframe-radar.git
+cd wiredframe-radar
 
 python3.11 -m venv .venv
 source .venv/bin/activate

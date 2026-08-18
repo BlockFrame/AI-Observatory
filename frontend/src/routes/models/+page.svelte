@@ -3,6 +3,8 @@
     import { fade, slide } from 'svelte/transition';
     import { slugify } from '$lib/utils/slugify';
     import SuggestModelModal from '$lib/components/SuggestModelModal.svelte';
+    import PageMeta from '$lib/components/seo/PageMeta.svelte';
+    import { absoluteUrl } from '$lib/config/site';
 
     interface Model {
         name: string;
@@ -146,9 +148,8 @@
     }
 </script>
 
+<PageMeta title="AI Models Directory" description="A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs." path="/models" />
 <svelte:head>
-    <title>AI Models Directory | AI Observatory</title>
-    <meta name="description" content="A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs." />
     {@html `
     <script type="application/ld+json">
     {
@@ -156,7 +157,7 @@
         "@type": "CollectionPage",
         "name": "AI Models Directory",
         "description": "A browsable registry of large language models — frontier and open-weight — with verified specs, benchmarks, pricing and APIs.",
-        "url": "https://ai-observatory.vercel.app/models"
+        "url": "${absoluteUrl('/models')}"
     }
     </script>
     `}

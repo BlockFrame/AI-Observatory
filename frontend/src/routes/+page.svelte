@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import { goto, afterNavigate } from '$app/navigation';
 	import { tick, onMount } from 'svelte';
 	import { fly, fade, scale } from 'svelte/transition';
@@ -19,6 +20,8 @@
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import { safeHtml } from '$lib/services/safeHtml';
 	import { registerItems } from '$lib/services/itemIndex';
+	import PageMeta from '$lib/components/seo/PageMeta.svelte';
+	import { SITE } from '$lib/config/site';
 
 	// Data state
 	let summary: DaySummary | null = null;
@@ -45,8 +48,8 @@
 	const validCategories: Category[] = ['news', 'research', 'social', 'github_trending'];
 
 	// Read query params
-	$: dateParam = $page.url.searchParams.get('date');
-	$: rawCategoryParam = $page.url.searchParams.get('category');
+	$: dateParam = browser ? $page.url.searchParams.get('date') : null;
+	$: rawCategoryParam = browser ? $page.url.searchParams.get('category') : null;
 	$: categoryParam =
 		rawCategoryParam && validCategories.includes(rawCategoryParam as Category)
 			? (rawCategoryParam as Category)
@@ -84,6 +87,12 @@
 
 	// Get category config for category view
 	$: config = categoryParam ? CATEGORY_CONFIG[categoryParam] : null;
+	$: metaTitle = categoryParam && config
+		? `${config.title} — ${effectiveDate || 'Latest'}`
+		: undefined;
+	$: metaDescription = categoryParam && config
+		? `${config.title} briefing for ${effectiveDate || 'the latest report'}, with evidence-linked analysis and primary sources.`
+		: SITE.description;
 
 	// Scroll to hash anchor after navigation
 	afterNavigate(async () => {
@@ -205,13 +214,7 @@
 	}
 </script>
 
-<svelte:head>
-	{#if categoryParam && config}
-		<title>{config.title} - {effectiveDate || 'Latest'} | AI Observatory</title>
-	{:else}
-		<title>AI Observatory</title>
-	{/if}
-</svelte:head>
+<PageMeta title={metaTitle} description={metaDescription} path="/" />
 
 <LinkPreview fallbackDate={effectiveDate} />
 
@@ -242,6 +245,16 @@
 	<div class="mb-8">
 		<DateNavigator coverageDate={summary?.coverage_date} />
 	</div>
+
+	{#if !mounted}
+		<section class="card mb-8 border-l-[3px] border-l-[#00e0bb] p-8 md:p-12">
+			<p class="section-kicker">Wiredframe</p>
+			<h1 class="mt-2 text-5xl font-black tracking-[-0.04em] text-white md:text-7xl">
+				R<span class="text-[#cfd5ff]">[AI]</span>DAR
+			</h1>
+			<p class="mt-5 max-w-2xl text-lg leading-relaxed text-[#b2b8cf]">{SITE.tagline}</p>
+		</section>
+	{/if}
 
 	{#if loading}
 		<div class="py-20">
@@ -339,6 +352,7 @@
 			<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 			<div class="absolute inset-0 flex flex-col justify-center px-12 md:px-20 z-10">
 				{#if mounted}
+					<p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-[#8e94ae]">Wiredframe</p>
 					<!-- Animated Logo -->
 					<div 
 						class="mb-8"
@@ -347,7 +361,7 @@
 						<div class="relative inline-block group">
 							<!-- Glow Effect -->
 							<div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-pulse"></div>
-							<img src="/logo.png" alt="AI Observatory" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
+							<img src="/logo.png" alt="Wiredframe Radar" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
 						</div>
 					</div>
 					
@@ -357,7 +371,7 @@
 							class="font-headline-xl text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] text-transparent bg-clip-text bg-gradient-to-br from-white via-white/70 to-white/30 drop-shadow-sm pb-2"
 							in:fly={{ y: 50, duration: 1000, delay: 300 }}
 						>
-							AI Observatory
+							R<span class="text-[#cfd5ff]">[AI]</span>DAR
 						</h1>
 					</div>
 
@@ -366,7 +380,7 @@
 							class="font-body-lg text-xl sm:text-2xl font-bold tracking-tight text-primary"
 							in:fly={{ y: 20, duration: 800, delay: 500 }}
 						>
-							Intelligence Feed
+							AI intelligence without the noise
 						</p>
 						<!-- Divider -->
 						<div 

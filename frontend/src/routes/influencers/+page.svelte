@@ -2,6 +2,8 @@
     import { onMount } from 'svelte';
     import SuggestInfluencerModal from '$lib/components/SuggestInfluencerModal.svelte';
     import { safeHtml } from '$lib/services/safeHtml';
+    import PageMeta from '$lib/components/seo/PageMeta.svelte';
+    import { absoluteUrl } from '$lib/config/site';
     export let data: any;
     let { htmlContent } = data;
     
@@ -17,9 +19,8 @@
     });
 </script>
 
+<PageMeta title="Top AI Influencers to Follow" description="116 AI people worth following, grouped by what they actually do." path="/influencers" />
 <svelte:head>
-    <title>Top AI Influencers to Follow | AI Observatory</title>
-    <meta name="description" content="116 AI people worth following, grouped by what they actually do." />
     {@html `
     <script type="application/ld+json">
     {
@@ -27,7 +28,7 @@
         "@type": "CollectionPage",
         "name": "Top AI Influencers",
         "description": "116 AI people worth following, grouped by what they actually do.",
-        "url": "https://ai-observatory.vercel.app/influencers"
+        "url": "${absoluteUrl('/influencers')}"
     }
     </script>
     `}

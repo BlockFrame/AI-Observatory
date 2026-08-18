@@ -1,11 +1,11 @@
 {
-  "name": "ai-news-aggregator-frontend",
+  "name": "wiredframe-radar-frontend",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "prebuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',b='../.data-backup';if(fs.existsSync(d)){fs.cpSync(d,b,{recursive:true});console.log('Backed up web/data')}\"",
+    "prebuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',b='../.data-backup',o='../web';if(fs.existsSync(b))fs.rmSync(b,{recursive:true,force:true});if(fs.existsSync(d)){fs.cpSync(d,b,{recursive:true});console.log('Backed up web/data')}fs.mkdirSync(o,{recursive:true});for(const n of fs.readdirSync(o)){if(n!=='data')fs.rmSync(p.join(o,n),{recursive:true,force:true})}console.log('Cleaned generated web output')\"",
     "build": "vite build",
     "postbuild": "node -e \"const fs=require('fs'),p=require('path'),d='../web/data',b='../.data-backup';if(fs.existsSync(b)){fs.cpSync(b,d,{recursive:true});fs.rmSync(b,{recursive:true});console.log('Restored web/data')}\"",
     "preview": "vite preview",

@@ -1,6 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import SuggestToolModal from '$lib/components/SuggestToolModal.svelte';
+    import PageMeta from '$lib/components/seo/PageMeta.svelte';
+    import { absoluteUrl } from '$lib/config/site';
     
     interface Tool {
         name: string;
@@ -133,9 +135,8 @@
     }
 </script>
 
+<PageMeta title="AI Tools Directory" description="A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated." path="/tools" />
 <svelte:head>
-    <title>AI Tools Directory | AI Observatory</title>
-    <meta name="description" content="A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated." />
     {@html `
     <script type="application/ld+json">
     {
@@ -143,7 +144,7 @@
         "@type": "CollectionPage",
         "name": "AI Tools Directory",
         "description": "A browsable map of the AI stack — open-source libraries and commercial platforms, continuously updated.",
-        "url": "https://ai-observatory.vercel.app/tools"
+        "url": "${absoluteUrl('/tools')}"
     }
     </script>
     `}

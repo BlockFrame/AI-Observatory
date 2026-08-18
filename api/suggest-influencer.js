@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPO || 'stefanorossi/AI-Observatory';
+  const repo = process.env.GITHUB_REPO || 'BlockFrame/wiredframe-radar';
 
   if (!token) {
     console.error('GITHUB_TOKEN is not configured in Vercel environment variables');
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   try {
     const cleanHandle = handle.startsWith('@') ? handle : `@${handle}`;
     const issueTitle = `New Influencer Suggestion: ${name} (${cleanHandle})`;
-    const issueBody = `### Influencer Suggestion\n\n**Name:** ${name}\n**Platform:** ${platform}\n**Handle/Username:** ${cleanHandle}\n\n**Why follow them / Description:**\n${description || 'No reasoning provided.'}\n\n---\n*Submitted via AI-Observatory Influencers Directory*`;
+    const issueBody = `### Influencer Suggestion\n\n**Name:** ${name}\n**Platform:** ${platform}\n**Handle/Username:** ${cleanHandle}\n\n**Why follow them / Description:**\n${description || 'No reasoning provided.'}\n\n---\n*Submitted via Wiredframe Radar Influencers Directory*`;
 
     const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
       method: 'POST',

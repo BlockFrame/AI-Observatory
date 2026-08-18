@@ -1,5 +1,5 @@
 /**
- * Type definitions for AI News Aggregator frontend
+ * Type definitions for Wiredframe Radar frontend
  */
 
 export type Category = 'news' | 'research' | 'social' | 'github_trending';

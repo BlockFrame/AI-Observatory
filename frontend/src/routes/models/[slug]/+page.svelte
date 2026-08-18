@@ -3,6 +3,8 @@
     import { onMount } from 'svelte';
     import { slugify } from '$lib/utils/slugify';
     import { safeHtml } from '$lib/services/safeHtml';
+    import PageMeta from '$lib/components/seo/PageMeta.svelte';
+    import { absoluteUrl } from '$lib/config/site';
 
     // We now receive data directly from +page.server.ts load function
     export let data: any;
@@ -65,7 +67,7 @@
                         const cRes = await fetch('/data/models-content.json');
                         if (cRes.ok && slug) {
                             const cMap = await cRes.json();
-                            htmlContent = cMap[slug] || null;
+                            htmlContent = cMap[slug] || cMap[slug.replace(/-plus/g, '')] || null;
                         }
                     }
                 } else {
@@ -81,39 +83,28 @@
     });
 </script>
 
+<PageMeta
+    title={model ? `${model.name} — AI Model` : 'Model Not Found'}
+    description={model ? model.description : 'The requested AI model could not be found.'}
+    path={$page.url.pathname}
+    type={model ? 'article' : 'website'}
+    noindex={!model}
+/>
 <svelte:head>
     {#if model}
-        <title>{model.name} | AI Models Directory</title>
-        <meta name="description" content={model.description} />
-        
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="{model.name} | AI Models Directory" />
-        <meta property="og:description" content={model.description} />
-        <meta property="og:url" content={`https://ai-observatory.vercel.app/models/${$page.params.slug}`} />
-        
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="{model.name} | AI Models Directory" />
-        <meta name="twitter:description" content={model.description} />
-        
-        {@html `
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "${model.name.replace(/"/g, '\\"')}",
-            "description": "${model.description.replace(/"/g, '\\"')}",
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "Any",
-            "developer": {
-                "@type": "Organization",
-                "name": "${(model.category || 'Unknown').replace(/"/g, '\\"')}"
+        {@html `<script type="application/ld+json">${JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'SoftwareApplication',
+            name: model.name,
+            description: model.description,
+            applicationCategory: 'DeveloperApplication',
+            operatingSystem: 'Any',
+            developer: {
+                '@type': 'Organization',
+                name: model.category || 'Unknown'
             },
-            "url": "https://ai-observatory.vercel.app/models/${$page.params.slug}"
-        }
-        </script>
-        `}
-    {:else}
-        <title>Loading... | AI Observatory</title>
+            url: absoluteUrl(`/models/${$page.params.slug}`)
+        })}<\/script>`}
     {/if}
 </svelte:head>
 

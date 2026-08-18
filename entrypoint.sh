@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Starting AI News Aggregator..."
+echo "Starting Wiredframe Radar..."
 
 # Create default config files if they don't exist
 if [ ! -f /app/config/rss_feeds.txt ]; then

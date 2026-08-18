@@ -52,7 +52,7 @@ Before paid calls, the workflow runs mocked regression tests with production sec
 
 ## Vercel
 
-Import `BlockFrame/AI-Observatory` into Vercel. The repository’s `vercel.json` and frontend configuration define the build. Use `https://ai-observatory.vercel.app` or set the production domain through `PIPELINE_BASE_URL`.
+Import `BlockFrame/wiredframe-radar` into Vercel. The repository’s `vercel.json` and frontend configuration define the build. Use `https://radar.wiredframe.xyz` as the production domain and set the same value through `PIPELINE_BASE_URL`.
 
 Vercel requires no runtime database for reports: generated JSON is versioned under `web/data/` and included in the static build.
 

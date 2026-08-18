@@ -1,5 +1,5 @@
 #!/bin/bash
-# Post-pipeline verification for AI News Aggregator
+# Post-pipeline verification for Wiredframe Radar
 # Verifies the public site received the update.
 #
 # Optional environment variables:

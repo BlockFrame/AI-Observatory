@@ -31,7 +31,10 @@ export function load({ params }) {
 
     if (model && fs.existsSync(contentPath)) {
         const contents = JSON.parse(fs.readFileSync(contentPath, 'utf-8'));
-        htmlContent = contents[slug] || null;
+        // Rich content predates the collision-safe handling of "+" in slugs.
+        // Keep it available while canonical model URLs use the unambiguous slug.
+        const legacySlug = slug.replace(/-plus/g, '');
+        htmlContent = contents[slug] || contents[legacySlug] || null;
     }
 
     return {

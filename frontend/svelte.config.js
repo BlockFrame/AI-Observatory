@@ -9,7 +9,6 @@ const config = {
 		adapter: adapter({
 			pages: '../web',
 			assets: '../web',
-			fallback: 'index.html',
 			precompress: false,
 			strict: true
 		}),
@@ -18,6 +17,9 @@ const config = {
 			relative: false
 		},
 		prerender: {
+			// Dynamic model routes are enumerated from models.json. Do not follow
+			// historical cross-links in rich model content into obsolete aliases.
+			crawl: false,
 			handleHttpError: ({ path, referrer, message }) => {
 				// Ignore 404s for /data/ paths - these are runtime files, not built
 				if (path.startsWith('/data/')) {

@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import SearchBar from '$lib/components/search/SearchBar.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
+	import { SITE } from '$lib/config/site';
 	import '../app.css';
 	import { inject } from '@vercel/analytics';
 	
-	inject();
+	if (browser) inject();
 
 	let isSidebarOpen = true;
 	let showScrollTop = false;
 	let isFeedbackModalOpen = false;
+	$: currentSearch = browser ? $page.url.search : '';
 
 	function toggleSidebar() {
 		isSidebarOpen = !isSidebarOpen;
@@ -34,20 +37,20 @@
 			<nav class="flex-1">
 				<p class="mb-3 px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[#8e94ae]">Navigation</p>
 				<div class="space-y-1.5">
-				<a href="/" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && !$page.url.search.includes('category=') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href="/" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && !currentSearch.includes('category=') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Home</span>
 				</a>
-				<a href="/?category=news" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href="/?category=news" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">AI News</span>
 				</a>
-				<a href="/?category=research" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href="/?category=research" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Research</span>
 				</a>
-				<a href="/?category=social" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href="/?category=social" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Social Media</span>
 				</a>
 
-                <a href="/?category=github_trending" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && $page.url.search.includes('category=github_trending') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+                <a href="/?category=github_trending" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=github_trending') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
                     <span class="text-[13px] font-medium tracking-[0.02em]">GitHub Trending</span>
                 </a>
 
@@ -103,7 +106,7 @@
 					rel="noopener noreferrer"
 					class="flex items-center gap-1.5 text-sm text-[#ff79c6] hover:text-white bg-[#ff79c6]/10 border border-[#ff79c6]/30 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-[#ff79c6] transition-all font-medium"
 					aria-label="Sponsor on GitHub"
-					title="Sponsor AI Observatory on GitHub"
+					title="Sponsor Wiredframe Radar on GitHub"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
 					<span class="hidden sm:inline">Sponsor</span>
@@ -121,7 +124,7 @@
 
 				<!-- GitHub icon -->
 				<a
-					href="https://github.com/BlockFrame/AI-Observatory"
+					href={SITE.githubUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="p-2 rounded-lg text-[#b2b8cf] hover:text-white hover:bg-[#2b3655]/50 transition-colors"
@@ -135,11 +138,11 @@
 
 				<div class="h-6 w-px bg-white/10 hidden sm:block"></div>
 
-				<img src="/logo.png" alt="AI Observatory Logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
+				<img src="/logo.png" alt="Wiredframe Radar logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
 				<div class="min-w-0 overflow-hidden hidden sm:block">
-					<h1 class="truncate text-[15px] font-semibold tracking-[0.02em] text-[#00e0bb]">
-						AI Observatory <span class="text-[11px] font-medium uppercase tracking-[0.12em] text-[#8e94ae]">v2.4</span>
-					</h1>
+					<a href="/" class="block truncate text-[15px] font-semibold tracking-[0.04em] text-[#00e0bb]" aria-label={SITE.name}>
+						R<span class="text-[#cfd5ff]">[AI]</span>DAR
+					</a>
 				</div>
 			</div>
 		</div>
@@ -170,4 +173,17 @@
 
 <svelte:head>
 	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		name: SITE.name,
+		alternateName: SITE.visualName,
+		url: SITE.url,
+		description: SITE.description,
+		publisher: {
+			'@type': 'Organization',
+			name: SITE.parentName,
+			url: SITE.parentUrl
+		}
+	})}<\/script>`}
 </svelte:head>
