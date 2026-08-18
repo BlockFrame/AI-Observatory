@@ -160,7 +160,7 @@ jobs:
 
       - name: Check out publishing main
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           ref: main
           fetch-depth: 0
@@ -205,14 +205,14 @@ jobs:
       - name: Restore completed gathering checkpoint
         if: steps.schedule_gate.outputs.should_run == 'true'
         id: gathering_cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
           key: gathering-v3-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt', 'config/web_scraper_sources.txt', 'config/research_web_sources.txt') }}
 
       - name: Set up Python
         if: steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.11"
           cache: pip
@@ -383,7 +383,7 @@ jobs:
 
       - name: Save completed gathering checkpoint
         if: ${{ always() && steps.schedule_gate.outputs.should_run == 'true' && steps.gathering_cache.outputs.cache-hit != 'true' && steps.gathering_checkpoint.outputs.reusable == 'true' }}
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: data/checkpoints/${{ steps.report_date.outputs.date }}/gathering.json
           key: gathering-v3-${{ steps.report_date.outputs.date }}-${{ hashFiles('config/twitter_accounts.txt', 'config/rss_feeds.txt', 'config/research_feeds.txt', 'config/web_scraper_sources.txt', 'config/research_web_sources.txt') }}
@@ -413,7 +413,7 @@ jobs:
       # keeps quality/evidence diagnostics available when the publish gate fails.
       - name: Upload pipeline diagnostics
         if: always() && steps.schedule_gate.outputs.should_run == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: pipeline-diagnostics
           path: |
@@ -484,7 +484,7 @@ jobs:
 
       - name: Upload generated outputs without committing
         if: steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS != 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: generated-pipeline-output
           path: |

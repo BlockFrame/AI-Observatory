@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible defect in the pipeline, site, or automation.
+title: "[Bug]: "
+labels: ["bug", "status:triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include credentials, API responses containing secrets, or private user data."
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Observed outcome
+      description: What happened and why is it a problem?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Include the report date, workflow/run URL, and minimal steps where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected outcome
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options: [Pipeline, LLM routing, Sources, Link enrichment, Frontend, GitHub Actions, Vercel, Documentation]
+    validations:
+      required: true

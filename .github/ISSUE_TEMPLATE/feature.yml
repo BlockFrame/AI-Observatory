@@ -1,0 +1,31 @@
+name: Feature proposal
+description: Propose a product, reliability, or developer-experience improvement.
+title: "[Feature]: "
+labels: ["enhancement", "status:triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and target user
+      description: What decision, workflow, or risk should this improve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed approach
+      description: Include scope, non-goals, and affected categories or systems.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and success measure
+      description: Link research, user feedback, run diagnostics, or define measurable acceptance criteria.
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Delivery risk
+      options: [Low, Medium, High]
+    validations:
+      required: true

@@ -12,6 +12,7 @@ Wiredframe Radar keeps the repository root focused on executable entry points, p
 | [Source inventory](sources.md) | Active News, Research, Social, and GitHub collection paths |
 | [Deployment](deployment.md) | GitHub Actions, Vercel, diagnostics, and rollback |
 | [Roadmap](roadmap.md) | Open strategic work and product backlog |
+| [AI development lifecycle](ai-development-lifecycle.md) | AIDLC controls, review model, and operational workflow |
 | [Security remediation](security/remediation-2026-07.md) | Historical security hardening record |
 
 ## Naming convention

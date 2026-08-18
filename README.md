@@ -4,7 +4,7 @@
 
 ### R[AI]DAR — evidence-linked daily intelligence on the AI ecosystem
 
-[Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [Roadmap](docs/roadmap.md)
+[Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Roadmap](docs/roadmap.md)
 
 ![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/wiredframe-radar/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)

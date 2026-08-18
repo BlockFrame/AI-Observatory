@@ -1,0 +1,11 @@
+# Default ownership for review routing. A future branch ruleset can require
+# CODEOWNERS review without changing this file.
+* @BlockFrame
+
+# High-risk and operational areas
+/agents/ @BlockFrame
+/config/ @BlockFrame
+/scripts/ @BlockFrame
+/.github/ @BlockFrame
+/webhook/ @BlockFrame
+/api/ @BlockFrame
