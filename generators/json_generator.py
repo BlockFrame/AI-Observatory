@@ -519,6 +519,12 @@ class JSONGenerator:
                 t['description_html'] = self._markdown_to_html(t['description'])
             if t.get('description_html'):
                 t['description_html'] = self._sanitize_html(t['description_html'])
+            if t.get('business_implication'):
+                t['business_implication_html'] = self._markdown_to_html(t['business_implication'])
+            if t.get('business_implication_html'):
+                t['business_implication_html'] = self._sanitize_html(
+                    t['business_implication_html']
+                )
             sanitized.append(t)
         return sanitized
 

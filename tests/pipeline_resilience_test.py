@@ -3,6 +3,7 @@
 import asyncio
 import json
 import os
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -1065,7 +1066,12 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
                 text, items, "executive summary", evidence_by_bullet=[["news"]]
             )
 
-            self.assertEqual(enriched, text)
+            self.assertEqual(
+                re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", enriched),
+                text,
+            )
+            self.assertIn("#item-news", enriched)
+            self.assertNotIn("#item-wrong", enriched)
 
         asyncio.run(run())
 
@@ -1145,7 +1151,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_enrich_all_uses_three_sequential_standard_reasoning_batches(self):
+    def test_enrich_all_uses_no_llm_when_deterministic_evidence_matches(self):
         class SelectionClient:
             def __init__(self):
                 self.calls = []
@@ -1193,38 +1199,25 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
                 executive_summary_evidence=[["news"]],
             )
 
-            self.assertEqual(len(client.calls), 3)
-            self.assertEqual(
-                [call["caller"] for call in client.calls],
-                [
-                    "link_enricher.batch.executive",
-                    "link_enricher.batch.categories",
-                    "link_enricher.batch.topics",
-                ],
-            )
-            self.assertTrue(all(call["profile"] == ThinkingLevel.STANDARD for call in client.calls))
-            self.assertTrue(all(call["max_tokens"] == 12288 for call in client.calls))
+            self.assertEqual(client.calls, [])
             self.assertIn("#item-news", executive)
             self.assertIn("#item-news", categories["news"])
             self.assertIn("#item-news", enriched_topics[0]["description"])
 
         asyncio.run(run())
 
-    def test_gemini_fallback_receives_only_missing_one_to_many_evidence(self):
+    def test_minimax_receives_only_evidence_missing_after_deterministic_pass(self):
         class StagedClient:
             def __init__(self):
                 self.calls = []
 
             async def call_with_thinking(self, **kwargs):
                 self.calls.append(kwargs)
-                caller = kwargs["caller"]
-                item_id = "one" if caller.startswith("link_enricher.batch") else "two"
-                span = "OpenAI Responses API" if item_id == "one" else "Anthropic Claude controls"
                 return SimpleNamespace(content=json.dumps({"selections": [{
                     "document_id": "executive",
                     "line": 0,
-                    "item_id": item_id,
-                    "exact_span": span,
+                    "item_id": "two",
+                    "exact_span": "rival lab safeguards",
                 }]}))
 
         async def run():
@@ -1232,7 +1225,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             enricher = LinkEnricher(client, "2026-08-09")
             documents = [{
                 "id": "executive",
-                "text": "- OpenAI Responses API and Anthropic Claude controls reshape enterprise agents.",
+                "text": "- OpenAI Responses API and rival lab safeguards reshape enterprise agents.",
                 "items": [
                     {"id": "one", "category": "news", "title": "OpenAI Responses API", "summary": ""},
                     {"id": "two", "category": "news", "title": "Anthropic Claude controls", "summary": ""},
@@ -1244,14 +1237,18 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             enriched = await enricher._enrich_document_batch(documents, "executive")
 
             self.assertEqual(enriched["executive"].count("#item-"), 2)
-            self.assertEqual(len(client.calls), 2)
-            self.assertEqual(client.calls[1]["caller"], "link_enricher_fallback.batch.executive")
-            fallback_payload = _fenced_json_payload(client.calls[1]["messages"][0]["content"])
+            self.assertEqual(len(client.calls), 1)
+            self.assertEqual(client.calls[0]["caller"], "link_enricher_paid.batch.executive")
+            fallback_payload = _fenced_json_payload(client.calls[0]["messages"][0]["content"])
             self.assertEqual(len(fallback_payload["documents"][0]["blocks"]), 1)
+            self.assertEqual(
+                fallback_payload["documents"][0]["blocks"][0]["allowed_item_ids"],
+                ["two"],
+            )
 
         asyncio.run(run())
 
-    def test_paid_fallback_runs_only_after_both_gemini_stages_leave_block_uncovered(self):
+    def test_minimax_runs_only_when_deterministic_pass_leaves_evidence_uncovered(self):
         class StagedClient:
             def __init__(self):
                 self.callers = []
@@ -1259,14 +1256,12 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             async def call_with_thinking(self, **kwargs):
                 caller = kwargs["caller"]
                 self.callers.append(caller)
-                selections = []
-                if caller.startswith("link_enricher_paid"):
-                    selections = [{
-                        "document_id": "topic:0",
-                        "line": 0,
-                        "item_id": "semantica",
-                        "exact_span": "Semantica",
-                    }]
+                selections = [{
+                    "document_id": "topic:0",
+                    "line": 0,
+                    "item_id": "semantica",
+                    "exact_span": "accountable-agent substrate",
+                }]
                 return SimpleNamespace(content=json.dumps({"selections": selections}))
 
         async def run():
@@ -1274,11 +1269,11 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
             enricher = LinkEnricher(client, "2026-08-09")
             documents = [{
                 "id": "topic:0",
-                "text": "Semantica strengthens accountable agent orchestration.",
+                "text": "The accountable-agent substrate strengthens enterprise orchestration.",
                 "items": [{
                     "id": "semantica",
                     "category": "github_trending",
-                    "title": "semantica-agi/semantica",
+                    "title": "Semantica accountable agents",
                     "summary": "Accountable agents",
                 }],
                 "required_item_ids": ["semantica"],
@@ -1286,12 +1281,8 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
             enriched = await enricher._enrich_document_batch(documents, "topics")
 
-            self.assertEqual(client.callers, [
-                "link_enricher.batch.topics",
-                "link_enricher_fallback.batch.topics",
-                "link_enricher_paid.batch.topics",
-            ])
-            self.assertIn("[Semantica]", enriched["topic:0"])
+            self.assertEqual(client.callers, ["link_enricher_paid.batch.topics"])
+            self.assertIn("[accountable-agent substrate]", enriched["topic:0"])
 
         asyncio.run(run())
 
@@ -1322,8 +1313,109 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
             enriched = await enricher._enrich_document_batch(documents, "executive")
 
-            self.assertEqual(client.calls, 3)
+            self.assertEqual(client.calls, 1)
             self.assertEqual(enriched["executive"], text)
+
+        asyncio.run(run())
+
+    def test_deterministic_pass_keeps_distinctive_single_word_repository_names(self):
+        class NoCallClient:
+            def __init__(self):
+                self.calls = 0
+
+            async def call_with_thinking(self, **_kwargs):
+                self.calls += 1
+                raise AssertionError("MiniMax must not run for explicit names")
+
+        async def run():
+            client = NoCallClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            names = ["Unsloth", "Soup", "Needle", "Strix"]
+            documents = [{
+                "id": "executive",
+                "text": "- Unsloth, Soup, Needle and Strix reshape local AI tooling.",
+                "items": [
+                    {
+                        "id": name.lower(),
+                        "category": "github_trending",
+                        "title": f"example/{name}",
+                        "summary": "",
+                    }
+                    for name in names
+                ],
+                "evidence_by_bullet": [[name.lower() for name in names]],
+            }]
+
+            enriched = await enricher._enrich_document_batch(documents, "executive")
+
+            self.assertEqual(client.calls, 0)
+            self.assertEqual(enriched["executive"].count("#item-"), 4)
+            for name in names:
+                self.assertIn(f"[{name}]", enriched["executive"])
+
+        asyncio.run(run())
+
+    def test_every_page_summary_family_uses_deterministic_first_enrichment(self):
+        class NoCallClient:
+            def __init__(self):
+                self.calls = []
+
+            async def call_with_thinking(self, **kwargs):
+                self.calls.append(kwargs)
+                raise AssertionError("Explicit evidence must not reach MiniMax")
+
+        async def run():
+            client = NoCallClient()
+            enricher = LinkEnricher(client, "2026-08-09")
+            fixtures = {
+                "news": ("news-id", "OpenAI Responses API"),
+                "research": ("research-id", "DiffusionGemma probe"),
+                "social": ("social-id", "Yann LeCun debate"),
+                "github_trending": ("repo-id", "example/Unsloth"),
+            }
+            reports = {
+                category: {
+                    "all_items": [{
+                        "item": {"id": item_id, "title": title},
+                        "summary": "Current evidence",
+                    }],
+                    "category_summary": f"- {title} changes the current AI landscape.",
+                    "category_summary_evidence": [[item_id]],
+                }
+                for category, (item_id, title) in fixtures.items()
+            }
+            evidence_ids = [item_id for item_id, _title in fixtures.values()]
+            executive = (
+                "- OpenAI Responses API, DiffusionGemma probe, Yann LeCun debate "
+                "and Unsloth define today's strategic signals."
+            )
+            topics = [{
+                "name": "Cross-category signal",
+                "description": (
+                    "OpenAI Responses API, DiffusionGemma probe, Yann LeCun debate "
+                    "and Unsloth move in parallel."
+                ),
+                "business_implication": (
+                    "OpenAI Responses API, DiffusionGemma probe, Yann LeCun debate "
+                    "and Unsloth require a diversified procurement strategy."
+                ),
+                "representative_items": evidence_ids,
+            }]
+
+            enriched_exec, enriched_categories, enriched_topics = await enricher.enrich_all(
+                executive,
+                reports,
+                topics,
+                executive_summary_evidence=[evidence_ids],
+            )
+
+            self.assertEqual(client.calls, [])
+            self.assertEqual(enriched_exec.count("#item-"), 4)
+            self.assertEqual(set(enriched_categories), set(fixtures))
+            self.assertTrue(all(text.count("#item-") == 1 for text in enriched_categories.values()))
+            self.assertEqual(enriched_topics[0]["description"].count("#item-"), 4)
+            self.assertEqual(enriched_topics[0]["business_implication"].count("#item-"), 4)
+            self.assertEqual(enriched_topics[0]["business_implication_html"].count("internal-link"), 4)
 
         asyncio.run(run())
 

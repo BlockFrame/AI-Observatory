@@ -83,6 +83,7 @@ class TopTopic:
     representative_items: List[str]  # Item IDs from each category
     importance: float  # 0-100
     business_implication: str = ""
+    business_implication_html: str = ""
     trend_velocity: str = ""
 
 
@@ -996,6 +997,7 @@ class MainOrchestrator:
                 representative_items=topic_data.get('representative_items', []),
                 importance=topic_data.get('importance', 50),
                 business_implication=topic_data.get('business_implication', ''),
+                business_implication_html=topic_data.get('business_implication_html', ''),
                 trend_velocity=topic_data.get('trend_velocity', ''),
             ))
         return topics
@@ -1367,16 +1369,18 @@ class MainOrchestrator:
         """Repair summaries made empty/generic/short by analysis or sanitization."""
         for category, report in category_reports.items():
             analyzer = self.analyzers.get(category)
-            if not analyzer or not hasattr(analyzer, '_ensure_category_summary'):
+            if not analyzer or not hasattr(analyzer, '_ensure_category_summary_with_evidence'):
                 continue
             try:
-                previous_summary = report.category_summary
-                report.category_summary = await analyzer._ensure_category_summary(
+                (
                     report.category_summary,
+                    report.category_summary_evidence,
+                ) = await analyzer._ensure_category_summary_with_evidence(
+                    report.category_summary,
+                    report.category_summary_evidence,
                     report.top_items,
+                    valid_item_ids={item.item.id for item in report.all_items},
                 )
-                if report.category_summary != previous_summary:
-                    report.category_summary_evidence = []
             except Exception as exc:
                 logger.warning(
                     f"Post-analysis category summary repair failed for {category}: {exc}"
@@ -1580,6 +1584,9 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
                 description = self._compact_topic_description(
                     sanitize_editorial_text(topic_data.get('description', ''))
                 )
+                business_implication = sanitize_editorial_text(
+                    topic_data.get('business_implication', '')
+                )
                 topics.append(TopTopic(
                     name=sanitize_editorial_text(topic_data['name']),
                     description=description,
@@ -1587,9 +1594,8 @@ RELEASE-DATE GROUNDING (mandatory check for any topic that names or implies a mo
                     category_breakdown=dict(category_counts),
                     representative_items=evidence_ids,
                     importance=topic_data.get('importance', 50),
-                    business_implication=sanitize_editorial_text(
-                        topic_data.get('business_implication', '')
-                    ),
+                    business_implication=business_implication,
+                    business_implication_html=self._markdown_links_to_html(business_implication),
                     trend_velocity=sanitize_editorial_text(topic_data.get('trend_velocity', '')),
                 ))
 

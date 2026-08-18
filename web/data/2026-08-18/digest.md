@@ -2,30 +2,30 @@
 
 ## Executive Summary
 #### Executive Briefing
-- **Off-balance-sheet AI infrastructure now rivals sovereign credit.** [OpenAI's $105B Ohio lease](/?date=2026-08-18&category=news#item-ca02b4f474cc) plus [Nvidia's $1.5B SoftBank stake](/?date=2026-08-18&category=news#item-e57043c16a2e) bring nine-firm commitments near $3T, with Microsoft's chip claims under probe — stress-test frontier exposure before credit repricing hits. [ca02b4f474cc, e57043c16a2e, 6bd0f5c7dc33]
-- **Enterprise willingness-to-pay has inflected.** [Anthropic's $65B annualized run rate](/?date=2026-08-18&category=news#item-d9a26ee02a9d), adding $18B in two months, validates frontier-model procurement economics and accelerates CIO consolidation through 2027. [d9a26ee02a9d]
-- **IP and AI-code liability are operational risks.** Amazon's destructive rare-book scanning gives first hard training-data evidence; [Copilot Autofix's Snowflake Jira breach](/?date=2026-08-18&category=news#item-9b5bd1871bc8) establishes AI-generated code as a CI/CD attack surface — deploy an AI risk twin within two quarters. [d84928ee5634, 9b5bd1871bc8]
-- **Inference is bifurcating across hyperscaler, neocloud, and edge.** Groq's $350M Series A at $3.5B plus unsloth/needle trending give latency- and sovereignty-sensitive workloads credible alternatives — lock capacity now before rerating. [c02f2ac04f93, 8acdb0477bef, 8e5ef86b8945]
+- **Off-balance-sheet AI infrastructure now rivals sovereign credit.** [OpenAI's $105B Ohio lease](/?date=2026-08-18&category=news#item-ca02b4f474cc) plus [Nvidia's $1.5B SoftBank stake](/?date=2026-08-18&category=news#item-e57043c16a2e) bring nine-firm commitments near $3T, with Microsoft's chip claims under probe — stress-test frontier exposure before credit repricing hits.
+- **Enterprise willingness-to-pay has inflected.** [Anthropic's $65B annualized run rate](/?date=2026-08-18&category=news#item-d9a26ee02a9d), adding $18B in two months, validates frontier-model procurement economics and accelerates CIO consolidation through 2027.
+- **IP and AI-code liability are operational risks.** Amazon's destructive rare-book scanning gives first hard training-data evidence; [Copilot Autofix's Snowflake Jira breach](/?date=2026-08-18&category=news#item-9b5bd1871bc8) establishes AI-generated code as a CI/CD attack surface — deploy an AI risk twin within two quarters.
+- **Inference is bifurcating across hyperscaler, neocloud, and edge.** Groq's $350M Series A at $3.5B plus unsloth/needle trending give latency- and sovereignty-sensitive workloads credible alternatives — lock capacity now before rerating.
 
 #### Safety & Regulation
-- **AI-generated code is deploy-time liability, not feature.** The [Copilot Autofix exploit of Snowflake's Jira](/?date=2026-08-18&category=news#item-9b5bd1871bc8) confirms AI patches can introduce CI/CD vulnerabilities — mandate human security review before AI code reaches production. [9b5bd1871bc8]
-- **Training-data IP exposure crossed from allegation to evidence.** Amazon's AirTag-traced rare-book destruction gives plaintiffs a factual record; require provenance audits in every procurement contract. [d84928ee5634]
-- **RLVR pipelines carry hidden alignment costs.** [Amplified deliberative behaviors diverge from calibration](/?date=2026-08-18&category=research#item-f6424914a25a); [verifier-induced reshaping narrows response diversity](/?date=2026-08-18&category=research#item-ebba81a35c65) — reward shaping must preserve variance, not just peak scores. [f6424914a25a, ebba81a35c65]
+- **AI-generated code is deploy-time liability, not feature.** The [Copilot Autofix exploit of Snowflake's Jira](/?date=2026-08-18&category=news#item-9b5bd1871bc8) confirms AI patches can introduce CI/CD vulnerabilities — mandate human security review before AI code reaches production.
+- **Training-data IP exposure crossed from allegation to evidence.** Amazon's AirTag-traced rare-book destruction gives plaintiffs a factual record; require provenance audits in every procurement contract.
+- **RLVR pipelines carry hidden alignment costs.** [Amplified deliberative behaviors diverge from calibration](/?date=2026-08-18&category=research#item-f6424914a25a); [verifier-induced reshaping narrows response diversity](/?date=2026-08-18&category=research#item-ebba81a35c65) — reward shaping must preserve variance, not just peak scores.
 
 #### Research Highlights
-- **Reasoning RL optimizes the wrong proxy.** Frontier thinking models amplify visible behaviors while calibration gains lag, and verifier reshaping homogenizes outputs — rebalance training toward solution diversity. [f6424914a25a, ebba81a35c65]
-- **[Modular cognitive architecture emerges](/?date=2026-08-18&category=research#item-e58bc70eaf5c) spontaneously.** Circuit analyses show LLMs develop brain-mirroring specialization; [Intern-S2-Mobius](/?date=2026-08-18&category=research#item-19d432aee546) formalizes knowledge/reasoning decoupling — architectural compression is procurement-ready. [e58bc70eaf5c, 19d432aee546]
-- **[Long-horizon agents fail on novelty, not execution](/?date=2026-08-18&category=research#item-2bbe92d78524).** Engineering optimization succeeds while stability and prior-experience reuse degrade with horizon — favor scaffolding over autonomy claims. [2bbe92d78524]
+- **Reasoning RL optimizes the wrong proxy.** Frontier thinking models amplify visible behaviors while calibration gains lag, and verifier reshaping homogenizes outputs — rebalance training toward solution diversity.
+- **[Modular cognitive architecture emerges](/?date=2026-08-18&category=research#item-e58bc70eaf5c) spontaneously.** Circuit analyses show LLMs develop brain-mirroring specialization; [Intern-S2-Mobius](/?date=2026-08-18&category=research#item-19d432aee546) formalizes knowledge/reasoning decoupling — architectural compression is procurement-ready.
+- **[Long-horizon agents fail on novelty, not execution](/?date=2026-08-18&category=research#item-2bbe92d78524).** Engineering optimization succeeds while stability and prior-experience reuse degrade with horizon — favor scaffolding over autonomy claims.
 
 #### Trending Repositories
-- **Content automation pipeline has reached viability.** [MoneyPrinterTurbo](/?date=2026-08-18&category=github_trending#item-098efe0dd09d) and [OpenCut](/?date=2026-08-18&category=github_trending#item-1df29669a1e8) deliver end-to-end AI video production — reassess creative-services and localization budgets. [098efe0dd09d, 1df29669a1e8]
-- **Edge AI is cost-competitive for sovereignty-sensitive workloads.** unsloth fine-tuning and [cactus-compute/needle](/?date=2026-08-18&category=github_trending#item-8e5ef86b8945) together make on-device inference economic — pilot before API lock-in. [8acdb0477bef, 8e5ef86b8945]
-- **AI-native security and modular vision middleware are enterprise-grade.** Strix and modlens compress pen-testing cycles and retrofit vision onto text models — add to RFPs. [450c713e553a, b19cb4bce072]
+- **Content automation pipeline has reached viability.** [MoneyPrinterTurbo](/?date=2026-08-18&category=github_trending#item-098efe0dd09d) and [OpenCut](/?date=2026-08-18&category=github_trending#item-1df29669a1e8) deliver end-to-end AI video production — reassess creative-services and localization budgets.
+- **Edge AI is cost-competitive for sovereignty-sensitive workloads.** unsloth fine-tuning and [cactus-compute/needle](/?date=2026-08-18&category=github_trending#item-8e5ef86b8945) together make on-device inference economic — pilot before API lock-in.
+- **AI-native security and modular vision middleware are enterprise-grade.** Strix and modlens compress pen-testing cycles and retrofit vision onto text models — add to RFPs.
 
 #### Signals to Watch
-- **Specialized neoclouds will rerate next.** Groq's $3.5B valuation and 54MW→200MW expansion signal inference capacity is becoming a strategic chokepoint — secure commitments within 60 days. [c02f2ac04f93, d5f304d5227f]
-- **Agent architecture is a board-level choice.** Mollick's local/ephemeral/persistent paradigms and Wei's scaling rebuttal force explicit posture on data residency and capex within two quarters. [7c28ed7f28f8, 8a9f931f86ff]
-- **$3T in off-balance-sheet AI commitments is unpriced risk.** Combined [OpenAI](/?date=2026-08-18&category=news#item-ca02b4f474cc)/[Nvidia/SoftBank](/?date=2026-08-18&category=news#item-e57043c16a2e) exposure may trigger credit and equity repricing — monitor counterparties now. [ca02b4f474cc, e57043c16a2e]
+- **Specialized neoclouds will rerate next.** Groq's $3.5B valuation and 54MW→200MW expansion signal inference capacity is becoming a strategic chokepoint — secure commitments within 60 days.
+- **Agent architecture is a board-level choice.** Mollick's local/ephemeral/persistent paradigms and Wei's scaling rebuttal force explicit posture on data residency and capex within two quarters.
+- **$3T in off-balance-sheet AI commitments is unpriced risk.** Combined [OpenAI](/?date=2026-08-18&category=news#item-ca02b4f474cc)/[Nvidia/SoftBank](/?date=2026-08-18&category=news#item-e57043c16a2e) exposure may trigger credit and equity repricing — monitor counterparties now.
 
 ## 🔬 Research Papers
 1. **[Amplified Does Not Mean Predictive: Reasoning Behaviors in Thinking Models](https://huggingface.co/papers/2608.13760)** — neutral

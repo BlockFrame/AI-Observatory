@@ -79,7 +79,8 @@ Source lists are configuration-driven:
 
 - bulk map/filter: NVIDIA Nemotron, then Gemini Flash Lite fallbacks;
 - ranking and synthesis: OpenRouter paid GLM 5.2, then Gemini 3.6, NVIDIA GLM, Gemini 3.5, and Flash Lite;
-- link enrichment: deterministic first, then a caller-specific NVIDIA GLM route and Gemini fallbacks.
+- link enrichment: evidence-ID-driven deterministic matching first, then an isolated
+  OpenRouter MiniMax fallback that receives only still-uncovered evidence.
 
 Routes may select both analysis profiles and `caller_patterns`. Retryable transport, timeout, rate-limit, and server failures can fail over. Prompt/schema errors must be handled by the caller according to the task’s safety policy.
 

@@ -20,6 +20,7 @@ import re
 
 from .llm_client import AnthropicClient, AsyncAnthropicClient, ThinkingLevel, LLMResponse
 from .analysis_schema import sanitize_batch_result, sanitize_ranking_result
+from .editorial_guard import sanitize_editorial_text
 from .prompt_security import (
     DATA_POINTER,
     build_fenced_user_message,
@@ -1249,10 +1250,14 @@ class BaseAnalyzer(ABC):
             # A syntactically repaired tail is safe to store, but it is not a
             # complete executive briefing. Force the dedicated summary call.
             category_summary = ''
-        original_category_summary = category_summary
-        category_summary = await self._ensure_category_summary(category_summary, top_items)
-        if category_summary != original_category_summary:
-            category_summary_evidence = []
+        category_summary, category_summary_evidence = (
+            await self._ensure_category_summary_with_evidence(
+                category_summary,
+                category_summary_evidence,
+                top_items,
+                valid_item_ids={item.item.id for item in top_candidates},
+            )
+        )
 
         valid_item_ids = {item.item.id for item in top_candidates}
         category_summary_evidence = self._validated_summary_evidence(
@@ -1296,30 +1301,60 @@ class BaseAnalyzer(ABC):
             validated.append(ids)
         return validated
 
-    async def _ensure_category_summary(self, category_summary: str, top_items: List[AnalyzedItem]) -> str:
-        """Ensure a compact, consistently structured category summary exists."""
+    async def _ensure_category_summary_with_evidence(
+        self,
+        category_summary: str,
+        category_summary_evidence: Any,
+        top_items: List[AnalyzedItem],
+        valid_item_ids: Optional[Set[str]] = None,
+    ) -> Tuple[str, List[List[str]]]:
+        """Ensure compact category copy and its ordered evidence map exist."""
         original_summary = (category_summary or "").strip()
+        original_valid_item_ids = valid_item_ids or {
+            item.item.id for item in top_items
+        }
+        original_evidence = self._validated_summary_evidence(
+            original_summary,
+            category_summary_evidence,
+            original_valid_item_ids,
+        )
         is_generic = original_summary.lower().startswith(("analysis complete", "analysis failed"))
-        if not is_generic and is_scan_first_category_summary(original_summary):
-            return original_summary
+        if (
+            not is_generic
+            and is_scan_first_category_summary(original_summary)
+            and original_evidence
+        ):
+            return original_summary, original_evidence
 
         if original_summary and not is_generic:
+            reason = (
+                "missing a valid evidence map"
+                if is_scan_first_category_summary(original_summary)
+                else f"too short ({len(original_summary)} chars)"
+            )
             logger.warning(
-                f"Category summary for {self.category} was too short "
-                f"({len(original_summary)} chars); regenerating with the dedicated quality route"
+                f"Category summary for {self.category} was {reason}; "
+                "regenerating with the dedicated quality route"
             )
 
         if not top_items or not self.async_client:
-            return category_summary or f"Analysis complete for {self.category}."
+            return (
+                category_summary or f"Analysis complete for {self.category}.",
+                original_evidence,
+            )
 
         summary_items = [
             item for item in top_items
             if not self._exclude_from_summaries(item)
         ][:8]
         if not summary_items:
-            return original_summary or f"Analysis complete for {self.category}."
+            return (
+                original_summary or f"Analysis complete for {self.category}.",
+                original_evidence,
+            )
+        generated_valid_item_ids = {item.item.id for item in summary_items}
         items_text = "\n".join(
-            f"- **{item.item.title}**: {item.summary}"
+            f"- [ID: {item.item.id}] **{item.item.title}**: {item.summary}"
             for item in summary_items
         )
 
@@ -1327,12 +1362,18 @@ class BaseAnalyzer(ABC):
             f"You are an enterprise AI strategy advisor writing an executive briefing for the '{self.category.upper()}' category. "
             "Use a rigorous, decision-oriented, top-tier strategy-consulting style, but never mention a consulting firm or internal writing persona in the output.\n\n"
             f"Top Items in {self.category.upper()} Today:\n{items_text}\n\n"
-            "Use exactly this compact Markdown structure:\n"
+            "Return one JSON object only with exactly these keys: "
+            '{"category_summary":"complete Markdown summary",'
+            '"category_summary_evidence":[["item-id-for-bullet-1"],["item-id-for-bullet-2"]]}.\n'
+            "The category_summary must use exactly this compact Markdown structure:\n"
             "### Executive Signal\n- One decision-relevant synthesis bullet, maximum 45 words.\n"
             "### Priority Developments\n- 3-5 bullets, maximum 40 words each; synthesize related items and explain why they matter.\n"
             "### Leadership Implications\n- 1-2 action-oriented bullets, maximum 35 words each.\n"
             "Every section body must use bullets. Do not write prose paragraphs or links. "
-            "Keep the complete summary below 350 words and use bold selectively."
+            "Keep the complete summary below 350 words and use bold selectively. "
+            "category_summary_evidence must have exactly one ordered array per visible bullet, "
+            "with 1-3 exact IDs from the supplied items that directly support that bullet. "
+            "Never place IDs inside category_summary."
         )
 
         try:
@@ -1345,25 +1386,57 @@ class BaseAnalyzer(ABC):
                 # after the thinking trace consumed the rest.
                 max_tokens=4096,
             )
-            content = (response.content or "").strip()
+            parsed = self._parse_json_response(response.content or "")
+            content = sanitize_editorial_text(
+                parsed.get("category_summary", "") if isinstance(parsed, dict) else ""
+            ).strip()
+            evidence = self._validated_summary_evidence(
+                content,
+                parsed.get("category_summary_evidence", [])
+                if isinstance(parsed, dict) else [],
+                generated_valid_item_ids,
+            )
             if response.stop_reason == "max_tokens":
                 logger.warning(
                     f"Fallback category summary for {self.category} exhausted its output budget"
                 )
             if (
                 is_scan_first_category_summary(content)
+                and evidence
                 and response.stop_reason != "max_tokens"
             ):
-                return content
+                return content, evidence
             if content:
                 logger.warning(
-                    f"Fallback category summary for {self.category} was too short "
-                    f"({len(content)} chars); preserving the prior summary"
+                    f"Fallback category summary for {self.category} did not satisfy "
+                    "the copy/evidence contract; preserving the prior summary"
                 )
         except Exception as e:
             logger.warning(f"Fallback category summary generation failed for {self.category}: {e}")
 
-        return original_summary or f"Analysis complete for {self.category}."
+        return (
+            original_summary or f"Analysis complete for {self.category}.",
+            original_evidence,
+        )
+
+    async def _ensure_category_summary(
+        self,
+        category_summary: str,
+        top_items: List[AnalyzedItem],
+    ) -> str:
+        """Backward-compatible copy-only wrapper used by external callers."""
+        original_summary = (category_summary or "").strip()
+        is_generic = original_summary.lower().startswith(
+            ("analysis complete", "analysis failed")
+        )
+        if not is_generic and is_scan_first_category_summary(original_summary):
+            return original_summary
+        summary, _ = await self._ensure_category_summary_with_evidence(
+            category_summary,
+            [],
+            top_items,
+        )
+        return summary
 
     def _sanitize_truncated_summary(self, summary: str) -> str:
         """Best-effort cleanup of a category summary cut off mid-generation.

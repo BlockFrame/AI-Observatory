@@ -72,11 +72,12 @@ class LinkEnricher:
         """
         Enrich all summary text with internal links.
 
-        Runs three sequential enrichment batches so provider health can be
-        re-evaluated between calls and the free-tier RPD budget is preserved.
+        Runs three sequential document groups. Each group is enriched locally
+        first; MiniMax is called only for evidence references whose wording
+        cannot be attached safely by the deterministic matcher.
         - Executive summary: can link to items from ANY category
         - Category summaries: can ONLY link to items from that category
-        - Topic descriptions: can link to items from ANY category
+        - Topic descriptions and business impacts: can link to items from ANY category
 
         Args:
             executive_summary: The executive summary text.
@@ -139,26 +140,38 @@ class LinkEnricher:
         topic_documents = []
         for i, topic in enumerate(top_topics):
             description = topic.description if hasattr(topic, 'description') else topic.get('description', '')
-            if description:
-                topic_name = topic.name if hasattr(topic, 'name') else topic.get('name', 'unknown')
-                representative_ids = (
-                    topic.representative_items if hasattr(topic, 'representative_items')
-                    else topic.get('representative_items', [])
-                )
-                topic_items = [
-                    item for item in all_items if item.get('id') in set(representative_ids)
-                ]
+            business_implication = (
+                topic.business_implication if hasattr(topic, 'business_implication')
+                else topic.get('business_implication', '')
+            )
+            topic_name = topic.name if hasattr(topic, 'name') else topic.get('name', 'unknown')
+            representative_ids = (
+                topic.representative_items if hasattr(topic, 'representative_items')
+                else topic.get('representative_items', [])
+            )
+            topic_items = [
+                item for item in all_items if item.get('id') in set(representative_ids)
+            ]
+            available_items = topic_items or all_items
+            required_item_ids = [
+                str(item_id) for item_id in representative_ids
+                if any(str(item.get("id")) == str(item_id) for item in available_items)
+            ]
+            for field, text in (
+                ("description", description),
+                ("business_implication", business_implication),
+            ):
+                if not text:
+                    continue
                 topic_documents.append({
-                    "id": f"topic:{i}",
+                    "id": f"topic:{i}" if field == "description" else f"topic:{i}:business",
                     "topic_index": i,
+                    "topic_field": field,
                     "topic_name": topic_name,
-                    "text": description,
-                    "items": topic_items or all_items,
+                    "text": text,
+                    "items": available_items,
                     "evidence_by_bullet": [],
-                    "required_item_ids": [
-                        str(item_id) for item_id in representative_ids
-                        if any(str(item.get("id")) == str(item_id) for item in (topic_items or all_items))
-                    ],
+                    "required_item_ids": required_item_ids,
                     "max_links_per_block": 6,
                 })
 
@@ -194,12 +207,14 @@ class LinkEnricher:
         for document in topic_documents:
             result = enriched_by_document.get(document["id"], document["text"])
             topic = enriched_topics[document["topic_index"]]
-            if hasattr(topic, 'description'):
-                topic.description = result
-                topic.description_html = self._markdown_links_to_html(result)
+            field = document.get("topic_field", "description")
+            html_field = f"{field}_html"
+            if hasattr(topic, field):
+                setattr(topic, field, result)
+                setattr(topic, html_field, self._markdown_links_to_html(result))
             else:
-                topic['description'] = result
-                topic['description_html'] = self._markdown_links_to_html(result)
+                topic[field] = result
+                topic[html_field] = self._markdown_links_to_html(result)
 
         return enriched_exec, enriched_categories, enriched_topics
 
@@ -208,47 +223,37 @@ class LinkEnricher:
         documents: List[Dict[str, Any]],
         batch_name: str,
     ) -> Dict[str, str]:
-        """Enrich a document batch through Gemini, then targeted fallbacks.
+        """Enrich evidence deterministically, then ask MiniMax only for misses.
 
-        The model selects verbatim spans only; Python inserts the Markdown.
-        This keeps output compact, prevents prose rewrites and lets a second
-        provider work exclusively on blocks the first provider left uncovered.
+        Evidence IDs are authoritative. Python first links explicit canonical
+        names and title fragments without any model call. MiniMax receives only
+        the still-missing evidence IDs and may select verbatim spans; Python
+        remains responsible for inserting and validating the Markdown.
         """
         prepared = self._prepare_enrichment_documents(documents)
         if not prepared:
             return {document["id"]: document["text"] for document in documents}
 
         enriched = {document["id"]: document["text"] for document in documents}
-        stages = (
-            ("primary", f"link_enricher.batch.{batch_name}"),
-            ("gemini_fallback", f"link_enricher_fallback.batch.{batch_name}"),
-            ("paid_fallback", f"link_enricher_paid.batch.{batch_name}"),
+        enriched, deterministic_links = self._apply_deterministic_selections(
+            enriched, prepared
         )
-        remaining = prepared
-        for stage_name, caller in stages:
-            if not remaining:
-                break
+        remaining = self._uncovered_documents(prepared, enriched)
+        logger.info(
+            "  %s deterministic pass added %s link(s); %s document(s) need MiniMax",
+            batch_name,
+            deterministic_links,
+            len(remaining),
+        )
+
+        if remaining:
             selections = await self._request_link_selections(
                 remaining,
-                caller=caller,
-                stage_name=stage_name,
+                caller=f"link_enricher_paid.batch.{batch_name}",
+                stage_name="minimax_fallback",
             )
             if selections:
                 enriched = self._apply_link_selections(enriched, remaining, selections)
-            remaining = self._uncovered_documents(remaining, enriched)
-
-        # Exact canonical/title matches remain a zero-cost final fallback. It
-        # never appends source lists and never links generic keyword overlap.
-        for document in prepared:
-            document_id = document["id"]
-            if not self._document_has_uncovered_blocks(document, enriched[document_id]):
-                continue
-            enriched[document_id] = self._inject_per_block_links(
-                enriched[document_id],
-                document["items"],
-                document_id,
-                evidence_by_bullet=document.get("evidence_by_bullet"),
-            )
 
         total_blocks = sum(len(document["blocks"]) for document in prepared)
         uncovered = sum(
@@ -256,7 +261,7 @@ class LinkEnricher:
             for document in prepared
         )
         logger.info(
-            "  %s enrichment coverage: %s/%s blocks linked; %s published without links",
+            "  %s evidence coverage: %s/%s blocks fully covered; %s incomplete",
             batch_name,
             total_blocks - uncovered,
             total_blocks,
@@ -316,11 +321,52 @@ class LinkEnricher:
                     # specifically covers legacy reports and sanitized News.
                     "allowed_item_ids": structured_ids or sorted(item_ids),
                     "required_item_ids": structured_ids,
-                    "max_links": int(source.get("max_links_per_block") or 4),
+                    # Evidence cardinality, not an editorial hard cap, controls
+                    # 1:N coverage. Legacy blocks without evidence retain a
+                    # generous safety bound equal to their candidate pool.
+                    "max_links": max(
+                        len(structured_ids),
+                        len(document_required_ids),
+                        len(structured_ids or document_required_ids or item_ids),
+                    ),
                 })
             if blocks:
                 prepared.append({**source, "items": items, "blocks": blocks})
         return prepared
+
+    def _apply_deterministic_selections(
+        self,
+        enriched: Dict[str, str],
+        documents: List[Dict[str, Any]],
+    ) -> Tuple[Dict[str, str], int]:
+        """Link unambiguous evidence names without semantic guessing."""
+        added = 0
+        for document in documents:
+            document_id = document["id"]
+            lines = enriched[document_id].splitlines()
+            item_by_id = {
+                str(item.get("id")): item
+                for item in document["items"]
+                if item.get("id")
+            }
+            for block in document["blocks"]:
+                line_number = block["line"]
+                if line_number >= len(lines):
+                    continue
+                candidates = [
+                    item_by_id[item_id]
+                    for item_id in block["allowed_item_ids"]
+                    if item_id in item_by_id
+                ]
+                before = lines[line_number].count("](/?date=")
+                lines[line_number] = self._inject_explicit_item_links(
+                    lines[line_number],
+                    candidates,
+                    evidence_bound=bool(block.get("required_item_ids")),
+                )
+                added += lines[line_number].count("](/?date=") - before
+            enriched[document_id] = "\n".join(lines)
+        return enriched, added
 
     async def _request_link_selections(
         self,
@@ -417,7 +463,11 @@ class LinkEnricher:
             if not block or not item or item_id not in block["allowed_item_ids"]:
                 continue
             words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._/'’-]*", span)
-            if not (1 <= len(words) <= 12) or not self._span_is_grounded_in_item(span, item):
+            evidence_bound = item_id in (block.get("required_item_ids") or [])
+            if not (1 <= len(words) <= 12) or not (
+                self._span_is_grounded_in_item(span, item)
+                or (evidence_bound and self._span_is_specific_anchor(span))
+            ):
                 continue
             current_line = enriched[document_id].splitlines()[line_number]
             match = self._find_unlinked_span(current_line, span)
@@ -425,8 +475,7 @@ class LinkEnricher:
             if not match or key in seen or f"#item-{item_id}" in current_line:
                 continue
             entries = accepted_by_line.setdefault((document_id, line_number), [])
-            existing_links = current_line.count("](/?date=")
-            if existing_links + len(entries) >= block["max_links"]:
+            if len(entries) >= block["max_links"]:
                 continue
             if any(not (match.end() <= start or match.start() >= end) for start, end, _, _ in entries):
                 continue
@@ -447,6 +496,27 @@ class LinkEnricher:
         return enriched
 
     @staticmethod
+    def _span_is_specific_anchor(span: str) -> bool:
+        """Accept a contextual phrase for an already-authoritative evidence ID."""
+        words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._/'’-]*", span)
+        normalized = [word.casefold().strip(".'’") for word in words]
+        edge_stopwords = {
+            "a", "an", "and", "as", "at", "by", "for", "from", "in", "into",
+            "of", "on", "or", "the", "to", "with",
+        }
+        generic = edge_stopwords | {
+            "agent", "agents", "best", "important", "model", "models", "most",
+            "news", "research", "source", "system", "systems", "update",
+        }
+        meaningful = [word for word in normalized if len(word) >= 3 and word not in generic]
+        return bool(
+            2 <= len(words) <= 12
+            and normalized[0] not in edge_stopwords
+            and normalized[-1] not in edge_stopwords
+            and len(meaningful) >= 2
+        )
+
+    @staticmethod
     def _find_unlinked_span(line: str, span: str) -> Optional[re.Match]:
         """Find a case-insensitive span that is not already inside a link."""
         linked_ranges = [
@@ -463,12 +533,31 @@ class LinkEnricher:
         documents: List[Dict[str, Any]],
         enriched: Dict[str, str],
     ) -> List[Dict[str, Any]]:
-        """Return copies containing only blocks still lacking any source link."""
+        """Return only blocks and evidence IDs still missing a source link."""
         remaining = []
         for document in documents:
-            blocks = self._uncovered_blocks(document, enriched[document["id"]])
+            text = enriched[document["id"]]
+            lines = text.splitlines()
+            blocks = []
+            for block in self._uncovered_blocks(document, text):
+                line = lines[block["line"]] if block["line"] < len(lines) else ""
+                required_ids = block.get("required_item_ids") or []
+                missing_ids = [
+                    item_id for item_id in required_ids
+                    if f"#item-{item_id}" not in line
+                ]
+                if missing_ids:
+                    blocks.append({
+                        **block,
+                        "text": line,
+                        "allowed_item_ids": missing_ids,
+                        "required_item_ids": missing_ids,
+                        "max_links": len(missing_ids),
+                    })
+                elif not required_ids and not self._has_internal_links(line):
+                    blocks.append({**block, "text": line})
             if blocks:
-                remaining.append({**document, "text": enriched[document["id"]], "blocks": blocks})
+                remaining.append({**document, "text": text, "blocks": blocks})
         return remaining
 
     def _uncovered_blocks(self, document: Dict[str, Any], text: str) -> List[Dict[str, Any]]:
@@ -1030,7 +1119,11 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
                 [item_by_id[item_id] for item_id in structured_ids if item_id in item_by_id]
                 if structured_ids else items
             )
-            lines[index] = self._inject_explicit_item_links(line, candidates)
+            lines[index] = self._inject_explicit_item_links(
+                line,
+                candidates,
+                evidence_bound=bool(structured_ids),
+            )
 
         result = self._sanitize_internal_link_labels("\n".join(lines))
         logger.info("  %s: added only inline, explicitly grounded evidence links", context_name)
@@ -1052,6 +1145,7 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         self,
         block: str,
         items: List[Dict[str, Any]],
+        evidence_bound: bool = False,
     ) -> str:
         """Link collected items named verbatim in a visible block.
 
@@ -1060,14 +1154,37 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         or repository the editorial text explicitly cites.
         """
         enriched = block
+        phrases_by_id: Dict[str, List[str]] = {}
+        phrase_owners: Dict[str, set] = {}
         for item in items:
-            item_id = (item.get("id") or "").strip()
-            category = (item.get("category") or "").strip()
+            item_id = str(item.get("id") or "").strip()
+            title = normalize_untrusted_text(item.get("title") or "").strip()
+            if not item_id or not title:
+                continue
+            phrases = self._explicit_item_phrases(title, evidence_bound=evidence_bound)
+            phrases_by_id[item_id] = phrases
+            for phrase in phrases:
+                phrase_owners.setdefault(phrase.casefold(), set()).add(item_id)
+
+        for item in items:
+            item_id = str(item.get("id") or "").strip()
+            category = str(item.get("category") or "").strip()
             title = normalize_untrusted_text(item.get("title") or "").strip()
             if not item_id or not category or f"#item-{item_id}" in enriched or not title:
                 continue
 
-            phrase = self._find_explicit_item_phrase(title, enriched)
+            phrase = next(
+                (
+                    candidate for candidate in phrases_by_id.get(item_id, [])
+                    if len(phrase_owners.get(candidate.casefold(), ())) == 1
+                    and re.search(
+                        r"(?<![\w.\-])" + re.escape(candidate) + r"(?![\w.\-])",
+                        enriched,
+                        re.I,
+                    )
+                ),
+                None,
+            )
             if not phrase:
                 continue
             url = f"/?date={self.date}&category={category}#item-{item_id}"
@@ -1081,8 +1198,11 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
         return enriched
 
     @staticmethod
-    def _find_explicit_item_phrase(title: str, text: str) -> Optional[str]:
-        """Find the most specific literal title fragment present in ``text``."""
+    def _explicit_item_phrases(
+        title: str,
+        evidence_bound: bool = False,
+    ) -> List[str]:
+        """Return specific title fragments, longest and safest first."""
         repository = re.search(r"(?<![\w.-])([\w.-]+/[\w.-]+)(?![\w.-])", title)
         candidates = [repository.group(1)] if repository else []
         if repository:
@@ -1091,18 +1211,58 @@ Remember: The anchor MUST be #item-ID (with item- prefix). Link specific actions
                 candidates.append(repository_name)
 
         words = re.findall(r"[A-Za-z0-9][A-Za-z0-9+._'’-]*", title)
-        # Longest fragments first. Two-word lexical overlap ("LLM APIs",
-        # "real-time clinical") is too ambiguous across a news corpus and was
-        # the source of contextually wrong links; require three words unless a
-        # repository identifier supplies an unambiguous canonical name.
-        for size in range(min(6, len(words)), 2, -1):
+        stopwords = {
+            "a", "an", "and", "are", "as", "at", "by", "for", "from", "in",
+            "into", "is", "it", "its", "new", "of", "on", "or", "the", "to",
+            "with", "agent", "agents", "ai", "framework", "model", "models",
+            "news", "paper", "platform", "research", "system", "systems",
+            "update",
+        }
+        # Organisation names alone identify a publisher, not the specific item.
+        # A surrounding product/event phrase can still be linked deterministically.
+        organisation_only = {
+            "alibaba", "amazon", "anthropic", "apple", "aws", "google", "meta",
+            "microsoft", "nvidia", "openai", "stripe",
+        }
+
+        # Evidence IDs make two-word overlap safe: unlike the former corpus-wide
+        # keyword matcher, these phrases are considered only for sources already
+        # declared as supporting this exact block. Legacy/unbound matching still
+        # requires at least three words to avoid contextual false positives.
+        minimum_size = 2 if evidence_bound else 3
+        for size in range(min(8, len(words)), minimum_size - 1, -1):
             for start in range(len(words) - size + 1):
                 phrase_words = words[start:start + size]
-                if not any(len(word) >= 5 or word[:1].isupper() for word in phrase_words):
+                meaningful = [word for word in phrase_words if word.casefold() not in stopwords]
+                if not meaningful:
                     continue
                 candidates.append(" ".join(phrase_words))
 
+        if evidence_bound:
+            for word in words:
+                normalized = word.casefold().strip(".'’")
+                if (
+                    len(normalized) >= 4
+                    and normalized not in stopwords
+                    and normalized not in organisation_only
+                ):
+                    candidates.append(word)
+
+        # Preserve ranking while removing duplicates caused by repository/title
+        # overlap and case-only variants.
+        unique = []
+        seen = set()
         for candidate in candidates:
+            key = candidate.casefold()
+            if key not in seen:
+                seen.add(key)
+                unique.append(candidate)
+        return unique
+
+    @staticmethod
+    def _find_explicit_item_phrase(title: str, text: str) -> Optional[str]:
+        """Backward-compatible helper used by focused regression tests."""
+        for candidate in LinkEnricher._explicit_item_phrases(title):
             if re.search(
                 r"(?<![\w.\-])" + re.escape(candidate) + r"(?![\w.\-])",
                 text,

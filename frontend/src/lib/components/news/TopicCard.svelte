@@ -49,9 +49,9 @@
 	{#if topic.business_implication}
 		<div class="mb-5 rounded-xl border border-primary/20 bg-primary/5 p-4">
 			<p class="mb-1 text-[11px] font-bold uppercase tracking-wider text-primary">Business Impact</p>
-			<p class="text-sm leading-relaxed text-white/90">
-				{topic.business_implication}
-			</p>
+			<div class="prose-summary text-sm leading-relaxed text-white/90">
+				{@html safeHtml(topic.business_implication_html || topic.business_implication)}
+			</div>
 		</div>
 	{/if}
 

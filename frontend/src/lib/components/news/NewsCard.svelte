@@ -12,6 +12,8 @@
 	export let date: string;
 	export let showCategory: boolean = false;
 	export let animationIndex: number = 0;
+	export let anchor: boolean = true;
+	export let showActions: boolean = true;
 
 	let expanded = false;
 	let copied = false;
@@ -45,7 +47,7 @@
 </script>
 
 <article
-	id="item-{item.id}"
+	id={anchor ? `item-${item.id}` : undefined}
 	class="card motion-card group {importanceTierClass}"
 	style="scroll-margin-top: 5rem; --motion-delay: {Math.min(animationIndex, 8) * 45}ms;"
 >
@@ -157,22 +159,24 @@
 		</div>
 	{/if}
 
-	<!-- Actions -->
-	<footer class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
-		<a
-			href={safeUrl}
-			target="_blank"
-			rel="noopener noreferrer"
-			class="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white"
-		>
-			{category === 'research' ? 'View Research' : category === 'github_trending' ? 'View Repository' : 'Read More'}
-			<span aria-hidden="true">&rarr;</span>
-		</a>
-		<button
-			on:click={copyShareLink}
-			class="material-chip transition-colors hover:border-primary/40 hover:text-white"
-		>
-			{copied ? 'Copied!' : 'Share'}
-		</button>
-	</footer>
+	{#if showActions}
+		<!-- Actions -->
+		<footer class="flex items-center justify-between gap-4 border-t border-white/5 pt-4">
+			<a
+				href={safeUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2 text-sm font-bold text-primary transition-colors hover:text-white"
+			>
+				{category === 'research' ? 'View Research' : category === 'github_trending' ? 'View Repository' : 'Read More'}
+				<span aria-hidden="true">&rarr;</span>
+			</a>
+			<button
+				on:click={copyShareLink}
+				class="material-chip transition-colors hover:border-primary/40 hover:text-white"
+			>
+				{copied ? 'Copied!' : 'Share'}
+			</button>
+		</footer>
+	{/if}
 </article>

@@ -69,49 +69,11 @@ llm:
         - "orchestrator.topics"
         - "orchestrator.summary"
 
-    # Gemini 3.7 Flash is the canary/primary for three sequential exact-span
-    # batches. STANDARD reasoning leaves output room for valid JSON and a
-    # failed route can cool down before the next batch is assigned.
-    - id: "gemini-link-enrichment"
-      priority: 120
-      mode: "gemini"
-      api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.7-flash"
-      timeout: 180
-      max_output_tokens: 16384
-      max_concurrent_requests: 1
-      requests_per_minute: 15
-      tokens_per_minute: 250000
-      requests_per_day: 20
-      fallback_route_id: "gemini-link-enrichment-fallback-3.6"
-      allow_cross_route_fallback: false
-      profiles: ["STANDARD"]
-      caller_patterns:
-        - "link_enricher.*"
-
-    # Gemini 3.6 handles transport failover and a second pass containing only
-    # source references the primary left uncovered.
-    - id: "gemini-link-enrichment-fallback-3.6"
-      priority: 119
-      mode: "gemini"
-      api_key: "${GEMINI_API_KEY}"
-      model: "gemini-3.6-flash"
-      timeout: 180
-      max_output_tokens: 16384
-      max_concurrent_requests: 1
-      requests_per_minute: 15
-      tokens_per_minute: 250000
-      requests_per_day: 20
-      allow_cross_route_fallback: false
-      profiles: ["STANDARD"]
-      caller_patterns:
-        - "link_enricher.*"
-        - "link_enricher_fallback.*"
-
-    # Final paid safety net. It receives only blocks still uncovered after
-    # both Gemini passes, and remains isolated from unrelated callers.
+    # Paid semantic fallback for deterministic link enrichment. It receives
+    # only evidence IDs whose canonical name/title cannot be attached locally,
+    # and remains isolated from unrelated callers.
     - id: "openrouter-minimax-link-fallback"
-      priority: 118
+      priority: 120
       mode: "openrouter"
       api_key: "${OPENROUTER_API_KEY}"
       base_url: "https://openrouter.ai/api/v1"

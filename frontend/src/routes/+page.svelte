@@ -13,10 +13,12 @@
 	import ShaderBackground from '$lib/components/layout/ShaderBackground.svelte';
 	import TopicCard from '$lib/components/news/TopicCard.svelte';
 	import NewsList from '$lib/components/news/NewsList.svelte';
+	import LinkPreview from '$lib/components/news/LinkPreview.svelte';
 	import LoadingSpinner from '$lib/components/common/LoadingSpinner.svelte';
 	import ErrorMessage from '$lib/components/common/ErrorMessage.svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import { safeHtml } from '$lib/services/safeHtml';
+	import { registerItems } from '$lib/services/itemIndex';
 
 	// Data state
 	let summary: DaySummary | null = null;
@@ -60,6 +62,17 @@
 		hasExplicitDate && effectiveDate
 			? `/?date=${effectiveDate}&category=${category}`
 			: `/?category=${category}`;
+
+	// Internal-link previews resolve most evidence from the summary already in
+	// memory. Long-tail references are fetched lazily from their category file.
+	$: if (effectiveDate) {
+		if (summary) {
+			for (const category of Object.values(summary.categories || {})) {
+				registerItems(effectiveDate, category?.top_items);
+			}
+		}
+		if (categoryData) registerItems(effectiveDate, categoryData.items);
+	}
 
 	$: if (!$storeLoading && routeKey !== lastHandledRouteKey) {
 		lastHandledRouteKey = routeKey;
@@ -199,6 +212,8 @@
 		<title>AI Observatory</title>
 	{/if}
 </svelte:head>
+
+<LinkPreview fallbackDate={effectiveDate} />
 
 <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	{#if categoryParam && config}

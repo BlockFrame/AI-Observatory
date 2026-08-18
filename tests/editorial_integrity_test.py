@@ -1,5 +1,6 @@
 """Regression tests for publication integrity and evidence grounding."""
 
+import asyncio
 import json
 import os
 import subprocess
@@ -13,6 +14,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import yaml
 
 from agents.analysis_schema import sanitize_ranking_result
+from agents.analyzers.news_analyzer import NewsAnalyzer
 from agents.base import AnalyzedItem, CategoryReport, CollectedItem
 from agents.editorial_guard import contains_forbidden_brand, sanitize_editorial_text
 from agents.gatherers.link_follower import LinkFollower
@@ -214,6 +216,80 @@ class EditorialBrandGuardTests(unittest.TestCase):
 
         self.assertFalse(contains_forbidden_brand(cleaned))
         self.assertIn("Executive Briefing", cleaned)
+
+    def test_machine_evidence_suffixes_are_removed_from_visible_copy(self):
+        copy = (
+            "- Supported story. [ca02b4f474cc, e57043c16a2e]\n"
+            "- Supported repositories. ([098efe0dd09d], [1df29669a1e8])"
+        )
+
+        cleaned = sanitize_editorial_text(copy)
+
+        self.assertEqual(cleaned, "- Supported story.\n- Supported repositories.")
+
+    def test_evidence_cleanup_preserves_markdown_links_and_normal_brackets(self):
+        copy = (
+            "- [OpenAI](https://openai.com) shipped an update [enterprise].\n"
+            "- [Research](/?date=2026-08-18&category=research#item-ca02b4f474cc) matters."
+        )
+
+        self.assertEqual(sanitize_editorial_text(copy), copy)
+
+
+class CategorySummaryEvidenceRepairTests(unittest.TestCase):
+    def test_regeneration_keeps_the_new_ordered_evidence_map(self):
+        summary = """### Executive Signal
+- **Enterprise signal** now requires a grounded leadership response across procurement, operations, and risk management for production AI systems.
+
+### Priority Developments
+- **Current release** changes enterprise deployment economics and creates a concrete decision point for technology leaders this quarter.
+- **Operational controls** are becoming a material source of differentiation for organizations deploying AI into production workflows.
+- **Governance expectations** increasingly require evidence-backed decisions linked to current, inspectable source material.
+
+### Leadership Implications
+- Validate the release through a controlled pilot before expanding contractual commitments or changing the target architecture.
+- Assign accountable owners for technical, financial, and risk outcomes before moving the capability into production."""
+
+        class FakeClient:
+            async def call_with_thinking(self, **kwargs):
+                return SimpleNamespace(
+                    content=json.dumps({
+                        "category_summary": summary,
+                        "category_summary_evidence": [["news-1"]] * 6,
+                    }),
+                    stop_reason="stop",
+                )
+
+        item = AnalyzedItem(
+            item=CollectedItem(
+                id="news-1",
+                title="Current AI release",
+                content="Release details",
+                url="https://example.com/release",
+                author="Example",
+                published="2026-08-18T12:00:00Z",
+                source="Example",
+                source_type="rss",
+            ),
+            summary="The release changes enterprise deployment economics.",
+            importance_score=90,
+            reasoning="Material current release",
+            themes=["enterprise AI"],
+        )
+
+        async def run():
+            analyzer = NewsAnalyzer.__new__(NewsAnalyzer)
+            analyzer.async_client = FakeClient()
+            return await analyzer._ensure_category_summary_with_evidence(
+                summary,
+                [],
+                [item],
+            )
+
+        repaired_summary, evidence = asyncio.run(run())
+
+        self.assertEqual(repaired_summary, summary)
+        self.assertEqual(evidence, [["news-1"]] * 6)
 
     def test_prompt_sources_do_not_name_internal_style_brands(self):
         prompt_sources = [
