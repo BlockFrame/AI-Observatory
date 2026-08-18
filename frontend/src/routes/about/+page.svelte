@@ -1,6 +1,6 @@
 <script lang="ts">
 	import PageMeta from '$lib/components/seo/PageMeta.svelte';
-	import { SITE } from '$lib/config/site';
+	import { SITE } from '$lib/site';
 </script>
 
 <PageMeta title="About" description="How Wiredframe Radar turns daily AI signals into concise, evidence-linked strategic intelligence." path="/about" />

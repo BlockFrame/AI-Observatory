@@ -3,7 +3,7 @@
 	import { browser } from '$app/environment';
 	import SearchBar from '$lib/components/search/SearchBar.svelte';
 	import FeedbackModal from '$lib/components/FeedbackModal.svelte';
-	import { SITE } from '$lib/config/site';
+	import { SITE } from '$lib/site';
 	import '../app.css';
 	import { inject } from '@vercel/analytics';
 	

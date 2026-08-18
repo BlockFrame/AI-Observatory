@@ -4,7 +4,7 @@
     import { slugify } from '$lib/utils/slugify';
     import { safeHtml } from '$lib/services/safeHtml';
     import PageMeta from '$lib/components/seo/PageMeta.svelte';
-    import { absoluteUrl } from '$lib/config/site';
+    import { absoluteUrl } from '$lib/site';
 
     // We now receive data directly from +page.server.ts load function
     export let data: any;

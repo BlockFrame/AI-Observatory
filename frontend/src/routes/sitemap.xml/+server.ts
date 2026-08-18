@@ -1,7 +1,7 @@
 import { slugify } from '$lib/utils/slugify';
 import models from '../../../static/data/models.json';
 import tools from '../../../static/data/tools.json';
-import { SITE } from '$lib/config/site';
+import { SITE } from '$lib/site';
 
 export const prerender = true;
 

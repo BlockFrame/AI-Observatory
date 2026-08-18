@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SITE, absoluteUrl } from '$lib/config/site';
+	import { SITE, absoluteUrl } from '$lib/site';
 
 	let {
 		title,
@@ -40,4 +40,3 @@
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={socialImage} />
 </svelte:head>
-

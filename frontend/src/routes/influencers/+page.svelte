@@ -3,7 +3,7 @@
     import SuggestInfluencerModal from '$lib/components/SuggestInfluencerModal.svelte';
     import { safeHtml } from '$lib/services/safeHtml';
     import PageMeta from '$lib/components/seo/PageMeta.svelte';
-    import { absoluteUrl } from '$lib/config/site';
+    import { absoluteUrl } from '$lib/site';
     export let data: any;
     let { htmlContent } = data;
     

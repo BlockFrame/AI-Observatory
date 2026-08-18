@@ -4,7 +4,7 @@
     import { slugify } from '$lib/utils/slugify';
     import SuggestModelModal from '$lib/components/SuggestModelModal.svelte';
     import PageMeta from '$lib/components/seo/PageMeta.svelte';
-    import { absoluteUrl } from '$lib/config/site';
+    import { absoluteUrl } from '$lib/site';
 
     interface Model {
         name: string;

@@ -21,7 +21,7 @@
 	import { safeHtml } from '$lib/services/safeHtml';
 	import { registerItems } from '$lib/services/itemIndex';
 	import PageMeta from '$lib/components/seo/PageMeta.svelte';
-	import { SITE } from '$lib/config/site';
+	import { SITE } from '$lib/site';
 
 	// Data state
 	let summary: DaySummary | null = null;
