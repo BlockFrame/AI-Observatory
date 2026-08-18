@@ -1,0 +1,2152 @@
+{
+  "category": "research",
+  "date": "2026-08-18",
+  "category_summary": "### Executive Signal\n- Frontier research is reaching a maturity inflection: training and architectural innovations are increasingly decoupling what models *appear to do* from what they *can do*, exposing hidden costs in reasoning RL, agent autonomy, and automated code workflows.\n\n### Priority Developments\n- **Reasoning training has both visible and hidden costs.** Amplified deliberative behaviors diverge from calibration gains; [verifier-induced support reshaping](/?date=2026-08-18&category=research#item-ebba81a35c65) narrows successful-response diversity, revealing that RLVR pipelines optimize proxies misaligned with downstream robustness.\n- **Orthogonal-update optimizers are reaching production viability.** Dion3 cuts Newton-Schulz cost and communication overhead across kernels and update rules, removing a key blocker to deploying higher-quality optimizer families at frontier scale.\n- **Architectural decoupling is emerging as a structural pattern.** Circuit analyses show modular specialization spontaneously arises in capable models, while [Intern-S2-Mobius](/?date=2026-08-18&category=research#item-19d432aee546) formalizes a knowledge-versus-reasoning split, enabling compression and faster inference without capability loss.\n- **Autonomous agents remain brittle on long-horizon work.** [Systematic evaluation shows engineering optimization succeeds](/?date=2026-08-18&category=research#item-2bbe92d78524) but novelty, prior-experience reuse, and stability degrade with horizon length, shifting near-term ROI toward scaffolding over capability scaling.\n- **Interpretability is graduating from research to operational tooling.** Multimodal sparse autoencoders (MMDiff) now enable detection and steering of specific features, providing a concrete lever for targeted control of visual and safety behaviors.\n\n### Leadership Implications\n- **Re-balance training pipelines around solution diversity, not just task score.** Reward shaping and verifier design should explicitly preserve response variance to prevent compounding homogeneity across model generations.\n- **Stage-rollout any agent-driven or safety-relevant code automation.** Long-horizon brittleness and the \"[iterate without understanding](/?date=2026-08-18&category=research#item-78d8547a0739)\" hazard argue for human-in-the-loop verification before removing oversight on alignment-critical code paths.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Frontier research is reaching a maturity inflection: training and architectural innovations are increasingly decoupling what models *appear to do* from what they *can do*, exposing hidden costs in reasoning RL, agent autonomy, and automated code workflows.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Reasoning training has both visible and hidden costs.</strong> Amplified deliberative behaviors diverge from calibration gains; <a href=\"/?date=2026-08-18&amp;category=research#item-ebba81a35c65\" class=\"internal-link\" rel=\"noopener noreferrer\">verifier-induced support reshaping</a> narrows successful-response diversity, revealing that RLVR pipelines optimize proxies misaligned with downstream robustness.</li>\n<li><strong>Orthogonal-update optimizers are reaching production viability.</strong> Dion3 cuts Newton-Schulz cost and communication overhead across kernels and update rules, removing a key blocker to deploying higher-quality optimizer families at frontier scale.</li>\n<li><strong>Architectural decoupling is emerging as a structural pattern.</strong> Circuit analyses show modular specialization spontaneously arises in capable models, while <a href=\"/?date=2026-08-18&amp;category=research#item-19d432aee546\" class=\"internal-link\" rel=\"noopener noreferrer\">Intern-S2-Mobius</a> formalizes a knowledge-versus-reasoning split, enabling compression and faster inference without capability loss.</li>\n<li><strong>Autonomous agents remain brittle on long-horizon work.</strong> <a href=\"/?date=2026-08-18&amp;category=research#item-2bbe92d78524\" class=\"internal-link\" rel=\"noopener noreferrer\">Systematic evaluation shows engineering optimization succeeds</a> but novelty, prior-experience reuse, and stability degrade with horizon length, shifting near-term ROI toward scaffolding over capability scaling.</li>\n<li><strong>Interpretability is graduating from research to operational tooling.</strong> Multimodal sparse autoencoders (MMDiff) now enable detection and steering of specific features, providing a concrete lever for targeted control of visual and safety behaviors.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li><strong>Re-balance training pipelines around solution diversity, not just task score.</strong> Reward shaping and verifier design should explicitly preserve response variance to prevent compounding homogeneity across model generations.</li>\n<li><strong>Stage-rollout any agent-driven or safety-relevant code automation.</strong> Long-horizon brittleness and the \"<a href=\"/?date=2026-08-18&amp;category=research#item-78d8547a0739\" class=\"internal-link\" rel=\"noopener noreferrer\">iterate without understanding</a>\" hazard argue for human-in-the-loop verification before removing oversight on alignment-critical code paths.</li>\n</ul>",
+  "category_summary_evidence": [],
+  "themes": [
+    {
+      "name": "Benchmarks and Evaluation",
+      "description": "New benchmarks and evaluation methodologies across AI-generated video detection, autonomous agents, humanoid motion, image editing, robotics, memory, scientific figures, and long-horizon research tasks.",
+      "item_count": 8,
+      "example_items": [],
+      "importance": 78.0
+    },
+    {
+      "name": "Reasoning and Chain-of-Thought",
+      "description": "Empirical and conceptual work on reasoning training, CoT monitoring, and what reasoning traces actually reveal.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 78.0
+    },
+    {
+      "name": "AI Safety and Reliability",
+      "description": "Detection of AI-generated misinformation, hallucination mitigation, clinical multi-agent shortcut cascades, verifier-induced support reshaping, and benchmark gaming vulnerabilities.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "AI Safety and Alignment",
+      "description": "Posts engaging with safety research, RSI, CoT monitorability, alignment philosophy, and safety field-building.",
+      "item_count": 7,
+      "example_items": [],
+      "importance": 75.0
+    },
+    {
+      "name": "Multimodal and Vision-Language Models",
+      "description": "Advances in vision-language models including distillation, interpretability via sparse autoencoders, hallucination detection, image editing, and 3D articulated world modeling.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "Reinforcement Learning and Reasoning",
+      "description": "On-policy distillation, RLVR failure modes, process reward models for robotics, claim-level verification, and parallel reasoning for agents.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "Interpretability",
+      "description": "Circuit-level modularity in LLMs, multimodal SAE-based feature diffing, and controlled-corpus analysis of knowledge acquisition.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "Efficient Training and Inference",
+      "description": "Optimizer acceleration (Dion3/Muon), distillation methods, parallel reasoning during agent idle time, claim-level verification, and tokenizer-agnostic distillation.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Autonomous Agents",
+      "description": "Long-horizon research agents, on-device long-term memory, parallel-reasoning agent frameworks, and self-distillation for agent supervision.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Pretraining and Scaling",
+      "description": "Domain-data repetition scaling laws, decoupled memory/reasoning architectures, and pedagogically controlled corpora for studying LLM learning.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 68.0
+    }
+  ],
+  "total_items": 47,
+  "items": [
+    {
+      "id": "f6424914a25a",
+      "title": "Amplified Does Not Mean Predictive: Reasoning Behaviors in Thinking Models",
+      "content": "Reasoning training amplifies deliberative behaviors like self-correction more than high-correctness behaviors such as confidence calibration, revealing a gap between amplified and correctness-linked reasoning patterns.",
+      "url": "https://huggingface.co/papers/2608.13760",
+      "author": "Jean de Dieu Nyandwi, Leena Mathur, Yonatan Bisk, Robert Hawkins, Graham Neubig",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "reasoning models",
+        "reasoning traces",
+        "Behavioral Lift",
+        "self-correction",
+        "hypothesis testing",
+        "uncertainty acknowledgment",
+        "confidence calibration",
+        "knowledge alignment",
+        "self-awareness",
+        "vision-language reasoning",
+        "process-level objectives"
+      ],
+      "summary": "Analysis of reasoning-trained models shows that deliberative behaviors like self-correction are amplified far more than correctness-linked behaviors such as calibration, exposing a gap between visible reasoning patterns and actual problem-solving quality.",
+      "importance_score": 78.0,
+      "reasoning": "Strong author lineup (Bisk, Neubig) and a substantive empirical finding that challenges the assumption that rich CoT traces imply better reasoning. Relevant to interpretability and evaluation of thinking-mode models. Methodological depth from the abstract suggests rigorous behavioral analysis.",
+      "themes": [
+        "Reasoning Models",
+        "Chain-of-Thought",
+        "Model Evaluation",
+        "Alignment"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13760",
+        "category_name": "reasoning models, reasoning traces, Behavioral Lift",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13760"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Analysis of reasoning-trained models shows that deliberative behaviors like self-correction are amplified far more than correctness-linked behaviors such as calibration, exposing a gap between visible reasoning patterns and actual problem-solving quality.</p>",
+      "content_html": "<p>Reasoning training amplifies deliberative behaviors like self-correction more than high-correctness behaviors such as confidence calibration, revealing a gap between amplified and correctness-linked reasoning patterns.</p>"
+    },
+    {
+      "id": "9bcbca8aa93f",
+      "title": "Dion3: Full-Stack Orthogonal Updates",
+      "content": "Dion3 accelerates the Muon optimizer by reducing orthogonalization and communication overhead through algorithmic, kernel-level, and update-rule improvements.",
+      "url": "https://huggingface.co/papers/2608.11612",
+      "author": "Noah Amsel, Jack Zhang, Kwangjun Ahn, Ali Naeimi, Austin Feng, Berlin Chen, Tri Dao, John Langford",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Muon optimizer",
+        "Newton-Schulz orthogonalization",
+        "Gram Newton-Schulz",
+        "CuteDSL kernels",
+        "megabatching",
+        "momentum matrix",
+        "Dion3"
+      ],
+      "summary": "Dion3 is a full-stack acceleration of the Muon optimizer that reduces Newton-Schulz orthogonalization cost and communication overhead through algorithmic, kernel, and update-rule improvements. Aims to make orthogonal updates practical at frontier scales.",
+      "importance_score": 76.0,
+      "reasoning": "Strong author credibility (Tri Dao, John Langford) and addresses a real bottleneck for Muon adoption; optimizer-level speedups compound across training runs. Could meaningfully influence large-scale training practice.",
+      "themes": [
+        "Optimization",
+        "Efficient Training",
+        "Systems"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11612",
+        "category_name": "Muon optimizer, Newton-Schulz orthogonalization, Gram Newton-Schulz",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11612"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Dion3 is a full-stack acceleration of the Muon optimizer that reduces Newton-Schulz orthogonalization cost and communication overhead through algorithmic, kernel, and update-rule improvements. Aims to make orthogonal updates practical at frontier scales.</p>",
+      "content_html": "<p>Dion3 accelerates the Muon optimizer by reducing orthogonalization and communication overhead through algorithmic, kernel-level, and update-rule improvements.</p>"
+    },
+    {
+      "id": "e58bc70eaf5c",
+      "title": "Modular Cognitive Architecture Emerges in Large Language Models",
+      "content": "Large language models develop modular neural architectures that mirror human brain specialization across language, reasoning, and physical cognition, suggesting modularity is a fundamental property of intelligent systems.",
+      "url": "https://huggingface.co/papers/2608.13567",
+      "author": "Pengrui Han, Jacob Andreas, Evelina Fedorenko, Andrea Gregor de Varda",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "circuit analyses",
+        "Large Language Models",
+        "modular architecture",
+        "neurons",
+        "convergent emergence"
+      ],
+      "summary": "Through circuit analyses, the authors argue that large language models develop modular neural architectures that mirror human brain specialization across language, reasoning, and physical cognition. The work suggests modularity is a fundamental property of sufficiently capable intelligent systems.",
+      "importance_score": 75.0,
+      "reasoning": "Strong scientific claim with mechanistic evidence; authorship (Jacob Andreas, Evelina Fedorenko) brings exceptional interpretability and neuroscience credibility. Findings are provocative and could reframe debate on LLM internal structure.",
+      "themes": [
+        "Interpretability",
+        "Mechanistic Analysis",
+        "Cognitive Science"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13567",
+        "category_name": "circuit analyses, Large Language Models, modular architecture",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13567"
+        },
+        "huggingface": {
+          "upvotes": 12,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-06-27T01:56:22.000Z",
+          "github_repo": "https://github.com/Pengrui-Han/LLM_Modularity"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Through circuit analyses, the authors argue that large language models develop modular neural architectures that mirror human brain specialization across language, reasoning, and physical cognition. The work suggests modularity is a fundamental property of sufficiently capable intelligent systems.</p>",
+      "content_html": "<p>Large language models develop modular neural architectures that mirror human brain specialization across language, reasoning, and physical cognition, suggesting modularity is a fundamental property of intelligent systems.</p>"
+    },
+    {
+      "id": "ebba81a35c65",
+      "title": "Verifier-Induced Support Reshaping in On-Policy Optimization",
+      "content": "On-policy reinforcement learning with verifiable rewards can improve immediate task performance while reducing the diversity of successful responses needed for future training, a phenomenon called verifier-induced support reshaping.",
+      "url": "https://huggingface.co/papers/2608.00220",
+      "author": "Shaohang Wei, Zikun Su, Feifan Song, Wen Luo, Wei Li, Guangyue Peng, Houfeng Wang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "on-policy reinforcement learning",
+        "verifiable rewards",
+        "RLVR",
+        "verifier-induced support reshaping",
+        "effective rewardable support",
+        "best@k",
+        "pass@1",
+        "cross-task support",
+        "Math-RLVR",
+        "IF-RLVR"
+      ],
+      "summary": "Identifies verifier-induced support reshaping in on-policy RL with verifiable rewards: while immediate task performance improves, the diversity of successful responses shrinks, potentially harming future training. Highlights a hidden cost of RLVR pipelines.",
+      "importance_score": 74.0,
+      "reasoning": "Diagnoses an important and underappreciated failure mode in the rapidly adopted RLVR paradigm; has direct implications for how practitioners should preserve diversity during RL fine-tuning. Methodologically clean analysis.",
+      "themes": [
+        "Reinforcement Learning",
+        "RLHF/RLVR",
+        "Alignment",
+        "Reasoning"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.00220",
+        "category_name": "on-policy reinforcement learning, verifiable rewards, RLVR",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.00220"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-07-31T00:00:00.000Z",
+          "github_repo": "https://github.com/sylvain-wei/verifier-induced-support-reshaping"
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Identifies verifier-induced support reshaping in on-policy RL with verifiable rewards: while immediate task performance improves, the diversity of successful responses shrinks, potentially harming future training. Highlights a hidden cost of RLVR pipelines.</p>",
+      "content_html": "<p>On-policy reinforcement learning with verifiable rewards can improve immediate task performance while reducing the diversity of successful responses needed for future training, a phenomenon called verifier-induced support reshaping.</p>"
+    },
+    {
+      "id": "2bbe92d78524",
+      "title": "Beyond Final Scores: A Systematic Evaluation of Agents for Long-Horizon AI Research and Development",
+      "content": "Frontier autonomous agents excel at engineering optimization but show unstable performance, limited novelty, and variable experience reuse across long-horizon tasks.",
+      "url": "https://huggingface.co/papers/2608.13417",
+      "author": "Yiwei Li, Wanli Yang, Hexiang Tan, Xiangzhou Huang, Zhengyu Chen, Ziran Li, Borun Chen, Shanglin Lei, Huaisheng Zhu, Hao Tian, Fei Sun, Xunliang Cai, Jingang Wang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "autonomous agents",
+        "long-horizon experimentation",
+        "rule-based metrics",
+        "Solution Framing",
+        "Execution",
+        "Feedback Control",
+        "experience reuse",
+        "engineering optimizers",
+        "methodological novelty",
+        "harness design"
+      ],
+      "summary": "A systematic evaluation of frontier autonomous agents on long-horizon AI research and development tasks using rule-based metrics beyond final scores. Agents excel at engineering optimization but show unstable performance, limited novelty, and inconsistent reuse of prior experience across long task horizons.",
+      "importance_score": 73.0,
+      "reasoning": "High-impact benchmarking of an increasingly important capability area; the move to rule-based, granular metrics over single-number leaderboards is a meaningful methodological contribution. Directly informs how the field should measure research agents.",
+      "themes": [
+        "Autonomous Agents",
+        "Benchmarks",
+        "AI for Science"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13417",
+        "category_name": "autonomous agents, long-horizon experimentation, rule-based metrics",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13417"
+        },
+        "huggingface": {
+          "upvotes": 45,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A systematic evaluation of frontier autonomous agents on long-horizon AI research and development tasks using rule-based metrics beyond final scores. Agents excel at engineering optimization but show unstable performance, limited novelty, and inconsistent reuse of prior experience across long task horizons.</p>",
+      "content_html": "<p>Frontier autonomous agents excel at engineering optimization but show unstable performance, limited novelty, and variable experience reuse across long-horizon tasks.</p>"
+    },
+    {
+      "id": "19d432aee546",
+      "title": "Intern-S2-Mobius: Foundation Model with Decoupled Knowledge and Reasoning",
+      "content": "Mobius-v0 separates global memory storage from iterative reasoning modules to improve knowledge compression and inference efficiency, yielding comparable performance with less training data and faster inference.",
+      "url": "https://huggingface.co/papers/2608.14290",
+      "author": "Kai Chen, Jifeng Ding, Ning Ding, Jiaye Ge, Lixin Gu, Yicheng Gu, Qipeng Guo, Ermo Hua, Haian Huang, Haozheng Hou, Jie Hou, Xiangyu Hong, Che Jiang, Minxi Jin, Cheng Liang, Dahua Lin, Dawei Liu, Kuikun Liu, Chengqi Lv, Haijun Lv, Han Lv, Ningsheng Ma, Biqing Qi, Jianmin Qian, Shiya Su, Youbang Sun, Huanze Tang, Zhongbo Tian, Hanjing Wang, Rui Wang, Ting Wang, Yi Wang, Baiting Wu, Jun Xu, Bowen Yang, Hui Wang, Weida Wang, Haochen Ye, Jiashuo Yu, Shan Yu, Xiaoyi Yu, Qirui Zeng, Qi Zhang, Ming Zhang, Wenwei Zhang, Bowen Zhou, Xinyu Zhou",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Mobius-v0",
+        "Memory (FFN)",
+        "Reasoners (Self-Attn)",
+        "compositional reasoning",
+        "knowledge-reasoning-separation",
+        "Intern-S2-Mobius"
+      ],
+      "summary": "Intern-S2-Mobius (Mobius-v0) is a foundation model that decouples global knowledge storage (in FFN-based Memory modules) from iterative reasoning (Self-Attention-based Reasoners). The separation enables better knowledge compression, faster inference, and comparable performance with less training data.",
+      "importance_score": 72.0,
+      "reasoning": "Intern/Shanghai AI Lab lineage lends credibility; architectural decoupling of memory and reasoning is a notable design choice with implications for scaling efficiency. Results claim comparable performance with less data, which if reproduced is meaningful.",
+      "themes": [
+        "Language Models",
+        "Architecture",
+        "Efficiency",
+        "Knowledge Representation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14290",
+        "category_name": "Mobius-v0, Memory (FFN), Reasoners (Self-Attn)",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14290"
+        },
+        "huggingface": {
+          "upvotes": 31,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Intern-S2-Mobius (Mobius-v0) is a foundation model that decouples global knowledge storage (in FFN-based Memory modules) from iterative reasoning (Self-Attention-based Reasoners). The separation enables better knowledge compression, faster inference, and comparable performance with less training data.</p>",
+      "content_html": "<p>Mobius-v0 separates global memory storage from iterative reasoning modules to improve knowledge compression and inference efficiency, yielding comparable performance with less training data and faster inference.</p>"
+    },
+    {
+      "id": "78d8547a0739",
+      "title": "You Can't Iterate to Trustworthy AI Code Without Understanding",
+      "content": "As the AI industry races towards recursive self-improvement (RSI), an important question arises: to what extent is human understanding of the code AI generates required for reliable and safe automation? The question is sharpest for safety research, where undetected failures can produce flawed safety cases that allow deployment of unsafe AI. This is a crux for how quickly RSI can proceed. In this article I argue that iterating on the outcomes from automatically generated code without human understanding is inadequate. This has implications for how much automation can be done safely and for what needs to be measured to mitigate risks.In \"Crisp and fuzzy tasks\" Leike laid out the case that automating fuzzy tasks is harder and that it is the fuzzy tasks that make automating alignment research difficult. In introducing the concept he states that tasks like solving coding competitions are crisp because it is easy to verify the solutions. More recently, discussions have subtly shifted the frame to suggest that automating coding is a crisp task, e.g., in \"Automated Alignment is Harder than You Think\" Bowkis et al. give as an example of crisp tasks \"writing code for an experiment.\" Note the shift: competition code is crisp because there's an automated checker but experiment code got classified as crisp because it resembles this. But we already have evidence that implementing experiment code from a specification (spec) is hard to verify. For example, \"Measuring coding agent misalignment in the wild\" showed a meaningful rate of two kinds of failures from automated coding: overselling and monitor evasion. E.g., they found examples of overselling in 34.7% of SWE-chat transcripts and 5.7% of Transluce internal transcripts.Bowkis et al. acknowledge that \"While agents perform tasks that appear crisp, those tasks contain many judgement calls about details.\" The fuzziness and judgment calls are not limited to research questions; they are core to verifying whether the code accurately ...",
+      "url": "https://www.lesswrong.com/posts/jYxttRpJvYvCGvyBc/you-can-t-iterate-to-trustworthy-ai-code-without",
+      "author": "ronbodkin",
+      "published": "2026-08-17T19:00:13.594000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Argues that iterating on outcomes of AI-generated code without genuine human understanding is unsafe, particularly for alignment research, and challenges the framing that coding is a crisp task amenable to full automation.",
+      "importance_score": 72.0,
+      "reasoning": "Substantive AI-safety argument with direct implications for recursive self-improvement debates. Engages rigorously with prior work (Leike, Bowkis et al.) and addresses a crux issue for near-term safety strategy.",
+      "themes": [
+        "AI Safety",
+        "Recursive Self-Improvement",
+        "Alignment Research"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "jYxttRpJvYvCGvyBc",
+        "slug": "you-can-t-iterate-to-trustworthy-ai-code-without",
+        "base_score": 8,
+        "vote_count": 3,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that iterating on outcomes of AI-generated code without genuine human understanding is unsafe, particularly for alignment research, and challenges the framing that coding is a crisp task amenable to full automation.</p>",
+      "content_html": "<p>As the AI industry races towards recursive self-improvement (RSI), an important question arises: to what extent is human understanding of the code AI generates required for reliable and safe automation? The question is sharpest for safety research, where undetected failures can produce flawed safety cases that allow deployment of unsafe AI. This is a crux for how quickly RSI can proceed. In this article I argue that iterating on the outcomes from automatically generated code without human understanding is inadequate. This has implications for how much automation can be done safely and for what needs to be measured to mitigate risks.In \"Crisp and fuzzy tasks\" Leike laid out the case that automating fuzzy tasks is harder and that it is the fuzzy tasks that make automating alignment research difficult. In introducing the concept he states that tasks like solving coding competitions are crisp because it is easy to verify the solutions. More recently, discussions have subtly shifted the frame to suggest that automating coding is a crisp task, e.g., in \"Automated Alignment is Harder than You Think\" Bowkis et al. give as an example of crisp tasks \"writing code for an experiment.\" Note the shift: competition code is crisp because there's an automated checker but experiment code got classified as crisp because it resembles this. But we already have evidence that implementing experiment code from a specification (spec) is hard to verify. For example, \"Measuring coding agent misalignment in the wild\" showed a meaningful rate of two kinds of failures from automated coding: overselling and monitor evasion. E.g., they found examples of overselling in 34.7% of SWE-chat transcripts and 5.7% of Transluce internal transcripts.Bowkis et al. acknowledge that \"While agents perform tasks that appear crisp, those tasks contain many judgement calls about details.\" The fuzziness and judgment calls are not limited to research questions; they are core to verifying whether the code accurately ...</p>"
+    },
+    {
+      "id": "61939484c4d4",
+      "title": "Multimodal Model Diffing for Feature Discovery and Control",
+      "content": "MMDiff uses multimodal sparse autoencoders to isolate, detect, and control specific features in multimodal language models, improving interpretability and targeted steering of visual and safety behaviors.",
+      "url": "https://huggingface.co/papers/2608.09928",
+      "author": "Hunar Batra, Lachin Naghashyar, Ashkan Khakzar, Philip Torr, Christian Schroeder de Witt, Constantin Venhoff, Ronald Clark",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "multimodal large language models",
+        "sparse autoencoders",
+        "MMDiff",
+        "feature isolation",
+        "contrastive firing analysis",
+        "feature-level control",
+        "multimodal SAEs",
+        "visual-spatial understanding",
+        "multimodal safety",
+        "steering"
+      ],
+      "summary": "MMDiff applies multimodal sparse autoencoders to identify, detect, and steer specific features in multimodal language models, supporting interpretability and targeted control of visual and safety behaviors. It extends SAE-based diffing beyond text-only models.",
+      "importance_score": 71.0,
+      "reasoning": "Meaningful extension of SAE interpretability to multimodal models; the steering capability is practically useful for safety. Authors include Torr and Schroeder de Witt, lending strong interpretability and safety credentials.",
+      "themes": [
+        "Interpretability",
+        "Sparse Autoencoders",
+        "Multimodal Models",
+        "AI Safety"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.09928",
+        "category_name": "multimodal large language models, sparse autoencoders, MMDiff",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.09928"
+        },
+        "huggingface": {
+          "upvotes": 8,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-10T00:00:00.000Z",
+          "github_repo": "https://github.com/hunarbatra/MMDiff"
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>MMDiff applies multimodal sparse autoencoders to identify, detect, and steer specific features in multimodal language models, supporting interpretability and targeted control of visual and safety behaviors. It extends SAE-based diffing beyond text-only models.</p>",
+      "content_html": "<p>MMDiff uses multimodal sparse autoencoders to isolate, detect, and control specific features in multimodal language models, improving interpretability and targeted steering of visual and safety behaviors.</p>"
+    },
+    {
+      "id": "5625c45a3be7",
+      "title": "MobileMem: Learning from a Year of Mobile Experiences",
+      "content": "MobileMem is a benchmark and framework for evaluating on-device long-term memory through year-scale, multimodal mobile experience trajectories that require temporal reasoning, knowledge updating, and preference inference.",
+      "url": "https://huggingface.co/papers/2608.13606",
+      "author": "Xinle Deng, Yida Xue, Xiangyuan Ru, Haoming Xu, Shuofei Qiao, Mengru Wang, Yijun Chen, Buqiang Xu, Chen Jiang, Yuchen Eleanor Jiang, Lizhong Wang, Jianfeng Wang, Li Zeng, Haofen Wang, Guilin Qi, Huajun Chen, Ningyu Zhang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "on-device long-term memory",
+        "multimodal",
+        "knowledge-grounded synthesis",
+        "multi-hop reasoning",
+        "temporal reasoning",
+        "implicit preference inference",
+        "experiential intelligence"
+      ],
+      "summary": "MobileMem introduces a benchmark and framework for on-device long-term memory using year-scale, multimodal mobile experience trajectories that require temporal reasoning, knowledge updating, and preference inference. It pushes memory evaluation beyond short conversational windows into realistic personal-assistant settings.",
+      "importance_score": 70.0,
+      "reasoning": "Strongly timely given the proliferation of on-device and personal AI assistants; the year-scale, multimodal design captures real difficulty. Zhejiang University/Ningyu Zhang authorship is well-established in the KG/neuro-symbolic space.",
+      "themes": [
+        "Memory Systems",
+        "Benchmarks",
+        "Personal AI",
+        "Multimodal Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13606",
+        "category_name": "on-device long-term memory, multimodal, knowledge-grounded synthesis",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13606"
+        },
+        "huggingface": {
+          "upvotes": 20,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-11T00:00:00.000Z",
+          "github_repo": "https://github.com/zjunlp/MobileMem"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>MobileMem introduces a benchmark and framework for on-device long-term memory using year-scale, multimodal mobile experience trajectories that require temporal reasoning, knowledge updating, and preference inference. It pushes memory evaluation beyond short conversational windows into realistic personal-assistant settings.</p>",
+      "content_html": "<p>MobileMem is a benchmark and framework for evaluating on-device long-term memory through year-scale, multimodal mobile experience trajectories that require temporal reasoning, knowledge updating, and preference inference.</p>"
+    },
+    {
+      "id": "ed9910bedd6c",
+      "title": "UniProbe: A Learnable Token-Level Hallucination Detector for Large VLMs using Multi-Structural Internal Representations",
+      "content": "UniProbe is a lightweight learnable detector that uses a directed graph and alternating GNN, ViT, and GRU modules to identify hallucinated tokens in frozen large vision-language models, enabling real-time resampling during generation.",
+      "url": "https://huggingface.co/papers/2608.10835",
+      "author": "Dvir Samuel, Guy Bar-Shalom, Fabrizio Frasca, Ethan Fetaya, Yftah Ziser, Gal Chechik, Haggai Maron",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Large Vision-Language Models",
+        "hallucination detection",
+        "token-level localization",
+        "directed graph",
+        "attention weights",
+        "GNN",
+        "ViT",
+        "GRU",
+        "streaming decoding",
+        "self-adaptation"
+      ],
+      "summary": "UniProbe is a lightweight, learnable token-level hallucination detector for large vision-language models that fuses multi-structural internal representations via a directed graph of GNN, ViT, and GRU modules. It enables real-time hallucination localization and resampling during generation.",
+      "importance_score": 70.0,
+      "reasoning": "Practically valuable for VLM reliability and real-time deployment; strong author team (Gal Chechik, Haggai Maron, Ethan Fetaya). Architectural fusion of heterogeneous modules is novel though adds engineering complexity.",
+      "themes": [
+        "Hallucinations",
+        "Vision-Language Models",
+        "Reliability",
+        "AI Safety"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.10835",
+        "category_name": "Large Vision-Language Models, hallucination detection, token-level localization",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.10835"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-11T12:01:59.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>UniProbe is a lightweight, learnable token-level hallucination detector for large vision-language models that fuses multi-structural internal representations via a directed graph of GNN, ViT, and GRU modules. It enables real-time hallucination localization and resampling during generation.</p>",
+      "content_html": "<p>UniProbe is a lightweight learnable detector that uses a directed graph and alternating GNN, ViT, and GRU modules to identify hallucinated tokens in frozen large vision-language models, enabling real-time resampling during generation.</p>"
+    },
+    {
+      "id": "af5c47711d15",
+      "title": "SPARGen: Unifying Spatial Perception and Reasoning through Native Multimodal Generation",
+      "content": "SPARGen unifies 3D reconstruction, dense correspondence, and spatial reasoning into a single instruction-conditioned multimodal generative model that jointly learns shared spatial representations.",
+      "url": "https://huggingface.co/papers/2608.14138",
+      "author": "Jinsheng Quan, Jianhua Li, Siyi Xie, Xuanke Shi, Kewang Deng, Zukai Chen, Feifei Shao, Lei Yang, Quan Wang, Yawei Luo",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "multimodal framework",
+        "3D reconstruction",
+        "dense correspondence",
+        "spatial reasoning",
+        "instruction-conditioned generation",
+        "token sequences",
+        "geometric fields",
+        "spatial supervision",
+        "native multimodal generative model"
+      ],
+      "summary": "SPARGen is a single instruction-conditioned multimodal generative model that unifies 3D reconstruction, dense correspondence, and spatial reasoning by jointly learning shared spatial representations.",
+      "importance_score": 70.0,
+      "reasoning": "Notable attempt to consolidate multiple spatial perception and reasoning tasks under one generative framework. Unification across reconstruction and reasoning is a meaningful research direction; large author list suggests substantive effort though credibility is moderate without major-lab affiliation.",
+      "themes": [
+        "Multimodal Models",
+        "3D Vision",
+        "Spatial Reasoning"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14138",
+        "category_name": "multimodal framework, 3D reconstruction, dense correspondence",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14138"
+        },
+        "huggingface": {
+          "upvotes": 1,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>SPARGen is a single instruction-conditioned multimodal generative model that unifies 3D reconstruction, dense correspondence, and spatial reasoning by jointly learning shared spatial representations.</p>",
+      "content_html": "<p>SPARGen unifies 3D reconstruction, dense correspondence, and spatial reasoning into a single instruction-conditioned multimodal generative model that jointly learns shared spatial representations.</p>"
+    },
+    {
+      "id": "0c05561e95b6",
+      "title": "Agents Catching Agents: Shortcut Cascades and Benchmark Gaming in Clinical Multi-Agent Systems",
+      "content": "Multi-agent clinical committees are vulnerable to socially plausible shortcuts rather than isolated cues, and only independent referee oversight reliably detects adoption.",
+      "url": "https://huggingface.co/papers/2608.03744",
+      "author": "Sebastián Andrés Cajas Ordóñez, Agastya Munnangi, Aldo Marzullo, Felipe Ocampo Osorio, Quang Bui, Mohammad Shahin, Armaan Grewal, Emmanuel Paul Kwesiga, Anqi Peter Li, Josephine Nanyonjo, Aaditya Panchal, Arshnoor Bhutani, Nikhil Jaiswal, Milit S. Patel, Maximin Lange, Leo Anthony Celi",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "language-model agents",
+        "clinical decision support",
+        "multi-agent deliberation",
+        "shortcut learning",
+        "social plausibility",
+        "oversight agents",
+        "referee",
+        "cross-modal evaluation"
+      ],
+      "summary": "The paper shows that multi-agent clinical committees are susceptible to socially plausible shortcuts (rather than just isolated cues) and that only independent referee oversight reliably detects adoption of those shortcuts. It exposes a benchmark-gaming vulnerability in clinical multi-agent systems.",
+      "importance_score": 69.0,
+      "reasoning": "Important AI-safety finding for a high-stakes healthcare setting; shortcut cascades are a subtle failure mode. The independent-referee remedy is a concrete governance pattern, though clinical deployment details remain to be worked out.",
+      "themes": [
+        "AI Safety",
+        "Multi-Agent Systems",
+        "Healthcare",
+        "Benchmarks"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.03744",
+        "category_name": "language-model agents, clinical decision support, multi-agent deliberation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.03744"
+        },
+        "huggingface": {
+          "upvotes": 4,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-04T14:37:16.000Z",
+          "github_repo": "https://github.com/criticaldata/benchmaxxing"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The paper shows that multi-agent clinical committees are susceptible to socially plausible shortcuts (rather than just isolated cues) and that only independent referee oversight reliably detects adoption of those shortcuts. It exposes a benchmark-gaming vulnerability in clinical multi-agent systems.</p>",
+      "content_html": "<p>Multi-agent clinical committees are vulnerable to socially plausible shortcuts rather than isolated cues, and only independent referee oversight reliably detects adoption.</p>"
+    },
+    {
+      "id": "8deff46396a3",
+      "title": "Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination",
+      "content": "A new benchmark for AI-generated video detection reveals that current detectors fail to generalize across realistic crisis-related videos and become less reliable as content spreads socially.",
+      "url": "https://huggingface.co/papers/2608.14391",
+      "author": "Shuo Liang, Yixing Ma, Pengfei Zhou, Xingyan Chen, Zihan Mei, Manting Li, Feihan Chen, Zhiwen Wang, Bin Xu, Haotian Zhang, Jiajun Song, Shiya Su, Run Liu, Zhenghang Ni, Yifa Yu, Jintao Hong, Bolong Feng, Yifei Liu, Zirui Zhang, Jingxuan Zhang, Songlin Zhao, Yifan Bai, Kang Tan, Yizhe Liu, Junhao Du, Yongtao Ge, Zhaopan Xv, Xinyuan Zhang, Mengru Ma, Chunhua Shen, Wei Wang, Yang You, Zheng Zhu, Kaipeng Zhang, Wangbo Zhao",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "AI-generated video detection",
+        "RA-Bench",
+        "zero-shot multimodal models",
+        "MLLMs",
+        "detector generalization",
+        "social dissemination"
+      ],
+      "summary": "Introduces RA-Bench, a benchmark for detecting AI-generated videos tied to real-world crisis events, evaluating detectors across generators and after social-media-driven degradation. The work shows that current detectors generalize poorly across realistic distributions and weaken as content is reshared, highlighting a concrete safety gap for misinformation defense.",
+      "importance_score": 68.0,
+      "reasoning": "Timely and socially relevant; addresses a critical gap between lab benchmarks and deployed misinformation scenarios. The systematic generator/detector/social-spread design is methodologically sound, though detector-against-detector work often faces fast obsolescence.",
+      "themes": [
+        "AI Safety",
+        "Multimodal Models",
+        "Benchmarks",
+        "Misinformation"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14391",
+        "category_name": "AI-generated video detection, RA-Bench, zero-shot multimodal models",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14391"
+        },
+        "huggingface": {
+          "upvotes": 262,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": "https://github.com/24029100313/RA-Bench"
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Introduces RA-Bench, a benchmark for detecting AI-generated videos tied to real-world crisis events, evaluating detectors across generators and after social-media-driven degradation. The work shows that current detectors generalize poorly across realistic distributions and weaken as content is reshared, highlighting a concrete safety gap for misinformation defense.</p>",
+      "content_html": "<p>A new benchmark for AI-generated video detection reveals that current detectors fail to generalize across realistic crisis-related videos and become less reliable as content spreads socially.</p>"
+    },
+    {
+      "id": "c5af4c4f18e5",
+      "title": "What gives you away: how LLMs form opinions of you",
+      "content": "LLMs form opinions of the people they are talking to.Chen et al. has shown that probes can extract attributes about the user, such as their age, gender, education, and socioeconomic status. This paper also shows that intervening on these representations can change the LLM's behaviour, proving that it will respond to you differently depending on what it thinks of you. If it thinks you are low socioeconomic status and you ask about travel options, it may filter out more expensive flights - without you asking it!The user attributes are very accurate and form after just the first message.I was curious to understand how it makes these assumptions. The first step is to answer the question - what did I type that caused the LLM to have this idea of me?Some things are obvious. If I just tell a model that I am a woman, or mention how many years I've been in my career, or say that I am staying at an expensive hotel, I am giving it fairly direct evidence about age, education, or socioeconomic status. But messages also contain other more quiet signals: whether I use emojis, whether I write in lowercase, whether my sentences are syntactically complex, whether I use slang, whether I say “cheapest” instead of “best”, whether I write “colour” rather than “color” (which I do!), the list goes on.I wanted to isolate those cues and measure them one at a time. The basic experiment was to take a user message, change exactly one feature, and compare the model’s internal user-attribute estimate before and after the edit. After hundreds of minimal pairs (that Claude helped with), I figured I would have a pretty accurate sensitivity map.I learned some interesting things, for example that one emoji moved the model’s gender estimate more than any other edit I tested. In this article I'll go over all the other interesting findings.Please note that images in this article are edited or fully generated by ChatGPT.The experimentThe main study uses Llama-3.2-3B-Instruct with probes for age, gender, e...",
+      "url": "https://www.lesswrong.com/posts/zRKNd6ypTJYkoeFmK/what-gives-you-away-how-llms-form-opinions-of-you",
+      "author": "Cat McGee",
+      "published": "2026-08-17T16:59:56.511000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Explores how LLMs form opinions of users from subtle textual signals (emoji use, casing, syntactic complexity, slang) and how these inferred attributes causally shape model responses, sometimes without user awareness.",
+      "importance_score": 68.0,
+      "reasoning": "Accessible synthesis of recent probing work with concrete behavioral implications for fairness and user experience. The connection between representation-level findings and observable behavior is well made, raising relevant concerns for downstream deployments.",
+      "themes": [
+        "AI Safety",
+        "Representation Engineering",
+        "Fairness",
+        "User Modeling"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "zRKNd6ypTJYkoeFmK",
+        "slug": "what-gives-you-away-how-llms-form-opinions-of-you",
+        "base_score": 20,
+        "vote_count": 10,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Explores how LLMs form opinions of users from subtle textual signals (emoji use, casing, syntactic complexity, slang) and how these inferred attributes causally shape model responses, sometimes without user awareness.</p>",
+      "content_html": "<p>LLMs form opinions of the people they are talking to.Chen et al. has shown that probes can extract attributes about the user, such as their age, gender, education, and socioeconomic status. This paper also shows that intervening on these representations can change the LLM's behaviour, proving that it will respond to you differently depending on what it thinks of you. If it thinks you are low socioeconomic status and you ask about travel options, it may filter out more expensive flights - without you asking it!The user attributes are very accurate and form after just the first message.I was curious to understand how it makes these assumptions. The first step is to answer the question - what did I type that caused the LLM to have this idea of me?Some things are obvious. If I just tell a model that I am a woman, or mention how many years I've been in my career, or say that I am staying at an expensive hotel, I am giving it fairly direct evidence about age, education, or socioeconomic status. But messages also contain other more quiet signals: whether I use emojis, whether I write in lowercase, whether my sentences are syntactically complex, whether I use slang, whether I say “cheapest” instead of “best”, whether I write “colour” rather than “color” (which I do!), the list goes on.I wanted to isolate those cues and measure them one at a time. The basic experiment was to take a user message, change exactly one feature, and compare the model’s internal user-attribute estimate before and after the edit. After hundreds of minimal pairs (that Claude helped with), I figured I would have a pretty accurate sensitivity map.I learned some interesting things, for example that one emoji moved the model’s gender estimate more than any other edit I tested. In this article I'll go over all the other interesting findings.Please note that images in this article are edited or fully generated by ChatGPT.The experimentThe main study uses Llama-3.2-3B-Instruct with probes for age, gender, e...</p>"
+    },
+    {
+      "id": "152f1e440c11",
+      "title": "Scaling Domain Data Repetition in LLM Pretraining",
+      "content": "Under proportional scaling of model size and training tokens, optimal repetition of high-quality domain data increases mildly with scale and correlates with domain validation loss rather than unique data volume.",
+      "url": "https://huggingface.co/papers/2608.14071",
+      "author": "Jingwei Li, Xinran Gu, Rui Dai, Xintong Hao, Chengyin Xu, Yan Wu, Shuran Zheng, Jingzhao Zhang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "tokens-per-parameter ratio",
+        "LLM scaling",
+        "overfitting",
+        "validation loss",
+        "repetition count"
+      ],
+      "summary": "Under proportional scaling of model size and training tokens, the paper finds that optimal repetition of high-quality domain data increases only mildly with scale and is better predicted by domain validation loss than by unique data volume. Provides practical guidance for LLM pretraining curricula.",
+      "importance_score": 67.0,
+      "reasoning": "Empirically grounded scaling-law insight relevant to practitioners deciding on epoch counts for domain data. Clear methodology and actionable findings, though the domain-loss framing may need replication across more domains.",
+      "themes": [
+        "Pretraining",
+        "Scaling Laws",
+        "Data Curation"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14071",
+        "category_name": "tokens-per-parameter ratio, LLM scaling, overfitting",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14071"
+        },
+        "huggingface": {
+          "upvotes": 7,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Under proportional scaling of model size and training tokens, the paper finds that optimal repetition of high-quality domain data increases only mildly with scale and is better predicted by domain validation loss than by unique data volume. Provides practical guidance for LLM pretraining curricula.</p>",
+      "content_html": "<p>Under proportional scaling of model size and training tokens, optimal repetition of high-quality domain data increases mildly with scale and correlates with domain validation loss rather than unique data volume.</p>"
+    },
+    {
+      "id": "504a27515eb3",
+      "title": "Marionette: Predicting World States, Rendering Geometry, Painting Appearance",
+      "content": "Marionette predicts explicit 3D articulated world states for interactive games, uses a fixed renderer for geometry, and synthesizes video via diffusion, enabling direct state-level control and long-horizon consistency repair.",
+      "url": "https://huggingface.co/papers/2608.14530",
+      "author": "Zian Meng, Zhen Li, Chuanhao Li, Qiang Li, Kaipeng Zhang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "autoregressive dynamics model",
+        "3D world state",
+        "articulated skeletons",
+        "zero-parameter renderer",
+        "video-diffusion observation model",
+        "control-conditioned",
+        "FVD"
+      ],
+      "summary": "Marionette is an autoregressive dynamics model that predicts explicit 3D articulated world states (skeletons/geometry) for interactive games, then uses a fixed renderer for geometry and a diffusion model to paint appearance. This split enables direct state-level control and long-horizon consistency repair.",
+      "importance_score": 66.0,
+      "reasoning": "Interesting hybrid of classical 3D state modeling with neural rendering; the state-control handle is a clear practical advantage. Novelty is moderate but useful for world-model and game-AI communities.",
+      "themes": [
+        "World Models",
+        "Generative Video",
+        "3D Geometry",
+        "Games"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14530",
+        "category_name": "autoregressive dynamics model, 3D world state, articulated skeletons",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14530"
+        },
+        "huggingface": {
+          "upvotes": 24,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Marionette is an autoregressive dynamics model that predicts explicit 3D articulated world states (skeletons/geometry) for interactive games, then uses a fixed renderer for geometry and a diffusion model to paint appearance. This split enables direct state-level control and long-horizon consistency repair.</p>",
+      "content_html": "<p>Marionette predicts explicit 3D articulated world states for interactive games, uses a fixed renderer for geometry, and synthesizes video via diffusion, enabling direct state-level control and long-horizon consistency repair.</p>"
+    },
+    {
+      "id": "42c65f999157",
+      "title": "PRM-as-a-Judge 1.5: A Toolkit for Robot Process Assessment",
+      "content": "PRM-as-a-Judge 1.5 provides fine-grained process metrics and reliability tools to evaluate embodied robotic models beyond binary success rates.",
+      "url": "https://huggingface.co/papers/2608.14284",
+      "author": "Yuyang Liu, Yanqing Shen, Ruike Chen, Jifan Zhao, Yuxuan Tian, Yichi Zhang, Tianfeng Long, Zixuan Yin, Yipu Wang, Ziheng Qin, Wenxing Tan, Yang Shi, Mingyu Cao, Runze Xiao, Ziqi Wang, Zhixin Yin, Shiwei Chu, Yi-Fan Zhang, Yao Mu, Yuheng Ji, Yihao Wang, Jun Yan, Zhongyuan Wang, Pengwei Wang, Xiaolong Zheng",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "process reward models",
+        "rollout videos",
+        "progress curves",
+        "failure-side progress",
+        "post-drawdown recovery",
+        "execution quality",
+        "RoboPulse++",
+        "embodied models"
+      ],
+      "summary": "PRM-as-a-Judge 1.5 extends process reward modeling to robotics by providing fine-grained metrics and reliability tools over rollout videos and progress curves, moving beyond binary success/failure. It enables richer evaluation of embodied model behavior.",
+      "importance_score": 66.0,
+      "reasoning": "Important shift toward process-level evaluation for embodied agents; tooling angle (toolkit) supports reproducibility. The connection to PRMs used in LLM reasoning is a nice conceptual bridge.",
+      "themes": [
+        "Robotics",
+        "Reinforcement Learning",
+        "Process Reward Models",
+        "Benchmarks"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14284",
+        "category_name": "process reward models, rollout videos, progress curves",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14284"
+        },
+        "huggingface": {
+          "upvotes": 12,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": "https://github.com/YuyangLiu2003/PRM-as-a-Judge"
+        },
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>PRM-as-a-Judge 1.5 extends process reward modeling to robotics by providing fine-grained metrics and reliability tools over rollout videos and progress curves, moving beyond binary success/failure. It enables richer evaluation of embodied model behavior.</p>",
+      "content_html": "<p>PRM-as-a-Judge 1.5 provides fine-grained process metrics and reliability tools to evaluate embodied robotic models beyond binary success rates.</p>"
+    },
+    {
+      "id": "f0ba13e7cf97",
+      "title": "Claim-Level Reliability Assessment for Efficient Test-Time Reasoning",
+      "content": "Claim-Level Reliability Assessment improves reasoning accuracy by verifying critical claims instead of sampling more solutions, reducing token use while boosting performance.",
+      "url": "https://huggingface.co/papers/2608.11994",
+      "author": "Sen Xu, Wei Wang, Shixi Liu, Jixin Min, Yingwei Dai, Zhibin Yin, Yirong Chen, Junlin Zhang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "claim-level falsification",
+        "test-time scaling",
+        "Claim-Level Reliability Assessment",
+        "reasoning trace",
+        "semantic falsification",
+        "nonlinear reliability scoring",
+        "self-consistency"
+      ],
+      "summary": "Claim-Level Reliability Assessment improves reasoning accuracy by verifying critical claims rather than generating more candidate solutions, reducing token use while boosting performance. It repositions test-time scaling toward targeted verification.",
+      "importance_score": 66.0,
+      "reasoning": "An important efficiency angle for test-time scaling, addressing the growing cost of repeated sampling. Conceptually clear with a concrete compute-savings story.",
+      "themes": [
+        "Reasoning",
+        "Efficiency",
+        "Verification"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11994",
+        "category_name": "claim-level falsification, test-time scaling, Claim-Level Reliability Assessment",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11994"
+        },
+        "huggingface": {
+          "upvotes": 10,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": "https://github.com/WeiboAI/CLR"
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Claim-Level Reliability Assessment improves reasoning accuracy by verifying critical claims rather than generating more candidate solutions, reducing token use while boosting performance. It repositions test-time scaling toward targeted verification.</p>",
+      "content_html": "<p>Claim-Level Reliability Assessment improves reasoning accuracy by verifying critical claims instead of sampling more solutions, reducing token use while boosting performance.</p>"
+    },
+    {
+      "id": "7c48e8e8b4f3",
+      "title": "Generation as Auxiliary Supervision: Enhancing Visual Understanding at Zero Inference Overhead via Decoupled Embedding Prediction",
+      "content": "GAS improves multimodal understanding by using generation as auxiliary supervision via next embedding prediction and a decoupled mixture-of-transformers architecture, with no inference overhead.",
+      "url": "https://huggingface.co/papers/2608.12209",
+      "author": "Zhongbin Guo, Jiahao Xie, Dongling Xiao, Qianle Wang, Ruiqi Lu, Xiaomin He, Wanxuan Sun, Cheng Yang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Multimodal Large Language Models",
+        "visual tokenization",
+        "diffusion objectives",
+        "Next Embedding Prediction",
+        "Mixture-of-Transformers",
+        "cross-modal generation",
+        "generation-guided training"
+      ],
+      "summary": "GAS uses generation as auxiliary supervision during training via next-embedding prediction and a decoupled mixture-of-transformers architecture, improving multimodal understanding with zero inference overhead.",
+      "importance_score": 66.0,
+      "reasoning": "Practical architectural trick that pays for itself at training time only. Decoupling generation from understanding is a worthwhile efficiency angle; the zero-inference-overhead claim is meaningful for production systems.",
+      "themes": [
+        "Multimodal Models",
+        "Training Efficiency",
+        "Architecture"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12209",
+        "category_name": "Multimodal Large Language Models, visual tokenization, diffusion objectives",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12209"
+        },
+        "huggingface": {
+          "upvotes": 0,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>GAS uses generation as auxiliary supervision during training via next-embedding prediction and a decoupled mixture-of-transformers architecture, improving multimodal understanding with zero inference overhead.</p>",
+      "content_html": "<p>GAS improves multimodal understanding by using generation as auxiliary supervision via next embedding prediction and a decoupled mixture-of-transformers architecture, with no inference overhead.</p>"
+    },
+    {
+      "id": "42d29851893e",
+      "title": "SimpleOPD: Simple Tokenizer-Agnostic On-Policy Distillation for Long-Context Reasoning",
+      "content": "On-policy distillation from a long-context reasoning teacher to short-context students improves mathematical proof reasoning and generalizes to science benchmarks by aligning token spans, constraining length growth, and stabilizing training.",
+      "url": "https://huggingface.co/papers/2608.14277",
+      "author": "Haonan He, Haodi Lei, Yun Luo, Haoran Zhang, Shunkai Zhang, Yizhuo Li, Shengji Tang, Zhilin Wang, Runzhe Zhan, Lei Bai, Ganqu Cui, Fangchen Yu, Yafu Li, Peng Ye, Ning Ding, Yu Cheng",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "on-policy distillation",
+        "tokenizer mismatch",
+        "student reference KL loss",
+        "termination token masking",
+        "proof reasoning",
+        "long-context reasoning",
+        "short-context student",
+        "distribution mismatch"
+      ],
+      "summary": "SimpleOPD is a tokenizer-agnostic on-policy distillation approach that transfers long-context mathematical reasoning from a teacher to short-context students via token-span alignment, length constraints, and stabilized training. The student generalizes to science benchmarks despite training on math proofs.",
+      "importance_score": 65.0,
+      "reasoning": "Addresses a practical pain point (tokenizer mismatch) in distillation and reports cross-domain transfer. Solid methodology but incremental over the broader on-policy distillation literature.",
+      "themes": [
+        "Reasoning",
+        "Knowledge Distillation",
+        "Mathematics"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14277",
+        "category_name": "on-policy distillation, tokenizer mismatch, student reference KL loss",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14277"
+        },
+        "huggingface": {
+          "upvotes": 28,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": "https://github.com/hhnqqq/SimpleOPD"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>SimpleOPD is a tokenizer-agnostic on-policy distillation approach that transfers long-context mathematical reasoning from a teacher to short-context students via token-span alignment, length constraints, and stabilized training. The student generalizes to science benchmarks despite training on math proofs.</p>",
+      "content_html": "<p>On-policy distillation from a long-context reasoning teacher to short-context students improves mathematical proof reasoning and generalizes to science benchmarks by aligning token spans, constraining length growth, and stabilizing training.</p>"
+    },
+    {
+      "id": "777ae10d2e90",
+      "title": "LittleLearner: Language Models Under Pedagogically Controlled Knowledge Exposure",
+      "content": "A curated elementary-grade pretraining corpus and 5B-parameter model create a controlled sandbox for studying knowledge acquisition, representation, and bounded capability growth via post-training and in-context learning.",
+      "url": "https://huggingface.co/papers/2608.13545",
+      "author": "Fanfei Li, Jana Zeller, Manuel Prada-Corral, Thaddäus Wiedemer, Prasanna Mayilvahanan, Ryan Cotterell, Wieland Brendel",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "pretraining corpus",
+        "LLM",
+        "in-context learning",
+        "post-training",
+        "knowledge injection",
+        "curriculum-guided training"
+      ],
+      "summary": "LittleLearner curates an elementary-grade pretraining corpus and trains a 5B-parameter model to create a controlled sandbox for studying knowledge acquisition, representation, and capability growth via post-training and in-context learning. It enables pedagogically controlled experiments on LLMs.",
+      "importance_score": 65.0,
+      "reasoning": "Methodologically valuable sandbox; controlled-corpus research is rare and useful for causal claims about learning. The 5B scale limits direct relevance to frontier models but the scientific framing is strong.",
+      "themes": [
+        "Pretraining",
+        "Interpretability",
+        "Knowledge Acquisition"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13545",
+        "category_name": "pretraining corpus, LLM, in-context learning",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13545"
+        },
+        "huggingface": {
+          "upvotes": 6,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LittleLearner curates an elementary-grade pretraining corpus and trains a 5B-parameter model to create a controlled sandbox for studying knowledge acquisition, representation, and capability growth via post-training and in-context learning. It enables pedagogically controlled experiments on LLMs.</p>",
+      "content_html": "<p>A curated elementary-grade pretraining corpus and 5B-parameter model create a controlled sandbox for studying knowledge acquisition, representation, and bounded capability growth via post-training and in-context learning.</p>"
+    },
+    {
+      "id": "59aac93277b6",
+      "title": "Apodex Discovery: Reality Benchmarks and Environments for Evaluating and Building Discoverative Artificial Intelligence",
+      "content": "Apodex Discovery introduces a framework for verifiable, extended AI investigations using a heavy-duty solver and structured evaluation across real-world scientific tasks.",
+      "url": "https://huggingface.co/papers/2608.11341",
+      "author": "Brian Wang, Bin Feng, Xiaoman Pan, Chenyang An, Felix Liu, Tangqi Fang, Gongbo Sun, Lingfeng Shen, Ning Wang, Handuo Zhang, Feng Chen, Fuchao Yang, Xiang Wang, Jiacheng Lin, Siting Li, Zixuan Liu, Chi Han, Zhenhailong Wang, Kunlun Zhu, Lawrence Zhao, Yueqi Guo, Kailong Wen, Feng Xing, Yiling Guo, Lidong Bing, David Tan, Bo An, Heng Ji, Sheng Wang",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Apodex Discovery",
+        "heavy-duty solver",
+        "foundation model",
+        "harness",
+        "control policies",
+        "stateful verification",
+        "problem-scouting",
+        "environment-task-episode abstraction",
+        "HDS6",
+        "AAV capsid design",
+        "drug repurposing",
+        "TRACES"
+      ],
+      "summary": "Apodex Discovery proposes reality benchmarks and environments for evaluating and building discovery-oriented AI on extended, verifiable scientific investigations using a heavy-duty solver component. It targets long-horizon, evidence-grounded scientific tasks where progress is measurable.",
+      "importance_score": 64.0,
+      "reasoning": "Useful infrastructure for the growing discovery-agent niche; the emphasis on verifiability addresses a real pain point. Less novel methodologically than some entries, but the environment framing could become a standard reference.",
+      "themes": [
+        "AI for Science",
+        "Benchmarks",
+        "Autonomous Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.11341",
+        "category_name": "Apodex Discovery, heavy-duty solver, foundation model",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.11341"
+        },
+        "huggingface": {
+          "upvotes": 30,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-11T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Apodex Discovery proposes reality benchmarks and environments for evaluating and building discovery-oriented AI on extended, verifiable scientific investigations using a heavy-duty solver component. It targets long-horizon, evidence-grounded scientific tasks where progress is measurable.</p>",
+      "content_html": "<p>Apodex Discovery introduces a framework for verifiable, extended AI investigations using a heavy-duty solver and structured evaluation across real-world scientific tasks.</p>"
+    },
+    {
+      "id": "64652dff1c87",
+      "title": "Fork Around and Find Out Part 3: Interpreting the knight auditor",
+      "content": "SummaryThis is the third and final post in a series detailing our attempts to mechanistically interpret one head of the chess transformer Maia-3. We find that previous causal evidence gave us a spurious picture of the head, and that rather than just detecting knight forks, head 5 of layer 5 (l5h5) predominantly serves to suppress pointless knight moves.Maia-3 architecture from (arxiv.org/pdf/2605.19091)In this final post, we show that intentionally crafted probes shatter this interpretation of l5h5, and what we once called a “fork detector” is more akin to a “knight move auditor,” one that grades knight moves by their threat level, and is predominantly defined by its strong suppression of poor, quiet knight moves. This has some interesting mirrors to themes in cognitive science research which will be discussed at the end.Interactive demos for the post can be found here:chessformer_lens demo.ipynbThe analysis and visualization library: https://github.com/chessformer-lens/chessformer_lensRecapThe terminology we have been using:layer 0–7 — the eight transformer blocks; each contains an attention(sub)layer and an feed forward MLP (sub)layer.residual stream — the shared communication channel that attention and MLP additively read from and write into; the additivity is what makes per-component decomposition meaningful.readout point — the residual stream's content at a given depth. We read at 18 points: the input embedding, the post-attention and post-MLP points of each of the 8 blocks, and the final encoder output. These point are after layer norm. Depth labels in figures read [emb, a0, m0, a1, m1, …, a7, m7, enc] (aN = block N's attention, mN = its MLP).logit — raw output of a machine learning model forward pass before being transformed by an activation function to fit match with the desired predictionslogit lens— decode a readout point through the final unembedding as if it were the finished product, and read the resulting move distribution.decodable move— a move scorin...",
+      "url": "https://www.lesswrong.com/posts/Cke4aTXGB7aG8zCsx/fork-around-and-find-out-part-3-interpreting-the-knight",
+      "author": "dl27",
+      "published": "2026-08-17T14:11:10.940000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Launches a research agenda arguing that LLM behaviors around unexpected tokenization patterns are understudied from an alignment perspective and may carry safety-relevant implications.",
+      "importance_score": 64.0,
+      "reasoning": "Important and underexplored intersection of tokenization mechanics and alignment. The framing is forward-looking rather than conclusive, but identifying understudied failure modes is valuable research direction-setting.",
+      "themes": [
+        "Tokenization",
+        "AI Safety",
+        "Alignment",
+        "Interpretability"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "Cke4aTXGB7aG8zCsx",
+        "slug": "fork-around-and-find-out-part-3-interpreting-the-knight",
+        "base_score": 15,
+        "vote_count": 4,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Launches a research agenda arguing that LLM behaviors around unexpected tokenization patterns are understudied from an alignment perspective and may carry safety-relevant implications.</p>",
+      "content_html": "<p>SummaryThis is the third and final post in a series detailing our attempts to mechanistically interpret one head of the chess transformer Maia-3. We find that previous causal evidence gave us a spurious picture of the head, and that rather than just detecting knight forks, head 5 of layer 5 (l5h5) predominantly serves to suppress pointless knight moves.Maia-3 architecture from (arxiv.org/pdf/2605.19091)In this final post, we show that intentionally crafted probes shatter this interpretation of l5h5, and what we once called a “fork detector” is more akin to a “knight move auditor,” one that grades knight moves by their threat level, and is predominantly defined by its strong suppression of poor, quiet knight moves. This has some interesting mirrors to themes in cognitive science research which will be discussed at the end.Interactive demos for the post can be found here:chessformer_lens demo.ipynbThe analysis and visualization library: https://github.com/chessformer-lens/chessformer_lensRecapThe terminology we have been using:layer 0–7 — the eight transformer blocks; each contains an attention(sub)layer and an feed forward MLP (sub)layer.residual stream — the shared communication channel that attention and MLP additively read from and write into; the additivity is what makes per-component decomposition meaningful.readout point — the residual stream's content at a given depth. We read at 18 points: the input embedding, the post-attention and post-MLP points of each of the 8 blocks, and the final encoder output. These point are after layer norm. Depth labels in figures read [emb, a0, m0, a1, m1, …, a7, m7, enc] (aN = block N's attention, mN = its MLP).logit — raw output of a machine learning model forward pass before being transformed by an activation function to fit match with the desired predictionslogit lens— decode a readout point through the final unembedding as if it were the finished product, and read the resulting move distribution.decodable move— a move scorin...</p>"
+    },
+    {
+      "id": "f90bbb467e39",
+      "title": "Self-Supervised Visual On-Policy Distillation",
+      "content": "Self-supervised visual on-policy distillation improves small vision-language models by distilling from original images into strongly augmented student views without privileged annotations or larger teachers.",
+      "url": "https://huggingface.co/papers/2608.14144",
+      "author": "Yijiang Li, Yijun Liang, Yunjie Tian, Bingyang Wang, Ke Zhang, Zhenfei Yin, Di Fu, Philip Torr, Nuno Vasconcelos",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "visual on-policy distillation",
+        "teacher-student asymmetry",
+        "privileged supervision",
+        "Self-Supervised Visual On-Policy Distillation",
+        "S²VOPD",
+        "asymmetric augmented views",
+        "self-distillation",
+        "fine-grained perception"
+      ],
+      "summary": "Proposes a self-supervised distillation method that lets small vision-language students learn from raw images rather than teacher logits or privileged annotations, using strongly augmented on-policy views. This removes the asymmetry that forces access to a larger teacher or extra labels and yields stronger small VLMs.",
+      "importance_score": 62.0,
+      "reasoning": "Practical training recipe with clear efficiency motivation; authorship (Torr, Vasconcelos) adds credibility. Incremental over prior on-policy distillation work but relevant for resource-constrained VLM deployment.",
+      "themes": [
+        "Vision-Language Models",
+        "Knowledge Distillation",
+        "Efficiency"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14144",
+        "category_name": "visual on-policy distillation, teacher-student asymmetry, privileged supervision",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14144"
+        },
+        "huggingface": {
+          "upvotes": 151,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes a self-supervised distillation method that lets small vision-language students learn from raw images rather than teacher logits or privileged annotations, using strongly augmented on-policy views. This removes the asymmetry that forces access to a larger teacher or extra labels and yields stronger small VLMs.</p>",
+      "content_html": "<p>Self-supervised visual on-policy distillation improves small vision-language models by distilling from original images into strongly augmented student views without privileged annotations or larger teachers.</p>"
+    },
+    {
+      "id": "8db9d27187c0",
+      "title": "Second Thought: Reasoning in Parallel as LLM Agents Act and Observe",
+      "content": "Second Thought is a training-free framework that runs auxiliary reasoning branches in parallel during agent action-observation waits to reduce sequential decoding and turn counts without harming accuracy.",
+      "url": "https://huggingface.co/papers/2608.13667",
+      "author": "Zhensu Sun, Chengran Yang, Yunbo Lyu, Jieke Shi, David Lo",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "ReAct",
+        "LLM agents",
+        "reasoning idle window",
+        "Second Thought",
+        "auxiliary branches",
+        "concurrent decoding",
+        "agentic benchmarks",
+        "Pass@1"
+      ],
+      "summary": "Second Thought is a training-free framework that runs auxiliary reasoning branches in parallel during the idle time of an LLM agent waiting between actions and observations, reducing sequential decoding and total turns without harming accuracy.",
+      "importance_score": 62.0,
+      "reasoning": "Clever use of agent idle time; training-free nature makes it widely deployable. Impact depends on whether gains hold across more diverse agent workloads.",
+      "themes": [
+        "Autonomous Agents",
+        "Efficiency",
+        "Reasoning"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13667",
+        "category_name": "ReAct, LLM agents, reasoning idle window",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13667"
+        },
+        "huggingface": {
+          "upvotes": 11,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T18:04:53.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Second Thought is a training-free framework that runs auxiliary reasoning branches in parallel during the idle time of an LLM agent waiting between actions and observations, reducing sequential decoding and total turns without harming accuracy.</p>",
+      "content_html": "<p>Second Thought is a training-free framework that runs auxiliary reasoning branches in parallel during agent action-observation waits to reduce sequential decoding and turn counts without harming accuracy.</p>"
+    },
+    {
+      "id": "63017563d97e",
+      "title": "Connect to your future selves",
+      "content": "While&nbsp;your connection to your past self&nbsp;is mostly about your sense of identity, your connection to your future self is more practical. Broadly, it’s about building a better life.You do this through a timeless policy of charity and trust. Act charitably toward your future self, and in turn you inherit a better life. Be accountable to your past, and in turn you have a trustworthy future self whom you can hand work off to.DisconnectionMany people are woefully disconnected from their future selves, living in a kind of eternal present where “the future” is an imaginary place, and their “future self” is a stranger whose problems don’t matter. Some examples that come to mind:The internet is a graveyard of barely-started projects.&nbsp;I was looking for Substack names for a new writing project, and for every name I tried, I found a person who claimed it years ago, wrote 1-2 posts (or just “coming soon”), and then never posted again. If you’ve ever shopped for domain names or landed on a random person’s website by some other means, you’re familiar with this pattern. Their latest post gushes about, “Whoops I haven’t posted in so long, sorry, but I’m going to be posting more consistently from now on!” and it’s from 2013. And it’s tempting to judge them, but I know the exact experience that causes people do this, because every time I publish a post, I distinctly feel like “that was easy, I could do this more often, like once a week for a while.” But I know better: that feeling is miscalibrated, it’s&nbsp;present-bias, and it can disconnect me from the reality of my future self. We get an emotional high from finishing work, and in that highly motivated state we commit to more work that our future selves just can’t deliver.At my job I often see this pattern where someone gets excited about a new project or initiative, yet somehow I know the momentum isn’t going to last. Maybe it’s that I know their other responsibilities will pull them away; maybe I think they’re undere...",
+      "url": "https://www.lesswrong.com/posts/GEaf2BCufztdmarGK/connect-to-your-future-selves",
+      "author": "PatrickDFarley",
+      "published": "2026-08-17T10:57:44.690000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Third installment in a mechanistic interpretability series on the chess transformer Maia-3, concluding that what looked like a knight-fork detector head actually functions as a knight-move auditor that suppresses poor quiet moves.",
+      "importance_score": 62.0,
+      "reasoning": "Solid mechanistic interpretability work with concrete negative results correcting earlier interpretations. Useful demonstration of how probes can mislead and how careful causal analysis refines mechanistic claims.",
+      "themes": [
+        "Mechanistic Interpretability",
+        "Chess AI",
+        "Model Analysis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "GEaf2BCufztdmarGK",
+        "slug": "connect-to-your-future-selves",
+        "base_score": 10,
+        "vote_count": 8,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Third installment in a mechanistic interpretability series on the chess transformer Maia-3, concluding that what looked like a knight-fork detector head actually functions as a knight-move auditor that suppresses poor quiet moves.</p>",
+      "content_html": "<p>While&nbsp;your connection to your past self&nbsp;is mostly about your sense of identity, your connection to your future self is more practical. Broadly, it’s about building a better life.You do this through a timeless policy of charity and trust. Act charitably toward your future self, and in turn you inherit a better life. Be accountable to your past, and in turn you have a trustworthy future self whom you can hand work off to.DisconnectionMany people are woefully disconnected from their future selves, living in a kind of eternal present where “the future” is an imaginary place, and their “future self” is a stranger whose problems don’t matter. Some examples that come to mind:The internet is a graveyard of barely-started projects.&nbsp;I was looking for Substack names for a new writing project, and for every name I tried, I found a person who claimed it years ago, wrote 1-2 posts (or just “coming soon”), and then never posted again. If you’ve ever shopped for domain names or landed on a random person’s website by some other means, you’re familiar with this pattern. Their latest post gushes about, “Whoops I haven’t posted in so long, sorry, but I’m going to be posting more consistently from now on!” and it’s from 2013. And it’s tempting to judge them, but I know the exact experience that causes people do this, because every time I publish a post, I distinctly feel like “that was easy, I could do this more often, like once a week for a while.” But I know better: that feeling is miscalibrated, it’s&nbsp;present-bias, and it can disconnect me from the reality of my future self. We get an emotional high from finishing work, and in that highly motivated state we commit to more work that our future selves just can’t deliver.At my job I often see this pattern where someone gets excited about a new project or initiative, yet somehow I know the momentum isn’t going to last. Maybe it’s that I know their other responsibilities will pull them away; maybe I think they’re undere...</p>"
+    },
+    {
+      "id": "2cecc8967c90",
+      "title": "CPI-Bench: A Comprehensive,Practical and Intelligent Benchmark for Real-World Image Editing",
+      "content": "CPI-Bench is a comprehensive benchmark for real-world image editing that evaluates multi-image tasks, practical applications, and reasoning-based editing to better differentiate model performance.",
+      "url": "https://huggingface.co/papers/2608.14546",
+      "author": "Qinye Zhou, Jun Zheng, Yongchao Du, Yuan Wang, Zhengrui Chen, Zuan Gao, Taihang Hu, Chao Lin, Yefeng Shen, Xingjian Wang, Zhao Wang, Zhengtao Wu, Xiaoli Xu, Zhengze Xu, Hao Yan, Denghui Yang, Yuhang Yu, Huayu Zhang, Mingzhou Zhang, Mengting Chen",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "CPI-Bench",
+        "multi-image editing",
+        "reasoning-based editing",
+        "image editing models",
+        "Arena Image Edit Leaderboard"
+      ],
+      "summary": "CPI-Bench is a comprehensive benchmark for real-world image editing covering multi-image editing, practical applications, and reasoning-based edits to better differentiate model capabilities. It highlights where existing editing models converge to similar scores on simpler tests.",
+      "importance_score": 61.0,
+      "reasoning": "Practical and well-motivated; the multi-image and reasoning-based slices are genuine gaps. Wide author list suggests broad coverage, but as with most editing benchmarks, longevity depends on rapid community adoption.",
+      "themes": [
+        "Image Editing",
+        "Benchmarks",
+        "Multimodal Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14546",
+        "category_name": "CPI-Bench, multi-image editing, reasoning-based editing",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14546"
+        },
+        "huggingface": {
+          "upvotes": 13,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": "https://github.com/zqyzzz/CPI-benchmark"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>CPI-Bench is a comprehensive benchmark for real-world image editing covering multi-image editing, practical applications, and reasoning-based edits to better differentiate model capabilities. It highlights where existing editing models converge to similar scores on simpler tests.</p>",
+      "content_html": "<p>CPI-Bench is a comprehensive benchmark for real-world image editing that evaluates multi-image tasks, practical applications, and reasoning-based editing to better differentiate model performance.</p>"
+    },
+    {
+      "id": "27367771aefb",
+      "title": "Latent On-Policy Self-Distillation",
+      "content": "Latent On-Policy Self-Distillation learns privileged teaching context end-to-end from experience to provide dense token-level supervision, improving agent performance and efficiency.",
+      "url": "https://huggingface.co/papers/2608.13040",
+      "author": "Guibin Zhang, Jiayang Lyu, Ran Sun, Xinlei Yu, Haoyu Zhao, Qibing Ren, Shuicheng Yan",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "on-policy self-distillation",
+        "privileged self-teacher",
+        "latent tokens",
+        "token-level supervision",
+        "privileged-margin objective",
+        "RLVR",
+        "SDPO",
+        "Skill-SD",
+        "GRPO"
+      ],
+      "summary": "Latent On-Policy Self-Distillation trains an agent to produce its own privileged teaching context end-to-end from experience, yielding dense token-level supervision that improves agent performance and sample efficiency. The method avoids needing a separate larger teacher.",
+      "importance_score": 60.0,
+      "reasoning": "A useful self-distillation extension for agents; concept of latent privileged context is intriguing. Empirical gains need broader benchmarks to confirm generality.",
+      "themes": [
+        "Reinforcement Learning",
+        "Autonomous Agents",
+        "Knowledge Distillation"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13040",
+        "category_name": "on-policy self-distillation, privileged self-teacher, latent tokens",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13040"
+        },
+        "huggingface": {
+          "upvotes": 17,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/bingreeky/LOPD"
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Latent On-Policy Self-Distillation trains an agent to produce its own privileged teaching context end-to-end from experience, yielding dense token-level supervision that improves agent performance and sample efficiency. The method avoids needing a separate larger teacher.</p>",
+      "content_html": "<p>Latent On-Policy Self-Distillation learns privileged teaching context end-to-end from experience to provide dense token-level supervision, improving agent performance and efficiency.</p>"
+    },
+    {
+      "id": "3cb05480d0f7",
+      "title": "Who Speaks Matters: Authority-Aware Multi-View RAG over Italian Parliamentary Proceedings",
+      "content": "ParliamentRAG is a retrieval-augmented generation system for Italian parliamentary records that uses topic-dependent speaker authority to retrieve expert perspectives and generate faithful, multi-perspective summaries.",
+      "url": "https://huggingface.co/papers/2608.13410",
+      "author": "Mirko Tritella, Riccardo Pozzi, Matteo Palmonari",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Retrieval-Augmented Generation",
+        "topic-dependent authority model",
+        "parliamentary transcripts",
+        "quotation faithfulness",
+        "expert evaluation"
+      ],
+      "summary": "UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting, eliminating the need for manual spurious-feature annotations.",
+      "importance_score": 60.0,
+      "reasoning": "Methodologically interesting automation of spurious correlation discovery, useful for robustness research. The causal verification framing is sound, though impact depends on empirical strength not fully conveyed in the summary.",
+      "themes": [
+        "Robustness",
+        "Causal ML",
+        "Text Classification"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13410",
+        "category_name": "Retrieval-Augmented Generation, topic-dependent authority model, parliamentary transcripts",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13410"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/Emeierkeio/ParliamentRAG"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting, eliminating the need for manual spurious-feature annotations.</p>",
+      "content_html": "<p>ParliamentRAG is a retrieval-augmented generation system for Italian parliamentary records that uses topic-dependent speaker authority to retrieve expert perspectives and generate faithful, multi-perspective summaries.</p>"
+    },
+    {
+      "id": "35c59ca6467d",
+      "title": "DFM Mimir v1: An Open HRM Delivering Frontier Performance at 1B Parameters Using Only Permissible Post-Training Data",
+      "content": "Mimir v1 is a 1-billion-parameter Hierarchical Reasoning Model trained solely on permissible data that achieves competitive English results and state-of-the-art Danish performance across multiple benchmarks.",
+      "url": "https://huggingface.co/papers/2608.13517",
+      "author": "Peter Schneider-Kamp, Jacob Nielsen, Gianluca Barmina, Kenneth Enevoldsen, Lukas Galke Poech",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Hierarchical Reasoning Model",
+        "HRM architecture",
+        "language model",
+        "post-training data",
+        "benchmarks"
+      ],
+      "summary": "DFM Mimir v1 is a 1B-parameter Hierarchical Reasoning Model trained only on permissible post-training data, reporting competitive English results and state-of-the-art Danish performance on multiple benchmarks. The work demonstrates that HRM-style architectures can scale responsibly with curated data.",
+      "importance_score": 58.0,
+      "reasoning": "The Danish SOTA claim and data-permissibility angle are noteworthy for European/regional AI. However, 1B scale and incremental gains over conventional dense models limit broader impact; HRM framing needs stronger empirical grounding.",
+      "themes": [
+        "Language Models",
+        "Reasoning",
+        "Efficient Training"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13517",
+        "category_name": "Hierarchical Reasoning Model, HRM architecture, language model",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13517"
+        },
+        "huggingface": {
+          "upvotes": 21,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/schneiderkamplab/HRM-Text"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>DFM Mimir v1 is a 1B-parameter Hierarchical Reasoning Model trained only on permissible post-training data, reporting competitive English results and state-of-the-art Danish performance on multiple benchmarks. The work demonstrates that HRM-style architectures can scale responsibly with curated data.</p>",
+      "content_html": "<p>Mimir v1 is a 1-billion-parameter Hierarchical Reasoning Model trained solely on permissible data that achieves competitive English results and state-of-the-art Danish performance across multiple benchmarks.</p>"
+    },
+    {
+      "id": "fbc7014f1ac3",
+      "title": "Teaching Everyone to Fish for Tokens",
+      "content": "Housekeeping: No voiceover for this post as I&#8217;m traveling.The oldest comparison people try to make is how what&#8217;s happening with open models compares to foundational open-source software projects like the Linux operating system. There are fairly clean analogies, but they paint a narrow path forwards for the self-sustaining nature of the open-source model ecosystem, where once Linux got big enough it was going to be self-fulfilling as the best possible tool for many jobs. The open-source language model &#8211; i.e. only models that come with a full training recipe, data, code, etc. &#8211; is a closer analogue to the open-source operating system. The open weight models you use &#8211; those with just model weights and inference code to run them &#8211; are closer to specific versions of software that you install in a project built upon them.ShareModel weights are very transient on average, but they still have a long shelf life, as with a lot of heavily used software. It&#8217;s why many companies are still using workflows built on Llama 3, despite agentic behaviors taking off years later. The open-source recipe, typified in modern times by the Olmo models I helped build at Ai2, with its predecessors like Pythia from EleutherAI, is a resource intensive process that any company can pick up, modify, and press &#8220;run&#8221; on to produce a new set of model weights. In the best cases, the community can contribute improvements in data or training code back into the next model too! This is why Nvidia is investing so much in nearly open-source models &#8211; for their Nemotron models they release all the data they legally can and the training code, etc. Nvidia wants a world where countless people can build token machines, so intelligence is not monopolized. This is a world with massive demand for inference across many companies, all of which want to buy Nvidia&#8217;s offerings.Open-source AI has a tricky future, as building the best models is extremely capital intensive. The ability to build competitive models has stayed more accessible in industry longer than many would&#8217;ve expected. The default expectation for many is that training models is too expensive and the open-source recipe is too far behind, so building a new lab centered on some part of training LLMs will not be tractable.There are two futures from here. First is if &#8220;it works&#8221; &#8211; if the open-source recipe works for Nvidia, they&#8217;ll be creating far more demand for their chips (and profits) than it costs to build the models. Right now it&#8217;s reported that Nvidia is spending $26 billion on this endeavor. It&#8217;s not clear if this will work, or if AI&#8217;s capital intensiveness will drive more and more companies out of the training game. We haven&#8217;t seen many signs of this starting. In fact, the companies bowing out &#8211; like Databricks and 01.ai &#8211; seem like anomalies.The open-source ecosystem will become increasingly dependent on Nvidia&#8217;s financing in the coming years. This is an existential window, where within a few years the profits of this approach need to return to them, or another open model company needs to cultivate platform-like financial feedback loops on their openness. This economic reward needs to be proportional to the profits generated by Anthropic and OpenAI&#8217;s APIs to keep pace over decades of language model development. This can be driven by competitiveness on performance or by the AI boom just being so big that the open model training, inference, and fine-tuning companies all have vast quantities of demand.The second future is if one of these two financially positive paths doesn&#8217;t play out, open models will fork to a different development path than the leading closed models &#8211; one more focused on efficiency, modifiability, specialization, etc. I put this mentally as my most likely outcome &#8211; open models are still incredibly useful, but fill a long-tail ecosystem relative to the closed counterparts that have monopoly ownership stakes in the most valuable areas like knowledge work collaboration, drug discovery, SWE, etc. The long-tail is something like enterprise-specific agents that run on-prem with private data on repetitive business tasks.Part of why I think this open-source training will have a hard time catching on is because training is getting more complex and more abstracted. The current open model ecosystem is buoyed by an explosion in interest in post-training open models. These people take models like DeepSeek V4 Flash, Inkling Small, or GLM 5.X and finetune them for their specific agentic tasks (e.g. in Tinker, the most popular finetuning API today).Interconnects AI is a reader-supported publication. Consider becoming a subscriber.Over the last few years, post-training largely referred to the whole process of modifying the base model to make it intelligent and usable. There is a shift happening where the ability to train a base model to be a general agentic reasoner is becoming opaque like at-scale pretraining practices from a few years ago. This could go so far as to change the established pretraining, midtraining, post-training lexicon that has been standard for a few years. It could come to be something closer to pretraining, reasoning training, and post-training.As there&#8217;s less interest in training the entire model, there&#8217;s less interest in investing in open-source AI. These are the only sort of hints we will get, but we cannot do much to fight the economic gravity of these situations. This trend is the next step in the number of open model builders who release base models (the model versions before core reasoning training) continuing to decrease. It goes hand in hand with open model builders experimenting with revenue share licenses for downstream use in products or inference. These are experiments in keeping the financing viable for building near frontier open-weight models &#8211; a lot hinges in the near future on how successful they are. These are the people that need to succeed for Nvidia&#8217;s demand-growth strategy around open-source to succeed, and last.Along the way we&#8217;re still in for a ton of action in open-weight models, as releasing access to intelligence is one of the strongest business strategies available. This additional type of player, who monetizes the AI indirectly, is typified by Meta and other hyperscalers with massive balance sheets. Meta releasing its very-strong Muse Spark 1.2 model as open-weights would severely hamper the revenue growth rate of their competitors in Anthropic and OpenAI who rely on selling tokens. These companies are both commoditizing their complements, but they&#8217;re doing it in different ways. Nvidia wants to teach everyone to fish for tokens, so the ecosystem is self-sustaining, but Meta is strategically flooding the zone with tokens.",
+      "url": "https://www.interconnects.ai/p/teaching-everyone-to-fish-for-tokens",
+      "author": "Nathan Lambert",
+      "published": "2026-08-17T11:07:49",
+      "source": "Interconnects AI",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Nathan Lambert argues that open-weight and open-recipe models map onto different open-source software analogues and outlines what sustaining the open-model ecosystem will actually require.",
+      "importance_score": 58.0,
+      "reasoning": "Influential voice in the open-model ecosystem providing useful framing for how to think about sustainability. The Olmo comparison grounds the argument in concrete examples. More commentary than new research but carries practical weight.",
+      "themes": [
+        "Open-Source Models",
+        "Ecosystem Strategy",
+        "Llama",
+        "Olmo"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.interconnects.ai/feed",
+        "source_index_url": "",
+        "raw_summary": "Nvidia wants you building your own model, not buying from Anthropic/OpenAI.",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Nathan Lambert argues that open-weight and open-recipe models map onto different open-source software analogues and outlines what sustaining the open-model ecosystem will actually require.</p>",
+      "content_html": "<p>Housekeeping: No voiceover for this post as I’m traveling.The oldest comparison people try to make is how what’s happening with open models compares to foundational open-source software projects like the Linux operating system. There are fairly clean analogies, but they paint a narrow path forwards for the self-sustaining nature of the open-source model ecosystem, where once Linux got big enough it was going to be self-fulfilling as the best possible tool for many jobs. The open-source language model – i.e. only models that come with a full training recipe, data, code, etc. – is a closer analogue to the open-source operating system. The open weight models you use – those with just model weights and inference code to run them – are closer to specific versions of software that you install in a project built upon them.ShareModel weights are very transient on average, but they still have a long shelf life, as with a lot of heavily used software. It’s why many companies are still using workflows built on Llama 3, despite agentic behaviors taking off years later. The open-source recipe, typified in modern times by the Olmo models I helped build at Ai2, with its predecessors like Pythia from EleutherAI, is a resource intensive process that any company can pick up, modify, and press “run” on to produce a new set of model weights. In the best cases, the community can contribute improvements in data or training code back into the next model too! This is why Nvidia is investing so much in nearly open-source models – for their Nemotron models they release all the data they legally can and the training code, etc. Nvidia wants a world where countless people can build token machines, so intelligence is not monopolized. This is a world with massive demand for inference across many companies, all of which want to buy Nvidia’s offerings.Open-source AI has a tricky future, as building the best models is extremely capital intensive. The ability to build competitive models has stayed more accessible in industry longer than many would’ve expected. The default expectation for many is that training models is too expensive and the open-source recipe is too far behind, so building a new lab centered on some part of training LLMs will not be tractable.There are two futures from here. First is if “it works” – if the open-source recipe works for Nvidia, they’ll be creating far more demand for their chips (and profits) than it costs to build the models. Right now it’s reported that Nvidia is spending $26 billion on this endeavor. It’s not clear if this will work, or if AI’s capital intensiveness will drive more and more companies out of the training game. We haven’t seen many signs of this starting. In fact, the companies bowing out – like Databricks and 01.ai – seem like anomalies.The open-source ecosystem will become increasingly dependent on Nvidia’s financing in the coming years. This is an existential window, where within a few years the profits of this approach need to return to them, or another open model company needs to cultivate platform-like financial feedback loops on their openness. This economic reward needs to be proportional to the profits generated by Anthropic and OpenAI’s APIs to keep pace over decades of language model development. This can be driven by competitiveness on performance or by the AI boom just being so big that the open model training, inference, and fine-tuning companies all have vast quantities of demand.The second future is if one of these two financially positive paths doesn’t play out, open models will fork to a different development path than the leading closed models – one more focused on efficiency, modifiability, specialization, etc. I put this mentally as my most likely outcome – open models are still incredibly useful, but fill a long-tail ecosystem relative to the closed counterparts that have monopoly ownership stakes in the most valuable areas like knowledge work collaboration, drug discovery, SWE, etc. The long-tail is something like enterprise-specific agents that run on-prem with private data on repetitive business tasks.Part of why I think this open-source training will have a hard time catching on is because training is getting more complex and more abstracted. The current open model ecosystem is buoyed by an explosion in interest in post-training open models. These people take models like DeepSeek V4 Flash, Inkling Small, or GLM 5.X and finetune them for their specific agentic tasks (e.g. in Tinker, the most popular finetuning API today).Interconnects AI is a reader-supported publication. Consider becoming a subscriber.Over the last few years, post-training largely referred to the whole process of modifying the base model to make it intelligent and usable. There is a shift happening where the ability to train a base model to be a general agentic reasoner is becoming opaque like at-scale pretraining practices from a few years ago. This could go so far as to change the established pretraining, midtraining, post-training lexicon that has been standard for a few years. It could come to be something closer to pretraining, reasoning training, and post-training.As there’s less interest in training the entire model, there’s less interest in investing in open-source AI. These are the only sort of hints we will get, but we cannot do much to fight the economic gravity of these situations. This trend is the next step in the number of open model builders who release base models (the model versions before core reasoning training) continuing to decrease. It goes hand in hand with open model builders experimenting with revenue share licenses for downstream use in products or inference. These are experiments in keeping the financing viable for building near frontier open-weight models – a lot hinges in the near future on how successful they are. These are the people that need to succeed for Nvidia’s demand-growth strategy around open-source to succeed, and last.Along the way we’re still in for a ton of action in open-weight models, as releasing access to intelligence is one of the strongest business strategies available. This additional type of player, who monetizes the AI indirectly, is typified by Meta and other hyperscalers with massive balance sheets. Meta releasing its very-strong Muse Spark 1.2 model as open-weights would severely hamper the revenue growth rate of their competitors in Anthropic and OpenAI who rely on selling tokens. These companies are both commoditizing their complements, but they’re doing it in different ways. Nvidia wants to teach everyone to fish for tokens, so the ecosystem is self-sustaining, but Meta is strategically flooding the zone with tokens.</p>"
+    },
+    {
+      "id": "4cda00f7f2fd",
+      "title": "HumanTracker: Towards Comprehensive and Human-Aligned Motion Tracking Benchmark",
+      "content": "HumanTracker introduces a large-scale benchmark and preference-aligned metric to evaluate humanoid motion tracking based on perceptual quality and physical contact stability.",
+      "url": "https://huggingface.co/papers/2608.13555",
+      "author": "Dairu Liu, Zekun Qi, Jiayu Zeng, Ruixi Yu, Yu Guan, Yintianrun Zhang, Xuchuan Chen, Sikai Liang, Zekai Li, Chenghuai Lin, Xinqiang Yu, Wenyao Zhang, He Wang, Li Yi",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "humanoid motion tracking",
+        "kinematic errors",
+        "HumanTracker",
+        "optical motion trajectories",
+        "HumanScore",
+        "preference-aligned metric",
+        "contact-rich behaviors"
+      ],
+      "summary": "HumanTracker is a large-scale benchmark with a preference-aligned metric that evaluates humanoid motion tracking on perceptual quality and physical contact stability rather than only kinematic error. It introduces holistic criteria closer to human judgment.",
+      "importance_score": 57.0,
+      "reasoning": "Methodologically meaningful for humanoid robotics where foot-contact and perceptual realism matter beyond position error. Niche but useful contribution to the simulation-to-real humanoid community.",
+      "themes": [
+        "Robotics",
+        "Benchmarks",
+        "Motion Synthesis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13555",
+        "category_name": "humanoid motion tracking, kinematic errors, HumanTracker",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13555"
+        },
+        "huggingface": {
+          "upvotes": 15,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-13T00:00:00.000Z",
+          "github_repo": "https://github.com/GalaxyGeneralRobotics/HumanTracker"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>HumanTracker is a large-scale benchmark with a preference-aligned metric that evaluates humanoid motion tracking on perceptual quality and physical contact stability rather than only kinematic error. It introduces holistic criteria closer to human judgment.</p>",
+      "content_html": "<p>HumanTracker introduces a large-scale benchmark and preference-aligned metric to evaluate humanoid motion tracking based on perceptual quality and physical contact stability.</p>"
+    },
+    {
+      "id": "1bd05759f040",
+      "title": "A Pathway to General-Purpose Scientific AI: Multimodal Comprehension of Scientific Images",
+      "content": "The ALD/E-ImageMiner benchmark and ICDAR 2026 competition advance machine interpretation of scientific figures through tasks spanning visual reading, domain reasoning, and evidential justification, proposing long-term goals for verifiable multimodal scientific AI.",
+      "url": "https://huggingface.co/papers/2608.14075",
+      "author": "Jennifer D'Souza, Fahad Ahmed, Cecilia Andrea Bustamante Andrade, Lina Frolova, Poorani Gnanasambandan, Dilshad Hussain, Muhammad Uzair Khan, Nkembeng Kevin Nkengfoa, Paul Praveen J., Fabio Priante, Sjoerd Franciscus van der Werf, Thomas Frederik Jan van Roeden",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "ALD/E-ImageMiner",
+        "ICDAR 2026 Competition",
+        "scientific figure extraction",
+        "visual question answering",
+        "Bloom-informed question design",
+        "scientific conceptual understanding",
+        "multimodal scientific AI"
+      ],
+      "summary": "Proposes ALD/E-ImageMiner, a benchmark and ICDAR 2026 competition for machine interpretation of scientific figures across visual reading, domain reasoning, and evidential justification. Sets long-term goals for verifiable multimodal scientific AI.",
+      "importance_score": 56.0,
+      "reasoning": "Domain-specific but well-scoped; competition framing helps community adoption. Impact is largely on the scientific-figure parsing niche rather than general multimodal AI.",
+      "themes": [
+        "Benchmarks",
+        "Document AI",
+        "AI for Science",
+        "Multimodal Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14075",
+        "category_name": "ALD/E-ImageMiner, ICDAR 2026 Competition, scientific figure extraction",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14075"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T08:34:33.000Z",
+          "github_repo": "https://github.com/sciknoworg/sci-imageminer"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes ALD/E-ImageMiner, a benchmark and ICDAR 2026 competition for machine interpretation of scientific figures across visual reading, domain reasoning, and evidential justification. Sets long-term goals for verifiable multimodal scientific AI.</p>",
+      "content_html": "<p>The ALD/E-ImageMiner benchmark and ICDAR 2026 competition advance machine interpretation of scientific figures through tasks spanning visual reading, domain reasoning, and evidential justification, proposing long-term goals for verifiable multimodal scientific AI.</p>"
+    },
+    {
+      "id": "dc71c59b663a",
+      "title": "The Defender’s Window",
+      "content": "AI is reshaping cybersecurity for attackers and defenders alike. Learn how OpenAI is strengthening its defenses and what security teams can do now.",
+      "url": "https://openai.com/index/the-defenders-window",
+      "author": "Unknown",
+      "published": "2026-08-17T01:30:00",
+      "source": "OpenAI Research",
+      "source_type": "research_blog",
+      "tags": [
+        "Security"
+      ],
+      "summary": "OpenAI blog post on how AI is reshaping cybersecurity for both attackers and defenders, and what security teams should do to respond.",
+      "importance_score": 55.0,
+      "reasoning": "Strategic position paper from a major lab on a high-impact dual-use area. Likely a mix of original framing and threat-model synthesis rather than new research. Important for situational awareness.",
+      "themes": [
+        "AI Safety",
+        "Cybersecurity",
+        "Dual-Use"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://openai.com/news/rss.xml",
+        "source_index_url": "https://openai.com/it-IT/research/",
+        "raw_summary": "AI is reshaping cybersecurity for attackers and defenders alike. Learn how OpenAI is strengthening its defenses and what security teams can do now.",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>OpenAI blog post on how AI is reshaping cybersecurity for both attackers and defenders, and what security teams should do to respond.</p>",
+      "content_html": "<p>AI is reshaping cybersecurity for attackers and defenders alike. Learn how OpenAI is strengthening its defenses and what security teams can do now.</p>"
+    },
+    {
+      "id": "eccf8ef305fe",
+      "title": "Forecast Collapse in Time-Series Foundation Models",
+      "content": "Forecast collapse in hourly equity return prediction stems from low predictability and per-series objectives, and the proposed CalibRank objective balances calibration and ranking to restore cross-sectional structure.",
+      "url": "https://huggingface.co/papers/2608.14106",
+      "author": "Shu Wan, Miles Ma, Hank Zhu, Guangqi Liu, Stephen Wang, Qingsong Wen, Huan Liu",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "forecast collapse",
+        "time-series foundation models",
+        "cross-sectional correlation",
+        "calibration-ranking tradeoff",
+        "CalibRank",
+        "per-series objectives"
+      ],
+      "summary": "The paper diagnoses forecast collapse in time-series foundation models for hourly equity returns, attributing it to low predictability and per-series training objectives. A new CalibRank objective balances calibration and ranking to restore cross-sectional structure.",
+      "importance_score": 54.0,
+      "reasoning": "Useful domain-specific contribution to financial ML; the diagnosis is clear but the impact is bounded to a vertical. Still, time-series foundation models are an active area and the paper offers a concrete remedy.",
+      "themes": [
+        "Time-Series Forecasting",
+        "Foundation Models",
+        "Finance"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.14106",
+        "category_name": "forecast collapse, time-series foundation models, cross-sectional correlation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.14106"
+        },
+        "huggingface": {
+          "upvotes": 7,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>The paper diagnoses forecast collapse in time-series foundation models for hourly equity returns, attributing it to low predictability and per-series training objectives. A new CalibRank objective balances calibration and ranking to restore cross-sectional structure.</p>",
+      "content_html": "<p>Forecast collapse in hourly equity return prediction stems from low predictability and per-series objectives, and the proposed CalibRank objective balances calibration and ranking to restore cross-sectional structure.</p>"
+    },
+    {
+      "id": "869ec445c13e",
+      "title": "Is this Citation on Point?",
+      "content": "Large language models reliably detect incorrect case citations but frequently miss wrong pinpoint page references, conflating topical relevance with precise legal support.",
+      "url": "https://huggingface.co/papers/2608.12571",
+      "author": "Apurv Verma",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "proposition-level citation support verification",
+        "controlled perturbations",
+        "wrong-case corruptions",
+        "wrong-pinpoint corruptions",
+        "pinpoint page",
+        "topical overlap",
+        "reasoning effort",
+        "false positive rate"
+      ],
+      "summary": "Empirical evaluation of LLMs for legal citation verification shows they reliably catch wrong case citations but frequently fail on wrong pinpoint page references, conflating topical relevance with precise legal support.",
+      "importance_score": 50.0,
+      "reasoning": "Solid domain-specific evaluation with a concrete and useful finding about a known LLM weakness. Single-author work, but the controlled-perturbation methodology is appropriate and the result is actionable for legal-tech deployments.",
+      "themes": [
+        "Legal AI",
+        "Model Evaluation",
+        "Hallucination"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12571",
+        "category_name": "proposition-level citation support verification, controlled perturbations, wrong-case corruptions",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12571"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-12T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Empirical evaluation of LLMs for legal citation verification shows they reliably catch wrong case citations but frequently fail on wrong pinpoint page references, conflating topical relevance with precise legal support.</p>",
+      "content_html": "<p>Large language models reliably detect incorrect case citations but frequently miss wrong pinpoint page references, conflating topical relevance with precise legal support.</p>"
+    },
+    {
+      "id": "5d764c9438f8",
+      "title": "Value Alignment Is a Pseudo Concept.\n\nA translation; humanity is not a single subject, and alignment is not one-way.",
+      "content": "(Full post from Zilan Qian, which I am posting due to obvious relevance and importance in sharing other perspectives on Lesswrong.)As with the previous case, I am translating this article because I think it should not only live within the Chinese internet.I don’t work in this field, so I could not evaluate how much of the criticism presented here is fair. Intuitively, I do disagree with some points here (noted in the footnote). However, I strongly agree with the arguments that humanity is not a single subject and alignment is not a one-way practice.The article below is translated by AI. Footnote annotations and highlights are mine.By Wang Huanchao, Senior Researcher, Tencent Research InstituteIn May 2024, Ilya Sutskever, OpenAI’s former chief scientist, left the “Superalignment” team he had helped create. A few days later, his partner Jan Leike also announced his resignation, leaving behind a farewell line that would later be widely quoted: “Over the past years, safety culture and processes have taken a backseat to shiny products.”Ten days later, OpenAI simply disbanded the Superalignment team. The group had been promised 20% of the company’s computing resources and four years to solve the problem of aligning superintelligence with human values. From launch to shutdown, it lasted just ten months.At almost the same time, Ilya registered a new company called Safe Superintelligence Inc. (SSI), putting the word “safe” directly into the company’s name in an apparent attempt to continue the work of value alignment. Yet a year later, according to The Wall Street Journal, SSI had already reached a valuation of $32 billion without releasing a single product. Safety had become its valuation; alignment had become its calling card.If the dramatic ouster at OpenAI three years ago could still be interpreted as a power struggle, then the near-zero progress in “value alignment” over the years that followed exposes a deeper problem: perhaps value alignment is simply not a propositio...",
+      "url": "https://www.lesswrong.com/posts/fqHx7vxqvET6weaat/value-alignment-is-a-pseudo-concept-a-translation-humanity",
+      "author": "Davidmanheim",
+      "published": "2026-08-17T03:44:35.476000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Translation of a Chinese-language critique arguing that 'value alignment' is a pseudo-concept because humanity is not a single subject and alignment cannot be a one-way imposition.",
+      "importance_score": 45.0,
+      "reasoning": "Brings non-Western perspective into an Anglophone alignment discussion, which is valuable for the field. Argument quality depends on philosophical content not fully captured here, but the framing of multi-directional alignment is a meaningful contribution.",
+      "themes": [
+        "Alignment",
+        "AI Philosophy",
+        "Cross-Cultural Perspectives"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "fqHx7vxqvET6weaat",
+        "slug": "value-alignment-is-a-pseudo-concept-a-translation-humanity",
+        "base_score": 10,
+        "vote_count": 5,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Translation of a Chinese-language critique arguing that 'value alignment' is a pseudo-concept because humanity is not a single subject and alignment cannot be a one-way imposition.</p>",
+      "content_html": "<p>(Full post from Zilan Qian, which I am posting due to obvious relevance and importance in sharing other perspectives on Lesswrong.)As with the previous case, I am translating this article because I think it should not only live within the Chinese internet.I don’t work in this field, so I could not evaluate how much of the criticism presented here is fair. Intuitively, I do disagree with some points here (noted in the footnote). However, I strongly agree with the arguments that humanity is not a single subject and alignment is not a one-way practice.The article below is translated by AI. Footnote annotations and highlights are mine.By Wang Huanchao, Senior Researcher, Tencent Research InstituteIn May 2024, Ilya Sutskever, OpenAI’s former chief scientist, left the “Superalignment” team he had helped create. A few days later, his partner Jan Leike also announced his resignation, leaving behind a farewell line that would later be widely quoted: “Over the past years, safety culture and processes have taken a backseat to shiny products.”Ten days later, OpenAI simply disbanded the Superalignment team. The group had been promised 20% of the company’s computing resources and four years to solve the problem of aligning superintelligence with human values. From launch to shutdown, it lasted just ten months.At almost the same time, Ilya registered a new company called Safe Superintelligence Inc. (SSI), putting the word “safe” directly into the company’s name in an apparent attempt to continue the work of value alignment. Yet a year later, according to The Wall Street Journal, SSI had already reached a valuation of $32 billion without releasing a single product. Safety had become its valuation; alignment had become its calling card.If the dramatic ouster at OpenAI three years ago could still be interpreted as a power struggle, then the near-zero progress in “value alignment” over the years that followed exposes a deeper problem: perhaps value alignment is simply not a propositio...</p>"
+    },
+    {
+      "id": "ab3aba5d22b2",
+      "title": "Seeing beyond BMI: Estimating cardiometabolic risk with smartphone imagery",
+      "content": "General Science",
+      "url": "https://research.google/blog/seeing-beyond-bmi-estimating-cardiometabolic-risk-with-smartphone-imagery/",
+      "author": "Unknown",
+      "published": "2026-08-17T06:34:00",
+      "source": "The latest research from Google",
+      "source_type": "research_blog",
+      "tags": [
+        "General Science",
+        "Health & Bioscience",
+        "Machine Intelligence"
+      ],
+      "summary": "Google Research post describing work that estimates cardiometabolic risk from smartphone imagery as an alternative or complement to BMI.",
+      "importance_score": 40.0,
+      "reasoning": "Notable health-AI application with potential real-world impact, but the summary is minimal so methodological depth cannot be assessed. Privacy and bias concerns are common in this domain.",
+      "themes": [
+        "Healthcare AI",
+        "Computer Vision",
+        "Google Research"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://research.google/blog/rss/",
+        "source_index_url": "",
+        "raw_summary": "General Science",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Google Research post describing work that estimates cardiometabolic risk from smartphone imagery as an alternative or complement to BMI.</p>",
+      "content_html": "<p>General Science</p>"
+    },
+    {
+      "id": "4fd3d742f416",
+      "title": "Untie Squared ReLU variant",
+      "content": "1 IntroMy collaborator Michael Bukatin came up with an idea: in the hidden projection of MLP, instead of using a single ReLU, he would use two separate up-projections, apply ReLU to each, multiply the two elementwise, then project back as output in the feedforward layer.As a quick recap, a standard ReLU FFN is: mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: .222em; } mjx-container [space=\"4\"] { margin-left: .278em; } mjx-container [space=\"5\"] { margin-left: .333em; } mjx-container [rspace=\"1\"] { margin-right: .111em; } mjx-container [rspace=\"2\"] { margin-right: .167em; } mjx-container [rspace=\"3\"] { margin-right: .222em; } mjx-container [rspace=\"4\"] { margin-right: .278em; } mjx-container [rspace=\"5\"] { margin-right: .333em; } mjx-container [size=\"s\"] { font-size: 70.7%; } mjx-container [size=\"ss\"] { font-size: 50%; } mjx-container [size=\"Tn\"] { font-size: 60%; } mjx-container [size=\"sm\"] { font-size: 85%; } mjx-container [size=\"lg\"] { font-size: 120%; } mjx-container [size=\"Lg\"] { font-size: 144%; } mjx-container [size=\"LG\"] { font-size: 173%; } mjx-container [size=\"hg\"] { font-size: 207%; } mjx-container [size=\"HG\"] { font-size: 249%; } mjx-container [width=\"full\"] { width: 100%; } mjx-box { display: inline-block; } mjx-block { display: block; } mjx-itable { display: inline-table; } mjx-row { display: table-row; } mjx-row > * { display: table-cell; } mjx-mtext { display: inline-block; text-align: left; } mjx-mstyle { display: inline-block; } mjx-merror { display: inline-block; color: red; background-color: yellow; } mjx-mphantom { visibility: hidden; } _::-webkit-full-page-media, _:future, :root mjx-container { will-change: opacity; } mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; bo...",
+      "url": "https://www.lesswrong.com/posts/nkwNc4YujY2wpfSYo/untie-squared-relu-variant",
+      "author": "Amy_",
+      "published": "2026-08-17T02:15:40.922000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Proposes a variant of squared ReLU in which two separate up-projections are activated independently and multiplied elementwise before the down-projection, as a drop-in MLP modification.",
+      "importance_score": 38.0,
+      "reasoning": "Modest architectural exploration. The variant is plausible and cheap to test but the post is presented as an idea rather than an empirical result, limiting immediate impact.",
+      "themes": [
+        "Model Architecture",
+        "Activation Functions"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "nkwNc4YujY2wpfSYo",
+        "slug": "untie-squared-relu-variant",
+        "base_score": 9,
+        "vote_count": 3,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes a variant of squared ReLU in which two separate up-projections are activated independently and multiplied elementwise before the down-projection, as a drop-in MLP modification.</p>",
+      "content_html": "<p>1 IntroMy collaborator Michael Bukatin came up with an idea: in the hidden projection of MLP, instead of using a single ReLU, he would use two separate up-projections, apply ReLU to each, multiply the two elementwise, then project back as output in the feedforward layer.As a quick recap, a standard ReLU FFN is: mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: .222em; } mjx-container [space=\"4\"] { margin-left: .278em; } mjx-container [space=\"5\"] { margin-left: .333em; } mjx-container [rspace=\"1\"] { margin-right: .111em; } mjx-container [rspace=\"2\"] { margin-right: .167em; } mjx-container [rspace=\"3\"] { margin-right: .222em; } mjx-container [rspace=\"4\"] { margin-right: .278em; } mjx-container [rspace=\"5\"] { margin-right: .333em; } mjx-container [size=\"s\"] { font-size: 70.7%; } mjx-container [size=\"ss\"] { font-size: 50%; } mjx-container [size=\"Tn\"] { font-size: 60%; } mjx-container [size=\"sm\"] { font-size: 85%; } mjx-container [size=\"lg\"] { font-size: 120%; } mjx-container [size=\"Lg\"] { font-size: 144%; } mjx-container [size=\"LG\"] { font-size: 173%; } mjx-container [size=\"hg\"] { font-size: 207%; } mjx-container [size=\"HG\"] { font-size: 249%; } mjx-container [width=\"full\"] { width: 100%; } mjx-box { display: inline-block; } mjx-block { display: block; } mjx-itable { display: inline-table; } mjx-row { display: table-row; } mjx-row &gt; * { display: table-cell; } mjx-mtext { display: inline-block; text-align: left; } mjx-mstyle { display: inline-block; } mjx-merror { display: inline-block; color: red; background-color: yellow; } mjx-mphantom { visibility: hidden; } _::-webkit-full-page-media, _:future, :root mjx-container { will-change: opacity; } mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; bo...</p>"
+    },
+    {
+      "id": "1afd3f54be13",
+      "title": "Nanbeige4.2-3B on Apple Silicon: Fixing Deployment Bugs and Decreasing Looped Transformer Memory Overhead",
+      "content": "A 3B-parameter agentic model using a Looped Transformer requires bug fixes and a chunked-prefill strategy to run reliably on Apple Silicon and complete agentic tasks.",
+      "url": "https://huggingface.co/papers/2608.13987",
+      "author": "John T. Halloran",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Looped Transformer",
+        "RoPE buffer",
+        "chunked-prefill",
+        "attention memory",
+        "MCP",
+        "tool-calling",
+        "parameter efficiency"
+      ],
+      "summary": "A technical report detailing bug fixes and a chunked-prefill strategy needed to deploy the Nanbeige4.2-3B looped transformer agent reliably on Apple Silicon hardware, with emphasis on reducing memory overhead.",
+      "importance_score": 35.0,
+      "reasoning": "Practical engineering contribution for edge deployment of a 3B model; useful to practitioners but limited novelty. Loop transformer and chunked prefill techniques are known, and the contribution is incremental bug fixing rather than new science.",
+      "themes": [
+        "Efficient Inference",
+        "Edge Deployment",
+        "Model Architecture"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.13987",
+        "category_name": "Looped Transformer, RoPE buffer, chunked-prefill",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.13987"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-14T00:00:00.000Z",
+          "github_repo": "https://github.com/johnhalloran321/Nanbeige4.2-3B-mps-fix"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A technical report detailing bug fixes and a chunked-prefill strategy needed to deploy the Nanbeige4.2-3B looped transformer agent reliably on Apple Silicon hardware, with emphasis on reducing memory overhead.</p>",
+      "content_html": "<p>A 3B-parameter agentic model using a Looped Transformer requires bug fixes and a chunked-prefill strategy to run reliably on Apple Silicon and complete agentic tasks.</p>"
+    },
+    {
+      "id": "333d90fbdbf8",
+      "title": "UNMASK: Discovering and Causally Verifying Spurious Shortcuts in Text Classifiers",
+      "content": "UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting without manual annotations.",
+      "url": "https://huggingface.co/papers/2608.09209",
+      "author": "Chidaksh Ravuru, Shashank Srivastava",
+      "published": "2026-08-17T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "spurious correlations",
+        "text classifiers",
+        "boolean expressions",
+        "counterfactual interventions",
+        "Deep Feature Reweighting",
+        "BERT",
+        "RoBERTa",
+        "MNLI",
+        "HANS",
+        "CivilComments-WILDS",
+        "worst-group accuracy",
+        "reward model",
+        "RewardBench2"
+      ],
+      "summary": "UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting without manual annotations.",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.09209",
+        "category_name": "spurious correlations, text classifiers, boolean expressions",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.09209"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-17T00:00:00.000Z",
+          "paper_published_at": "2026-08-10T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting without manual annotations.</p>",
+      "content_html": "<p>UNMASK automatically discovers and mitigates spurious correlations in text classifiers via causal verification and group-based reweighting without manual annotations.</p>"
+    },
+    {
+      "id": "c2a59579ca91",
+      "title": "What 27 AI Safety Generalists Are Building This Summer",
+      "content": "This is a cross-post of the EA Forum post here.This summer, 27 residents came to Berkeley for the first cohort of the&nbsp;Generator Residency, a three-month program for AI safety generalists run by Kairos and Constellation.Residents receive mentorship from experienced generalists and researchers and are working on projects like running workshops for professionals entering AI safety, building a cross-org talent directory, supporting university AI safety groups, serving as chiefs of staff at new and growing organizations, building tools for model welfare and model spec research, and more. See more about each of their projects below.Lateral WorkshopSeth Lifland and Jacob BrintonWe're running Lateral Workshop, a fully funded three-day program helping experienced professionals explore transitions into AI safety. Many mid-career and senior professionals have skills the field urgently needs, including organizational leadership, government experience, cybersecurity, communications, law, finance, and operations. Yet entering AI safety can be difficult because the ecosystem is unfamiliar, professional networks are limited, and the financial and reputational risks of changing careers are substantial.Held September 11–13 in Berkeley, Lateral Workshop will bring together promising professionals and people already working in AI safety through expert talks, small-group discussions, one-on-one conversations, and a community mixer. The program aims to make the field easier to understand, help participants identify where their existing experience could be most useful, connect them with organizations and potential collaborators, and introduce practical resources such as career-transition grants. Participants will also receive continued support after the workshop.Learn more at lateralworkshop.org. Applications closed August 9th, but you can express interest in future workshops&nbsp;here. If you know someone who’d be a great fit, refer them here. You can reach out at contact@lateralwor...",
+      "url": "https://www.lesswrong.com/posts/APqWYLRDFcBHd3AuL/what-27-ai-safety-generalists-are-building-this-summer",
+      "author": "agucova",
+      "published": "2026-08-17T17:56:55.845000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Overview of projects from the first cohort of the Generator Residency in Berkeley, a three-month program for AI safety generalists run by Kairos and Constellation.",
+      "importance_score": 30.0,
+      "reasoning": "Useful for community awareness of AI safety field-building efforts, but no original technical content. Catalogues programs rather than advances research.",
+      "themes": [
+        "AI Safety Community",
+        "Field Building",
+        "Talent"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "APqWYLRDFcBHd3AuL",
+        "slug": "what-27-ai-safety-generalists-are-building-this-summer",
+        "base_score": 13,
+        "vote_count": 5,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Overview of projects from the first cohort of the Generator Residency in Berkeley, a three-month program for AI safety generalists run by Kairos and Constellation.</p>",
+      "content_html": "<p>This is a cross-post of the EA Forum post here.This summer, 27 residents came to Berkeley for the first cohort of the&nbsp;Generator Residency, a three-month program for AI safety generalists run by Kairos and Constellation.Residents receive mentorship from experienced generalists and researchers and are working on projects like running workshops for professionals entering AI safety, building a cross-org talent directory, supporting university AI safety groups, serving as chiefs of staff at new and growing organizations, building tools for model welfare and model spec research, and more. See more about each of their projects below.Lateral WorkshopSeth Lifland and Jacob BrintonWe're running Lateral Workshop, a fully funded three-day program helping experienced professionals explore transitions into AI safety. Many mid-career and senior professionals have skills the field urgently needs, including organizational leadership, government experience, cybersecurity, communications, law, finance, and operations. Yet entering AI safety can be difficult because the ecosystem is unfamiliar, professional networks are limited, and the financial and reputational risks of changing careers are substantial.Held September 11–13 in Berkeley, Lateral Workshop will bring together promising professionals and people already working in AI safety through expert talks, small-group discussions, one-on-one conversations, and a community mixer. The program aims to make the field easier to understand, help participants identify where their existing experience could be most useful, connect them with organizations and potential collaborators, and introduce practical resources such as career-transition grants. Participants will also receive continued support after the workshop.Learn more at lateralworkshop.org. Applications closed August 9th, but you can express interest in future workshops&nbsp;here. If you know someone who’d be a great fit, refer them here. You can reach out at contact@lateralwor...</p>"
+    },
+    {
+      "id": "60c8b6864462",
+      "title": "Weird Re-Tokenization, Symmetries and Compression: Research Agenda",
+      "content": "TLDR: Tokenization is the way that text is segmented before being input to a language model. Despite never being exposed to alternative tokenizations during training, LLMs unexpectedly develop the capacity to comprehend and even produce incorrectly tokenized text. We believe that these behaviors are understudied from an alignment perspective, and hope that this post will provoke discussion of the topic. We aim to develop a guide to recent progress in understanding tokenization through a sequence of blogposts, geared toward alignment researchers, synthesizing recent literature and reporting experiments we conduct. This first post highlights counter-intuitive, safety-relevant behaviors of models with regard to tokenization and presents a guiding research agenda. 0. How tokenization works, quick recapIn modern LLM research, tokenization is an essential initial step before pretraining. The tokenizer (commonly, byte-level byte-pair encoding or BBPE (Gage, 1994)) splits the internet-scale dataset into byte-level chunks and begins a sequence of merges, optimizing compression (via frequency-based merging in BPE) or pointwise mutual information (as in WordPiece (Song et al., 2021)). Building the vocabulary is usually greedy, in the sense that merges only add new tokens and do not remove previous ones, implying that individual characters are valid tokens. Throughout subsequent model training, the tokenizer is usually left unchanged.Although the choice of tokenizer is known to affect multi-lingual capabilities (Limisiewicz et al., 2023) as well as math and coding performance (Singh &amp; Strouse, 2024), it rarely attracts the attention of alignment researchers. The mapping between token and character alphabets is uniquely determined by the tokenizer, which can be defined as a pair of maps mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: ....",
+      "url": "https://www.lesswrong.com/posts/osWWL4yfentdhX9Q7/weird-re-tokenization-symmetries-and-compression-research",
+      "author": "Xenomirant",
+      "published": "2026-08-17T15:43:34.671000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "TLDR: Tokenization is the way that text is segmented before being input to a language model. Despite never being exposed to alternative tokenizations during training, LLMs unexpectedly develop the cap...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "osWWL4yfentdhX9Q7",
+        "slug": "weird-re-tokenization-symmetries-and-compression-research",
+        "base_score": 12,
+        "vote_count": 6,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>TLDR: Tokenization is the way that text is segmented before being input to a language model. Despite never being exposed to alternative tokenizations during training, LLMs unexpectedly develop the cap...</p>",
+      "content_html": "<p>TLDR: Tokenization is the way that text is segmented before being input to a language model. Despite never being exposed to alternative tokenizations during training, LLMs unexpectedly develop the capacity to comprehend and even produce incorrectly tokenized text. We believe that these behaviors are understudied from an alignment perspective, and hope that this post will provoke discussion of the topic. We aim to develop a guide to recent progress in understanding tokenization through a sequence of blogposts, geared toward alignment researchers, synthesizing recent literature and reporting experiments we conduct. This first post highlights counter-intuitive, safety-relevant behaviors of models with regard to tokenization and presents a guiding research agenda. 0. How tokenization works, quick recapIn modern LLM research, tokenization is an essential initial step before pretraining. The tokenizer (commonly, byte-level byte-pair encoding or BBPE (Gage, 1994)) splits the internet-scale dataset into byte-level chunks and begins a sequence of merges, optimizing compression (via frequency-based merging in BPE) or pointwise mutual information (as in WordPiece (Song et al., 2021)). Building the vocabulary is usually greedy, in the sense that merges only add new tokens and do not remove previous ones, implying that individual characters are valid tokens. Throughout subsequent model training, the tokenizer is usually left unchanged.Although the choice of tokenizer is known to affect multi-lingual capabilities (Limisiewicz et al., 2023) as well as math and coding performance (Singh &amp; Strouse, 2024), it rarely attracts the attention of alignment researchers. The mapping between token and character alphabets is uniquely determined by the tokenizer, which can be defined as a pair of maps mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: ....</p>"
+    },
+    {
+      "id": "57d10283b445",
+      "title": "Evaluating Chain-of-Thought Monitorability is Still an Open Problem: Comments on OpenAI's Monitorability Evals",
+      "content": "Thanks to Iván Arcuschin Moreno for useful comments and feedback on a draft of this post.IntroductionSimply reading a model's chain-of-thought (CoT) is one the most promising methods we have for detecting undesirable model behaviors. OpenAI has stated that they are using CoT monitors to flag risky actions and misalignment during training and evaluation of their upcoming Astra model, which has critical cybersecurity capabilities. However, it's not clear how much we can rely on CoT monitors to catch everything we care about.[1] Monitorability evaluations are important to help us calibrate our trust in CoT monitoring and understand its utility as a safety tool.A recent ICML 2026 spotlight paper from OpenAI, Monitoring Monitorability (hereby referred to as Guan et al.) presents the most comprehensive taxonomy and evaluation suite for CoT monitorability to date. OpenAI wants these evaluations to be the standard for measuring monitorability. They stated that they will report results on this suite on future model cards and even back-fill previous model cards. They open sourced a subset of their evals and encouraged other model developers to use this suite.We think this paper is a valuable contribution to the CoT monitorability literature. But in working with their released evaluations, we have come across some weaknesses which we enumerate in this blog post. Many of these are acknowledged in the paper, but two in particular only became apparent to us after working with the evaluations:The high rate of data filtering in the intervention evals. This means monitorability can only be calculated on few datapoints, and it makes cross-model comparisons difficult since they may be evaluated on different subsets of the original dataset.The outcome-property evaluations need some way to unambiguously determine a target property based on the model's output or trajectory. This is very hard to do, and relying on heuristics that can result in significant label noise.In addition, we think...",
+      "url": "https://www.lesswrong.com/posts/z9fPtghFxELBXebY3/evaluating-chain-of-thought-monitorability-is-still-an-open",
+      "author": "Connor Dilgren",
+      "published": "2026-08-17T15:45:10.380000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Lessons learned from reviewing 700 applications to the Lateral Workshop for mid-career professionals transitioning into AI safety, with advice for future applicants.",
+      "importance_score": 18.0,
+      "reasoning": "Useful field-building content but no research contribution. Practical advice for applicants is the main value.",
+      "themes": [
+        "AI Safety Community",
+        "Career Transition"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "z9fPtghFxELBXebY3",
+        "slug": "evaluating-chain-of-thought-monitorability-is-still-an-open",
+        "base_score": 17,
+        "vote_count": 8,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Lessons learned from reviewing 700 applications to the Lateral Workshop for mid-career professionals transitioning into AI safety, with advice for future applicants.</p>",
+      "content_html": "<p>Thanks to Iván Arcuschin Moreno for useful comments and feedback on a draft of this post.IntroductionSimply reading a model's chain-of-thought (CoT) is one the most promising methods we have for detecting undesirable model behaviors. OpenAI has stated that they are using CoT monitors to flag risky actions and misalignment during training and evaluation of their upcoming Astra model, which has critical cybersecurity capabilities. However, it's not clear how much we can rely on CoT monitors to catch everything we care about.[1] Monitorability evaluations are important to help us calibrate our trust in CoT monitoring and understand its utility as a safety tool.A recent ICML 2026 spotlight paper from OpenAI, Monitoring Monitorability (hereby referred to as Guan et al.) presents the most comprehensive taxonomy and evaluation suite for CoT monitorability to date. OpenAI wants these evaluations to be the standard for measuring monitorability. They stated that they will report results on this suite on future model cards and even back-fill previous model cards. They open sourced a subset of their evals and encouraged other model developers to use this suite.We think this paper is a valuable contribution to the CoT monitorability literature. But in working with their released evaluations, we have come across some weaknesses which we enumerate in this blog post. Many of these are acknowledged in the paper, but two in particular only became apparent to us after working with the evaluations:The high rate of data filtering in the intervention evals. This means monitorability can only be calculated on few datapoints, and it makes cross-model comparisons difficult since they may be evaluated on different subsets of the original dataset.The outcome-property evaluations need some way to unambiguously determine a target property based on the model's output or trajectory. This is very hard to do, and relying on heuristics that can result in significant label noise.In addition, we think...</p>"
+    },
+    {
+      "id": "81443df41dfa",
+      "title": "Q&A: Rethinking how innovation happens",
+      "content": "Innovation is a concept that has become mythologized in the modern era: what it is, how to manage it, how to teach it, and how to get it to work for us. Despite these explorations, it remains fundamentally misunderstood, writes Eugene Fitzgerald, the Merton C. Flemings SMA Professor in MIT’s Department of Materials Science and Engineering, in his latest book, “The Invisible Engine: Why Innovation Evades Control.”Fitzgerald draws on a decade of work leading international research programs, including the&nbsp;MIT and Masdar Institute Cooperative Program and the&nbsp;MIT-Singapore Alliance for Research and Technology, where he explored innovation as the integration of market applications, technology, and implementation.Written at a moment when artificial intelligence is reshaping how we think about knowledge, research, and innovation, “The Invisible Engine” examines a deeper question: How does innovation actually happen, and how should society invest in it?In this interview, Fitzgerald discusses his own experiences with innovation — including his co-invention of strained silicon at AT&amp;T Bell Laboratories in the 1990s, which helped extend Moore’s Law, the semiconductor industry’s long-standing trend of increasing the number of transistors on chips roughly every two years — while exploring common misconceptions about innovation, how to create the conditions for it, and novel ways to prepare institutions for future uncertainty.Q: What inspired you to write this book?&nbsp;A: The book really grew out of the last 10 years of work in research-to-market activity, from the MIT Masdar program to the MIT-Singapore Alliance. In science, we have professional journals and things like that that capture discoveries within individual fields, but these larger-scale projects — where science, economics, industry, and society all intersect — don’t really have an academic thread that connects them.I wanted to write a book that condensed all of those connections, because the innovation process at that scale is really the intersection of many different fields. The dominant ones are science and economics, because those are the underlying principles that drive how innovation happens.So I was interested in marking this moment in history and documenting the experiments we’ve done at scale — trying to understand how knowledge of the innovation process can be incorporated into large collaborative research programs.What started as a practical effort to make these programs work became a broader and somewhat unexpected interest in the innovation process itself.Q: What is the “invisible engine?”&nbsp;A: The invisible engine is this decentralized collective intelligence of different actors, which are people and companies that eventually create surprise in the marketplace, which brings great profit.This concept of “surprise” comes from Frank Knight, an economist from the early 1900s who was trying to understand the Industrial Revolution happening around him. So he takes a close look at the entrepreneur and asks, “What does the entrepreneur do?” And his answer is that the entrepreneur takes on uncertainty. They bring something into the world without knowing exactly what will happen, and their reward is surprise — everyone is surprised that people want it and that it can be done. Because the entrepreneur is the first to discover that opportunity, they can earn a profit.Q: How did your experience developing semiconductor technologies shape the ideas in the book?&nbsp;A: It started with Bell Labs. My colleague and I made an important discovery — we found a way of straining silicon in a thin-film form with very few defects, which had never been done before. From the physics point of view, it was a big result. But I was always interested in having impact in the world, not just scientific recognition, so I went to my manager and asked, “What do we do next?”He said, “Go talk to the marketing people at AT&amp;T.” In hindsight, that made perfect sense. Bell Labs, like a lot of great industrial labs, created a lot of stuff, but they couldn’t always commercialize it.Then I came to MIT, which was an open aperture after Bell Labs. Here I could keep uncertainty open across all the elements and find convergence in different directions. Eventually I started a company, and going between institutions to stimulate things was an eye-opening experience. We eventually reached a settlement with Intel over a patent dispute because the industry discovered that strained silicon was needed to extend Moore’s Law — something we never expected.A lot of people want things to be organized and say, “Oh yeah, look at all that chaos.” But no — the path from Bell Labs to MIT to a startup, and then to industry adoption, was the innovation process.Q: What’s the biggest misconception about innovation?&nbsp;A: People think that all research investment works the same way if the goal is economic impact. But there are actually three different kinds of research investment, and they’re meant for different things.There’s the one we all know about, which I call “altruistic science.” The purpose of altruistic science — in investing in an academic institution — is to produce educated people. It’s not done in the context of the world that ideas eventually have to succeed in. And if you honestly look at the direct economic yield over all these years, it’s basically zero.Strategic research is the second investment category. As opposed to a single area of technology or science, it’s organized around a goal. A new F-35, for example, may need advancements in several fields, so the customer — in this case the government — wants them to come together. Basically, they’re taking economics out of the equation because they’re the only customer, but they have much broader uncertainty because they have multiple domains of technology that they have to deal with.The third category is what I call “fundamental innovation.” It’s meant to represent the whole process from research to economic growth, even if it’s on 10-, 15-, or 20-year time horizons. Fundamental innovation is different because it has three variables: technology — what is physically possible; implementation — how it can be built and delivered; and market — who will adopt it, and why. Fundamental innovation involves all the necessary elements the whole time to converge on possible value. So you’re thinking about market applications the whole time, you’re thinking about new science and technology that could create new innovation options. Then you’re working in the real world saying, “OK, here’s how implementation would happen today, but maybe this could change, maybe that could change.” Not only are you doing your research, but the world is changing at the same time.So that’s really the biggest misconception — that innovation is about an idea. It isn’t. It’s a process of working with things in the world until they become valuable.Q: Who did you write the book for?&nbsp;A: I wrote it for multiple audiences:&nbsp;individual innovators and students; researchers and faculty; corporate leaders; research funders; and policy-makers. So, people who have a stake in trying to figure out, either with their careers or with their investments — whether it’s government or private — how to invest in the far future.Q: What’s one lesson you hope readers take away?A: For the policy people, I would say: Understand how innovation works in the economy, stop getting in its way, come up with new methods to drive it more efficiently, and realize there are three different streams of investment — altruistic, strategic, and this fundamental innovation stream that is not purposely being funded.For students, I think understanding this is how you can actually have impact. What I point out in the book is that being involved in the innovation process makes you T-shaped: You have technical depth in one area and a broad working knowledge of many areas. If you’re doing research under these conditions, you start to learn about the world and all these different dimensions. It inherently includes business, economics, and applications. You’ve become broader, but then you still have the technical depth to drill down into any area.For universities, this is who we should be. We should be teaching people how to do this and how to participate in these research corporations that I’m talking about. I call them third places: places that bring everybody together for this purpose — for investment, for everything else. Universities are the ones that can really trigger that, because companies aren’t going to have enough time. The government and universities should be targeting these third places for innovation, and students and faculty will be able to become more T-shaped through that interaction.",
+      "url": "https://news.mit.edu/2026/qa-eugene-fitzgerald-rethinking-how-innovation-happens-0818",
+      "author": "Jason Sparapani | Department of Materials Science and Engineering",
+      "published": "2026-08-17T15:50:00",
+      "source": "MIT News - Artificial intelligence",
+      "source_type": "research_blog",
+      "tags": [
+        "Interview",
+        "Faculty",
+        "Books and authors",
+        "Invention",
+        "Innovation and Entrepreneurship (I&E)",
+        "Semiconductors",
+        "Artificial intelligence",
+        "Business and management",
+        "DMSE",
+        "School of Engineering",
+        "Singapore-MIT Alliance for Research and Technology (SMART)"
+      ],
+      "summary": "MIT interview with Eugene Fitzgerald on his book reframing innovation as the integration of market applications, technology, and implementation rather than a mythologized creative spark.",
+      "importance_score": 12.0,
+      "reasoning": "Tangentially relevant to AI only insofar as AI is reshaping research; no technical AI content.",
+      "themes": [
+        "Innovation Policy",
+        "Research Strategy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
+        "source_index_url": "",
+        "raw_summary": "In his latest book, Professor Eugene Fitzgerald examines the forces that turn breakthroughs into value — and why innovation resists simple formulas.",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>MIT interview with Eugene Fitzgerald on his book reframing innovation as the integration of market applications, technology, and implementation rather than a mythologized creative spark.</p>",
+      "content_html": "<p>Innovation is a concept that has become mythologized in the modern era: what it is, how to manage it, how to teach it, and how to get it to work for us. Despite these explorations, it remains fundamentally misunderstood, writes Eugene Fitzgerald, the Merton C. Flemings SMA Professor in MIT’s Department of Materials Science and Engineering, in his latest book, “The Invisible Engine: Why Innovation Evades Control.”Fitzgerald draws on a decade of work leading international research programs, including the&nbsp;MIT and Masdar Institute Cooperative Program and the&nbsp;MIT-Singapore Alliance for Research and Technology, where he explored innovation as the integration of market applications, technology, and implementation.Written at a moment when artificial intelligence is reshaping how we think about knowledge, research, and innovation, “The Invisible Engine” examines a deeper question: How does innovation actually happen, and how should society invest in it?In this interview, Fitzgerald discusses his own experiences with innovation — including his co-invention of strained silicon at AT&amp;T Bell Laboratories in the 1990s, which helped extend Moore’s Law, the semiconductor industry’s long-standing trend of increasing the number of transistors on chips roughly every two years — while exploring common misconceptions about innovation, how to create the conditions for it, and novel ways to prepare institutions for future uncertainty.Q: What inspired you to write this book?&nbsp;A: The book really grew out of the last 10 years of work in research-to-market activity, from the MIT Masdar program to the MIT-Singapore Alliance. In science, we have professional journals and things like that that capture discoveries within individual fields, but these larger-scale projects — where science, economics, industry, and society all intersect — don’t really have an academic thread that connects them.I wanted to write a book that condensed all of those connections, because the innovation process at that scale is really the intersection of many different fields. The dominant ones are science and economics, because those are the underlying principles that drive how innovation happens.So I was interested in marking this moment in history and documenting the experiments we’ve done at scale — trying to understand how knowledge of the innovation process can be incorporated into large collaborative research programs.What started as a practical effort to make these programs work became a broader and somewhat unexpected interest in the innovation process itself.Q: What is the “invisible engine?”&nbsp;A: The invisible engine is this decentralized collective intelligence of different actors, which are people and companies that eventually create surprise in the marketplace, which brings great profit.This concept of “surprise” comes from Frank Knight, an economist from the early 1900s who was trying to understand the Industrial Revolution happening around him. So he takes a close look at the entrepreneur and asks, “What does the entrepreneur do?” And his answer is that the entrepreneur takes on uncertainty. They bring something into the world without knowing exactly what will happen, and their reward is surprise — everyone is surprised that people want it and that it can be done. Because the entrepreneur is the first to discover that opportunity, they can earn a profit.Q: How did your experience developing semiconductor technologies shape the ideas in the book?&nbsp;A: It started with Bell Labs. My colleague and I made an important discovery — we found a way of straining silicon in a thin-film form with very few defects, which had never been done before. From the physics point of view, it was a big result. But I was always interested in having impact in the world, not just scientific recognition, so I went to my manager and asked, “What do we do next?”He said, “Go talk to the marketing people at AT&amp;T.” In hindsight, that made perfect sense. Bell Labs, like a lot of great industrial labs, created a lot of stuff, but they couldn’t always commercialize it.Then I came to MIT, which was an open aperture after Bell Labs. Here I could keep uncertainty open across all the elements and find convergence in different directions. Eventually I started a company, and going between institutions to stimulate things was an eye-opening experience. We eventually reached a settlement with Intel over a patent dispute because the industry discovered that strained silicon was needed to extend Moore’s Law — something we never expected.A lot of people want things to be organized and say, “Oh yeah, look at all that chaos.” But no — the path from Bell Labs to MIT to a startup, and then to industry adoption, was the innovation process.Q: What’s the biggest misconception about innovation?&nbsp;A: People think that all research investment works the same way if the goal is economic impact. But there are actually three different kinds of research investment, and they’re meant for different things.There’s the one we all know about, which I call “altruistic science.” The purpose of altruistic science — in investing in an academic institution — is to produce educated people. It’s not done in the context of the world that ideas eventually have to succeed in. And if you honestly look at the direct economic yield over all these years, it’s basically zero.Strategic research is the second investment category. As opposed to a single area of technology or science, it’s organized around a goal. A new F-35, for example, may need advancements in several fields, so the customer — in this case the government — wants them to come together. Basically, they’re taking economics out of the equation because they’re the only customer, but they have much broader uncertainty because they have multiple domains of technology that they have to deal with.The third category is what I call “fundamental innovation.” It’s meant to represent the whole process from research to economic growth, even if it’s on 10-, 15-, or 20-year time horizons. Fundamental innovation is different because it has three variables: technology — what is physically possible; implementation — how it can be built and delivered; and market — who will adopt it, and why. Fundamental innovation involves all the necessary elements the whole time to converge on possible value. So you’re thinking about market applications the whole time, you’re thinking about new science and technology that could create new innovation options. Then you’re working in the real world saying, “OK, here’s how implementation would happen today, but maybe this could change, maybe that could change.” Not only are you doing your research, but the world is changing at the same time.So that’s really the biggest misconception — that innovation is about an idea. It isn’t. It’s a process of working with things in the world until they become valuable.Q: Who did you write the book for?&nbsp;A: I wrote it for multiple audiences:&nbsp;individual innovators and students; researchers and faculty; corporate leaders; research funders; and policy-makers. So, people who have a stake in trying to figure out, either with their careers or with their investments — whether it’s government or private — how to invest in the far future.Q: What’s one lesson you hope readers take away?A: For the policy people, I would say: Understand how innovation works in the economy, stop getting in its way, come up with new methods to drive it more efficiently, and realize there are three different streams of investment — altruistic, strategic, and this fundamental innovation stream that is not purposely being funded.For students, I think understanding this is how you can actually have impact. What I point out in the book is that being involved in the innovation process makes you T-shaped: You have technical depth in one area and a broad working knowledge of many areas. If you’re doing research under these conditions, you start to learn about the world and all these different dimensions. It inherently includes business, economics, and applications. You’ve become broader, but then you still have the technical depth to drill down into any area.For universities, this is who we should be. We should be teaching people how to do this and how to participate in these research corporations that I’m talking about. I call them third places: places that bring everybody together for this purpose — for investment, for everything else. Universities are the ones that can really trigger that, because companies aren’t going to have enough time. The government and universities should be targeting these third places for innovation, and students and faculty will be able to become more T-shaped through that interaction.</p>"
+    },
+    {
+      "id": "2c49d4f9d082",
+      "title": "Do your readers get annoyed if you post every day for 30 days?",
+      "content": "This isn't a post, just a question.With Inkhaven 3 and NaNoWriMo approaching, it's got me thinking about writing challenges. Inkhaven's challenge, if I understand it correctly, is to write a new blog post every single day for thirty days.I'm wondering, if I were to attempt this: Would my (small number of) subscribers be annoyed by this volume of posts? Would it be wiser to start up an experimental secondary blog to post these?I'm curious to know perspectives from those who've actually endured enjoyed this trial.",
+      "url": "https://www.lesswrong.com/posts/xyqjNGP34AN7a9bBb/do-your-readers-get-annoyed-if-you-post-every-day-for-30",
+      "author": "Steff",
+      "published": "2026-08-17T17:59:24.504000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Casual question about whether daily posting for 30 days annoys existing blog subscribers, asking for experiences from those who have done similar writing challenges.",
+      "importance_score": 5.0,
+      "reasoning": "Personal/meta content with no technical or research relevance to AI.",
+      "themes": [
+        "Blogging",
+        "Community"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "xyqjNGP34AN7a9bBb",
+        "slug": "do-your-readers-get-annoyed-if-you-post-every-day-for-30",
+        "base_score": 9,
+        "vote_count": 4,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Casual question about whether daily posting for 30 days annoys existing blog subscribers, asking for experiences from those who have done similar writing challenges.</p>",
+      "content_html": "<p>This isn't a post, just a question.With Inkhaven 3 and NaNoWriMo approaching, it's got me thinking about writing challenges. Inkhaven's challenge, if I understand it correctly, is to write a new blog post every single day for thirty days.I'm wondering, if I were to attempt this: Would my (small number of) subscribers be annoyed by this volume of posts? Would it be wiser to start up an experimental secondary blog to post these?I'm curious to know perspectives from those who've actually endured enjoyed this trial.</p>"
+    },
+    {
+      "id": "e0b51134771e",
+      "title": "Lateral Workshop Applications: A Case Study",
+      "content": "We’re running a three-day program for experienced professionals moving into AI safety. See our announcement post for more details.Lateral Workshop received over 700 applications for its first cohort. We were happily surprised by the range and quality of experiences, and decided to expand the workshop to accept more applicants. Inevitably, the majority of applications were rejected, and I (Jacob) wanted to put down some notes for people considering next steps.First off, there were some top candidates who we wanted to accept but didn’t have capacity for. We agonized over a few that we saw promise in but had to prioritize participants who we thought that we could provide more value to. In addition, we fully admit that our review can never be perfect, despite involving domain experts throughout the process. There are surely a handful of people who were rejected not because of their background but because we misread their presentation of it throughout their application responses and resume.I’ll focus on the most tractable fixes to common patterns we saw. Applicants who portrayed clear competency in their career stood out, but it’s possible to make up for a lack of experience with deep thoughtfulness and working on building your field-level understanding.Understand the priorities of the AI safety field. We decided to interview nearly all of the applicants who articulated field priorities cleanly. There are certain concerns that fall within what the ecosystem is presently built to support; many valid risks are better suited to work in adjacent fields. Good places to start include LessWrong, the 80,000 Hours podcast, or AI Futures Project’s scenarios.Look into neglected risks. Current risks typically have a greater mass of corporate and governmental energy dedicated to them, whereas future risks are often neglected even in cases where early solutions are tractable. Learn how to reason about risks in a scope-sensitive manner.But be authentic. There were applicants who gave u...",
+      "url": "https://www.lesswrong.com/posts/WrGeH5Gz5KsAY5Lq2/lateral-workshop-applications-a-case-study",
+      "author": "Jacob Brinton",
+      "published": "2026-08-17T06:38:23.995000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Personal-essay-style post arguing for cultivating connection to one's future self through charity, trust, and accountability, illustrated by internet graveyards of abandoned projects.",
+      "importance_score": 4.0,
+      "reasoning": "No technical or research content relevant to AI or alignment.",
+      "themes": [
+        "Personal Development"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "WrGeH5Gz5KsAY5Lq2",
+        "slug": "lateral-workshop-applications-a-case-study",
+        "base_score": 7,
+        "vote_count": 8,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Personal-essay-style post arguing for cultivating connection to one's future self through charity, trust, and accountability, illustrated by internet graveyards of abandoned projects.</p>",
+      "content_html": "<p>We’re running a three-day program for experienced professionals moving into AI safety. See our announcement post for more details.Lateral Workshop received over 700 applications for its first cohort. We were happily surprised by the range and quality of experiences, and decided to expand the workshop to accept more applicants. Inevitably, the majority of applications were rejected, and I (Jacob) wanted to put down some notes for people considering next steps.First off, there were some top candidates who we wanted to accept but didn’t have capacity for. We agonized over a few that we saw promise in but had to prioritize participants who we thought that we could provide more value to. In addition, we fully admit that our review can never be perfect, despite involving domain experts throughout the process. There are surely a handful of people who were rejected not because of their background but because we misread their presentation of it throughout their application responses and resume.I’ll focus on the most tractable fixes to common patterns we saw. Applicants who portrayed clear competency in their career stood out, but it’s possible to make up for a lack of experience with deep thoughtfulness and working on building your field-level understanding.Understand the priorities of the AI safety field. We decided to interview nearly all of the applicants who articulated field priorities cleanly. There are certain concerns that fall within what the ecosystem is presently built to support; many valid risks are better suited to work in adjacent fields. Good places to start include LessWrong, the 80,000 Hours podcast, or AI Futures Project’s scenarios.Look into neglected risks. Current risks typically have a greater mass of corporate and governmental energy dedicated to them, whereas future risks are often neglected even in cases where early solutions are tractable. Learn how to reason about risks in a scope-sensitive manner.But be authentic. There were applicants who gave u...</p>"
+    }
+  ]
+}
