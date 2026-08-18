@@ -19,7 +19,7 @@
     "@sveltejs/adapter-static": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "@types/dompurify": "^3.0.0",
+    "@types/dompurify": "^3.2.0",
     "@types/node": "^20.19.43",
     "autoprefixer": "^10.4.20",
     "cheerio": "^1.2.0",
@@ -32,10 +32,10 @@
     "vite": "^6.4.1"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "@vercel/analytics": "^2.0.1",
-    "date-fns": "^4.1.0",
-    "dompurify": "^3.0.0",
+    "date-fns": "^4.4.0",
+    "dompurify": "^3.4.13",
     "minisearch": "^7.1.0"
   }
 }
