@@ -1,4 +1,5 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "cd frontend && npm ci && npm run build",
   "outputDirectory": "web",
   "installCommand": "npm install",
@@ -7,6 +8,19 @@
   "env": {
     "VERCEL": "true"
   },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "ai-observatory-taupe.vercel.app"
+        }
+      ],
+      "destination": "https://radar.wiredframe.xyz/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/data/(.*)",
