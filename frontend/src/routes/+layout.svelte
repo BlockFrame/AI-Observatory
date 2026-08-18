@@ -6,6 +6,8 @@
 	import { SITE } from '$lib/site';
 	import '../app.css';
 	import { inject } from '@vercel/analytics';
+
+	export let data: { latestDate: string | null };
 	
 	if (browser) inject();
 
@@ -13,6 +15,7 @@
 	let showScrollTop = false;
 	let isFeedbackModalOpen = false;
 	$: currentSearch = browser ? $page.url.search : '';
+	$: latestBase = data.latestDate ? `/briefings/${data.latestDate}` : '';
 
 	function toggleSidebar() {
 		isSidebarOpen = !isSidebarOpen;
@@ -40,17 +43,17 @@
 				<a href="/" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && !currentSearch.includes('category=') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Home</span>
 				</a>
-				<a href="/?category=news" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href={latestBase ? `${latestBase}/news` : '/archive'} class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname.endsWith('/news') || currentSearch.includes('category=news') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">AI News</span>
 				</a>
-				<a href="/?category=research" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href={latestBase ? `${latestBase}/research` : '/archive'} class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname.endsWith('/research') || currentSearch.includes('category=research') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Research</span>
 				</a>
-				<a href="/?category=social" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+				<a href={latestBase ? `${latestBase}/social` : '/archive'} class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname.endsWith('/social') || currentSearch.includes('category=social') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
 					<span class="text-[13px] font-medium tracking-[0.02em]">Social Media</span>
 				</a>
 
-                <a href="/?category=github_trending" class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname === '/' && currentSearch.includes('category=github_trending') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
+                <a href={latestBase ? `${latestBase}/github_trending` : '/archive'} class="flex min-h-[44px] items-center rounded-lg px-4 py-2.5 transition-all duration-200 {$page.url.pathname.endsWith('/github_trending') || currentSearch.includes('category=github_trending') ? 'border-r-2 border-[#9aa6ff] bg-[#232a3a] text-[#cfd5ff] shadow-[inset_0_0_0_1px_rgba(154,166,255,0.2)]' : 'text-[#b2b8cf] hover:bg-[#1b2437] hover:text-[#d8ddf4]'}">
                     <span class="text-[13px] font-medium tracking-[0.02em]">GitHub Trending</span>
                 </a>
 

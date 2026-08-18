@@ -92,7 +92,7 @@
 
 	function selectResult(result: SearchResult) {
 		if (result.doc) {
-			goto(`/?date=${result.doc.date}&category=${result.doc.category}#item-${result.doc.id}`);
+			goto(`/briefings/${result.doc.date}/${result.doc.category}#item-${result.doc.id}`);
 			isOpen = false;
 			query = '';
 			dispatch('select', result);
@@ -194,4 +194,3 @@
 		</div>
 	{/if}
 </div>
-

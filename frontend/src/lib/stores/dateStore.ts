@@ -1,6 +1,6 @@
 /**
  * Date store for managing the current selected date
- * Uses URL query params for navigation (?date=YYYY-MM-DD&category=XXX)
+ * Uses permanent, crawlable briefing paths for navigation.
  */
 
 import { writable, derived, get } from 'svelte/store';
@@ -76,16 +76,8 @@ export async function resolveLatestDate(forceRefresh: boolean = false): Promise<
 }
 
 function buildUrl(date: string | null, category?: string): string {
-	const params = new URLSearchParams();
-	if (date) {
-		params.set('date', date);
-	}
-	if (category) {
-		params.set('category', category);
-	}
-
-	const query = params.toString();
-	return query ? `/?${query}` : '/';
+	if (!date) return '/';
+	return `/briefings/${date}${category ? `/${category}` : ''}`;
 }
 
 /**
@@ -139,6 +131,6 @@ export function goToLatestDate(category?: string): void {
 	if (dates.length > 0) {
 		const latestDate = dates[0];
 		currentDate.set(latestDate);
-		goto(buildUrl(null, category));
+		goto(buildUrl(latestDate, category));
 	}
 }

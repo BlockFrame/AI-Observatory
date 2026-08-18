@@ -62,6 +62,10 @@ volumes/
 
 # Frontend build artifacts (built during Docker build)
 web/_app/
+web/briefings/
+web/llms.txt
+web/ai-index.json
+web/**/__data.json
 frontend/.svelte-kit/
 .data-backup/
 

@@ -4,7 +4,7 @@
 	import { goto, afterNavigate } from '$app/navigation';
 	import { tick, onMount } from 'svelte';
 	import { fly, fade, scale } from 'svelte/transition';
-	import { currentDate, isLoading as storeLoading, resolveLatestDate } from '$lib/stores/dateStore';
+	import { currentDate, availableDates, isLoading as storeLoading, resolveLatestDate } from '$lib/stores/dateStore';
 	import { loadDaySummary, loadCategoryData, preloadAdjacentDates } from '$lib/services/dataLoader';
 	import { parseDate } from '$lib/services/dateUtils';
 	import type { DaySummary, CategoryData, Category } from '$lib/types';
@@ -22,14 +22,23 @@
 	import { registerItems } from '$lib/services/itemIndex';
 	import PageMeta from '$lib/components/seo/PageMeta.svelte';
 	import { SITE } from '$lib/site';
+	import { reportStructuredData, serializeStructuredData } from '$lib/seo/reportSchema';
+
+	export let data: {
+		summary: DaySummary | null;
+		latestDate: string | null;
+		dates: string[];
+	};
 
 	// Data state
-	let summary: DaySummary | null = null;
+	let summary: DaySummary | null = data.summary;
 	let categoryData: CategoryData | null = null;
 	let dataLoading = false;
 	let error: string | null = null;
 	
 	let mounted = false;
+	if (data.latestDate) currentDate.set(data.latestDate);
+	availableDates.set(data.dates);
 	onMount(() => {
 		mounted = true;
 	});
@@ -59,12 +68,16 @@
 
 	// Validate params
 	$: isValidDate = !hasExplicitDate || parseDate(dateParam ?? '') !== null;
-	$: effectiveDate = hasExplicitDate ? (isValidDate ? dateParam : null) : ($currentDate || null);
-	$: overviewHref = hasExplicitDate && effectiveDate ? `/?date=${effectiveDate}` : '/';
+	$: effectiveDate = hasExplicitDate ? (isValidDate ? dateParam : null) : ($currentDate || data.latestDate || null);
+	$: overviewHref = effectiveDate ? `/briefings/${effectiveDate}` : '/';
 	$: categoryHref = (category: Category) =>
-		hasExplicitDate && effectiveDate
-			? `/?date=${effectiveDate}&category=${category}`
-			: `/?category=${category}`;
+		effectiveDate ? `/briefings/${effectiveDate}/${category}` : '/archive';
+	$: canonicalPath = effectiveDate && (hasExplicitDate || categoryParam)
+		? `/briefings/${effectiveDate}${categoryParam ? `/${categoryParam}` : ''}`
+		: '/';
+	$: reportJson = summary
+		? serializeStructuredData(reportStructuredData(summary, canonicalPath))
+		: null;
 
 	// Internal-link previews resolve most evidence from the summary already in
 	// memory. Long-tail references are fetched lazily from their category file.
@@ -77,7 +90,7 @@
 		if (categoryData) registerItems(effectiveDate, categoryData.items);
 	}
 
-	$: if (!$storeLoading && routeKey !== lastHandledRouteKey) {
+	$: if (browser && !$storeLoading && routeKey !== lastHandledRouteKey) {
 		lastHandledRouteKey = routeKey;
 		void handleRouteChange(dateParam, rawCategoryParam);
 	}
@@ -124,13 +137,15 @@
 
 	async function handleRouteChange(rawDate: string | null, rawCategory: string | null) {
 		if (rawCategory && !validCategories.includes(rawCategory as Category)) {
-			const fallbackUrl = rawDate && parseDate(rawDate) ? `/?date=${rawDate}` : '/';
+			const fallbackUrl = rawDate && parseDate(rawDate) ? `/briefings/${rawDate}` : '/';
 			goto(fallbackUrl, { replaceState: true });
 			return;
 		}
 
 		if (rawDate && parseDate(rawDate) === null) {
-			const fallbackUrl = rawCategory ? `/?category=${rawCategory}` : '/';
+			const fallbackUrl = rawCategory && data.latestDate
+				? `/briefings/${data.latestDate}/${rawCategory}`
+				: '/';
 			goto(fallbackUrl, { replaceState: true });
 			return;
 		}
@@ -214,7 +229,13 @@
 	}
 </script>
 
-<PageMeta title={metaTitle} description={metaDescription} path="/" />
+<PageMeta title={metaTitle} description={metaDescription} path={canonicalPath} type={summary ? 'article' : 'website'} />
+
+<svelte:head>
+	{#if reportJson}
+		{@html `<script type="application/ld+json">${reportJson}<\/script>`}
+	{/if}
+</svelte:head>
 
 <LinkPreview fallbackDate={effectiveDate} />
 

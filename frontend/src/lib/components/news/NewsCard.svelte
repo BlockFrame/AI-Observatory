@@ -19,7 +19,7 @@
 	let copied = false;
 
 	function copyShareLink() {
-		const url = `${window.location.origin}/?date=${date}&category=${category}#item-${item.id}`;
+		const url = `${window.location.origin}/briefings/${date}/${category}#item-${item.id}`;
 		navigator.clipboard.writeText(url);
 		copied = true;
 		setTimeout(() => (copied = false), 2000);

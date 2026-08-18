@@ -1,29 +1,20 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { availableDates } from '$lib/stores/dateStore';
-	import { loadIndex } from '$lib/services/dataLoader';
 	import { formatDate } from '$lib/services/dateUtils';
-	import { CATEGORY_CONFIG, type Category, type DataIndex, type DateEntry } from '$lib/types';
+	import { CATEGORY_CONFIG, type Category, type DataIndex } from '$lib/types';
 	import Calendar from '$lib/components/calendar/Calendar.svelte';
 	import LoadingSpinner from '$lib/components/common/LoadingSpinner.svelte';
 	import EmptyState from '$lib/components/common/EmptyState.svelte';
 	import PageMeta from '$lib/components/seo/PageMeta.svelte';
 
-	let index: DataIndex | null = null;
-	let loading = true;
-
-	// Load index on mount
-	loadIndex()
-		.then((data) => {
-			index = data;
-			loading = false;
-		})
-		.catch(() => {
-			loading = false;
-		});
+	export let data: { index: DataIndex };
+	let index: DataIndex = data.index;
+	let loading = false;
+	availableDates.set(index.dates.map((entry) => entry.date));
 
 	function handleDateSelect(event: CustomEvent<{ date: string }>) {
-		goto(`/?date=${event.detail.date}`);
+		goto(`/briefings/${event.detail.date}`);
 	}
 </script>
 
@@ -31,7 +22,7 @@
 
 <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">
-		News Archive
+		Briefing Archive
 	</h1>
 
 	{#if loading}
@@ -59,9 +50,9 @@
 				{:else}
 					<div class="max-h-[480px] overflow-y-auto pr-2">
 						<div class="space-y-3">
-						{#each index?.dates || [] as dateEntry}
+						{#each index.dates as dateEntry}
 							<a
-								href="/?date={dateEntry.date}"
+								href="/briefings/{dateEntry.date}"
 								class="card block hover:border-trend-red transition-colors"
 							>
 								<div class="flex items-center justify-between">

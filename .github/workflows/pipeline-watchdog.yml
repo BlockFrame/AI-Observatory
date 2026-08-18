@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://news.aatf.ai' }}
+      PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://radar.wiredframe.xyz' }}
       PIPELINE_WORKFLOW: daily-pipeline.yml
       # The built-in token is sufficient for read-only run inspection. The PAT
       # is scoped only to the recovery dispatch step below.
