@@ -25,6 +25,7 @@ from dateutil import parser as date_parser
 from urllib.parse import urljoin, urlparse
 
 from ..base import BaseGatherer, CollectedItem, deduplicate_items
+from ..url_utils import hostname_matches
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[2] / 'scripts'
 if str(SCRIPTS_DIR) not in sys.path:
@@ -832,8 +833,14 @@ class ResearchGatherer(BaseGatherer):
         loop = asyncio.get_event_loop()
 
         # Separate LessWrong from other feeds (LessWrong needs GraphQL for date-range queries)
-        lesswrong_feeds = [s for s in self.research_feed_specs if 'lesswrong.com' in s.url.lower()]
-        other_feeds = [s for s in self.research_feed_specs if 'lesswrong.com' not in s.url.lower()]
+        lesswrong_feeds = [
+            spec for spec in self.research_feed_specs
+            if hostname_matches(spec.url, "lesswrong.com")
+        ]
+        other_feeds = [
+            spec for spec in self.research_feed_specs
+            if not hostname_matches(spec.url, "lesswrong.com")
+        ]
 
         all_posts = []
         seen_urls = set()

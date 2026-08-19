@@ -24,15 +24,17 @@ def detect_env_vars() -> dict:
     Detect existing environment variables for provider config.
 
     Returns:
-        Dict with detected config values, or empty dict if none found
+        Dict describing which settings are present, without copying secret
+        values into application memory or generated files.
     """
     config = {'llm': {}, 'image': {}}
     found_any = False
 
     for env_var, (section, key) in ENV_VAR_MAPPING.items():
-        value = os.environ.get(env_var)
-        if value:
-            config[section][key] = value
+        if os.environ.get(env_var):
+            # Migration only needs presence information: providers.yaml keeps
+            # ${VAR} references and must never persist environment values.
+            config[section][key] = True
             found_any = True
             logger.debug(f"Detected {env_var}")
 

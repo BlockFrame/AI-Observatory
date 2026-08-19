@@ -31,6 +31,7 @@ from google import genai
 from google.genai import types as genai_types
 
 from .cost_tracker import get_tracker
+from .url_utils import hostname_matches
 from pipeline_support.openrouter_pricing import provider_preferences as openrouter_provider_preferences
 
 from typing import TYPE_CHECKING
@@ -1586,12 +1587,13 @@ class AsyncAnthropicClient:
             "model": kwargs["model"],
             "messages": openai_messages,
         }
+        is_nvidia_endpoint = hostname_matches(self.base_url, "nvidia.com")
         if "max_tokens" in kwargs:
             # NVIDIA's hosted NIM examples expose the legacy ``max_tokens``
             # field, while newer OpenAI-compatible providers use
             # ``max_completion_tokens``.
             token_field = (
-                "max_tokens" if "nvidia.com" in self.base_url
+                "max_tokens" if is_nvidia_endpoint
                 else "max_completion_tokens"
             )
             payload[token_field] = kwargs["max_tokens"]
@@ -1602,11 +1604,11 @@ class AsyncAnthropicClient:
             
         # NVIDIA NIM provider-specific reasoning controls.  The generic
         # ``thinking`` argument is internal and is not part of Chat Completions.
-        if "nvidia.com" in self.base_url and "deepseek" in kwargs["model"]:
+        if is_nvidia_endpoint and "deepseek" in kwargs["model"]:
             if "thinking" in kwargs and kwargs["thinking"].get("budget_tokens", 0) > 0:
                 payload["extra_body"] = payload.get("extra_body", {})
                 payload["extra_body"]["chat_template_kwargs"] = {"thinking": True}
-        elif "nvidia.com" in self.base_url and "nemotron-3-nano" in kwargs["model"]:
+        elif is_nvidia_endpoint and "nemotron-3-nano" in kwargs["model"]:
             thinking_budget = kwargs.get("thinking", {}).get("budget_tokens", 0)
             payload["top_p"] = 1
             if thinking_budget > 0:
@@ -1615,7 +1617,7 @@ class AsyncAnthropicClient:
                 # ``reasoning_budget``. ``max_thinking_tokens`` is exposed by
                 # some self-hosted NIM deployments but is rejected by hosted NIM.
                 payload["extra_body"]["reasoning_budget"] = thinking_budget
-        elif "nvidia.com" in self.base_url and kwargs["model"] == "z-ai/glm-5.2":
+        elif is_nvidia_endpoint and kwargs["model"] == "z-ai/glm-5.2":
             # Match the provider's recommended hosted-endpoint parameters.
             payload["top_p"] = 1
             payload["seed"] = 42

@@ -7,6 +7,8 @@ from typing import Dict, List
 
 import requests
 
+from ..url_utils import hostname_matches
+
 TELEGRAM_MAX_LEN = 4096
 
 
@@ -31,13 +33,15 @@ def format_daily_report(summary_data: Dict) -> str:
     executive = (summary_data.get("executive_summary", "") or "").strip()
     reports = summary_data.get("category_reports", {})
 
-    def top_lines(category: str, max_items: int = 3) -> List[str]:
+    def top_lines(category: str, max_items: int = 3, required_host: str = "") -> List[str]:
         report = reports.get(category, {})
         lines = []
         for item in report.get("top_items", [])[:max_items]:
             base = item.get("item", item)
             title = base.get("title", "Untitled")
             url = base.get("url", "")
+            if required_host and not hostname_matches(url, required_host):
+                continue
             sentiment = item.get("sentiment") or base.get("metadata", {}).get("sentiment", "neutral")
             if url:
                 lines.append(f"• [{title}]({url}) — {sentiment}")
@@ -48,11 +52,7 @@ def format_daily_report(summary_data: Dict) -> str:
     news_lines = top_lines("news")
     research_lines = top_lines("research")
     social_lines = top_lines("social")
-    repos = [
-        line
-        for line in top_lines("news", 8)
-        if "github.com/" in line or "github_trending" in line.lower()
-    ][:3]
+    repos = top_lines("news", 8, required_host="github.com")[:3]
     if not repos:
         repos = ["• No trending repos"]
 
