@@ -140,6 +140,8 @@ export function loadBriefingCategory(date: string, category: Category): Category
 	return {
 		...data,
 		themes: (data.themes ?? []).slice(0, 12),
+		// Keep prerendered HTML compact. BriefingCategory loads this same public
+		// JSON file client-side and expands the list to every item.
 		items: (data.items ?? []).slice(0, 12).map(compactItem)
 	};
 }

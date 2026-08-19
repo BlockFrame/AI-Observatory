@@ -1,7 +1,10 @@
 <script lang="ts">
 	import type { Category, CategoryData, DaySummary } from '$lib/types';
+	import { browser } from '$app/environment';
+	import { tick } from 'svelte';
 	import { CATEGORY_CONFIG } from '$lib/types';
 	import { formatDate } from '$lib/services/dateUtils';
+	import { loadCategoryData } from '$lib/services/dataLoader';
 	import { safeHtml } from '$lib/services/safeHtml';
 	import { registerItems } from '$lib/services/itemIndex';
 	import PageMeta from '$lib/components/seo/PageMeta.svelte';
@@ -15,12 +18,50 @@
 	export let previousDate: string | null = null;
 	export let nextDate: string | null = null;
 
-	const config = CATEGORY_CONFIG[category];
-	const path = `/briefings/${summary.date}/${category}`;
-	const title = `${config.title} Briefing — ${formatDate(summary.date, 'MMMM d, yyyy')}`;
-	const description = `${config.title} intelligence for ${summary.date}, with ${categoryData.total_items} analyzed signals and direct source evidence.`;
-	const structuredData = serializeStructuredData(categoryStructuredData(summary, categoryData, category, path));
-	registerItems(summary.date, categoryData.items);
+	let displayItems = categoryData.items;
+	let fullListLoading = false;
+	let fullListError = '';
+	let activeLoadKey = '';
+
+	// SvelteKit reuses this component when navigating between category routes.
+	// Keep all route-derived values reactive so headings and metadata cannot
+	// remain bound to the category that was opened first.
+	$: config = CATEGORY_CONFIG[category];
+	$: path = `/briefings/${summary.date}/${category}`;
+	$: title = `${config.title} Briefing — ${formatDate(summary.date, 'MMMM d, yyyy')}`;
+	$: description = `${config.title} intelligence for ${summary.date}, with ${categoryData.total_items} analyzed signals and direct source evidence.`;
+	$: structuredData = serializeStructuredData(
+		categoryStructuredData(summary, categoryData, category, path)
+	);
+	$: routeKey = `${summary.date}:${category}`;
+	$: registerItems(summary.date, displayItems);
+	$: if (browser && routeKey !== activeLoadKey) {
+		activeLoadKey = routeKey;
+		displayItems = categoryData.items;
+		void loadAllItems(routeKey);
+	}
+
+	async function loadAllItems(loadKey: string) {
+		fullListLoading = categoryData.total_items > categoryData.items.length;
+		fullListError = '';
+		try {
+			const completeCategory = await loadCategoryData(summary.date, category);
+			if (loadKey !== activeLoadKey) return;
+			displayItems = completeCategory.items ?? [];
+			await tick();
+			if (window.location.hash) {
+				document
+					.getElementById(window.location.hash.slice(1))
+					?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		} catch {
+			if (loadKey === activeLoadKey) {
+				fullListError = 'The complete evidence list could not be loaded. Showing the top-ranked items.';
+			}
+		} finally {
+			if (loadKey === activeLoadKey) fullListLoading = false;
+		}
+	}
 </script>
 
 <PageMeta {title} {description} {path} type="article" />
@@ -42,7 +83,7 @@
 	<header class="card mb-10 border-l-[3px] p-7 sm:p-9" style="border-left-color: {config.color}">
 		<p class="section-kicker">Category intelligence</p>
 		<h1 class="mt-2 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl">{title}</h1>
-		<p class="mt-4 text-on-surface-variant">{categoryData.total_items} current items analyzed and ranked.</p>
+		<p class="mt-4 text-on-surface-variant">All {categoryData.total_items} current items, analyzed and ranked.</p>
 	</header>
 
 	{#if categoryData.category_summary_html || categoryData.category_summary}
@@ -76,9 +117,21 @@
 		<div class="section-heading">
 			<div>
 				<p class="section-kicker">Primary evidence</p>
-				<h2 id="ranked-signals" class="section-title">Top Ranked Signals</h2>
+				<h2 id="ranked-signals" class="section-title">All Ranked Signals</h2>
 			</div>
 		</div>
-		<NewsList items={categoryData.items} {category} date={summary.date} totalCount={categoryData.total_items} />
+		{#if fullListLoading}
+			<p class="mb-5 text-sm text-on-surface-variant" aria-live="polite">
+				Loading all {categoryData.total_items} signals…
+			</p>
+		{:else if fullListError}
+			<div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-tertiary/30 bg-tertiary/10 px-4 py-3 text-sm text-on-surface-variant">
+				<span>{fullListError}</span>
+				<button class="font-bold text-primary hover:text-white" on:click={() => loadAllItems(routeKey)}>
+					Retry
+				</button>
+			</div>
+		{/if}
+		<NewsList items={displayItems} {category} date={summary.date} totalCount={categoryData.total_items} />
 	</section>
 </div>

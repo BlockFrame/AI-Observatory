@@ -85,8 +85,8 @@
 
 	<!-- Header -->
 	<header class="fixed right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md transition-all duration-300 {isSidebarOpen ? 'left-64' : 'left-0'}">
-		<div class="flex h-16 items-center justify-between px-4 md:px-8 gap-4">
-			<div class="flex items-center gap-4">
+		<div class="flex h-16 items-center justify-between gap-4 px-4 md:px-8">
+			<div class="flex min-w-0 items-center gap-4">
 				<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
 					{#if isSidebarOpen}
 						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
@@ -94,9 +94,9 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
 					{/if}
 				</button>
-				<div class="flex items-center">
-					<div class="w-64 md:w-80">
-						<SearchBar placeholder="Search..." />
+				<div class="flex min-w-0 items-center">
+					<div class="w-[clamp(16rem,38vw,42rem)] max-w-full">
+						<SearchBar placeholder="Search news, research, social and repositories…" />
 					</div>
 				</div>
 			</div>

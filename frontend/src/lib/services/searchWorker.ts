@@ -12,6 +12,10 @@ interface CorpusDoc extends SearchDocument {
 	ref: string;
 }
 
+interface IndexedCorpusDoc extends CorpusDoc {
+	itemId: string;
+}
+
 type InitMessage = { type: 'init' };
 type SearchMessage = {
 	type: 'search';
@@ -22,20 +26,22 @@ type SearchMessage = {
 };
 type IncomingMessage = InitMessage | SearchMessage;
 
-let miniSearch: MiniSearch<CorpusDoc> | null = null;
+let miniSearch: MiniSearch<IndexedCorpusDoc> | null = null;
 
-function buildIndex(docs: CorpusDoc[]): MiniSearch<CorpusDoc> {
-	const index = new MiniSearch<CorpusDoc>({
+function buildIndex(docs: CorpusDoc[]): MiniSearch<IndexedCorpusDoc> {
+	const index = new MiniSearch<IndexedCorpusDoc>({
 		idField: 'ref',
 		fields: ['title', 'summary', 'source'],
-		storeFields: ['id', 'title', 'summary', 'source', 'category', 'date', 'url', 'importance'],
+		storeFields: ['itemId', 'title', 'summary', 'source', 'category', 'date', 'url', 'importance'],
 		searchOptions: {
 			boost: { title: 10, summary: 5, source: 2 },
 			prefix: true,
 			fuzzy: 0.2
 		}
 	});
-	index.addAll(docs);
+	// MiniSearch exposes its own index id as `result.id`. Preserve the actual
+	// report item id separately so a search result can target the card anchor.
+	index.addAll(docs.map((doc) => ({ ...doc, itemId: doc.id })));
 	return index;
 }
 
@@ -69,7 +75,7 @@ function runSearch(msg: SearchMessage): void {
 		ref: r.id as string,
 		score: r.score,
 		doc: {
-			id: r.id as string,
+			id: r.itemId as string,
 			title: r.title,
 			summary: r.summary,
 			url: r.url,

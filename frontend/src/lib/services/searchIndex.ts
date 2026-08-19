@@ -16,6 +16,7 @@ interface CorpusDoc extends SearchDocument {
 let worker: Worker | null = null;
 let initialized = false;
 let docCount = 0;
+let initializationPromise: Promise<boolean> | null = null;
 
 // Fallback state (only populated if the worker path fails).
 let fallbackDocs: CorpusDoc[] | null = null;
@@ -25,10 +26,19 @@ const pending = new Map<number, (results: SearchResult[]) => void>();
 
 function spawnWorker(): Promise<boolean> {
 	return new Promise((resolve) => {
+		let settled = false;
+		const finish = (ready: boolean) => {
+			if (settled) return;
+			settled = true;
+			clearTimeout(timeout);
+			resolve(ready);
+		};
+		const timeout = setTimeout(() => finish(false), 15_000);
+
 		try {
 			worker = new Worker(new URL('./searchWorker.ts', import.meta.url), { type: 'module' });
 		} catch {
-			resolve(false);
+			finish(false);
 			return;
 		}
 
@@ -37,10 +47,10 @@ function spawnWorker(): Promise<boolean> {
 			if (msg.type === 'ready') {
 				docCount = msg.count;
 				initialized = true;
-				resolve(true);
+				finish(true);
 			} else if (msg.type === 'error') {
 				console.warn('Search worker error:', msg.message);
-				resolve(false);
+				finish(false);
 			} else if (msg.type === 'results') {
 				const cb = pending.get(msg.id);
 				if (cb) {
@@ -51,7 +61,7 @@ function spawnWorker(): Promise<boolean> {
 		};
 
 		worker.addEventListener('message', onMessage);
-		worker.addEventListener('error', () => resolve(false));
+		worker.addEventListener('error', () => finish(false));
 		worker.postMessage({ type: 'init' });
 	});
 }
@@ -71,13 +81,20 @@ async function initializeFallback(): Promise<boolean> {
 
 export async function initializeSearch(): Promise<boolean> {
 	if (initialized) return true;
+	if (initializationPromise) return initializationPromise;
 
-	if (await spawnWorker()) return true;
+	initializationPromise = (async () => {
+		if (await spawnWorker()) return true;
 
-	// Worker failed — tear it down and fall back to main-thread search.
-	worker?.terminate();
-	worker = null;
-	return await initializeFallback();
+		// Worker failed — tear it down and fall back to main-thread search.
+		worker?.terminate();
+		worker = null;
+		return await initializeFallback();
+	})();
+
+	const ready = await initializationPromise;
+	if (!ready) initializationPromise = null;
+	return ready;
 }
 
 export function search(

@@ -17,6 +17,8 @@
 	let results: SearchResult[] = [];
 	let isOpen = false;
 	let isLoading = false;
+	let isReady = false;
+	let initializationFailed = false;
 	let selectedIndex = -1;
 	let inputElement: HTMLInputElement;
 
@@ -24,7 +26,14 @@
 
 	// Initialize search on mount
 	onMount(async () => {
-		await initializeSearch();
+		isLoading = true;
+		isReady = await initializeSearch();
+		initializationFailed = !isReady;
+		isLoading = false;
+		// A user may type while the 30-day corpus is still loading. Re-run the
+		// pending query once initialization completes instead of silently showing
+		// an empty result set forever.
+		if (isReady && query.length >= 2) await performSearch();
 		if (autofocus && inputElement) {
 			inputElement.focus();
 		}
@@ -40,17 +49,30 @@
 			}, 150);
 		} else {
 			results = [];
+			isLoading = false;
 		}
 	}
 
 	async function performSearch() {
-		if (!isSearchInitialized()) return;
 		const currentQuery = query;
+		isLoading = true;
+		const ready = isSearchInitialized() || (await initializeSearch());
+		isReady = ready;
+		initializationFailed = !ready;
+		if (!ready) {
+			results = [];
+			isLoading = false;
+			return;
+		}
 		const found = await search(query, category || undefined);
 		// Ignore stale responses if the query changed while awaiting.
-		if (currentQuery !== query) return;
+		if (currentQuery !== query) {
+			isLoading = false;
+			return;
+		}
 		results = found;
 		selectedIndex = -1;
+		isLoading = false;
 	}
 
 	function handleFocus() {
@@ -138,6 +160,7 @@
 				on:keydown={handleKeydown}
 				type="search"
 				{placeholder}
+				aria-label="Search all Radar evidence"
 				class="w-full rounded-full border border-[#2b3655] bg-[#18243b] px-4 py-2 pr-10 text-sm text-[#d8ddf4] placeholder:text-[#7d86a8] focus:border-[#7f88c4] focus:outline-none"
 			/>
 
@@ -187,9 +210,17 @@
 			on:select={(e) => selectResult(e.detail)}
 		/>
 	{:else if isOpen && query.length >= 2 && results.length === 0}
-		<div class="absolute z-[60] w-full mt-2 p-4 bg-white dark:bg-trend-gray-800 rounded-xl shadow-lg border border-trend-gray-200 dark:border-trend-gray-700">
-			<p class="text-sm text-trend-gray-500 text-center">
-				No results found for "{query}"
+		<div class="absolute z-[60] mt-2 w-full rounded-xl border border-[#2b3655] bg-[#111d33] p-4 shadow-2xl">
+			<p class="text-center text-sm text-[#b2b8cf]" aria-live="polite">
+				{#if isLoading}
+					Loading the search index…
+				{:else if initializationFailed}
+					Search is temporarily unavailable. Please try again.
+				{:else if !isReady}
+					Loading the search index…
+				{:else}
+					No results found for "{query}"
+				{/if}
 			</p>
 		</div>
 	{/if}

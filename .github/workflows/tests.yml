@@ -54,6 +54,8 @@ jobs:
         run: python3 -m unittest tests.seo_configuration_test -v
       - name: Repository documentation hygiene
         run: python3 -m unittest tests.repository_hygiene_test -v
+      - name: Frontend briefing, navigation, and search regressions
+        run: python3 -m unittest tests.frontend_briefing_ui_test -v
 
   hero-retry:
     name: Hero image retry-window guard
