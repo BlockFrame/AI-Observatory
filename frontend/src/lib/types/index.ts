@@ -121,7 +121,6 @@ export interface DaySummary {
 	generated_at: string;
 	categories: Record<Category, CategorySummary>;
 	hero_image_url?: string;
-	hero_image_prompt?: string;
 	collection_status?: CollectionStatus;
 	analysis_funnel?: Record<Category, AnalysisFunnelEntry>;
 	executive_evidence_items?: string[];

@@ -104,7 +104,7 @@ def migrate_from_env(config_dir: str) -> bool:
     # Build YAML content
     # For proxy users: openai-compatible mode with shared endpoint/key
     # For direct API users: anthropic mode for LLM, native mode for image
-    yaml_content = f'''# Provider Configuration for AI News Aggregator
+    yaml_content = f'''# Provider Configuration for Wiredframe Radar
 # Auto-generated from environment variables on {datetime.now().isoformat()}
 #
 # Tip: You can use environment variable interpolation with ${{VAR}} syntax:
@@ -147,7 +147,7 @@ llm:
 # =============================================================================
 # Image Provider (hero image generation)
 # =============================================================================
-# Generates a daily hero image featuring the AATF skunk mascot.
+# Generates a daily editorial hero image using the Wiredframe visual identity.
 # Comment out this entire section to skip hero image generation.
 #
 image:

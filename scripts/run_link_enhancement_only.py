@@ -137,7 +137,6 @@ def build_result(
         # a display-formatted version that JSONGenerator cannot consume.
         "collection_status": existing_result.get("collection_status", existing_summary.get("collection_status", {})),
         "hero_image_url": existing_summary.get("hero_image_url", existing_result.get("hero_image_url")),
-        "hero_image_prompt": existing_summary.get("hero_image_prompt", existing_result.get("hero_image_prompt")),
         "phase_status": existing_result.get("phase_status", []),
         "orchestrator_thinking": existing_result.get("orchestrator_thinking"),
         # Preserve generated_at so this does not masquerade as a full regenerated report.

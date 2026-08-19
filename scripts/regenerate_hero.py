@@ -225,7 +225,6 @@ def regenerate_one(generator: HeroGenerator, web_dir: Path, date: str) -> tuple[
             mtime = int(hero_file.stat().st_mtime)
             hero_url = f"{hero_url}?v={mtime}"
         summary['hero_image_url'] = hero_url
-        summary['hero_image_prompt'] = result['prompt']
         save_summary(web_dir, date, summary)
 
         logger.info(f"Completed: {date}")
@@ -271,7 +270,6 @@ async def regenerate_single(generator: HeroGenerator, web_dir: Path, date: str, 
         mtime = int(hero_file.stat().st_mtime)
         hero_url = f"{hero_url}?v={mtime}"
     summary['hero_image_url'] = hero_url
-    summary['hero_image_prompt'] = result['prompt']
     save_summary(web_dir, date, summary)
 
     logger.info(f"Success! Hero image generated at: {result['path']}")
@@ -313,7 +311,6 @@ async def edit_single(generator: HeroGenerator, web_dir: Path, date: str, edit_i
             mtime = int(hero_file.stat().st_mtime)
             hero_url = f"{hero_url}?v={mtime}"
         summary['hero_image_url'] = hero_url
-        summary['hero_image_prompt'] = result['prompt']
         save_summary(web_dir, date, summary)
     except FileNotFoundError:
         logger.warning("No summary.json found - skipping summary update")

@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  ai-news-aggregator:
+  wiredframe-radar:
     build: .
-    container_name: ai-news-aggregator
+    container_name: wiredframe-radar
     ports:
       - "7100:80"
     volumes:

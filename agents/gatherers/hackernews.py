@@ -35,7 +35,7 @@ class HackerNewsGatherer(BaseGatherer):
         self.best_limit = best_limit
         self.best_min_score = best_min_score
         self.session = requests.Session()
-        self.session.headers.update({"User-Agent": "AI-News-Aggregator/1.0"})
+        self.session.headers.update({"User-Agent": "Wiredframe-Radar/1.0"})
 
     @property
     def category(self) -> str:

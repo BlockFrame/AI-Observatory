@@ -184,7 +184,7 @@ fi
 echo ""
 echo "[CHECK] Docker status..."
 if command -v docker &>/dev/null; then
-    CONTAINER_STATUS=$(docker ps --filter "name=ai-news-aggregator" --format "{{.Status}}" 2>/dev/null)
+    CONTAINER_STATUS=$(docker ps --filter "name=wiredframe-radar" --format "{{.Status}}" 2>/dev/null)
     if [ -n "$CONTAINER_STATUS" ]; then
         echo "  ✅ Container running: $CONTAINER_STATUS"
     else

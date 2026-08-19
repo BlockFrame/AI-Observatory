@@ -50,7 +50,7 @@ OLD_ANCHOR_LLM_ENABLED = os.getenv("OLD_ANCHOR_LLM_ENABLED", "true").lower() not
 # Minimum original score to bother checking (skip low-scoring items)
 MIN_SCORE_THRESHOLD = 50.0
 
-FRESHNESS_USER_AGENT = os.getenv("NEWS_USER_AGENT", "AI-News-Aggregator/1.0")
+FRESHNESS_USER_AGENT = os.getenv("NEWS_USER_AGENT", "Wiredframe-Radar/1.0")
 
 PRIMARY_SOURCE_DOMAINS = (
     "ai.google.dev",

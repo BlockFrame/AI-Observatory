@@ -234,6 +234,12 @@ web/data/<date>/         Versioned reports and telemetry
 
 Keep changes evidence-preserving and quota-aware. When adding a source, update its configuration file and [source inventory](docs/sources.md). When changing synthesis, add a mocked regression test that proves current-item grounding and failure behavior. See the [contribution guide](.github/CONTRIBUTING.md) before opening a pull request.
 
+## 🙏 Acknowledgments
+
+Wiredframe Radar began as a fork of Ryan Duff's open-source [AI News Aggregator](https://github.com/flyryan/ai-news-aggregator). We gratefully acknowledge that project for proving how effective a multi-agent daily intelligence workflow can be and recommend it to anyone looking for the original implementation and its design choices.
+
+Wiredframe Radar has since evolved into an independent product with its own source strategy, model routing, evidence-linking system, quality controls, cost governance, frontend, and publishing architecture. Our thanks and endorsement of the upstream project remain an important part of this project's history.
+
 ## 📄 License
 
-Licensed under the [Apache License 2.0](LICENSE). Wiredframe Radar evolved from the open-source `ai-news-aggregator` project and now maintains its own collection, reliability, routing, editorial, and publishing architecture.
+Licensed under the [Apache License 2.0](LICENSE).

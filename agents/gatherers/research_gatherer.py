@@ -34,7 +34,7 @@ try:
     from lesswrong_cookie_fetch import DEFAULT_USER_AGENT as LESSWRONG_USER_AGENT
     from lesswrong_cookie_fetch import LessWrongClient
 except ImportError:
-    LESSWRONG_USER_AGENT = "AI-News-Aggregator/1.0"
+    LESSWRONG_USER_AGENT = "Wiredframe-Radar/1.0"
     LessWrongClient = None
 
 logger = logging.getLogger(__name__)

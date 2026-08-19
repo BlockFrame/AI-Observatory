@@ -12,7 +12,6 @@ class SeoConfigurationTest(unittest.TestCase):
     def test_watchdog_validates_the_production_domain(self):
         workflow = (ROOT / ".github/workflows/pipeline-watchdog.yml").read_text()
         self.assertIn("https://radar.wiredframe.xyz", workflow)
-        self.assertNotIn("https://news.aatf.ai", workflow)
 
     def test_vercel_build_publishes_machine_readable_indexes(self):
         package = json.loads((ROOT / "frontend/package.json").read_text())

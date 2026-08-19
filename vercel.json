@@ -8,19 +8,6 @@
   "env": {
     "VERCEL": "true"
   },
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "ai-observatory-taupe.vercel.app"
-        }
-      ],
-      "destination": "https://radar.wiredframe.xyz/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/data/(.*)",

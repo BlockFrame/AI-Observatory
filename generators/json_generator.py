@@ -189,7 +189,6 @@ class JSONGenerator:
             'llm_telemetry': llm_telemetry,
             'generation_quality': generation_quality,
             'hero_image_url': result.get('hero_image_url'),
-            'hero_image_prompt': result.get('hero_image_prompt'),
             'generated_at': result.get('generated_at', datetime.now().isoformat()),
             'categories': categories
         }

@@ -11,7 +11,7 @@ flowchart LR
     ACTION --> TESTS[Mocked regression tests]
     TESTS --> PIPELINE[Generate report]
     PIPELINE --> GATE[Validate report]
-    GATE -->|Valid| COMMIT[Signed data commit]
+    GATE -->|Valid| COMMIT[Validated data commit]
     GATE -->|Invalid| RESTORE[Restore last good data]
     COMMIT --> MAIN[main]
     MAIN --> VERCEL[Vercel build]
@@ -25,7 +25,6 @@ Required repository secrets:
 - `GEMINI_API_KEY`
 - `OPENROUTER_API_KEY`
 - `NVIDIA_API_KEY`
-- `PIPELINE_SIGNING_KEY` when generated output commits are enabled
 
 Optional secrets:
 
@@ -49,6 +48,8 @@ The canonical defaults are in `.github/workflows/daily-pipeline.yml` and `config
 Open **Actions → Daily Pipeline → Run workflow**. Optional inputs support an explicit target date, checkpoint phase, model override, and disabling generated-output commits.
 
 Before paid calls, the workflow runs mocked regression tests with production secrets shadowed. After generation, `scripts/validate_report.py` enforces the publish gate. Invalid output is reverted and never committed.
+
+When publication fails, the workflow creates or updates one deduplicated GitHub Issue. A subsequent successful publication closes the incident automatically, keeping operational history inside the repository and its AIDLC project.
 
 ## Vercel
 

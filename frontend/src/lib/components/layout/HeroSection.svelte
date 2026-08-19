@@ -21,12 +21,12 @@
 
 <section class="hero-section mb-8">
 	{#if heroImageUrl}
-		<img src={heroImageUrl} alt="Daily AI scene featuring AATF mascot" class="hero-image" />
+		<img src={heroImageUrl} alt="Wiredframe Radar daily AI editorial scene" class="hero-image" />
 	{:else}
 		<div
 			class="hero-fallback bg-gradient-to-br from-trend-gray-700 to-trend-gray-900 flex items-center justify-center"
 		>
-			<img src="/assets/logo.webp" alt="AATF Logo" class="w-24 h-24 opacity-40" />
+			<img src="/logo.png" alt="Wiredframe Radar logo" class="w-24 h-24 opacity-40" />
 		</div>
 	{/if}
 

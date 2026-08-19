@@ -1,18 +1,17 @@
 # Lightweight compose file for AWS web-only deployment.
 # Uses Dockerfile.web (nginx + static frontend) instead of the full
-# pipeline image. The publishing pipeline runs elsewhere (currently
-# flyryan/ai-news-aggregator GitHub Actions) and pushes data via git;
+# pipeline image. GitHub Actions publishes versioned data to this repository;
 # volumes mount the git-managed data/assets directories.
 #
 # Usage:
 #   docker compose -f docker-compose.web.yml up -d --build
 
 services:
-  ai-news-aggregator:
+  wiredframe-radar:
     build:
       context: .
       dockerfile: Dockerfile.web
-    container_name: ai-news-aggregator
+    container_name: wiredframe-radar
     ports:
       - "7100:80"
     volumes:

@@ -95,7 +95,7 @@ class WebScraperGatherer(BaseGatherer):
             def fetch():
                 response = requests.get(
                     url,
-                    headers={"User-Agent": os.getenv("NEWS_USER_AGENT", "AI-News-Aggregator/1.0")},
+                    headers={"User-Agent": os.getenv("NEWS_USER_AGENT", "Wiredframe-Radar/1.0")},
                     timeout=15.0,
                 )
                 response.raise_for_status()

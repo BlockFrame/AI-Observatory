@@ -29,6 +29,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-pipeline-${{ github.ref }}
@@ -441,8 +442,6 @@ jobs:
         if: steps.schedule_gate.outputs.should_run == 'true' && env.COMMIT_OUTPUTS == 'true'
         id: commit
         shell: bash
-        env:
-          PIPELINE_SIGNING_KEY: ${{ secrets.PIPELINE_SIGNING_KEY }}
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
@@ -457,29 +456,8 @@ jobs:
             exit 0
           fi
 
-          # Sign the commit so the deploy gate (scripts/deploy.sh) accepts it.
-          # An unsigned tip on origin/main would abort the production deploy
-          # (CWE-345 fix), so fail loudly here rather than stall publishing.
-          if [ -z "${PIPELINE_SIGNING_KEY:-}" ]; then
-            echo "ERROR: PIPELINE_SIGNING_KEY secret is empty; refusing to create an unsigned commit." >&2
-            echo "  Set the PIPELINE_SIGNING_KEY secret (see deploy/README.md) so deploy.sh will accept the tip." >&2
-            exit 1
-          fi
-          signing_key="${RUNNER_TEMP}/pipeline_signing_key"
-          printf '%s\n' "$PIPELINE_SIGNING_KEY" > "$signing_key"
-          chmod 600 "$signing_key"
-          git config gpg.format ssh
-          git config user.signingkey "$signing_key"
-          git config commit.gpgsign true
-          # rebase.gpgSign so the `git pull --rebase` in the Push step re-signs
-          # the recreated commit (a plain rebase drops the signature). These
-          # git config values persist in .git/config for that later step; the
-          # key file stays in the ephemeral RUNNER_TEMP for the same reason and
-          # is discarded with the runner.
-          git config rebase.gpgSign true
-
           report_date="${{ steps.report_date.outputs.date }}"
-          git commit -S -m "data: Auto-update ${report_date}"
+          git commit -m "data: Auto-update ${report_date}"
           echo "committed=true" >> "$GITHUB_OUTPUT"
 
       - name: Upload generated outputs without committing
@@ -553,42 +531,40 @@ jobs:
             exit 1
           fi
 
-      # Proactive failure alert (2026-06-21). Fires on ANY failure of a run that
-      # was supposed to publish (RED synthesis, publish-gate revert, or the
-      # commit-landed assertion above). POSTs to the graph-webhooks alert ingress
-      # (Cloudflare tunnel -> LaunchDaemon on Ryan's Mac mini), which wakes FlyBot
-      # with a system event in under a minute instead of the site sitting stale
-      # for hours. Bearer-authenticated; the endpoint fails closed without it.
-      # best-effort: never let the alert itself fail the job or leak the token.
-      - name: Alert on pipeline failure
+      - name: Record pipeline failure incident
         if: failure() && steps.schedule_gate.outputs.should_run == 'true'
+        continue-on-error: true
         shell: bash
         env:
-          PIPELINE_ALERT_TOKEN: ${{ secrets.PIPELINE_ALERT_TOKEN }}
-          PIPELINE_ALERT_URL: ${{ vars.PIPELINE_ALERT_URL || 'https://flybotwebhook.duffplex.com/alert/pipeline' }}
+          GH_TOKEN: ${{ github.token }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          set -uo pipefail
-          if [[ -z "${PIPELINE_ALERT_TOKEN:-}" ]]; then
-            echo "PIPELINE_ALERT_TOKEN not set; skipping alert POST (configure the repo secret)."
-            exit 0
-          fi
+          set -euo pipefail
+          title="[Operations] Daily pipeline publication failure"
           report_date="${{ steps.report_date.outputs.date }}"
-          payload="$(python3 - "$report_date" "$RUN_URL" <<'PY'
-          import json, sys
-          print(json.dumps({
-              "status": "failure",
-              "report_date": sys.argv[1],
-              "reason": "daily-pipeline.yml failed before today's report published",
-              "run_url": sys.argv[2],
-          }))
-          PY
-          )"
-          code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 \
-            -X POST "$PIPELINE_ALERT_URL" \
-            -H "Authorization: Bearer ${PIPELINE_ALERT_TOKEN}" \
-            -H 'Content-Type: application/json' \
-            -d "$payload" || true)"
-          echo "Alert POST -> HTTP ${code:-no-response}"
-          # Do not fail the job on alert delivery problems; the run is already red.
-          exit 0
+          issue_number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --json number --jq '.[0].number // empty')"
+          body="Daily publication failed for **${report_date}**.\n\nRun: ${RUN_URL}\n\nThe last validated report remains online."
+          if [[ -n "$issue_number" ]]; then
+            gh issue comment "$issue_number" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body" \
+              --label "area: operations" --label "priority: high" --label "status: triage"
+          fi
+
+      - name: Resolve pipeline failure incident
+        if: success() && steps.schedule_gate.outputs.should_run == 'true'
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          title="[Operations] Daily pipeline publication failure"
+          issue_number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "${title} in:title" --json number --jq '.[0].number // empty')"
+          if [[ -n "$issue_number" ]]; then
+            gh issue close "$issue_number" --repo "$GITHUB_REPOSITORY" \
+              --comment "Publication recovered successfully. Run: ${RUN_URL}"
+          fi

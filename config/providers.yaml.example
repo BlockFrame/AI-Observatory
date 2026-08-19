@@ -59,8 +59,7 @@ llm:
   # base_url: "https://api.anthropic.com"
 
   # Model identifier. Use whatever Opus 4.8 alias your endpoint expects.
-  # AATF's hosted proxy currently uses claude-4.8-opus-aws as the
-  # single-provider fallback.
+  # Set this to the model alias exposed by your configured provider.
   model: "claude-4.8-opus-aws"
 
   # Request timeout in seconds (1-600)
@@ -109,7 +108,7 @@ llm:
 # -----------------------------------------------------------------------------
 # Image Provider Configuration (Optional)
 # -----------------------------------------------------------------------------
-# Generates a daily hero image featuring the AATF skunk mascot.
+# Generates a daily editorial hero image using the Wiredframe visual identity.
 # Comment out this entire section to skip hero image generation.
 #
 # Supports two modes:
@@ -154,10 +153,8 @@ image:
 pipeline:
   # Base URL for RSS feed links
   # Set this to your deployment domain for production
-  # Examples:
-  #   - https://news.aatf.ai (production default)
-  #   - https://news.example.com (alternate production domain)
-  base_url: "https://news.aatf.ai"
+  # Example: https://radar.wiredframe.xyz
+  base_url: "https://radar.wiredframe.xyz"
 
   # Data collection window in hours (1-168)
   # How far back to look for news items

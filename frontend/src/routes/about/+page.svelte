@@ -17,18 +17,13 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>Wiredframe Radar</strong> is a solution of the <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a> that delivers strategic daily briefings on AI/ML developments,
-				helping you stay current with the fast-moving world of artificial intelligence.
+				<strong>Wiredframe Radar</strong> is an open-source product of the <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a>. It turns daily AI market signals, research, social discourse, and open-source momentum into concise strategic intelligence.
 			</p>
 			<p>
-				This project is a custom fork of the excellent AI News Aggregator created by the <a href="https://www.trendmicro.com/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">TrendAI AATF</a>. 
-				While we maintain the robust underlying multi-agent logic of the original architecture, this instance introduces deep customizations: 
-				we have tailored the data sources, integrated continuous analysis of GitHub Repositories, 
-				and entirely redesigned the information representation to focus on strategic insights, business implications, and trend velocity.
+				Every briefing is built around traceable evidence. The pipeline collects and ranks current sources, synthesizes cross-category topics, validates editorial quality, and links published claims back to the underlying material.
 			</p>
 			<p>
-				The aggregator uses a multi-agent pipeline powered by native AI models with adaptive thinking
-				to gather, analyze, and synthesize content from diverse sources into coherent daily reports.
+				The system combines deterministic controls with task-specific AI models, explicit fallbacks, cost telemetry, and a fail-safe publication gate. This makes partial provider failures visible while preserving the last validated report.
 			</p>
 			<p>
 				Originally developed as an internal tool, it is now open-sourced so others can run their own instances or contribute improvements. You can explore the source code on <a href={SITE.githubUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">our GitHub Repository</a>.

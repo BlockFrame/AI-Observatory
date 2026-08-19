@@ -330,7 +330,7 @@ class PipelineConfig(BaseModel):
         lookback_hours: Data collection window in hours (default: 24)
     """
     base_url: str = Field(
-        default="https://news.aatf.ai",
+        default="https://radar.wiredframe.xyz",
         description="Base URL for RSS feed links. Set to your deployment domain."
     )
     lookback_hours: int = Field(

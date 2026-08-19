@@ -18,7 +18,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from generators.feed_generator import FeedGenerator
 
 
-BASE_URL = "https://news.aatf.ai"
+BASE_URL = "https://radar.wiredframe.xyz"
 DATE = "2026-05-24"
 SITE_URL = f"{BASE_URL}/?date={DATE}"
 EXTERNAL_URL = "https://example.com/source-article"

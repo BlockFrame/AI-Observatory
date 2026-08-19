@@ -10,7 +10,7 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
-LOG_DIR = Path.home() / "ai-news-aggregator" / "logs"
+LOG_DIR = Path.home() / "wiredframe-radar" / "logs"
 ITEM_RE = re.compile(r"agents\.orchestrator - INFO -\s+([a-z]+) gatherer collected (\d+) items")
 DATE_RE = re.compile(r"pipeline_(\d{4}-\d{2}-\d{2})\.log$")
 WARNING_RE = re.compile(r" - (WARNING|ERROR|CRITICAL) - ")

@@ -417,7 +417,7 @@ class LinkEnricher:
                 temperature=0.0,
                 caller=caller,
             )
-            parsed = self._parse_aatf_enrichment_response(response.content)
+            parsed = self._parse_evidence_enrichment_response(response.content)
             if set(parsed) != {"selections"} or not isinstance(parsed["selections"], list):
                 raise ValueError("link selection response does not match the required schema")
             logger.info(
@@ -662,7 +662,7 @@ class LinkEnricher:
         links_per_block: int = 1,
         evidence_by_bullet: Optional[List[List[str]]] = None,
     ) -> str:
-        """Apply the upstream AATF full-text enrichment contract safely.
+        """Apply the full-text evidence-enrichment contract safely.
 
         Gemini returns the complete original text with contextual Markdown
         links. We accept it only when removing those links reproduces the
@@ -701,24 +701,24 @@ Rules:
                 temperature=0.0,
                 caller=f"link_enricher.{context_name}",
             )
-            parsed = self._parse_aatf_enrichment_response(response.content)
+            parsed = self._parse_evidence_enrichment_response(response.content)
             enriched = parsed.get("enriched_text")
             if not isinstance(enriched, str):
                 raise ValueError("enriched_text is missing")
-            validated = self._validate_aatf_enriched_text(text, enriched, items)
+            validated = self._validate_evidence_enriched_text(text, enriched, items)
             if validated and self._has_internal_links(validated):
-                logger.info("  %s: accepted %s validated AATF-style link(s)", context_name, validated.count("](/?date="))
+                logger.info("  %s: accepted %s validated evidence link(s)", context_name, validated.count("](/?date="))
                 return validated
             logger.info("  %s: model returned no usable links; applying exact-match fallback", context_name)
         except Exception as exc:
-            logger.warning("  %s: AATF-style enrichment unavailable; applying exact-match fallback: %s", context_name, exc)
+            logger.warning("  %s: full-text enrichment unavailable; applying exact-match fallback: %s", context_name, exc)
         return self._inject_per_block_links(
             text, items, context_name, links_per_block, evidence_by_bullet
         )
 
     @staticmethod
-    def _parse_aatf_enrichment_response(content: str) -> Dict[str, Any]:
-        """Parse the JSON envelope used by upstream AATF."""
+    def _parse_evidence_enrichment_response(content: str) -> Dict[str, Any]:
+        """Parse the full-text evidence-enrichment JSON envelope."""
         value = (content or "").strip()
         if value.startswith("```json"):
             value = value[7:]
@@ -735,7 +735,7 @@ Rules:
             raise ValueError("enrichment response is not a JSON object")
         return parsed
 
-    def _validate_aatf_enriched_text(
+    def _validate_evidence_enriched_text(
         self, original: str, enriched: str, items: List[Dict[str, Any]],
     ) -> Optional[str]:
         """Accept only link-only transformations targeting eligible items."""

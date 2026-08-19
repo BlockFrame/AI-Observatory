@@ -1026,7 +1026,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         self.assertEqual(enriched, text)
 
-    def test_aatf_full_text_links_a_validated_verbatim_span(self):
+    def test_full_text_enrichment_links_a_validated_verbatim_span(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({
@@ -1046,7 +1046,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_aatf_output_cannot_change_prose_or_use_disallowed_link(self):
+    def test_full_text_enrichment_cannot_change_prose_or_use_disallowed_link(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({
@@ -1075,7 +1075,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_aatf_removes_weak_link_but_keeps_valid_link(self):
+    def test_full_text_enrichment_removes_weak_link_but_keeps_valid_link(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({
@@ -1096,7 +1096,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_aatf_allows_one_to_many_links_per_bullet(self):
+    def test_full_text_enrichment_allows_one_to_many_links_per_bullet(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({
@@ -1117,7 +1117,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_aatf_enriches_topic_paragraph_and_short_technical_name(self):
+    def test_full_text_enrichment_enriches_topic_paragraph_and_short_technical_name(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({
@@ -1134,7 +1134,7 @@ class DeterministicLinkEnrichmentTests(unittest.TestCase):
 
         asyncio.run(run())
 
-    def test_aatf_empty_output_uses_exact_match_fallback(self):
+    def test_full_text_enrichment_empty_output_uses_exact_match_fallback(self):
         class GeminiFixture:
             async def call_with_thinking(self, **_kwargs):
                 return SimpleNamespace(content=json.dumps({

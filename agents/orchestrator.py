@@ -106,7 +106,6 @@ class OrchestratorResult:
     executive_evidence_items: List[str] = field(default_factory=list)
     executive_summary_evidence: List[List[str]] = field(default_factory=list)
     hero_image_url: Optional[str] = None  # URL path to generated hero image
-    hero_image_prompt: Optional[str] = None  # Prompt used to generate hero image
     phase_status: List[Dict[str, Any]] = field(default_factory=list)  # Phase tracker records
     llm_telemetry: Dict[str, Any] = field(default_factory=dict)
     orchestrator_thinking: Optional[str] = None
@@ -131,7 +130,6 @@ class OrchestratorResult:
             'executive_evidence_items': self.executive_evidence_items,
             'executive_summary_evidence': self.executive_summary_evidence,
             'hero_image_url': self.hero_image_url,
-            'hero_image_prompt': self.hero_image_prompt,
             'phase_status': self.phase_status,
             'llm_telemetry': self.llm_telemetry,
             'orchestrator_thinking': self.orchestrator_thinking,
@@ -620,7 +618,6 @@ class MainOrchestrator:
 
         # Phase 4.7: Hero Image Generation
         hero_image_url = None
-        hero_image_prompt = None
 
         # Build hero topics - use top_topics, or fall back to category themes
         hero_topics = top_topics
@@ -647,7 +644,6 @@ class MainOrchestrator:
                         if hero_file.exists():
                             mtime = int(hero_file.stat().st_mtime)
                             hero_image_url = f"{hero_image_url}?v={mtime}"
-                        hero_image_prompt = hero_result['prompt']
                         logger.info(f"Hero image generated: {hero_image_url}")
                         if hero_fallback_used:
                             phases.end_phase('partial', details="used category themes as fallback")
@@ -713,7 +709,6 @@ class MainOrchestrator:
             executive_evidence_items=executive_evidence_items,
             executive_summary_evidence=executive_summary_evidence,
             hero_image_url=hero_image_url,
-            hero_image_prompt=hero_image_prompt,
             phase_status=phases.to_dict(),
             llm_telemetry=cost_tracker.get_llm_telemetry(),
             orchestrator_thinking=f"Topic Detection:\n{topic_thinking}\n\nSummary:\n{summary_thinking}"

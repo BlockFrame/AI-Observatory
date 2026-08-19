@@ -2,8 +2,7 @@
 """
 Hero Image Generator
 
-Generates daily hero images with the AATF skunk mascot via configured image provider.
-The mascot is placed in topic-related scenes based on the day's top topics.
+Generates daily editorial hero images using Wiredframe Radar's visual identity.
 
 Supports two initialization modes:
 1. New: HeroGenerator.from_config(config) - uses unified ImageClient abstraction
@@ -27,9 +26,9 @@ logger = logging.getLogger(__name__)
 
 
 class HeroGenerator:
-    """Generates daily hero images with skunk mascot via configured image provider."""
+    """Generates daily hero images via the configured image provider."""
 
-    SKUNK_REFERENCE = Path(__file__).parent.parent / "assets" / "skunk-reference.png"
+    BRAND_REFERENCE = Path(__file__).parent.parent / "frontend" / "static" / "logo.png"
 
     # Topic-to-visual mapping for scene generation
     VISUAL_MAPPINGS = {
@@ -106,9 +105,8 @@ class HeroGenerator:
                 "or pass client parameter directly."
             )
 
-        # Verify skunk reference exists
-        if not self.SKUNK_REFERENCE.exists():
-            raise FileNotFoundError(f"Skunk reference image not found at {self.SKUNK_REFERENCE}")
+        if not self.BRAND_REFERENCE.exists():
+            raise FileNotFoundError(f"Brand reference image not found at {self.BRAND_REFERENCE}")
 
     @classmethod
     def from_config(cls, config: 'ImageProviderConfig') -> 'HeroGenerator':
@@ -180,8 +178,7 @@ class HeroGenerator:
     def _get_topic_summaries(self, topics: List[Any]) -> List[Dict[str, str]]:
         """Extract topic names and clean descriptions for prompt context.
 
-        Topic text descends from untrusted feed content, and this prompt is
-        published verbatim as hero_image_prompt, so it gets the shared
+        Topic text descends from untrusted feed content, so it gets the shared
         normalization (invisible/bidi characters stripped) plus length caps.
         The image model has no instruction/data channel split, so unlike the
         analyzer prompts there is no nonce fence here.
@@ -222,17 +219,13 @@ class HeroGenerator:
                 section += f"\n{summary['description']}"
             topic_sections.append(section)
 
-        return f"""You are generating a daily hero image for an AI news aggregator website.
+        return f"""You are generating the daily hero image for Wiredframe Radar, an executive AI intelligence product.
 
 ## Your Goal
-Create a playful, colorful editorial illustration that visually represents today's top AI news stories. The scene should immediately convey the themes of the day's news to readers.
+Create a sophisticated editorial illustration that makes today's leading AI developments immediately understandable.
 
-## The Mascot (CRITICAL)
-The attached image shows our skunk mascot. You MUST:
-- Keep the EXACT circuit board pattern on the skunk's body and tail - this is a core part of the brand identity
-- Maintain the skunk's white and black coloring with the tech circuit pattern visible
-- The skunk must be ACTIVELY DOING SOMETHING related to the topics - typing on a keyboard, reading papers, adjusting equipment, pointing at a screen, holding tools, etc. NOT just standing and smiling at the camera!
-- Position the skunk in the lower-left or lower-right portion, engaged with the scene
+## Brand Direction
+The attached geometric mark is a visual reference for palette and design language. Use a dark navy field, luminous cyan accents, precise geometric forms, radar-like depth, and subtle analytical data motifs. Do not reproduce the logo, add mascots, or render brand text inside the image.
 
 ## Today's Stories
 
@@ -241,14 +234,15 @@ The attached image shows our skunk mascot. You MUST:
 ## Visual Direction
 Create a scene that represents these stories. You must include Topic 1 (the top story), then pick 2-3 others that would make the best scene together. Consider:
 - What visual metaphors could represent these themes?
-- How can the skunk mascot interact with or observe these elements?
+- How can the composition communicate relationships, momentum, and business impact at a glance?
 - Suggested scene elements: {', '.join(visual_elements)}
 
 ## Style Requirements
-- Playful cartoon illustration, tech editorial art style
-- Vibrant colors with Trend Red (#E63946) accents
-- Energetic, forward-looking, tech-optimistic mood
-- No company logos or watermarks - but topic-relevant company logos (OpenAI, Anthropic, Google, etc.) are encouraged when relevant to the stories"""
+- Premium technology editorial illustration with clean geometry and controlled detail
+- Wiredframe palette: deep navy, cyan (#00E0BB), cool white, and restrained violet accents
+- Intelligent, forward-looking, credible mood suitable for an executive briefing
+- Strong focal hierarchy with negative space for responsive cropping
+- No text, mascots, company logos, trademarks, or watermarks"""
 
     async def generate(
         self,
@@ -269,12 +263,12 @@ Create a scene that represents these stories. You must include Topic 1 (the top 
         Returns:
             Dict with 'path' (relative URL path) and 'prompt' (used prompt), or None on failure
         """
-        # Read skunk reference image
+        # Read the Wiredframe visual reference.
         try:
-            with open(self.SKUNK_REFERENCE, "rb") as f:
-                skunk_bytes = f.read()
+            with open(self.BRAND_REFERENCE, "rb") as f:
+                brand_reference = f.read()
         except Exception as e:
-            logger.error(f"Failed to read skunk reference image: {e}")
+            logger.error(f"Failed to read brand reference image: {e}")
             return None
 
         # Extract visual elements and topic summaries from all available topics
@@ -294,7 +288,7 @@ Create a scene that represents these stories. You must include Topic 1 (the top 
             # Use ImageClient for generation
             response = await self.client.generate(
                 prompt=instructions,
-                reference_image=skunk_bytes,
+                reference_image=brand_reference,
                 aspect_ratio="21:9",
                 image_size="2K"
             )
@@ -475,7 +469,6 @@ def initialize_hero_generator(config: Optional['ImageProviderConfig']) -> Option
     Note:
         When this returns None, the pipeline should:
         - Set hero_image_url to null in summary.json
-        - Set hero_image_prompt to null in summary.json
         - Continue without hero images
     """
     if config is None:

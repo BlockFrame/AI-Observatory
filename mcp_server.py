@@ -12,7 +12,7 @@ from mcp.types import Tool, TextContent
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "web" / "data"
 
-app = Server("ai-observatory")
+app = Server("wiredframe-radar")
 
 @app.list_tools()
 async def list_tools() -> list[Tool]:
