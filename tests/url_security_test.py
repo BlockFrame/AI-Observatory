@@ -43,6 +43,17 @@ class HostnameValidationTests(unittest.TestCase):
 
 
 class MigrationSecretTests(unittest.TestCase):
+    def test_detection_does_not_read_environment_values(self):
+        class PresenceOnlyEnvironment(dict):
+            def get(self, *_args, **_kwargs):
+                raise AssertionError("environment values must not be read")
+
+        environment = PresenceOnlyEnvironment({"ANTHROPIC_API_KEY": "unread-secret"})
+        with patch("agents.config.migration.os.environ", environment):
+            detected = detect_env_vars()
+
+        self.assertEqual(detected, {"llm": {"api_key": True}})
+
     def test_migration_uses_references_without_persisting_secret_values(self):
         secret = "must-not-be-written"
         env = {

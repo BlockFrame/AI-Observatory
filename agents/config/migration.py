@@ -31,7 +31,9 @@ def detect_env_vars() -> dict:
     found_any = False
 
     for env_var, (section, key) in ENV_VAR_MAPPING.items():
-        if os.environ.get(env_var):
+        # Check only whether the variable name exists. Reading its value here is
+        # unnecessary and would bring a secret into the migration data flow.
+        if env_var in os.environ:
             # Migration only needs presence information: providers.yaml keeps
             # ${VAR} references and must never persist environment values.
             config[section][key] = True
