@@ -1,4 +1,4 @@
-"""OpenRouter model and price policy for the paid complex-task route."""
+"""Dependency-free OpenRouter model and price policy for the paid route."""
 
 from __future__ import annotations
 

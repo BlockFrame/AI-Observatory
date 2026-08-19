@@ -1,9 +1,12 @@
 import os
+import subprocess
+import sys
 import unittest
 from decimal import Decimal
+from pathlib import Path
 from unittest.mock import patch
 
-from agents.openrouter_pricing import (
+from pipeline_support.openrouter_pricing import (
     OPENROUTER_COMPLEX_MODEL,
     OpenRouterPriceGuardError,
     eligible_endpoints,
@@ -29,6 +32,26 @@ def endpoint(prompt, completion, *, status=0, provider="GMICloud", discount=0.6)
 
 
 class OpenRouterPricingTests(unittest.TestCase):
+    def test_preflight_imports_without_third_party_dependencies(self):
+        project_root = Path(__file__).resolve().parent.parent
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-S",
+                "-c",
+                (
+                    "import runpy; "
+                    "runpy.run_path('scripts/check_openrouter_pricing.py', "
+                    "run_name='pricing_preflight_import_test')"
+                ),
+            ],
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+
     def test_current_promotional_endpoint_passes(self):
         result = eligible_endpoints(catalog(endpoint("0.24", "0.96")))
         self.assertEqual(len(result), 1)

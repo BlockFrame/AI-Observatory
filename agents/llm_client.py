@@ -31,7 +31,7 @@ from google import genai
 from google.genai import types as genai_types
 
 from .cost_tracker import get_tracker
-from agents.openrouter_pricing import provider_preferences as openrouter_provider_preferences
+from pipeline_support.openrouter_pricing import provider_preferences as openrouter_provider_preferences
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
