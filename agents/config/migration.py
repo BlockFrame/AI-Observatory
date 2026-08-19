@@ -99,7 +99,11 @@ def migrate_from_env(config_dir: str) -> bool:
     # For proxy users: image uses same endpoint/key as LLM
     # For direct API users: image needs separate Gemini config
     image_mode = 'openai-compatible' if using_proxy else 'native'
-    image_api_key = '${ANTHROPIC_API_KEY}' if using_proxy else 'your-google-api-key-here'
+    image_key_yaml = (
+        '  api_key: "${ANTHROPIC_API_KEY}"'
+        if using_proxy
+        else '  api_key: "your-google-api-key-here"'
+    )
     image_model = 'gemini-3-pro-image' if using_proxy else 'gemini-3-pro-image-preview'
 
     # Write YAML config
@@ -171,8 +175,8 @@ image:
   #
   mode: "{image_mode}"
 
-  # API key
-  api_key: "{image_api_key}"
+  # API key reference; migration never reads or copies the credential value.
+{image_key_yaml}
 
   # Endpoint (required for openai-compatible mode only)
 {('  endpoint: "${ANTHROPIC_API_BASE}/v1"' if using_proxy else '  # endpoint: "https://your-proxy.example.com/v1"')}
