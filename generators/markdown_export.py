@@ -5,6 +5,8 @@ Generate digest markdown per day.
 from pathlib import Path
 from typing import Dict, List
 
+from agents.url_utils import hostname_matches
+
 
 def _section_lines(report: Dict, source_label: bool = False) -> List[str]:
     lines: List[str] = []
@@ -51,7 +53,10 @@ def generate_digest_markdown(result: Dict, web_dir: str = "web") -> str:
                 "top_items": [
                     item
                     for item in reports.get("news", {}).get("top_items", [])
-                    if "github.com" in (item.get("item", item).get("url", ""))
+                    if hostname_matches(
+                        item.get("item", item).get("url", ""),
+                        "github.com",
+                    )
                 ]
             }
         ),
