@@ -37,6 +37,35 @@ class SeoConfigurationTest(unittest.TestCase):
         self.assertIn("<lastmod>${metadata.lastmod}</lastmod>", sitemap)
         self.assertIn("categoryEntries", sitemap)
 
+    def test_segmented_sitemap_index_is_declared_in_robots(self):
+        robots = (ROOT / "frontend/static/robots.txt").read_text()
+        sitemap_index = (
+            ROOT / "frontend/src/routes/sitemap-index.xml/+server.ts"
+        ).read_text()
+
+        self.assertIn(
+            "Sitemap: https://radar.wiredframe.xyz/sitemap-index.xml", robots
+        )
+        self.assertIn("/sitemaps/core.xml", sitemap_index)
+        self.assertIn("/sitemaps/models.xml", sitemap_index)
+        self.assertIn("/sitemaps/briefings.xml", sitemap_index)
+
+    def test_segmented_sitemaps_cover_current_public_routes(self):
+        core = (ROOT / "frontend/src/routes/sitemaps/core.xml/+server.ts").read_text()
+        models = (
+            ROOT / "frontend/src/routes/sitemaps/models.xml/+server.ts"
+        ).read_text()
+        briefings = (
+            ROOT / "frontend/src/routes/sitemaps/briefings.xml/+server.ts"
+        ).read_text()
+
+        for route in ("/about", "/influencers", "/models", "/tools", "/archive"):
+            self.assertIn(route, core)
+        self.assertIn("slugify(model.name)", models)
+        self.assertIn("briefingEntries", briefings)
+        self.assertIn("categoryEntries", briefings)
+        self.assertIn("lastmod: date", briefings)
+
     def test_homepage_receives_latest_report_during_prerender(self):
         loader = (ROOT / "frontend/src/routes/+page.server.ts").read_text()
         page = (ROOT / "frontend/src/routes/+page.svelte").read_text()
