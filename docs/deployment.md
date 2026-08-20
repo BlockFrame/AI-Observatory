@@ -25,12 +25,12 @@ Required repository secrets:
 - `GEMINI_API_KEY`
 - `OPENROUTER_API_KEY`
 - `NVIDIA_API_KEY`
+- `PIPELINE_PUSH_KEY`, the private half of the repository-scoped writable deploy key used only to publish validated reports
 
 Optional secrets:
 
 - `GETXAPI_KEY` for X collection
 - `GOOGLE_API_KEY` for optional hero-image generation
-- `PIPELINE_PUSH_TOKEN` when the default GitHub token is insufficient
 - `LESSWRONG_PROXY_URL` or `PIPELINE_PROXY_URL` for restricted egress
 - Mullvad credentials when using the workflow-managed tunnel
 
@@ -42,6 +42,8 @@ Useful repository variables:
 - analyzer batch and fallback-rate controls
 
 The canonical defaults are in `.github/workflows/daily-pipeline.yml` and `config/providers.yaml`.
+
+The public half of `PIPELINE_PUSH_KEY` must be registered under **Settings → Deploy keys** with write access. The `Protect main` ruleset exempts deploy keys so the scheduled workflow can push its validated generated artifacts; no personal access token is required.
 
 ## Manual run
 

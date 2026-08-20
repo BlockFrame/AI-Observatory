@@ -165,7 +165,9 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          token: ${{ secrets.PIPELINE_PUSH_TOKEN || github.token }}
+          # A repository-scoped writable deploy key is the only automation
+          # allowed to bypass the main-branch ruleset for validated reports.
+          ssh-key: ${{ secrets.PIPELINE_PUSH_KEY }}
 
       - name: Resolve report date
         if: steps.schedule_gate.outputs.should_run == 'true'

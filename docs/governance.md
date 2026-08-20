@@ -51,7 +51,7 @@ The scheduled GitHub Actions pipeline may write validated generated reports dire
 - runs regression tests before paid calls;
 - validates generated output before commit;
 - writes only expected report and discovery artifacts;
-- uses the GitHub Actions app as the allowed branch-protection bypass;
+- authenticates with a repository-scoped writable deploy key as the allowed ruleset bypass;
 - leaves human-authored source and configuration changes subject to pull-request review.
 
 ## Community and security
