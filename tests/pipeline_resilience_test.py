@@ -12,7 +12,11 @@ from unittest.mock import MagicMock, patch
 
 import httpx
 
-from agents.analyzers.github_trending_analyzer import GitHubTrendingAnalyzer
+from agents.analyzers.github_trending_analyzer import (
+    GitHubTrendingAnalyzer,
+    build_repository_summary,
+    extract_repository_description,
+)
 from agents.base import BaseAnalyzer, CollectedItem
 from agents.cache import AnalysisCache
 from agents.cost_tracker import CostTracker
@@ -639,6 +643,38 @@ class SelectiveGatheringCheckpointRepairTests(unittest.IsolatedAsyncioTestCase):
 
 
 class CategorySummaryRoutingTests(unittest.TestCase):
+    def test_github_item_summary_explains_repository_specific_value(self):
+        memory_summary = build_repository_summary(
+            "volcengine/OpenViking",
+            "Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.",
+            "804",
+            "Python",
+        )
+        security_summary = build_repository_summary(
+            "usestrix/strix",
+            "Open-source AI penetration testing tool to find and fix app vulnerabilities.",
+            "593",
+            "Python",
+        )
+
+        self.assertIn("**Why it matters:**", memory_summary)
+        self.assertIn("agent context, memory, and retrieval", memory_summary)
+        self.assertIn("security automation", security_summary)
+        self.assertNotEqual(memory_summary, security_summary)
+        self.assertNotIn("evaluate the Python project's maturity", memory_summary)
+
+    def test_github_description_is_available_from_metadata_and_legacy_content(self):
+        metadata_description = extract_repository_description(
+            "ignored", {"description": "  Agent memory and RAG  "}
+        )
+        legacy_description = extract_repository_description(
+            "GitHub Repository: example/repo\nDescription: Local multi-agent harness\nLanguage: TypeScript\nStars Today: 42",
+            {},
+        )
+
+        self.assertEqual(metadata_description, "Agent memory and RAG")
+        self.assertEqual(legacy_description, "Local multi-agent harness")
+
     def test_github_trending_uses_quality_summary_route_and_budget(self):
         valid_summary = """### Executive Signal
 - **Open-source adoption** is accelerating around enterprise agent infrastructure, increasing the importance of governance and integration discipline across production AI portfolios.
@@ -709,6 +745,7 @@ class CategorySummaryRoutingTests(unittest.TestCase):
         self.assertNotIn("GitHub Trending", item.title)
         self.assertNotIn(repo["description"], item.title)
         self.assertEqual(item.metadata["title"], "example/repository")
+        self.assertEqual(item.metadata["description"], repo["description"])
 
 
 class LLMTelemetryTests(unittest.TestCase):

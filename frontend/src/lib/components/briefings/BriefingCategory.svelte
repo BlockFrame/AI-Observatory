@@ -28,7 +28,9 @@
 	// remain bound to the category that was opened first.
 	$: config = CATEGORY_CONFIG[category];
 	$: path = `/briefings/${summary.date}/${category}`;
-	$: title = `${config.title} Briefing — ${formatDate(summary.date, 'MMMM d, yyyy')}`;
+	$: title = `${config.title} Briefing`;
+	$: reportDate = formatDate(summary.date, 'MMMM d, yyyy');
+	$: pageTitle = `${title} — ${reportDate}`;
 	$: description = `${config.title} intelligence for ${summary.date}, with ${categoryData.total_items} analyzed signals and direct source evidence.`;
 	$: structuredData = serializeStructuredData(
 		categoryStructuredData(summary, categoryData, category, path)
@@ -64,7 +66,7 @@
 	}
 </script>
 
-<PageMeta {title} {description} {path} type="article" />
+<PageMeta title={pageTitle} {description} {path} type="article" />
 <LinkPreview fallbackDate={summary.date} />
 
 <svelte:head>
@@ -83,7 +85,16 @@
 	<header class="card mb-10 border-l-[3px] p-7 sm:p-9" style="border-left-color: {config.color}">
 		<p class="section-kicker">Category intelligence</p>
 		<h1 class="mt-2 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl">{title}</h1>
-		<p class="mt-4 text-on-surface-variant">All {categoryData.total_items} current items, analyzed and ranked.</p>
+		<p class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-on-surface-variant">
+			<span>All {categoryData.total_items} current items, analyzed and ranked.</span>
+			<span class="hidden h-1 w-1 rounded-full bg-white/30 sm:inline-block" aria-hidden="true"></span>
+			<time
+				datetime={summary.date}
+				class="text-xs font-bold uppercase tracking-[0.12em] text-on-surface-variant/80"
+			>
+				{reportDate}
+			</time>
+		</p>
 	</header>
 
 	{#if categoryData.category_summary_html || categoryData.category_summary}
