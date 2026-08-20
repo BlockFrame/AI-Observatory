@@ -5,6 +5,7 @@ GitHub Trending Analyzer - Analyzes trending open-source AI/ML repositories for 
 import json
 import logging
 import os
+import re
 from datetime import datetime
 from typing import List, Optional
 
@@ -16,6 +17,95 @@ from ..base import (
 from ..llm_client import AnthropicClient, AsyncAnthropicClient, ThinkingLevel
 
 logger = logging.getLogger(__name__)
+
+
+def extract_repository_description(content: str, metadata: dict) -> str:
+    """Return the repository description from structured or legacy input."""
+    description = str(metadata.get("description") or "").strip()
+    if description:
+        return re.sub(r"\s+", " ", description)
+    match = re.search(
+        r"^Description:\s*(.*?)(?=^Language:|^Stars Today:|\Z)",
+        str(content or ""),
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    return re.sub(r"\s+", " ", match.group(1)).strip() if match else ""
+
+
+def build_repository_summary(
+    repo_name: str,
+    description: str,
+    stars_today: str,
+    language: str,
+) -> str:
+    """Build a concise, repository-specific adoption and value assessment."""
+    star_digits = re.sub(r"[^0-9]", "", str(stars_today or ""))
+    star_count = int(star_digits) if star_digits else 0
+    if star_count >= 1000:
+        momentum = "breakout developer momentum"
+    elif star_count >= 250:
+        momentum = "strong developer attention"
+    elif star_count >= 50:
+        momentum = "emerging developer interest"
+    else:
+        momentum = "early developer interest"
+
+    normalized = re.sub(r"\s+", " ", str(description or "")).strip(" .")
+    signal = str(stars_today or "0")
+    corpus = f"{repo_name} {normalized}".lower()
+
+    if any(term in corpus for term in ("cybersecurity", "penetration", "vulnerab", "mitre", "nist")):
+        lens = (
+            "Its security automation can make testing and control mapping more repeatable "
+            "across AI workflows, provided teams validate coverage and benchmark quality."
+        )
+    elif any(term in corpus for term in ("memory", "context database", "knowledge rag", "retrieval")):
+        lens = (
+            "It consolidates agent context, memory, and retrieval into a shared layer, "
+            "which can reduce duplicated infrastructure in multi-agent systems."
+        )
+    elif any(term in corpus for term in ("multi-agent", "agent harness", "orchestrat", "agent framework")):
+        lens = (
+            "It targets the coordination layer around agents, making it relevant for teams "
+            "that need repeatable execution, isolation, and workflow control."
+        )
+    elif any(term in corpus for term in ("skill", "agents directory", "agent capability")):
+        lens = (
+            "It packages reusable agent capabilities instead of another model layer, "
+            "signaling a shift toward portable, governed workflow components."
+        )
+    elif any(term in corpus for term in ("video", "image", "media", "content generation")):
+        lens = (
+            "It compresses AI-assisted media production into a repeatable workflow, "
+            "making content throughput and human review the key adoption questions."
+        )
+    elif any(term in corpus for term in ("inference", "local model", "llm", "moe", "model serving")):
+        lens = (
+            "It can lower the friction of deploying or operating models, so its value depends "
+            "on measured gains in latency, cost, and hardware efficiency."
+        )
+    elif "download manager" in corpus:
+        lens = (
+            "Its relevance to enterprise AI is indirect; the momentum is more useful as a "
+            "signal of demand for polished developer and data-transfer tooling."
+        )
+    elif normalized:
+        excerpt = normalized if len(normalized) <= 180 else normalized[:177].rsplit(" ", 1)[0] + "…"
+        lens = (
+            f"It is attracting attention for {excerpt[0].lower() + excerpt[1:]}; teams should "
+            "verify that this capability removes a concrete workflow bottleneck before adoption."
+        )
+    else:
+        language_label = language or "software"
+        lens = (
+            f"The missing project description leaves its enterprise value unverified; treat the "
+            f"{language_label} repository as a discovery signal until its use case and operating model are clear."
+        )
+
+    return (
+        f"**Adoption signal:** {signal} stars today indicate {momentum}. "
+        f"**Why it matters:** {lens}"
+    )
 
 
 class GitHubTrendingAnalyzer(BaseAnalyzer):
@@ -49,15 +139,17 @@ class GitHubTrendingAnalyzer(BaseAnalyzer):
             item.title = repo_name
             stars_today = item.metadata.get("stars_today") or "0"
             lang = item.metadata.get("language") or "Code"
+            description = extract_repository_description(item.content, item.metadata)
 
             # Basic deterministic scoring based on velocity and relevance
             hn_score = item.metadata.get("hn_score", 100)
             score = min(98, max(50, int(hn_score / 20) + 60))
 
-            summary_text = (
-                f"**Adoption signal:** {stars_today} stars today indicate strong developer attention. "
-                f"**Enterprise lens:** evaluate the {lang} project's maturity, governance, "
-                "integration surface, and operating cost before production adoption."
+            summary_text = build_repository_summary(
+                repo_name,
+                description,
+                stars_today,
+                lang,
             )
             reasoning_text = (
                 f"Ranked on current community velocity ({stars_today} stars today) and "

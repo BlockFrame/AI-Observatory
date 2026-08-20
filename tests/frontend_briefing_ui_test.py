@@ -25,7 +25,9 @@ class FrontendBriefingUiRegressionTest(unittest.TestCase):
             "frontend/src/lib/components/briefings/BriefingCategory.svelte"
         )
         self.assertIn("$: config = CATEGORY_CONFIG[category]", component)
-        self.assertIn("$: title = `${config.title} Briefing", component)
+        self.assertIn("$: title = `${config.title} Briefing`;", component)
+        self.assertIn("$: pageTitle = `${title} — ${reportDate}`", component)
+        self.assertIn("datetime={summary.date}", component)
 
     def test_search_waits_for_index_and_preserves_card_anchor_id(self):
         search_bar = self.read("frontend/src/lib/components/search/SearchBar.svelte")

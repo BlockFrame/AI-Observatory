@@ -189,6 +189,7 @@ class GitHubTrendingGatherer(BaseGatherer):
             tags=repo.get("topics", []),
             metadata={
                 "title": title,
+                "description": description,
                 "stars": repo.get("stars", 0),
                 "stars_today": repo.get("stars_today", ""),
                 "language": repo.get("language", ""),
