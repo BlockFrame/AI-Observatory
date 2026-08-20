@@ -52,7 +52,10 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from agents.quality_score import calculate_quality_score
-from agents.editorial_guard import find_forbidden_editorial_fields
+from agents.editorial_guard import (
+    find_forbidden_editorial_fields,
+    find_leaked_evidence_fields,
+)
 
 # Substrings that indicate a phase wrote a failure sentinel instead of real content.
 # Matched case-insensitively against the executive summary text.
@@ -226,6 +229,8 @@ def validate(summary: dict, date_str: str) -> dict:
             editorial_fields.append((f"top_topics[{index}].{field}", topic.get(field)))
     for field_name in find_forbidden_editorial_fields(editorial_fields):
         failures.append(f"{field_name} contains a forbidden internal style reference")
+    for field_name in find_leaked_evidence_fields(editorial_fields):
+        failures.append(f"{field_name} contains visible machine evidence IDs")
 
     # 6d) Evidence IDs must resolve to current items. Topics advertised as
     # cross-category must be backed by at least two real, non-empty categories.

@@ -16,7 +16,11 @@ import yaml
 from agents.analysis_schema import sanitize_ranking_result
 from agents.analyzers.news_analyzer import NewsAnalyzer
 from agents.base import AnalyzedItem, CategoryReport, CollectedItem
-from agents.editorial_guard import contains_forbidden_brand, sanitize_editorial_text
+from agents.editorial_guard import (
+    contains_forbidden_brand,
+    contains_leaked_evidence_metadata,
+    sanitize_editorial_text,
+)
 from agents.gatherers.link_follower import LinkFollower
 from agents.orchestrator import MainOrchestrator
 from agents.quality_score import calculate_quality_score
@@ -227,6 +231,22 @@ class EditorialBrandGuardTests(unittest.TestCase):
 
         self.assertEqual(cleaned, "- Supported story.\n- Supported repositories.")
 
+    def test_inline_plain_evidence_ids_are_removed_without_joining_prose(self):
+        copy = (
+            "- OpenAI's Zero Data Retention and Private Safety Processing "
+            "(cb22aa4a5626, 39e6521286de) turn confidentiality into a moat, "
+            "while OpenRouter (1fcc0ac1faa8) raises switching costs."
+        )
+
+        cleaned = sanitize_editorial_text(copy)
+
+        self.assertEqual(
+            cleaned,
+            "- OpenAI's Zero Data Retention and Private Safety Processing "
+            "turn confidentiality into a moat, while OpenRouter raises switching costs.",
+        )
+        self.assertFalse(contains_leaked_evidence_metadata(cleaned))
+
     def test_evidence_cleanup_preserves_markdown_links_and_normal_brackets(self):
         copy = (
             "- [OpenAI](https://openai.com) shipped an update [enterprise].\n"
@@ -404,6 +424,20 @@ class PublicationIntegrityTests(unittest.TestCase):
 
         self.assertFalse(result["valid"])
         self.assertTrue(any("non-current evidence" in failure for failure in result["failures"]))
+
+    def test_visible_machine_evidence_ids_block_publication(self):
+        summary = self._summary()
+        summary["executive_summary"] += (
+            " Private Safety Processing (cb22aa4a5626, 39e6521286de)."
+        )
+
+        result = validate(summary, "2026-08-09")
+
+        self.assertFalse(result["valid"])
+        self.assertIn(
+            "executive_summary contains visible machine evidence IDs",
+            result["failures"],
+        )
 
 
 class OrchestrationEvidenceContractTests(unittest.IsolatedAsyncioTestCase):

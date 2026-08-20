@@ -20,7 +20,6 @@ if str(ROOT) not in sys.path:
 
 from agents.editorial_guard import (
     sanitize_editorial_text,
-    strip_leaked_evidence_suffixes,
 )
 from agents.link_enricher import LinkEnricher
 from generators.json_generator import JSONGenerator
@@ -44,7 +43,12 @@ def _write_json(path: Path, payload: Dict[str, Any]) -> None:
     )
 
 
-async def repair(report_date: str, web_dir: Path) -> None:
+async def repair(
+    report_date: str,
+    web_dir: Path,
+    *,
+    sanitize_only: bool = False,
+) -> None:
     date_dir = web_dir / "data" / report_date
     summary_path = date_dir / "summary.json"
     if not summary_path.exists():
@@ -68,15 +72,24 @@ async def repair(report_date: str, web_dir: Path) -> None:
             ),
         }
 
-    enricher = LinkEnricher(OfflineSelectionClient(), report_date)
-    executive, category_copy, topics = await enricher.enrich_all(
-        summary.get("executive_summary", ""),
-        reports,
-        summary.get("top_topics", []),
-        executive_summary_evidence=summary.get("executive_summary_evidence", []),
-    )
+    if sanitize_only:
+        executive = summary.get("executive_summary", "")
+        category_copy = {
+            category: report.get("category_summary", "")
+            for category, report in reports.items()
+        }
+        topics = summary.get("top_topics", [])
+    else:
+        enricher = LinkEnricher(OfflineSelectionClient(), report_date)
+        executive, category_copy, topics = await enricher.enrich_all(
+            summary.get("executive_summary", ""),
+            reports,
+            summary.get("top_topics", []),
+            executive_summary_evidence=summary.get("executive_summary_evidence", []),
+        )
 
     renderer = JSONGenerator(str(web_dir))
+    changed_category_files = set()
     executive = sanitize_editorial_text(executive)
     summary["executive_summary"] = executive
     summary["executive_summary_html"] = renderer._markdown_to_html(executive)
@@ -86,18 +99,25 @@ async def repair(report_date: str, web_dir: Path) -> None:
         html = renderer._markdown_to_html(text)
         summary["categories"][category]["category_summary"] = text
         summary["categories"][category]["category_summary_html"] = html
-        category_files[category]["category_summary"] = text
-        category_files[category]["category_summary_html"] = html
+        category_payload = category_files[category]
+        if (
+            category_payload.get("category_summary") != text
+            or category_payload.get("category_summary_html") != html
+        ):
+            changed_category_files.add(category)
+        category_payload["category_summary"] = text
+        category_payload["category_summary_html"] = html
 
     summary["top_topics"] = renderer._sanitize_top_topics(topics)
     _write_json(summary_path, summary)
-    for category, payload in category_files.items():
+    for category in changed_category_files:
+        payload = category_files[category]
         _write_json(date_dir / f"{category}.json", payload)
 
     digest_path = date_dir / "digest.md"
     if digest_path.exists():
         digest_path.write_text(
-            strip_leaked_evidence_suffixes(digest_path.read_text(encoding="utf-8")),
+            sanitize_editorial_text(digest_path.read_text(encoding="utf-8")),
             encoding="utf-8",
         )
 
@@ -113,8 +133,19 @@ def main() -> int:
         default=ROOT / "web",
         help="Published web directory",
     )
+    parser.add_argument(
+        "--sanitize-only",
+        action="store_true",
+        help="Preserve existing links and only remove leaked editorial metadata.",
+    )
     args = parser.parse_args()
-    asyncio.run(repair(args.date, args.web_dir.resolve()))
+    asyncio.run(
+        repair(
+            args.date,
+            args.web_dir.resolve(),
+            sanitize_only=args.sanitize_only,
+        )
+    )
     return 0
 
 
