@@ -21,7 +21,7 @@ flowchart LR
 | Design | Changes identify source grounding, provider-cost impact, security boundaries, and rollback path. |
 | Build | AI-assisted work is disclosed in the pull request; no secret or raw sensitive provider data enters the repository. |
 | Verify | Mocked regression tests, CodeQL, dependency review, secret scanning, and the report publish gate provide independent checks. |
-| Review | CODEOWNERS routes high-risk areas to the maintainer; branch rules are introduced in evaluate mode before enforcement. |
+| Review | CODEOWNERS routes high-risk areas to the maintainer; branch protection enforces approval, current checks, and resolved conversations. |
 | Release | Squash merges preserve a readable history; the daily pipeline remains a controlled exception for validated generated output. |
 | Observe | GitHub Security, Actions diagnostics, LLM telemetry, cost reports, and the project board feed follow-up work. |
 

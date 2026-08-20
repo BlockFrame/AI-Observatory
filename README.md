@@ -4,7 +4,7 @@
 
 ### R[AI]DAR — evidence-linked daily intelligence on the AI ecosystem
 
-[Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Roadmap](docs/roadmap.md)
+[Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Governance](docs/governance.md) · [Roadmap](docs/roadmap.md)
 
 ![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/wiredframe-radar/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
@@ -232,7 +232,9 @@ web/data/<date>/         Versioned reports and telemetry
 
 ## 🤝 Contributing
 
-Keep changes evidence-preserving and quota-aware. When adding a source, update its configuration file and [source inventory](docs/sources.md). When changing synthesis, add a mocked regression test that proves current-item grounding and failure behavior. See the [contribution guide](.github/CONTRIBUTING.md) before opening a pull request.
+Keep changes evidence-preserving and quota-aware. When adding a source, update its configuration file and [source inventory](docs/sources.md). When changing synthesis, add a mocked regression test that proves current-item grounding and failure behavior.
+
+The project uses short-lived branches and reviewed pull requests into `main`; it does not maintain a permanent `dev` branch. Start with the [contribution guide](.github/CONTRIBUTING.md), then review [project governance](docs/governance.md), the [Code of Conduct](.github/CODE_OF_CONDUCT.md), and the [security policy](.github/SECURITY.md).
 
 ## 🙏 Acknowledgments
 
