@@ -41,7 +41,9 @@ class RepositoryHygieneTest(unittest.TestCase):
         indexed_guides = {
             Path(target.split("#", 1)[0]).name
             for target in LOCAL_LINK.findall(index)
-            if target.endswith(".md") and not target.startswith("..")
+            if target.endswith(".md")
+            and not target.startswith("..")
+            and Path(target.split("#", 1)[0]).parent == Path(".")
         }
         canonical_guides = {
             path.name for path in docs_dir.glob("*.md") if path.name != "README.md"
@@ -72,6 +74,21 @@ class RepositoryHygieneTest(unittest.TestCase):
             text = document.read_text(encoding="utf-8")
             self.assertNotIn("rAIdar", text, document)
             self.assertNotIn("Wiredframe Radar", text, document)
+
+    def test_legacy_observatory_brand_is_absent_from_public_surfaces(self):
+        documents = [
+            ROOT / "README.md",
+            ROOT / "frontend" / "tailwind.config.js",
+            *(ROOT / "docs").rglob("*.md"),
+            *(ROOT / "frontend" / "src").rglob("*.svelte"),
+            *(ROOT / "frontend" / "src").rglob("*.ts"),
+        ]
+        legacy_brand = re.compile(
+            r"\b(?:AI|Synthetic Intelligence)[ _-]+Observatory\b",
+            re.IGNORECASE,
+        )
+        for document in documents:
+            self.assertIsNone(legacy_brand.search(document.read_text(encoding="utf-8")), document)
 
     def test_obsolete_documentation_trees_are_absent(self):
         self.assertFalse((ROOT / ".planning").exists())

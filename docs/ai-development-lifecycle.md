@@ -68,3 +68,11 @@ An item can move from **Triage** to **Ready** only when:
 7. high-risk work has been split into reviewable design and implementation increments.
 
 Priority expresses user and operational impact; Risk expresses delivery and failure exposure. They are independent Project fields and must not be inferred from one another.
+
+## Design and decision records
+
+Use a [design specification](designs/README.md) before implementation when work spans components, changes a public contract, alters paid-provider behavior, or requires migration. Use an [architecture decision record](decisions/README.md) when the selected policy or architecture should remain understandable beyond the implementing pull request.
+
+The issue owns user value and delivery status; the design owns implementation intent; an ADR owns durable rationale; the pull request owns the reviewed change; telemetry and incidents own production evidence. Link these records instead of duplicating them.
+
+[Back to documentation index](README.md)

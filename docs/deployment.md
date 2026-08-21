@@ -48,7 +48,7 @@ The public half of `PIPELINE_PUSH_KEY` must be registered under **Settings → D
 
 ## Manual run
 
-Open **Actions → Daily Pipeline → Run workflow**. Optional inputs support an explicit target date, checkpoint phase, model override, and disabling generated-output commits.
+Open **Actions → Daily Pipeline → Run workflow**. Supported operator inputs include an explicit target date, checkpoint phase, and disabling generated-output commits. The visible `anthropic_model` input is a legacy compatibility field and does not override the caller-aware routes in `config/providers.yaml`; do not use it to select the production model. Its removal is tracked in [Issue #50](https://github.com/BlockFrame/wiredframe-radar/issues/50).
 
 Before paid calls, the workflow runs mocked regression tests with production secrets shadowed. After generation, `scripts/validate_report.py` enforces the publish gate. Invalid output is reverted and never committed.
 
@@ -72,10 +72,12 @@ Every workflow run uploads a `pipeline-diagnostics` artifact when available:
 - `web/data/*/summary.json`
 - `web/data/*/endpoint_status.json`
 
-The report itself includes phase status, collection status, analysis funnels, evidence coverage, and LLM telemetry. Start incident analysis from the first failed or degraded phase, then inspect provider/caller telemetry rather than relying only on the final job status.
+The report itself includes phase status, collection status, analysis funnels, evidence coverage, and LLM telemetry. Start incident analysis from the first failed or degraded phase, then inspect provider/caller telemetry rather than relying only on the final job status. Field semantics are defined in [Telemetry](telemetry.md).
 
 ## Rollback
 
 The publish gate automatically keeps the last good report when generation is invalid. For a code rollback, revert the relevant commit through normal Git history; do not delete historical report directories or rewrite `main`.
 
 For report recovery, prefer a same-date rerun or checkpoint resume as described in the [operations runbook](operations.md). A rerun remains pinned to the original workflow date unless an explicit target date is supplied.
+
+[Back to documentation index](README.md)

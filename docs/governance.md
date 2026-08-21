@@ -28,6 +28,8 @@ There is no permanent `dev` branch. `main` is the single integration branch and 
 
 Routine changes use lazy consensus in the pull request: maintainers consider technical evidence, tests, user impact, security, provider cost, and maintainability. Substantial architecture, source-policy, data-contract, or governance changes should begin as an issue or discussion and document the selected option and alternatives.
 
+Durable architectural choices use an [architecture decision record](decisions/README.md). Cross-cutting implementations use a [design specification](designs/README.md). These records supplement rather than replace public issues, pull requests, and Project status.
+
 Maintainers seek consensus. If consensus cannot be reached, the lead maintainer makes the final decision and records the rationale publicly. Security incidents and embargoed vulnerabilities are handled privately until coordinated disclosure is safe.
 
 ## Review policy
@@ -59,3 +61,5 @@ The scheduled GitHub Actions pipeline may write validated generated reports dire
 Participation is governed by the [Code of Conduct](../.github/CODE_OF_CONDUCT.md). Security vulnerabilities must follow the [private reporting policy](../.github/SECURITY.md). General defects, proposals, and operational incidents belong in Issues; design questions and broader proposals may use Discussions.
 
 Governance changes follow the same pull-request process as code changes.
+
+[Back to documentation index](README.md)

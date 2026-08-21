@@ -100,3 +100,13 @@ python mcp_server.py
 ```
 
 The server reads the versioned reports under `web/data/` and does not call paid providers.
+
+See the complete [MCP interface guide](mcp.md) for client configuration and tool behavior.
+
+## Supported execution paths
+
+Local Python execution and the GitHub Actions → Vercel production path are supported. The repository still contains a legacy Docker/Compose definition, but it does not yet pass the current OpenRouter, Gemini, and NVIDIA route environment into the container and is not covered as a production path. Do not use it for a paid run until [Issue #49](https://github.com/BlockFrame/wiredframe-radar/issues/49) is complete.
+
+When setup or execution fails, start with [Troubleshooting](troubleshooting.md).
+
+[Back to documentation index](README.md)

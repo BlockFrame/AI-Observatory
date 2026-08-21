@@ -4,7 +4,7 @@ export default {
 	darkMode: 'class',
 	theme: {
 		colors: {
-			// Synthetic Intelligence Observatory palette
+			// R[AI]DAR product palette
 			transparent: 'transparent',
 			black: '#000000',
 			white: '#ffffff',

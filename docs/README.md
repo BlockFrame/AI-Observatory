@@ -15,6 +15,8 @@ This directory is the canonical, versioned documentation for R[AI]DAR. The [proj
 |---|---|
 | [Architecture](architecture.md) | Pipeline topology, processing sequence, contracts, and failure boundaries |
 | [Source handbook](sources.md) | Complete inventory, category boundaries, freshness rules, telemetry, and contribution workflow |
+| [Data contracts](data-contracts.md) | Published artifacts, evidence fields, compatibility rules, and schema evolution |
+| [LLM routing](llm-routing.md) | Caller-aware model routes, fallbacks, quotas, pricing controls, and cost semantics |
 
 ## Operate R[AI]DAR
 
@@ -22,6 +24,9 @@ This directory is the canonical, versioned documentation for R[AI]DAR. The [proj
 |---|---|
 | [Deployment](deployment.md) | GitHub Actions, Vercel, diagnostics, and rollback |
 | [Operations runbook](operations.md) | Daily checks, reruns, incidents, paid-call safety, and recovery |
+| [Telemetry reference](telemetry.md) | Collection, analysis, provider, quality, cost, and alert fields |
+| [Troubleshooting](troubleshooting.md) | Symptom-led diagnosis for pipeline, source, model, publishing, and frontend failures |
+| [MCP interface](mcp.md) | Local installation, tools, client configuration, and failure behavior |
 
 ## Contribute and govern
 
@@ -32,6 +37,9 @@ This directory is the canonical, versioned documentation for R[AI]DAR. The [proj
 | [Contribution guide](../.github/CONTRIBUTING.md) | Setup, branch model, checks, and pull-request expectations |
 | [Security policy](../.github/SECURITY.md) | Supported version and private vulnerability reporting |
 | [Roadmap](roadmap.md) | Open strategic work and product backlog |
+| [Decision records](decisions/README.md) | Accepted architectural decisions and ADR template |
+| [Design specifications](designs/README.md) | Reviewable implementation designs and specification template |
+| [Changelog](changelog.md) | Release-level product and documentation history |
 
 ## Documentation ownership
 
