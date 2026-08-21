@@ -22,6 +22,8 @@
 	let fullListLoading = false;
 	let fullListError = '';
 	let activeLoadKey = '';
+	let visibleCount = 10;
+	const PAGE_SIZE = 10;
 
 	// SvelteKit reuses this component when navigating between category routes.
 	// Keep all route-derived values reactive so headings and metadata cannot
@@ -36,11 +38,25 @@
 		categoryStructuredData(summary, categoryData, category, path)
 	);
 	$: routeKey = `${summary.date}:${category}`;
+	$: visibleItems = displayItems.slice(0, visibleCount);
+	$: remainingItems = Math.max(0, displayItems.length - visibleCount);
 	$: registerItems(summary.date, displayItems);
 	$: if (browser && routeKey !== activeLoadKey) {
 		activeLoadKey = routeKey;
 		displayItems = categoryData.items;
+		visibleCount = PAGE_SIZE;
 		void loadAllItems(routeKey);
+	}
+
+	function revealHashTarget() {
+		if (!browser || !window.location.hash.startsWith('#item-')) return;
+		const targetId = window.location.hash.slice('#item-'.length);
+		const targetIndex = displayItems.findIndex((item) => item.id === targetId);
+		if (targetIndex >= 0) visibleCount = Math.max(visibleCount, targetIndex + 1);
+	}
+
+	function showMoreItems() {
+		visibleCount = Math.min(displayItems.length, visibleCount + PAGE_SIZE);
 	}
 
 	async function loadAllItems(loadKey: string) {
@@ -50,6 +66,7 @@
 			const completeCategory = await loadCategoryData(summary.date, category);
 			if (loadKey !== activeLoadKey) return;
 			displayItems = completeCategory.items ?? [];
+			revealHashTarget();
 			await tick();
 			if (window.location.hash) {
 				document
@@ -73,7 +90,7 @@
 	{@html `<script type="application/ld+json">${structuredData}<\/script>`}
 </svelte:head>
 
-<div class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+<div class="mx-auto max-w-7xl px-1 py-5 sm:px-6 sm:py-8 lg:px-10">
 	<nav class="mb-6 flex flex-wrap items-center justify-between gap-4 text-sm" aria-label="Category briefing navigation">
 		<a href="/briefings/{summary.date}" class="font-bold text-primary hover:text-white">&larr; Full briefing</a>
 		<div class="flex items-center gap-3">
@@ -82,9 +99,9 @@
 		</div>
 	</nav>
 
-	<header class="card mb-10 border-l-[3px] p-7 sm:p-9" style="border-left-color: {config.color}">
+	<header class="card mb-8 border-l-[3px] !p-5 sm:mb-10 sm:!p-9" style="border-left-color: {config.color}">
 		<p class="section-kicker">Category intelligence</p>
-		<h1 class="mt-2 text-4xl font-black tracking-[-0.035em] text-white sm:text-5xl">{title}</h1>
+		<h1 class="mt-2 text-3xl font-black tracking-[-0.035em] text-white sm:text-5xl">{title}</h1>
 		<p class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-on-surface-variant">
 			<span>All {categoryData.total_items} current items, analyzed and ranked.</span>
 			<span class="hidden h-1 w-1 rounded-full bg-white/30 sm:inline-block" aria-hidden="true"></span>
@@ -143,6 +160,34 @@
 				</button>
 			</div>
 		{/if}
-		<NewsList items={displayItems} {category} date={summary.date} totalCount={categoryData.total_items} />
+		<div class="mb-4 flex items-center justify-between gap-4 text-xs font-semibold text-on-surface-variant sm:text-sm">
+			<span>Showing {Math.min(visibleCount, displayItems.length)} of {categoryData.total_items} signals</span>
+			{#if !fullListLoading && remainingItems > 0}<span>{remainingItems} remaining</span>{/if}
+		</div>
+		<div
+			class="mb-5 h-1.5 overflow-hidden rounded-full bg-white/[0.06]"
+			role="progressbar"
+			aria-label="Ranked signals displayed"
+			aria-valuemin="0"
+			aria-valuemax={categoryData.total_items}
+			aria-valuenow={Math.min(visibleCount, displayItems.length)}
+		>
+			<div
+				class="h-full rounded-full bg-primary transition-[width] duration-300"
+				style="width: {categoryData.total_items ? Math.min(100, (visibleCount / categoryData.total_items) * 100) : 0}%"
+			></div>
+		</div>
+		<NewsList items={visibleItems} {category} date={summary.date} totalCount={categoryData.total_items} />
+		{#if !fullListLoading && remainingItems > 0}
+			<div class="mt-6 flex justify-center">
+				<button
+					type="button"
+					on:click={showMoreItems}
+					class="min-h-[48px] w-full rounded-xl border border-primary/35 bg-primary/10 px-5 py-3 text-sm font-bold text-primary transition-colors hover:border-primary hover:bg-primary hover:text-on-primary sm:w-auto"
+				>
+					Load {Math.min(PAGE_SIZE, remainingItems)} more
+				</button>
+			</div>
+		{/if}
 	</section>
 </div>
