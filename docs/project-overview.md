@@ -2,12 +2,13 @@
 
 ## Purpose
 
-rAIdar produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
+R[AI]DAR produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
 
 ## Current product
 
 - Static SvelteKit site at `https://radar.wiredframe.xyz`
 - Daily categories: AI News, Research, Social signals from X, GitHub Trending
+- Searchable directories for AI models, tools, and influential people
 - Machine-readable `summary.json`, `llms.txt`, `ai-index.json`, and MCP interface
 - Automated generation and publishing through GitHub Actions
 - Provider, token, latency, error, source, and GetXAPI telemetry
@@ -16,21 +17,20 @@ rAIdar produces a daily, evidence-grounded view of the AI ecosystem. It is optim
 
 1. **Evidence before prose.** Topic and executive outputs carry exact current-item IDs.
 2. **History is not evidence.** Previous summaries are isolated in a closed anti-repetition section.
-3. **Task-aware routing.** Paid capacity is reserved for ranking and synthesis; bulk work uses lower-cost routes with fallbacks.
+3. **Task-aware routing.** Price-guarded MiniMax M3 is the primary route for bulk analysis and critical synthesis; caller-specific Gemini and NVIDIA chains provide fallback capacity.
 4. **Deterministic safety rails.** Filtering, sanitization, scoring, and validation reduce dependence on perfect model behavior.
 5. **Last-good publishing.** A failed report does not replace the most recent validated edition.
 
 ## Active inputs
 
 - 43 AI News RSS/Atom feeds
-- 18 direct web sources
+- 13 direct web sources
 - Hacker News
 - Hugging Face Daily Papers and AlphaXiv Trending
-- 18 research feeds, including LessWrong via GraphQL
-- 171 X accounts through GetXAPI
+- 20 configured Research feed routes, including LessWrong via GraphQL
+- 4 deterministic, date-validated Research hubs
+- 170 X accounts through GetXAPI
 - GitHub Trending
-
-Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, and Slack are not currently collected.
 
 ## Technology
 

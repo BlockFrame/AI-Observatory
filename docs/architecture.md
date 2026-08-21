@@ -1,49 +1,30 @@
 # Architecture
 
-rAIdar is a checkpointed, multi-stage data pipeline with a static publishing layer. Collection and analysis are category-specific; topic detection and executive synthesis operate across categories only after evidence has been normalized and validated.
+R[AI]DAR is a checkpointed, multi-stage data pipeline with a static publishing layer. Collection and analysis are category-specific; topic detection and executive synthesis operate across categories only after evidence has been normalized and validated.
 
 ## System topology
 
 ```mermaid
 flowchart TB
-    subgraph External[External systems]
-        SOURCES[RSS, web, APIs, X, GitHub]
-        LLMS[OpenRouter, Gemini, NVIDIA]
-        GHA[GitHub Actions]
-    end
-
-    subgraph Core[Python pipeline]
-        GATHER[Gatherers]
-        NORMALIZE[Normalization and deduplication]
-        CATEGORY[Category analyzers]
-        ORCH[Cross-category orchestrator]
-        ENRICH[Link enrichment]
-        QUALITY[Editorial and quality gates]
-        SERIALIZE[JSON generator]
-        CHECKPOINTS[(Checkpoints)]
-        TELEMETRY[(Metrics and costs)]
-    end
-
-    subgraph Delivery[Delivery]
-        REPORTS[(web/data)]
-        FRONTEND[SvelteKit static frontend]
-        MACHINE[llms.txt, ai-index.json, MCP]
-        VERCEL[Vercel]
-    end
-
-    GHA --> GATHER
-    SOURCES --> GATHER --> NORMALIZE --> CATEGORY
-    CATEGORY <--> LLMS
-    CATEGORY --> ORCH <--> LLMS
-    ORCH --> ENRICH <--> LLMS
-    ENRICH --> QUALITY --> SERIALIZE
-    GATHER --> CHECKPOINTS
+    WORKFLOW[GitHub Actions] --> GATHER[Category gatherers]
+    SOURCES[RSS, direct pages, APIs, X and GitHub] --> GATHER
+    GATHER --> NORMALIZE[Normalize and deduplicate]
+    NORMALIZE --> CATEGORY[Category analysis and ranking]
+    CATEGORY --> ORCH[Cross-category topics and executive synthesis]
+    ORCH --> ENRICH[Deterministic-first evidence links]
+    ENRICH --> QUALITY[Editorial and publish gates]
+    QUALITY --> REPORTS[Versioned report JSON]
+    REPORTS --> FRONTEND[SvelteKit static frontend]
+    FRONTEND --> VERCEL[Vercel production]
+    REPORTS --> MACHINE[llms.txt, ai-index.json and MCP]
+    LLMS[MiniMax, Gemini and NVIDIA] --> CATEGORY
+    LLMS --> ORCH
+    LLMS --> ENRICH
+    GATHER --> CHECKPOINTS[Checkpoints]
     CATEGORY --> CHECKPOINTS
     ORCH --> CHECKPOINTS
-    CATEGORY --> TELEMETRY
+    CATEGORY --> TELEMETRY[Metrics and costs]
     ORCH --> TELEMETRY
-    SERIALIZE --> REPORTS --> FRONTEND --> VERCEL
-    SERIALIZE --> MACHINE
 ```
 
 ## Processing sequence
@@ -83,10 +64,11 @@ The model must return evidence IDs from current records. Validation rejects miss
 ## Failure boundaries
 
 - **Source failure:** recorded per source; a category that collected data cannot silently collapse to zero during filtering or analysis.
-- **LLM failure:** caller-aware fallback chains retry from the preferred route on each new task and cool down unhealthy routes.
+- **LLM failure:** caller-aware fallback chains retry from the preferred route on each new task, cool down unhealthy routes, and disable routes that exhaust daily quota or disappear.
 - **Schema failure:** deterministic fallbacks preserve eligible inputs where safe; critical synthesis fails closed.
 - **Editorial failure:** unsupported topics, prohibited branding, and invalid evidence are rejected or sanitized.
-- **Publish failure:** the report validator blocks commit and the workflow retains the last known-good report.
+- **Link-enrichment failure:** deterministic matching runs first; unresolved evidence may use the isolated MiniMax route, but missing links do not block an otherwise valid report.
+- **Publish failure:** the report validator blocks commit, preserves diagnostics, and retains the last known-good report.
 
 ## Data contracts
 

@@ -1,19 +1,44 @@
 # Documentation
 
-rAIdar keeps the repository root focused on executable entry points, platform configuration, and files automatically discovered by GitHub or coding agents. Public project documentation lives here.
+This directory is the canonical, versioned documentation for R[AI]DAR. The [project README](../README.md) is the public landing page; the [GitHub Wiki](https://github.com/BlockFrame/wiredframe-radar/wiki) provides a shorter, task-oriented navigation layer and links back here for implementation detail.
 
-## Guides
+## Start here
 
 | Document | Purpose |
 |---|---|
 | [Project overview](project-overview.md) | Product goals, differentiators, inputs, and technology |
 | [Getting started](getting-started.md) | Installation, local execution, recovery, and validation |
+
+## Understand the system
+
+| Document | Purpose |
+|---|---|
 | [Architecture](architecture.md) | Pipeline topology, processing sequence, contracts, and failure boundaries |
 | [Source inventory](sources.md) | Active News, Research, Social, and GitHub collection paths |
+
+## Operate R[AI]DAR
+
+| Document | Purpose |
+|---|---|
 | [Deployment](deployment.md) | GitHub Actions, Vercel, diagnostics, and rollback |
-| [Roadmap](roadmap.md) | Open strategic work and product backlog |
+| [Operations runbook](operations.md) | Daily checks, reruns, incidents, paid-call safety, and recovery |
+
+## Contribute and govern
+
+| Document | Purpose |
+|---|---|
 | [AI development lifecycle](ai-development-lifecycle.md) | AIDLC controls, review model, and operational workflow |
 | [Project governance](governance.md) | Roles, decisions, review policy, releases, and automation exceptions |
+| [Contribution guide](../.github/CONTRIBUTING.md) | Setup, branch model, checks, and pull-request expectations |
+| [Security policy](../.github/SECURITY.md) | Supported version and private vulnerability reporting |
+| [Roadmap](roadmap.md) | Open strategic work and product backlog |
+
+## Documentation ownership
+
+- Runtime behavior belongs in this directory and must change in the same pull request as the code or configuration it describes.
+- Source counts and model routes must be verified against `config/`, not copied from an old report or Wiki page.
+- The Wiki should summarize workflows and point to canonical pages; it should not become an independent configuration reference.
+- Security reporting remains canonical in `.github/SECURITY.md`, while contributor policy remains canonical in `.github/CONTRIBUTING.md` and `docs/governance.md`.
 
 ## Naming convention
 

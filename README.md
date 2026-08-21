@@ -6,7 +6,7 @@
 
 #### An open-source product by [Wiredframe](https://www.wiredframe.xyz)
 
-[Live R\[AI\]DAR](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Governance](docs/governance.md) · [Roadmap](docs/roadmap.md)
+[Live R\[AI\]DAR](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Wiki](https://github.com/BlockFrame/wiredframe-radar/wiki) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Governance](docs/governance.md) · [Roadmap](docs/roadmap.md)
 
 ![Pipeline](https://img.shields.io/github/actions/workflow/status/BlockFrame/wiredframe-radar/daily-pipeline.yml?branch=main&label=daily%20pipeline&logo=githubactions)
 ![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)

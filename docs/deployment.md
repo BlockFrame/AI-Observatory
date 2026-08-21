@@ -24,12 +24,12 @@ Required repository secrets:
 
 - `GEMINI_API_KEY`
 - `OPENROUTER_API_KEY`
-- `NVIDIA_API_KEY`
 - `PIPELINE_PUSH_KEY`, the private half of the repository-scoped writable deploy key used only to publish validated reports
 
 Optional secrets:
 
 - `GETXAPI_KEY` for X collection
+- `NVIDIA_API_KEY` for the GLM quality fallback
 - `GOOGLE_API_KEY` for optional hero-image generation
 - `LESSWRONG_PROXY_URL` or `PIPELINE_PROXY_URL` for restricted egress
 - Mullvad credentials when using the workflow-managed tunnel
@@ -40,6 +40,7 @@ Useful repository variables:
 - `PIPELINE_COMMIT_PATHS`
 - `LLM_MAX_RETRIES`, `LLM_HEARTBEAT_SECONDS`, and route cooldown settings
 - analyzer batch and fallback-rate controls
+- `OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK` and `OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK`, which stop the run before collection if MiniMax exceeds the accepted price
 
 The canonical defaults are in `.github/workflows/daily-pipeline.yml` and `config/providers.yaml`.
 
@@ -53,6 +54,8 @@ Before paid calls, the workflow runs mocked regression tests with production sec
 
 When publication fails, the workflow creates or updates one deduplicated GitHub Issue. A subsequent successful publication closes the incident automatically, keeping operational history inside the repository and its AIDLC project.
 
+The watchdog validates the live report during the recovery window. It avoids stacking active runs and permits at most one automatic recovery dispatch within six hours.
+
 ## Vercel
 
 Import `BlockFrame/wiredframe-radar` into Vercel. The repository’s `vercel.json` and frontend configuration define the build. Use `https://radar.wiredframe.xyz` as the production domain and set the same value through `PIPELINE_BASE_URL`.
@@ -64,10 +67,15 @@ Vercel requires no runtime database for reports: generated JSON is versioned und
 Every workflow run uploads a `pipeline-diagnostics` artifact when available:
 
 - `data/llm_metrics.jsonl`
+- `data/checkpoints/*/gathering.json`
 - `web/data/*/cost_report.json`
+- `web/data/*/summary.json`
+- `web/data/*/endpoint_status.json`
 
 The report itself includes phase status, collection status, analysis funnels, evidence coverage, and LLM telemetry. Start incident analysis from the first failed or degraded phase, then inspect provider/caller telemetry rather than relying only on the final job status.
 
 ## Rollback
 
 The publish gate automatically keeps the last good report when generation is invalid. For a code rollback, revert the relevant commit through normal Git history; do not delete historical report directories or rewrite `main`.
+
+For report recovery, prefer a same-date rerun or checkpoint resume as described in the [operations runbook](operations.md). A rerun remains pinned to the original workflow date unless an explicit target date is supplied.

@@ -1,6 +1,6 @@
 # Roadmap and backlog
 
-Questo documento contiene lo stato aggiornato delle attività strategiche per **rAIdar**.
+Questo documento contiene lo stato aggiornato delle attività strategiche per **R[AI]DAR**.
 
 ---
 
@@ -30,12 +30,11 @@ Questo documento contiene lo stato aggiornato delle attività strategiche per **
 - [x] Normalizzazione della struttura, dei link e della naming convention documentale.
 - [ ] Valutare GitHub Sponsors quando il programma di sponsorship di `BlockFrame` sarà attivo.
 
-### 3. 📚 Creazione GitHub Wiki (`docs/wiki/`)
-- [ ] Creazione della struttura documentale per la **GitHub Wiki** del repository (nella directory `docs/wiki/`).
-- [ ] **Architettura del Sistema**: Schemi sul ciclo di vita della pipeline multi-agente (Gathering → Analysis → Topic Detection → Briefing).
-- [ ] **Guida alla Configurazione Fonti**: Documentazione per aggiungere e gestire feed RSS ed account X.
-- [ ] **Guida agli Agenti & Prompts**: Descrizione dettagliata dei vari agenti (`news`, `research`, `social`, `github_trending`) e personalizzazione tramite `prompts.yaml`.
-- [ ] **Guide all'Integrazione & API**: Documentazione del server MCP locale e degli export dati (`ai-index.json`, `llms.txt`).
+### 3. 📚 GitHub Wiki e documentazione pubblica
+- [x] Strutturare la GitHub Wiki come livello di orientamento collegato alla documentazione versionata in `docs/`.
+- [x] Documentare architettura, fonti e routing dei modelli, operazioni, contribuzione, sicurezza e AIDLC.
+- [x] Aggiungere navigazione coerente tramite Home, Sidebar e Footer.
+- [x] Mantenere configurazioni e runbook tecnici in `docs/` come fonte canonica, evitando duplicazioni divergenti nella Wiki.
 
 ### 4. 🗺️ Elaborazione Roadmap Strategica
 - [ ] Evolvere questo documento nella roadmap Q3-Q4 2026:
