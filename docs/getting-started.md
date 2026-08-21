@@ -30,9 +30,10 @@ GEMINI_API_KEY=
 OPENROUTER_API_KEY=
 NVIDIA_API_KEY=
 GETXAPI_KEY=
+GOOGLE_API_KEY=
 ```
 
-`GETXAPI_KEY` is optional; without it, Social collection is skipped and reported as unavailable. Optional proxy and image-generation settings are documented in `.env.example` and `config/providers.yaml.example`.
+`GEMINI_API_KEY` and `OPENROUTER_API_KEY` are the minimum production routes. `NVIDIA_API_KEY` enables the GLM quality fallback, `GETXAPI_KEY` enables Social collection, and `GOOGLE_API_KEY` enables optional hero-image generation. Proxy settings are documented in `.env.example` and `config/providers.yaml.example`.
 
 ## Run locally
 
@@ -56,6 +57,8 @@ python run_pipeline.py --resume-from 4.5
 ```
 
 Use `--resume` to auto-detect the most recent valid checkpoint. Use `--resume-from` only when you understand the phase boundary you are replaying.
+
+For a rerun of the same report date, the workflow can restore the completed gathering checkpoint and selectively recollect only failed categories. This avoids repeating a successful paid X collection. See the [operations runbook](operations.md) before manually replaying a production run.
 
 ## Validate without calling providers
 

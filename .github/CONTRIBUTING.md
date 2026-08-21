@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping improve rAIdar. Contributions of code, source maintenance, documentation, tests, issue triage, and design feedback are welcome. By participating, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
+Thanks for helping improve R[AI]DAR. Contributions of code, source maintenance, documentation, tests, issue triage, and design feedback are welcome. By participating, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Development model
 
