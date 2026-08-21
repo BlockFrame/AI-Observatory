@@ -48,6 +48,24 @@ class RepositoryHygieneTest(unittest.TestCase):
         }
         self.assertEqual(indexed_guides, canonical_guides)
 
+    def test_source_handbook_indexes_every_configured_url(self):
+        handbook = (ROOT / "docs" / "sources.md").read_text(encoding="utf-8")
+        registries = (
+            "rss_feeds.txt",
+            "web_scraper_sources.txt",
+            "research_feeds.txt",
+            "research_web_sources.txt",
+            "research_reference_sources.txt",
+        )
+        for registry in registries:
+            config_path = ROOT / "config" / registry
+            for raw_line in config_path.read_text(encoding="utf-8").splitlines():
+                line = raw_line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                url = line.split()[0]
+                self.assertIn(url, handbook, f"{registry}: undocumented route {url}")
+
     def test_public_documentation_uses_the_visual_product_name(self):
         documents = [ROOT / "README.md", *(ROOT / "docs").glob("*.md")]
         for document in documents:

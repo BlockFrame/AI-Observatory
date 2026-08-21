@@ -14,7 +14,7 @@ This directory is the canonical, versioned documentation for R[AI]DAR. The [proj
 | Document | Purpose |
 |---|---|
 | [Architecture](architecture.md) | Pipeline topology, processing sequence, contracts, and failure boundaries |
-| [Source inventory](sources.md) | Active News, Research, Social, and GitHub collection paths |
+| [Source handbook](sources.md) | Complete inventory, category boundaries, freshness rules, telemetry, and contribution workflow |
 
 ## Operate R[AI]DAR
 
