@@ -17,6 +17,42 @@ class SeoConfigurationTest(unittest.TestCase):
         self.assertIn("visualName: 'R[AI]DAR'", site)
         self.assertIn("# R[AI]DAR", readme)
         self.assertIn("product by [Wiredframe]", readme)
+        self.assertNotIn("rAIdar", readme)
+
+    def test_readme_inventory_and_llm_routes_match_runtime_configuration(self):
+        readme = (ROOT / "README.md").read_text()
+
+        def active_lines(relative_path):
+            return [
+                line
+                for line in (ROOT / relative_path).read_text().splitlines()
+                if line.strip() and not line.lstrip().startswith("#")
+            ]
+
+        self.assertIn(
+            f"{len(active_lines('config/rss_feeds.txt'))} RSS/Atom feeds",
+            readme,
+        )
+        self.assertIn(
+            f"{len(active_lines('config/web_scraper_sources.txt'))} direct web pages",
+            readme,
+        )
+        self.assertIn(
+            f"{len(active_lines('config/research_feeds.txt'))} configured feed routes",
+            readme,
+        )
+        self.assertIn(
+            f"{len(active_lines('config/research_web_sources.txt'))} dated web hubs",
+            readme,
+        )
+        self.assertIn(
+            f"{len(active_lines('config/twitter_accounts.txt'))} configured X accounts",
+            readme,
+        )
+        self.assertIn("OpenRouter MiniMax M3", readme)
+        self.assertIn("Gemini 3.6 Flash → NVIDIA GLM 5.2", readme)
+        self.assertNotIn("Nemotron", readme)
+        self.assertNotIn("OpenRouter GLM", readme)
 
     def test_watchdog_validates_the_production_domain(self):
         workflow = (ROOT / ".github/workflows/pipeline-watchdog.yml").read_text()
