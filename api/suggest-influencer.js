@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   try {
     const cleanHandle = handle.startsWith('@') ? handle : `@${handle}`;
     const issueTitle = `New Influencer Suggestion: ${name} (${cleanHandle})`;
-    const issueBody = `### Influencer Suggestion\n\n**Name:** ${name}\n**Platform:** ${platform}\n**Handle/Username:** ${cleanHandle}\n\n**Why follow them / Description:**\n${description || 'No reasoning provided.'}\n\n---\n*Submitted via Wiredframe Radar Influencers Directory*`;
+    const issueBody = `### Influencer Suggestion\n\n**Name:** ${name}\n**Platform:** ${platform}\n**Handle/Username:** ${cleanHandle}\n\n**Why follow them / Description:**\n${description || 'No reasoning provided.'}\n\n---\n*Submitted via rAIdar Influencers Directory*`;
 
     const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
       method: 'POST',

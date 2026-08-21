@@ -20,7 +20,7 @@ export default async function handler(req, res) {
 
   try {
     const issueTitle = `New Tool Request: ${name}`;
-    const issueBody = `### Tool Suggestion\n\n**Name:** ${name}\n**URL:** ${url}\n\n**Description/Reason:**\n${description || 'No description provided.'}\n\n---\n*Submitted via Wiredframe Radar Tools Directory*`;
+    const issueBody = `### Tool Suggestion\n\n**Name:** ${name}\n**URL:** ${url}\n\n**Description/Reason:**\n${description || 'No description provided.'}\n\n---\n*Submitted via rAIdar Tools Directory*`;
 
     const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
       method: 'POST',

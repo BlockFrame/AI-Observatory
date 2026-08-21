@@ -145,7 +145,7 @@
 					rel="noopener noreferrer"
 					class="hidden items-center gap-1.5 rounded-lg border border-[#ff79c6]/30 bg-[#ff79c6]/10 px-3 py-1.5 text-sm font-medium text-[#ff79c6] transition-all hover:bg-[#ff79c6] hover:text-white md:flex"
 					aria-label="Sponsor on GitHub"
-					title="Sponsor Wiredframe Radar on GitHub"
+					title="Sponsor rAIdar on GitHub"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
 					<span>Sponsor</span>
@@ -178,7 +178,7 @@
 
 				<div class="hidden h-6 w-px bg-white/10 lg:block"></div>
 
-				<img src="/logo.png" alt="Wiredframe Radar logo" class="hidden h-6 w-6 shrink-0 rounded-sm object-contain lg:block" />
+				<img src="/logo.png" alt="rAIdar logo" class="hidden h-6 w-6 shrink-0 rounded-sm object-contain lg:block" />
 				<div class="hidden min-w-0 overflow-hidden lg:block">
 					<a href="/" class="block truncate text-[15px] font-semibold tracking-[0.04em] text-[#00e0bb]" aria-label={SITE.name}>
 						R<span class="text-[#cfd5ff]">[AI]</span>DAR

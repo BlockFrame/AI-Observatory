@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Wiredframe Radar produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
+rAIdar produces a daily, evidence-grounded view of the AI ecosystem. It is optimized for decision usefulness rather than raw aggregation: collection breadth is reduced into ranked category reports, cross-category themes, and an executive briefing whose claims must point to current source items.
 
 ## Current product
 

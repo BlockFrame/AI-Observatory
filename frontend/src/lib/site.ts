@@ -1,5 +1,5 @@
 export const SITE = {
-	name: 'Wiredframe Radar',
+	name: 'rAIdar',
 	visualName: 'R[AI]DAR',
 	url: 'https://radar.wiredframe.xyz',
 	description:
@@ -15,4 +15,3 @@ export function absoluteUrl(path = ''): string {
 	if (!path || path === '/') return SITE.url;
 	return `${SITE.url}${path.startsWith('/') ? path : `/${path}`}`;
 }
-

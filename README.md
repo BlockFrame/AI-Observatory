@@ -1,8 +1,10 @@
 <div align="center">
 
-# Wiredframe Radar
+# R[AI]DAR
 
-### R[AI]DAR — evidence-linked daily intelligence on the AI ecosystem
+### Evidence-linked daily intelligence on the AI ecosystem
+
+#### An open-source product by [Wiredframe](https://www.wiredframe.xyz)
 
 [Live Radar](https://radar.wiredframe.xyz) · [Documentation](docs/README.md) · [Architecture](docs/architecture.md) · [Getting started](docs/getting-started.md) · [AIDLC](docs/ai-development-lifecycle.md) · [Governance](docs/governance.md) · [Roadmap](docs/roadmap.md)
 
@@ -13,7 +15,7 @@
 
 </div>
 
-Wiredframe Radar turns a broad daily signal stream into a concise, traceable briefing for executives, strategists, researchers, and builders. It collects current material, filters and ranks it, detects themes spanning multiple categories, generates an evidence-backed executive summary, validates the report, and publishes a static site.
+rAIdar by Wiredframe turns a broad daily signal stream into a concise, traceable briefing for executives, strategists, researchers, and builders. It collects current material, filters and ranks it, detects themes spanning multiple categories, generates an evidence-backed executive summary, validates the report, and publishes a static site.
 
 The pipeline is designed to degrade safely: provider fallbacks, checkpoints, schema validation, deterministic editorial checks, and a publish gate prevent a superficially successful run from replacing the last good report with incomplete output.
 
@@ -238,9 +240,9 @@ The project uses short-lived branches and reviewed pull requests into `main`; it
 
 ## 🙏 Acknowledgments
 
-Wiredframe Radar began as a fork of Ryan Duff's open-source [AI News Aggregator](https://github.com/flyryan/ai-news-aggregator). We gratefully acknowledge that project for proving how effective a multi-agent daily intelligence workflow can be and recommend it to anyone looking for the original implementation and its design choices.
+rAIdar began as a fork of Ryan Duff's open-source [AI News Aggregator](https://github.com/flyryan/ai-news-aggregator). We gratefully acknowledge that project for proving how effective a multi-agent daily intelligence workflow can be and recommend it to anyone looking for the original implementation and its design choices.
 
-Wiredframe Radar has since evolved into an independent product with its own source strategy, model routing, evidence-linking system, quality controls, cost governance, frontend, and publishing architecture. Our thanks and endorsement of the upstream project remain an important part of this project's history.
+rAIdar has since evolved into an independent product with its own source strategy, model routing, evidence-linking system, quality controls, cost governance, frontend, and publishing architecture. Our thanks and endorsement of the upstream project remain an important part of this project's history.
 
 ## 📄 License
 

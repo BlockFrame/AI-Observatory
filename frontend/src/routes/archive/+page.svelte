@@ -18,7 +18,7 @@
 	}
 </script>
 
-<PageMeta title="Briefing Archive" description="Browse Wiredframe Radar daily AI intelligence briefings by date." path="/archive" />
+<PageMeta title="Briefing Archive" description="Browse rAIdar daily AI intelligence briefings by date." path="/archive" />
 
 <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">

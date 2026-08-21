@@ -1,10 +1,10 @@
 # AGENTS.md
 
-Repository guidance for coding agents working on Wiredframe Radar.
+Repository guidance for coding agents working on rAIdar.
 
 ## Project
 
-Wiredframe Radar is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
+rAIdar is a Python 3.11 multi-agent pipeline and SvelteKit frontend. It collects current AI News, Research, X social signals, and GitHub Trending repositories; produces evidence-grounded category and executive analysis; and publishes validated static JSON and web output.
 
 Active source details live in `docs/sources.md`. Do not describe Bluesky, Mastodon, Reddit, YouTube, Product Hunt, Discord, or Slack as supported sources.
 
