@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     const label = type === 'bug' ? 'bug' : 'enhancement';
     const typeLabel = type === 'bug' ? 'Bug Report' : 'Improvement Suggestion';
     const issueTitle = `[${typeLabel}] ${title}`;
-    const issueBody = `### ${typeLabel}\n\n**Details:**\n${description}\n\n---\n*Submitted via Wiredframe Radar Feedback Modal*`;
+    const issueBody = `### ${typeLabel}\n\n**Details:**\n${description}\n\n---\n*Submitted via rAIdar Feedback Modal*`;
 
     const response = await fetch(`https://api.github.com/repos/${repo}/issues`, {
       method: 'POST',

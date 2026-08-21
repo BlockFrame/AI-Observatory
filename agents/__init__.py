@@ -1,5 +1,5 @@
 """
-Wiredframe Radar - Multi-Agent System
+rAIdar - Multi-Agent System
 
 This module contains the agent-based architecture for collecting and analyzing
 AI/ML news from multiple sources.

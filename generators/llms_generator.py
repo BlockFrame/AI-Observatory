@@ -33,7 +33,7 @@ def generate_llms_txt(data_dir: Path = Path("web/data")) -> str:
     date_lines = [f"- {d}: {base_url}/web/data/{d}/summary.json" for d in dates[:60]]
     content = "\n".join(
         [
-            "# Wiredframe Radar — Daily AI Intelligence",
+            "# rAIdar — Daily AI Intelligence",
             "",
             "> Daily AI intelligence digest: news, papers, repos, HN, social signals.",
             "> Multi-agent analysis with adaptive thinking (MAP-REDUCE).",
@@ -72,7 +72,7 @@ def generate_ai_index_json(data_dir: Path = Path("web/data")) -> str:
     base_url = _base_url()
     dates = get_available_dates(data_dir)
     payload: Dict = {
-        "project": "Wiredframe Radar",
+        "project": "rAIdar",
         "description": "Evidence-linked daily AI intelligence with multi-agent analysis",
         "base_url": f"{base_url}/web/data",
         "categories": {

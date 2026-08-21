@@ -112,7 +112,7 @@ def migrate_from_env(config_dir: str) -> bool:
     # Build YAML content
     # For proxy users: openai-compatible mode with shared endpoint/key
     # For direct API users: anthropic mode for LLM, native mode for image
-    yaml_content = f'''# Provider Configuration for Wiredframe Radar
+    yaml_content = f'''# Provider Configuration for rAIdar
 # Auto-generated from environment variables on {datetime.now().isoformat()}
 #
 # Tip: You can use environment variable interpolation with ${{VAR}} syntax:

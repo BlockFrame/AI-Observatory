@@ -9,6 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class SeoConfigurationTest(unittest.TestCase):
+    def test_public_brand_has_distinct_visual_and_search_safe_names(self):
+        site = (ROOT / "frontend/src/lib/site.ts").read_text()
+        readme = (ROOT / "README.md").read_text()
+
+        self.assertIn("name: 'rAIdar'", site)
+        self.assertIn("visualName: 'R[AI]DAR'", site)
+        self.assertIn("# R[AI]DAR", readme)
+        self.assertIn("product by [Wiredframe]", readme)
+
     def test_watchdog_validates_the_production_domain(self):
         workflow = (ROOT / ".github/workflows/pipeline-watchdog.yml").read_text()
         self.assertIn("https://radar.wiredframe.xyz", workflow)

@@ -1,6 +1,6 @@
 # AI development lifecycle
 
-Wiredframe Radar uses an evidence-led AI development lifecycle (AIDLC): AI can accelerate research and implementation, but every change remains attributable, testable, reviewable, and reversible.
+rAIdar uses an evidence-led AI development lifecycle (AIDLC): AI can accelerate research and implementation, but every change remains attributable, testable, reviewable, and reversible.
 
 ```mermaid
 flowchart LR

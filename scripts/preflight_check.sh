@@ -1,5 +1,5 @@
 #!/bin/bash
-# Preflight diagnostic for Wiredframe Radar pipeline
+# Preflight diagnostic for the rAIdar pipeline
 # READ-ONLY check - does NOT modify anything
 # Reports potential issues that could prevent the morning pipeline run
 
@@ -10,7 +10,7 @@ ISSUES=()
 cd "$PROJECT_DIR"
 
 echo "=========================================="
-echo "Wiredframe Radar Preflight Diagnostic"
+echo "rAIdar Preflight Diagnostic"
 echo "$(date)"
 echo "=========================================="
 echo ""

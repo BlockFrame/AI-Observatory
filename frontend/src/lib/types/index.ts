@@ -1,5 +1,5 @@
 /**
- * Type definitions for Wiredframe Radar frontend
+ * Type definitions for the rAIdar frontend
  */
 
 export type Category = 'news' | 'research' | 'social' | 'github_trending';

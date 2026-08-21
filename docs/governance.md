@@ -1,6 +1,6 @@
 # Project governance
 
-Wiredframe Radar is an open-source project maintained in public. Decisions favor evidence grounding, operational reliability, security, cost awareness, and a clear contributor experience.
+rAIdar is an open-source project maintained in public. Decisions favor evidence grounding, operational reliability, security, cost awareness, and a clear contributor experience.
 
 ## Roles
 

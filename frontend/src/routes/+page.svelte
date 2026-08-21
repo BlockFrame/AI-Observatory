@@ -269,7 +269,7 @@
 
 	{#if !mounted}
 		<section class="card mb-8 border-l-[3px] border-l-[#00e0bb] p-8 md:p-12">
-			<p class="section-kicker">Wiredframe</p>
+			<p class="section-kicker">by Wiredframe</p>
 			<h1 class="mt-2 text-5xl font-black tracking-[-0.04em] text-white md:text-7xl">
 				R<span class="text-[#cfd5ff]">[AI]</span>DAR
 			</h1>
@@ -373,7 +373,7 @@
 			<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 			<div class="absolute inset-0 flex flex-col justify-center px-12 md:px-20 z-10">
 				{#if mounted}
-					<p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-[#8e94ae]">Wiredframe</p>
+					<p class="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-[#8e94ae]">by Wiredframe</p>
 					<!-- Animated Logo -->
 					<div 
 						class="mb-8"
@@ -382,7 +382,7 @@
 						<div class="relative inline-block group">
 							<!-- Glow Effect -->
 							<div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-pulse"></div>
-							<img src="/logo.png" alt="Wiredframe Radar" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
+							<img src="/logo.png" alt="rAIdar" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
 						</div>
 					</div>
 					

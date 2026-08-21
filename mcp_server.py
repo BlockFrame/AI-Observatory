@@ -8,7 +8,7 @@ from mcp.server import Server
 from mcp.server.stdio import stdio_server
 from mcp.types import Tool, TextContent
 
-# Base directory for the Wiredframe Radar data
+# Base directory for the rAIdar data
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "web" / "data"
 
@@ -20,7 +20,7 @@ async def list_tools() -> list[Tool]:
     return [
         Tool(
             name="list_available_dates",
-            description="List all available dates in the Wiredframe Radar data. Dates are in YYYY-MM-DD format.",
+            description="List all available dates in the rAIdar data. Dates are in YYYY-MM-DD format.",
             inputSchema={
                 "type": "object",
                 "properties": {},

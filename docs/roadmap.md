@@ -1,6 +1,6 @@
 # Roadmap and backlog
 
-Questo documento contiene lo stato aggiornato delle attività strategiche per **Wiredframe Radar**.
+Questo documento contiene lo stato aggiornato delle attività strategiche per **rAIdar**.
 
 ---
 

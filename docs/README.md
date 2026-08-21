@@ -1,6 +1,6 @@
 # Documentation
 
-Wiredframe Radar keeps the repository root focused on executable entry points, platform configuration, and files automatically discovered by GitHub or coding agents. Public project documentation lives here.
+rAIdar keeps the repository root focused on executable entry points, platform configuration, and files automatically discovered by GitHub or coding agents. Public project documentation lives here.
 
 ## Guides
 
