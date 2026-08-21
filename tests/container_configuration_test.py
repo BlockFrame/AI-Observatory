@@ -10,10 +10,14 @@ class ContainerConfigurationTest(unittest.TestCase):
         dockerfile = (ROOT / "Dockerfile").read_text(encoding="utf-8")
 
         self.assertIn("COPY llms.txt ai-index.json ./", dockerfile)
+        self.assertIn("RAIDAR_ALLOW_EMPTY_REPORT_DATA=true npm run build", dockerfile)
         self.assertIn("COPY config/ ./config-defaults/", dockerfile)
         self.assertIn("COPY pipeline_support/ ./pipeline_support/", dockerfile)
         self.assertIn("COPY report_schema.py .", dockerfile)
         self.assertIn("COPY --from=frontend-builder /src/web ./web/", dockerfile)
+
+        svelte_config = (ROOT / "frontend/svelte.config.js").read_text(encoding="utf-8")
+        self.assertIn("allowEmptyReportData ? 'ignore' : 'fail'", svelte_config)
 
     def test_compose_exposes_current_routes_without_legacy_model_default(self):
         compose = (ROOT / "docker-compose.yml").read_text(encoding="utf-8")

@@ -8,6 +8,7 @@ WORKDIR /src
 COPY frontend/package*.json ./frontend/
 COPY llms.txt ai-index.json ./
 COPY docker/build-data/ ./web/data/
+COPY frontend/static/data/ ./web/data/
 
 # Install dependencies
 RUN cd frontend && npm ci
@@ -16,7 +17,7 @@ RUN cd frontend && npm ci
 COPY frontend/ ./frontend/
 
 # Build the frontend (outputs to ../web)
-RUN cd frontend && npm run build
+RUN cd frontend && RAIDAR_ALLOW_EMPTY_REPORT_DATA=true npm run build
 
 # Stage 2: Python runtime
 FROM python:3.11-slim
