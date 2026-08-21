@@ -51,6 +51,7 @@ Every future capability is represented by a GitHub user story. A story must move
 
 | User story | Priority | Risk | Current intent |
 |---|---:|---:|---|
+| [#46 — Re-enable and harden Telegram daily delivery](https://github.com/BlockFrame/wiredframe-radar/issues/46) | Medium | Medium | Restore opt-in daily delivery with idempotency, secret safety, and failure isolation. |
 | [#33 — Deliver high-confidence alerts with Discord support](https://github.com/BlockFrame/wiredframe-radar/issues/33) | Medium | Medium | Add selective evidence-linked notifications without coupling them to publication. |
 | [#37 — Extend MCP with semantic and evidence-aware retrieval](https://github.com/BlockFrame/wiredframe-radar/issues/37) | Medium | Medium | Improve AI IDE access while retaining a local deterministic fallback. |
 | [#36 — Provide a supported R[AI]DAR SDK client](https://github.com/BlockFrame/wiredframe-radar/issues/36) | Low | Low | Design a versioned read-only integration surface based on demonstrated demand. |
