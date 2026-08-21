@@ -13,7 +13,7 @@ class SeoConfigurationTest(unittest.TestCase):
         site = (ROOT / "frontend/src/lib/site.ts").read_text()
         readme = (ROOT / "README.md").read_text()
 
-        self.assertIn("name: 'rAIdar'", site)
+        self.assertIn("name: 'R[AI]DAR'", site)
         self.assertIn("visualName: 'R[AI]DAR'", site)
         self.assertIn("# R[AI]DAR", readme)
         self.assertIn("product by [Wiredframe]", readme)
@@ -57,6 +57,24 @@ class SeoConfigurationTest(unittest.TestCase):
     def test_watchdog_validates_the_production_domain(self):
         workflow = (ROOT / ".github/workflows/pipeline-watchdog.yml").read_text()
         self.assertIn("https://radar.wiredframe.xyz", workflow)
+
+    def test_vercel_applies_baseline_security_headers(self):
+        config = json.loads((ROOT / "vercel.json").read_text())
+        global_headers = next(
+            entry["headers"] for entry in config["headers"] if entry["source"] == "/(.*)"
+        )
+        headers = {entry["key"]: entry["value"] for entry in global_headers}
+
+        csp = headers["Content-Security-Policy"]
+        self.assertIn("frame-ancestors 'none'", csp)
+        # SvelteKit's per-page meta policy owns script hashes. A second header
+        # script/default policy would be intersected with it by browsers.
+        self.assertNotIn("script-src", csp)
+        self.assertNotIn("default-src", csp)
+        self.assertEqual(headers["X-Content-Type-Options"], "nosniff")
+        self.assertEqual(headers["Referrer-Policy"], "strict-origin-when-cross-origin")
+        self.assertEqual(headers["X-Frame-Options"], "DENY")
+        self.assertIn("camera=()", headers["Permissions-Policy"])
 
     def test_vercel_build_publishes_machine_readable_indexes(self):
         package = json.loads((ROOT / "frontend/package.json").read_text())

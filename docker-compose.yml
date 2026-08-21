@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   wiredframe-radar:
     build: .
@@ -13,22 +11,33 @@ services:
       - ./web/assets:/app/web/assets
       - ./logs:/app/logs
     environment:
-      # Anthropic API Configuration
-      - ANTHROPIC_API_BASE=${ANTHROPIC_API_BASE}
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      - ANTHROPIC_MODEL=${ANTHROPIC_MODEL:-claude-opus-4-8}
+      # Current provider routes. Blank optional keys disable their route/source.
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      NVIDIA_API_KEY: ${NVIDIA_API_KEY:-}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      GETXAPI_KEY: ${GETXAPI_KEY:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      LESSWRONG_PROXY_URL: ${LESSWRONG_PROXY_URL:-}
+      PIPELINE_PROXY_URL: ${PIPELINE_PROXY_URL:-}
 
-      # Twitter API (optional - skip Twitter collection if not set)
-      - GETXAPI_KEY=${GETXAPI_KEY:-}
+      # Price and runtime controls match the supported local/Actions path.
+      OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK: ${OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK:-0.24}
+      OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK: ${OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK:-0.96}
+      PIPELINE_IMAGE_MODEL: ${PIPELINE_IMAGE_MODEL:-gemini-3-pro-image-preview}
+      LLM_MAX_CONCURRENT_REQUESTS: ${LLM_MAX_CONCURRENT_REQUESTS:-8}
+      LLM_MAX_RETRIES: ${LLM_MAX_RETRIES:-2}
+      LLM_METRICS_PATH: ${LLM_METRICS_PATH:-data/llm_metrics.jsonl}
+      ANALYZER_BATCH_SIZE: ${ANALYZER_BATCH_SIZE:-25}
+      ANALYZER_MAX_CONCURRENT_BATCHES: ${ANALYZER_MAX_CONCURRENT_BATCHES:-1}
+      MAX_ANALYSIS_FALLBACK_RATE: ${MAX_ANALYSIS_FALLBACK_RATE:-0.20}
 
-      # Collection Settings
-      - ENABLE_CRON=${ENABLE_CRON:-false}
-      - COLLECTION_SCHEDULE=${COLLECTION_SCHEDULE:-0 6 * * *}
-      - LOOKBACK_HOURS=${LOOKBACK_HOURS:-24}
-      - TARGET_DATE=${TARGET_DATE:-}
-
-      # Timezone
-      - TZ=${TZ:-America/New_York}
+      # Collection and scheduling. Cron is opt-in to prevent accidental spend.
+      ENABLE_CRON: ${ENABLE_CRON:-false}
+      COLLECTION_SCHEDULE: ${COLLECTION_SCHEDULE:-0 6 * * *}
+      LOOKBACK_HOURS: ${LOOKBACK_HOURS:-24}
+      TARGET_DATE: ${TARGET_DATE:-}
+      TZ: ${TZ:-America/New_York}
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]

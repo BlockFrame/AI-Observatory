@@ -19,6 +19,12 @@ Requirements are Python 3.11+, Node.js 20+, and Git. Follow the [getting-started
 
 Do not run paid providers or GetXAPI for routine development. The unit suite mocks external calls and must not consume provider quota.
 
+## Source contributions
+
+Before proposing a News, Research, Social, or GitHub collection change, follow the [source handbook](../docs/sources.md). It defines the active inventory, category boundaries, date and freshness rules, configuration formats, paid-call constraints, mocked validation, and source-specific definition of done.
+
+Adding a URL alone is not sufficient for direct web pages: new hosts require deterministic extraction and exact-date fixtures. X accounts must be validated without issuing GetXAPI calls.
+
 ## Change requirements
 
 Before opening a pull request:
@@ -26,7 +32,7 @@ Before opening a pull request:
 1. Keep credentials, raw production responses, checkpoints, and local environment files out of the repository.
 2. Add mocked regression coverage for changed behavior and failure paths.
 3. Preserve evidence IDs, source grounding, quota safety, and last-good publishing behavior.
-4. Update `docs/sources.md` when changing collection inputs.
+4. Update the [source handbook](../docs/sources.md) when changing collection inputs.
 5. Update `docs/architecture.md` when changing pipeline boundaries or data contracts.
 6. Do not manually edit generated reports unless the change explicitly concerns fixtures or recovery.
 

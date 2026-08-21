@@ -17,10 +17,6 @@ on:
         description: "Optional pipeline phase to resume from, for manual recovery."
         required: false
         type: string
-      anthropic_model:
-        description: "Optional LLM model ID override for this run."
-        required: false
-        type: string
       commit_outputs:
         description: "Commit and push generated outputs after the run."
         required: false
@@ -50,9 +46,6 @@ jobs:
     timeout-minutes: 120
     env:
       TZ: America/New_York
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      ANTHROPIC_API_BASE: ${{ secrets.ANTHROPIC_API_BASE }}
-      ANTHROPIC_MODEL: ${{ inputs.anthropic_model || vars.ANTHROPIC_MODEL || 'claude-4.8-opus-aws' }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK: ${{ vars.OPENROUTER_COMPLEX_MAX_INPUT_PER_MTOK || '0.24' }}
       OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK: ${{ vars.OPENROUTER_COMPLEX_MAX_OUTPUT_PER_MTOK || '0.96' }}

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Preflight diagnostic for the rAIdar pipeline
+# Preflight diagnostic for the R[AI]DAR pipeline
 # READ-ONLY check - does NOT modify anything
 # Reports potential issues that could prevent the morning pipeline run
 
@@ -10,7 +10,7 @@ ISSUES=()
 cd "$PROJECT_DIR"
 
 echo "=========================================="
-echo "rAIdar Preflight Diagnostic"
+echo "R[AI]DAR Preflight Diagnostic"
 echo "$(date)"
 echo "=========================================="
 echo ""

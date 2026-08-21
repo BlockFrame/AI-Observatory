@@ -17,8 +17,9 @@ data/
 logs/
 web/
 
-# Config (will be mounted as volume)
-config/
+# Frontend dependencies are restored inside the builder stage.
+frontend/node_modules/
+frontend/.svelte-kit/
 
 # Documentation
 README.md

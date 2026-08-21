@@ -2,7 +2,7 @@
 """
 Hero Image Generator
 
-Generates daily editorial hero images using rAIdar's visual identity.
+Generates daily editorial hero images using R[AI]DAR's visual identity.
 
 Supports two initialization modes:
 1. New: HeroGenerator.from_config(config) - uses unified ImageClient abstraction
@@ -219,7 +219,7 @@ class HeroGenerator:
                 section += f"\n{summary['description']}"
             topic_sections.append(section)
 
-        return f"""You are generating the daily hero image for rAIdar, an executive AI intelligence product.
+        return f"""You are generating the daily hero image for R[AI]DAR, an executive AI intelligence product.
 
 ## Your Goal
 Create a sophisticated editorial illustration that makes today's leading AI developments immediately understandable.

@@ -56,6 +56,7 @@ from agents.editorial_guard import (
     find_forbidden_editorial_fields,
     find_leaked_evidence_fields,
 )
+from report_schema import REPORT_SCHEMA_REQUIRED_FROM, REPORT_SCHEMA_VERSION
 
 # Substrings that indicate a phase wrote a failure sentinel instead of real content.
 # Matched case-insensitively against the executive summary text.
@@ -118,6 +119,22 @@ def validate(summary: dict, date_str: str) -> dict:
     phase_status = summary.get("phase_status") or []
     generation_quality = summary.get("generation_quality") or {}
     published_quality_score = summary.get("quality_score")
+    schema_version = summary.get("schema_version")
+
+    # The public artifact contract is explicit from the v1.0 cutover onward.
+    # Historical reports remain readable, but an unknown declared version is
+    # always unsafe because this validator cannot prove compatibility.
+    if schema_version is None:
+        if date_str >= REPORT_SCHEMA_REQUIRED_FROM:
+            failures.append(
+                f"schema_version missing for report on/after {REPORT_SCHEMA_REQUIRED_FROM}"
+            )
+        else:
+            warnings.append("schema_version missing on legacy report")
+    elif schema_version != REPORT_SCHEMA_VERSION:
+        failures.append(
+            f"unsupported schema_version {schema_version!r}; expected {REPORT_SCHEMA_VERSION!r}"
+        )
 
     # 1) Executive summary must be non-empty and substantive.
     if not exec_summary:
@@ -344,6 +361,7 @@ def validate(summary: dict, date_str: str) -> dict:
         "warnings": warnings,
         "stats": {
             "date": report_date,
+            "schema_version": schema_version,
             "exec_summary_chars": len(exec_summary),
             "top_topics": len(top_topics) if isinstance(top_topics, list) else 0,
             "total_items_collected": collected,

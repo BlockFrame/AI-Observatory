@@ -8,7 +8,7 @@ This runbook covers the normal daily check and the first response to failed, sta
 2. Confirm the workflow published `web/data/<report-date>/summary.json` to `main`.
 3. Check that the Vercel production deployment for that commit completed successfully.
 4. Open the live briefing and verify its report date, four category counts, top topics, and executive summary.
-5. Review warnings in `endpoint_status.json`, source-health telemetry, and the cost report when the run was partial or materially more expensive than normal.
+5. Review warnings in `endpoint_status.json`, source-health telemetry, and the cost report when the run was partial or materially more expensive than normal. Interpret fields through the [telemetry reference](telemetry.md).
 
 ## Failure triage
 
@@ -67,6 +67,8 @@ Create or update an Issue with:
 - proposed recovery and regression test.
 
 Suspected credential exposure or security vulnerabilities must use [private vulnerability reporting](../.github/SECURITY.md), never a public operational Issue.
+
+For symptom-specific diagnosis, use [Troubleshooting](troubleshooting.md). Model routing and cost controls are defined in [LLM routing](llm-routing.md); do not infer route health from the nominal default model alone.
 
 ## Recovery completion
 

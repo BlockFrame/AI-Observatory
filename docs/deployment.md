@@ -48,13 +48,15 @@ The public half of `PIPELINE_PUSH_KEY` must be registered under **Settings → D
 
 ## Manual run
 
-Open **Actions → Daily Pipeline → Run workflow**. Optional inputs support an explicit target date, checkpoint phase, model override, and disabling generated-output commits.
+Open **Actions → Daily Pipeline → Run workflow**. Supported operator inputs are an explicit target date, checkpoint phase, and whether generated outputs should be committed. Provider and model selection remains canonical in `config/providers.yaml`; manual dispatch exposes no misleading model override.
 
 Before paid calls, the workflow runs mocked regression tests with production secrets shadowed. After generation, `scripts/validate_report.py` enforces the publish gate. Invalid output is reverted and never committed.
 
 When publication fails, the workflow creates or updates one deduplicated GitHub Issue. A subsequent successful publication closes the incident automatically, keeping operational history inside the repository and its AIDLC project.
 
 The watchdog validates the live report during the recovery window. It avoids stacking active runs and permits at most one automatic recovery dispatch within six hours.
+
+Recovery dispatch uses the repository-scoped `GITHUB_TOKEN` with `actions: write`; `WORKFLOW_DISPATCH_PAT` is an optional compatibility fallback rather than a required secret.
 
 ## Vercel
 
@@ -72,10 +74,12 @@ Every workflow run uploads a `pipeline-diagnostics` artifact when available:
 - `web/data/*/summary.json`
 - `web/data/*/endpoint_status.json`
 
-The report itself includes phase status, collection status, analysis funnels, evidence coverage, and LLM telemetry. Start incident analysis from the first failed or degraded phase, then inspect provider/caller telemetry rather than relying only on the final job status.
+The report itself includes phase status, collection status, analysis funnels, evidence coverage, and LLM telemetry. Start incident analysis from the first failed or degraded phase, then inspect provider/caller telemetry rather than relying only on the final job status. Field semantics are defined in [Telemetry](telemetry.md).
 
 ## Rollback
 
 The publish gate automatically keeps the last good report when generation is invalid. For a code rollback, revert the relevant commit through normal Git history; do not delete historical report directories or rewrite `main`.
 
 For report recovery, prefer a same-date rerun or checkpoint resume as described in the [operations runbook](operations.md). A rerun remains pinned to the original workflow date unless an explicit target date is supplied.
+
+[Back to documentation index](README.md)

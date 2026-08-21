@@ -1,19 +1,23 @@
 # Stage 1: Build frontend
 FROM node:20-alpine AS frontend-builder
 
-WORKDIR /frontend
+WORKDIR /src
 
-# Copy package files
-COPY frontend/package*.json ./
+# Keep the same repository layout used by the Vercel build: the frontend
+# postbuild step publishes the root llms.txt and ai-index.json files.
+COPY frontend/package*.json ./frontend/
+COPY llms.txt ai-index.json ./
+COPY docker/build-data/ ./web/data/
+COPY frontend/static/data/ ./web/data/
 
 # Install dependencies
-RUN npm ci
+RUN cd frontend && npm ci
 
 # Copy frontend source
-COPY frontend/ ./
+COPY frontend/ ./frontend/
 
 # Build the frontend (outputs to ../web)
-RUN npm run build
+RUN cd frontend && RAIDAR_ALLOW_EMPTY_REPORT_DATA=true npm run build
 
 # Stage 2: Python runtime
 FROM python:3.11-slim
@@ -40,16 +44,21 @@ RUN python -m playwright install --with-deps chromium
 # Copy application code
 COPY agents/ ./agents/
 COPY generators/ ./generators/
+COPY pipeline_support/ ./pipeline_support/
 COPY scripts/ ./scripts/
 COPY assets/ ./assets/
+COPY frontend/static/ ./frontend/static/
+COPY config/ ./config-defaults/
 COPY run_pipeline.py .
+COPY report_schema.py .
+COPY llms.txt ai-index.json ./
 COPY entrypoint.sh .
 
 # Create necessary directories
 RUN mkdir -p /app/config /app/data /app/web /app/logs
 
 # Copy built frontend from stage 1
-COPY --from=frontend-builder /frontend/../web ./web/
+COPY --from=frontend-builder /src/web ./web/
 
 # Make scripts executable
 RUN chmod +x run_pipeline.py entrypoint.sh

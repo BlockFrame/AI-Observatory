@@ -62,7 +62,7 @@ The configuration files—not this table—are the source of truth. Counts refle
 | **Social** | 170 configured X accounts | `SocialGatherer` | `@NVIDIAAI` is retained while the broader corporate `@nvidia` account is excluded. GetXAPI queries at most 20 accounts per paid request. |
 | **GitHub Trending** | GitHub Trending | `GitHubTrendingGatherer` | Repositories are analyzed as a separate report category. |
 
-See the [source inventory](docs/sources.md) for the exact routes, category decisions, and maintenance rules.
+See the [source handbook](docs/sources.md) for the exact routes, category decisions, health states, and maintenance rules.
 
 ## 🧠 LLM strategy
 
@@ -75,6 +75,8 @@ Routing is caller-aware, so high-volume analysis, critical synthesis, and link r
 | **Link enrichment** | Deterministic entity/title matching | Isolated MiniMax M3 call only for unresolved evidence blocks; if it fails, the already-generated report remains publishable without those links |
 
 The complex MiniMax route covers small-batch analysis, reduce/rank, category summaries, Topic Detection, and Executive Summary. Its OpenRouter price is checked before dependency installation, source collection, GetXAPI calls, or any LLM request; the run stops early if the configured promotional ceiling is exceeded.
+
+The exact caller matrix, quota boundaries, price controls, and cost semantics are maintained in [LLM routing](docs/llm-routing.md).
 
 The executive-summary context has a strict boundary:
 
@@ -181,8 +183,10 @@ The repository also maintains:
 
 - `llms.txt` for language-model-readable discovery;
 - `ai-index.json` for structured indexing;
-- `mcp_server.py` for MCP-compatible access;
+- `mcp_server.py` for local, read-only [MCP access](docs/mcp.md);
 - the static SvelteKit site under `frontend/`.
+
+See [Data contracts](docs/data-contracts.md) for artifact compatibility and [Telemetry](docs/telemetry.md) for operational field semantics.
 
 ## 🧪 Validation
 
@@ -201,7 +205,7 @@ The GitHub Actions workflow runs the critical regression suite before any paid A
 ```text
 agents/                 Gatherers, analyzers, routing, orchestration and guards
 config/                 Providers, prompts, feeds and grounding data
-docs/                   Architecture, operations, sources and roadmap
+docs/                   Product, architecture, operations, contracts and governance
 frontend/               SvelteKit application
 generators/             JSON and optional visual-output generation
 scripts/                Validation, deployment and operational utilities

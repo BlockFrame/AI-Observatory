@@ -100,3 +100,21 @@ python mcp_server.py
 ```
 
 The server reads the versioned reports under `web/data/` and does not call paid providers.
+
+See the complete [MCP interface guide](mcp.md) for client configuration and tool behavior.
+
+## Supported execution paths
+
+Local Python, GitHub Actions → Vercel, and Docker Compose are supported. Container startup is web-only unless `ENABLE_CRON=true`, so building or starting the image cannot spend provider quota by itself.
+
+```bash
+docker compose build
+docker compose up -d
+curl --fail http://localhost:7100/
+```
+
+Compose mounts `config/`, `data/`, `web/data/`, `web/assets/`, and `logs/`. Missing configuration files are seeded from the image without overwriting mounted files. To schedule collection, populate `.env`, explicitly set `ENABLE_CRON=true`, and retain the persistent `data/` and `web/data/` mounts for checkpoints and reports.
+
+When setup or execution fails, start with [Troubleshooting](troubleshooting.md).
+
+[Back to documentation index](README.md)

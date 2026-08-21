@@ -21,6 +21,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  release-contracts:
+    name: Release contract guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          filter: blob:none
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.11"
+      - name: Public schema, MCP, container, and release contracts
+        run: |
+          python3 -m unittest \
+            tests.mcp_report_store_test \
+            tests.container_configuration_test \
+            tests.release_readiness_test -v
+
   guard:
     name: Signature lockstep guard
     runs-on: ubuntu-latest
@@ -81,3 +99,33 @@ jobs:
         run: python3 -m pip install --no-input "httpx>=0.27.0" "google-genai>=1.0.0" "Pillow>=10.0.0"
       - name: Hero image retry behavior
         run: python3 -m unittest tests.image_client_retry_test -v
+
+  container-smoke:
+    name: Docker no-spend smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Validate Compose configuration
+        run: docker compose config --quiet
+      - name: Build production container
+        run: docker build --tag wiredframe-radar:test .
+      - name: Start web-only and verify health
+        shell: bash
+        run: |
+          set -euo pipefail
+          docker run --detach --name wiredframe-radar-test \
+            --publish 7100:80 \
+            --env ENABLE_CRON=false \
+            wiredframe-radar:test
+          trap 'docker rm --force wiredframe-radar-test >/dev/null 2>&1 || true' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent --show-error http://localhost:7100/ >/dev/null; then
+              docker exec wiredframe-radar-test test -f /app/config/providers.yaml
+              docker exec wiredframe-radar-test test -f /app/config/prompts.yaml
+              exit 0
+            fi
+            sleep 2
+          done
+          docker logs wiredframe-radar-test
+          exit 1

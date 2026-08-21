@@ -1,5 +1,5 @@
 """
-rAIdar - Multi-Agent System
+R[AI]DAR - Multi-Agent System
 
 This module contains the agent-based architecture for collecting and analyzing
 AI/ML news from multiple sources.
