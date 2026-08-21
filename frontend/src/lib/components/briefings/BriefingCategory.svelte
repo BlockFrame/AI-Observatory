@@ -178,7 +178,7 @@
 			></div>
 		</div>
 		<NewsList items={visibleItems} {category} date={summary.date} totalCount={categoryData.total_items} />
-		{#if !fullListLoading && remainingItems > 0}
+		{#if browser && !fullListLoading && remainingItems > 0}
 			<div class="mt-6 flex justify-center">
 				<button
 					type="button"
