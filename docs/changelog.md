@@ -6,6 +6,7 @@ This page records release-level changes. Pull requests and the GitHub Project re
 
 - Professionalized the documentation system with source, contract, routing, telemetry, MCP, troubleshooting, decision, and design references.
 - Clarified supported execution paths and separated current runtime guarantees from planned schema and Docker work.
+- Hardened public release surfaces: recoverable watchdog, token-free GitHub submissions, explicit report schema v1, security headers, accessible dialogs, MCP contract tests, and unified product metadata.
 
 ## 1.0.1 — 2026-08-21
 

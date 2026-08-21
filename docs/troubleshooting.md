@@ -35,13 +35,15 @@ Link enrichment first attaches deterministic entity/title matches, then sends on
 
 Do not edit generated production files in the Vercel dashboard. Correct the repository source or rerun the date-pinned pipeline.
 
+If the watchdog cannot validate the report, confirm its dependency-install step completed before interpreting the report as invalid. Recovery dispatch normally uses the repository token; an organization may supply `WORKFLOW_DISPATCH_PAT` only when its policy blocks repository-token dispatch.
+
 ## MCP appears stuck
 
 `python mcp_server.py` waits on stdio and normally prints no interactive prompt. Launch it through an MCP client, verify `requirements/mcp.txt` is installed, and confirm the checkout contains `web/data/`.
 
 ## Docker status
 
-The repository contains a legacy container definition, but the current Compose environment does not yet expose the active OpenRouter/Gemini/NVIDIA routing configuration. Docker is therefore not a supported production execution path at present. Use the Python and Vercel/GitHub Actions paths documented here until [Issue #49](https://github.com/BlockFrame/wiredframe-radar/issues/49) is complete.
+Docker Compose exposes the current OpenRouter, Gemini, NVIDIA, source, price-guard, and runtime controls. Startup is intentionally web-only unless `ENABLE_CRON=true`. If container health fails, run `docker compose config`, inspect `docker compose logs`, and confirm mounted `config/` and `web/data/` paths are readable. A fresh or empty configuration mount is seeded from image defaults without overwriting existing files.
 
 For incident evidence and recovery completion, follow the [Operations runbook](operations.md).
 

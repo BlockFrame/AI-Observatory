@@ -105,7 +105,15 @@ See the complete [MCP interface guide](mcp.md) for client configuration and tool
 
 ## Supported execution paths
 
-Local Python execution and the GitHub Actions → Vercel production path are supported. The repository still contains a legacy Docker/Compose definition, but it does not yet pass the current OpenRouter, Gemini, and NVIDIA route environment into the container and is not covered as a production path. Do not use it for a paid run until [Issue #49](https://github.com/BlockFrame/wiredframe-radar/issues/49) is complete.
+Local Python, GitHub Actions → Vercel, and Docker Compose are supported. Container startup is web-only unless `ENABLE_CRON=true`, so building or starting the image cannot spend provider quota by itself.
+
+```bash
+docker compose build
+docker compose up -d
+curl --fail http://localhost:7100/
+```
+
+Compose mounts `config/`, `data/`, `web/data/`, `web/assets/`, and `logs/`. Missing configuration files are seeded from the image without overwriting mounted files. To schedule collection, populate `.env`, explicitly set `ENABLE_CRON=true`, and retain the persistent `data/` and `web/data/` mounts for checkpoints and reports.
 
 When setup or execution fails, start with [Troubleshooting](troubleshooting.md).
 

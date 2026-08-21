@@ -21,6 +21,7 @@ import nh3
 
 from agents.quality_score import calculate_quality_score
 from agents.editorial_guard import sanitize_editorial_text
+from report_schema import REPORT_SCHEMA_VERSION
 
 logger = logging.getLogger(__name__)
 
@@ -170,6 +171,7 @@ class JSONGenerator:
         }
 
         summary = {
+            'schema_version': REPORT_SCHEMA_VERSION,
             'date': result.get('date', ''),
             'coverage_date': result.get('coverage_date', ''),
             'coverage_start': result.get('coverage_start', ''),
@@ -208,6 +210,7 @@ class JSONGenerator:
             category_summary = sanitize_editorial_text(report.get('category_summary', ''))
 
             category_data = {
+                'schema_version': REPORT_SCHEMA_VERSION,
                 'category': category,
                 'date': report_date,
                 'category_summary': category_summary,
@@ -241,7 +244,15 @@ class JSONGenerator:
             with open(index_path, 'r', encoding='utf-8') as f:
                 index = json.load(f)
         else:
-            index = {'version': '1.0', 'dates': []}
+            index = {
+                'schema_version': REPORT_SCHEMA_VERSION,
+                'version': '1.0',
+                'dates': [],
+            }
+
+        # Preserve the legacy ``version`` field while making the public
+        # contract explicit for new and already-existing indexes.
+        index['schema_version'] = REPORT_SCHEMA_VERSION
 
         date = result.get('date', '')
         category_reports = result.get('category_reports', {})

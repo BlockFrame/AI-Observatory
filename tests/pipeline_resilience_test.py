@@ -393,6 +393,24 @@ class BatchCoverageTests(unittest.TestCase):
 
 
 class PublicationQualityGateTests(unittest.TestCase):
+    def test_schema_version_is_required_after_contract_cutover(self):
+        result = validate({"date": "2026-08-22"}, "2026-08-22")
+
+        self.assertFalse(result["valid"])
+        self.assertTrue(
+            any("schema_version missing" in failure for failure in result["failures"])
+        )
+
+    def test_unknown_schema_version_is_rejected(self):
+        result = validate(
+            {"date": "2026-08-22", "schema_version": "2.0"},
+            "2026-08-22",
+        )
+
+        self.assertTrue(
+            any("unsupported schema_version" in failure for failure in result["failures"])
+        )
+
     def test_high_quality_scored_report_is_publishable(self):
         top_items = [
             {
@@ -864,6 +882,7 @@ class LLMTelemetryTests(unittest.TestCase):
             telemetry["by_category"]["news"],
         )
         self.assertIn("quality_score", summary)
+        self.assertEqual(summary["schema_version"], "1.0")
 
 
 class SemanticCacheTests(unittest.TestCase):

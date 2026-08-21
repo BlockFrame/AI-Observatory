@@ -44,7 +44,7 @@ Search is a case-insensitive substring scan of summary artifacts, not semantic r
 
 - Historical availability is limited to date directories present in the local checkout.
 - An invalid date format, missing report, missing data directory, or unknown tool returns a textual error result rather than calling an external service.
-- Malformed historical JSON is skipped during search; a directly requested malformed file currently surfaces a server-side parsing failure.
+- Malformed historical JSON is skipped during search; a directly requested malformed file returns a textual MCP error without terminating the server.
 - Update the checkout to receive newly published reports.
 
 The public report shape is documented in [Data contracts](data-contracts.md). MCP changes require mocked protocol tests and must preserve the zero-paid-call guarantee.

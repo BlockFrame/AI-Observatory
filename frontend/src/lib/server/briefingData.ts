@@ -37,6 +37,7 @@ export function readDataIndex(): DataIndex {
 	);
 	const dates = raw.dates ?? [];
 	return {
+		schema_version: raw.schema_version,
 		version: raw.version ?? '1.0',
 		dates,
 		latestDate: raw.latestDate ?? dates[0]?.date ?? null,
@@ -113,6 +114,7 @@ export function loadBriefing(date: string): DaySummary | null {
 	) as Record<Category, CategorySummary>;
 
 	return {
+		schema_version: summary.schema_version,
 		date: summary.date,
 		coverage_date: summary.coverage_date,
 		coverage_start: summary.coverage_start,

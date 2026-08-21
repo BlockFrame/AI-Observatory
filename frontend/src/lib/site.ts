@@ -1,5 +1,5 @@
 export const SITE = {
-	name: 'rAIdar',
+	name: 'R[AI]DAR',
 	visualName: 'R[AI]DAR',
 	url: 'https://radar.wiredframe.xyz',
 	description:

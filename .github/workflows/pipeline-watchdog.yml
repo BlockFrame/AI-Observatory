@@ -50,8 +50,8 @@ jobs:
     env:
       PIPELINE_BASE_URL: ${{ vars.PIPELINE_BASE_URL || 'https://radar.wiredframe.xyz' }}
       PIPELINE_WORKFLOW: daily-pipeline.yml
-      # The built-in token is sufficient for read-only run inspection. The PAT
-      # is scoped only to the recovery dispatch step below.
+      # The built-in token covers run inspection and, with actions:write,
+      # workflow_dispatch. A PAT remains an optional compatibility fallback.
       GH_TOKEN: ${{ github.token }}
     steps:
       - name: Check out repo
@@ -61,6 +61,7 @@ jobs:
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
+          cache: pip
 
       - name: Resolve ET schedule gate
         id: gate
@@ -85,6 +86,10 @@ jobs:
             echo "should_run=false" >> "$GITHUB_OUTPUT"
             echo "Not in 04-09 ET window (got ${actual_hour}); skipping as no-op."
           fi
+
+      - name: Install report validator dependencies
+        if: steps.gate.outputs.should_run == 'true'
+        run: python -m pip install --disable-pip-version-check -r requirements.txt
 
       - name: Validate published report
         id: validate
@@ -171,11 +176,14 @@ jobs:
         shell: bash
         env:
           REPORT_DATE: ${{ steps.validate.outputs.report_date }}
-          GH_TOKEN: ${{ secrets.WORKFLOW_DISPATCH_PAT }}
+          # workflow_dispatch is one of the events GitHub permits a repository
+          # GITHUB_TOKEN to create. Keep the optional PAT only as a compatibility
+          # fallback for installations with a stricter organization policy.
+          GH_TOKEN: ${{ secrets.WORKFLOW_DISPATCH_PAT || github.token }}
         run: |
           set -euo pipefail
           if [[ -z "${GH_TOKEN:-}" ]]; then
-            echo "WORKFLOW_DISPATCH_PAT is not configured; watchdog cannot dispatch a recovery run." >&2
+            echo "No Actions token is available; watchdog cannot dispatch a recovery run." >&2
             exit 1
           fi
           gh auth status --hostname github.com >/dev/null

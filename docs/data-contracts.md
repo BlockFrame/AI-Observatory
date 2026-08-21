@@ -46,9 +46,9 @@ Each category file contains `category`, `date`, `category_summary`, `category_su
 
 ## Compatibility and versioning
 
-The current top-level report contract is not yet explicitly versioned. `quality_score.version` versions only the scoring algorithm and must not be interpreted as a report-schema version.
+Reports generated from 2026-08-22 declare top-level `schema_version: "1.0"`; category files and `web/data/index.json` carry the same contract version. Older date directories remain valid legacy artifacts without this field. `quality_score.version` independently versions only the scoring algorithm.
 
-Until a top-level `schema_version` is introduced:
+Compatibility policy:
 
 - producers may add optional fields without a migration;
 - renamed, removed, or type-changed fields require a design specification, consumer migration, fixtures for old and new shapes, and release notes;
@@ -56,7 +56,7 @@ Until a top-level `schema_version` is introduced:
 - historical date directories remain immutable except for a documented correction;
 - contract changes must update this guide, frontend types/readers, MCP behavior, validation, and mocked tests in the same pull request.
 
-The migration is tracked in [Issue #48](https://github.com/BlockFrame/wiredframe-radar/issues/48), so documentation does not imply a runtime guarantee that does not yet exist.
+The publish validator requires schema `1.0` from the cutover date, rejects unknown declared versions, and keeps historical unversioned reports readable. A future incompatible contract requires a new major schema version and an explicit reader migration.
 
 ## Validation boundary
 

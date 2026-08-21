@@ -1,5 +1,5 @@
 /**
- * Type definitions for the rAIdar frontend
+ * Type definitions for the R[AI]DAR frontend
  */
 
 export type Category = 'news' | 'research' | 'social' | 'github_trending';
@@ -109,6 +109,7 @@ export interface AnalysisFunnelEntry {
 }
 
 export interface DaySummary {
+	schema_version?: string;
 	date: string;
 	coverage_date?: string;
 	coverage_start?: string;
@@ -135,6 +136,7 @@ export interface CategoryNotice {
 }
 
 export interface CategoryData {
+	schema_version?: string;
 	category: Category;
 	date: string;
 	category_summary: string;
@@ -152,6 +154,7 @@ export interface DateEntry {
 }
 
 export interface DataIndex {
+	schema_version?: string;
 	version: string;
 	dates: DateEntry[];
 	latestDate: string | null;

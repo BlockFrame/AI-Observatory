@@ -382,7 +382,7 @@
 						<div class="relative inline-block group">
 							<!-- Glow Effect -->
 							<div class="absolute -inset-4 bg-primary/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-pulse"></div>
-							<img src="/logo.png" alt="rAIdar" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
+							<img src="/logo.png" alt="R[AI]DAR" class="relative w-20 h-20 sm:w-28 sm:h-28 border-none outline-none shadow-none" />
 						</div>
 					</div>
 					

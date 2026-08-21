@@ -21,12 +21,12 @@
 
 <section class="hero-section mb-8">
 	{#if heroImageUrl}
-		<img src={heroImageUrl} alt="rAIdar daily AI editorial scene" class="hero-image" />
+		<img src={heroImageUrl} alt="R[AI]DAR daily AI editorial scene" class="hero-image" />
 	{:else}
 		<div
 			class="hero-fallback bg-gradient-to-br from-trend-gray-700 to-trend-gray-900 flex items-center justify-center"
 		>
-			<img src="/logo.png" alt="rAIdar logo" class="w-24 h-24 opacity-40" />
+			<img src="/logo.png" alt="R[AI]DAR logo" class="w-24 h-24 opacity-40" />
 		</div>
 	{/if}
 

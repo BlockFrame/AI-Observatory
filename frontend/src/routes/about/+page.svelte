@@ -3,11 +3,11 @@
 	import { SITE } from '$lib/site';
 </script>
 
-<PageMeta title="About" description="How rAIdar turns daily AI signals into concise, evidence-linked strategic intelligence." path="/about" />
+<PageMeta title="About" description="How R[AI]DAR turns daily AI signals into concise, evidence-linked strategic intelligence." path="/about" />
 
 <div class="max-w-4xl mx-auto px-6 lg:px-10 py-8">
 	<h1 class="text-2xl font-bold text-trend-gray-800 dark:text-trend-gray-100 mb-8">
-		About rAIdar
+		About R[AI]DAR
 	</h1>
 
 	<!-- About This Project -->
@@ -17,7 +17,7 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				<strong>rAIdar</strong> is an open-source product of the <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a>. It turns daily AI market signals, research, social discourse, and open-source momentum into concise strategic intelligence.
+				<strong>R[AI]DAR</strong> is an open-source product of the <a href={SITE.parentUrl} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Wiredframe Project</a>. It turns daily AI market signals, research, social discourse, and open-source momentum into concise strategic intelligence.
 			</p>
 			<p>
 				Every briefing is built around traceable evidence. The pipeline collects and ranks current sources, synthesizes cross-category topics, validates editorial quality, and links published claims back to the underlying material.
@@ -90,7 +90,7 @@
 						<div class="px-3 py-2 bg-background rounded-lg border border-white/10 text-center font-medium text-trend-gray-300">MCP Server</div>
 					</div>
 				</div>
-				<div class="text-center text-xs text-on-surface-variant mt-6">rAIdar Pipeline Architecture</div>
+				<div class="text-center text-xs text-on-surface-variant mt-6">R[AI]DAR Pipeline Architecture</div>
 			</div>
 			<p>Each day, the pipeline runs through several phases:</p>
 			<ol>
@@ -170,7 +170,7 @@
 		</h2>
 		<div class="prose dark:prose-invert max-w-none text-trend-gray-600 dark:text-trend-gray-400">
 			<p>
-				Beyond the daily news synthesis, rAIdar hosts curated directories to help you navigate the ecosystem:
+				Beyond the daily news synthesis, R[AI]DAR hosts curated directories to help you navigate the ecosystem:
 			</p>
 			<ul>
 				<li><strong>Tools Directory:</strong> A categorized index of the most useful AI applications, frameworks, and developer tools.</li>
@@ -178,7 +178,7 @@
 				<li><strong>Influencers:</strong> Key voices and researchers in the AI space worth following.</li>
 			</ul>
 			<p>
-				<strong>This platform is community-driven.</strong> You can actively contribute to its growth by using the "Suggest" and "Feedback" buttons found across the site. Whether you want to add a missing model, recommend a tool, or report a bug, your suggestions are sent directly to our development team via GitHub Issues.
+				<strong>This platform is community-driven.</strong> You can actively contribute to its growth by using the "Suggest" and "Feedback" buttons found across the site. Whether you want to add a missing model, recommend a tool, or report a bug, each form prepares a public GitHub Issue for you to review before submitting.
 			</p>
 		</div>
 	</section>
