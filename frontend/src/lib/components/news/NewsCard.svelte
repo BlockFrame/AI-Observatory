@@ -48,7 +48,7 @@
 
 <article
 	id={anchor ? `item-${item.id}` : undefined}
-	class="card motion-card group {importanceTierClass}"
+	class="card motion-card group !p-4 sm:!p-6 {importanceTierClass}"
 	style="scroll-margin-top: 5rem; --motion-delay: {Math.min(animationIndex, 8) * 45}ms;"
 >
 	<div
@@ -56,7 +56,7 @@
 		style="background-color: {config.color}"
 	></div>
 
-	<header class="mb-5 flex items-start justify-between gap-5">
+	<header class="mb-4 flex items-start justify-between gap-3 sm:mb-5 sm:gap-5">
 		<div class="min-w-0 flex-1">
 			{#if showCategory}
 				<CategoryBadge {category} class="mb-3" />
@@ -82,7 +82,7 @@
 				{/if}
 			</div>
 
-			<h3 class="text-xl font-extrabold leading-snug tracking-[-0.015em] text-white sm:text-2xl">
+			<h3 class="break-words text-lg font-extrabold leading-snug tracking-[-0.015em] text-white sm:text-2xl">
 				<a
 					href={safeUrl}
 					target="_blank"
@@ -99,7 +99,7 @@
 		</div>
 
 		<div
-			class="flex h-12 w-12 flex-shrink-0 flex-col items-center justify-center rounded-2xl border border-white/10 text-sm font-extrabold shadow-inner
+			class="flex h-10 w-10 flex-shrink-0 flex-col items-center justify-center rounded-xl border border-white/10 text-xs font-extrabold shadow-inner sm:h-12 sm:w-12 sm:rounded-2xl sm:text-sm
 			       {item.importance_score >= 80
 				? 'bg-secondary/10 text-secondary'
 				: item.importance_score >= 60
@@ -114,49 +114,71 @@
 
 	<!-- AI Analysis -->
 	{#if item.summary}
-		<div class="mb-5 rounded-2xl border border-white/5 bg-black/10 p-5">
+		<div class="mb-4 rounded-xl border border-white/5 bg-black/10 p-4 sm:mb-5 sm:rounded-2xl sm:p-5">
 			<div class="mb-3 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">
 				<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v2m6.36.64-1.42 1.42M21 12h-2M5 12H3m4.05-4.95L5.64 5.64M9 18h6m-5 3h4m2.5-9a4.5 4.5 0 10-9 0c0 1.55.79 2.91 2 3.72V18h5v-2.28a4.48 4.48 0 002-3.72z" />
 				</svg>
 				<span>AI Analysis</span>
 			</div>
-			<div class="prose max-w-none text-[15px] leading-7">
+			<div class="prose max-w-none text-sm leading-6 sm:text-[15px] sm:leading-7">
 				{@html safeHtml(summaryHtml)}
 			</div>
 		</div>
 	{/if}
 
-	<!-- Content (expandable) -->
-	{#if hasContent}
-		<div class="mb-5 text-sm text-on-surface-variant">
-			<div
-				class="prose max-w-none text-sm leading-6"
-				class:line-clamp-3={!expanded && needsTruncation}
-			>
-				{@html safeHtml(contentHtml)}
-			</div>
-
-			{#if needsTruncation}
-				<button
-					on:click={() => (expanded = !expanded)}
-					class="mt-3 rounded-full px-1 text-sm font-bold text-primary transition-colors hover:text-white"
+	<div class="hidden sm:block">
+		<!-- Content (expandable) -->
+		{#if hasContent}
+			<div class="mb-5 text-sm text-on-surface-variant">
+				<div
+					class="prose max-w-none text-sm leading-6"
+					class:line-clamp-3={!expanded && needsTruncation}
 				>
-					{expanded ? 'Show less' : 'Read more'}
-				</button>
-			{/if}
-		</div>
-	{/if}
+					{@html safeHtml(contentHtml)}
+				</div>
 
-	<!-- Themes -->
-	{#if item.themes && item.themes.length > 0}
-		<div class="mb-5 flex flex-wrap gap-2">
-			{#each item.themes as theme}
-				<span class="material-chip">
-					{theme}
-				</span>
-			{/each}
-		</div>
+				{#if needsTruncation}
+					<button
+						on:click={() => (expanded = !expanded)}
+						class="mt-3 rounded-full px-1 text-sm font-bold text-primary transition-colors hover:text-white"
+					>
+						{expanded ? 'Show less' : 'Read more'}
+					</button>
+				{/if}
+			</div>
+		{/if}
+
+		{#if item.themes && item.themes.length > 0}
+			<div class="mb-5 flex flex-wrap gap-2">
+				{#each item.themes as theme}
+					<span class="material-chip">{theme}</span>
+				{/each}
+			</div>
+		{/if}
+	</div>
+
+	{#if hasContent || (item.themes && item.themes.length > 0)}
+		<details class="mb-4 rounded-xl border border-white/[0.07] bg-white/[0.025] sm:hidden">
+			<summary class="flex min-h-[44px] cursor-pointer list-none items-center justify-between px-3 py-2 text-xs font-bold text-on-surface-variant">
+				<span>Source details</span>
+				<span class="text-primary" aria-hidden="true">+</span>
+			</summary>
+			<div class="border-t border-white/[0.07] px-3 py-3">
+				{#if hasContent}
+					<div class="prose max-w-none text-sm leading-6">
+						{@html safeHtml(contentHtml)}
+					</div>
+				{/if}
+				{#if item.themes && item.themes.length > 0}
+					<div class="mt-3 flex flex-wrap gap-2">
+						{#each item.themes as theme}
+							<span class="material-chip">{theme}</span>
+						{/each}
+					</div>
+				{/if}
+			</div>
+		</details>
 	{/if}
 
 	{#if showActions}

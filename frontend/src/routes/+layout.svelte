@@ -11,14 +11,24 @@
 	
 	if (browser) inject();
 
-	let isSidebarOpen = true;
+	let isDesktopSidebarOpen = true;
+	let isMobileNavOpen = false;
 	let showScrollTop = false;
 	let isFeedbackModalOpen = false;
+	let activePath = '';
 	$: currentSearch = browser ? $page.url.search : '';
 	$: latestBase = data.latestDate ? `/briefings/${data.latestDate}` : '';
+	$: if (browser && $page.url.pathname !== activePath) {
+		activePath = $page.url.pathname;
+		isMobileNavOpen = false;
+	}
 
 	function toggleSidebar() {
-		isSidebarOpen = !isSidebarOpen;
+		if (browser && window.matchMedia('(min-width: 1024px)').matches) {
+			isDesktopSidebarOpen = !isDesktopSidebarOpen;
+		} else {
+			isMobileNavOpen = !isMobileNavOpen;
+		}
 	}
 
 	function handleScroll() {
@@ -31,11 +41,35 @@
 </script>
 
 <svelte:window on:scroll={handleScroll} />
+<svelte:body class:overflow-hidden={isMobileNavOpen} />
 
 <div class="min-h-screen bg-[#0b1426] text-on-surface">
+	{#if isMobileNavOpen}
+		<button
+			type="button"
+			class="fixed inset-0 z-[35] bg-[#050a14]/75 backdrop-blur-sm lg:hidden"
+			on:click={() => (isMobileNavOpen = false)}
+			aria-label="Close navigation"
+		></button>
+	{/if}
+
 	<!-- Sidebar -->
-	<aside class="fixed left-0 top-0 z-40 h-screen overflow-hidden border-r border-white/10 bg-[#0c1322]/80 shadow-2xl backdrop-blur-xl transition-all duration-300 {isSidebarOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full'}">
+	<aside class="fixed left-0 top-0 z-40 h-screen w-64 overflow-x-hidden overflow-y-auto border-r border-white/10 bg-[#0c1322]/95 shadow-2xl backdrop-blur-xl transition-transform duration-300 {isMobileNavOpen ? 'translate-x-0' : '-translate-x-full'} {isDesktopSidebarOpen ? 'lg:translate-x-0' : 'lg:-translate-x-full'}">
 		<div class="flex h-full flex-col px-4 py-6">
+			<div class="mb-5 flex items-center justify-between lg:hidden">
+				<a href="/" class="flex items-center gap-2 text-sm font-semibold tracking-[0.04em] text-[#00e0bb]">
+					<img src="/logo.png" alt="" class="h-7 w-7 rounded-sm object-contain" />
+					<span>R<span class="text-[#cfd5ff]">[AI]</span>DAR</span>
+				</a>
+				<button
+					type="button"
+					on:click={() => (isMobileNavOpen = false)}
+					class="flex h-10 w-10 items-center justify-center rounded-lg text-[#b2b8cf] hover:bg-white/5 hover:text-white"
+					aria-label="Close navigation"
+				>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+				</button>
+			</div>
 
 			<nav class="flex-1">
 				<p class="mb-3 px-3 text-[10px] font-medium uppercase tracking-[0.14em] text-[#8e94ae]">Navigation</p>
@@ -84,45 +118,48 @@
 	</aside>
 
 	<!-- Header -->
-	<header class="fixed right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/80 backdrop-blur-md transition-all duration-300 {isSidebarOpen ? 'left-64' : 'left-0'}">
-		<div class="flex h-16 items-center justify-between gap-4 px-4 md:px-8">
-			<div class="flex min-w-0 items-center gap-4">
-				<button on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
-					{#if isSidebarOpen}
-						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
-					{:else}
-						<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
-					{/if}
+	<header class="fixed left-0 right-0 top-0 z-30 border-b border-[#2b3655] bg-[#111d33]/90 backdrop-blur-md transition-all duration-300 {isDesktopSidebarOpen ? 'lg:left-64' : 'lg:left-0'}">
+		<div class="flex h-16 items-center justify-between gap-3 px-3 sm:px-4 md:px-8">
+			<div class="flex min-w-0 items-center gap-2 sm:gap-4">
+				<button type="button" on:click={toggleSidebar} class="p-2 -ml-2 text-[#8e94ae] hover:text-white rounded-lg hover:bg-[#2b3655]/50 transition-colors" aria-label="Toggle Navigation">
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
 				</button>
-				<div class="flex min-w-0 items-center">
+				<div class="hidden min-w-0 items-center lg:flex">
 					<div class="w-[clamp(16rem,38vw,42rem)] max-w-full">
 						<SearchBar placeholder="Search news, research, social and repositories…" />
 					</div>
 				</div>
+				<a href="/" class="flex min-w-0 items-center gap-2 lg:hidden" aria-label={SITE.name}>
+					<img src="/logo.png" alt="" class="h-7 w-7 shrink-0 rounded-sm object-contain" />
+					<span class="truncate text-[13px] font-semibold tracking-[0.04em] text-[#00e0bb] sm:text-sm">
+						R<span class="text-[#cfd5ff]">[AI]</span>DAR
+					</span>
+				</a>
 			</div>
 
-			<div class="flex items-center gap-2 sm:gap-4">
+			<div class="flex shrink-0 items-center gap-1 sm:gap-2 lg:gap-4">
 				<!-- Sponsor Button -->
 				<a
 					href="https://github.com/sponsors/BlockFrame"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-1.5 text-sm text-[#ff79c6] hover:text-white bg-[#ff79c6]/10 border border-[#ff79c6]/30 px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-[#ff79c6] transition-all font-medium"
+					class="hidden items-center gap-1.5 rounded-lg border border-[#ff79c6]/30 bg-[#ff79c6]/10 px-3 py-1.5 text-sm font-medium text-[#ff79c6] transition-all hover:bg-[#ff79c6] hover:text-white md:flex"
 					aria-label="Sponsor on GitHub"
 					title="Sponsor Wiredframe Radar on GitHub"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-					<span class="hidden sm:inline">Sponsor</span>
+					<span>Sponsor</span>
 				</a>
 
 				<!-- Feedback Button -->
 				<button
+					type="button"
 					on:click={() => isFeedbackModalOpen = true}
-					class="flex items-center gap-2 text-sm text-[#b2b8cf] hover:text-white bg-[#1b2437] border border-[#2b3655] px-2 sm:px-3 py-1.5 rounded-lg hover:bg-[#2b3655] transition-all"
+					class="flex h-10 w-10 items-center justify-center rounded-lg border border-[#2b3655] bg-[#1b2437] text-[#b2b8cf] transition-all hover:bg-[#2b3655] hover:text-white sm:h-auto sm:w-auto sm:gap-2 sm:px-3 sm:py-1.5"
 					aria-label="Feedback"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-					<span class="hidden sm:inline">Feedback</span>
+					<span class="hidden md:inline">Feedback</span>
 				</button>
 
 				<!-- GitHub icon -->
@@ -130,7 +167,7 @@
 					href={SITE.githubUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="p-2 rounded-lg text-[#b2b8cf] hover:text-white hover:bg-[#2b3655]/50 transition-colors"
+					class="flex h-10 w-10 items-center justify-center rounded-lg text-[#b2b8cf] transition-colors hover:bg-[#2b3655]/50 hover:text-white"
 					aria-label="GitHub Repository"
 					title="View source on GitHub"
 				>
@@ -139,26 +176,30 @@
 					</svg>
 				</a>
 
-				<div class="h-6 w-px bg-white/10 hidden sm:block"></div>
+				<div class="hidden h-6 w-px bg-white/10 lg:block"></div>
 
-				<img src="/logo.png" alt="Wiredframe Radar logo" class="h-6 w-6 shrink-0 rounded-sm object-contain" />
-				<div class="min-w-0 overflow-hidden hidden sm:block">
+				<img src="/logo.png" alt="Wiredframe Radar logo" class="hidden h-6 w-6 shrink-0 rounded-sm object-contain lg:block" />
+				<div class="hidden min-w-0 overflow-hidden lg:block">
 					<a href="/" class="block truncate text-[15px] font-semibold tracking-[0.04em] text-[#00e0bb]" aria-label={SITE.name}>
 						R<span class="text-[#cfd5ff]">[AI]</span>DAR
 					</a>
 				</div>
 			</div>
 		</div>
+		<div class="border-t border-white/5 px-3 pb-3 pt-2 lg:hidden">
+			<SearchBar placeholder="Search Radar…" />
+		</div>
 	</header>
 
 	<!-- Main Content -->
-	<main class="min-h-screen px-4 md:px-8 pt-24 transition-all duration-300 {isSidebarOpen ? 'ml-64' : 'ml-0'}">
+	<main class="min-h-screen px-3 pt-36 transition-all duration-300 sm:px-4 md:px-8 lg:pt-24 {isDesktopSidebarOpen ? 'lg:ml-64' : 'lg:ml-0'}">
 		<slot />
 	</main>
 
 	<!-- Scroll To Top Button -->
 	{#if showScrollTop}
 		<button
+			type="button"
 			on:click={scrollToTop}
 			class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-[#111d33]/90 text-[#00e0bb] shadow-xl backdrop-blur-md transition-all duration-300 hover:border-[#00e0bb] hover:bg-[#00e0bb] hover:text-[#0b1426] hover:scale-110 active:scale-95"
 			aria-label="Scroll to top"
