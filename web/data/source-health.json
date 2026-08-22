@@ -1,61 +1,61 @@
 {
-  "updated_at": "2026-08-21T01:27:41.161565",
+  "updated_at": "2026-08-22T01:23:09.731141",
   "sources": {
     "research": {
       "status": "success",
-      "count": 52,
+      "count": 45,
       "error": null,
-      "raw_count": 52,
-      "duration_ms": 9774,
+      "raw_count": 45,
+      "duration_ms": 22112,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 47,
-      "freshness_rate": 0.9038,
-      "newest_item_at": "2026-08-20T19:31:10.761000",
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "fresh_items": 45,
+      "freshness_rate": 1.0,
+      "newest_item_at": "2026-08-21T20:34:26",
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     },
     "social": {
       "status": "success",
-      "count": 497,
+      "count": 408,
       "error": null,
-      "raw_count": 497,
-      "duration_ms": 99537,
+      "raw_count": 408,
+      "duration_ms": 81933,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 497,
+      "fresh_items": 408,
       "freshness_rate": 1.0,
-      "newest_item_at": "2026-08-20T23:57:33",
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "newest_item_at": "2026-08-21T23:48:32",
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     },
     "web_scraper": {
       "status": "partial",
-      "count": 1,
+      "count": 0,
       "error": "1 failed and 1 partial out of 13 configured sites",
-      "raw_count": 1,
-      "duration_ms": 34540,
+      "raw_count": 0,
+      "duration_ms": 33958,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 1,
-      "freshness_rate": 1.0,
-      "newest_item_at": "2026-08-20T00:00:00+00:00",
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "fresh_items": 0,
+      "freshness_rate": null,
+      "newest_item_at": null,
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-21T01:27:41.161565"
     },
     "social_twitter": {
       "status": "success",
-      "count": 497,
+      "count": 408,
       "error": null,
-      "raw_count": 497,
+      "raw_count": 408,
       "duration_ms": 0,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     },
     "https://www.anthropic.com/news": {
       "status": "success",
@@ -69,7 +69,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-15T01:20:31.246574"
     },
     "https://cohere.com/blog": {
@@ -84,21 +84,22 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-20T01:26:05.373490"
     },
     "https://lovable.dev/blog": {
       "status": "success",
-      "count": 1,
-      "error": null,
-      "raw_count": 1,
+      "count": 0,
+      "error": "No dated articles in coverage window",
+      "reason_code": "no_items_in_window",
+      "raw_count": 0,
       "duration_ms": 0,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-21T01:27:41.161565"
     },
     "https://www.copilotkit.ai/blog": {
@@ -113,7 +114,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-20T01:26:05.373490"
     },
     "https://www.microsoft.com/en-us/microsoft-copilot/blog/": {
@@ -128,7 +129,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://elevenlabs.io/blog": {
@@ -143,7 +144,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://aleph-alpha.com/en/blog/": {
@@ -158,7 +159,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://artificialanalysis.ai/articles": {
@@ -173,7 +174,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-19T10:45:22.996127"
     },
     "https://www.kimi.com/blog/": {
@@ -188,7 +189,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://www.nist.gov/caisi": {
@@ -203,7 +204,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://www.deeplearning.ai/the-batch": {
@@ -232,7 +233,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://docs.z.ai/release-notes/new-released": {
@@ -247,7 +248,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-19T10:45:22.996127"
     },
     "https://www.anthropic.com/research": {
@@ -262,7 +263,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": "2026-08-19T10:45:22.996127"
     },
     "https://www.anthropic.com/economic-futures": {
@@ -277,7 +278,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://arena.ai/blog/category/research": {
@@ -292,7 +293,7 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "https://epoch.ai/latest": {
@@ -307,50 +308,50 @@
       "fresh_items": 0,
       "freshness_rate": null,
       "newest_item_at": null,
-      "last_success_at": "2026-08-21T01:27:41.161565",
+      "last_success_at": "2026-08-22T01:23:09.731141",
       "last_nonempty_at": null
     },
     "news": {
       "status": "success",
-      "count": 114,
+      "count": 101,
       "error": null,
-      "raw_count": 114,
-      "duration_ms": 148782,
-      "duplicates_removed": 0,
-      "duplicate_rate": 0.0,
-      "fresh_items": 100,
-      "freshness_rate": 0.8772,
-      "newest_item_at": "2026-08-21T01:27:33.386357",
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "raw_count": 102,
+      "duration_ms": 207744,
+      "duplicates_removed": 1,
+      "duplicate_rate": 0.0098,
+      "fresh_items": 75,
+      "freshness_rate": 0.7426,
+      "newest_item_at": "2026-08-22T01:23:02.674007",
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     },
     "hackernews": {
       "status": "success",
-      "count": 24,
+      "count": 25,
       "error": null,
-      "raw_count": 24,
-      "duration_ms": 2809,
+      "raw_count": 25,
+      "duration_ms": 2287,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
-      "fresh_items": 24,
+      "fresh_items": 25,
       "freshness_rate": 1.0,
-      "newest_item_at": "2026-08-20T23:56:35+00:00",
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "newest_item_at": "2026-08-21T23:09:06+00:00",
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     },
     "github_trending": {
       "status": "success",
-      "count": 43,
+      "count": 46,
       "error": null,
-      "raw_count": 43,
-      "duration_ms": 4956,
+      "raw_count": 46,
+      "duration_ms": 4763,
       "duplicates_removed": 0,
       "duplicate_rate": 0.0,
       "fresh_items": 0,
       "freshness_rate": 0.0,
-      "newest_item_at": "2026-08-21T05:27:41.159801+00:00",
-      "last_success_at": "2026-08-21T01:27:41.161565",
-      "last_nonempty_at": "2026-08-21T01:27:41.161565"
+      "newest_item_at": "2026-08-22T05:23:09.729493+00:00",
+      "last_success_at": "2026-08-22T01:23:09.731141",
+      "last_nonempty_at": "2026-08-22T01:23:09.731141"
     }
   }
 }
