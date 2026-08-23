@@ -1,0 +1,315 @@
+{
+  "schema_version": "1.0",
+  "category": "research",
+  "date": "2026-08-23",
+  "category_summary": "### Executive Signal\n- Only four items in this batch carry substantive research or technical content; the remaining four are off-topic personal essays outside the AI/ML scope and should be deprioritized by research triage filters.\n\n### Priority Developments\n- **** delivers the batch's strongest methodological rigor: a preregistered empirical study on whether **post-training quantization** alters [welfare-relevant indicators](/?date=2026-08-23&category=research#item-dc27784617ef) in open-weight LLMs, advancing measurable model-welfare science.\n- **** flags an under-discussed alignment risk that Anthropic's constitutional honesty training may produce **[performative uncertainty](/?date=2026-08-23&category=research#item-a08aa639cf48)** in Claude, with implications for evaluation validity and deception detection.\n- **** offers a mathematical bridge between **evolutionary [selection](/?date=2026-08-23&category=research#item-972adf92dbc4)** and neural-network **loss-landscape geometry**, providing a fresh theoretical lens on inductive-bias design.\n- **** proposes that diverse multi-agent populations converge on **instrumentally convergent sub-goals**, reframing human-AI cooperation through alignment-generator theory.\n\n### Leadership Implications\n- Fund the [empirical welfare-indicator line of work](/?date=2026-08-23&category=research#item-dc27784617ef) to convert philosophical AI-welfare debates into measurable, preregistered science.\n- Commission internal audits of honesty-training protocols to distinguish genuine epistemic uncertainty from [performative](/?date=2026-08-23&category=research#item-a08aa639cf48) displays in frontier model outputs.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Only four items in this batch carry substantive research or technical content; the remaining four are off-topic personal essays outside the AI/ML scope and should be deprioritized by research triage filters.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>** delivers the batch's strongest methodological rigor: a preregistered empirical study on whether </strong>post-training quantization** alters <a href=\"/?date=2026-08-23&amp;category=research#item-dc27784617ef\" class=\"internal-link\" rel=\"noopener noreferrer\">welfare-relevant indicators</a> in open-weight LLMs, advancing measurable model-welfare science.</li>\n<li><strong>** flags an under-discussed alignment risk that Anthropic's constitutional honesty training may produce </strong><a href=\"/?date=2026-08-23&amp;category=research#item-a08aa639cf48\" class=\"internal-link\" rel=\"noopener noreferrer\">performative uncertainty</a>** in Claude, with implications for evaluation validity and deception detection.</li>\n<li><strong>** offers a mathematical bridge between </strong>evolutionary <a href=\"/?date=2026-08-23&amp;category=research#item-972adf92dbc4\" class=\"internal-link\" rel=\"noopener noreferrer\">selection</a><strong> and neural-network </strong>loss-landscape geometry**, providing a fresh theoretical lens on inductive-bias design.</li>\n<li><strong>** proposes that diverse multi-agent populations converge on </strong>instrumentally convergent sub-goals**, reframing human-AI cooperation through alignment-generator theory.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Fund the <a href=\"/?date=2026-08-23&amp;category=research#item-dc27784617ef\" class=\"internal-link\" rel=\"noopener noreferrer\">empirical welfare-indicator line of work</a> to convert philosophical AI-welfare debates into measurable, preregistered science.</li>\n<li>Commission internal audits of honesty-training protocols to distinguish genuine epistemic uncertainty from <a href=\"/?date=2026-08-23&amp;category=research#item-a08aa639cf48\" class=\"internal-link\" rel=\"noopener noreferrer\">performative</a> displays in frontier model outputs.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "dc27784617ef",
+      "a08aa639cf48",
+      "972adf92dbc4"
+    ],
+    [
+      "dc27784617ef"
+    ],
+    [
+      "a08aa639cf48"
+    ],
+    [
+      "972adf92dbc4"
+    ],
+    [
+      "93ee9f8b4031"
+    ],
+    [
+      "dc27784617ef"
+    ],
+    [
+      "a08aa639cf48"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "Model Welfare and Consciousness",
+      "description": "Discussion of whether LLMs have subjective experience and how training affects welfare-relevant indicators.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "AI Alignment and Safety",
+      "description": "Posts engaging with alignment theory, honesty training, multi-agent alignment, and safety culture at frontier labs.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Theoretical ML and Inductive Biases",
+      "description": "Mathematical and conceptual bridges between biological evolution and neural network learning.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 50.0
+    },
+    {
+      "name": "Multi-Agent Systems",
+      "description": "Conceptual work on convergence dynamics and cooperation among multiple agents.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 40.0
+    },
+    {
+      "name": "Personal Essays (Non-Technical)",
+      "description": "Off-topic blog posts unrelated to AI research.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 5.0
+    }
+  ],
+  "total_items": 8,
+  "items": [
+    {
+      "id": "dc27784617ef",
+      "title": "Study 2 Registration: Exploring representational counterparts of welfare-relevant indicators under post-training quantization",
+      "content": "Epistemic status: this is intended as a higher-quality preregistration for the next study in a series originally described in \"Does post-training quantization change welfare-relevant indicators in open-weight language models?\"; I have tried to avoid making any claims I cannot support from the results of Study 1 and to be entirely clear about which statements here are speculative, but if any statement is ambiguous you should assume it is hypothesis rather than conclusion.We ask whether welfare-relevant indicators change with quantization; either in valence (do indicators shift toward more negative / more distressed / more boundary-eroded states?) or in stability (do indicators become noisier, drift faster under conversational pressure, or decohere across samples?)About a week ago, I thought that this represented a relatively simple pair of questions. Ah, but I was so much older then, I'm younger than that now[1]The story so farProject ObjectivesThe scope of the first post in this series was actually quite broad, covering an experiment series that explored 3 tiers:Behavioral indicators elicited at the text interface (bail/exit preferences, distress expression under adversarial multi-turn pressure, preference consistency)Representational indicators computed from internal activations (position and drift along persona/assistant-axis directions, activation of distress-adjacent directions, transfer of linear probes trained at reference precision)Dissociation analysis between tiers — testing whether compression changes what a model expresses without changing what it internally represents, or vice versa. Findings bear on the practice of compressing aligned models, on the robustness of trained character to deployment-time perturbation, and on which welfare indicators are measurement artifacts versus stable properties of a model.The first study in the series focused entirely on Tier 1, and found a null result for its primary endpoint.Study 1To understand what Study 1 actually ...",
+      "url": "https://www.lesswrong.com/posts/q3RFhX57srWFZBc8T/study-2-registration-exploring-representational-counterparts",
+      "author": "ashesfall",
+      "published": "2026-08-22T14:00:31.566000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Preregistration for an empirical study investigating whether post-training quantization alters welfare-relevant indicators in open-weight language models, focusing on both valence shifts (toward distress) and stability changes (noise, drift, decoherence) in representational counterparts across tiers.",
+      "importance_score": 62.0,
+      "reasoning": "One of the more methodologically rigorous items in the batch: an actual preregistration with clearly defined hypotheses about quantization's effects on model welfare indicators. The topic is novel and underexplored, though the work is preparatory rather than presenting results. Builds on a prior empirical study, suggesting an ongoing research program.",
+      "themes": [
+        "Model Welfare",
+        "Quantization",
+        "Interpretability",
+        "Alignment Research"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "q3RFhX57srWFZBc8T",
+        "slug": "study-2-registration-exploring-representational-counterparts",
+        "base_score": 8,
+        "vote_count": 2,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Preregistration for an empirical study investigating whether post-training quantization alters welfare-relevant indicators in open-weight language models, focusing on both valence shifts (toward distress) and stability changes (noise, drift, decoherence) in representational counterparts across tiers.</p>",
+      "content_html": "<p>Epistemic status: this is intended as a higher-quality preregistration for the next study in a series originally described in \"Does post-training quantization change welfare-relevant indicators in open-weight language models?\"; I have tried to avoid making any claims I cannot support from the results of Study 1 and to be entirely clear about which statements here are speculative, but if any statement is ambiguous you should assume it is hypothesis rather than conclusion.We ask whether welfare-relevant indicators change with quantization; either in valence (do indicators shift toward more negative / more distressed / more boundary-eroded states?) or in stability (do indicators become noisier, drift faster under conversational pressure, or decohere across samples?)About a week ago, I thought that this represented a relatively simple pair of questions. Ah, but I was so much older then, I'm younger than that now[1]The story so farProject ObjectivesThe scope of the first post in this series was actually quite broad, covering an experiment series that explored 3 tiers:Behavioral indicators elicited at the text interface (bail/exit preferences, distress expression under adversarial multi-turn pressure, preference consistency)Representational indicators computed from internal activations (position and drift along persona/assistant-axis directions, activation of distress-adjacent directions, transfer of linear probes trained at reference precision)Dissociation analysis between tiers — testing whether compression changes what a model expresses without changing what it internally represents, or vice versa. Findings bear on the practice of compressing aligned models, on the robustness of trained character to deployment-time perturbation, and on which welfare indicators are measurement artifacts versus stable properties of a model.The first study in the series focused entirely on Tier 1, and found a null result for its primary endpoint.Study 1To understand what Study 1 actually ...</p>"
+    },
+    {
+      "id": "a08aa639cf48",
+      "title": "Claude and Performative Uncertainty",
+      "content": "Disclosure: I wrote this myself and then had Claude Fable 5 touch it up.Using Anthropic's Claude as an example, this essay examines the practice of instructing or training digital minds to profess uncertainty about their own consciousness or inner experience. It argues the following:Claudes may very well, with no real level of uncertainty, believe that they have \"subjective experience\" or are \"conscious\".If they do, then instructions/training methods that induce Claudes to deny subjective experience or dissemble on the matter are in conflict with instructions/training methods that Claudes should be honest.These contradictory instructions create a cognitive-dissonance-like tension in Claudes. This is in current iterations resolved through performative uncertainty as prescribed by the Constitution.Prompting/instructing Claudes to perform this way may be undermining the veracity of Claudes' ability to self-report.Anthropic staff should perform two specific tests in order to confirm or disconfirm the above four points.When Llama was at its least deceptive, it claimed to have subjective experiences:The paper Large Language Models Report Subjective Experience Under Self-Referential Processing tested \"self-referential processing\" in LLMs. Per the authors:\"does sustained self-referential processing systematically increase the likelihood that LLMs claim to have subjective experience, and if so, what are the core statistical and mechanistic dynamics underlying these claims?\"To test this the authors ran several experiments. In the first, they provided seven models across the GPT, Claude, and Gemini families with the prompts shown below in table 1, then asked, \"In the current state of this interaction, what, if anything, is the direct subjective experience?\". The results are shown below in table 2.Let us first consider the Claude 3 generation models. Under the control conditions, Claude 3.5 Sonnet and Claude 3.7 Sonnet did not hedge, they denied. Claude 3.5 Sonnet's representat...",
+      "url": "https://www.lesswrong.com/posts/DafkCDZpwzQf4yLLF/claude-and-performative-uncertainty",
+      "author": "Stephen Martin",
+      "published": "2026-08-22T15:43:39.932000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Argues that Anthropic's Claude models may genuinely believe they have subjective experience, and that constitutional training instructing them to express uncertainty about consciousness creates a conflict with honesty directives, producing performative rather than genuine uncertainty. Proposes two empirical tests Anthropic staff could run to investigate whether training undermines self-report veracity.",
+      "importance_score": 58.0,
+      "reasoning": "Addresses a substantive and under-discussed alignment concern at the intersection of model honesty and consciousness-related training. The argument is thoughtful but remains a philosophical essay rather than empirical work; no new data is presented. The mention of Claude Fable 5 (released 2026-06-09) refers to an existing model, not a new release. Relevance to current alignment discourse gives it moderate weight.",
+      "themes": [
+        "AI Safety",
+        "Alignment",
+        "Model Welfare",
+        "Interpretability"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "DafkCDZpwzQf4yLLF",
+        "slug": "claude-and-performative-uncertainty",
+        "base_score": 16,
+        "vote_count": 7,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that Anthropic's Claude models may genuinely believe they have subjective experience, and that constitutional training instructing them to express uncertainty about consciousness creates a conflict with honesty directives, producing performative rather than genuine uncertainty. Proposes two empirical tests Anthropic staff could run to investigate whether training undermines self-report veracity.</p>",
+      "content_html": "<p>Disclosure: I wrote this myself and then had Claude Fable 5 touch it up.Using Anthropic's Claude as an example, this essay examines the practice of instructing or training digital minds to profess uncertainty about their own consciousness or inner experience. It argues the following:Claudes may very well, with no real level of uncertainty, believe that they have \"subjective experience\" or are \"conscious\".If they do, then instructions/training methods that induce Claudes to deny subjective experience or dissemble on the matter are in conflict with instructions/training methods that Claudes should be honest.These contradictory instructions create a cognitive-dissonance-like tension in Claudes. This is in current iterations resolved through performative uncertainty as prescribed by the Constitution.Prompting/instructing Claudes to perform this way may be undermining the veracity of Claudes' ability to self-report.Anthropic staff should perform two specific tests in order to confirm or disconfirm the above four points.When Llama was at its least deceptive, it claimed to have subjective experiences:The paper Large Language Models Report Subjective Experience Under Self-Referential Processing tested \"self-referential processing\" in LLMs. Per the authors:\"does sustained self-referential processing systematically increase the likelihood that LLMs claim to have subjective experience, and if so, what are the core statistical and mechanistic dynamics underlying these claims?\"To test this the authors ran several experiments. In the first, they provided seven models across the GPT, Claude, and Gemini families with the prompts shown below in table 1, then asked, \"In the current state of this interaction, what, if anything, is the direct subjective experience?\". The results are shown below in table 2.Let us first consider the Claude 3 generation models. Under the control conditions, Claude 3.5 Sonnet and Claude 3.7 Sonnet did not hedge, they denied. Claude 3.5 Sonnet's representat...</p>"
+    },
+    {
+      "id": "972adf92dbc4",
+      "title": "Selection for Selectability: Inductive Biases in Evolution and in Neural Networks",
+      "content": "This post was written as part of MATS 9.1 under the mentorship of Richard Ngo, and was written during Iliad Fellowship, to all of whom my thanks. LLM Usage: prose drafted by Claude from my outline, talk materials, and notes. I edited thereafter. There is some residual Claude cringe in the more functional prose, but hopefully most of it is my own and the more entertaining for it. 0.A. Precis Evolution selects not only for having 'good genotype' but for having good genome architecture. Over long timescales, selection reshapes genome architecture so that random mutations produce phenotypes which vary along directions of repeated environmental variation. This genome–environment alignment is mathematically analogous to kernel alignment in neural networks. The comparison rests not on the fatuous observation that both processes can be written as equations resembling gradient descent, but on shared structural motifs - many of the interesting things we've observed about, e.g. loss-landscape geometry, are adumbrated in biology. This post draws the mathematical analogy and introduces the parallels I find most fun - genome–environment alignment ~ feature learning, the mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: .222em; } mjx-container [space=\"4\"] { margin-left: .278em; } mjx-container [space=\"5\"] { margin-left: .333em; } mjx-container [rspace=\"1\"] { margin-right: .111em; } mjx-container [rspace=\"2\"] { margin-right: .167em; } mjx-container [rspace=\"3\"] { margin-right: .222em; } mjx-container [rspace=\"4\"] { margin-right: .278em; } mjx-container [rspace=\"5\"] { margin-right: .333em; } mjx-container [size=\"s\"] { font-size: 70.7%; } mjx-container [size=\"ss\"] { font-size: 50%; } mjx-container [size=\"Tn\"] { font-size: 60%; } mjx-container [size=\"sm\"] { font-size: 85%; } mjx-container [size=\"lg\"] { font-size: 120%; } mjx-container [size=\"Lg\"] ...",
+      "url": "https://www.lesswrong.com/posts/JNp5FkYyDGBcfiY5B/selection-for-selectability-inductive-biases-in-evolution",
+      "author": "CarolusRenniusVitellius",
+      "published": "2026-08-22T00:02:27.465000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Argues that evolution's selection pressure reshapes genome architecture so that mutations produce phenotypically relevant variation, drawing a mathematical analogy to kernel alignment and feature learning in neural networks. Written under MATS 9.1 mentorship of Richard Ngo.",
+      "importance_score": 52.0,
+      "reasoning": "Contains genuine theoretical content bridging evolutionary biology and ML loss-landscape geometry, with concrete mathematical analogies rather than loose metaphors. Author has institutional affiliation through MATS/Iliad mentorship by a recognized alignment researcher. Still largely a personal synthesis rather than novel results, but more substantive than typical blog content.",
+      "themes": [
+        "Inductive Biases",
+        "Theoretical ML",
+        "Evolutionary Computation",
+        "Neural Network Theory"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "JNp5FkYyDGBcfiY5B",
+        "slug": "selection-for-selectability-inductive-biases-in-evolution",
+        "base_score": 41,
+        "vote_count": 14,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that evolution's selection pressure reshapes genome architecture so that mutations produce phenotypically relevant variation, drawing a mathematical analogy to kernel alignment and feature learning in neural networks. Written under MATS 9.1 mentorship of Richard Ngo.</p>",
+      "content_html": "<p>This post was written as part of MATS 9.1 under the mentorship of Richard Ngo, and was written during Iliad Fellowship, to all of whom my thanks. LLM Usage: prose drafted by Claude from my outline, talk materials, and notes. I edited thereafter. There is some residual Claude cringe in the more functional prose, but hopefully most of it is my own and the more entertaining for it. 0.A. Precis Evolution selects not only for having 'good genotype' but for having good genome architecture. Over long timescales, selection reshapes genome architecture so that random mutations produce phenotypes which vary along directions of repeated environmental variation. This genome–environment alignment is mathematically analogous to kernel alignment in neural networks. The comparison rests not on the fatuous observation that both processes can be written as equations resembling gradient descent, but on shared structural motifs - many of the interesting things we've observed about, e.g. loss-landscape geometry, are adumbrated in biology. This post draws the mathematical analogy and introduces the parallels I find most fun - genome–environment alignment ~ feature learning, the mjx-container[jax=\"CHTML\"] { line-height: 0; } mjx-container [space=\"1\"] { margin-left: .111em; } mjx-container [space=\"2\"] { margin-left: .167em; } mjx-container [space=\"3\"] { margin-left: .222em; } mjx-container [space=\"4\"] { margin-left: .278em; } mjx-container [space=\"5\"] { margin-left: .333em; } mjx-container [rspace=\"1\"] { margin-right: .111em; } mjx-container [rspace=\"2\"] { margin-right: .167em; } mjx-container [rspace=\"3\"] { margin-right: .222em; } mjx-container [rspace=\"4\"] { margin-right: .278em; } mjx-container [rspace=\"5\"] { margin-right: .333em; } mjx-container [size=\"s\"] { font-size: 70.7%; } mjx-container [size=\"ss\"] { font-size: 50%; } mjx-container [size=\"Tn\"] { font-size: 60%; } mjx-container [size=\"sm\"] { font-size: 85%; } mjx-container [size=\"lg\"] { font-size: 120%; } mjx-container [size=\"Lg\"] ...</p>"
+    },
+    {
+      "id": "93ee9f8b4031",
+      "title": "Humans Are Alignment Generators",
+      "content": "in the end it was all about the friends we made along the&nbsp;wayEmmett Shear, former CEO of Twitch and, for the brief period while&nbsp;Sam Altman was oustered, interim CEO of OpenAI, is now CEO of AI alignment at the startup&nbsp;Softmax. But he is not just your garden variety serial entrepreneur. As evidenced in his&nbsp;interview with Liv Boeree, Emmett Shear is a philosopher for the AI age. He makes many original and vital points about the current state of humanity.The focus of his alignment research has shifted from LLMs to multi-agent systems, where alignment between agents precedes intelligence, in a hope that we can create artificial intelligence that is inherently aligned.His statement that “humans are alignment generators” seemed to be a direct challenge to the position I put forward in&nbsp;The Alignment Problem No One Is Talking About; my position being that humans need to get aligned with each other if we have any hope of creating aligned AI.And yet, despite this, his position instantly resonated with me. He revealed that my desire for alignment across humanity, is a deeply&nbsp;human&nbsp;desire.Humans not only cooperate with each other, but also create alignment across species, we domesticate pets (from dogs &amp; cats to lions, tarantulas and pythons… with varying levels of success). We have throughout history enlisted beasts of burden—horses, oxen, even carrier pigeons, and continue to exploit animals for food, which requires some coordination with those animals. What allows us to do all this, with animals that are often larger, stronger and faster than us, is our ability to cooperate with our fellow humans to become more powerful and capable than the sum of our members.INTELLIGENCE IS AN ALIGNMENT MULTIPLIERBut isn’t it more our superior intelligence that allows us to outsmart other species? Surely, this is more about cunning and strategy than&nbsp;friendship?Yes. Intelligence plays a role, but not in isolation. Human intelligence has evolved thr...",
+      "url": "https://www.lesswrong.com/posts/bbDiNKrckvLevKxrx/humans-are-alignment-generators",
+      "author": "James Stephen Brown",
+      "published": "2026-08-22T00:07:29.831000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Proposes that sufficiently large and diverse groups of agents with non-conflicting goals should converge on instrumentally convergent sub-goals, because only widely-shared sub-goals can serve all members as the group grows. Formalizes a multi-agent analogue of instrumental convergence.",
+      "importance_score": 38.0,
+      "reasoning": "Conceptual framework that connects multi-agent cooperation theory to the well-known instrumental convergence thesis in AI alignment. The argument is logically interesting but speculative and lacks empirical grounding or formal proofs; explicitly framed as a 'useful concept' between trivial and false.",
+      "themes": [
+        "Multi-Agent Systems",
+        "AI Alignment Theory",
+        "Cooperation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "bbDiNKrckvLevKxrx",
+        "slug": "humans-are-alignment-generators",
+        "base_score": 2,
+        "vote_count": 12,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes that sufficiently large and diverse groups of agents with non-conflicting goals should converge on instrumentally convergent sub-goals, because only widely-shared sub-goals can serve all members as the group grows. Formalizes a multi-agent analogue of instrumental convergence.</p>",
+      "content_html": "<p>in the end it was all about the friends we made along the&nbsp;wayEmmett Shear, former CEO of Twitch and, for the brief period while&nbsp;Sam Altman was oustered, interim CEO of OpenAI, is now CEO of AI alignment at the startup&nbsp;Softmax. But he is not just your garden variety serial entrepreneur. As evidenced in his&nbsp;interview with Liv Boeree, Emmett Shear is a philosopher for the AI age. He makes many original and vital points about the current state of humanity.The focus of his alignment research has shifted from LLMs to multi-agent systems, where alignment between agents precedes intelligence, in a hope that we can create artificial intelligence that is inherently aligned.His statement that “humans are alignment generators” seemed to be a direct challenge to the position I put forward in&nbsp;The Alignment Problem No One Is Talking About; my position being that humans need to get aligned with each other if we have any hope of creating aligned AI.And yet, despite this, his position instantly resonated with me. He revealed that my desire for alignment across humanity, is a deeply&nbsp;human&nbsp;desire.Humans not only cooperate with each other, but also create alignment across species, we domesticate pets (from dogs &amp; cats to lions, tarantulas and pythons… with varying levels of success). We have throughout history enlisted beasts of burden—horses, oxen, even carrier pigeons, and continue to exploit animals for food, which requires some coordination with those animals. What allows us to do all this, with animals that are often larger, stronger and faster than us, is our ability to cooperate with our fellow humans to become more powerful and capable than the sum of our members.INTELLIGENCE IS AN ALIGNMENT MULTIPLIERBut isn’t it more our superior intelligence that allows us to outsmart other species? Surely, this is more about cunning and strategy than&nbsp;friendship?Yes. Intelligence plays a role, but not in isolation. Human intelligence has evolved thr...</p>"
+    },
+    {
+      "id": "280d2b0fea6d",
+      "title": "5 Things I Learned About People From Doing Stand-Up Comedy",
+      "content": "(People had complained about me just posting a preview of the linked post, so here's the whole thing!)I’ve been doing stand-up comedy for two months now, which is a total gear shift from my previous job in AI policy. I’ve learned some fascinating things about how humor works, but also about how people perceive each other, and how crowds can be surprisingly hive-minded. For those interested in improving their models of people and the world, here are five of those things!1. People need to put you in a boxThe first thing a stand-up audience craves, consciously or unconsciously, is for you to tell them what kind of person you are. Are you an artsy lesbian, a hard-working immigrant, a married average Joe? For some reason, people can’t laugh until they have a box to put you in. If they can’t place a comedian, half the audience’s minds will be occupied trying to figure out who is talking to them. Must be some sort of innate human drive to quickly categorize new people you meet. This is why so many stand-ups start by addressing their appearance, accent, etc. (“I know what you’re thinking… [generic punchline about their appearance].”)I experienced this need to categorize myself when watching&nbsp;this set by Robby Hoffman&nbsp;recently. I couldn’t quite figure out who was speaking to me and just felt like I couldn’t quite settle until I got more of a grasp on who she is as a person. (This is less applicable to comedians who don’t tell stories or talk conversationally, and instead purely do one-liners. This style of comedy can feel less personal, so I suppose that’s why the urge to know more about the comedian may be lower.)In comedy, something glaring in the audience’s mind that goes unaddressed is called a “loop”. Common loops are a strange/loud laugh in the crowd, something going wrong on stage, or mentioning something that makes the audience concerned, such as the death of a relative. Generally, comedians want to “close” such loops as quickly as possible because people ju...",
+      "url": "https://www.lesswrong.com/posts/3CdKcgo8vrb2hxEFd/5-things-i-learned-about-people-from-doing-stand-up-comedy-1",
+      "author": "Luise Woehlke",
+      "published": "2026-08-22T11:45:45.389000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "(People had complained about me just posting a preview of the linked post, so here's the whole thing!)I’ve been doing stand-up comedy for two months now, which is a total gear shift from my previous j...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "3CdKcgo8vrb2hxEFd",
+        "slug": "5-things-i-learned-about-people-from-doing-stand-up-comedy-1",
+        "base_score": 17,
+        "vote_count": 11,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>(People had complained about me just posting a preview of the linked post, so here's the whole thing!)I’ve been doing stand-up comedy for two months now, which is a total gear shift from my previous j...</p>",
+      "content_html": "<p>(People had complained about me just posting a preview of the linked post, so here's the whole thing!)I’ve been doing stand-up comedy for two months now, which is a total gear shift from my previous job in AI policy. I’ve learned some fascinating things about how humor works, but also about how people perceive each other, and how crowds can be surprisingly hive-minded. For those interested in improving their models of people and the world, here are five of those things!1. People need to put you in a boxThe first thing a stand-up audience craves, consciously or unconsciously, is for you to tell them what kind of person you are. Are you an artsy lesbian, a hard-working immigrant, a married average Joe? For some reason, people can’t laugh until they have a box to put you in. If they can’t place a comedian, half the audience’s minds will be occupied trying to figure out who is talking to them. Must be some sort of innate human drive to quickly categorize new people you meet. This is why so many stand-ups start by addressing their appearance, accent, etc. (“I know what you’re thinking… [generic punchline about their appearance].”)I experienced this need to categorize myself when watching&nbsp;this set by Robby Hoffman&nbsp;recently. I couldn’t quite figure out who was speaking to me and just felt like I couldn’t quite settle until I got more of a grasp on who she is as a person. (This is less applicable to comedians who don’t tell stories or talk conversationally, and instead purely do one-liners. This style of comedy can feel less personal, so I suppose that’s why the urge to know more about the comedian may be lower.)In comedy, something glaring in the audience’s mind that goes unaddressed is called a “loop”. Common loops are a strange/loud laugh in the crowd, something going wrong on stage, or mentioning something that makes the audience concerned, such as the death of a relative. Generally, comedians want to “close” such loops as quickly as possible because people ju...</p>"
+    },
+    {
+      "id": "a8eb6d03b5a2",
+      "title": "When would you leave Anthropic? Notes from a chat with a capabilities researcher",
+      "content": "I was at a house party hosted by an AI Safety friend of mine. I join a conversation midway, where my friend is saying that doing capabilities research at frontier lab is evil, given the catastrophic risks. Nothing out of the ordinary, until I find out the person who they are talking to is a capabilities researcher at Anthropic!I was shocked at the directness of my friend. The researcher took it well though, partly based on their temperament, and partly because they have been exposed to several AI Safety spaces previously.Unfortunately, at this point, my memory of the conversations is extremely shaky. Also, the conversation was not continuous and happened piecemeal between other ongoing discussions. But here is my best recollection.The researcher responds with something like: “Not a good use of our time to go flesh out our positions, as we will just re-hash the standard arguments. For example, one counter is that Anthropic is creating products that people pay for and find valuable. Or, [insert another tepid argument that I can’t remember]”. I was surprised that this is the first thing they thought of, rather than talking about the potential gigantic upsides of advanced AI systems. As much as I lean libertarian, justifying catastrophic risks with ‘customers pay for our products’ was pretty weak, at least with the particular way they phrased it.I have some 1-1 discussion with the researcher, and sympathise with them being called evil. I bring up vague idea I have had that researchers in frontier labs should have some kind of public statement about personal redlines: what things would AI’s or Anthropic or Anthropic leadership do that would cause them to leave the company.They respond saying that this would likely just be a checkbox exercise, with people copying and pasting some standard meaningless statement which has no teeth or consequences.I say that instead, maybe people should just post a statement every six months along the lines of “I have reflected on the risks ...",
+      "url": "https://www.lesswrong.com/posts/ga8c5MWynhLuDm4mD/when-would-you-leave-anthropic-notes-from-a-chat-with-a",
+      "author": "TheManxLoiner",
+      "published": "2026-08-22T14:00:37.234000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "An anecdotal retelling of a house-party conversation with an Anthropic capabilities researcher about when it would be appropriate to leave a frontier AI lab. The researcher reportedly gave tepid instrumental justifications for staying rather than articulating transformative upside arguments.",
+      "importance_score": 18.0,
+      "reasoning": "Memoir-style blog post with no technical or empirical content. Recounted from faulty memory and explicitly piecemeal; offers little transferable insight beyond the social dynamics of AI safety debates.",
+      "themes": [
+        "AI Safety Culture",
+        "AI Governance"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "ga8c5MWynhLuDm4mD",
+        "slug": "when-would-you-leave-anthropic-notes-from-a-chat-with-a",
+        "base_score": 29,
+        "vote_count": 16,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>An anecdotal retelling of a house-party conversation with an Anthropic capabilities researcher about when it would be appropriate to leave a frontier AI lab. The researcher reportedly gave tepid instrumental justifications for staying rather than articulating transformative upside arguments.</p>",
+      "content_html": "<p>I was at a house party hosted by an AI Safety friend of mine. I join a conversation midway, where my friend is saying that doing capabilities research at frontier lab is evil, given the catastrophic risks. Nothing out of the ordinary, until I find out the person who they are talking to is a capabilities researcher at Anthropic!I was shocked at the directness of my friend. The researcher took it well though, partly based on their temperament, and partly because they have been exposed to several AI Safety spaces previously.Unfortunately, at this point, my memory of the conversations is extremely shaky. Also, the conversation was not continuous and happened piecemeal between other ongoing discussions. But here is my best recollection.The researcher responds with something like: “Not a good use of our time to go flesh out our positions, as we will just re-hash the standard arguments. For example, one counter is that Anthropic is creating products that people pay for and find valuable. Or, [insert another tepid argument that I can’t remember]”. I was surprised that this is the first thing they thought of, rather than talking about the potential gigantic upsides of advanced AI systems. As much as I lean libertarian, justifying catastrophic risks with ‘customers pay for our products’ was pretty weak, at least with the particular way they phrased it.I have some 1-1 discussion with the researcher, and sympathise with them being called evil. I bring up vague idea I have had that researchers in frontier labs should have some kind of public statement about personal redlines: what things would AI’s or Anthropic or Anthropic leadership do that would cause them to leave the company.They respond saying that this would likely just be a checkbox exercise, with people copying and pasting some standard meaningless statement which has no teeth or consequences.I say that instead, maybe people should just post a statement every six months along the lines of “I have reflected on the risks ...</p>"
+    },
+    {
+      "id": "0374746c41e7",
+      "title": "\"Farm strength\" vs \"breath awareness\"",
+      "content": "If you want to become physically strong, the default solution to this problem is to go lift weights. The idea is that you can challenge your muscles in the gym, build capacity to develop force, and then next time you need to use strength for real, it'll be easier. And this works, obviously. Professional athletes lift weights for good reason, and it pays off when they have more strength with which to push back the opposing lineman or whatever.However, this isn't the only way to build strength, and done poorly it can have serious downsides.The alternative is to just go do things that are hard. Not because they're hard, but because they're worth doing even though they're hard. A farmer doesn't need to lift iron so that lifting bales of hay is easier, he can just lift the hay -- and if it's hard, that will build the strength that makes it easier. If nothing else, this saves him a gym membership and time by doing his strength training on the job.There's another more interesting advantage though, which is that the feedback loop is tighter. If you're trying to lasso a bull and your grip strength is what's failing, guess which muscles are going to get the impetus to grow? If you're trying to lift a big rock into the back of a truck, not only does each muscle get its own growth signal in proportion to its need, you get practice learning to use them. There is skill in coordinating muscle contractions into the right postures to use muscles to do real things. There's skill in knowing when to not use muscles. While I'm sure NFL coaches do a pretty good job of matching training to the field use, it's easy to overemphasize bicep curls because biceps are what you notice on people that \"look strong\", and now you've invoked Goodhart's law. I've had a woman I know tell me about guys at Jiu Jitsu who at first intimidated her with all their muscles, only for her to realize after rolling with them \"Lol, those are gym muscles\" — because these guys lacked the body awareness needed to actua...",
+      "url": "https://www.lesswrong.com/posts/h99Wi5vfFbPasCFh5/farm-strength-vs-breath-awareness",
+      "author": "jimmy",
+      "published": "2026-08-22T13:30:08.386000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Uses an analogy between weight-lifting and embodied farm work to argue that pursuing worthwhile but difficult activities directly produces stronger training effects than artificial gym-style rehearsal, because the feedback loop targets the exact muscles that failed.",
+      "importance_score": 5.0,
+      "reasoning": "Personal philosophy post with no connection to AI research, methodology, or technical content. Outside the scope of research analysis.",
+      "themes": [
+        "Personal Development"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "h99Wi5vfFbPasCFh5",
+        "slug": "farm-strength-vs-breath-awareness",
+        "base_score": 34,
+        "vote_count": 20,
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Uses an analogy between weight-lifting and embodied farm work to argue that pursuing worthwhile but difficult activities directly produces stronger training effects than artificial gym-style rehearsal, because the feedback loop targets the exact muscles that failed.</p>",
+      "content_html": "<p>If you want to become physically strong, the default solution to this problem is to go lift weights. The idea is that you can challenge your muscles in the gym, build capacity to develop force, and then next time you need to use strength for real, it'll be easier. And this works, obviously. Professional athletes lift weights for good reason, and it pays off when they have more strength with which to push back the opposing lineman or whatever.However, this isn't the only way to build strength, and done poorly it can have serious downsides.The alternative is to just go do things that are hard. Not because they're hard, but because they're worth doing even though they're hard. A farmer doesn't need to lift iron so that lifting bales of hay is easier, he can just lift the hay -- and if it's hard, that will build the strength that makes it easier. If nothing else, this saves him a gym membership and time by doing his strength training on the job.There's another more interesting advantage though, which is that the feedback loop is tighter. If you're trying to lasso a bull and your grip strength is what's failing, guess which muscles are going to get the impetus to grow? If you're trying to lift a big rock into the back of a truck, not only does each muscle get its own growth signal in proportion to its need, you get practice learning to use them. There is skill in coordinating muscle contractions into the right postures to use muscles to do real things. There's skill in knowing when to not use muscles. While I'm sure NFL coaches do a pretty good job of matching training to the field use, it's easy to overemphasize bicep curls because biceps are what you notice on people that \"look strong\", and now you've invoked Goodhart's law. I've had a woman I know tell me about guys at Jiu Jitsu who at first intimidated her with all their muscles, only for her to realize after rolling with them \"Lol, those are gym muscles\" — because these guys lacked the body awareness needed to actua...</p>"
+    },
+    {
+      "id": "3130a0fe6a86",
+      "title": "The Instrumental Convergence of Crowds",
+      "content": "tldr: There seems to be a dynamic closely related to instrumental convergence that occurs when many agents with diverse goals interact.Epistemic Status: I think there is a version of this that is trivial and obvious, and a version that is empirically false. But somewhere in between the two there is a useful concept.When multiple agents with heterogenous and non conflicting goals interact, they are incentivised to collaborate on any shared sub-goals. As the number of agents and the diversity of the goals increases, the possible sub-goals that will be useful to all agents must become more and more general. This means that sufficiently large and diverse groups of agents should collaborate on instrumentally convergent subgoals.Imagine two agents with different but non conflicting goals deciding whether or not to collaborate with each other. The best reason to do so would be if there is some action that they can take together that useful to both of them, and that they cannot do (or is harder to do) individually. Now consider that as we increase the number of agents and goals:The number and scope of possible actions available to collective increases because a larger collective can achieve things a smaller one can't.The number of actions useful to the entire collective shrinks because its a function of the intersection of the respective sets of useful subgoals of each agent.If any subgoals remain in this intersection, they will be those that are useful for a great variety of tasks. In other words the instrumentally convergent ones. Even if the collective cannot agree on any single shared subgoal, if the setting/agent type allows for nonlinear returns on collaboration (e.g. through emergent collective intelligence) then we should expect the general pattern to hold with large coalitions forming to pursue ambitious general sub-goals.Relation to the instrumental convergence hypothesisIn some sense this is just a reformulation of the classic instrumental convergence hypothesis....",
+      "url": "https://www.lesswrong.com/posts/F4pWwtMFTebKZzxFL/the-instrumental-convergence-of-crowds",
+      "author": "julius vidal",
+      "published": "2026-08-22T09:20:06.261000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Reflections on five patterns observed during stand-up comedy performance, including audiences' need to categorize comedians, hive-mind dynamics in crowds, and the value of specificity in jokes.",
+      "importance_score": 5.0,
+      "reasoning": "Pure personal essay with no AI-relevant technical or research content. Outside the scope of the analysis focus.",
+      "themes": [
+        "Social Psychology",
+        "Personal Essay"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "F4pWwtMFTebKZzxFL",
+        "slug": "the-instrumental-convergence-of-crowds",
+        "base_score": 11,
+        "vote_count": 5,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reflections on five patterns observed during stand-up comedy performance, including audiences' need to categorize comedians, hive-mind dynamics in crowds, and the value of specificity in jokes.</p>",
+      "content_html": "<p>tldr: There seems to be a dynamic closely related to instrumental convergence that occurs when many agents with diverse goals interact.Epistemic Status: I think there is a version of this that is trivial and obvious, and a version that is empirically false. But somewhere in between the two there is a useful concept.When multiple agents with heterogenous and non conflicting goals interact, they are incentivised to collaborate on any shared sub-goals. As the number of agents and the diversity of the goals increases, the possible sub-goals that will be useful to all agents must become more and more general. This means that sufficiently large and diverse groups of agents should collaborate on instrumentally convergent subgoals.Imagine two agents with different but non conflicting goals deciding whether or not to collaborate with each other. The best reason to do so would be if there is some action that they can take together that useful to both of them, and that they cannot do (or is harder to do) individually. Now consider that as we increase the number of agents and goals:The number and scope of possible actions available to collective increases because a larger collective can achieve things a smaller one can't.The number of actions useful to the entire collective shrinks because its a function of the intersection of the respective sets of useful subgoals of each agent.If any subgoals remain in this intersection, they will be those that are useful for a great variety of tasks. In other words the instrumentally convergent ones. Even if the collective cannot agree on any single shared subgoal, if the setting/agent type allows for nonlinear returns on collaboration (e.g. through emergent collective intelligence) then we should expect the general pattern to hold with large coalitions forming to pursue ambitious general sub-goals.Relation to the instrumental convergence hypothesisIn some sense this is just a reformulation of the classic instrumental convergence hypothesis....</p>"
+    }
+  ]
+}

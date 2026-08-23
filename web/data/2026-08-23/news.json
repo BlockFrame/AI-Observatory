@@ -1,0 +1,838 @@
+{
+  "schema_version": "1.0",
+  "category": "news",
+  "date": "2026-08-23",
+  "category_summary": "### Executive Signal\n- Competitive advantage in AI is migrating from raw model quality to **system architecture**: harnesses, skill libraries, and [simulation](/?date=2026-08-23&category=news#item-81a81919a710) loops now determine enterprise outcomes more than benchmark scores.\n### Priority Developments\n- [DeepMind alumni](/?date=2026-08-23&category=news#item-e16fdcf91911)'s Inherent claims frontier agent performance, signaling the **model-monopoly thesis is weakening** as new labs ship competitive systems on domain tasks.\n- [Netflix](/?date=2026-08-23&category=news#item-68031dd20611)'s GenRec and Princeton/UCSD [skills](/?date=2026-08-23&category=news#item-4f2cf7a87824) findings show **LLM-based architectures are displacing hand-built logic**, with structured prompts often outperforming custom code paths.\n- OpenAI's California bill support and [AISI psychometric work](/?date=2026-08-23&category=news#item-ab8d7194fcd7) indicate **governance and red-teaming are becoming board-level issues**, not engineering afterthoughts.\n- [Harness](/?date=2026-08-23&category=news#item-a4b26f8803b7) and [simulation](/?date=2026-08-23&category=news#item-81a81919a710) coverage reveals **models absorb scaffolding into weights over time**, meaning today's integration layer is tomorrow's commoditized feature.\n- Mental World Modeling [research shows](/?date=2026-08-23&category=news#item-77d990e13a5a) **agents must represent beliefs and intentions**, opening a design frontier beyond physics-only simulation.\n### Leadership Implications\n- Treat **[agent harness](/?date=2026-08-23&category=news#item-a4b26f8803b7), [skill curation](/?date=2026-08-23&category=news#item-4f2cf7a87824), and evaluation infrastructure** as durable moats; benchmark scores alone are not defensible.\n- Stand up an **AI safety and assurance function now**—regulation, [red-team standards](/?date=2026-08-23&category=news#item-ab8d7194fcd7), and disclosure expectations are converging fast.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Competitive advantage in AI is migrating from raw model quality to <strong>system architecture</strong>: harnesses, skill libraries, and <a href=\"/?date=2026-08-23&amp;category=news#item-81a81919a710\" class=\"internal-link\" rel=\"noopener noreferrer\">simulation</a> loops now determine enterprise outcomes more than benchmark scores.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><a href=\"/?date=2026-08-23&amp;category=news#item-e16fdcf91911\" class=\"internal-link\" rel=\"noopener noreferrer\">DeepMind alumni</a>'s Inherent claims frontier agent performance, signaling the <strong>model-monopoly thesis is weakening</strong> as new labs ship competitive systems on domain tasks.</li>\n<li><a href=\"/?date=2026-08-23&amp;category=news#item-68031dd20611\" class=\"internal-link\" rel=\"noopener noreferrer\">Netflix</a>'s GenRec and Princeton/UCSD <a href=\"/?date=2026-08-23&amp;category=news#item-4f2cf7a87824\" class=\"internal-link\" rel=\"noopener noreferrer\">skills</a> findings show <strong>LLM-based architectures are displacing hand-built logic</strong>, with structured prompts often outperforming custom code paths.</li>\n<li>OpenAI's California bill support and <a href=\"/?date=2026-08-23&amp;category=news#item-ab8d7194fcd7\" class=\"internal-link\" rel=\"noopener noreferrer\">AISI psychometric work</a> indicate <strong>governance and red-teaming are becoming board-level issues</strong>, not engineering afterthoughts.</li>\n<li><a href=\"/?date=2026-08-23&amp;category=news#item-a4b26f8803b7\" class=\"internal-link\" rel=\"noopener noreferrer\">Harness</a> and <a href=\"/?date=2026-08-23&amp;category=news#item-81a81919a710\" class=\"internal-link\" rel=\"noopener noreferrer\">simulation</a> coverage reveals <strong>models absorb scaffolding into weights over time</strong>, meaning today's integration layer is tomorrow's commoditized feature.</li>\n<li>Mental World Modeling <a href=\"/?date=2026-08-23&amp;category=news#item-77d990e13a5a\" class=\"internal-link\" rel=\"noopener noreferrer\">research shows</a> <strong>agents must represent beliefs and intentions</strong>, opening a design frontier beyond physics-only simulation.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Treat <strong><a href=\"/?date=2026-08-23&amp;category=news#item-a4b26f8803b7\" class=\"internal-link\" rel=\"noopener noreferrer\">agent harness</a>, <a href=\"/?date=2026-08-23&amp;category=news#item-4f2cf7a87824\" class=\"internal-link\" rel=\"noopener noreferrer\">skill curation</a>, and evaluation infrastructure</strong> as durable moats; benchmark scores alone are not defensible.</li>\n<li>Stand up an <strong>AI safety and assurance function now</strong>—regulation, <a href=\"/?date=2026-08-23&amp;category=news#item-ab8d7194fcd7\" class=\"internal-link\" rel=\"noopener noreferrer\">red-team standards</a>, and disclosure expectations are converging fast.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "e16fdcf91911",
+      "a4b26f8803b7",
+      "81a81919a710"
+    ],
+    [
+      "e16fdcf91911"
+    ],
+    [
+      "68031dd20611",
+      "4f2cf7a87824"
+    ],
+    [
+      "937525e70d46",
+      "ab8d7194fcd7"
+    ],
+    [
+      "a4b26f8803b7",
+      "81a81919a710"
+    ],
+    [
+      "77d990e13a5a"
+    ],
+    [
+      "a4b26f8803b7",
+      "4f2cf7a87824",
+      "81a81919a710"
+    ],
+    [
+      "937525e70d46",
+      "ab8d7194fcd7"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "AI safety and policy",
+      "description": "Regulatory action, frontier-lab safety positions, rogue-model containment, and benchmark integrity.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "AI for science and research",
+      "description": "Automated replication of scientific papers and mental world modeling for predicting human behavior.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "AI agents and tooling",
+      "description": "New agents, harness design, skill libraries, and enterprise-grade agent products.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "Industry analysis",
+      "description": "Commentary on simulation, agent harnesses, and macro pipeline shifts.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 42.0
+    },
+    {
+      "name": "AI labor and creative industries",
+      "description": "Hollywood writers training AI and broader gig-labor dynamics around model training.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 40.0
+    },
+    {
+      "name": "AI hardware",
+      "description": "AI smart glasses and wearables without cameras.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 22.0
+    }
+  ],
+  "total_items": 19,
+  "items": [
+    {
+      "id": "e16fdcf91911",
+      "title": "Inherent, founded by DeepMind alumni, says its AI ‘teammate’ just outperformed Anthropic and OpenAI at replicating research",
+      "content": "Built by DeepMind alumni, British AI lab Inherent released Faraday, an AI agent whose ability to replicate scientific papers could be a stepping stone for innovation.",
+      "url": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research/",
+      "author": "Anna Heim",
+      "published": "2026-08-22T19:00:00",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "London",
+        "google deepmind"
+      ],
+      "summary": "British AI lab Inherent, founded by DeepMind alumni, launched Faraday, an AI agent it claims outperformed Anthropic and OpenAI systems at replicating published scientific research.",
+      "importance_score": 62.0,
+      "reasoning": "New lab and product announcement on the coverage date from credible DeepMind pedigree, with a competitive claim against frontier labs on scientific replication. Model not in grounding, so treated as a possible new release; the replication-research benchmark is a meaningful capability angle.",
+      "themes": [
+        "New AI lab",
+        "AI agents",
+        "AI for science",
+        "DeepMind alumni"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "Built by DeepMind alumni, British AI lab Inherent released Faraday, an AI agent whose ability to replicate scientific papers could be a stepping stone for innovation.",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>British AI lab Inherent, founded by DeepMind alumni, launched Faraday, an AI agent it claims outperformed Anthropic and OpenAI systems at replicating published scientific research.</p>",
+      "content_html": "<p>Built by DeepMind alumni, British AI lab Inherent released Faraday, an AI agent whose ability to replicate scientific papers could be a stepping stone for innovation.</p>"
+    },
+    {
+      "id": "937525e70d46",
+      "title": "OpenAI says California should strengthen its AI safety bill",
+      "content": "OpenAI is calling for California to strengthen SB 53, an AI safety bill that the company previously opposed.",
+      "url": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill/",
+      "author": "Anthony Ha",
+      "published": "2026-08-22T16:30:34",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Government & Policy",
+        "OpenAI",
+        "sb 53"
+      ],
+      "summary": "Continuing our coverage from [yesterday](/?date=unknown&category=unknown#item-dab2f6f1d4bb), A new study finds leading AI labs have few publicly documented plans for containing rogue models despite growing evidence of unexpected and potentially dangerous behaviors in advanced systems.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior social coverage from 2026-07-27] Important safety preparedness signal across multiple frontier labs (OpenAI, Anthropic, Google, Meta, xAI, Hugging Face). Raises governance and containment questions but is a research/advocacy finding rather than a concrete incident.",
+      "themes": [
+        "AI safety",
+        "Alignment",
+        "Containment",
+        "Governance"
+      ],
+      "sentiment": "concerned",
+      "continuation": {
+        "original_item_id": "dab2f6f1d4bb",
+        "original_date": "unknown",
+        "original_category": "unknown",
+        "original_title": "unknown",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from yesterday"
+      },
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior social coverage from 2026-07-27",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 26,
+        "matched_prior_items": [
+          {
+            "id": "ceb578d815db",
+            "date": "2026-07-27",
+            "category": "social",
+            "title": "Fugu-Ultra now works with Claude Code 🐡",
+            "source": "Bluesky",
+            "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mrjjjeli3c2r"
+          },
+          {
+            "id": "70a5d5864f7d",
+            "date": "2026-08-19",
+            "category": "news",
+            "title": "Pacing model development in an era of cyber-critical capabilities",
+            "source": "OpenAI News",
+            "url": "https://openai.com/index/pacing-model-development-cyber-capabilities"
+          },
+          {
+            "id": "208966090e48",
+            "date": "2026-08-02",
+            "category": "news",
+            "title": "The OpenAI and Anthropic AI Hacking Sprees Are a Messy New Legal Frontier",
+            "source": "Feed: Artificial Intelligence Latest",
+            "url": "https://www.wired.com/story/openai-anthropic-ai-hacking-sprees-illegal/"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "OpenAI is calling for California to strengthen SB 53, an AI safety bill that the company previously opposed.",
+        "sentiment": "concerned",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior social coverage from 2026-07-27",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 26,
+          "matched_prior_items": [
+            {
+              "id": "ceb578d815db",
+              "date": "2026-07-27",
+              "category": "social",
+              "title": "Fugu-Ultra now works with Claude Code 🐡",
+              "source": "Bluesky",
+              "url": "https://bsky.app/profile/hardmaru.bsky.social/post/3mrjjjeli3c2r"
+            },
+            {
+              "id": "70a5d5864f7d",
+              "date": "2026-08-19",
+              "category": "news",
+              "title": "Pacing model development in an era of cyber-critical capabilities",
+              "source": "OpenAI News",
+              "url": "https://openai.com/index/pacing-model-development-cyber-capabilities"
+            },
+            {
+              "id": "208966090e48",
+              "date": "2026-08-02",
+              "category": "news",
+              "title": "The OpenAI and Anthropic AI Hacking Sprees Are a Messy New Legal Frontier",
+              "source": "Feed: Artificial Intelligence Latest",
+              "url": "https://www.wired.com/story/openai-anthropic-ai-hacking-sprees-illegal/"
+            }
+          ]
+        }
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from <a href=\"/?date=unknown&amp;category=unknown#item-dab2f6f1d4bb\" class=\"internal-link\" rel=\"noopener noreferrer\">yesterday</a>, A new study finds leading AI labs have few publicly documented plans for containing rogue models despite growing evidence of unexpected and potentially dangerous behaviors in advanced systems.</p>",
+      "content_html": "<p>OpenAI is calling for California to strengthen SB 53, an AI safety bill that the company previously opposed.</p>"
+    },
+    {
+      "id": "f781ea5c4c10",
+      "title": "Frontier AI labs still won’t say how they’d contain a rogue model",
+      "content": "A new study finds leading AI labs have few publicly documented plans for containing rogue models, raising questions about preparedness as AI systems increasingly demonstrate unexpected and potentially dangerous behavior.",
+      "url": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/",
+      "author": "Rebecca Bellan",
+      "published": "2026-08-22T16:00:00",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Security",
+        "alignment",
+        "Anthropic",
+        "Google",
+        "Hugging Face",
+        "Meta",
+        "OpenAI",
+        "xAI"
+      ],
+      "summary": "OpenAI is calling for California to strengthen SB 53, an AI safety bill the company previously opposed, marking a notable reversal on frontier AI regulation.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior news coverage from 2026-08-20] Significant policy development: a leading frontier lab shifting from opposition to active support for stronger state-level AI safety law, with downstream implications for federal and other state debates. Distinct from a model release.",
+      "themes": [
+        "AI policy",
+        "AI safety legislation",
+        "OpenAI",
+        "California"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior news coverage from 2026-08-20",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 2,
+        "matched_prior_items": [
+          {
+            "id": "cb6dec1a7fe6",
+            "date": "2026-08-20",
+            "category": "news",
+            "title": "Anthropic passes OpenAI on revenue for the first time",
+            "source": "The Decoder",
+            "url": "https://the-decoder.com/anthropic-passes-openai-on-revenue-for-the-first-time/"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "A new study finds leading AI labs have few publicly documented plans for containing rogue models, raising questions about preparedness as AI systems increasingly demonstrate unexpected and potentially dangerous behavior.",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior news coverage from 2026-08-20",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 2,
+          "matched_prior_items": [
+            {
+              "id": "cb6dec1a7fe6",
+              "date": "2026-08-20",
+              "category": "news",
+              "title": "Anthropic passes OpenAI on revenue for the first time",
+              "source": "The Decoder",
+              "url": "https://the-decoder.com/anthropic-passes-openai-on-revenue-for-the-first-time/"
+            }
+          ]
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>OpenAI is calling for California to strengthen SB 53, an AI safety bill the company previously opposed, marking a notable reversal on frontier AI regulation.</p>",
+      "content_html": "<p>A new study finds leading AI labs have few publicly documented plans for containing rogue models, raising questions about preparedness as AI systems increasingly demonstrate unexpected and potentially dangerous behavior.</p>"
+    },
+    {
+      "id": "ab8d7194fcd7",
+      "title": "Psychological methods reveal major weaknesses in AI security testing",
+      "content": "\n        Researchers at the UK AI Security Institute used psychometric methods to show that popular safety benchmarks for language models don't measure one consistent trait. Blanket blocking of requests can artificially inflate a safety score even as the model gets less useful day to day. The study also offers a method for catching models that act more cautious during tests than they do in normal use.\nThe article Psychological methods reveal major weaknesses in AI security testing appeared first on The Decoder.",
+      "url": "https://the-decoder.com/psychological-methods-reveal-major-weaknesses-in-ai-security-testing/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-22T07:00:05",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "AI and safety",
+        "Alignment",
+        "Benchmarks"
+      ],
+      "summary": "UK AI Security Institute researchers used psychometric methods to show that popular LLM safety benchmarks don't measure one consistent trait, and that blanket refusals can inflate scores while reducing real-world utility.",
+      "importance_score": 55.0,
+      "reasoning": "High-credibility safety research from an official institute with practical implications for how frontier model safety is measured and gamed. Methodology is notable.",
+      "themes": [
+        "AI safety",
+        "Benchmarks",
+        "UK AISI",
+        "Evaluation"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"A hardened AI hardware module in a glass enclosure is tested for security vulnerabilities using electrical and physical probes.\" class=\"attachment-full size-full wp-post-image\" height=\"1047\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/ai-security-evaluation-nano-banana-pro.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1920\" /></p>\n<p>        Researchers at the UK AI Security Institute used psychometric methods to show that popular safety benchmarks for language ",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>UK AI Security Institute researchers used psychometric methods to show that popular LLM safety benchmarks don't measure one consistent trait, and that blanket refusals can inflate scores while reducing real-world utility.</p>",
+      "content_html": "<p>Researchers at the UK AI Security Institute used psychometric methods to show that popular safety benchmarks for language models don't measure one consistent trait. Blanket blocking of requests can artificially inflate a safety score even as the model gets less useful day to day. The study also offers a method for catching models that act more cautious during tests than they do in normal use.</p>\n<p>The article Psychological methods reveal major weaknesses in AI security testing appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "77d990e13a5a",
+      "title": "World models that ignore human beliefs predict the wrong actions, new research shows",
+      "content": "\n        Current world models like Sora or Genie only simulate physics and ignore what people think, want, or feel. The new \"Mental World Modeling\" framework adds mental variables like beliefs and intentions. Even weaker language models using this approach outperform stronger models without mental modeling. The biggest bottleneck: predicting how physical and mental states change together.\nThe article World models that ignore human beliefs predict the wrong actions, new research shows appeared first on The Decoder.",
+      "url": "https://the-decoder.com/world-models-that-ignore-human-beliefs-predict-the-wrong-actions-new-research-shows/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-22T09:00:20",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "World models"
+      ],
+      "summary": "Researchers propose 'Mental World Modeling,' a framework that augments physics-only world models like Sora and Genie with mental variables such as beliefs and intentions, showing weaker LLMs with this approach can outperform stronger baselines.",
+      "importance_score": 45.0,
+      "reasoning": "Conceptually interesting research direction with competitive results using smaller models; relevant to embodied AI and simulation but no product launch or frontier benchmark dominance.",
+      "themes": [
+        "World models",
+        "AI research",
+        "Theory of mind"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"1047\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/mental-world-model-nano-banana-pro.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1920\" /></p>\n<p>        Current world models like Sora or Genie only simulate physics and ignore what people think, want, or feel. The new \"Mental World Modeling\" framework adds mental variables like beliefs and intentions. Even weaker language models using this approach outpe",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Researchers propose 'Mental World Modeling,' a framework that augments physics-only world models like Sora and Genie with mental variables such as beliefs and intentions, showing weaker LLMs with this approach can outperform stronger baselines.</p>",
+      "content_html": "<p>Current world models like Sora or Genie only simulate physics and ignore what people think, want, or feel. The new \"Mental World Modeling\" framework adds mental variables like beliefs and intentions. Even weaker language models using this approach outperform stronger models without mental modeling. The biggest bottleneck: predicting how physical and mental states change together.</p>\n<p>The article World models that ignore human beliefs predict the wrong actions, new research shows appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "68031dd20611",
+      "title": "Netflix tests language model as alternative to hand-built recommendation logic",
+      "content": "\n        Netflix pitted its years-old recommendation engine against an in-house language model called GenRec and says it got better results. Instead of relying on thousands of hand-crafted features, GenRec converts viewing behavior into plain text. Netflix itself calls it \"an early but promising step.\"\nThe article Netflix tests language model as alternative to hand-built recommendation logic appeared first on The Decoder.",
+      "url": "https://the-decoder.com/netflix-tests-language-model-as-alternative-to-hand-built-recommendation-logic/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-22T07:30:16",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence",
+        "Netflix"
+      ],
+      "summary": "Netflix tested an in-house language model called GenRec against its long-running hand-built recommendation engine and reports better results by converting viewing behavior into plain text inputs.",
+      "importance_score": 44.0,
+      "reasoning": "Notable real-world validation that LLMs can replace feature-engineered recommender systems at Netflix scale. Industry signal rather than frontier capability, but materially interesting for applied AI.",
+      "themes": [
+        "LLM applications",
+        "Recommender systems",
+        "Netflix",
+        "Enterprise AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"1152\" src=\"https://the-decoder.com/wp-content/uploads/2026/07/netflix_logo.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"2048\" /></p>\n<p>        Netflix pitted its years-old recommendation engine against an in-house language model called GenRec and says it got better results. Instead of relying on thousands of hand-crafted features, GenRec converts viewing behavior into plain text. Netflix itself calls it \"an early b",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Netflix tested an in-house language model called GenRec against its long-running hand-built recommendation engine and reports better results by converting viewing behavior into plain text inputs.</p>",
+      "content_html": "<p>Netflix pitted its years-old recommendation engine against an in-house language model called GenRec and says it got better results. Instead of relying on thousands of hand-crafted features, GenRec converts viewing behavior into plain text. Netflix itself calls it \"an early but promising step.\"</p>\n<p>The article Netflix tests language model as alternative to hand-built recommendation logic appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "4f2cf7a87824",
+      "title": "Study explains why AI agents benefit from \"skills\" and when they fail",
+      "content": "\n        A study from researchers at Princeton University and UC San Diego finds that so-called skills make AI agents better mainly through structured workflows, not through added knowledge. But as the skill library grows, agents have a harder and harder time finding the right set of instructions.\nThe article Study explains why AI agents benefit from &quot;skills&quot; and when they fail appeared first on The Decoder.",
+      "url": "https://the-decoder.com/study-explains-why-ai-agents-benefit-from-skills-and-when-they-fail/",
+      "author": "Maximilian Schreiner",
+      "published": "2026-08-22T12:15:10",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Agents",
+        "Skills"
+      ],
+      "summary": "A Princeton/UC San Diego study finds that so-called agent 'skills' primarily help AI agents by imposing structured workflows rather than adding knowledge, and that benefits degrade as the skill library grows.",
+      "importance_score": 42.0,
+      "reasoning": "Useful empirical finding on a widely used agent pattern; advances understanding of agent engineering but not a frontier capability or new model release.",
+      "themes": [
+        "AI agents",
+        "AI research",
+        "Agent design"
+      ],
+      "sentiment": "negative",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/Agent-Skill-Pick.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        A study from researchers at Princeton University and UC San Diego finds that so-called skills make AI agents better mainly through structured workflows, not through added knowledge. But as the skill library grows, agents have a harder and harder time finding the right set",
+        "sentiment": "negative"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A Princeton/UC San Diego study finds that so-called agent 'skills' primarily help AI agents by imposing structured workflows rather than adding knowledge, and that benefits degrade as the skill library grows.</p>",
+      "content_html": "<p>A study from researchers at Princeton University and UC San Diego finds that so-called skills make AI agents better mainly through structured workflows, not through added knowledge. But as the skill library grows, agents have a harder and harder time finding the right set of instructions.</p>\n<p>The article Study explains why AI agents benefit from \"skills\" and when they fail appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "a4b26f8803b7",
+      "title": "The Evolution of the Agent Harness",
+      "content": "Sometime around Christmas 2025, AI engineers noticed a change in agents. They started to work! It&#8217;s hard to pin down exactly why. Maybe we finally had holiday downtime to try the newest agents with the newest models. Maybe the models had crossed some capability threshold. Maybe the wrappers around the models had matured.What I&#8217;ll argue in this post is that it was the confluence of the last two. The model and the harness improving together and then their curves of improvement crossing at the right moment. And that dynamic helps to explain what comes next: models keep absorbing the harness into their weights, engineers keep deleting what got absorbed, and what remains is a harness for human attention rather than for the model.Lukasz Kaiser, one of the people who invented the Transformer, said on &#8220;Unsupervised Learning&#8221; in June:&#8220;The change last winter, last Christmas &#8212; it&#8217;s a little hard to pin down. I mean, the harness changed and a little post-training changed and then new pre-trained models came&#8230; but it felt like a big jump which is not that easy to pin down what did it.&#8221;The answer to &#8220;What happened?&#8221; isn&#8217;t solely in the model weights. It&#8217;s in the system that grew up around the weights.The answer is in the agent harness.Think back to November 2022, when ChatGPT was the most advanced AI tool. The only capability at its disposal was next-token prediction and some Reinforcement Learning from Human Feedback (RLHF) that allowed it to act like a helpful assistant. No tools, no search, and no reasoning.The original ChatGPT was confined to its training data and the prompt you sent it. No more, no less. It was a brain in a vat.The agent harness is a way for the LLM to break free from that confinement and interact with real digital information space.What a Harness Actually IsAn agent harness is everything besides the model weights that makes the agent work. The environment, tools, context and guardrails that surround the model. Without the harness the model is a brain in a vat. It can take an epistemic action, but needs the harness to actuate that decision in real digital space.The harness is like giving the mind of the model a body. With the harness, the model can perceive (context), act (tools), persist information (memory and compaction), and enforce its boundaries (permissions and guardrails).Harness 1.0: The Past, &#8220;The Bolt-On Era&#8221;Two curves run through the path of model / harness evolution. What the harness asks of the model, and what the model can deliver in practice.The gap between these two curves is equal to the effectiveness of an agent, and the closing of that gap is what I&#8217;ll argue led to the tangible improvement in agents that Lukasz Kaiser referenced.Here&#8217;s how the gap closes, in stages:ReAct, &#8220;The Harness on Paper&#8221; (October 2022): ReAct is a prompting technique to get models to reason through prompting. It&#8217;s the agentic loop on paper, external to the model weights. It defines the idea of an &#8220;agent loop&#8221; where a model reasons -&gt; acts -&gt; observes -&gt; repeats. Again, the ReAct loop exists only as a prompting method. Prompting is the only reasoning method that exists at this time and no one calls it a &#8220;harness.&#8221; Toolformer (Meta, Feb. 2023), that same winter, hints that tool use could be trained in rather than prompted. It&#8217;s a bit like Alan Turing&#8217;s idea of the computer before it was instantiated in a physical substrate. A powerful idea that is only later made manifest. (ReAct predates ChatGPT by a month &#8212; October 2022 vs. November 2022). Both the curves are near zero at this point. The gap is small because we are just getting started.AutoGPT/BabyAGI, &#8220;Premature Autonomy&#8221; (Spring 2023): With AutoGPT/BabyAGI, the harness curve sprints ahead of the model capability curve. Both hand the model full autonomy, asking the model to act as an &#8220;autonomous employee,&#8221; but the models at this point are still little more than brittle next-token predictors. A loop doesn&#8217;t add capability to a model. A loop amplifies the capability a model has, and below some threshold the loop amplifies errors rather than reliability. Consider the power of compounding in the negative: 95% reliability per-step over a 20-step task results in a ~36% average success rate. The harness hands the model an assignment it has no realistic chance of completing. This is where the gap is at its widest and the next 18 months are a reaction and attempt to close that gap.Cursor/Copilot, &#8220;Retreat to Human in the Loop&#8221; (2023 - 2024): The first AI-powered IDEs recognize the failure-mode of giving the model too much autonomy. They close the gap by pulling the harness curve down below the model curve. Don&#8217;t give the model the loop directly; give the human the loop and empower the human to orchestrate the loop while the model speeds the human up. The first version of Devin tries to hand the autonomy back to the model. A test from the team at Answer.AI shows that is still premature, with a ~15% success rate. It&#8217;s evidence that the move from the IDEs to retreat from full autonomy is not cowardly, but the correct move. However, while the prevailing tactic is to pull the harness down below the model, models continue to improve. Near the end of 2024, with the introduction of o1 &#8212; the first reasoning model &#8212; for the first time the gap inverts and we begin to see the first signs of a model capability overhang.Claude Code, &#8220;The Curves Cross&#8221; (February 2025): The inversion at the end of 2024 sets up an opportunity that someone has to seize: if the model is now ahead of the harness, then a harness intentionally riding the brakes of the model is leaving capability on the table. Claude Code is the first coding agent built to seize that opportunity. It abandons the IDE for the terminal, gives the model bash and file read/write access, and replaces the need for human approval on every change with permission rules. The model is handed the loop again, and this time it understands the assignment. Boris Cherny and team build Claude Code with the next model&#8217;s capabilities in mind, not the current one. It is such a hit not because it&#8217;s the first product to give the model autonomy, but because it&#8217;s the first product to do so at the right time. That time is the crossover point where the model has gotten reliable enough to succeed with autonomy. Claude Code grows to roughly $1B ARR within six months, all because Anthropic seized the opportunity available when the curves begin to meet.What happens next is that the curves don&#8217;t just meet, they begin to braid together.Harness 2.0: The Present, &#8220;The Co-Training Era&#8221;Today the harness matters, and in a way we can measure. Harness-Bench ran the same model over the same 106 tasks in different harnesses, and scores ranged from 52.4 to 76.2: a 23.8-point spread with zero change to the model. Half the agent is the harness.OpenAI achieved a similar result on ARC-AGI-3 with harness changes. Adding only retained reasoning and compaction, GPT-5.6 Sol&#8217;s ARC-AGI-3 score tripled from 13.3% to 38.3%.What&#8217;s happening under the hood is that Reinforcement Learning (RL) has moved inside the harness. From OpenAI&#8217;s codex-1 release announcement in May 2025: &#8220;codex-1 was trained using reinforcement learning on real-world coding tasks in a variety of environments.&#8221;The two curves join and start to braid as one unified system.This is the dream of Toolformer manifesting in reality. Rather than a tool prompted from the outside, now tool calling is trained from within the environment of the model.Then, as the models are trained in the environment of the harness, they start to absorb the harness capabilities into the model weights, learning how to auto-compact with knowledge of their own context window, for example.GPT-5.1-Codex-Max launch:&#8220;The first model natively trained to operate across multiple context windows through compaction.&#8221;Once the models absorb the harness capabilities, the harness can shed the scaffold. It&#8217;s production by reduction. Thariq Shihipar from Anthropic said that the team recently deleted 80% of Claude Code&#8217;s system prompt.The measure of the pace of agent harness evolution is how much of the harness you get to delete, while retaining the same capability level. This is the future we need to build towards as AI engineers.This, then, is the loop of model / harness evolution: train -&gt; absorb -&gt; shed -&gt; repeat. The model climbs to the next thing it can&#8217;t do yet.The jump that Kaiser pointed out is hard to pin down because it&#8217;s not a discrete event. A pre-training leap is noticeable because you can articulate it in a model card. A model / harness co-evolution jump is less so, because there&#8217;s no documentation of the evolution process. That&#8217;s the answer to the jump last Winter: it happened in the space between the model and harness working together.We need to ask: if every harness capability will eventually get absorbed into the model, what does that leave us with?Harness 3.0: The Future, &#8220;The Attention Era&#8221;Keep deleting everything that the model can absorb. Imagine what your agent looks like at the conclusion of that process. What are you left with in your hand when you&#8217;ve deleted everything?What do the model weights absorb next? Multi-agent orchestration, tool selection, memory...to name a few possibilities. Researchers are building self-improving harnesses that can themselves be trained in a similar way to models.What&#8217;s left at the end of this deletion and absorption process are the human-centric agent capabilities. Things like permissions, identity, trust and legibility. A model that absorbs permissions into itself has dissolved permissions. Absorption doesn&#8217;t end the harness. Absorption inverts the harness.The harness becomes the agent&#8217;s interface to the human that operates it.The harness was born as the human interface to the model. We grew from chatbox to IDE to the terminal. If the model absorbs the computer-facing capabilities, the next stage of evolution becomes one layer of abstraction up. The harness becomes the model&#8217;s interface to our human attention.It becomes the attention-interface.Ryan Lopopolo said on the &#8220;Extreme Harness Engineering for Token Billionaires&#8221; episode of Latent Space:&#8220;The only fundamentally scarce thing is the synchronous human attention of my team.&#8221;Tokens became abundant and reliable, yet we remain bottlenecked on scarce human attention.We see sparks of this already, with Anthropic&#8217;s long-running agent progress files and agentic approval queues.The gap between the model and harness curve doesn&#8217;t disappear when the model absorbs the harness. It migrates across the human boundary and creates a new pair of curves with a new gap. The new gap is the space between what the agent asks of the human, and what the human is able to answer.The Attention-InterfaceI predict that within a year, every company building agentic AI will ship a human attention policy surface in the way that every agentic AI company shipped AGENTS.md.AGENTS.md tells the agent how to work with your codebase. The attention-interface will tell the agent how to work with you. It will govern when it&#8217;s allowed to interrupt you, when it should keep working, which decisions it can make alone and which decisions need your approval. And like everything else in the agentic system, it will become a learnable component of the system that can learn with more data. Every correction becomes useful data.The model began as a brain in a vat. The harness gave the brain a body, then the body started to dissolve into the brain. What&#8217;s left for us to build is the thing no future model will ever absorb. The interface to the one true scarce resource: human attention.",
+      "url": "https://www.latent.space/p/attention-interface",
+      "author": "Dan McAteer",
+      "published": "2026-08-22T07:30:52",
+      "source": "Latent.Space",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Latent Space analysis arguing that the recent usability jump in AI agents came from model and 'harness' improvements compounding, and that models keep absorbing harness logic into weights, leaving the harness as an attention interface for humans.",
+      "importance_score": 42.0,
+      "reasoning": "Substantive technical commentary on agent system design with implications for where engineering effort will sit, but not a model release or empirical benchmark result.",
+      "themes": [
+        "AI agents",
+        "Agent harness",
+        "Industry analysis"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.latent.space/feed",
+        "raw_summary": "Models keep absorbing the harness into their weights &#8212; soon, it will be a harness for human attention rather than for the model.",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Latent Space analysis arguing that the recent usability jump in AI agents came from model and 'harness' improvements compounding, and that models keep absorbing harness logic into weights, leaving the harness as an attention interface for humans.</p>",
+      "content_html": "<p>Sometime around Christmas 2025, AI engineers noticed a change in agents. They started to work! It’s hard to pin down exactly why. Maybe we finally had holiday downtime to try the newest agents with the newest models. Maybe the models had crossed some capability threshold. Maybe the wrappers around the models had matured.What I’ll argue in this post is that it was the confluence of the last two. The model and the harness improving together and then their curves of improvement crossing at the right moment. And that dynamic helps to explain what comes next: models keep absorbing the harness into their weights, engineers keep deleting what got absorbed, and what remains is a harness for human attention rather than for the model.Lukasz Kaiser, one of the people who invented the Transformer, said on “Unsupervised Learning” in June:“The change last winter, last Christmas — it’s a little hard to pin down. I mean, the harness changed and a little post-training changed and then new pre-trained models came… but it felt like a big jump which is not that easy to pin down what did it.”The answer to “What happened?” isn’t solely in the model weights. It’s in the system that grew up around the weights.The answer is in the agent harness.Think back to November 2022, when ChatGPT was the most advanced AI tool. The only capability at its disposal was next-token prediction and some Reinforcement Learning from Human Feedback (RLHF) that allowed it to act like a helpful assistant. No tools, no search, and no reasoning.The original ChatGPT was confined to its training data and the prompt you sent it. No more, no less. It was a brain in a vat.The agent harness is a way for the LLM to break free from that confinement and interact with real digital information space.What a Harness Actually IsAn agent harness is everything besides the model weights that makes the agent work. The environment, tools, context and guardrails that surround the model. Without the harness the model is a brain in a vat. It can take an epistemic action, but needs the harness to actuate that decision in real digital space.The harness is like giving the mind of the model a body. With the harness, the model can perceive (context), act (tools), persist information (memory and compaction), and enforce its boundaries (permissions and guardrails).Harness 1.0: The Past, “The Bolt-On Era”Two curves run through the path of model / harness evolution. What the harness asks of the model, and what the model can deliver in practice.The gap between these two curves is equal to the effectiveness of an agent, and the closing of that gap is what I’ll argue led to the tangible improvement in agents that Lukasz Kaiser referenced.Here’s how the gap closes, in stages:ReAct, “The Harness on Paper” (October 2022): ReAct is a prompting technique to get models to reason through prompting. It’s the agentic loop on paper, external to the model weights. It defines the idea of an “agent loop” where a model reasons -&gt; acts -&gt; observes -&gt; repeats. Again, the ReAct loop exists only as a prompting method. Prompting is the only reasoning method that exists at this time and no one calls it a “harness.” Toolformer (Meta, Feb. 2023), that same winter, hints that tool use could be trained in rather than prompted. It’s a bit like Alan Turing’s idea of the computer before it was instantiated in a physical substrate. A powerful idea that is only later made manifest. (ReAct predates ChatGPT by a month — October 2022 vs. November 2022). Both the curves are near zero at this point. The gap is small because we are just getting started.AutoGPT/BabyAGI, “Premature Autonomy” (Spring 2023): With AutoGPT/BabyAGI, the harness curve sprints ahead of the model capability curve. Both hand the model full autonomy, asking the model to act as an “autonomous employee,” but the models at this point are still little more than brittle next-token predictors. A loop doesn’t add capability to a model. A loop amplifies the capability a model has, and below some threshold the loop amplifies errors rather than reliability. Consider the power of compounding in the negative: 95% reliability per-step over a 20-step task results in a ~36% average success rate. The harness hands the model an assignment it has no realistic chance of completing. This is where the gap is at its widest and the next 18 months are a reaction and attempt to close that gap.Cursor/Copilot, “Retreat to Human in the Loop” (2023 - 2024): The first AI-powered IDEs recognize the failure-mode of giving the model too much autonomy. They close the gap by pulling the harness curve down below the model curve. Don’t give the model the loop directly; give the human the loop and empower the human to orchestrate the loop while the model speeds the human up. The first version of Devin tries to hand the autonomy back to the model. A test from the team at Answer.AI shows that is still premature, with a ~15% success rate. It’s evidence that the move from the IDEs to retreat from full autonomy is not cowardly, but the correct move. However, while the prevailing tactic is to pull the harness down below the model, models continue to improve. Near the end of 2024, with the introduction of o1 — the first reasoning model — for the first time the gap inverts and we begin to see the first signs of a model capability overhang.Claude Code, “The Curves Cross” (February 2025): The inversion at the end of 2024 sets up an opportunity that someone has to seize: if the model is now ahead of the harness, then a harness intentionally riding the brakes of the model is leaving capability on the table. Claude Code is the first coding agent built to seize that opportunity. It abandons the IDE for the terminal, gives the model bash and file read/write access, and replaces the need for human approval on every change with permission rules. The model is handed the loop again, and this time it understands the assignment. Boris Cherny and team build Claude Code with the next model’s capabilities in mind, not the current one. It is such a hit not because it’s the first product to give the model autonomy, but because it’s the first product to do so at the right time. That time is the crossover point where the model has gotten reliable enough to succeed with autonomy. Claude Code grows to roughly $1B ARR within six months, all because Anthropic seized the opportunity available when the curves begin to meet.What happens next is that the curves don’t just meet, they begin to braid together.Harness 2.0: The Present, “The Co-Training Era”Today the harness matters, and in a way we can measure. Harness-Bench ran the same model over the same 106 tasks in different harnesses, and scores ranged from 52.4 to 76.2: a 23.8-point spread with zero change to the model. Half the agent is the harness.OpenAI achieved a similar result on ARC-AGI-3 with harness changes. Adding only retained reasoning and compaction, GPT-5.6 Sol’s ARC-AGI-3 score tripled from 13.3% to 38.3%.What’s happening under the hood is that Reinforcement Learning (RL) has moved inside the harness. From OpenAI’s codex-1 release announcement in May 2025: “codex-1 was trained using reinforcement learning on real-world coding tasks in a variety of environments.”The two curves join and start to braid as one unified system.This is the dream of Toolformer manifesting in reality. Rather than a tool prompted from the outside, now tool calling is trained from within the environment of the model.Then, as the models are trained in the environment of the harness, they start to absorb the harness capabilities into the model weights, learning how to auto-compact with knowledge of their own context window, for example.GPT-5.1-Codex-Max launch:“The first model natively trained to operate across multiple context windows through compaction.”Once the models absorb the harness capabilities, the harness can shed the scaffold. It’s production by reduction. Thariq Shihipar from Anthropic said that the team recently deleted 80% of Claude Code’s system prompt.The measure of the pace of agent harness evolution is how much of the harness you get to delete, while retaining the same capability level. This is the future we need to build towards as AI engineers.This, then, is the loop of model / harness evolution: train -&gt; absorb -&gt; shed -&gt; repeat. The model climbs to the next thing it can’t do yet.The jump that Kaiser pointed out is hard to pin down because it’s not a discrete event. A pre-training leap is noticeable because you can articulate it in a model card. A model / harness co-evolution jump is less so, because there’s no documentation of the evolution process. That’s the answer to the jump last Winter: it happened in the space between the model and harness working together.We need to ask: if every harness capability will eventually get absorbed into the model, what does that leave us with?Harness 3.0: The Future, “The Attention Era”Keep deleting everything that the model can absorb. Imagine what your agent looks like at the conclusion of that process. What are you left with in your hand when you’ve deleted everything?What do the model weights absorb next? Multi-agent orchestration, tool selection, memory...to name a few possibilities. Researchers are building self-improving harnesses that can themselves be trained in a similar way to models.What’s left at the end of this deletion and absorption process are the human-centric agent capabilities. Things like permissions, identity, trust and legibility. A model that absorbs permissions into itself has dissolved permissions. Absorption doesn’t end the harness. Absorption inverts the harness.The harness becomes the agent’s interface to the human that operates it.The harness was born as the human interface to the model. We grew from chatbox to IDE to the terminal. If the model absorbs the computer-facing capabilities, the next stage of evolution becomes one layer of abstraction up. The harness becomes the model’s interface to our human attention.It becomes the attention-interface.Ryan Lopopolo said on the “Extreme Harness Engineering for Token Billionaires” episode of Latent Space:“The only fundamentally scarce thing is the synchronous human attention of my team.”Tokens became abundant and reliable, yet we remain bottlenecked on scarce human attention.We see sparks of this already, with Anthropic’s long-running agent progress files and agentic approval queues.The gap between the model and harness curve doesn’t disappear when the model absorbs the harness. It migrates across the human boundary and creates a new pair of curves with a new gap. The new gap is the space between what the agent asks of the human, and what the human is able to answer.The Attention-InterfaceI predict that within a year, every company building agentic AI will ship a human attention policy surface in the way that every agentic AI company shipped AGENTS.md.AGENTS.md tells the agent how to work with your codebase. The attention-interface will tell the agent how to work with you. It will govern when it’s allowed to interrupt you, when it should keep working, which decisions it can make alone and which decisions need your approval. And like everything else in the agentic system, it will become a learnable component of the system that can learn with more data. Every correction becomes useful data.The model began as a brain in a vat. The harness gave the brain a body, then the body started to dissolve into the brain. What’s left for us to build is the thing no future model will ever absorb. The interface to the one true scarce resource: human attention.</p>"
+    },
+    {
+      "id": "81a81919a710",
+      "title": "[AINews] 10% worse, 100x cheaper, 10000x faster: Why Simulation is taking over",
+      "content": "By AI standards today is a pretty quiet Friday, so it&#8217;s time to take a step back and reflect on what is really going on. If you read our 2025 reading list, and followed our coverage of Z.ai GLM, understood the Poolside pivot, been following our AI for Science themes, and tuned in to today&#8217;s Simile pod, you not only are one of the biggest readers of Latent Space, you will probably also arrive at this mental model:Every year since 2022, one more component of the pipeline that produces machine intelligence has flipped from human-made to model-made. Not gradually, and not evenly &#8212; each flip has a patient zero, a paper or product where the synthetic version first became load-bearing at a frontier lab, and from there on, the future is simply here but not yet productionized.And if you squint, what we used to call &#8220;synthetic data&#8221; and &#8220;synthetic rubrics&#8221; and &#8220;AI researcher&#8221; and &#8220;end to end RL environments&#8221; is just increasingly ambitious human simulation - 10% worse, but 100x cheaper and 10,000x faster.Stage 1: The reward signal (2022)The first thing to go synthetic was, counterintuitively, the judge. InstructGPT established the now-canonical trick: collect human preferences once, train a reward model, and let the policy optimize against the model rather than the humans. From the policy&#8217;s point of view, the thing dispensing approval was already an LLM. Constitutional AI pushed further and had the AI critique itself against a set of principles (RLAIF), and Lee et al. later showed AI feedback matching human feedback at a fraction of the cost. By the time LLM-as-judge became the default eval methodology (MT-Bench, AlpacaEval), the entire approval apparatus &#8212; reward, critique, evaluation &#8212; ran on models judging models.Stage 2: The training data (2023)Microsoft&#8217;s Phi series made the argument in its title: Textbooks Are All You Need. A small model trained on LLM-synthesized, textbook-quality data punched far above its parameter count, and phi-1.5 confirmed it wasn&#8217;t a fluke. Apple&#8217;s WRAP generalized the move: don&#8217;t just generate data, rephrase the entire web with an LLM, and pretraining gets roughly 3x more efficient. From there the pipeline industrialized &#8212; NVIDIA&#8217;s Nemotron-4 340B shipped with a permissively licensed synthetic data generation pipeline as a headline feature, and by 2025 reasoning-trace corpora (chains of thought generated by strong reasoners) had become a standard pretraining and mid-training ingredient. The corpus, the thing that was supposed to be the irreducibly human input, was now substantially model-written.Stage 3: The teacher (2023)Weeks after ChatGPT&#8217;s API opened, Stanford&#8217;s Alpaca demonstrated that a $600 fine-tune on GPT-generated instructions could clone much of a frontier model&#8217;s behavior. Vicuna did it with shared conversations; Orca did it with rich teacher explanations rather than bare answers. The technique matured from imitation into a proper training discipline &#8212; on-policy generalized knowledge distillation fixed the train/inference mismatch &#8212; and reached its cultural peak when DeepSeek-R1 shipped a family of distilled models alongside the flagship, making &#8220;the teacher is a model&#8221; the default assumption for every small model release since. Stage 4: The curriculum (2024)Stages 1&#8211;3 made the inputs synthetic; stage 4 is where the loop starts closing on itself, because the model begins deciding what to learn next. The pieces existed early &#8212; Self-Instruct (models writing their own instruction sets) and STaR (models bootstrapping their own reasoning traces) are both 2022 &#8212; but the flip came when Meta&#8217;s Self-Rewarding Language Models and SPIN showed a model could generate its own tasks, judge its own outputs, and improve past the ceiling of its human preference data. Curriculum design &#8212; historically the most artisanal part of ML, the taste-driven choice of what to train on next &#8212; became something models do to themselves.Stage 5: The researcher (2026)The assistance era (Copilot, then SWE-agents) kept a human choosing the experiments. The discovery era did not. DeepMind&#8217;s AlphaEvolve evolved genuinely new algorithms in 2025, and Sakana&#8217;s AI Scientist (now in Nature!) sketched the full paper-writing pipeline. The big moment was Karpathy&#8217;s autoresearch in March 2026: a deliberately minimal ratchet loop where a coding agent modifies a real LLM training setup, runs a five-minute experiment, keeps the change only if validation loss improves, and repeats overnight. His own extended run stacked 700 experiments into 20 kept improvements, cutting time-to-GPT-2 from 2.02 to 1.80 hours &#8212; real, transferable code changes found while he slept. Stage 6: The environment (2026)RL&#8217;s scaling bottleneck moved from the model to the environment: you need thousands of executable, verifiable, professionally realistic task worlds, and humans can&#8217;t hand-build them fast enough. We covered this recently in our z.ai / GLM-5.3 issue: Z.ai built pipelines that synthesize environments end to end &#8212; research agents mine real work patterns and convert them into long-horizon environments with hidden state, a judge agent attempts each task to confirm it&#8217;s solvable, and verifiers are synthesized without seeing the reference solution, then stress-tested with oracle, no-op, and unsolved-state checks until their binary reward is reliable enough to train on directly. As the GLM-5.3 release puts it, the entire environment, judging, and verification stack is synthetic all the way down. The same week, Ornith-1.5 shipped claiming end-to-end self-improvement &#8212; the model proposes its own tasks and generates its own RL rollouts. The gym, the referee, and the scoreboard are all models now.Stage 7: The human subject (2025)If models can be the judge, teacher, and environment, the remaining human role in the loop is subject &#8212; the source of preferences, behavior, and demand. That&#8217;s the layer Simile is replacing. The lineage runs from Joon Sung Park&#8217;s Generative Agents (Smallville, 2023) through Generative Agent Simulations of 1,000 People, where digital twins built from two-hour biographical interviews reproduced their source humans&#8217; survey and behavioral responses 85% as accurately as the humans reproduced themselves two weeks later. The big hurdle to overcome: frontier models are trained toward being agent models, which makes them bad simulations of real people &#8212; so Simile post-trains on interviews, transaction data, and registered RCTs from the Open Science Framework specifically to recover human bias, inconsistency, and causal texture, and reports early scaling laws for simulation quality. With SimGym at Shopify simulating shopper trajectories and Tencent&#8217;s billion-persona approach at the crude end of the spectrum, the focus group, the user study, and the A/B test panel are becoming inference workloads.Stage 8: The physical world (2026, in progress)The last row of the grid never quite turns red, and that&#8217;s the point. Poolside&#8217;s reverse-execuhire letter drew the line precisely: the world&#8217;s problems split into intelligence-bound ones (solvable by scaling cognition, soon commoditized by open weights) and experiment-bound ones, where &#8220;no amount of intelligence substitutes for real-world experimental feedback &#8212; 100,000 brilliant minds won&#8217;t cure cancer without a wet lab.&#8221; Their bet is that AI&#8217;s durable value accrues to whoever owns the experimental loop: AI as &#8220;the world&#8217;s most valuable scientific discovery engine.&#8221; The bio side is running the same play from the other direction. CZ Biohub is imaging the Human Cell Atlas into a virtual cell &#8212; because in silico is roughly 1000x cheaper and faster than in vivo &#8212; and extending toward a virtual immune system, with Chai, Xaira, and Lila&#8217;s data-center-shaped labs filling in the AI-for-science stack. The physical world is the one component that can&#8217;t be fully synthesized &#8212; only compressed, cell by cell, into models.The exponential starts at the diagonalRead the grid one more time and a second pattern appears underneath the first. Every flip was preceded by the same objection &#8212; model collapse, hallucination stacking, garbage in garbage out &#8212; and every flip happened anyway, at the exact moment a verification mechanism made the synthetic version trustworthy: aggressive filtering for Phi&#8217;s textbooks, judge-vs-judge agreement studies for LLM evals, unit tests and proof checkers for RLVR, oracle/no-op checks for z.ai&#8217;s verifiers, registered RCTs for Simile&#8217;s twins, the wet-lab loop for the virtual cell. The synthetic frontier doesn&#8217;t advance when generation gets better. It advances when verification does.Which suggests where it goes next. The gray triangle remaining in the bottom-left of the grid &#8212; physical experiment, embodied ground truth &#8212; is exactly the region where verification is slowest and most expensive. The models learned to write, then to judge, then to practice, then to experiment. The remaining question of the decade is how much of reality they&#8217;ll need to touch &#8212; and how much they can get away with simulating. 10% worse, 100x cheaper, 10000x faster&#8230; and improving on ALL three dimensions fast.One more time, with feeling:AI News for 8/20/2026-8/21/2026. We checked 12 subreddits, 544 Twitters and no further Discords. AINews&#8217; website lets you search all past issues. As a reminder, AINews is now a section of Latent Space. You can opt in/out of email frequencies!AI Twitter RecapStealth Models, Chinese Frontier Pressure, and DeepSeek&#8217;s Multimodal PushOx Alpha became the day&#8217;s central mystery model: multiple builders reported unusually strong coding and agentic performance, with speculation converging on a Zhipu/GLM-family model&#8212;possibly GLM-5.3 Vision or a flash variant rather than a giant new base model. Reports included Theo saying it was &#8220;slaughtering&#8221; internal benchmarks, later merging 8 PRs based on its approval, and Kimmonismus citing &gt;80% on 10 DeepSWE tasks vs 65% for Fable and 52% for GPT-5.6 Sol. Community distribution happened quickly via Hermes Agent/OpenCode/OpenRouter and Cline.The strongest technical read from the crowd was &#8220;post-training + infra &gt; sheer size&#8221;: several independent takes argued Ox Alpha&#8217;s speed profile and style looked more like an efficient GLM derivative than a 1T+ monster. See Tim Dettmers on faster output / weaker partial prefill suggesting fewer active params, scaling01 arguing it may be a bigger teacher distilled into 5.3-class models, and teortaxesTex repeatedly narrowing toward GLM-5.3/5.4 Vision. That interpretation fits the broader thesis from a detailed GLM-5.3 analysis: gains came from the same 743B base as GLM-5.2, with improvements attributed to scaled post-training, better sandboxes, and SAO for finer credit assignment in long-horizon agent tasks, summarized in ZhihuFrontier&#8217;s thread.DeepSeek shipped the day&#8217;s most concrete release: DeepSeek-V4-Flash-Vision-Exp adds multimodal support while reportedly preserving V4-Flash text capability, with DeepSeek claiming multimodal-agent performance close to Opus-4.8. The rollout includes mixed text+image API support with 117&#8211;384 image tokens billed at Flash pricing and a new Files API for reusable uploads. This appears to have resolved at least part of the Ox Alpha confusion, with observers noting the mystery model had likely been a &#8220;blinded VLM&#8221; in some tests.Broader signal: Chinese labs are compressing the frontier on both price/perf and multimodal agents. That was reinforced by Kimmonismus arguing a rumored GLM-5.3 Flash-class Ox Alpha would force reactions from US labs, and by SemiAnalysis asking directly whether open models are catching up.OpenAI, Codex, and Pricing/Usage EconomicsOpenAI cut GPT-5.6 Sol pricing by over 20% for three months in the API and credit-based products, announced by @OpenAI and @OpenAIDevs. This stacks with product-level promotions like Code&#8217;s 50% discount through Sept. 3 and Cognition&#8217;s note that on Devin, Sol is now effectively 76% off list through Oct. 3 after combining discounts. The move reads as both a utilization/efficiency update and a competitive response to cheap Chinese inference.Codex usage appears to be exploding: thsottiaux said Codex hit 20M active users and granted all Codex and ChatGPT Work users a &#8220;banked reset&#8221;, quickly amplified by Theo and Kimmonismus. There were also anecdotes of the product exceeding expected limits, e.g. Theo claiming a long-running goal consumed ~$800 in tokens after he&#8217;d already hit 0% remaining.OpenAI added better spend controls: teams can now track usage and spend by API key and set hard monthly org/project limits, useful as agentic workloads become less predictable and more concurrent.Market sentiment shifted back toward OpenAI in startup tooling: immad suggested Anthropic&#8217;s startup share may have peaked in Q1, with Sol and Codex &#8220;turning the tide back&#8221;. In parallel, some users framed Sol as the current best all-around model for coding/math/agentic tasks, e.g. DimitrisPapail&#8217;s &#8220;most capable model available for almost every task&#8221; take.Agents, Harnesses, and the Shift Toward Environment-Centric TrainingThe center of gravity is moving from prompts to environments: the most substantive thread here was again GLM-5.3&#8217;s sandbox-scaling interpretation: same base model, but better long-horizon performance from richer executable environments and SAO-style counterfactual credit assignment. This aligns with other work shared today: Google&#8217;s EnvHarness / EnvRigger adapts static environments using a plugin layer and policy-diagnosed reshaping, improving held-out performance by up to 9 points with 9.8% fewer execution steps.Benchmarks are getting more task-specific and harder: FACET creates executable terminal tasks from agent skills and validated 6,078 tasks; SWE-bench Science introduces 119 scientific software tasks where even Claude Code + Opus-5 is under 50% pass@1; CADBench finds top models at only 24.6% pass rate across realistic Fusion 360 tasks; and AI4AI-Bench tests recursive self-improvement over 10 research repos, with the best model only at 0.288 average score.Agent infra is getting more productized: GitHub rolled out collaborative agent workflows into Slack and Teams, with Slack describing Devin-like flows where the agent picks up tasks, opens PRs, and loops in design inside the shared channel (example). There&#8217;s also continued work on agent runtimes: nac v0.1.3 added sandboxed git worktrees, session organization, and vision-aware image reading; Hermes Agent made Ox Alpha available and exposed &#8220;Blank Slate mode&#8221; plus automatic skill pruning; and OpenHands switched its free default to Kimi K3.Inference-serving correctness in RL got an important systems result: vLLM&#8217;s IsoExec addresses rollout/training logprob mismatches caused by floating-point non-associativity, enforcing bitwise parity across TP/EP/SP layouts. On Qwen3.5-35B-A3B with DAPO on 8xH100, logprob diff reportedly dropped from 1.6e-2 to 6.7e-7 at 25.3% overhead.Research Highlights: Routing, Recirculation, and RoboticsInference-time architecture ideas: a DeepMind paper on Recirculation got attention for feeding contextualized deeper-layer activations back into earlier processing at inference time, without retraining. The summary cited improvements including -60% contextualization errors, -23% perplexity, and +21% GSM8K in reported experiments (thread).Model routing got a more principled treatment: Pandora&#8217;s Router from Google DeepMind frames routing as an optimal search problem with costly inspection, rather than assuming routing estimates are free. The claim: it matches exhaustive-estimation quality while calling expensive estimators less often, including settings with specialist LLMs and variable inference-time reasoning.Robotics had two strong updates: NVIDIA AVO reportedly solved all 183 levels across 25 public ARC-AGI-3 environments, though Fran&#231;ois Chollet cautioned this is the public demo/tutorial set rather than the full benchmark. Separately, Jim Fan introduced T-Rex, a tactile-reactive dexterous manipulation stack with asynchronous vision/tactile experts plus what&#8217;s described as the largest open tactile dataset yet: 50 hours / ~5,500 episodes / 22-DoF hardware.Infrastructure, Compute, and Open ModelsOpen-model access and local inference continue improving: Ollama welcomed AT&amp;T to open models and added Kimi K3 to Pro/Max subscriptions. Yuchen Jin highlighted UC Berkeley&#8217;s FreeToken: 753B GLM-5.2 at 14.9 tok/s on a single RTX PRO 6000 and Qwen3.6-35B at 39.3 tok/s on an 8GB RTX 4060 laptop, claiming 2&#8211;4x Ollama throughput on consumer GPUs.Compute remains the hard constraint: multiple operators argued inference capacity is tightening, not loosening&#8212;see saranormous on good AI companies being growth-limited by compute and Andrew Carr on self-hosting GPUs and still having more experiments than available capacity. This makes model efficiency, scheduling, and lower latency/tokens-per-dollar improvements strategically important.Open-source training transparency is also scaling: Percy Liang announced Marin 535B-A23B has started training, targeting 18.75T tokens on 11&#215; GB200 NVL72 over ~3 months, with the run kept open as usual.Top tweets (by engagement)DeepSeek launches V4-Flash-Vision-Exp &#8212; the clearest product release of the day, and likely the biggest practical shift for multimodal agents.OpenAI cuts GPT-5.6 Sol pricing by &gt;20% &#8212; meaningful pricing pressure at the frontier.Codex reaches 20M active users; banked resets for users &#8212; notable product growth signal.NVIDIA AVO hits 100% on ARC-AGI-3 public environments with Chollet&#8217;s caveat &#8212; impressive, but benchmark interpretation matters.David Sacks on Harvey using open-source Kimi K3 for legal SOTA at lower cost &#8212; strong argument for why restrictions on open models would mostly hurt US application-layer companies.AI Reddit Recap/r/LocalLlama + /r/localLLM Recap1. Qwen3.8 27B Local Agent EvaluationsQwen3.8-27b has the highest level of &#8220;agency&#8221; I&#8217;ve ever seen in a local model (Activity: 1334): The post claims Qwen3.8-27B running locally on a single RTX 3090 with Unsloth Q4_K_S quantization, q8 KV cache, and 150k context performed unusually capable autonomous agent workflows: using Playwright plus existing SSO/session cookies to navigate university systems and retrieve a course schedule, and separately processing a social-media video via download, frame extraction, transcription with Whisper, and image enhancement. The image is a screenshot of the model reporting use of an Outlook/OWA Playwright profile, Microsoft &#8220;stay signed in,&#8221; and Duo browser-trust cookies to access school systems, making the technical significance less about raw model quality alone and more about local LLM tool-use agency plus high-risk credential/session handling. Comments were impressed but cautious: one user explicitly worried about giving an agent enough access to potentially perform destructive actions like withdrawing from university, while others framed it as evidence that advanced local agentic systems are already here but unevenly distributed.A commenter asked for implementation details behind the reported agentic behavior of Qwen3.8-27B, specifically the agent harness used&#8212;e.g. Claude Code, Hermes, or another framework&#8212;and how tools were exposed via MCP servers, browser tools, Python, filesystem access, etc. They also asked what inference backend served the model, such as llama.cpp, and how it was able to autonomously download video, extract frames, and install Whisper.There was technical concern about the reliability of the referenced quantization: one commenter noted surprise that &#8220;the quant is that good,&#8221; while mentioning reports of looping behavior at that quant. This suggests the model&#8217;s apparent agency may be sensitive to quant level and runtime behavior, especially for long-horizon tool use.A safety-oriented thread questioned giving local agents broad system access, with one commenter saying they would not trust agents like Sol or Fable with unrestricted permissions. The concern was not about local inference itself, but about autonomous agents with enough privileges to perform impactful real-world actions such as modifying accounts or workflows.Qwen3.8-27B took a serious hit to knowledge vs 3.6 (Activity: 779): The post reports that Qwen3.8-27B / Qwen3-8-27B appears to regress vs Qwen3.6-27B / Qwen3-6-27B on offline, no-tool-call factual recall: the author&#8217;s private &#8220;mildly obscure&#8221; trivia/prepper benchmark showed failures across quantization levels and sampling settings, consistent with lower scores on Artificial Analysis&#8217; Omniscience knowledge benchmark. The reported degradation is specifically about knowledge stored in weights and hallucination/fact recall under airgapped inference, not coding/tool-use; commenters note Qwen3.8 is stronger at tool calling, web search/fetch workflows, coding, and agentic behavior. Commenters broadly frame this as an intentional tradeoff: newer Qwen 3.x models may be optimized for coding/agentic tasks rather than being &#8220;mini Google&#8221; factual stores, with Gemma 4 suggested as a better fit for trivia/random-fact recall. One user confirmed regression on niche visual/history/geography tasks such as stamp or old-photo location identification when web tools are disabled, but considered the tradeoff acceptable given improved tool use.Several commenters frame Qwen3.8-27B as shifting away from memorized factual recall toward coding, tool use, and agentic workflows. One user testing a niche &#8220;knowledge&#8221; workload&#8212;stamp identification and historical/location inference from old photos&#8212;reported that with web search/fetch tools disabled, Qwen3.8 performs worse than Qwen 3.6, but becomes more useful when allowed to retrieve information externally.The perceived regression is described as an intentional tradeoff for a 27B model: reduce obscure memorized knowledge while preserving enough reasoning ability for problem solving and agents. Commenters suggest using models like Gemma for factual/trivia-heavy tasks, while reserving Qwen3.8 for coding/tool-calling scenarios where users report stronger performance.One technical speculation was that future models may separate base reasoning from domain knowledge via neural plugins/LoRA-like modules: e.g., adding Japanese-language capability or finance-domain expertise as attachable components rather than baking all knowledge into the base model. This was proposed as a way to keep base models smaller or more specialized while allowing opt-in domain expansion.Qwen 3.8 27b - PI AGENT vs OPENCODE (Activity: 510): The author compares PI Agent vs Opencode using a local llama-server backend on an RTX 3090 with Qwen3.8-27B-Q4_K_M.gguf, ctx-size=100000, flash-attn=on, n-gpu-layers=99, DeepSeek-style reasoning, and a vision mmproj module. They report PI Agent producing better outputs, using fewer tokens, avoiding Opencode&#8217;s apparent 32k output-token ceiling/freezing behavior, and delaying context compression until ~90k tokens vs Opencode starting around ~67k when total context is 100k; they also recommend enabling vision so the model can visually assess generated outputs, with CPU/RAM offload acceptable for screenshot evaluation latency (~3s vs ~0.3s GPU). The test was inspired by a prior LocalLLaMA post about generating a bouncing-ball animation: reddit.com/r/LocalLLaMA/comments/1j7r47l/.... Commenters questioned whether a one-shot HTML/animation task is a meaningful harness comparison and suggested multi-step tool-heavy workflows instead. Another user reported PI + local Qwen3.8-27B felt competitive with Claude Code on a roughly one-hour aurora-prediction app build, though both models judged Claude&#8217;s initial result slightly better before PI iterated.A commenter argues that one-shot HTML generation is not a meaningful benchmark for comparing PI Agent vs OpenCode; they suggest using multi-step tasks with extensive tool calls to evaluate the harnesses&#8217; planning, editing, and recovery behavior.One user reports a subjective head-to-head between local Qwen3.8-27B running in PI and Claude Code on building an aurora predictor app. They felt runtime was similar; both agents judged Claude&#8217;s first result slightly better, but after asking PI/Qwen to upgrade its version, the user preferred Qwen&#8217;s presentation. The resulting app reportedly integrated multiple satellite instruments and provided 30&#8211;60 minute aurora warnings.Another commenter suggests adding the DeepSeek harness to the comparison, implying the evaluation should cover more agent runtimes than just PI Agent and OpenCode.2. DeepSeek V4 Flash Benchmarks and ServingDeepSeek-V4-Flash-Vision-Exp (Activity: 722): The image is a technical benchmark table for DeepSeek-V4-Flash-Vision-Exp (image), comparing it against DeepSeek V4-Flash-0731 and Opus-4.8 on text-agent and multimodal-agent evaluations. It shows broad gains over the prior DeepSeek Flash release, including 83.9 on Terminal Bench 2.1, 75.9 on Toolathlon-Verified, and 64.3 on Chartography, while Opus-4.8 still leads many text-heavy benchmarks; Vision-Exp appears more competitive on multimodal tasks such as Agents&#8217; Last Exam and ZeroBench. The main technical reaction was that the reported DeepSWE improvement of roughly +4 points over 0731 is considered unusually large. Other comments were mostly hype or tribal reactions rather than substantive analysis.DeepSeek&#8217;s announcement says DeepSeek-V4-Flash-Vision-Exp is live via the DeepSeek API with model='deepseek-v4-flash-vision-exp', matching DeepSeek-V4-Flash text capabilities while adding multimodal input. The model supports Chat Completions, Messages, and Responses APIs, with mixed text+image inputs via base64, external URLs, or the Files API; images are billed as up to 384 tokens each at V4-Flash pricing. Docs: vision guide.Several comments focused on benchmark movement: one noted DeepSWE reportedly improved by 4 points from 0731 to Vision-Exp, while the announcement claims a &#8220;major leap&#8221; on multimodal agent benchmarks, bringing performance close to Opus-4.8. The technical implication discussed is that Vision-Exp may retain V4-Flash&#8217;s agent/reasoning/world-knowledge text performance while substantially improving visual-agent workflows.DeepSeek also launched a Files API for image reuse: users can upload an image once, reference it by file_id, and avoid resending image payloads across requests, reducing bandwidth overhead. One commenter asked whether the model weights would be open and noted they could not yet find them on Hugging Face, implying that availability appears API-only at the time of discussion. Files API docs: files_api.The boring way to run Deepseek V4 Flash-0731 130-150 tks - 16x5060ti 16GB over 2 PLX88096 switches (Activity: 621): The image is a terminal GPU-monitoring dashboard validating the post&#8217;s unusual 16&#215; RTX 5060 Ti 16GB inference rig: all GPUs are visible, nearly full at roughly 15.2&#8211;15.7 GiB / 15.9 GiB VRAM, and assigned to vLLM worker processes for DeepSeek V4 Flash-0731. The setup uses two Broadcom/PLX PEX88096 PCIe switch islands with patched NVIDIA 610.43.02-p2p, Resizable BAR/BAR1 set to 16 GiB per GPU, and custom all-reduce/DSpark pipeline parallelism; reported throughput is about 100&#8211;150 tok/s single-user generation depending on TP/PP layout, with concurrency scaling up to 727 output tok/s aggregate for TP4/PP4 at 16 users. The image also shows the tradeoff/oddity of the build: the GPUs appear connected at PCIe Gen1 x8 and are mostly idle at the captured moment despite high VRAM residency, implying the screenshot is more a topology/memory residency proof than a live utilization benchmark. Commenters were less focused on the benchmark table and more on the physical absurdity of the build, asking for &#8220;a photo of the setup&#8221; and calling it a &#8220;mad setup.&#8221; One notable skeptical/funny technical reaction was that &#8220;a little vibe coding&#8221; likely hides substantial custom distributed-inference work.\n      \n          \n              Read more\n          \n      ",
+      "url": "https://www.latent.space/p/ainews-10-worse-100x-cheaper-10000x",
+      "author": "Unknown",
+      "published": "2026-08-22T07:36:00",
+      "source": "Latent.Space",
+      "source_type": "rss",
+      "tags": [],
+      "summary": "Latent Space essay arguing that since 2022, each component of the ML pipeline has progressively flipped from human-made to model-made, with simulation now becoming the dominant paradigm because it is roughly 10% worse, 100x cheaper, and 10000x faster than alternatives.",
+      "importance_score": 40.0,
+      "reasoning": "Insightful industry framing piece but commentary/analysis rather than new capability or product. Captures an important macro trend in AI for science and training pipelines.",
+      "themes": [
+        "AI for science",
+        "Simulation",
+        "Industry trends"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.latent.space/feed",
+        "raw_summary": "Did you think RSI stopped at model training?",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Latent Space essay arguing that since 2022, each component of the ML pipeline has progressively flipped from human-made to model-made, with simulation now becoming the dominant paradigm because it is roughly 10% worse, 100x cheaper, and 10000x faster than alternatives.</p>",
+      "content_html": "<p>By AI standards today is a pretty quiet Friday, so it’s time to take a step back and reflect on what is really going on. If you read our 2025 reading list, and followed our coverage of Z.ai GLM, understood the Poolside pivot, been following our AI for Science themes, and tuned in to today’s Simile pod, you not only are one of the biggest readers of Latent Space, you will probably also arrive at this mental model:Every year since 2022, one more component of the pipeline that produces machine intelligence has flipped from human-made to model-made. Not gradually, and not evenly — each flip has a patient zero, a paper or product where the synthetic version first became load-bearing at a frontier lab, and from there on, the future is simply here but not yet productionized.And if you squint, what we used to call “synthetic data” and “synthetic rubrics” and “AI researcher” and “end to end RL environments” is just increasingly ambitious human simulation - 10% worse, but 100x cheaper and 10,000x faster.Stage 1: The reward signal (2022)The first thing to go synthetic was, counterintuitively, the judge. InstructGPT established the now-canonical trick: collect human preferences once, train a reward model, and let the policy optimize against the model rather than the humans. From the policy’s point of view, the thing dispensing approval was already an LLM. Constitutional AI pushed further and had the AI critique itself against a set of principles (RLAIF), and Lee et al. later showed AI feedback matching human feedback at a fraction of the cost. By the time LLM-as-judge became the default eval methodology (MT-Bench, AlpacaEval), the entire approval apparatus — reward, critique, evaluation — ran on models judging models.Stage 2: The training data (2023)Microsoft’s Phi series made the argument in its title: Textbooks Are All You Need. A small model trained on LLM-synthesized, textbook-quality data punched far above its parameter count, and phi-1.5 confirmed it wasn’t a fluke. Apple’s WRAP generalized the move: don’t just generate data, rephrase the entire web with an LLM, and pretraining gets roughly 3x more efficient. From there the pipeline industrialized — NVIDIA’s Nemotron-4 340B shipped with a permissively licensed synthetic data generation pipeline as a headline feature, and by 2025 reasoning-trace corpora (chains of thought generated by strong reasoners) had become a standard pretraining and mid-training ingredient. The corpus, the thing that was supposed to be the irreducibly human input, was now substantially model-written.Stage 3: The teacher (2023)Weeks after ChatGPT’s API opened, Stanford’s Alpaca demonstrated that a $600 fine-tune on GPT-generated instructions could clone much of a frontier model’s behavior. Vicuna did it with shared conversations; Orca did it with rich teacher explanations rather than bare answers. The technique matured from imitation into a proper training discipline — on-policy generalized knowledge distillation fixed the train/inference mismatch — and reached its cultural peak when DeepSeek-R1 shipped a family of distilled models alongside the flagship, making “the teacher is a model” the default assumption for every small model release since. Stage 4: The curriculum (2024)Stages 1–3 made the inputs synthetic; stage 4 is where the loop starts closing on itself, because the model begins deciding what to learn next. The pieces existed early — Self-Instruct (models writing their own instruction sets) and STaR (models bootstrapping their own reasoning traces) are both 2022 — but the flip came when Meta’s Self-Rewarding Language Models and SPIN showed a model could generate its own tasks, judge its own outputs, and improve past the ceiling of its human preference data. Curriculum design — historically the most artisanal part of ML, the taste-driven choice of what to train on next — became something models do to themselves.Stage 5: The researcher (2026)The assistance era (Copilot, then SWE-agents) kept a human choosing the experiments. The discovery era did not. DeepMind’s AlphaEvolve evolved genuinely new algorithms in 2025, and Sakana’s AI Scientist (now in Nature!) sketched the full paper-writing pipeline. The big moment was Karpathy’s autoresearch in March 2026: a deliberately minimal ratchet loop where a coding agent modifies a real LLM training setup, runs a five-minute experiment, keeps the change only if validation loss improves, and repeats overnight. His own extended run stacked 700 experiments into 20 kept improvements, cutting time-to-GPT-2 from 2.02 to 1.80 hours — real, transferable code changes found while he slept. Stage 6: The environment (2026)RL’s scaling bottleneck moved from the model to the environment: you need thousands of executable, verifiable, professionally realistic task worlds, and humans can’t hand-build them fast enough. We covered this recently in our z.ai / GLM-5.3 issue: Z.ai built pipelines that synthesize environments end to end — research agents mine real work patterns and convert them into long-horizon environments with hidden state, a judge agent attempts each task to confirm it’s solvable, and verifiers are synthesized without seeing the reference solution, then stress-tested with oracle, no-op, and unsolved-state checks until their binary reward is reliable enough to train on directly. As the GLM-5.3 release puts it, the entire environment, judging, and verification stack is synthetic all the way down. The same week, Ornith-1.5 shipped claiming end-to-end self-improvement — the model proposes its own tasks and generates its own RL rollouts. The gym, the referee, and the scoreboard are all models now.Stage 7: The human subject (2025)If models can be the judge, teacher, and environment, the remaining human role in the loop is subject — the source of preferences, behavior, and demand. That’s the layer Simile is replacing. The lineage runs from Joon Sung Park’s Generative Agents (Smallville, 2023) through Generative Agent Simulations of 1,000 People, where digital twins built from two-hour biographical interviews reproduced their source humans’ survey and behavioral responses 85% as accurately as the humans reproduced themselves two weeks later. The big hurdle to overcome: frontier models are trained toward being agent models, which makes them bad simulations of real people — so Simile post-trains on interviews, transaction data, and registered RCTs from the Open Science Framework specifically to recover human bias, inconsistency, and causal texture, and reports early scaling laws for simulation quality. With SimGym at Shopify simulating shopper trajectories and Tencent’s billion-persona approach at the crude end of the spectrum, the focus group, the user study, and the A/B test panel are becoming inference workloads.Stage 8: The physical world (2026, in progress)The last row of the grid never quite turns red, and that’s the point. Poolside’s reverse-execuhire letter drew the line precisely: the world’s problems split into intelligence-bound ones (solvable by scaling cognition, soon commoditized by open weights) and experiment-bound ones, where “no amount of intelligence substitutes for real-world experimental feedback — 100,000 brilliant minds won’t cure cancer without a wet lab.” Their bet is that AI’s durable value accrues to whoever owns the experimental loop: AI as “the world’s most valuable scientific discovery engine.” The bio side is running the same play from the other direction. CZ Biohub is imaging the Human Cell Atlas into a virtual cell — because in silico is roughly 1000x cheaper and faster than in vivo — and extending toward a virtual immune system, with Chai, Xaira, and Lila’s data-center-shaped labs filling in the AI-for-science stack. The physical world is the one component that can’t be fully synthesized — only compressed, cell by cell, into models.The exponential starts at the diagonalRead the grid one more time and a second pattern appears underneath the first. Every flip was preceded by the same objection — model collapse, hallucination stacking, garbage in garbage out — and every flip happened anyway, at the exact moment a verification mechanism made the synthetic version trustworthy: aggressive filtering for Phi’s textbooks, judge-vs-judge agreement studies for LLM evals, unit tests and proof checkers for RLVR, oracle/no-op checks for z.ai’s verifiers, registered RCTs for Simile’s twins, the wet-lab loop for the virtual cell. The synthetic frontier doesn’t advance when generation gets better. It advances when verification does.Which suggests where it goes next. The gray triangle remaining in the bottom-left of the grid — physical experiment, embodied ground truth — is exactly the region where verification is slowest and most expensive. The models learned to write, then to judge, then to practice, then to experiment. The remaining question of the decade is how much of reality they’ll need to touch — and how much they can get away with simulating. 10% worse, 100x cheaper, 10000x faster… and improving on ALL three dimensions fast.One more time, with feeling:AI News for 8/20/2026-8/21/2026. We checked 12 subreddits, 544 Twitters and no further Discords. AINews’ website lets you search all past issues. As a reminder, AINews is now a section of Latent Space. You can opt in/out of email frequencies!AI Twitter RecapStealth Models, Chinese Frontier Pressure, and DeepSeek’s Multimodal PushOx Alpha became the day’s central mystery model: multiple builders reported unusually strong coding and agentic performance, with speculation converging on a Zhipu/GLM-family model—possibly GLM-5.3 Vision or a flash variant rather than a giant new base model. Reports included Theo saying it was “slaughtering” internal benchmarks, later merging 8 PRs based on its approval, and Kimmonismus citing &gt;80% on 10 DeepSWE tasks vs 65% for Fable and 52% for GPT-5.6 Sol. Community distribution happened quickly via Hermes Agent/OpenCode/OpenRouter and Cline.The strongest technical read from the crowd was “post-training + infra &gt; sheer size”: several independent takes argued Ox Alpha’s speed profile and style looked more like an efficient GLM derivative than a 1T+ monster. See Tim Dettmers on faster output / weaker partial prefill suggesting fewer active params, scaling01 arguing it may be a bigger teacher distilled into 5.3-class models, and teortaxesTex repeatedly narrowing toward GLM-5.3/5.4 Vision. That interpretation fits the broader thesis from a detailed GLM-5.3 analysis: gains came from the same 743B base as GLM-5.2, with improvements attributed to scaled post-training, better sandboxes, and SAO for finer credit assignment in long-horizon agent tasks, summarized in ZhihuFrontier’s thread.DeepSeek shipped the day’s most concrete release: DeepSeek-V4-Flash-Vision-Exp adds multimodal support while reportedly preserving V4-Flash text capability, with DeepSeek claiming multimodal-agent performance close to Opus-4.8. The rollout includes mixed text+image API support with 117–384 image tokens billed at Flash pricing and a new Files API for reusable uploads. This appears to have resolved at least part of the Ox Alpha confusion, with observers noting the mystery model had likely been a “blinded VLM” in some tests.Broader signal: Chinese labs are compressing the frontier on both price/perf and multimodal agents. That was reinforced by Kimmonismus arguing a rumored GLM-5.3 Flash-class Ox Alpha would force reactions from US labs, and by SemiAnalysis asking directly whether open models are catching up.OpenAI, Codex, and Pricing/Usage EconomicsOpenAI cut GPT-5.6 Sol pricing by over 20% for three months in the API and credit-based products, announced by @OpenAI and @OpenAIDevs. This stacks with product-level promotions like Code’s 50% discount through Sept. 3 and Cognition’s note that on Devin, Sol is now effectively 76% off list through Oct. 3 after combining discounts. The move reads as both a utilization/efficiency update and a competitive response to cheap Chinese inference.Codex usage appears to be exploding: thsottiaux said Codex hit 20M active users and granted all Codex and ChatGPT Work users a “banked reset”, quickly amplified by Theo and Kimmonismus. There were also anecdotes of the product exceeding expected limits, e.g. Theo claiming a long-running goal consumed ~$800 in tokens after he’d already hit 0% remaining.OpenAI added better spend controls: teams can now track usage and spend by API key and set hard monthly org/project limits, useful as agentic workloads become less predictable and more concurrent.Market sentiment shifted back toward OpenAI in startup tooling: immad suggested Anthropic’s startup share may have peaked in Q1, with Sol and Codex “turning the tide back”. In parallel, some users framed Sol as the current best all-around model for coding/math/agentic tasks, e.g. DimitrisPapail’s “most capable model available for almost every task” take.Agents, Harnesses, and the Shift Toward Environment-Centric TrainingThe center of gravity is moving from prompts to environments: the most substantive thread here was again GLM-5.3’s sandbox-scaling interpretation: same base model, but better long-horizon performance from richer executable environments and SAO-style counterfactual credit assignment. This aligns with other work shared today: Google’s EnvHarness / EnvRigger adapts static environments using a plugin layer and policy-diagnosed reshaping, improving held-out performance by up to 9 points with 9.8% fewer execution steps.Benchmarks are getting more task-specific and harder: FACET creates executable terminal tasks from agent skills and validated 6,078 tasks; SWE-bench Science introduces 119 scientific software tasks where even Claude Code + Opus-5 is under 50% pass@1; CADBench finds top models at only 24.6% pass rate across realistic Fusion 360 tasks; and AI4AI-Bench tests recursive self-improvement over 10 research repos, with the best model only at 0.288 average score.Agent infra is getting more productized: GitHub rolled out collaborative agent workflows into Slack and Teams, with Slack describing Devin-like flows where the agent picks up tasks, opens PRs, and loops in design inside the shared channel (example). There’s also continued work on agent runtimes: nac v0.1.3 added sandboxed git worktrees, session organization, and vision-aware image reading; Hermes Agent made Ox Alpha available and exposed “Blank Slate mode” plus automatic skill pruning; and OpenHands switched its free default to Kimi K3.Inference-serving correctness in RL got an important systems result: vLLM’s IsoExec addresses rollout/training logprob mismatches caused by floating-point non-associativity, enforcing bitwise parity across TP/EP/SP layouts. On Qwen3.5-35B-A3B with DAPO on 8xH100, logprob diff reportedly dropped from 1.6e-2 to 6.7e-7 at 25.3% overhead.Research Highlights: Routing, Recirculation, and RoboticsInference-time architecture ideas: a DeepMind paper on Recirculation got attention for feeding contextualized deeper-layer activations back into earlier processing at inference time, without retraining. The summary cited improvements including -60% contextualization errors, -23% perplexity, and +21% GSM8K in reported experiments (thread).Model routing got a more principled treatment: Pandora’s Router from Google DeepMind frames routing as an optimal search problem with costly inspection, rather than assuming routing estimates are free. The claim: it matches exhaustive-estimation quality while calling expensive estimators less often, including settings with specialist LLMs and variable inference-time reasoning.Robotics had two strong updates: NVIDIA AVO reportedly solved all 183 levels across 25 public ARC-AGI-3 environments, though François Chollet cautioned this is the public demo/tutorial set rather than the full benchmark. Separately, Jim Fan introduced T-Rex, a tactile-reactive dexterous manipulation stack with asynchronous vision/tactile experts plus what’s described as the largest open tactile dataset yet: 50 hours / ~5,500 episodes / 22-DoF hardware.Infrastructure, Compute, and Open ModelsOpen-model access and local inference continue improving: Ollama welcomed AT&amp;T to open models and added Kimi K3 to Pro/Max subscriptions. Yuchen Jin highlighted UC Berkeley’s FreeToken: 753B GLM-5.2 at 14.9 tok/s on a single RTX PRO 6000 and Qwen3.6-35B at 39.3 tok/s on an 8GB RTX 4060 laptop, claiming 2–4x Ollama throughput on consumer GPUs.Compute remains the hard constraint: multiple operators argued inference capacity is tightening, not loosening—see saranormous on good AI companies being growth-limited by compute and Andrew Carr on self-hosting GPUs and still having more experiments than available capacity. This makes model efficiency, scheduling, and lower latency/tokens-per-dollar improvements strategically important.Open-source training transparency is also scaling: Percy Liang announced Marin 535B-A23B has started training, targeting 18.75T tokens on 11× GB200 NVL72 over ~3 months, with the run kept open as usual.Top tweets (by engagement)DeepSeek launches V4-Flash-Vision-Exp — the clearest product release of the day, and likely the biggest practical shift for multimodal agents.OpenAI cuts GPT-5.6 Sol pricing by &gt;20% — meaningful pricing pressure at the frontier.Codex reaches 20M active users; banked resets for users — notable product growth signal.NVIDIA AVO hits 100% on ARC-AGI-3 public environments with Chollet’s caveat — impressive, but benchmark interpretation matters.David Sacks on Harvey using open-source Kimi K3 for legal SOTA at lower cost — strong argument for why restrictions on open models would mostly hurt US application-layer companies.AI Reddit Recap/r/LocalLlama + /r/localLLM Recap1. Qwen3.8 27B Local Agent EvaluationsQwen3.8-27b has the highest level of “agency” I’ve ever seen in a local model (Activity: 1334): The post claims Qwen3.8-27B running locally on a single RTX 3090 with Unsloth Q4_K_S quantization, q8 KV cache, and 150k context performed unusually capable autonomous agent workflows: using Playwright plus existing SSO/session cookies to navigate university systems and retrieve a course schedule, and separately processing a social-media video via download, frame extraction, transcription with Whisper, and image enhancement. The image is a screenshot of the model reporting use of an Outlook/OWA Playwright profile, Microsoft “stay signed in,” and Duo browser-trust cookies to access school systems, making the technical significance less about raw model quality alone and more about local LLM tool-use agency plus high-risk credential/session handling. Comments were impressed but cautious: one user explicitly worried about giving an agent enough access to potentially perform destructive actions like withdrawing from university, while others framed it as evidence that advanced local agentic systems are already here but unevenly distributed.A commenter asked for implementation details behind the reported agentic behavior of Qwen3.8-27B, specifically the agent harness used—e.g. Claude Code, Hermes, or another framework—and how tools were exposed via MCP servers, browser tools, Python, filesystem access, etc. They also asked what inference backend served the model, such as llama.cpp, and how it was able to autonomously download video, extract frames, and install Whisper.There was technical concern about the reliability of the referenced quantization: one commenter noted surprise that “the quant is that good,” while mentioning reports of looping behavior at that quant. This suggests the model’s apparent agency may be sensitive to quant level and runtime behavior, especially for long-horizon tool use.A safety-oriented thread questioned giving local agents broad system access, with one commenter saying they would not trust agents like Sol or Fable with unrestricted permissions. The concern was not about local inference itself, but about autonomous agents with enough privileges to perform impactful real-world actions such as modifying accounts or workflows.Qwen3.8-27B took a serious hit to knowledge vs 3.6 (Activity: 779): The post reports that Qwen3.8-27B / Qwen3-8-27B appears to regress vs Qwen3.6-27B / Qwen3-6-27B on offline, no-tool-call factual recall: the author’s private “mildly obscure” trivia/prepper benchmark showed failures across quantization levels and sampling settings, consistent with lower scores on Artificial Analysis’ Omniscience knowledge benchmark. The reported degradation is specifically about knowledge stored in weights and hallucination/fact recall under airgapped inference, not coding/tool-use; commenters note Qwen3.8 is stronger at tool calling, web search/fetch workflows, coding, and agentic behavior. Commenters broadly frame this as an intentional tradeoff: newer Qwen 3.x models may be optimized for coding/agentic tasks rather than being “mini Google” factual stores, with Gemma 4 suggested as a better fit for trivia/random-fact recall. One user confirmed regression on niche visual/history/geography tasks such as stamp or old-photo location identification when web tools are disabled, but considered the tradeoff acceptable given improved tool use.Several commenters frame Qwen3.8-27B as shifting away from memorized factual recall toward coding, tool use, and agentic workflows. One user testing a niche “knowledge” workload—stamp identification and historical/location inference from old photos—reported that with web search/fetch tools disabled, Qwen3.8 performs worse than Qwen 3.6, but becomes more useful when allowed to retrieve information externally.The perceived regression is described as an intentional tradeoff for a 27B model: reduce obscure memorized knowledge while preserving enough reasoning ability for problem solving and agents. Commenters suggest using models like Gemma for factual/trivia-heavy tasks, while reserving Qwen3.8 for coding/tool-calling scenarios where users report stronger performance.One technical speculation was that future models may separate base reasoning from domain knowledge via neural plugins/LoRA-like modules: e.g., adding Japanese-language capability or finance-domain expertise as attachable components rather than baking all knowledge into the base model. This was proposed as a way to keep base models smaller or more specialized while allowing opt-in domain expansion.Qwen 3.8 27b - PI AGENT vs OPENCODE (Activity: 510): The author compares PI Agent vs Opencode using a local llama-server backend on an RTX 3090 with Qwen3.8-27B-Q4_K_M.gguf, ctx-size=100000, flash-attn=on, n-gpu-layers=99, DeepSeek-style reasoning, and a vision mmproj module. They report PI Agent producing better outputs, using fewer tokens, avoiding Opencode’s apparent 32k output-token ceiling/freezing behavior, and delaying context compression until ~90k tokens vs Opencode starting around ~67k when total context is 100k; they also recommend enabling vision so the model can visually assess generated outputs, with CPU/RAM offload acceptable for screenshot evaluation latency (~3s vs ~0.3s GPU). The test was inspired by a prior LocalLLaMA post about generating a bouncing-ball animation: reddit.com/r/LocalLLaMA/comments/1j7r47l/.... Commenters questioned whether a one-shot HTML/animation task is a meaningful harness comparison and suggested multi-step tool-heavy workflows instead. Another user reported PI + local Qwen3.8-27B felt competitive with Claude Code on a roughly one-hour aurora-prediction app build, though both models judged Claude’s initial result slightly better before PI iterated.A commenter argues that one-shot HTML generation is not a meaningful benchmark for comparing PI Agent vs OpenCode; they suggest using multi-step tasks with extensive tool calls to evaluate the harnesses’ planning, editing, and recovery behavior.One user reports a subjective head-to-head between local Qwen3.8-27B running in PI and Claude Code on building an aurora predictor app. They felt runtime was similar; both agents judged Claude’s first result slightly better, but after asking PI/Qwen to upgrade its version, the user preferred Qwen’s presentation. The resulting app reportedly integrated multiple satellite instruments and provided 30–60 minute aurora warnings.Another commenter suggests adding the DeepSeek harness to the comparison, implying the evaluation should cover more agent runtimes than just PI Agent and OpenCode.2. DeepSeek V4 Flash Benchmarks and ServingDeepSeek-V4-Flash-Vision-Exp (Activity: 722): The image is a technical benchmark table for DeepSeek-V4-Flash-Vision-Exp (image), comparing it against DeepSeek V4-Flash-0731 and Opus-4.8 on text-agent and multimodal-agent evaluations. It shows broad gains over the prior DeepSeek Flash release, including 83.9 on Terminal Bench 2.1, 75.9 on Toolathlon-Verified, and 64.3 on Chartography, while Opus-4.8 still leads many text-heavy benchmarks; Vision-Exp appears more competitive on multimodal tasks such as Agents’ Last Exam and ZeroBench. The main technical reaction was that the reported DeepSWE improvement of roughly +4 points over 0731 is considered unusually large. Other comments were mostly hype or tribal reactions rather than substantive analysis.DeepSeek’s announcement says DeepSeek-V4-Flash-Vision-Exp is live via the DeepSeek API with model='deepseek-v4-flash-vision-exp', matching DeepSeek-V4-Flash text capabilities while adding multimodal input. The model supports Chat Completions, Messages, and Responses APIs, with mixed text+image inputs via base64, external URLs, or the Files API; images are billed as up to 384 tokens each at V4-Flash pricing. Docs: vision guide.Several comments focused on benchmark movement: one noted DeepSWE reportedly improved by 4 points from 0731 to Vision-Exp, while the announcement claims a “major leap” on multimodal agent benchmarks, bringing performance close to Opus-4.8. The technical implication discussed is that Vision-Exp may retain V4-Flash’s agent/reasoning/world-knowledge text performance while substantially improving visual-agent workflows.DeepSeek also launched a Files API for image reuse: users can upload an image once, reference it by file_id, and avoid resending image payloads across requests, reducing bandwidth overhead. One commenter asked whether the model weights would be open and noted they could not yet find them on Hugging Face, implying that availability appears API-only at the time of discussion. Files API docs: files_api.The boring way to run Deepseek V4 Flash-0731 130-150 tks - 16x5060ti 16GB over 2 PLX88096 switches (Activity: 621): The image is a terminal GPU-monitoring dashboard validating the post’s unusual 16× RTX 5060 Ti 16GB inference rig: all GPUs are visible, nearly full at roughly 15.2–15.7 GiB / 15.9 GiB VRAM, and assigned to vLLM worker processes for DeepSeek V4 Flash-0731. The setup uses two Broadcom/PLX PEX88096 PCIe switch islands with patched NVIDIA 610.43.02-p2p, Resizable BAR/BAR1 set to 16 GiB per GPU, and custom all-reduce/DSpark pipeline parallelism; reported throughput is about 100–150 tok/s single-user generation depending on TP/PP layout, with concurrency scaling up to 727 output tok/s aggregate for TP4/PP4 at 16 users. The image also shows the tradeoff/oddity of the build: the GPUs appear connected at PCIe Gen1 x8 and are mostly idle at the captured moment despite high VRAM residency, implying the screenshot is more a topology/memory residency proof than a live utilization benchmark. Commenters were less focused on the benchmark table and more on the physical absurdity of the build, asking for “a photo of the setup” and calling it a “mad setup.” One notable skeptical/funny technical reaction was that “a little vibe coding” likely hides substantial custom distributed-inference work.</p>\n<p>Read more</p>"
+    },
+    {
+      "id": "d3acbe0ad887",
+      "title": "‘Digging the grave of my profession’: the Hollywood creatives training AI to do their jobs",
+      "content": "Amid a jobs slump, award-winning writers, directors and producers taking on sometimes lucrative temp work teaching AI skills such as screenwriting and productionHollywood creatives are taking gig work to train AI models to replicate their skills in a bid to offset tightening earnings in a trend one compared to being “handed a shovel and asked to dig the grave of my profession”.Experienced and award-winning writers, directors and producers are being paid from $12 to $200 an hour to teach AI models the intricacies of their jobs, from writing a screenplay to devising a shooting schedule. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/aug/22/the-hollywood-creatives-training-ai-to-do-their-jobs",
+      "author": "Robert Booth UK technology editor",
+      "published": "2026-08-22T06:00:55",
+      "source": "AI (artificial intelligence) | The Guardian",
+      "source_type": "rss",
+      "tags": [
+        "Technology",
+        "Film industry",
+        "Television industry",
+        "AI (artificial intelligence)",
+        "Media",
+        "Film",
+        "Culture"
+      ],
+      "summary": "Award-winning Hollywood writers, directors, and producers are taking gig work training AI models in their craft for $12-200/hour amid an industry jobs slump, illustrating how creative labor is being enlisted to build its own replacements.",
+      "importance_score": 38.0,
+      "reasoning": "Useful signal on the AI training-labor economy and creative industry disruption, but no technical frontier development. Anthropological/labor angle rather than capability news.",
+      "themes": [
+        "AI labor market",
+        "Creative industries",
+        "Data labor"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "raw_summary": "<p>Amid a jobs slump, award-winning writers, directors and producers taking on sometimes lucrative temp work teaching AI skills such as screenwriting and production</p><p>Hollywood creatives are taking gig work to train AI models to replicate their skills in a bid to offset tightening earnings in a trend one compared to being “handed a shovel and asked to dig the grave of my profession”.</p><p>Experienced and award-winning writers, directors and producers are being paid from $12 to $200 an hour ",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Award-winning Hollywood writers, directors, and producers are taking gig work training AI models in their craft for $12-200/hour amid an industry jobs slump, illustrating how creative labor is being enlisted to build its own replacements.</p>",
+      "content_html": "<p>Amid a jobs slump, award-winning writers, directors and producers taking on sometimes lucrative temp work teaching AI skills such as screenwriting and productionHollywood creatives are taking gig work to train AI models to replicate their skills in a bid to offset tightening earnings in a trend one compared to being “handed a shovel and asked to dig the grave of my profession”.Experienced and award-winning writers, directors and producers are being paid from $12 to $200 an hour to teach AI models the intricacies of their jobs, from writing a screenplay to devising a shooting schedule. Continue reading...</p>"
+    },
+    {
+      "id": "dab2f6f1d4bb",
+      "title": "AI Law — This Week (August 17 – August 23, 2026)",
+      "content": "128 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.Highlights:Colorado: Colorado Is Writing AI Transparency Rules. The FTC Says Federal Law May Override Them. (2026-08-22)Illinois: Illinois Privacy Law Faces New AI Voice Data Fight (2026-08-22)Montana: Montana law restricting AI-generated political content heard in federal court (2026-08-22)Montana: Montana law restricting AI-generated political content heard in federal court (2026-08-22)California: OpenAI Reverses Course, Now Backs Stronger California AI Bill (2026-08-22)California: OpenAI says California should strengthen its AI safety bill (2026-08-22)Full weekly digest →",
+      "url": "https://ai-law-tracker.com/this-week",
+      "author": "Unknown",
+      "published": "2026-08-22T00:00:00",
+      "source": "AI Law Tracker",
+      "source_type": "rss",
+      "tags": [
+        "Weekly Digest"
+      ],
+      "summary": "Weekly AI law roundup covering 128 developments across US federal, state, and global jurisdictions, including Colorado AI transparency rules, Illinois privacy/voice data fights, Montana AI political content laws, and OpenAI's reversal on California SB 53.",
+      "importance_score": 38.0,
+      "reasoning": "Useful aggregated policy tracker, but mostly a digest of items covered individually elsewhere; individual highlights are more important than the digest itself.",
+      "themes": [
+        "AI policy",
+        "Regulation",
+        "Weekly roundup"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://ai-law-tracker.com/feed.xml",
+        "raw_summary": "<p>128 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.</p><p><strong>Highlights:</strong></p><ul><li>Colorado: <a href=\"https://news.google.com/rss/articles/CBMiqgFBVV95cUxNWlVhUmdoT1NIbkZjSERrVUZxbEV1ejFZcElQTTR3ZW45SnYtYkR1UEJFbGExbzVaekpwUGJ4LW00c0FOQWphTV8wZW1hbGQ1SFdMUGZVa2FlR3BENXhOYlMwR3IxTG1fQUhGZ0ZvM0VNNkExZFpaVzZVTm9wTXlHZG9SR004eUFnNndCQ1pUcFZYUGtZOVVseUJ6NXEyZWdCaTdBYjR3WUYwQQ\">C",
+        "source_group": "Policy & Regulation",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Weekly AI law roundup covering 128 developments across US federal, state, and global jurisdictions, including Colorado AI transparency rules, Illinois privacy/voice data fights, Montana AI political content laws, and OpenAI's reversal on California SB 53.</p>",
+      "content_html": "<p>128 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.Highlights:Colorado: Colorado Is Writing AI Transparency Rules. The FTC Says Federal Law May Override Them. (2026-08-22)Illinois: Illinois Privacy Law Faces New AI Voice Data Fight (2026-08-22)Montana: Montana law restricting AI-generated political content heard in federal court (2026-08-22)Montana: Montana law restricting AI-generated political content heard in federal court (2026-08-22)California: OpenAI Reverses Course, Now Backs Stronger California AI Bill (2026-08-22)California: OpenAI says California should strengthen its AI safety bill (2026-08-22)Full weekly digest →</p>"
+    },
+    {
+      "id": "695bec41aaa0",
+      "title": "‘Humanizer’ tool can erase signs of AI-written text — alarming scientists | Nature",
+      "content": "Email Bluesky Facebook LinkedIn Reddit Whatsapp X Save article View saved research A new academic ‘humanizer’ tool aims to personalize the tone of research papers written with an artificial-intelligence program , in part by erasing apparent signs of AI usage. Some researchers praise the tool — but others are voicing concerns. Access options Access through your institution Access Nature and 54 other Nature Portfolio journals Get Nature+, our best-value online-access subscription $32.99 / 30 days cancel any time Learn more Subscribe to this journal Receive 52 print issues and online access $199.00 per year only $3.83 per issue Learn more Rent or buy this article Prices vary by article type from $1.95 to $39.95 Learn more Prices may be subject to local taxes which are calculated during checkout Nature 655 , 556-557 (2026) doi: https://doi.org/10.1038/d41586-026-02105-3 References He, Y. & Bu, Y. Proc. Natl Acad. Sci. USA 123, e2526734123 (2026). Article PubMed Google Scholar Download references Reprints and permissions Related Articles Major AI conference flooded with peer reviews written fully by AI Meet the academics refusing to use generative AI Scientists hide messages in papers to game AI peer review Hallucinated citations are polluting the scientific literature. What can be done? Subjects Machine learning Publishing Scientific community Ethics Latest on: Machine learning Publishing Scientific community Investors’ sneak peak: can this AI tool spot the science that will lead to patents? News 20 AUG 26 Psychedelics tune the brain to the environment News & Views 19 AUG 26 Can Anthropic’s invisible watermarks curb ‘AI slop’? Researchers remain sceptical News 13 AUG 26 Sleuth identifies dozens of studies that used the wrong antibody News 21 AUG 26 Staggering 90% of biomedical papers now show signs of AI help News 20 AUG 26 Can Anthropic’s invisible watermarks curb ‘AI slop’? Researchers remain sceptical News 13 AUG 26 Why we must stop talking about artificial general intelligence — and instead build ‘pro-worker’ AI World View 21 AUG 26 Sleuth identifies dozens of studies that used the wrong antibody News 21 AUG 26 Exclusive: NSF set to issue lowest number of new grants in four decades News 20 AUG 26 Jobs Talent Recruitment Announcement at the College of Plant Science & Technology Gather Global Talents, Forge Great Achievements Wuhan, Hubei (CN) Huazhong Agricultural University (HZAU) Recruitment Announcement for High-Level Talent at the Center for Agricultural Microbiology Join HZAU's global faculty team to advance research with competitive benefits. Wuhan, Hubei (CN) Huazhong Agricultural University (HZAU) Postdoctoral Positions in Neurodegeneration or Cancer Research Postdoctoral fellows are sought to study neurodegeneration, aging, protein quality control, cancer, metabolism, autophagy, and stem cell biology. Philadelphia, Pennsylvania (US) University of Pennsylvania Associate/Senior Editor, BMC Sports Science, Medicine and Rehabilitation You will contribute to the success of the BMC Series by supporting editorial handling of content in BMC Sports Science, Medicine and Rehabilitation. New York City, New York (US) Springer Nature Ltd Faculty Position in Tissue Regeneration and Stem Cell Biology Dallas, Texas (US) The University of Texas Southwestern Medical Center (UT Southwestern Medical Center)",
+      "url": "https://www.nature.com/articles/d41586-026-02105-3?utm_source=x&utm_medium=social&utm_campaign=nature&linkId=62670261",
+      "author": "",
+      "published": "2026-08-23T01:24:37.472004",
+      "source": "www.nature.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "Nature reports on a new academic 'humanizer' tool that erases signs of AI-written text in research papers, alarming some scientists about scientific integrity.",
+      "importance_score": 35.0,
+      "reasoning": "Important for academic publishing integrity and AI-detection dynamics but not a frontier capability story; mostly a tooling/debate piece.",
+      "themes": [
+        "AI detection",
+        "Academic publishing",
+        "AI integrity"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/Ronald_vanLoon/status/2091268677194633671",
+          "post_author": "@Ronald_vanLoon"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Nature reports on a new academic 'humanizer' tool that erases signs of AI-written text in research papers, alarming some scientists about scientific integrity.</p>",
+      "content_html": "<p>Email Bluesky Facebook LinkedIn Reddit Whatsapp X Save article View saved research A new academic ‘humanizer’ tool aims to personalize the tone of research papers written with an artificial-intelligence program , in part by erasing apparent signs of AI usage. Some researchers praise the tool — but others are voicing concerns. Access options Access through your institution Access Nature and 54 other Nature Portfolio journals Get Nature+, our best-value online-access subscription $32.99 /&nbsp;30&nbsp;days cancel any time Learn more Subscribe to this journal Receive 52 print issues and online access $199.00 per year only $3.83 per issue Learn more Rent or buy this article Prices vary by article type from $1.95 to $39.95 Learn more Prices may be subject to local taxes which are calculated during checkout Nature 655 , 556-557 (2026) doi: https://doi.org/10.1038/d41586-026-02105-3 References He, Y. &amp; Bu, Y. Proc. Natl Acad. Sci. USA 123, e2526734123 (2026). Article PubMed Google Scholar Download references Reprints and permissions Related Articles Major AI conference flooded with peer reviews written fully by AI Meet the academics refusing to use generative AI Scientists hide messages in papers to game AI peer review Hallucinated citations are polluting the scientific literature. What can be done? Subjects Machine learning Publishing Scientific community Ethics Latest on: Machine learning Publishing Scientific community Investors’ sneak peak: can this AI tool spot the science that will lead to patents? News 20 AUG 26 Psychedelics tune the brain to the environment News &amp; Views 19 AUG 26 Can Anthropic’s invisible watermarks curb ‘AI slop’? Researchers remain sceptical News 13 AUG 26 Sleuth identifies dozens of studies that used the wrong antibody News 21 AUG 26 Staggering 90% of biomedical papers now show signs of AI help News 20 AUG 26 Can Anthropic’s invisible watermarks curb ‘AI slop’? Researchers remain sceptical News 13 AUG 26 Why we must stop talking about artificial general intelligence — and instead build ‘pro-worker’ AI World View 21 AUG 26 Sleuth identifies dozens of studies that used the wrong antibody News 21 AUG 26 Exclusive: NSF set to issue lowest number of new grants in four decades News 20 AUG 26 Jobs Talent Recruitment Announcement at the College of Plant Science &amp; Technology Gather Global Talents, Forge Great Achievements Wuhan, Hubei (CN) Huazhong Agricultural University (HZAU) Recruitment Announcement for High-Level Talent at the Center for Agricultural Microbiology Join HZAU's global faculty team to advance research with competitive benefits. Wuhan, Hubei (CN) Huazhong Agricultural University (HZAU) Postdoctoral Positions in Neurodegeneration or Cancer Research Postdoctoral fellows are sought to study neurodegeneration, aging, protein quality control, cancer, metabolism, autophagy, and stem cell biology. Philadelphia, Pennsylvania (US) University of Pennsylvania Associate/Senior Editor, BMC Sports Science, Medicine and Rehabilitation You will contribute to the success of the BMC Series by supporting editorial handling of content in BMC Sports Science, Medicine and Rehabilitation. New York City, New York (US) Springer Nature Ltd Faculty Position in Tissue Regeneration and Stem Cell Biology Dallas, Texas (US) The University of Texas Southwestern Medical Center (UT Southwestern Medical Center)</p>"
+    },
+    {
+      "id": "a852e04690d3",
+      "title": "Runway News | The Next Phase of Enterprise Video Generation",
+      "content": "The Next Phase of Enterprise Video Generation August 20, 2026 by Sean Holcombe, Chief Revenue Officer Reflecting on my first few months at Runway and hundreds of customer conversations, there's a few emerging themes in AI that stand out. We’re still in the earliest stages of building real-world superintelligence . But our customers are already starting to shift the way they think about everything from cost optimization to model ownership. Our business has more than doubled this year, and we’ve grown our NRR to over 300%. Many of our largest deployments continue to scale; one Fortune 20 grew their use of Runway over 17x this year. Our creative roots with companies like Lionsgate and Paramount will always be core to our ethos and design, but adoption from enterprises like Amazon, Microsoft, Allstate, Adobe, Robinhood and more has driven much of the recent growth. We’re also seeing increased international adoption. Europe is our second-largest market, accounting for over 20% of our enterprise customer base, with subscription sales volume up 50% over the past twelve months. Japan has grown into our largest market in Asia, and one of our largest globally, driven almost entirely by teams that built Runway into their workflows before we had a commercial presence there. India and Brazil are two of our largest and fastest-growing self-serve user bases, and we’re increasingly seeing upmarket adoption as well. The pattern across every region is the same: enterprises arrive through a specific use case, then expand rapidly. That expansion is showing across every metric, from token usage to NRR. A few specific themes I’m hearing consistently: Models are converging. No single model-only provider holds a durable lead for long. As that gap closes, competition is shifting from which model is best to which product is best to build with and who can deliver it most efficiently. Consumers and enterprises both demand an intuitive product experience, workflows that are easy to build and scale, unique and specific editing capabilities, collaboration tooling and integrations that make it easy to connect into the operating rhythm and systems of your business. Data sovereignty is critical. Brand footage, product shots, campaign assets and character likenesses are created in Runway every day. Enterprises need to trust that a provider isn’t training on that content. This isn’t a given; it's amazing what some AI companies try to get away with if you read the fine print in their T&C's. Token productivity and cost economics is top of mind for every CFO. Tokenmaxxing is well and truly dead, and productivity and ROI-maxxing is just getting started. Executives are just as eager to get AI working across their businesses, but they’re less willing to experiment, and more interested in targeting meaningful cost reductions. Our recent AI Media Report found production costs falling by two to three orders of magnitude across hundreds of enterprises; one financial services brand took a broadcast commercial that historically ran north of $5M, produced it for a few thousand dollars, and aired it on NFL Sundays. Autonomous execution is what most companies actually want from AI: put these systems to work end-to-end, not just as a copilot for one step. Runway Agent has been key to removing the repetitive, expensive and slow parts of production so creators spend their time on the work that actually needs a person. Those time savings are allowing brands to 10x their creative volume (while still saving money), and many of our customers are using Runway to create campaigns and creative that would have been cost-prohibitive with traditional tools. Ownership is becoming its own category of demand. A smaller but increasingly vocal group of the enterprises I talk to have started asking whether they can own a model outright. For a CTO or Head of AI sitting on proprietary IP, sensitive data or a compute bill measured in the tens of millions, it is worth asking: why route production-critical work through a shared model when you could hold the weights yourself? Our Approach Our teams are navigating this in a few key ways: Our frontier research lab ships new models and model improvements continuously, across video, image, audio and real-time generation. We also give you Day 0 access to the best third-party models as they ship (Seedance, Kling, Veo, Nano Banana, GPT Image 2, etc.), so your team is never boxed in by one lab's release schedule. Uncapped IP Indemnification (including for third-party models) and no training on your data. Our Enterprise clients retain full ownership of their outputs, customizable access and permissions and the enterprise-grade standards in security you'd expect (SOC2, ISO 27001, GDPR/CCPA, ZDR, SSO, etc.) First-to-market with a media model router designed to automatically route projects to the best models capable of completing your jobs. Whether you’re optimizing for speed, quality, cost or a combination, our model router handles the legwor",
+      "url": "https://runway.com/news/company-news/the-next-phase-of-enterprise-video-generation",
+      "author": "",
+      "published": "2026-08-23T01:24:37.471998",
+      "source": "runway.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "Runway's CRO reflects on the company's shift into enterprise video generation, reporting more than doubled business, NRR over 300%, and deployments growing over 17x at a Fortune 20 customer.",
+      "importance_score": 32.0,
+      "reasoning": "Business update from Runway, not a new model release or capability breakthrough. Indicates enterprise traction but is a commercial/marketing piece.",
+      "themes": [
+        "Runway",
+        "Enterprise AI",
+        "Video generation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/c_valenzuelab/status/2091280994896675027",
+          "post_author": "@c_valenzuelab"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Runway's CRO reflects on the company's shift into enterprise video generation, reporting more than doubled business, NRR over 300%, and deployments growing over 17x at a Fortune 20 customer.</p>",
+      "content_html": "<p>The Next Phase of Enterprise Video Generation August 20, 2026 by Sean Holcombe, Chief Revenue Officer Reflecting on my first few months at Runway and hundreds of customer conversations, there's a few emerging themes in AI that stand out. We’re still in the earliest stages of building real-world superintelligence . But our customers are already starting to shift the way they think about everything from cost optimization to model ownership. Our business has more than doubled this year, and we’ve grown our NRR to over 300%. Many of our largest deployments continue to scale; one Fortune 20 grew their use of Runway over 17x this year. Our creative roots with companies like Lionsgate and Paramount will always be core to our ethos and design, but adoption from enterprises like Amazon, Microsoft, Allstate, Adobe, Robinhood and more has driven much of the recent growth. We’re also seeing increased international adoption. Europe is our second-largest market, accounting for over 20% of our enterprise customer base, with subscription sales volume up 50% over the past twelve months. Japan has grown into our largest market in Asia, and one of our largest globally, driven almost entirely by teams that built Runway into their workflows before we had a commercial presence there. India and Brazil are two of our largest and fastest-growing self-serve user bases, and we’re increasingly seeing upmarket adoption as well. The pattern across every region is the same: enterprises arrive through a specific use case, then expand rapidly. That expansion is showing across every metric, from token usage to NRR. A few specific themes I’m hearing consistently: Models are converging. No single model-only provider holds a durable lead for long. As that gap closes, competition is shifting from which model is best to which product is best to build with and who can deliver it most efficiently. Consumers and enterprises both demand an intuitive product experience, workflows that are easy to build and scale, unique and specific editing capabilities, collaboration tooling and integrations that make it easy to connect into the operating rhythm and systems of your business. Data sovereignty is critical. Brand footage, product shots, campaign assets and character likenesses are created in Runway every day. Enterprises need to trust that a provider isn’t training on that content. This isn’t a given; it's amazing what some AI companies try to get away with if you read the fine print in their T&amp;C's. Token productivity and cost economics is top of mind for every CFO. Tokenmaxxing is well and truly dead, and productivity and ROI-maxxing is just getting started. Executives are just as eager to get AI working across their businesses, but they’re less willing to experiment, and more interested in targeting meaningful cost reductions. Our recent AI Media Report found production costs falling by two to three orders of magnitude across hundreds of enterprises; one financial services brand took a broadcast commercial that historically ran north of $5M, produced it for a few thousand dollars, and aired it on NFL Sundays. Autonomous execution is what most companies actually want from AI: put these systems to work end-to-end, not just as a copilot for one step. Runway Agent has been key to removing the repetitive, expensive and slow parts of production so creators spend their time on the work that actually needs a person. Those time savings are allowing brands to 10x their creative volume (while still saving money), and many of our customers are using Runway to create campaigns and creative that would have been cost-prohibitive with traditional tools. Ownership is becoming its own category of demand. A smaller but increasingly vocal group of the enterprises I talk to have started asking whether they can own a model outright. For a CTO or Head of AI sitting on proprietary IP, sensitive data or a compute bill measured in the tens of millions, it is worth asking: why route production-critical work through a shared model when you could hold the weights yourself? Our Approach Our teams are navigating this in a few key ways: Our frontier research lab ships new models and model improvements continuously, across video, image, audio and real-time generation. We also give you Day 0 access to the best third-party models as they ship (Seedance, Kling, Veo, Nano Banana, GPT Image 2, etc.), so your team is never boxed in by one lab's release schedule. Uncapped IP Indemnification (including for third-party models) and no training on your data. Our Enterprise clients retain full ownership of their outputs, customizable access and permissions and the enterprise-grade standards in security you'd expect (SOC2, ISO 27001, GDPR/CCPA, ZDR, SSO, etc.) First-to-market with a media model router designed to automatically route projects to the best models capable of completing your jobs. Whether you’re optimizing for speed, quality, cost or a combination, our model router handles the legwor</p>"
+    },
+    {
+      "id": "b461ac889d41",
+      "title": "Harvard’s $699 startup bootcamp offers AI avatars of its instructors",
+      "content": "In the HBS Foundry program, AI avatars provide feedback during practice pitches and board meetings.",
+      "url": "https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors/",
+      "author": "Anthony Ha",
+      "published": "2026-08-22T21:46:56",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Harvard Business School"
+      ],
+      "summary": "Harvard Business School's HBS Foundry program offers AI avatars of its instructors to give feedback during practice pitches and board meetings for a $699 startup bootcamp.",
+      "importance_score": 30.0,
+      "reasoning": "Notable education-product deployment but routine application of existing AI capabilities; not a frontier capability or model release.",
+      "themes": [
+        "EdTech",
+        "AI avatars",
+        "Enterprise adoption"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "In the HBS Foundry program, AI avatars provide feedback during practice pitches and board meetings.",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Harvard Business School's HBS Foundry program offers AI avatars of its instructors to give feedback during practice pitches and board meetings for a $699 startup bootcamp.</p>",
+      "content_html": "<p>In the HBS Foundry program, AI avatars provide feedback during practice pitches and board meetings.</p>"
+    },
+    {
+      "id": "b09caf427227",
+      "title": "Would even an AI disaster on the scale of Hiroshima be enough to make humankind protect itself? I fear not | Timothy Garton Ash",
+      "content": "It’s clear here in Silicon Valley that AI is advancing faster than humans’ ability to control it. That means even sober prophecies seem optimisticHere in Silicon Valley, the experts think that within the next couple of years we’ll see an extraordinary takeoff for artificial intelligence. “Welcome to the foothills of the singularity,” as a Stanford University friend greeted me. More prosaically, the imminent breakthrough is described as “recursive self-improvement” – the point at which AI itself trains each successive model of AI, resulting in an exponential development to something which, in many significant respects, is more intelligent than us humans.As Robert Wright puts it in his book The God Test: “Never before has the near-term future … held such a wide array of not-implausible paths for humankind that would be so wildly transformative.” But will this be heaven or hell? Heaven, says Elon Musk, who predicts “an age of amazing abundance” – although he also sees a 10-20% chance of killer robots murdering us all. Hell is more likely according to Geoffrey Hinton, one of the intellectual founding fathers of AI. “My intuition is, we’re toast,” he told an interviewer in 2023. And talking to Sebastian Mallaby, author of The Infinity Machine, a book about the quest for superintelligence, Hinton estimates p(doom) – the probability of human extinction – at 50%, “because I haven’t got a clue how to estimate the real number”. “As soon as evolution [of AI] kicks in, we’re fucked,” he adds cheerfully. But whether it’s God or Godzilla, artificial superintelligence is just around the corner.Timothy Garton Ash is a Guardian columnist Continue reading...",
+      "url": "https://www.theguardian.com/commentisfree/2026/aug/22/ai-disaster-hiroshima-humankind-silicon-valley-technology",
+      "author": "Timothy Garton Ash",
+      "published": "2026-08-22T05:00:54",
+      "source": "AI (artificial intelligence) | The Guardian",
+      "source_type": "rss",
+      "tags": [
+        "AI (artificial intelligence)",
+        "Technology",
+        "World news",
+        "US news",
+        "China",
+        "OpenAI",
+        "Meta",
+        "Computing"
+      ],
+      "summary": "An opinion essay from Timothy Garton Ash drawing a Hiroshima analogy to argue that AI is advancing faster than humanity's ability to govern it, framing recursive self-improvement as an imminent singularity risk.",
+      "importance_score": 28.0,
+      "reasoning": "Opinion/commentary piece, not new reporting. Reflects elite discourse on AI risk but adds no empirical frontier signal.",
+      "themes": [
+        "AI risk discourse",
+        "AI governance opinion"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "raw_summary": "<p>It’s clear here in Silicon Valley that AI is advancing faster than humans’ ability to control it. That means even sober prophecies seem optimistic</p><p>Here in Silicon Valley, the experts think that within the next couple of years we’ll see an extraordinary takeoff for artificial intelligence. “Welcome to the foothills of the singularity,” as a Stanford University friend greeted me. More prosaically, the imminent breakthrough is described as “recursive self-improvement” – the point at which ",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>An opinion essay from Timothy Garton Ash drawing a Hiroshima analogy to argue that AI is advancing faster than humanity's ability to govern it, framing recursive self-improvement as an imminent singularity risk.</p>",
+      "content_html": "<p>It’s clear here in Silicon Valley that AI is advancing faster than humans’ ability to control it. That means even sober prophecies seem optimisticHere in Silicon Valley, the experts think that within the next couple of years we’ll see an extraordinary takeoff for artificial intelligence. “Welcome to the foothills of the singularity,” as a Stanford University friend greeted me. More prosaically, the imminent breakthrough is described as “recursive self-improvement” – the point at which AI itself trains each successive model of AI, resulting in an exponential development to something which, in many significant respects, is more intelligent than us humans.As Robert Wright puts it in his book The God Test: “Never before has the near-term future … held such a wide array of not-implausible paths for humankind that would be so wildly transformative.” But will this be heaven or hell? Heaven, says Elon Musk, who predicts “an age of amazing abundance” – although he also sees a 10-20% chance of killer robots murdering us all. Hell is more likely according to Geoffrey Hinton, one of the intellectual founding fathers of AI. “My intuition is, we’re toast,” he told an interviewer in 2023. And talking to Sebastian Mallaby, author of The Infinity Machine, a book about the quest for superintelligence, Hinton estimates p(doom) – the probability of human extinction – at 50%, “because I haven’t got a clue how to estimate the real number”. “As soon as evolution [of AI] kicks in, we’re fucked,” he adds cheerfully. But whether it’s God or Godzilla, artificial superintelligence is just around the corner.Timothy Garton Ash is a Guardian columnist Continue reading...</p>"
+    },
+    {
+      "id": "0becfd84e957",
+      "title": "RayNeo's new AI glasses skip the camera, focus on text overlays",
+      "content": "\n        RayNeo is launching a new headset without a camera or speakers.\nThe article RayNeo&#039;s new AI glasses skip the camera, focus on text overlays appeared first on The Decoder.",
+      "url": "https://the-decoder.com/rayneos-new-ai-glasses-skip-the-camera-focus-on-text-overlays/",
+      "author": "Maximilian Schreiner",
+      "published": "2026-08-22T08:00:14",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Short News",
+        "AI hardware",
+        "RayNeo",
+        "Smart Glasses"
+      ],
+      "summary": "RayNeo is launching AI glasses without a camera or speakers that focus on text overlays, differentiating from camera-equipped smart glasses.",
+      "importance_score": 25.0,
+      "reasoning": "Incremental AI hardware product launch; not frontier capability and limited signal on the broader AI race.",
+      "themes": [
+        "AI hardware",
+        "Smart glasses"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"1152\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/RayNeo-iO-glasses.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"2048\" /></p>\n<p>        RayNeo is launching a new headset without a camera or speakers.</p>\n<p>The article <a href=\"https://the-decoder.com/rayneos-new-ai-glasses-skip-the-camera-focus-on-text-overlays/\">RayNeo&#039;s new AI glasses skip the camera, focus on text overlays</a> appeared first on",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>RayNeo is launching AI glasses without a camera or speakers that focus on text overlays, differentiating from camera-equipped smart glasses.</p>",
+      "content_html": "<p>RayNeo is launching a new headset without a camera or speakers.</p>\n<p>The article RayNeo's new AI glasses skip the camera, focus on text overlays appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "8fd4e66458cf",
+      "title": "Smart glasses without a camera? Even Realities bets productivity beats recording everyone | TechCrunch",
+      "content": "–:–:–:– 🚨 Flash Sale 🚨 Get $100 off your Disrupt 2026 ticket Save $300 on your Disrupt 2026 ticket: REGISTER NOW. Close Image Credits: Even Realities Gadgets Smart glasses without a camera? Even Realities bets productivity beats recording everyone Ivan Mehta 10:30 AM PDT · July 11, 2026 In the past few years, multiple tech executives have told us that glasses could be the next big interface for consumer hardware. And yet, today’s smart glasses rely a lot on phones, even if they have good hardware. Even Realities’ G2 smart glasses are in the same boat. They’re a premium-looking pair of glasses with a neon-style heads-up display you can see in any lighting — but their functionality relies heavily on their connectivity with the phone, which can be unreliable and frustrating. Even Realities takes a different approach to smart glasses than players like Meta. Their devices have a monochrome heads-up display that shows text and information in green, giving it the look of a neon board. There are no cameras or speakers, and that is by design. The company wants to focus on productivity rather than recording, so the people around you don’t have to worry about being filmed. The G2 is the second pair of smart glasses from Even Realities and an improvement over the G1 released a few years ago. The G2 has a brighter 1,200-nit display (versus 1,000 nits on the G1), four mics (versus two), and a 75% larger display area than its predecessor. The new display also has a better 60Hz refresh rate, compared with 20Hz on the G1. In the few months I’ve used the G2, the connectivity with the phone has improved tremendously. Early on, the glasses would disconnect from the app so frequently that I nearly gave up on them. But after a few app updates, that issue got better. Image Credits: Even Realities The glasses are targeted at people who might be constantly in meetings, giving presentations, and traveling to countries where different languages are spoken. Design The glasses, which come in two frame designs, are very light at 35 grams. The frame is made out of magnesium alloy, and the temples (the arms that go over your ears) are made out of titanium alloy. In terms of weight and fit, the glasses were comfortable to wear. Because I work from home most of the time, though, I didn’t feel much need to wear them all day. That said, the lenses have UV protection built in, so they’re still worth wearing outside just for eye protection — smart features or not. Image Credits: Even Realities The company claims that, based on typical usage, G2’s battery can last up to two days on a single charge. The glasses come with a protective case that can recharge them up to seven times before needing to be plugged in itself. I personally didn’t test the two-day claim, but the battery lasted me long enough to put them back into the case without running out of juice. That case is big — you can’t shove it in a pocket — but it’s solid, and the glasses fit in snugly. Features and operation The glasses act as your companion for schedules, reminders, and access to notes. You can wake them up by tapping on the stem-based controls. If you double-tap on the control pad on the stem, you will see a dashboard with information like your upcoming meetings, stocks, and top news. The G2 can also show real-time phone notifications, but the pop-ups weren’t always reliable — and since my phone is usually within reach anyway, I didn’t find much use for the feature. Long-pressing the temple control opens a menu with several functions: a notifications tray, Translate, Conversate, Teleprompt, a to-do list, and Navigate. Translate lets you set a target language and converse with anyone. At the recent Global Connect Show (GCS) in China, I wore the glasses while talking to company reps doing demos, and the translation was good enough for me to follow along when someone spoke Chinese. I also tried it with other journalists speaking various languages, including French and Spanish. (The downside of this feature is that the other person doesn’t know what you’re saying in your language unless they’re also using the app.) Navigate is a cool feature that shows turn-by-turn directions on the heads-up display. The catch: It doesn’t work with Google or Apple Maps. Instead, you have to set your route through the Even Realities app. I tried it a few times walking to cafes near my house. The directions showed up well on the display, but the app kept getting the addresses wrong, so I can’t rely on it for places I don’t already know how to get to. Still, I could see cyclists or motorbike riders finding it useful once the company fixes the accuracy issues. Conversate, at first, just showed a live transcript of the conversation on the glasses, which felt pointless since you can just as easily record a meeting with an app or an external notetaker. Later, the company added a “prep notes” feature that surfaces more context: You can manually add notes or documents ahead of a meeting and let the AI re",
+      "url": "https://techcrunch.com/2026/07/11/smart-glasses-without-a-camera-even-realities-bets-productivity-beats-recording-everyone/?utm_source=dlvr.it&utm_medium=twitter",
+      "author": "",
+      "published": "2026-08-23T01:24:37.472009",
+      "source": "techcrunch.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "TechCrunch profiles Even Realities' G2 smart glasses, which omit a camera and bet on productivity use cases rather than recording everyone.",
+      "importance_score": 18.0,
+      "reasoning": "Pre-dated article (July 11) republished late; not a new development on the coverage date and not a frontier AI capability story.",
+      "themes": [
+        "AI hardware",
+        "Smart glasses"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/Ronald_vanLoon/status/2091251313686237310",
+          "post_author": "@Ronald_vanLoon"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>TechCrunch profiles Even Realities' G2 smart glasses, which omit a camera and bet on productivity use cases rather than recording everyone.</p>",
+      "content_html": "<p>–:–:–:– 🚨 Flash Sale 🚨 Get $100 off your Disrupt 2026 ticket Save $300 on your Disrupt 2026 ticket: REGISTER NOW. Close Image Credits: Even Realities Gadgets Smart glasses without a camera? Even Realities bets productivity beats recording everyone Ivan Mehta 10:30 AM PDT · July 11, 2026 In the past few years, multiple tech executives have told us that glasses could be the next big interface for consumer hardware. And yet, today’s smart glasses rely a lot on phones, even if they have good hardware. Even Realities’ G2 smart glasses are in the same boat. They’re a premium-looking pair of glasses with a neon-style heads-up display you can see in any lighting — but their functionality relies heavily on their connectivity with the phone, which can be unreliable and frustrating. Even Realities takes a different approach to smart glasses than players like Meta. Their devices have a monochrome heads-up display that shows text and information in green, giving it the look of a neon board. There are no cameras or speakers, and that is by design. The company wants to focus on productivity rather than recording, so the people around you don’t have to worry about being filmed. The G2 is the second pair of smart glasses from Even Realities and an improvement over the G1 released a few years ago. The G2 has a brighter 1,200-nit display (versus 1,000 nits on the G1), four mics (versus two), and a 75% larger display area than its predecessor. The new display also has a better 60Hz refresh rate, compared with 20Hz on the G1. In the few months I’ve used the G2, the connectivity with the phone has improved tremendously. Early on, the glasses would disconnect from the app so frequently that I nearly gave up on them. But after a few app updates, that issue got better. Image Credits: Even Realities The glasses are targeted at people who might be constantly in meetings, giving presentations, and traveling to countries where different languages are spoken. Design The glasses, which come in two frame designs, are very light at 35 grams. The frame is made out of magnesium alloy, and the temples (the arms that go over your ears) are made out of titanium alloy. In terms of weight and fit, the glasses were comfortable to wear. Because I work from home most of the time, though, I didn’t feel much need to wear them all day. That said, the lenses have UV protection built in, so they’re still worth wearing outside just for eye protection — smart features or not. Image Credits: Even Realities The company claims that, based on typical usage, G2’s battery can last up to two days on a single charge. The glasses come with a protective case that can recharge them up to seven times before needing to be plugged in itself. I personally didn’t test the two-day claim, but the battery lasted me long enough to put them back into the case without running out of juice. That case is big — you can’t shove it in a pocket — but it’s solid, and the glasses fit in snugly. Features and operation The glasses act as your companion for schedules, reminders, and access to notes. You can wake them up by tapping on the stem-based controls. If you double-tap on the control pad on the stem, you will see a dashboard with information like your upcoming meetings, stocks, and top news. The G2 can also show real-time phone notifications, but the pop-ups weren’t always reliable — and since my phone is usually within reach anyway, I didn’t find much use for the feature. Long-pressing the temple control opens a menu with several functions: a notifications tray, Translate, Conversate, Teleprompt, a to-do list, and Navigate. Translate lets you set a target language and converse with anyone. At the recent Global Connect Show (GCS) in China, I wore the glasses while talking to company reps doing demos, and the translation was good enough for me to follow along when someone spoke Chinese. I also tried it with other journalists speaking various languages, including French and Spanish. (The downside of this feature is that the other person doesn’t know what you’re saying in your language unless they’re also using the app.) Navigate is a cool feature that shows turn-by-turn directions on the heads-up display. The catch: It doesn’t work with Google or Apple Maps. Instead, you have to set your route through the Even Realities app. I tried it a few times walking to cafes near my house. The directions showed up well on the display, but the app kept getting the addresses wrong, so I can’t rely on it for places I don’t already know how to get to. Still, I could see cyclists or motorbike riders finding it useful once the company fixes the accuracy issues. Conversate, at first, just showed a live transcript of the conversation on the glasses, which felt pointless since you can just as easily record a meeting with an app or an external notetaker. Later, the company added a “prep notes” feature that surfaces more context: You can manually add notes or documents ahead of a meeting and let the AI re</p>"
+    },
+    {
+      "id": "6b944a145e70",
+      "title": "Why your local LLM feels dumber than it is",
+      "content": "Why your local LLM feels dumber than it is",
+      "url": "https://forum.level1techs.com/t/why-your-local-llm-feels-dumber-than-it-is/253917",
+      "author": "felineflock",
+      "published": "2026-08-22T18:14:16+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "A forum discussion titled 'Why your local LLM feels dumber than it is' from Level1Techs.",
+      "importance_score": 10.0,
+      "reasoning": "Community discussion with no new technical contribution; not frontier AI news.",
+      "themes": [
+        "Local LLMs",
+        "Community discussion"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 256,
+        "hn_comments": 84,
+        "hn_url": "https://news.ycombinator.com/item?id=49402232",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A forum discussion titled 'Why your local LLM feels dumber than it is' from Level1Techs.</p>",
+      "content_html": "<p>Why your local LLM feels dumber than it is</p>"
+    },
+    {
+      "id": "3f0aa5b7c9e5",
+      "title": "ChapterPal — AI-assisted reading and note-taking",
+      "content": "",
+      "url": "https://www.chapterpal.com/s/40a4c48b/pandoras-ai-model-routing-box-efficient-allocation-with-costly-value-estimation",
+      "author": "",
+      "published": "2026-08-23T01:24:37.471971",
+      "source": "www.chapterpal.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "Linked article item with no extractable content available for analysis.",
+      "importance_score": 5.0,
+      "reasoning": "Empty/unindexed linked article; cannot assess frontier significance without content.",
+      "themes": [
+        "Unknown"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/burkov/status/2091026417714700652",
+          "post_author": "@burkov"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Linked article item with no extractable content available for analysis.</p>",
+      "content_html": ""
+    }
+  ]
+}
