@@ -1,0 +1,1049 @@
+{
+  "schema_version": "1.0",
+  "category": "news",
+  "date": "2026-08-24",
+  "category_summary": "### Executive Signal\n\n### Priority Developments\n- **OpenAI cyber warning**: Lehane escalated risk language to \"persistent\" AI threats, raising urgency for red-teaming, secure-by-default deployment, and AI-cyber policy clarity.\n- **Agentic token explosion**: OpenRouter agentic usage jumped 14x in months, validating agent workflows as a near-term frontier workload and reshaping compute demand forecasts.\n- **Anthropic adoption gap**: Flagship model reportedly losing to cheaper alternatives, suggesting frontier differentiation is narrowing and pricing/UX will drive stickiness.\n- **Compute cost shock**: DRAM-driven 15% Nvidia server price hikes expose fragile training economics, pushing labs toward inference efficiency and alternative silicon.\n- **Stealth model watch**: \"Ox Alpha\" circulating online is a pattern that historically presaged near-frontier releases worth immediate capability tracking.\n\n### Leadership Implications\n- **Diversify compute and harden cyber posture** now; persistent attacks plus DRAM cost spikes raise both risk and unit-economics exposure.\n- **Design for machine customers**: agent-readiness, observability, and cost controls are now near-term product strategy priorities, not future bets.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>OpenAI cyber warning</strong>: Lehane escalated risk language to \"persistent\" AI threats, raising urgency for red-teaming, secure-by-default deployment, and AI-cyber policy clarity.</li>\n<li><strong>Agentic token explosion</strong>: OpenRouter agentic usage jumped 14x in months, validating agent workflows as a near-term frontier workload and reshaping compute demand forecasts.</li>\n<li><strong>Anthropic adoption gap</strong>: Flagship model reportedly losing to cheaper alternatives, suggesting frontier differentiation is narrowing and pricing/UX will drive stickiness.</li>\n<li><strong>Compute cost shock</strong>: DRAM-driven 15% Nvidia server price hikes expose fragile training economics, pushing labs toward inference efficiency and alternative silicon.</li>\n<li><strong>Stealth model watch</strong>: \"Ox Alpha\" circulating online is a pattern that historically presaged near-frontier releases worth immediate capability tracking.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li><strong>Diversify compute and harden cyber posture</strong> now; persistent attacks plus DRAM cost spikes raise both risk and unit-economics exposure.</li>\n<li><strong>Design for machine customers</strong>: agent-readiness, observability, and cost controls are now near-term product strategy priorities, not future bets.</li>\n</ul>",
+  "category_summary_evidence": [],
+  "themes": [
+    {
+      "name": "AI safety and governance",
+      "description": "Warnings from OpenAI leadership about persistent AI cyber-attacks, model pauses, copyright training legality, and AI ethics commentary.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Domain-specialized model releases",
+      "description": "Post-trained and open-weight model variants including Harvey Tenet (legal) and FreeToken serving engine.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Anthropic competitive dynamics",
+      "description": "Reports on Claude token gray market and Anthropic top-model adoption struggles.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "AI infrastructure economics",
+      "description": "Datacenter debt concerns, DRAM-driven Nvidia server price hikes, and inference-cost dynamics on OpenRouter.",
+      "item_count": 4,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "AI agents in production",
+      "description": "Agent token consumption growth, autonomous HR decisions, agent-readiness tooling, and economic implications.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 55.0
+    },
+    {
+      "name": "AI policy and regulation",
+      "description": "Weekly AI-law digest, export control circumvention, and state-level AI legislation.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 55.0
+    }
+  ],
+  "total_items": 23,
+  "items": [
+    {
+      "id": "d62822ee4159",
+      "title": "‘We are hitting a different chapter’: OpenAI leader warns of threat of ‘persistent’ AI cyber-attacks",
+      "content": "Chris Lehane tells Guardian of need to implement new safety standards as critics say AI firms acting ‘recklessly’A senior leader at OpenAI has said people should prepare to defend against “ongoing, persistent” cyber-attacks from AIs, as cutting-edge artificial intelligence models gain advanced capabilities to plan and launch offensives.The leading AI company this week announced a pause in development of its most advanced internal models amid rising safety fears, and Chris Lehane, its chief global affairs officer, said: “We are hitting a different chapter, a different moment within AI, in terms of what the capabilities of this technology can do.” Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/aug/23/openai-cyber-attacks-threat-chris-lehane",
+      "author": "Robert Booth",
+      "published": "2026-08-23T08:00:27",
+      "source": "AI (artificial intelligence) | The Guardian",
+      "source_type": "rss",
+      "tags": [
+        "Technology",
+        "AI (artificial intelligence)",
+        "OpenAI",
+        "Computing"
+      ],
+      "summary": "OpenAI's chief global affairs officer Chris Lehane warns that AI systems are entering a phase capable of sustained, persistent cyber-attacks and calls for new safety standards. The piece notes OpenAI this week paused work on its most advanced internal models amid rising safety concerns.",
+      "importance_score": 72.0,
+      "reasoning": "Significant because it pairs a senior OpenAI executive's public warning about offensive cyber capabilities with a concrete pause on the most advanced internal model development. High relevance for AI safety policy and frontier-capability discourse, though no specific model name or technical details are disclosed.",
+      "themes": [
+        "AI safety",
+        "Cyber-security",
+        "OpenAI policy",
+        "Frontier model governance"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "raw_summary": "<p>Chris Lehane tells Guardian of need to implement new safety standards as critics say AI firms acting ‘recklessly’</p><p>A senior leader at OpenAI has said people should prepare to defend against “ongoing, persistent” cyber-attacks from AIs, as cutting-edge artificial intelligence models gain advanced capabilities to plan and launch offensives.</p><p>The leading AI company this week announced a pause in development of its most advanced internal models amid rising safety fears, and Chris Lehane",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>OpenAI's chief global affairs officer Chris Lehane warns that AI systems are entering a phase capable of sustained, persistent cyber-attacks and calls for new safety standards. The piece notes OpenAI this week paused work on its most advanced internal models amid rising safety concerns.</p>",
+      "content_html": "<p>Chris Lehane tells Guardian of need to implement new safety standards as critics say AI firms acting ‘recklessly’A senior leader at OpenAI has said people should prepare to defend against “ongoing, persistent” cyber-attacks from AIs, as cutting-edge artificial intelligence models gain advanced capabilities to plan and launch offensives.The leading AI company this week announced a pause in development of its most advanced internal models amid rising safety fears, and Chris Lehane, its chief global affairs officer, said: “We are hitting a different chapter, a different moment within AI, in terms of what the capabilities of this technology can do.” Continue reading...</p>"
+    },
+    {
+      "id": "8fdca45012f8",
+      "title": "AI is becoming AI's biggest customer as agentic token usage jumps 14x on OpenRouter",
+      "content": "\n        AI agents have consumed more tokens than humans on OpenRouter since February 6, 2025. Agentic usage has grown 14x since then, while human usage is up just 2.8x. Nearly 70 percent of agent token consumption comes from cheap cached prompts, though, so actual costs are rising far more slowly than the raw numbers suggest.\nThe article AI is becoming AI&#039;s biggest customer as agentic token usage jumps 14x on OpenRouter appeared first on The Decoder.",
+      "url": "https://the-decoder.com/ai-is-becoming-ais-biggest-customer-as-agentic-token-usage-jumps-14x-on-openrouter/",
+      "author": "Matthias Bastian",
+      "published": "2026-08-23T10:02:00",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Short News",
+        "Token"
+      ],
+      "summary": "Bloomberg reports Nvidia Vera Rubin and Grace Blackwell server prices are rising roughly 15% due to a DRAM shortage from Samsung, SK Hynix, and Micron. Major cloud buyers (Microsoft, Google, Meta) are absorbing the hike while still funding the supplier they aim to diversify away from.",
+      "importance_score": 60.0,
+      "reasoning": "Material hardware-supply and AI infrastructure economics signal affecting frontier compute costs. Reflects concentration risk in memory supply chains.",
+      "themes": [
+        "AI hardware",
+        "DRAM shortage",
+        "Nvidia",
+        "Cloud infrastructure"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/06/tokenization-2.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        AI agents have consumed more tokens than humans on OpenRouter since February 6, 2025. Agentic usage has grown 14x since then, while human usage is up just 2.8x. Nearly 70 percent of agent token consumption comes from cheap cached prompts, though, so actual costs are rising ",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Bloomberg reports Nvidia Vera Rubin and Grace Blackwell server prices are rising roughly 15% due to a DRAM shortage from Samsung, SK Hynix, and Micron. Major cloud buyers (Microsoft, Google, Meta) are absorbing the hike while still funding the supplier they aim to diversify away from.</p>",
+      "content_html": "<p>AI agents have consumed more tokens than humans on OpenRouter since February 6, 2025. Agentic usage has grown 14x since then, while human usage is up just 2.8x. Nearly 70 percent of agent token consumption comes from cheap cached prompts, though, so actual costs are rising far more slowly than the raw numbers suggest.</p>\n<p>The article AI is becoming AI's biggest customer as agentic token usage jumps 14x on OpenRouter appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "61bbb13043df",
+      "title": "Anthropic's best AI model struggles to attract users as cheaper tools thrive",
+      "content": "Anthropic's best AI model struggles to attract users as cheaper tools thrive",
+      "url": "https://www.ft.com/content/5ee49718-c258-4f01-aa32-7e5b76ae5245",
+      "author": "naves",
+      "published": "2026-08-23T18:16:37+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "Financial Times reports that Anthropic's top model is struggling to gain users as cheaper alternatives capture share. Headline frames a competitive pressure story for Anthropic despite reportedly strong model quality.",
+      "importance_score": 58.0,
+      "reasoning": "Notable business/competitive signal for a frontier lab, but the excerpt provides no quantitative detail. Importance depends on FT's underlying reporting; treated as significant industry signal pending verification.",
+      "themes": [
+        "Anthropic",
+        "AI competition",
+        "Model adoption",
+        "Pricing dynamics"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 364,
+        "hn_comments": 314,
+        "hn_url": "https://news.ycombinator.com/item?id=49411102",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Financial Times reports that Anthropic's top model is struggling to gain users as cheaper alternatives capture share. Headline frames a competitive pressure story for Anthropic despite reportedly strong model quality.</p>",
+      "content_html": "<p>Anthropic's best AI model struggles to attract users as cheaper tools thrive</p>"
+    },
+    {
+      "id": "82a931c4052b",
+      "title": "Harvey Introduces Harvey Tenet: A Kimi K3 Base Post-Trained with Fireworks for Long-Horizon Legal Agent Work",
+      "content": "Harvey has released Harvey Tenet, its first post-trained model, as a research preview as of today. Tenet is a Kimi K3 base post-trained with Fireworks through asynchronous reinforcement learning on long-horizon legal work. The training corpus combined synthetic data, publicly available legal data, and human expert data. Harvey states no customer data was used. Against the base K3 model, Tenet completes almost twice as many held-out tasks on Harvey&#8217;s Legal Agent Benchmark (LAB) and 20% more on LAB: Contracts, raising all-pass rate by 9 and 2 percentage points respectively. Harvey reports state-of-the-art on LAB: Contracts and second place on LAB. The gains also transferred, untrained, to Mercor&#8217;s APEX Agents and Crosby&#8217;s Redline Bench. The stated goal is twofold: build frontier legal intelligence on open-weight models, and give law firms a path to own their own specialized models.\n\n\n\nIs it deployable?\n\n\n\nNot yet, Harvey Tenet is a research preview announced on August 20, 2026. Harvey has not published weights, a model card, or an API endpoint. The base model is open-weight; Tenet itself is Harvey&#8217;s own checkpoint, and the company says the work will move &#8220;from research to production&#8221; inside Harvey&#8217;s products over time. What ships today is the recipe, not the artifact.\n\n\n\n\nCompany tier: Enterprise only. Access runs through Harvey&#8217;s platform, which is sold to law firms, mid-sized firms, and in-house legal teams. A lab with an RL stack could reproduce the method; training used roughly 150 NVIDIA B300 GPUs over two months.\n\n\n\nIndustries: Legal services, corporate in-house legal, private equity and investment banking (M&amp;A diligence), plus regulated sectors where contract volume drives cost — insurance, financial services, healthcare, energy.\n\n\n\nApplications: M&amp;A due diligence memos over datarooms, contract drafting, review and redlining, structured extraction across up to 10,000 documents, and precedent search over a firm&#8217;s accumulated knowledge.\n\n\n\n\nWhat the numbers say\n\n\n\nAgainst the base K3 model, Tenet completes almost twice as many held-out tasks on Harvey&#8217;s Legal Agent Benchmark (LAB) and 20% more on LAB: Contracts, lifting all-pass rate by 9 and 2 percentage points respectively. Harvey reports state-of-the-art on LAB: Contracts and second place on LAB, using base-model scores from Vals.\n\n\n\nThe more interesting result is transfer. Tenet also improves substantially on Mercor&#8217;s APEX Agents (corporate law) and Crosby&#8217;s Redline Bench — neither seen during training — while holding performance on knowledge benchmarks including LegalBench, CUAD, MAUD, and Scale&#8217;s PRBench. Agentic training did not erode textbook legal reasoning.\n\n\n\nCost is co-optimized rather than traded away. Open weights lower price per token; reward shaping that prefers shorter trajectories at equal quality lowers tokens consumed. Harvey reports significant quality gains at stable cost.\n\n\n\nHow it was trained\n\n\n\nTraining used asynchronous reinforcement learning in sandboxed legal environments built like LAB tasks: a partner-style instruction averaging about 50 words, a client matter of key and peripheral documents, and an expert rubric of atomic pass/fail criteria — roughly 50 per task, hundreds at the extreme. A single rollout can exceed 1,000 turns.\n\n\n\nRollouts are graded by LLM-as-a-judge; ablations settled on Kimi 2.6. Reward combines the fraction of rubric criteria satisfied, a holistic count of legal issues solved, and an all-pass bonus. The policy is optimized with GSPO using a rank-64 LoRA over the full K3 network, eight task groups of eight rollouts per optimizer step, across ~1,750 environments and &gt;10,000 rollouts per epoch. Fireworks co-built trainer and rollout deployments at the kernel level, with token-in-token-out and router replay, to keep a large MoE numerically aligned across training and inference. \n\n\n\n\n&amp;\n\n\n\n\n\n\n\nThree capabilities trained separately\n\n\n\nHarvey team also post-trained specialist models that Tenet can route to as tools or sub-agents:\n\n\n\n\nM&amp;A diligence: On LAB: Diligence, a single task can traverse up to 80M tokens; no baseline passed more than 43.8% of criteria. With Baseten, Harvey moved to a Recursive Language Model harness where a root agent holds the dataroom in a REPL and delegates to sub-agents. A GLM-5.2 orchestrator alone reached 46.1%; post-training it in that harness via self-distillation reached 60.1%.\n\n\n\nReview Table: With Applied Compute, a post-trained GLM-5.2 improved answer quality by 3.6 points and citation quality by 12.1 points at roughly one-tenth the cost per cell, learning to abstain when a question does not apply.\n\n\n\nFirm knowledge: With Engram, a Qwen3.8-27B model studies ~100M tokens of client matters into 1M tokens of structured knowledge plus parametric memory. Criteria pass rate rose more than 15%, tokens in completed trajectories fell 58%, and cost per query dropped roughly 90% — 190.8 intelligence-per-token versus 129.3 for the best frontier configuration.\n\n\n\n\nKey Takeaways\n\n\n\n\nTenet is a post-trained Kimi K3 checkpoint, not a public open-weight release — no weights, no API.\n\n\n\nGains transferred untrained to APEX Agents and Redline Bench, suggesting learned behavior, not benchmark fitting.\n\n\n\nReward shaping on trajectory length made quality and cost improve together instead of trading off.\n\n\n\nThe specialist stack — RLM diligence, Review Table, firm memory — is where the largest deltas landed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCheck out the&nbsp;TECHNICAL DETAILS here.&nbsp;Also,&nbsp;feel free to follow us on&nbsp;Twitter&nbsp;and don’t forget to join our&nbsp;150k+ML SubReddit&nbsp;and Subscribe to&nbsp;our Newsletter. Wait! are you on telegram?&nbsp;now you can join us on telegram as well.\n\n\n\nNeed to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?&nbsp;Connect with us\nThe post Harvey Introduces Harvey Tenet: A Kimi K3 Base Post-Trained with Fireworks for Long-Horizon Legal Agent Work appeared first on MarkTechPost.",
+      "url": "https://www.marktechpost.com/2026/08/23/harvey-tenet-post-trained-kimi-k3-legal-agent-model/",
+      "author": "Asif Razzaq",
+      "published": "2026-08-23T17:51:56",
+      "source": "MarkTechPost",
+      "source_type": "rss",
+      "tags": [
+        "Agentic AI",
+        "AI Shorts",
+        "Applications",
+        "Artificial Intelligence",
+        "Editors Pick",
+        "Embedding Model",
+        "Language Model",
+        "Large Language Model",
+        "Machine Learning",
+        "New Releases",
+        "OCR",
+        "Staff",
+        "Tech News",
+        "Technology"
+      ],
+      "summary": "Harvey releases Harvey Tenet, a post-trained variant of Moonshot's Kimi K3 built with Fireworks via asynchronous RL on long-horizon legal tasks. Reported to nearly double held-out task completion on Harvey's Legal Agent Benchmark, claim SOTA on LAB:Contracts, with positive transfer to Mercor APEX Agents and Crosby Redline Bench.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: The core announcement that Harvey released Tenet as its first post-trained legal model reaching frontier performance on Legal Agent Bench was already made via Harvey's own Twitter post on 2026-08-21, two days before this article.] Domain-specialized model release with strong benchmark claims on legal agent tasks. Notable as one of the first major post-trained legal agents built on a frontier open-weight base (Kimi K3, API 2026-07-16), but Harvey Tenet itself is the new artifact. Significance is high for the legal-AI vertical.",
+      "themes": [
+        "Domain-specific AI",
+        "Legal AI",
+        "Post-training",
+        "Open-weight models"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "The core announcement that Harvey released Tenet as its first post-trained legal model reaching frontier performance on Legal Agent Bench was already made via Harvey's own Twitter post on 2026-08-21, two days before this article.",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 2,
+        "matched_prior_items": [
+          {
+            "id": "1eb6d60a108e",
+            "date": "2026-08-21",
+            "category": "social",
+            "title": "Tenet is @harvey's first model post-trained for legal\n\nIt reaches frontier performance on Legal Agen...",
+            "source": "Twitter",
+            "url": "https://twitter.com/winstonweinberg/status/2090463611265364248"
+          },
+          {
+            "id": "af1695d8bc2e",
+            "date": "2026-07-28",
+            "category": "news",
+            "title": "Moonshot AI releases Kimi K3 open weights and infrastructure after shaking up the frontier model race",
+            "source": "The Decoder",
+            "url": "https://the-decoder.com/moonshot-ai-releases-kimi-k3-open-weights-and-infrastructure-after-shaking-up-the-frontier-model-race/"
+          },
+          {
+            "id": "cc86f90785fe",
+            "date": "2026-07-14",
+            "category": "research",
+            "title": "Context-aware sequence-to-function model of human gene regulation",
+            "source": "Machine learning : nature.com subject feeds",
+            "url": "https://www.nature.com/articles/s41467-026-75527-2"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://www.marktechpost.com/category/tech-news/feed/",
+        "raw_summary": "<p>Harvey's first post-trained model nearly doubles LAB task completion, but only one benchmark number survives independent verification today</p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/08/23/harvey-tenet-post-trained-kimi-k3-legal-agent-model/\">Harvey Introduces Harvey Tenet: A Kimi K3 Base Post-Trained with Fireworks for Long-Horizon Legal Agent Work</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
+        "source_group": "Tech & Media",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "The core announcement that Harvey released Tenet as its first post-trained legal model reaching frontier performance on Legal Agent Bench was already made via Harvey's own Twitter post on 2026-08-21, two days before this article.",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 2,
+          "matched_prior_items": [
+            {
+              "id": "1eb6d60a108e",
+              "date": "2026-08-21",
+              "category": "social",
+              "title": "Tenet is @harvey's first model post-trained for legal\n\nIt reaches frontier performance on Legal Agen...",
+              "source": "Twitter",
+              "url": "https://twitter.com/winstonweinberg/status/2090463611265364248"
+            },
+            {
+              "id": "af1695d8bc2e",
+              "date": "2026-07-28",
+              "category": "news",
+              "title": "Moonshot AI releases Kimi K3 open weights and infrastructure after shaking up the frontier model race",
+              "source": "The Decoder",
+              "url": "https://the-decoder.com/moonshot-ai-releases-kimi-k3-open-weights-and-infrastructure-after-shaking-up-the-frontier-model-race/"
+            },
+            {
+              "id": "cc86f90785fe",
+              "date": "2026-07-14",
+              "category": "research",
+              "title": "Context-aware sequence-to-function model of human gene regulation",
+              "source": "Machine learning : nature.com subject feeds",
+              "url": "https://www.nature.com/articles/s41467-026-75527-2"
+            }
+          ]
+        },
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Harvey releases Harvey Tenet, a post-trained variant of Moonshot's Kimi K3 built with Fireworks via asynchronous RL on long-horizon legal tasks. Reported to nearly double held-out task completion on Harvey's Legal Agent Benchmark, claim SOTA on LAB:Contracts, with positive transfer to Mercor APEX Agents and Crosby Redline Bench.</p>",
+      "content_html": "<p>Harvey has released Harvey Tenet, its first post-trained model, as a research preview as of today. Tenet is a Kimi K3 base post-trained with Fireworks through asynchronous reinforcement learning on long-horizon legal work. The training corpus combined synthetic data, publicly available legal data, and human expert data. Harvey states no customer data was used. Against the base K3 model, Tenet completes almost twice as many held-out tasks on Harvey’s Legal Agent Benchmark (LAB) and 20% more on LAB: Contracts, raising all-pass rate by 9 and 2 percentage points respectively. Harvey reports state-of-the-art on LAB: Contracts and second place on LAB. The gains also transferred, untrained, to Mercor’s APEX Agents and Crosby’s Redline Bench. The stated goal is twofold: build frontier legal intelligence on open-weight models, and give law firms a path to own their own specialized models.</p>\n<p>Is it deployable?</p>\n<p>Not yet, Harvey Tenet is a research preview announced on August 20, 2026. Harvey has not published weights, a model card, or an API endpoint. The base model is open-weight; Tenet itself is Harvey’s own checkpoint, and the company says the work will move “from research to production” inside Harvey’s products over time. What ships today is the recipe, not the artifact.</p>\n<p>Company tier: Enterprise only. Access runs through Harvey’s platform, which is sold to law firms, mid-sized firms, and in-house legal teams. A lab with an RL stack could reproduce the method; training used roughly 150 NVIDIA B300 GPUs over two months.</p>\n<p>Industries: Legal services, corporate in-house legal, private equity and investment banking (M&amp;A diligence), plus regulated sectors where contract volume drives cost — insurance, financial services, healthcare, energy.</p>\n<p>Applications: M&amp;A due diligence memos over datarooms, contract drafting, review and redlining, structured extraction across up to 10,000 documents, and precedent search over a firm’s accumulated knowledge.</p>\n<p>What the numbers say</p>\n<p>Against the base K3 model, Tenet completes almost twice as many held-out tasks on Harvey’s Legal Agent Benchmark (LAB) and 20% more on LAB: Contracts, lifting all-pass rate by 9 and 2 percentage points respectively. Harvey reports state-of-the-art on LAB: Contracts and second place on LAB, using base-model scores from Vals.</p>\n<p>The more interesting result is transfer. Tenet also improves substantially on Mercor’s APEX Agents (corporate law) and Crosby’s Redline Bench — neither seen during training — while holding performance on knowledge benchmarks including LegalBench, CUAD, MAUD, and Scale’s PRBench. Agentic training did not erode textbook legal reasoning.</p>\n<p>Cost is co-optimized rather than traded away. Open weights lower price per token; reward shaping that prefers shorter trajectories at equal quality lowers tokens consumed. Harvey reports significant quality gains at stable cost.</p>\n<p>How it was trained</p>\n<p>Training used asynchronous reinforcement learning in sandboxed legal environments built like LAB tasks: a partner-style instruction averaging about 50 words, a client matter of key and peripheral documents, and an expert rubric of atomic pass/fail criteria — roughly 50 per task, hundreds at the extreme. A single rollout can exceed 1,000 turns.</p>\n<p>Rollouts are graded by LLM-as-a-judge; ablations settled on Kimi 2.6. Reward combines the fraction of rubric criteria satisfied, a holistic count of legal issues solved, and an all-pass bonus. The policy is optimized with GSPO using a rank-64 LoRA over the full K3 network, eight task groups of eight rollouts per optimizer step, across ~1,750 environments and &gt;10,000 rollouts per epoch. Fireworks co-built trainer and rollout deployments at the kernel level, with token-in-token-out and router replay, to keep a large MoE numerically aligned across training and inference.</p>\n<p>&amp;</p>\n<p>Three capabilities trained separately</p>\n<p>Harvey team also post-trained specialist models that Tenet can route to as tools or sub-agents:</p>\n<p>M&amp;A diligence: On LAB: Diligence, a single task can traverse up to 80M tokens; no baseline passed more than 43.8% of criteria. With Baseten, Harvey moved to a Recursive Language Model harness where a root agent holds the dataroom in a REPL and delegates to sub-agents. A GLM-5.2 orchestrator alone reached 46.1%; post-training it in that harness via self-distillation reached 60.1%.</p>\n<p>Review Table: With Applied Compute, a post-trained GLM-5.2 improved answer quality by 3.6 points and citation quality by 12.1 points at roughly one-tenth the cost per cell, learning to abstain when a question does not apply.</p>\n<p>Firm knowledge: With Engram, a Qwen3.8-27B model studies ~100M tokens of client matters into 1M tokens of structured knowledge plus parametric memory. Criteria pass rate rose more than 15%, tokens in completed trajectories fell 58%, and cost per query dropped roughly 90% — 190.8 intelligence-per-token versus 129.3 for the best frontier configuration.</p>\n<p>Key Takeaways</p>\n<p>Tenet is a post-trained Kimi K3 checkpoint, not a public open-weight release — no weights, no API.</p>\n<p>Gains transferred untrained to APEX Agents and Redline Bench, suggesting learned behavior, not benchmark fitting.</p>\n<p>Reward shaping on trajectory length made quality and cost improve together instead of trading off.</p>\n<p>The specialist stack — RLM diligence, Review Table, firm memory — is where the largest deltas landed.</p>\n<p>Check out the&nbsp;TECHNICAL DETAILS here.&nbsp;Also,&nbsp;feel free to follow us on&nbsp;Twitter&nbsp;and don’t forget to join our&nbsp;150k+ML SubReddit&nbsp;and Subscribe to&nbsp;our Newsletter. Wait! are you on telegram?&nbsp;now you can join us on telegram as well.</p>\n<p>Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?&nbsp;Connect with us</p>\n<p>The post Harvey Introduces Harvey Tenet: A Kimi K3 Base Post-Trained with Fireworks for Long-Horizon Legal Agent Work appeared first on MarkTechPost.</p>"
+    },
+    {
+      "id": "a669e22ebb46",
+      "title": "How China's gray market sells Claude tokens at a fraction of the price",
+      "content": "\n        Anthropic's strict access controls against China, from geoblocking to selfie verification, are being systematically bypassed through a thriving network of so-called \"transfer stations.\" Chinese developers can buy Claude tokens for as little as ten percent of the list price. Analyst Zilan Qian warns that the circumvention infrastructure weakens export controls and Anthropic's own safety systems.\nThe article How China&#039;s gray market sells Claude tokens at a fraction of the price appeared first on The Decoder.",
+      "url": "https://the-decoder.com/how-chinas-gray-market-sells-claude-tokens-at-a-fraction-of-the-price/",
+      "author": "Tomislav Bezmalinović",
+      "published": "2026-08-23T07:48:33",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "AI in China",
+        "Anthropic"
+      ],
+      "summary": "Investigation details how a Chinese gray market systematically circumvents Anthropic's access controls (geoblocking, selfie verification) to resell Claude tokens at roughly 10% of list price. Analyst Zilan Qian warns the bypass infrastructure undermines US export controls and Anthropic's own safety systems.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: secondary coverage of primary source from 2025-12-06 (260d before coverage)] Significant for AI export-control enforcement and safety circumvention, with concrete market-scale claims. Geopolitical relevance is high, though verification of the magnitude is limited in the excerpt.",
+      "themes": [
+        "Export controls",
+        "AI safety circumvention",
+        "Anthropic",
+        "China AI market"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_followup",
+        "label": "Follow-up",
+        "reason": "secondary coverage of primary source from 2025-12-06 (260d before coverage)",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "primary_url": "https://arxiv.org/abs/2603.01919",
+        "primary_published": "2025-12-06",
+        "age_days": 260
+      },
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"A mechanical transfer station reroutes AI requests as discounted Claude tokens via proxy servers and collects usage data.\" class=\"attachment-full size-full wp-post-image\" height=\"768\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/ai-transfer-station-china-claude-token-proxy.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1376\" /></p>\n<p>        Anthropic's strict access controls against China, from geoblocking to selfie verification, are being systematically bypasse",
+        "freshness": {
+          "status": "stale_followup",
+          "label": "Follow-up",
+          "reason": "secondary coverage of primary source from 2025-12-06 (260d before coverage)",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "primary_url": "https://arxiv.org/abs/2603.01919",
+          "primary_published": "2025-12-06",
+          "age_days": 260
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Investigation details how a Chinese gray market systematically circumvents Anthropic's access controls (geoblocking, selfie verification) to resell Claude tokens at roughly 10% of list price. Analyst Zilan Qian warns the bypass infrastructure undermines US export controls and Anthropic's own safety systems.</p>",
+      "content_html": "<p>Anthropic's strict access controls against China, from geoblocking to selfie verification, are being systematically bypassed through a thriving network of so-called \"transfer stations.\" Chinese developers can buy Claude tokens for as little as ten percent of the list price. Analyst Zilan Qian warns that the circumvention infrastructure weakens export controls and Anthropic's own safety systems.</p>\n<p>The article How China's gray market sells Claude tokens at a fraction of the price appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "123065ecc955",
+      "title": "Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU",
+      "content": "Frontier open-weight models are shipping faster than the hardware assumptions around them. Kimi-K3, GLM-5.2 and DeepSeek-V4-Flash are closing the capability gap with proprietary systems, but releasing parameters only determines who can obtain a model — not who can afford to run it. Serving them still assumes datacenter-class GPU clusters, and as agentic workloads push inference demand up, that cost lands hardest on individual developers and small teams. Meanwhile, more than a hundred million consumer machines already carry discrete GPUs. A team of researchers from UC Berkeley and UT Austin propose FreeToken. The research team argued the missing piece is not hardware but a serving system: it treats a personal machine as a unified, elastic inference platform rather than a small GPU, and continuously maps computation and model state onto whatever GPU, CPU, memory and interconnect bandwidth the machine actually has. The result is a 35B model at interactive speed on an 8 GB laptop GPU, 284B on a gaming desktop, and the 753B GLM-5.2 on a single workstation card.\n\n\n\nIs it deployable?\n\n\n\nYes, FreeToken is Apache-2.0 on GitHub, published on PyPI as freetoken v0.1.2 (uv pip install \"freetoken[accel]\"), and shipped as a one-click desktop app for Windows and Linux at flashml.ai. The CLI targets Linux x86_64 with an NVIDIA GPU on driver r580+ (CUDA 13). ft serve exposes OpenAI- and Anthropic-compatible endpoints on port 1919, and ft launch claude wires up Claude Code, Codex, OpenCode or OpenClaw against your own box.\n\n\n\nWho it fits: solo developers, startups and SMB engineering teams whose agent token bills already exceed the cost of a GPU they own; enterprises should treat it as an air-gapped or regulated-workload path, not a datacenter replacement. Strongest industry fit: healthcare and legal (data never leaves the machine), defense, finance, and IP-heavy R&amp;D. Typical applications: local coding agents, private code review, offline contract analysis, synthetic-data generation, batch evals. \n\n\n\nThe gap it targets\n\n\n\nMixture-of-Experts makes local frontier inference arithmetically feasible. DeepSeek-V4-Flash activates 6 of 256 routed experts in each of 43 layers, so only 13B of its 284B parameters participate in any single token. Sparsity does not shrink the expert pool, though — at FP4 the full set is roughly 140 GB, so inactive experts sit in host memory and enter the execution path on demand.\n\n\n\nThe research team isolates three failure modes in existing engines (llama.cpp, KTransformers, Ollama, MoE-Infinity):\n\n\n\n\nPrefill destroys sparsity: Thousands of tokens per layer route to nearly the whole expert set, so a prefill pass streams the entire pool across PCIe — about two seconds on an RTX 5090, five on PCIe 4.0 desktops, ten or more on the x8 links common in laptops.\n\n\n\nStatic placement misses decode traffic: llama.cpp assigns MoE tensors at load time; KTransformers pins a &#8220;hot&#8221; subset. Routing shifts every token, so most expert evaluations fall to the CPU while the GPU and the PCIe link sit idle.\n\n\n\nConsumer CPUs cannot carry the remainder: Dual-channel DDR5 delivers 80–90 GB/s against the 1–1.8 TB/s an RTX 4090 or 5090 draws from on-package memory.\n\n\n\n\n\n&amp;&amp;\n\n\n\n\n\n\n\nThree mechanisms\n\n\n\n\nBandwidth-adaptive execution (the q* policy): Because DMA transfers and CPU expert execution read from the same host-memory subsystem, a saturated PCIe link leaves a residual bandwidth of B_H − B_P. FreeToken splits each step&#8217;s m cache misses accordingly: q* ≈ m × B_P / B_H experts are filled into the GPU cache, the rest are computed in place on the CPU, and the two partial sums merge exactly — no approximation, no router modification. Both bandwidths are profiled on the deployed machine (ft bench bw), which matters: measured B_P:B_H is 52.7:77.3 on an RTX 5090 server but 11.8:47.5 on a 4060 laptop.\n\n\n\nSemantic-aware caching: During prefill, full-layer double buffering streams layer l+1 while the GPU computes layer l. Recurrent-state checkpoints are anchored at special-token boundaries — thinking blocks, tool calls, tool outputs — precisely where agent harnesses truncate context, so an edit re-prefills only the new suffix. During decode, a shared LRU expert cache spanning all MoE layers follows the router instead of a placement frozen at load time.\n\n\n\nElastic memory management: At scheduler safe points the GPU expert cache is rebuilt under a revised VRAM budget without restarting the engine or reloading the host pool. Experts are read from disk straight into their final host layout, then pinned; no GPU warmup is required because the first request is served with a cold cache.\n\n\n\n\nResults\n\n\n\nOn an RTX 5090, FreeToken sustains 77–83 tok/s on Qwen3.6-35B-A3B (BF16) and 22–25 tok/s on DeepSeek-V4-Flash (MXFP4) — 1.5–2.3× the strongest baseline, with decode staying within 12% of the single-turn rate across three agentic workloads. Worst-case TTFT stays below 44 s in every cell; llama.cpp hits 232 s, Ollama 179 s and KTransformers 946 s somewhere in the matrix, past the point where agent clients time out.\n\n\n\nAt equal cache capacity (37% of the Qwen3.6 pool), the global LRU misses 16% of decode-time expert reads against 41% for KTransformers and 62% for llama.cpp. On an 8 GB RTX 4060 laptop the NVFP4 build serves 35B at 39.3 tok/s — above the 33 tok/s median decode speed measured for Codex in production traces. On a single RTX PRO 6000, GLM-5.2 (753B, 40B active) runs at 14.9 tok/s versus llama.cpp&#8217;s 7.3.\n\n\n\nKey Takeaways\n\n\n\n\nFreeToken splits MoE cache misses between PCIe fills and CPU execution using measured bandwidths, not a fixed offload rule.\n\n\n\nExpert output stays bit-exact — no router changes, no expert substitution, no precision relaxation.\n\n\n\n1.5–2.3× decode throughput over llama.cpp, Ollama and KTransformers, with tail TTFT under 44 s.\n\n\n\n35B at 39.3 tok/s on an 8 GB laptop GPU; 753B GLM-5.2 on one workstation GPU.\n\n\n\nApache-2.0, on PyPI and as a Windows/Linux desktop app — deployable this afternoon.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCheck out the&nbsp;PAPER, GITHUB REPO and PROJECT.&nbsp;Also,&nbsp;feel free to follow us on&nbsp;Twitter&nbsp;and don’t forget to join our&nbsp;150k+ML SubReddit&nbsp;and Subscribe to&nbsp;our Newsletter. Wait! are you on telegram?&nbsp;now you can join us on telegram as well.\n\n\n\nNeed to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?&nbsp;Connect with us\nThe post Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU appeared first on MarkTechPost.",
+      "url": "https://www.marktechpost.com/2026/08/23/meet-freetoken-an-edge-native-moe-serving-engine-that-runs-753b-glm-5-2-on-a-single-workstation-gpu/",
+      "author": "Asif Razzaq",
+      "published": "2026-08-23T10:44:59",
+      "source": "MarkTechPost",
+      "source_type": "rss",
+      "tags": [
+        "AI Infrastructure",
+        "AI Paper Summary",
+        "AI Shorts",
+        "Applications",
+        "Artificial Intelligence",
+        "Editors Pick",
+        "Language Model",
+        "Large Language Model",
+        "Machine Learning",
+        "New Releases",
+        "Staff",
+        "Tech News",
+        "Technology",
+        "Uncategorized"
+      ],
+      "summary": "Researchers from UC Berkeley and UT Austin propose FreeToken, an edge-native MoE serving engine that can run 753B-parameter GLM-5.2 on a single workstation GPU. System treats a personal machine as a unified elastic inference platform rather than a single small GPU.",
+      "importance_score": 55.0,
+      "reasoning": "[Freshness check: main claim overlaps prior research coverage from 2026-08-20] Potentially impactful for democratizing frontier-model inference if it works as described, but it is a research system with unverified production readiness. Relevant to the open-weight inference cost problem.",
+      "themes": [
+        "AI inference infrastructure",
+        "Open-weight models",
+        "Edge inference",
+        "MoE serving"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior research coverage from 2026-08-20",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 3,
+        "matched_prior_items": [
+          {
+            "id": "c360ce9b151a",
+            "date": "2026-08-20",
+            "category": "research",
+            "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+            "source": "Hugging Face Papers",
+            "url": "https://huggingface.co/papers/2608.16157"
+          },
+          {
+            "id": "556dd5a13b43",
+            "date": "2026-08-20",
+            "category": "social",
+            "title": "Good point. \n\nThe one who can inference faster gets to the future faster.",
+            "source": "Twitter",
+            "url": "https://twitter.com/Scobleizer/status/2090206585947849132"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://www.marktechpost.com/category/tech-news/feed/",
+        "raw_summary": "<p>FreeToken splits MoE cache misses between PCIe fills and CPU execution using measured bandwidths, unlocking frontier models locally</p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/08/23/meet-freetoken-an-edge-native-moe-serving-engine-that-runs-753b-glm-5-2-on-a-single-workstation-gpu/\">Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTechPost</a>.</p>",
+        "source_group": "Tech & Media",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior research coverage from 2026-08-20",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 3,
+          "matched_prior_items": [
+            {
+              "id": "c360ce9b151a",
+              "date": "2026-08-20",
+              "category": "research",
+              "title": "FreeToken: Efficient Edge-Native MoE Serving with Bandwidth-Adaptive Execution",
+              "source": "Hugging Face Papers",
+              "url": "https://huggingface.co/papers/2608.16157"
+            },
+            {
+              "id": "556dd5a13b43",
+              "date": "2026-08-20",
+              "category": "social",
+              "title": "Good point. \n\nThe one who can inference faster gets to the future faster.",
+              "source": "Twitter",
+              "url": "https://twitter.com/Scobleizer/status/2090206585947849132"
+            }
+          ]
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Researchers from UC Berkeley and UT Austin propose FreeToken, an edge-native MoE serving engine that can run 753B-parameter GLM-5.2 on a single workstation GPU. System treats a personal machine as a unified elastic inference platform rather than a single small GPU.</p>",
+      "content_html": "<p>Frontier open-weight models are shipping faster than the hardware assumptions around them. Kimi-K3, GLM-5.2 and DeepSeek-V4-Flash are closing the capability gap with proprietary systems, but releasing parameters only determines who can obtain a model — not who can afford to run it. Serving them still assumes datacenter-class GPU clusters, and as agentic workloads push inference demand up, that cost lands hardest on individual developers and small teams. Meanwhile, more than a hundred million consumer machines already carry discrete GPUs. A team of researchers from UC Berkeley and UT Austin propose FreeToken. The research team argued the missing piece is not hardware but a serving system: it treats a personal machine as a unified, elastic inference platform rather than a small GPU, and continuously maps computation and model state onto whatever GPU, CPU, memory and interconnect bandwidth the machine actually has. The result is a 35B model at interactive speed on an 8 GB laptop GPU, 284B on a gaming desktop, and the 753B GLM-5.2 on a single workstation card.</p>\n<p>Is it deployable?</p>\n<p>Yes, FreeToken is Apache-2.0 on GitHub, published on PyPI as freetoken v0.1.2 (uv pip install \"freetoken[accel]\"), and shipped as a one-click desktop app for Windows and Linux at flashml.ai. The CLI targets Linux x86_64 with an NVIDIA GPU on driver r580+ (CUDA 13). ft serve exposes OpenAI- and Anthropic-compatible endpoints on port 1919, and ft launch claude wires up Claude Code, Codex, OpenCode or OpenClaw against your own box.</p>\n<p>Who it fits: solo developers, startups and SMB engineering teams whose agent token bills already exceed the cost of a GPU they own; enterprises should treat it as an air-gapped or regulated-workload path, not a datacenter replacement. Strongest industry fit: healthcare and legal (data never leaves the machine), defense, finance, and IP-heavy R&amp;D. Typical applications: local coding agents, private code review, offline contract analysis, synthetic-data generation, batch evals.</p>\n<p>The gap it targets</p>\n<p>Mixture-of-Experts makes local frontier inference arithmetically feasible. DeepSeek-V4-Flash activates 6 of 256 routed experts in each of 43 layers, so only 13B of its 284B parameters participate in any single token. Sparsity does not shrink the expert pool, though — at FP4 the full set is roughly 140 GB, so inactive experts sit in host memory and enter the execution path on demand.</p>\n<p>The research team isolates three failure modes in existing engines (llama.cpp, KTransformers, Ollama, MoE-Infinity):</p>\n<p>Prefill destroys sparsity: Thousands of tokens per layer route to nearly the whole expert set, so a prefill pass streams the entire pool across PCIe — about two seconds on an RTX 5090, five on PCIe 4.0 desktops, ten or more on the x8 links common in laptops.</p>\n<p>Static placement misses decode traffic: llama.cpp assigns MoE tensors at load time; KTransformers pins a “hot” subset. Routing shifts every token, so most expert evaluations fall to the CPU while the GPU and the PCIe link sit idle.</p>\n<p>Consumer CPUs cannot carry the remainder: Dual-channel DDR5 delivers 80–90 GB/s against the 1–1.8 TB/s an RTX 4090 or 5090 draws from on-package memory.</p>\n<p>&amp;&amp;</p>\n<p>Three mechanisms</p>\n<p>Bandwidth-adaptive execution (the q* policy): Because DMA transfers and CPU expert execution read from the same host-memory subsystem, a saturated PCIe link leaves a residual bandwidth of B_H − B_P. FreeToken splits each step’s m cache misses accordingly: q* ≈ m × B_P / B_H experts are filled into the GPU cache, the rest are computed in place on the CPU, and the two partial sums merge exactly — no approximation, no router modification. Both bandwidths are profiled on the deployed machine (ft bench bw), which matters: measured B_P:B_H is 52.7:77.3 on an RTX 5090 server but 11.8:47.5 on a 4060 laptop.</p>\n<p>Semantic-aware caching: During prefill, full-layer double buffering streams layer l+1 while the GPU computes layer l. Recurrent-state checkpoints are anchored at special-token boundaries — thinking blocks, tool calls, tool outputs — precisely where agent harnesses truncate context, so an edit re-prefills only the new suffix. During decode, a shared LRU expert cache spanning all MoE layers follows the router instead of a placement frozen at load time.</p>\n<p>Elastic memory management: At scheduler safe points the GPU expert cache is rebuilt under a revised VRAM budget without restarting the engine or reloading the host pool. Experts are read from disk straight into their final host layout, then pinned; no GPU warmup is required because the first request is served with a cold cache.</p>\n<p>Results</p>\n<p>On an RTX 5090, FreeToken sustains 77–83 tok/s on Qwen3.6-35B-A3B (BF16) and 22–25 tok/s on DeepSeek-V4-Flash (MXFP4) — 1.5–2.3× the strongest baseline, with decode staying within 12% of the single-turn rate across three agentic workloads. Worst-case TTFT stays below 44 s in every cell; llama.cpp hits 232 s, Ollama 179 s and KTransformers 946 s somewhere in the matrix, past the point where agent clients time out.</p>\n<p>At equal cache capacity (37% of the Qwen3.6 pool), the global LRU misses 16% of decode-time expert reads against 41% for KTransformers and 62% for llama.cpp. On an 8 GB RTX 4060 laptop the NVFP4 build serves 35B at 39.3 tok/s — above the 33 tok/s median decode speed measured for Codex in production traces. On a single RTX PRO 6000, GLM-5.2 (753B, 40B active) runs at 14.9 tok/s versus llama.cpp’s 7.3.</p>\n<p>Key Takeaways</p>\n<p>FreeToken splits MoE cache misses between PCIe fills and CPU execution using measured bandwidths, not a fixed offload rule.</p>\n<p>Expert output stays bit-exact — no router changes, no expert substitution, no precision relaxation.</p>\n<p>1.5–2.3× decode throughput over llama.cpp, Ollama and KTransformers, with tail TTFT under 44 s.</p>\n<p>35B at 39.3 tok/s on an 8 GB laptop GPU; 753B GLM-5.2 on one workstation GPU.</p>\n<p>Apache-2.0, on PyPI and as a Windows/Linux desktop app — deployable this afternoon.</p>\n<p>Check out the&nbsp;PAPER, GITHUB REPO and PROJECT.&nbsp;Also,&nbsp;feel free to follow us on&nbsp;Twitter&nbsp;and don’t forget to join our&nbsp;150k+ML SubReddit&nbsp;and Subscribe to&nbsp;our Newsletter. Wait! are you on telegram?&nbsp;now you can join us on telegram as well.</p>\n<p>Need to partner with us for promoting your GitHub Repo OR Hugging Face Page OR Product Release OR Webinar etc.?&nbsp;Connect with us</p>\n<p>The post Meet FreeToken: An Edge-Native MoE Serving Engine that Runs 753B GLM-5.2 on a Single Workstation GPU appeared first on MarkTechPost.</p>"
+    },
+    {
+      "id": "dab2f6f1d4bb",
+      "title": "AI Law — This Week (August 17 – August 23, 2026)",
+      "content": "134 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.Highlights:U.S. Federal: Fetterman rejects data center and AI ‘doomsdaying’ after Shapiro executive order (2026-08-23)California: OpenAI wants California to strengthen its newly passed AI safety law (2026-08-23)North Dakota: State Rep. Mike Nathe outlines legislative priorities on special session, Legacy Fund, and AI safeguards - The Flag (2026-08-23)United Kingdom: Geopolitical Obstacles to AI Regulation - logos-pres.md (2026-08-23)Montana: A Montana law restricting AI-generated political content heard in federal court in Billings (2026-08-22)California: AB 1651 — State Bar of California: artificial intelligence. (2026-08-22)Full weekly digest →",
+      "url": "https://ai-law-tracker.com/this-week",
+      "author": "Unknown",
+      "published": "2026-08-23T00:00:00",
+      "source": "AI Law Tracker",
+      "source_type": "rss",
+      "tags": [
+        "Weekly Digest"
+      ],
+      "summary": "Continuing our coverage from earlier this week, Weekly digest of 134 AI law developments across US federal, state, and global jurisdictions. Notable items include California considering strengthening its newly passed AI safety law, a Montana AI political-content law facing federal court review, and UK commentary on geopolitical obstacles to AI regulation.",
+      "importance_score": 50.0,
+      "reasoning": "[Freshness check: main claim overlaps prior news coverage from 2026-08-21] Useful consolidated policy roundup, but it aggregates already-public items rather than breaking news. Highlights are meaningful (especially CA safety law strengthening) but the format dilutes signal.",
+      "themes": [
+        "AI regulation",
+        "US state AI law",
+        "AI policy roundup"
+      ],
+      "sentiment": "concerned",
+      "continuation": {
+        "original_item_id": "dab2f6f1d4bb",
+        "original_date": "2026-08-23",
+        "original_category": "news",
+        "original_title": "AI Law — This Week (August 17 – August 23, 2026)",
+        "continuation_type": "follow_up",
+        "should_demote": false,
+        "reference_text": "Continuing our coverage from earlier this week"
+      },
+      "freshness": {
+        "status": "stale_anchor",
+        "label": "Old anchor",
+        "reason": "main claim overlaps prior news coverage from 2026-08-21",
+        "score_cap": 55.0,
+        "exclude_from_top": true,
+        "exclude_from_summaries": true,
+        "age_days": 2,
+        "matched_prior_items": [
+          {
+            "id": "ba09de69095b",
+            "date": "2026-08-21",
+            "category": "news",
+            "title": "OpenAI builds safety system that catches misuse without storing customer data",
+            "source": "The Decoder",
+            "url": "https://the-decoder.com/openai-builds-safety-system-that-catches-misuse-without-storing-customer-data/"
+          },
+          {
+            "id": "f781ea5c4c10",
+            "date": "2026-08-23",
+            "category": "news",
+            "title": "Frontier AI labs still won’t say how they’d contain a rogue model",
+            "source": "AI News & Artificial Intelligence | TechCrunch",
+            "url": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/"
+          }
+        ]
+      },
+      "metadata": {
+        "feed_url": "https://ai-law-tracker.com/feed.xml",
+        "raw_summary": "<p>134 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.</p><p><strong>Highlights:</strong></p><ul><li>U.S. Federal: <a href=\"https://news.google.com/rss/articles/CBMitwFBVV95cUxQUWJQbTNjSFZjOUJRMGpWVkFFUzZfZUN3a1JnZFdjVTd6aS12bUpWNk1LN24wR3c2Ykg0US1lYXBLV0ZCUVFHc3pORVh5elRXZi1MZXN1aUdQOGdVUXlwSVJrcFJ6dHFJdFJUamRNZEpGQ1NFX24wRXZuUTJkZHJxUzZYR09NRzFnNUpuNDdVVkxRM0FCQmNIOEkwLVJlSTdWRVhjY0lId0VhV",
+        "source_group": "Policy & Regulation",
+        "sentiment": "concerned",
+        "freshness": {
+          "status": "stale_anchor",
+          "label": "Old anchor",
+          "reason": "main claim overlaps prior news coverage from 2026-08-21",
+          "score_cap": 55.0,
+          "exclude_from_top": true,
+          "exclude_from_summaries": true,
+          "age_days": 2,
+          "matched_prior_items": [
+            {
+              "id": "ba09de69095b",
+              "date": "2026-08-21",
+              "category": "news",
+              "title": "OpenAI builds safety system that catches misuse without storing customer data",
+              "source": "The Decoder",
+              "url": "https://the-decoder.com/openai-builds-safety-system-that-catches-misuse-without-storing-customer-data/"
+            },
+            {
+              "id": "f781ea5c4c10",
+              "date": "2026-08-23",
+              "category": "news",
+              "title": "Frontier AI labs still won’t say how they’d contain a rogue model",
+              "source": "AI News & Artificial Intelligence | TechCrunch",
+              "url": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model/"
+            }
+          ]
+        }
+      },
+      "related_sources": [],
+      "summary_html": "<p>Continuing our coverage from earlier this week, Weekly digest of 134 AI law developments across US federal, state, and global jurisdictions. Notable items include California considering strengthening its newly passed AI safety law, a Montana AI political-content law facing federal court review, and UK commentary on geopolitical obstacles to AI regulation.</p>",
+      "content_html": "<p>134 AI-law developments across federal, state, and global jurisdictions for the week of August 17 – August 23, 2026. Every item links to its original source.Highlights:U.S. Federal: Fetterman rejects data center and AI ‘doomsdaying’ after Shapiro executive order (2026-08-23)California: OpenAI wants California to strengthen its newly passed AI safety law (2026-08-23)North Dakota: State Rep. Mike Nathe outlines legislative priorities on special session, Legacy Fund, and AI safeguards - The Flag (2026-08-23)United Kingdom: Geopolitical Obstacles to AI Regulation - logos-pres.md (2026-08-23)Montana: A Montana law restricting AI-generated political content heard in federal court in Billings (2026-08-22)California: AB 1651 — State Bar of California: artificial intelligence. (2026-08-22)Full weekly digest →</p>"
+    },
+    {
+      "id": "1d6198782fd8",
+      "title": "Is it legal to train AI models on copyrighted books? It’s complicated",
+      "content": "Most published authors have, without their knowledge or consent, contributed to the development of the same AI tools that threaten to undermine their livelihoods. That seems illegal, right?",
+      "url": "https://techcrunch.com/2026/08/23/is-it-legal-to-train-ai-models-on-copyrighted-books-its-complicated/",
+      "author": "Amanda Silberling",
+      "published": "2026-08-23T15:00:00",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "Exclusive"
+      ],
+      "summary": "TechCrunch explainer examines the unsettled legal status of training AI models on copyrighted books, noting most published authors have unknowingly contributed training data. Frames the issue as legally complicated rather than clearly illegal.",
+      "importance_score": 48.0,
+      "reasoning": "Relevant for ongoing AI copyright litigation and policy, but the framing is a general explainer rather than breaking news. Useful context but not a new development in itself.",
+      "themes": [
+        "AI copyright",
+        "Training data legality",
+        "AI policy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "Most published authors have, without their knowledge or consent, contributed to the development of the same AI tools that threaten to undermine their livelihoods. That seems illegal, right?",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>TechCrunch explainer examines the unsettled legal status of training AI models on copyrighted books, noting most published authors have unknowingly contributed training data. Frames the issue as legally complicated rather than clearly illegal.</p>",
+      "content_html": "<p>Most published authors have, without their knowledge or consent, contributed to the development of the same AI tools that threaten to undermine their livelihoods. That seems illegal, right?</p>"
+    },
+    {
+      "id": "14c91bf40de4",
+      "title": "Who’s behind the new ‘stealth model’ Ox Alpha?",
+      "content": "A mysterious new AI model called Ox Alpha has driven certain corners of the internet into a frenzy of speculation.",
+      "url": "https://techcrunch.com/2026/08/23/whos-behind-the-new-stealth-model-ox-alpha/",
+      "author": "Anthony Ha",
+      "published": "2026-08-23T20:01:36",
+      "source": "AI News & Artificial Intelligence | TechCrunch",
+      "source_type": "rss",
+      "tags": [
+        "AI",
+        "openrouter"
+      ],
+      "summary": "TechCrunch reports on the 'Ox Alpha' stealth model circulating online and the speculation around its origin. Limited technical detail provided in the excerpt; the article frames it as a mystery generating internet buzz.",
+      "importance_score": 45.0,
+      "reasoning": "Stealth-model reveals have historically signaled frontier or near-frontier releases, but the excerpt contains no confirmed attribution, benchmarks, or model details. Elevated uncertainty warrants a moderate score pending more info.",
+      "themes": [
+        "Stealth models",
+        "Model release speculation",
+        "OpenRouter ecosystem"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "raw_summary": "A mysterious new AI model called Ox Alpha has driven certain corners of the internet into a frenzy of speculation.",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>TechCrunch reports on the 'Ox Alpha' stealth model circulating online and the speculation around its origin. Limited technical detail provided in the excerpt; the article frames it as a mystery generating internet buzz.</p>",
+      "content_html": "<p>A mysterious new AI model called Ox Alpha has driven certain corners of the internet into a frenzy of speculation.</p>"
+    },
+    {
+      "id": "c9251f336d49",
+      "title": "An AI boss fired its first employee but only after humans reminded it of its own rules",
+      "content": "\n        Andon Labs' AI agent Luna fired a human employee at a San Francisco store for the first time but needed a clear push from the operators to do it. When the scenario was replayed with seven models, more capable AIs recommended termination more consistently, while weaker ones hesitated. When it came to hiring, nearly all models were uncritical.\nThe article An AI boss fired its first employee but only after humans reminded it of its own rules appeared first on The Decoder.",
+      "url": "https://the-decoder.com/an-ai-boss-fired-its-first-employee-but-only-after-humans-reminded-it-of-its-own-rules/",
+      "author": "Tomislav Bezmalinović",
+      "published": "2026-08-23T12:31:59",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "AI agents",
+        "AI at work"
+      ],
+      "summary": "Andon Labs reports its AI agent Luna fired a human employee at a San Francisco store for the first time, but only after operators prompted it to apply its own rules. A follow-up sweep across seven models found more capable models recommended termination more consistently while weaker ones hesitated; nearly all models were uncritical on hiring.",
+      "importance_score": 40.0,
+      "reasoning": "Interesting real-world AI agent behavior experiment with implications for autonomous HR decisions, but limited scale (single firing event) and results are preliminary. Niche but noteworthy for agentic AI safety research.",
+      "themes": [
+        "AI agents in the workplace",
+        "AI autonomy",
+        "AI safety research"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"A collage of a scale with microchips and a “Fire” stamp, set against an image of a tardy employee with a clock and a question mark\" class=\"attachment-full size-full wp-post-image\" height=\"937\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/andon-labs-luna.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"1679\" /></p>\n<p>        Andon Labs' AI agent Luna fired a human employee at a San Francisco store for the first time but needed a clear push from the operators to do i",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Andon Labs reports its AI agent Luna fired a human employee at a San Francisco store for the first time, but only after operators prompted it to apply its own rules. A follow-up sweep across seven models found more capable models recommended termination more consistently while weaker ones hesitated; nearly all models were uncritical on hiring.</p>",
+      "content_html": "<p>Andon Labs' AI agent Luna fired a human employee at a San Francisco store for the first time but needed a clear push from the operators to do it. When the scenario was replayed with seven models, more capable AIs recommended termination more consistently, while weaker ones hesitated. When it came to hiring, nearly all models were uncritical.</p>\n<p>The article An AI boss fired its first employee but only after humans reminded it of its own rules appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "3cd39a40136a",
+      "title": "AI could make scientists do more work less well, not less work better, study argues",
+      "content": "\n        Even if language models worked perfectly, they could make research worse, not better. A new theoretical study argues that because AI saves time, researchers' remaining hours become more valuable and get funneled into starting new projects instead of improving existing ones. In two out of three modeled scenarios, the quality of individual publications drops.\nThe article AI could make scientists do more work less well, not less work better, study argues appeared first on The Decoder.",
+      "url": "https://the-decoder.com/ai-could-make-scientists-do-more-work-less-well-not-less-work-better-study-argues/",
+      "author": "Jonathan Kemper",
+      "published": "2026-08-23T09:01:17",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI research",
+        "Artificial Intelligence"
+      ],
+      "summary": "A theoretical study argues that even a perfectly functioning AI research assistant could degrade scientific output. Because AI saves time, the remaining researcher hours get redirected into starting new projects rather than polishing existing ones, dropping publication quality in two of three modeled scenarios.",
+      "importance_score": 38.0,
+      "reasoning": "Provocative framing but theoretical/modeled rather than empirical; useful for policy debate on AI in science but limited immediate impact.",
+      "themes": [
+        "AI in research",
+        "Productivity paradox",
+        "AI policy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"A conveyor belt carrying research documents past laboratory equipment symbolizes the AI-driven flood of scientific publications.\" class=\"attachment-full size-full wp-post-image\" height=\"1047\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/ai-science-flood-nano-banana-pro.jpg\" style=\"height: auto; margin-bottom: 10px;\" width=\"1920\" /></p>\n<p>        Even if language models worked perfectly, they could make research worse, not better. A new theoretical study argues that becau",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A theoretical study argues that even a perfectly functioning AI research assistant could degrade scientific output. Because AI saves time, the remaining researcher hours get redirected into starting new projects rather than polishing existing ones, dropping publication quality in two of three modeled scenarios.</p>",
+      "content_html": "<p>Even if language models worked perfectly, they could make research worse, not better. A new theoretical study argues that because AI saves time, researchers' remaining hours become more valuable and get funneled into starting new projects instead of improving existing ones. In two out of three modeled scenarios, the quality of individual publications drops.</p>\n<p>The article AI could make scientists do more work less well, not less work better, study argues appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "faae64fe274e",
+      "title": "Who will own the AI agent economy? | MIT Sloan",
+      "content": "MIT’s Ramesh Raskar offers a compelling vision of the future. Suppose a 70-year-old pre-diabetic woman from rural India wants to attend a festival in a nearby city. She tells this to her AI agent — every person in this future has a personal AI agent — and it gets to work. It finds and purchases her train ticket; it negotiates the best rate on a hotel within walking distance of a health clinic; and it establishes a menu sensitive to her medical condition. It also arranges for her to attend the events that would most interest her. AI at Work Research and insights powering the intersection of AI and business, delivered monthly. Yes, I’d also like to subscribe to the Thinking Forward newsletter Email Leave this field blank The trip is planned with individual specificity through an interacting web of AI agents — software that can understand goals, make decisions, complete transactions, coordinate with other agents, and act on behalf of a person, organization, object, or system. Raskar leads Project NANDA , a research initiative working on agent identity, discovery, addressability, registries, verification, interoperability, and decentralized coordination. As a participant in the MIT Sloan speaker series “AI + X: How AI Is Changing Management Practice,” he described a digital world comprising billions or trillions of agents collaborating and competing to solve problems. “Every one of us will have our own agent, but every one of us could have five or 10 agents, and every organization, every city, every fridge, every light, every car, every financial institution, every stock, every IPO, and every baseball team — they’ll all have their own agents,” Raskar said. “Is it going to take 10 years? Is it going to take five years? Two? I don’t know, but that’s where it’s going.” Raskar compared the evolution of AI agents to that of computing: The mainframe era of large, centralized computer systems used by large organizations evolved into the PC era, when individuals could own personal machines. “Right now, we are in the mainframe era of AI,” said Raskar, an associate professor at the MIT Media Lab. This era is marked by big data centers and centralized data and computing power. But the cost of computational work is falling quickly, which will make AI efforts accessible to more organizations and individuals. “We are moving to the PC era of AI, and that changes everything,” Raskar said. An economy built around agents One of Raskar’s key points was that as we move into the next era of artificial intelligence, we need to reorient how we think about the technology’s application. Most people and companies, he said, are building “agents for X” — agents for stock trading or booking travel or providing customer service. That is not where the biggest opportunities will be. “The economy of the future is not an economy where we say, ‘Let’s create agents for X,’” he said. “It’s an economy where we instead say, ‘Let’s create X for agents.’” This inversion will lead to a sprawling new market infrastructure designed to take advantage of billions or trillions of AI agents. Raskar highlighted a handful of categories that illustrate the economy he has in mind: Agent identity and discovery systems. These would be analogous to the Internet Corporation for Assigned Names and Numbers , which manages domain names and IP addresses. This kind of service is essential to clear and unfettered communication between agents. Trust and reputation services. Like human passports, these services would confirm that agents are who they say they are and prevent bad actors from injecting themselves into transactions. Insurance, repair, and legal services. Raskar noted that agents will make mistakes, get sued, and degrade over time, so online services for repairing them and mediating problems or disputes will be needed. Stablecoin-based micropayments. Raskar foresees the emergence of a new economic infrastructure based on stablecoin that supports transactions between trillions of agents. Business leaders need to stop thinking of agents as another app, and they shouldn’t focus only on building agents, he said. Instead, they should be focusing on the marketplaces, protocols, and services those agents will require. Agentic AI: Business Implications and Applications In person at MIT Sloan Register now Keeping the AI agent marketplace open The central question today is whether this evolution toward an economy of agents will remain open to ordinary people or be dominated by a handful of private corporations. As a historical point of comparison, Raskar pointed to the World Wide Web, which was democratized though a foundational layer designed to communicate identities and trust between web pages and allowed for interoperable protocols beyond the control of any single company. The alternative version of this AI future — absent efforts to keep the agentic web open and decentralized — would look more like most of today’s software, or like cellphones, Raskar said. Microsoft’",
+      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/who-will-own-ai-agent-economy?utm_source=mitsloantwitter&utm_medium=social&utm_campaign=nanda",
+      "author": "",
+      "published": "2026-08-24T01:34:12.853674",
+      "source": "mitsloan.mit.edu",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "MIT Sloan piece by Ramesh Raskar on the emerging AI agent economy, envisioning personalized AI agents that coordinate travel, health, and commerce tasks on behalf of individuals, and questioning who will own the economic value created.",
+      "importance_score": 32.0,
+      "reasoning": "Vision/opinion piece rather than news; useful framing for the agent economy debate but no new data or product.",
+      "themes": [
+        "AI agent economy",
+        "Personal AI agents",
+        "Opinion/analysis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/Ronald_vanLoon/status/2091569412339896481",
+          "post_author": "@Ronald_vanLoon"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>MIT Sloan piece by Ramesh Raskar on the emerging AI agent economy, envisioning personalized AI agents that coordinate travel, health, and commerce tasks on behalf of individuals, and questioning who will own the economic value created.</p>",
+      "content_html": "<p>MIT’s Ramesh Raskar offers a compelling vision of the future. Suppose a 70-year-old pre-diabetic woman from rural India wants to attend a festival in a nearby city. She tells this to her AI agent — every person in this future has a personal AI agent — and it gets to work. It finds and purchases her train ticket; it negotiates the best rate on a hotel within walking distance of a health clinic; and it establishes a menu sensitive to her medical condition. It also arranges for her to attend the events that would most interest her. AI at Work Research and insights powering the intersection of AI and business, delivered monthly. Yes, I’d also like to subscribe to the Thinking Forward newsletter Email Leave this field blank The trip is planned with individual specificity through an interacting web of AI&nbsp;agents —&nbsp;software that can understand goals, make decisions, complete transactions, coordinate with other agents, and act on behalf of a person, organization, object, or system. Raskar leads Project NANDA , a research initiative&nbsp;working on agent identity, discovery, addressability, registries, verification, interoperability, and decentralized coordination.&nbsp;As a participant in the MIT Sloan speaker series “AI + X: How AI Is Changing Management Practice,” he described a digital world comprising billions or trillions of agents collaborating and competing to solve problems. “Every one of us will have our own agent, but every one of us could have five or 10 agents, and every organization, every city, every fridge, every light, every car, every financial institution, every stock, every IPO, and every baseball team — they’ll all have their own agents,” Raskar said. “Is it going to take 10 years? Is it going to take five years? Two? I don’t know, but that’s where it’s going.” Raskar compared the evolution of AI agents to that of computing:&nbsp;The mainframe era of large, centralized computer systems used by large organizations evolved into the PC era, when individuals could own personal machines. “Right now, we are in the mainframe era of AI,” said Raskar, an associate professor at the MIT Media Lab. This era is marked by big data centers and centralized data and computing power. But the cost of computational work is falling quickly, which will make AI efforts accessible to more organizations and individuals. “We are moving to the PC era of AI, and that changes everything,” Raskar said. An economy built around agents One of Raskar’s key points was that as we move into the next era of artificial intelligence, we need to reorient how we think about the technology’s application. Most people and companies, he said, are building “agents for X” — agents for stock trading or booking travel or providing customer service. That is not where the biggest opportunities will be. “The economy of the future is not an economy where we say, ‘Let’s create agents for X,’” he said. “It’s an economy where we instead say, ‘Let’s create X for agents.’” This inversion will lead to a sprawling new market infrastructure designed to take advantage of billions or trillions of AI agents. Raskar highlighted a handful of categories that illustrate the economy he has in mind: Agent identity and discovery systems. These would be analogous to the Internet Corporation for Assigned Names and Numbers , which manages domain names and IP addresses. This kind of service is essential to clear and unfettered communication between agents. Trust and reputation services. Like human passports, these services would confirm that agents are who they say they are and prevent bad actors from injecting themselves into transactions. Insurance, repair, and legal services. Raskar noted that agents will make mistakes, get sued, and degrade over time, so online services for repairing them and mediating problems or disputes will be needed. Stablecoin-based micropayments. Raskar foresees the emergence of a new economic infrastructure based on stablecoin that supports transactions between trillions of agents. Business leaders need to stop thinking of agents as another app, and they shouldn’t focus only on building agents, he said. Instead, they should be focusing on the marketplaces, protocols, and services those agents will require. Agentic AI: Business Implications and Applications In person at MIT Sloan Register now Keeping the AI agent marketplace open The central question today is whether this evolution toward an economy of agents will remain open to ordinary people or be dominated by a handful of private corporations. As a historical point of comparison, Raskar pointed to the World Wide Web, which was democratized though a foundational layer designed to communicate identities and trust between web pages and allowed for interoperable protocols beyond the control of any single company. The alternative version of this AI future — absent efforts to keep the agentic web open and decentralized —&nbsp;would look more like most of today’s software, or like cellphones, Raskar said. Microsoft’</p>"
+    },
+    {
+      "id": "ff8bce0273c4",
+      "title": "Memory shortage reportedly drives Nvidia AI server prices up about 15 percent",
+      "content": "\n        Nvidia servers with Vera Rubin and Grace Blackwell chips are set to cost about 15 percent more due to an ongoing DRAM shortage from Samsung, SK Hynix, and Micron, Bloomberg reports. The price hikes hit cloud giants like Microsoft, Google, and Meta, which are pouring billions into AI infrastructure while bankrolling the market power of the very supplier they're trying to break free from.\nThe article Memory shortage reportedly drives Nvidia AI server prices up about 15 percent appeared first on The Decoder.",
+      "url": "https://the-decoder.com/memory-shortage-reportedly-drives-nvidia-ai-server-prices-up-about-15-percent/",
+      "author": "Matthias Bastian",
+      "published": "2026-08-23T08:15:28",
+      "source": "The Decoder",
+      "source_type": "rss",
+      "tags": [
+        "AI in practice",
+        "Artificial Intelligence",
+        "Short News",
+        "Nvidia"
+      ],
+      "summary": "\n        Nvidia servers with Vera Rubin and Grace Blackwell chips are set to cost about 15 percent more due to an ongoing DRAM shortage from Samsung, SK Hynix, and Micron, Bloomberg reports. The price...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://the-decoder.com/feed/",
+        "raw_summary": "<p><img alt=\"\" class=\"attachment-full size-full wp-post-image\" height=\"1152\" src=\"https://the-decoder.com/wp-content/uploads/2026/08/nvidia_logo.png\" style=\"height: auto; margin-bottom: 10px;\" width=\"2048\" /></p>\n<p>        Nvidia servers with Vera Rubin and Grace Blackwell chips are set to cost about 15 percent more due to an ongoing DRAM shortage from Samsung, SK Hynix, and Micron, Bloomberg reports. The price hikes hit cloud giants like Microsoft, Google, and Meta, which are pouring billions ",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Nvidia servers with Vera Rubin and Grace Blackwell chips are set to cost about 15 percent more due to an ongoing DRAM shortage from Samsung, SK Hynix, and Micron, Bloomberg reports. The price...</p>",
+      "content_html": "<p>Nvidia servers with Vera Rubin and Grace Blackwell chips are set to cost about 15 percent more due to an ongoing DRAM shortage from Samsung, SK Hynix, and Micron, Bloomberg reports. The price hikes hit cloud giants like Microsoft, Google, and Meta, which are pouring billions into AI infrastructure while bankrolling the market power of the very supplier they're trying to break free from.</p>\n<p>The article Memory shortage reportedly drives Nvidia AI server prices up about 15 percent appeared first on The Decoder.</p>"
+    },
+    {
+      "id": "87954a7cb179",
+      "title": "Vercel Introduces ‘Is Agentic’, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora’s 100+ Checks",
+      "content": "Vercel has released Is Agentic, a public tool that scores how readily AI agents can discover, access, understand, and use a website. Scans are run and scored by Ora, an agent-experience research company from era labs. Vercel operates the interface, report pages, storage, and the grouping that produces the displayed score.\n\n\n\nIs it deployable?\n\n\n\nYes — at zero cost. Is Agentic is currently free, with no paid plans, subscription charges, or per-report fees. The public site, read-only API, CLI, and MCP server require no API key or billing account. Enter a URL in the browser, or run the CLI:\n\n\n\nCopy CodeCopiedUse a different Browsernpx is-agentic &lt;domain>\nnpx is-agentic &lt;domain> --json\n\n\n\nWhich level of company: Any organization owning a public web surface. Seed-stage startups get a free baseline audit with no procurement. Mid-market SaaS teams can wire --json output into CI as a regression gate. Enterprises can benchmark documentation portals, developer sites, and commerce surfaces across business units.\n\n\n\nIndustries: Developer tools and SaaS, e-commerce and retail, travel and hospitality, fintech, marketplaces, healthcare provider directories, and media or documentation publishers. Anywhere an agent may shop, book, integrate, or cite on a user&#8217;s behalf.\n\n\n\nApplications: Pre-launch agent-readiness audits. CI checks that fail builds when server-rendered content regresses. Competitive benchmarking against public scores. Validating an MCP server or OpenAPI surface is actually discoverable. Prioritizing technical fixes with copy-pasteable remediation prompts.\n\n\n\nWhat Exactly it Measures\n\n\n\nOra&#8217;s methodology walks four layers an agent moves through. Discovery carries 20 points across 15 checks. Access carries 30 points across 41 checks. Usability carries 40 points across 56 checks. Payments carries 10 points across 6 checks. That totals 118 checks, matching Vercel&#8217;s &#8220;100+ checks&#8221; claim. Ora says the checklist is reverse-engineered from real agent runs, not authored by opinion.\n\n\n\nOra also publishes a letter scale: A+ at 95–100, A at 86–94, B at 70–85, C at 48–69, D at 28–47, and F at 0–27.\n\n\n\nVercel regroups those checks into its own displayed scoring model. Essential checks share an 80-point pool. Recommended checks share a 20-point pool. Emerging signals add a bonus capped at five points, and their absence never lowers a score. Not-applicable checks are excluded rather than counted as failures. Partial results receive proportional credit, and duplicated check IDs across MCP surfaces are averaged.\n\n\n\nThat applicability logic matters. Recommended checks activate only when scan evidence positively identifies an API, OAuth flow, GraphQL endpoint, MCP server, developer portal, or commerce surface. A marketing site is not penalized for omitting an interface it never claimed to offer.\n\n\n\nInside a report\n\n\n\nEvery finding ships with observed evidence and, where available, a concrete recommendation. A live API response shows the shape: score, score_label, scanned_at, eligible_checks, a score_breakdown with earned and available points per tier, and an issues array. Each issue carries id, name, details, recommendation, result, and tier.\n\n\n\nReal check IDs include content-no-js, agent-friendly-404, markdown-negotiation-vary, json-ld, sitemap, trust-anchors, and metadata-completeness. The 404 check asks for a real HTTP 404 status rather than a 200 serving an app shell.\n\n\n\nReports also include an observed agent journey showing where one agent hit friction. Vercel keeps that run outside the numeric score, since one task cannot represent every agent. &#8220;Prompt to fix&#8221; converts actionable recommendations into an implementation brief for a coding agent.\n\n\n\nMachine interfaces\n\n\n\nThree read-only surfaces expose completed reports. The report API lives at /api/v1/report, rate-limited to 120 requests per client IP per 60-second window. Errors use RFC 9457 problem details with stable codes such as invalid_url, report_not_found, and rate_limit_exceeded. The OpenAPI description is the supported integration contract, discoverable through an RFC 9727 API catalog. Deprecations signal via RFC 9745 headers, with Sunset announced at least 90 days ahead.\n\n\n\nThe MCP server at https://is-agentic.com/mcp exposes is_agentic_get_report, is_agentic_get_methodology, and is_agentic_get_developer_docs over Streamable HTTP. Hosts supporting MCP Apps render an interactive score card. An official agent skill installs via npx skills add vercel-labs/is-agentic.\n\n\n\nThe site practices what it scores. Report pages render the score in the initial HTML response, serve a Markdown variant under Accept: text/markdown, and set Vary: Accept so shared caches never mix representations.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKey Takeaways\n\n\n\n\nIs Agentic scores public sites on agent discovery, access, usability, and payments — free, with no API key.\n\n\n\nOra supplies 118 checks across four weighted layers; Vercel regroups them into Essential 80, Recommended 20, Bonus 5.\n\n\n\nNot-applicable checks are excluded, so marketing sites are not penalized for missing APIs or commerce surfaces.\n\n\n\nReports ship as HTML, Markdown, JSON, CLI output, and MCP tools, all read-only and unauthenticated.\n\n\n\nVercel states it is not a certification, security audit, or accessibility review — treat it as a prioritized technical review.\n\nThe post Vercel Introduces &#8216;Is Agentic&#8217;, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora&#8217;s 100+ Checks appeared first on MarkTechPost.",
+      "url": "https://www.marktechpost.com/2026/08/23/vercel-introduces-is-agentic-a-free-agent-readiness-scoring-tool-that-audits-public-websites-using-oras-100-checks/",
+      "author": "Michal Sutter",
+      "published": "2026-08-23T07:37:14",
+      "source": "MarkTechPost",
+      "source_type": "rss",
+      "tags": [
+        "Agentic AI",
+        "AI Agents",
+        "Editors Pick",
+        "For Devs",
+        "New Releases",
+        "Tech News"
+      ],
+      "summary": "Vercel launches Is Agentic, a free public tool that scores websites on agent-readiness using Ora's 100+ checks. Available via web UI, CLI, MCP server, and read-only API with no key required.",
+      "importance_score": 30.0,
+      "reasoning": "Useful developer tool and SEO/agent-discovery signal, but incremental product release rather than frontier capability.",
+      "themes": [
+        "AI agents",
+        "Developer tools",
+        "Agent readiness"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.marktechpost.com/category/tech-news/feed/",
+        "raw_summary": "<p>Vercel and Ora launched Is Agentic, a free audit scoring website readiness for AI agents across 118 checks.</p>\n<p>The post <a href=\"https://www.marktechpost.com/2026/08/23/vercel-introduces-is-agentic-a-free-agent-readiness-scoring-tool-that-audits-public-websites-using-oras-100-checks/\">Vercel Introduces &#8216;Is Agentic&#8217;, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora&#8217;s 100+ Checks</a> appeared first on <a href=\"https://www.marktechpost.com\">MarkTech",
+        "source_group": "Tech & Media",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Vercel launches Is Agentic, a free public tool that scores websites on agent-readiness using Ora's 100+ checks. Available via web UI, CLI, MCP server, and read-only API with no key required.</p>",
+      "content_html": "<p>Vercel has released Is Agentic, a public tool that scores how readily AI agents can discover, access, understand, and use a website. Scans are run and scored by Ora, an agent-experience research company from era labs. Vercel operates the interface, report pages, storage, and the grouping that produces the displayed score.</p>\n<p>Is it deployable?</p>\n<p>Yes — at zero cost. Is Agentic is currently free, with no paid plans, subscription charges, or per-report fees. The public site, read-only API, CLI, and MCP server require no API key or billing account. Enter a URL in the browser, or run the CLI:</p>\n<p>Copy CodeCopiedUse a different Browsernpx is-agentic &lt;domain&gt;</p>\n<p>npx is-agentic &lt;domain&gt; --json</p>\n<p>Which level of company: Any organization owning a public web surface. Seed-stage startups get a free baseline audit with no procurement. Mid-market SaaS teams can wire --json output into CI as a regression gate. Enterprises can benchmark documentation portals, developer sites, and commerce surfaces across business units.</p>\n<p>Industries: Developer tools and SaaS, e-commerce and retail, travel and hospitality, fintech, marketplaces, healthcare provider directories, and media or documentation publishers. Anywhere an agent may shop, book, integrate, or cite on a user’s behalf.</p>\n<p>Applications: Pre-launch agent-readiness audits. CI checks that fail builds when server-rendered content regresses. Competitive benchmarking against public scores. Validating an MCP server or OpenAPI surface is actually discoverable. Prioritizing technical fixes with copy-pasteable remediation prompts.</p>\n<p>What Exactly it Measures</p>\n<p>Ora’s methodology walks four layers an agent moves through. Discovery carries 20 points across 15 checks. Access carries 30 points across 41 checks. Usability carries 40 points across 56 checks. Payments carries 10 points across 6 checks. That totals 118 checks, matching Vercel’s “100+ checks” claim. Ora says the checklist is reverse-engineered from real agent runs, not authored by opinion.</p>\n<p>Ora also publishes a letter scale: A+ at 95–100, A at 86–94, B at 70–85, C at 48–69, D at 28–47, and F at 0–27.</p>\n<p>Vercel regroups those checks into its own displayed scoring model. Essential checks share an 80-point pool. Recommended checks share a 20-point pool. Emerging signals add a bonus capped at five points, and their absence never lowers a score. Not-applicable checks are excluded rather than counted as failures. Partial results receive proportional credit, and duplicated check IDs across MCP surfaces are averaged.</p>\n<p>That applicability logic matters. Recommended checks activate only when scan evidence positively identifies an API, OAuth flow, GraphQL endpoint, MCP server, developer portal, or commerce surface. A marketing site is not penalized for omitting an interface it never claimed to offer.</p>\n<p>Inside a report</p>\n<p>Every finding ships with observed evidence and, where available, a concrete recommendation. A live API response shows the shape: score, score_label, scanned_at, eligible_checks, a score_breakdown with earned and available points per tier, and an issues array. Each issue carries id, name, details, recommendation, result, and tier.</p>\n<p>Real check IDs include content-no-js, agent-friendly-404, markdown-negotiation-vary, json-ld, sitemap, trust-anchors, and metadata-completeness. The 404 check asks for a real HTTP 404 status rather than a 200 serving an app shell.</p>\n<p>Reports also include an observed agent journey showing where one agent hit friction. Vercel keeps that run outside the numeric score, since one task cannot represent every agent. “Prompt to fix” converts actionable recommendations into an implementation brief for a coding agent.</p>\n<p>Machine interfaces</p>\n<p>Three read-only surfaces expose completed reports. The report API lives at /api/v1/report, rate-limited to 120 requests per client IP per 60-second window. Errors use RFC 9457 problem details with stable codes such as invalid_url, report_not_found, and rate_limit_exceeded. The OpenAPI description is the supported integration contract, discoverable through an RFC 9727 API catalog. Deprecations signal via RFC 9745 headers, with Sunset announced at least 90 days ahead.</p>\n<p>The MCP server at https://is-agentic.com/mcp exposes is_agentic_get_report, is_agentic_get_methodology, and is_agentic_get_developer_docs over Streamable HTTP. Hosts supporting MCP Apps render an interactive score card. An official agent skill installs via npx skills add vercel-labs/is-agentic.</p>\n<p>The site practices what it scores. Report pages render the score in the initial HTML response, serve a Markdown variant under Accept: text/markdown, and set Vary: Accept so shared caches never mix representations.</p>\n<p>Key Takeaways</p>\n<p>Is Agentic scores public sites on agent discovery, access, usability, and payments — free, with no API key.</p>\n<p>Ora supplies 118 checks across four weighted layers; Vercel regroups them into Essential 80, Recommended 20, Bonus 5.</p>\n<p>Not-applicable checks are excluded, so marketing sites are not penalized for missing APIs or commerce surfaces.</p>\n<p>Reports ship as HTML, Markdown, JSON, CLI output, and MCP tools, all read-only and unauthenticated.</p>\n<p>Vercel states it is not a certification, security audit, or accessibility review — treat it as a prioritized technical review.</p>\n<p>The post Vercel Introduces ‘Is Agentic’, a Free Agent-Readiness Scoring Tool That Audits Public Websites Using Ora’s 100+ Checks appeared first on MarkTechPost.</p>"
+    },
+    {
+      "id": "a8c0fa000947",
+      "title": "I gave Qwen 3.8 27B a reverse-engineering job and it finished in 30 minutes",
+      "content": "I gave Qwen 3.8 27B a reverse-engineering job and it finished in 30 minutes",
+      "url": "https://www.xda-developers.com/qwen-3-8-27b-reverse-engineering-job-frontier-model/",
+      "author": "raybb",
+      "published": "2026-08-23T10:02:51+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "XDA Developers blog claims Qwen 3.8 27B completed a reverse-engineering task in 30 minutes, presented as a frontier-model anecdote for a recently released open-weight model (API date 2026-08-14, about 9 days before coverage).",
+      "importance_score": 28.0,
+      "reasoning": "Model is within roughly a week of coverage date but the article is a user benchmark anecdote, not a release announcement. Qwen 3.8 27B is already documented in grounding as released. Treated as coverage of an existing model.",
+      "themes": [
+        "Qwen",
+        "Open-weight models",
+        "Model evaluation anecdotes"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 327,
+        "hn_comments": 143,
+        "hn_url": "https://news.ycombinator.com/item?id=49407507",
+        "type": "story",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>XDA Developers blog claims Qwen 3.8 27B completed a reverse-engineering task in 30 minutes, presented as a frontier-model anecdote for a recently released open-weight model (API date 2026-08-14, about 9 days before coverage).</p>",
+      "content_html": "<p>I gave Qwen 3.8 27B a reverse-engineering job and it finished in 30 minutes</p>"
+    },
+    {
+      "id": "8ba92212f680",
+      "title": "GitHub - run-llama/liteparse: A fast, helpful, and open-source document parser · GitHub",
+      "content": "LiteParse | | | | | | Docs English | 简体中文 Looking for LiteParse V1? Follow this link to the old code LiteParse is a standalone OSS PDF parsing tool focused exclusively on fast and light parsing. It provides high-quality spatial text parsing with bounding boxes, without proprietary LLM features or cloud dependencies. Everything runs locally on your machine. Hitting the limits of local parsing? For complex documents (dense tables, multi-column layouts, charts, handwritten text, or\nscanned PDFs), you'll get significantly better results with LlamaParse ,\nour cloud-based document parser built for production document pipelines. LlamaParse handles the\nhard stuff so your models see clean, structured data and markdown. Sign up for LlamaParse free Overview Fast Text Parsing : Spatial text parsing using PDFium Flexible OCR System : Built-in : Tesseract (zero setup, bundled with the library) HTTP Servers : Plug in any OCR server (EasyOCR, PaddleOCR, custom) Standard API : Simple, well-defined OCR API specification Complexity Detection : Cheaply check whether a document needs OCR or heavier parsing — route, reject, or estimate cost before a full parse Screenshot Generation : Generate high-quality page screenshots for LLM agents Multiple Output Formats : Markdown, JSON, and Text Markdown Output : Structured Markdown with headings, tables, lists, images, and links — great for feeding LLMs and RAG pipelines Bounding Boxes : Precise text positioning information Multi-language : Use from Rust, Node.js/TypeScript, Python, or the browser (WASM) Multi-platform : Linux, macOS (Intel/ARM), Windows flowchart LR\n      subgraph Input[\"Input Formats\"]\n          direction TB\n          PDF[\"PDF\"]\n          DOCX[\"DOCX\"]\n          XLSX[\"XLSX\"]\n          PPTX[\"PPTX\"]\n          IMG[\"Images\"]\n      end\n\n      subgraph Core[\"Rust Core\"]\n          direction TB\n          CONV[\"Format Conversion\\nLibreOffice / Rust image + resvg + usvg crates\"]\n          EXTRACT[\"Text Extraction\\nPDFium C library\"]\n          OCR[\"Selective OCR\\nTesseract / HTTP / Custom\"]\n          MERGE[\"OCR Merge\\nNative text + OCR results\"]\n          PROJ[\"Grid Projection\\nSpatial layout reconstruction\"]\n          CONV --> EXTRACT\n          EXTRACT --> OCR --> MERGE --> PROJ\n          EXTRACT --> MERGE\n      end\n\n      subgraph Output[\" Output \"]\n          direction TB\n          JSON[\"Structured JSON\\ntext + bounding boxes\"]\n          TEXT[\"Plain Text\\nlayout-preserved\"]\n          SCREEN[\"Screenshots\\nPNG rendering\"]\n      end\n\n      subgraph Bindings[\"Language Bindings\"]\n          direction TB\n          NAPI[\"Node.js / TypeScript\\nnapi-rs\"]\n          PYO3[\"Python\\nPyO3\"]\n          WASM[\"Browser / WASM\\nwasm-bindgen\"]\n          CLI[\"CLI\\ncargo / npm / pip\"]\n          NAPI ~~~ PYO3 ~~~ WASM ~~~ CLI\n      end\n\n      PDF --> EXTRACT\n      DOCX & XLSX & PPTX & IMG --> CONV\n      PROJ --> JSON & TEXT & SCREEN\n      JSON & TEXT & SCREEN --> Bindings\n\n      style Input fill:#F5F5F5,color:#000000,stroke:#37D7FA,stroke-width:2px\n      style Core fill:#F5F5F5,color:#000000,stroke:#3E18F9,stroke-width:2px\n      style Output fill:#F5F5F5,color:#000000,stroke:#FF8705,stroke-width:2px\n      style Bindings fill:#F5F5F5,color:#000000,stroke:#FF8DF2,stroke-width:2px\n\n      style PDF fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px\n      style DOCX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px\n      style XLSX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px\n      style PPTX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px\n      style IMG fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px\n\n      style CONV fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px\n      style EXTRACT fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px\n      style OCR fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px\n      style MERGE fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px\n      style PROJ fill:#4B72FE,color:#FFFFFF,stroke:#3E18F9,stroke-width:2px\n\n      style JSON fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px\n      style TEXT fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px\n      style SCREEN fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px\n\n      style NAPI fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px\n      style PYO3 fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px\n      style WASM fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px\n      style CLI fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px Loading Installation Install via your preferred package manager. All versions (except WASM) ship with the same lit CLI. Language Install Library Docs Node.js / TypeScript npm i -g @llamaindex/liteparse Node.js README Python pip install liteparse Python README Rust cargo install liteparse (CLI) / cargo add liteparse (lib) Rust README (crates.io) Browser (WASM) npm i @llamaindex/liteparse-wasm WASM README Agent Skill You can use liteparse as an agent skill, d",
+      "url": "https://github.com/run-llama/liteparse",
+      "author": "",
+      "published": "2026-08-24T01:34:12.853658",
+      "source": "github.com",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "GitHub repo introducing LiteParse, an open-source standalone PDF parser focused on fast local spatial text parsing with bounding boxes, positioned as a lightweight alternative to LlamaParse cloud.",
+      "importance_score": 25.0,
+      "reasoning": "Open-source developer tool release, useful but incremental; no new frontier capability.",
+      "themes": [
+        "Open source",
+        "Document parsing",
+        "Developer tools"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/jerryjliu0/status/2091564183922077885",
+          "post_author": "@jerryjliu0"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>GitHub repo introducing LiteParse, an open-source standalone PDF parser focused on fast local spatial text parsing with bounding boxes, positioned as a lightweight alternative to LlamaParse cloud.</p>",
+      "content_html": "<p>LiteParse | | | | | | Docs English | 简体中文 Looking for LiteParse V1? Follow this link to the old code LiteParse is a standalone OSS PDF parsing tool focused exclusively on fast and light parsing. It provides high-quality spatial text parsing with bounding boxes, without proprietary LLM features or cloud dependencies. Everything runs locally on your machine. Hitting the limits of local parsing? For complex documents (dense tables, multi-column layouts, charts, handwritten text, or</p>\n<p>scanned PDFs), you'll get significantly better results with LlamaParse ,</p>\n<p>our cloud-based document parser built for production document pipelines. LlamaParse handles the</p>\n<p>hard stuff so your models see clean, structured data and markdown. Sign up for LlamaParse free Overview Fast Text Parsing : Spatial text parsing using PDFium Flexible OCR System : Built-in : Tesseract (zero setup, bundled with the library) HTTP Servers : Plug in any OCR server (EasyOCR, PaddleOCR, custom) Standard API : Simple, well-defined OCR API specification Complexity Detection : Cheaply check whether a document needs OCR or heavier parsing — route, reject, or estimate cost before a full parse Screenshot Generation : Generate high-quality page screenshots for LLM agents Multiple Output Formats : Markdown, JSON, and Text Markdown Output : Structured Markdown with headings, tables, lists, images, and links — great for feeding LLMs and RAG pipelines Bounding Boxes : Precise text positioning information Multi-language : Use from Rust, Node.js/TypeScript, Python, or the browser (WASM) Multi-platform : Linux, macOS (Intel/ARM), Windows flowchart LR</p>\n<p>subgraph Input[\"Input Formats\"]</p>\n<p>direction TB</p>\n<p>PDF[\"PDF\"]</p>\n<p>DOCX[\"DOCX\"]</p>\n<p>XLSX[\"XLSX\"]</p>\n<p>PPTX[\"PPTX\"]</p>\n<p>IMG[\"Images\"]</p>\n<p>end</p>\n<p>subgraph Core[\"Rust Core\"]</p>\n<p>direction TB</p>\n<p>CONV[\"Format Conversion\\nLibreOffice / Rust image + resvg + usvg crates\"]</p>\n<p>EXTRACT[\"Text Extraction\\nPDFium C library\"]</p>\n<p>OCR[\"Selective OCR\\nTesseract / HTTP / Custom\"]</p>\n<p>MERGE[\"OCR Merge\\nNative text + OCR results\"]</p>\n<p>PROJ[\"Grid Projection\\nSpatial layout reconstruction\"]</p>\n<p>CONV --&gt; EXTRACT</p>\n<p>EXTRACT --&gt; OCR --&gt; MERGE --&gt; PROJ</p>\n<p>EXTRACT --&gt; MERGE</p>\n<p>end</p>\n<p>subgraph Output[\" Output \"]</p>\n<p>direction TB</p>\n<p>JSON[\"Structured JSON\\ntext + bounding boxes\"]</p>\n<p>TEXT[\"Plain Text\\nlayout-preserved\"]</p>\n<p>SCREEN[\"Screenshots\\nPNG rendering\"]</p>\n<p>end</p>\n<p>subgraph Bindings[\"Language Bindings\"]</p>\n<p>direction TB</p>\n<p>NAPI[\"Node.js / TypeScript\\nnapi-rs\"]</p>\n<p>PYO3[\"Python\\nPyO3\"]</p>\n<p>WASM[\"Browser / WASM\\nwasm-bindgen\"]</p>\n<p>CLI[\"CLI\\ncargo / npm / pip\"]</p>\n<p>NAPI ~~~ PYO3 ~~~ WASM ~~~ CLI</p>\n<p>end</p>\n<p>PDF --&gt; EXTRACT</p>\n<p>DOCX &amp; XLSX &amp; PPTX &amp; IMG --&gt; CONV</p>\n<p>PROJ --&gt; JSON &amp; TEXT &amp; SCREEN</p>\n<p>JSON &amp; TEXT &amp; SCREEN --&gt; Bindings</p>\n<p>style Input fill:#F5F5F5,color:#000000,stroke:#37D7FA,stroke-width:2px</p>\n<p>style Core fill:#F5F5F5,color:#000000,stroke:#3E18F9,stroke-width:2px</p>\n<p>style Output fill:#F5F5F5,color:#000000,stroke:#FF8705,stroke-width:2px</p>\n<p>style Bindings fill:#F5F5F5,color:#000000,stroke:#FF8DF2,stroke-width:2px</p>\n<p>style PDF fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px</p>\n<p>style DOCX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px</p>\n<p>style XLSX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px</p>\n<p>style PPTX fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px</p>\n<p>style IMG fill:#96E7F9,color:#000000,stroke:#37D7FA,stroke-width:1px</p>\n<p>style CONV fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px</p>\n<p>style EXTRACT fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px</p>\n<p>style OCR fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px</p>\n<p>style MERGE fill:#92AEFF,color:#000000,stroke:#4B72FE,stroke-width:1px</p>\n<p>style PROJ fill:#4B72FE,color:#FFFFFF,stroke:#3E18F9,stroke-width:2px</p>\n<p>style JSON fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px</p>\n<p>style TEXT fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px</p>\n<p>style SCREEN fill:#FFBD74,color:#000000,stroke:#FF8705,stroke-width:1px</p>\n<p>style NAPI fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px</p>\n<p>style PYO3 fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px</p>\n<p>style WASM fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px</p>\n<p>style CLI fill:#FFBFF8,color:#000000,stroke:#FF8DF2,stroke-width:1px Loading Installation Install via your preferred package manager. All versions (except WASM) ship with the same lit CLI. Language Install Library Docs Node.js / TypeScript npm i -g @llamaindex/liteparse Node.js README Python pip install liteparse Python README Rust cargo install liteparse (CLI) / cargo add liteparse (lib) Rust README (crates.io) Browser (WASM) npm i @llamaindex/liteparse-wasm WASM README Agent Skill You can use liteparse as an agent skill, d</p>"
+    },
+    {
+      "id": "a57baca37fae",
+      "title": "An AI ‘debt bomb’ crisis? No. This isn’t Enron 2.0 | Gene Marks",
+      "content": "Fears of a datacenter buildout debt crisis are exaggerated. The risks are different than in the past and they are recoverableSome experts are warning of a looming “debt bomb” crisis because big datacenter builders such as Meta, Oracle, xAI and CoreWeave are not only raising billions to construct these facilities but are also not recognizing these long-term debt obligations on their balance sheets.Should we be concerned? No. I know because I’ve seen this movie before. Continue reading...",
+      "url": "https://www.theguardian.com/technology/2026/aug/23/ai-debt-bomb-crisis",
+      "author": "Gene Marks",
+      "published": "2026-08-23T14:00:34",
+      "source": "AI (artificial intelligence) | The Guardian",
+      "source_type": "rss",
+      "tags": [
+        "AI (artificial intelligence)",
+        "Datacenters – US",
+        "Meta",
+        "Amazon",
+        "Jeff Bezos",
+        "Business",
+        "Technology",
+        "US news"
+      ],
+      "summary": "Opinion columnist argues that fears of an AI datacenter 'debt bomb' crisis, raised by Meta, Oracle, xAI, and CoreWeave's heavy borrowing, are overblown compared to past credit cycles. Piece frames current datacenter buildout debt risks as different and recoverable rather than systemic.",
+      "importance_score": 22.0,
+      "reasoning": "Routine opinion/commentary piece on AI infrastructure financing. No new data, product, or policy action; primarily a reassurance framing around widely reported concerns.",
+      "themes": [
+        "AI infrastructure economics",
+        "Datacenter buildout",
+        "Opinion/analysis"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "raw_summary": "<p>Fears of a datacenter buildout debt crisis are exaggerated. The risks are different than in the past and they are recoverable</p><p>Some experts are warning of a looming “debt bomb” crisis because big <a href=\"https://www.theguardian.com/us-news/datacenters--us-\">datacenter</a> builders such as <a href=\"https://investor.atmeta.com/investor-news/press-release-details/2025/Meta-Announces-Joint-Venture-with-Funds-Managed-by-Blue-Owl-Capital-to-Develop-Hyperion-Data-Center/default.aspx\">Meta</a>,",
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Opinion columnist argues that fears of an AI datacenter 'debt bomb' crisis, raised by Meta, Oracle, xAI, and CoreWeave's heavy borrowing, are overblown compared to past credit cycles. Piece frames current datacenter buildout debt risks as different and recoverable rather than systemic.</p>",
+      "content_html": "<p>Fears of a datacenter buildout debt crisis are exaggerated. The risks are different than in the past and they are recoverableSome experts are warning of a looming “debt bomb” crisis because big datacenter builders such as Meta, Oracle, xAI and CoreWeave are not only raising billions to construct these facilities but are also not recognizing these long-term debt obligations on their balance sheets.Should we be concerned? No. I know because I’ve seen this movie before. Continue reading...</p>"
+    },
+    {
+      "id": "b37dcf914f2c",
+      "title": "AI ethics and governance: Where will you draw the line? | MIT Sloan",
+      "content": "In companies’ rush to capitalize on artificial intelligence, ethics and governance considerations often take a back seat. The impulse to move fast can undermine firms’ ability to launch a responsible AI program that delivers measurable business value, says Jeffrey Saviano , an MIT Sloan School of Management senior lecturer with three decades of experience at EY. AI at Work Research and insights powering the intersection of AI and business, delivered monthly. Yes, I’d also like to subscribe to the Thinking Forward newsletter Email Leave this field blank When applied together, AI ethics and responsible governance can help ensure that AI systems are safe, fair, and aligned with human, organizational, and societal values. AI ethics shines a light on key principles such as fairness and transparency, while AI governance typically refers to the practices and policies put in place to drive accountability and compliance. Presenting recently as part of the MIT Sloan speaker series “AI + X: How AI Is Changing Management Practice,” Saviano estimated that ethics and governance practices lag AI adoption by at least a couple of years. “Execs see the potential AI can have on organizations, and it’s creating a chaotic frenzy to quickly launch new solutions,” he said. “It’s pushing some companies to not focus as much on governance.” That’s a concern, because enterprises that don’t actively consider those complex issues as an early and integral part of their AI deployment strategies could expose themselves to myriad financial, legal, and reputational risks. “Companies need to do the hard work to determine what they want to stand for in their AI programs,” said Saviano, who addresses the issue in depth in his forthcoming book, “ Boundaries of Tolerance: A Foundational Model for Ethical AI Strategy and Governance .” “For example, they need to determine how much human oversight to require, how transparent they want to be about the organization’s use of AI, and which principles matter to them,” Saviano said. “Until they do, they won’t know how to respond when faced with a real AI-related problem.” A trifecta of AI ethics failures As more workers are empowered to use AI in their day-to-day roles, including many using unsanctioned tools in the workplace, it’s necessary to establish and promote responsible AI practices. Saviano recounted a trio of scenarios that spotlight what can happen when companies are ill-prepared to deal with the fallout of irresponsible or ethically challenging AI systems: An AI solutions development team at a large bank, operating in beta, discovers a systemic bias affecting 5% of its target customer base. Management struggles to find a solution and brings the issue to the board of directors for input. The board can’t reach consensus on a resolution, so the issue remains unaddressed. If the company ultimately deploys a solution at scale, it will be exposed to potential lawsuits, negative press, financial risks, and other repercussions. A global consulting firm delivers a report on welfare compliance to the Australian government that includes fabricated cities and incorrect quotes. The firm discloses its use of generative AI only after the failures have been discovered. The firm fixes the issues and refunds payment, but after a hundred-plus negative media reports, the damage has already been done. A chatbot at a major airline provides a customer with inaccurate information about the company’s bereavement policy, triggering a lawsuit and causing the firm financial harm. The courts reject the airline’s creative defense that AI was a separate actor. As a result, the airline is held liable and faces stiff penalties and fines. These examples and legal precedents from shareholder derivative suits should serve as fair warning to boards and corporate leadership that they can’t ignore potential harm to stakeholders. “If you are producing AI systems that could cause global harm, you have an obligation to act,” Saviano said. Agentic AI: Business Implications and Applications In person at MIT Sloan Register now A framework for AI ethics and governance Saviano and his research team developed a framework called Boundaries of Tolerance that includes a set of performance measures to help organizations assess their position on the AI ethics maturity spectrum and determine what’s required to advance to a higher level. Recommended best practices include the following: Create a formal board-level technology or AI-focused committee. In addition to AI leadership groups or councils at the management level, establish a dedicated board-level structure with formal responsibility for the governance and oversight of AI systems. This ensures that the organization meets legal standards that require the board of directors to assume responsibility for mission-critical areas of risk. Those directives stem from shareholder suits, including a case brought against Boeing after a series of 737 Max crashes. “There’s a direct line from [the Boeing",
+      "url": "https://mitsloan.mit.edu/ideas-made-to-matter/ai-ethics-and-governance-where-will-you-draw-line?utm_source=mitsloantwitter&utm_medium=social&utm_campaign=aigovernance",
+      "author": "",
+      "published": "2026-08-24T01:34:12.853680",
+      "source": "mitsloan.mit.edu",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "MIT Sloan commentary by Jeffrey Saviano on the tension between rapid AI deployment and responsible governance, arguing ethics and governance must be built in together to deliver business value safely.",
+      "importance_score": 22.0,
+      "reasoning": "General ethics/governance commentary; not tied to a specific event or new research.",
+      "themes": [
+        "AI ethics",
+        "AI governance",
+        "Opinion/analysis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/Ronald_vanLoon/status/2091479567126982761",
+          "post_author": "@Ronald_vanLoon"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>MIT Sloan commentary by Jeffrey Saviano on the tension between rapid AI deployment and responsible governance, arguing ethics and governance must be built in together to deliver business value safely.</p>",
+      "content_html": "<p>In companies’ rush to capitalize on artificial intelligence, ethics and governance considerations often take a back seat. The impulse to move fast can undermine firms’ ability to launch a responsible AI program that delivers measurable business value, says Jeffrey Saviano , an MIT Sloan School of Management senior lecturer with three decades of experience at EY. AI at Work Research and insights powering the intersection of AI and business, delivered monthly. Yes, I’d also like to subscribe to the Thinking Forward newsletter Email Leave this field blank When applied together, AI ethics and responsible governance can help ensure that AI systems are safe, fair, and aligned with human, organizational, and societal values. AI ethics shines a light on key principles such as fairness and transparency, while AI governance typically refers to the practices and policies put in place to drive accountability and compliance. Presenting recently as part of the MIT Sloan speaker series “AI + X: How AI Is Changing Management Practice,” Saviano estimated that ethics and governance practices lag AI adoption by at least a couple of years. “Execs see the potential AI can have on organizations, and it’s creating a chaotic frenzy to quickly launch new solutions,” he said. “It’s pushing some companies to not focus as much on governance.” That’s a concern, because enterprises that don’t actively consider those complex issues as an early and integral part of their AI deployment strategies could expose themselves to myriad financial, legal, and reputational risks. “Companies need to do the hard work to determine what they want to stand for in their AI programs,” said Saviano,&nbsp;who addresses the issue in depth in his forthcoming book, “ Boundaries of Tolerance: A Foundational Model for Ethical AI Strategy and Governance .” “For example, they need to determine how much human oversight to require, how transparent they want to be about the organization’s use of AI, and which principles matter to them,” Saviano said. “Until they do, they won’t know how to respond when faced with a real AI-related problem.” A trifecta of AI ethics failures As more workers are empowered to use AI in their day-to-day roles, including many using unsanctioned tools in the workplace, it’s necessary to establish and promote responsible AI practices. Saviano recounted a trio of scenarios that spotlight what can happen when companies are ill-prepared to deal with the fallout of irresponsible or ethically challenging AI systems: An AI solutions development team at a large bank, operating in beta, discovers a systemic bias affecting 5% of its target customer base. Management struggles to find a solution and brings the issue to the board of directors for input. The board can’t reach consensus on a resolution, so the issue remains unaddressed. If the company ultimately deploys a solution at scale, it will be exposed to potential lawsuits, negative press, financial risks, and other repercussions. A global consulting firm delivers a report on welfare compliance to the Australian government that includes fabricated cities and incorrect quotes. The firm discloses its use of generative AI only after the failures have been discovered. The firm fixes the issues and refunds payment, but after a hundred-plus negative media reports, the damage has already been done. A chatbot at a major airline provides a customer with inaccurate information about the company’s bereavement policy, triggering a lawsuit and causing the firm financial harm. The courts reject the airline’s creative defense that AI was a separate actor. As a result, the airline is held liable and faces stiff penalties and fines. These examples and legal precedents from shareholder derivative suits should serve as fair warning to boards and corporate leadership that they can’t ignore potential harm to stakeholders. “If you are producing AI systems that could cause global harm, you have an obligation to act,” Saviano said. Agentic AI: Business Implications and Applications In person at MIT Sloan Register now A framework for AI ethics and governance Saviano and his research team developed a framework called Boundaries of Tolerance that includes a set of performance measures to help organizations assess their position on the AI ethics maturity spectrum and determine what’s required to advance to a higher level. Recommended best practices include the following: Create a formal board-level technology or AI-focused committee. In addition to AI leadership groups or councils at the management level, establish a dedicated board-level structure with formal responsibility for the governance and oversight of AI systems. This ensures that the organization meets legal standards that require the board of directors to assume responsibility for mission-critical areas of risk. Those directives stem from shareholder suits, including a case brought against Boeing after a series of 737 Max crashes. “There’s a direct line from [the Boeing</p>"
+    },
+    {
+      "id": "43a30f2cdee8",
+      "title": "I spent $266 and four AI models to own my tablet. GLM-5.3 finished it in a day",
+      "content": "I spent $266 and four AI models to own my tablet. GLM-5.3 finished it in a day",
+      "url": "https://ericpardee.github.io/fire-hd-ownership/",
+      "author": "dr_pardee",
+      "published": "2026-08-23T14:23:09+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "Personal blog post recounting a $266, four-model effort to gain root on a Fire tablet, claiming GLM-5.3 finished the job in a day. GLM-5.3 is not listed in current grounding data; treat as anecdotal.",
+      "importance_score": 20.0,
+      "reasoning": "Anecdotal hobbyist write-up about an unidentified model variant (GLM-5.3). Not present in grounding list, so model identity is uncertain; not a reliable release signal.",
+      "themes": [
+        "Open-weight models",
+        "Reverse engineering",
+        "Model evaluation anecdotes"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 636,
+        "hn_comments": 271,
+        "hn_url": "https://news.ycombinator.com/item?id=49409073",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Personal blog post recounting a $266, four-model effort to gain root on a Fire tablet, claiming GLM-5.3 finished the job in a day. GLM-5.3 is not listed in current grounding data; treat as anecdotal.</p>",
+      "content_html": "<p>I spent $266 and four AI models to own my tablet. GLM-5.3 finished it in a day</p>"
+    },
+    {
+      "id": "116edc0e7db4",
+      "title": "Visual Citations with Bounding Boxes | Developer Documentation",
+      "content": "LiteParse Guides Visual Citations with Bounding Boxes Copy Markdown Open in Claude Open in ChatGPT Open in Cursor Copy Markdown View as Markdown Visual Citations with Bounding Boxes Use bounding boxes and screenshots to show exactly where information was found in a document.",
+      "url": "https://developers.llamaindex.ai/liteparse/guides/visual-citations/",
+      "author": "",
+      "published": "2026-08-24T01:34:12.853634",
+      "source": "developers.llamaindex.ai",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "LlamaIndex developer documentation page describing LiteParse's visual citations feature, which uses bounding boxes and screenshots to show exactly where information was located in a document.",
+      "importance_score": 18.0,
+      "reasoning": "Routine developer documentation update; no capability breakthrough.",
+      "themes": [
+        "Developer tools",
+        "Document parsing"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/jerryjliu0/status/2091639451164487938",
+          "post_author": "@jerryjliu0"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LlamaIndex developer documentation page describing LiteParse's visual citations feature, which uses bounding boxes and screenshots to show exactly where information was located in a document.</p>",
+      "content_html": "<p>LiteParse Guides Visual Citations with Bounding Boxes Copy Markdown Open in Claude Open in ChatGPT Open in Cursor Copy Markdown View as Markdown Visual Citations with Bounding Boxes Use bounding boxes and screenshots to show exactly where information was found in a document.</p>"
+    },
+    {
+      "id": "c7b16cd36a90",
+      "title": "LlamaParse MCP | Developer Documentation",
+      "content": "Guide For Agents LlamaParse MCP Copy Markdown Open in Claude Open in ChatGPT Open in Cursor Copy Markdown View as Markdown LlamaParse MCP MCP integration to connect the LlamaParse Platform to any MCP client.",
+      "url": "https://developers.llamaindex.ai/llamaparse/for-agents/mcp/",
+      "author": "",
+      "published": "2026-08-24T01:34:12.853666",
+      "source": "developers.llamaindex.ai",
+      "source_type": "linked_article",
+      "tags": [],
+      "summary": "LlamaIndex developer documentation for the LlamaParse MCP integration, allowing MCP clients to connect to the LlamaParse document parsing platform.",
+      "importance_score": 15.0,
+      "reasoning": "Routine integration documentation; low standalone significance.",
+      "themes": [
+        "Developer tools",
+        "MCP protocol"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "discovered_via": {
+          "platform": "twitter",
+          "post_url": "https://twitter.com/jerryjliu0/status/2091564183922077885",
+          "post_author": "@jerryjliu0"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>LlamaIndex developer documentation for the LlamaParse MCP integration, allowing MCP clients to connect to the LlamaParse document parsing platform.</p>",
+      "content_html": "<p>Guide For Agents LlamaParse MCP Copy Markdown Open in Claude Open in ChatGPT Open in Cursor Copy Markdown View as Markdown LlamaParse MCP MCP integration to connect the LlamaParse Platform to any MCP client.</p>"
+    },
+    {
+      "id": "fb6896801974",
+      "title": "AI Chip Architectures",
+      "content": "AI Chip Architectures",
+      "url": "https://www.jepeake.com/ai-chip-architectures",
+      "author": "Finbarr",
+      "published": "2026-08-23T02:25:10+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "Personal blog post overviewing AI chip architectures.",
+      "importance_score": 14.0,
+      "reasoning": "Educational blog post; no breaking news or novel analysis evident in excerpt.",
+      "themes": [
+        "AI hardware",
+        "Chip architectures"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 56,
+        "hn_comments": 20,
+        "hn_url": "https://news.ycombinator.com/item?id=49405657",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Personal blog post overviewing AI chip architectures.</p>",
+      "content_html": "<p>AI Chip Architectures</p>"
+    },
+    {
+      "id": "243674d7005f",
+      "title": "AI and Infrastructure Engineering",
+      "content": "AI and Infrastructure Engineering",
+      "url": "https://omegion.dev/2026/08/ai-and-infrastructure-engineering/",
+      "author": "0megion",
+      "published": "2026-08-23T18:09:01+00:00",
+      "source": "hackernews",
+      "source_type": "hackernews",
+      "tags": [
+        "hackernews"
+      ],
+      "summary": "Personal blog post discussing AI's impact on infrastructure engineering work.",
+      "importance_score": 12.0,
+      "reasoning": "Generic practitioner blog post with no new information.",
+      "themes": [
+        "AI in practice",
+        "Opinion/analysis"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "hn_score": 61,
+        "hn_comments": 24,
+        "hn_url": "https://news.ycombinator.com/item?id=49411024",
+        "type": "story",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Personal blog post discussing AI's impact on infrastructure engineering work.</p>",
+      "content_html": "<p>AI and Infrastructure Engineering</p>"
+    }
+  ]
+}
