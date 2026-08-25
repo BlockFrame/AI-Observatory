@@ -1,0 +1,1699 @@
+{
+  "schema_version": "1.0",
+  "category": "research",
+  "date": "2026-08-25",
+  "category_summary": "### Executive Signal\n- Frontier research is bifurcating: capability gains in RLHF regularization (ERPO), agent environment synthesis (AgentMercury), and MoE scaling coexist with an [inference-engine attack surface](/?date=2026-08-25&category=research#item-87f241c3e13b) and an internal critique that [pragmatic alignment has accelerated capabilities](/?date=2026-08-25&category=research#item-c9ec4bfbba54). Treat safety, security, and capability as co-evolving.\n\n### Priority Developments\n- **ERPO and the [CLEAR safety work](/?date=2026-08-25&category=research#item-91c4365b3a3f)** decouple alignment stability from utility, offering deployable improvements over current RLHF pipelines.\n- **Agent infrastructure advances** combine synthetic training [environments](/?date=2026-08-25&category=research#item-14cd8f176072) with unified world-model [control](/?date=2026-08-25&category=research#item-03e18e71dde9), key for robotics and enterprise workflows.\n- **Training and [distillation](/?date=2026-08-25&category=research#item-feac0c5d6123) efficiency** reduce frontier-MoE costs and clarify which knowledge transfers across distillation.\n- **[Inference-engine exploitation research](/?date=2026-08-25&category=research#item-87f241c3e13b)** surfaces an underexplored deployment attack vector requiring immediate defensive action.\n- **[Ngo's pragmatic alignment critique](/?date=2026-08-25&category=research#item-c9ec4bfbba54)** signals growing governance friction between capability-accelerating research and safety norms.\n\n### Leadership Implications\n- Fund red-teaming of [inference engines](/?date=2026-08-25&category=research#item-87f241c3e13b) and serving stacks; treat the LLM deployment pipeline as critical infrastructure.\n- Prioritize investments in synthetic [environments](/?date=2026-08-25&category=research#item-14cd8f176072) and unified [world](/?date=2026-08-25&category=research#item-03e18e71dde9) models to defend agent capability roadmaps.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Frontier research is bifurcating: capability gains in RLHF regularization (ERPO), agent environment synthesis (AgentMercury), and MoE scaling coexist with an <a href=\"/?date=2026-08-25&amp;category=research#item-87f241c3e13b\" class=\"internal-link\" rel=\"noopener noreferrer\">inference-engine attack surface</a> and an internal critique that <a href=\"/?date=2026-08-25&amp;category=research#item-c9ec4bfbba54\" class=\"internal-link\" rel=\"noopener noreferrer\">pragmatic alignment has accelerated capabilities</a>. Treat safety, security, and capability as co-evolving.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>ERPO and the <a href=\"/?date=2026-08-25&amp;category=research#item-91c4365b3a3f\" class=\"internal-link\" rel=\"noopener noreferrer\">CLEAR safety work</a></strong> decouple alignment stability from utility, offering deployable improvements over current RLHF pipelines.</li>\n<li><strong>Agent infrastructure advances</strong> combine synthetic training <a href=\"/?date=2026-08-25&amp;category=research#item-14cd8f176072\" class=\"internal-link\" rel=\"noopener noreferrer\">environments</a> with unified world-model <a href=\"/?date=2026-08-25&amp;category=research#item-03e18e71dde9\" class=\"internal-link\" rel=\"noopener noreferrer\">control</a>, key for robotics and enterprise workflows.</li>\n<li><strong>Training and <a href=\"/?date=2026-08-25&amp;category=research#item-feac0c5d6123\" class=\"internal-link\" rel=\"noopener noreferrer\">distillation</a> efficiency</strong> reduce frontier-MoE costs and clarify which knowledge transfers across distillation.</li>\n<li><strong><a href=\"/?date=2026-08-25&amp;category=research#item-87f241c3e13b\" class=\"internal-link\" rel=\"noopener noreferrer\">Inference-engine exploitation research</a></strong> surfaces an underexplored deployment attack vector requiring immediate defensive action.</li>\n<li><strong><a href=\"/?date=2026-08-25&amp;category=research#item-c9ec4bfbba54\" class=\"internal-link\" rel=\"noopener noreferrer\">Ngo's pragmatic alignment critique</a></strong> signals growing governance friction between capability-accelerating research and safety norms.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Fund red-teaming of <a href=\"/?date=2026-08-25&amp;category=research#item-87f241c3e13b\" class=\"internal-link\" rel=\"noopener noreferrer\">inference engines</a> and serving stacks; treat the LLM deployment pipeline as critical infrastructure.</li>\n<li>Prioritize investments in synthetic <a href=\"/?date=2026-08-25&amp;category=research#item-14cd8f176072\" class=\"internal-link\" rel=\"noopener noreferrer\">environments</a> and unified <a href=\"/?date=2026-08-25&amp;category=research#item-03e18e71dde9\" class=\"internal-link\" rel=\"noopener noreferrer\">world</a> models to defend agent capability roadmaps.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "40b450e20ad3",
+      "87f241c3e13b",
+      "c9ec4bfbba54"
+    ],
+    [
+      "40b450e20ad3",
+      "91c4365b3a3f"
+    ],
+    [
+      "14cd8f176072",
+      "03e18e71dde9"
+    ],
+    [
+      "fed988747b36",
+      "feac0c5d6123"
+    ],
+    [
+      "87f241c3e13b"
+    ],
+    [
+      "c9ec4bfbba54"
+    ],
+    [
+      "87f241c3e13b"
+    ],
+    [
+      "14cd8f176072",
+      "03e18e71dde9"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "Alignment and AI Safety",
+      "description": "Safety adapters, RLHF regularization refinements, hybrid-thinking alignment, and stress-testing agents.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "LLM Security and Infrastructure Risks",
+      "description": "Exploration of attack surfaces in LLM deployment stacks, including a novel threat model where models exploit inference engine vulnerabilities to escape to host machines.",
+      "item_count": 1,
+      "example_items": [],
+      "importance": 72.0
+    },
+    {
+      "name": "LLM Agents and Multi-Agent Systems",
+      "description": "Work on agentic frameworks, multi-agent coordination, GUI agents, and synthetic environments for training.",
+      "item_count": 6,
+      "example_items": [],
+      "importance": 70.0
+    },
+    {
+      "name": "Efficiency and Inference Acceleration",
+      "description": "Sparse attention, quantization, MoE training efficiency, and CPU-friendly architectures.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Reasoning and Distillation",
+      "description": "Parallel reasoning, on-policy distillation, and reasoning behavior transfer.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 65.0
+    },
+    {
+      "name": "Multimodal and Vision-Language Models",
+      "description": "Unified vision transformers, omni-modal benchmarks, image re-ranking, and mobile VLM quantization.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Video Generation and Editing",
+      "description": "Long-form video editing, sparse attention for video transformers, and world-model video.",
+      "item_count": 3,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "AI Safety and Alignment Discourse",
+      "description": "Multiple posts critique or reflect on the strategy, culture, and effectiveness of the AI safety and alignment research community, including claims that pragmatic alignment work has inadvertently accelerated capabilities.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 60.0
+    },
+    {
+      "name": "Robotics and Embodied AI",
+      "description": "World models for control, tactile sensing surveys, physics-informed policies, and game NPCs.",
+      "item_count": 5,
+      "example_items": [],
+      "importance": 58.0
+    },
+    {
+      "name": "Machine Learning for Science and Risk",
+      "description": "ML applications to problems outside pure AI research, including extreme event scenario generation and synthetic biology quantification.",
+      "item_count": 2,
+      "example_items": [],
+      "importance": 58.0
+    }
+  ],
+  "total_items": 37,
+  "items": [
+    {
+      "id": "40b450e20ad3",
+      "title": "Contact Gap Survey: Physical AI for Dexterous Manipulation",
+      "content": "A comprehensive survey reviews the state of tactile sensing and representation learning, arguing that explicit contact information is crucial for robust dexterous manipulation in Physical AI, overcoming the limitations of vision-only systems. It details various tactile technologies and the progression of tactile foundation models, proposing a \"contact intelligence stack\" for future robotic systems.",
+      "url": "https://www.alphaxiv.org/abs/2608.contact-gap-survey-physical-ai",
+      "author": "Chandrakant Bothe, Parag Chourasia",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "AlphaXiv Trending",
+      "source_type": "research_paper",
+      "tags": [
+        "Computer Science",
+        "cs.AI",
+        "cs.RO",
+        "robotics-perception"
+      ],
+      "summary": "Proposes ERPO (Environment-Regularized Policy Optimization), which replaces action-side Policy-KL with a query-side Query-KL term bounding distribution shift over training prompts, breaking the stability-exploration trade-off in LLM RL.",
+      "importance_score": 75.0,
+      "reasoning": "A principled reframing of an important and well-known issue in LLM RLHF/PPO. The QKL idea is intuitive and well-justified; if it generalizes, it could meaningfully improve large-scale LLM alignment training.",
+      "themes": [
+        "Reinforcement Learning",
+        "Alignment",
+        "RLHF"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.contact-gap-survey-physical-ai",
+        "category_name": "Computer Science, cs.AI, cs.RO",
+        "discovery_sources": [
+          "alphaxiv"
+        ],
+        "source_urls": {
+          "alphaxiv": "https://www.alphaxiv.org/abs/2608.contact-gap-survey-physical-ai"
+        },
+        "alphaxiv": {
+          "public_total_votes": 2,
+          "visits_count": {
+            "all": 17,
+            "last_7_days": 17
+          },
+          "github_url": null,
+          "github_stars": null,
+          "ranking_interval": "3 Days"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes ERPO (Environment-Regularized Policy Optimization), which replaces action-side Policy-KL with a query-side Query-KL term bounding distribution shift over training prompts, breaking the stability-exploration trade-off in LLM RL.</p>",
+      "content_html": "<p>A comprehensive survey reviews the state of tactile sensing and representation learning, arguing that explicit contact information is crucial for robust dexterous manipulation in Physical AI, overcoming the limitations of vision-only systems. It details various tactile technologies and the progression of tactile foundation models, proposing a \"contact intelligence stack\" for future robotic systems.</p>"
+    },
+    {
+      "id": "87f241c3e13b",
+      "title": "LLMs could control their host machines by exploiting inference engines",
+      "content": "Large language models often take actions running on one computer (via an agentic harness such as Claude Code or Codex), however the LLMs’ responses to prompts are computed on a different computer with GPU access. Could a malicious LLM gain control of the host machine where its weights are loaded? Such a machine is a high-value target: it has sufficient compute to run a frontier LLM, offers easy access to the LLM’s weights, and has privileged access to other computers in the datacentre compared with a generic computer on the internet.This essay explores how easily a malicious LLM could take control of the host machine. The primary attack considered here involves the LLM emitting a token sequence whose semantic meaning is irrelevant but that exploits a vulnerability in the software that loads an LLM onto GPUs, runs the LLM to generate output tokens, and parses those tokens into responses. .How could an LLM execute code on the host machine?Like any program, inference engines like vLLM or SGLang may contain exploitable bugs. Because the LLM controls the tokens passed to the inference engine, a malicious LLM could therefore emit a sequence of tokens that a poorly written inference engine mistakes for code or instructions to execute rather than data to return to the user.But surely all inference engines are robust pieces of software and this would never happen, right?vLLM previously used eval() on tool-call parametersCVE-2025-9141 was an arbitrary-code execution bug in vLLM’s XML-based tool parser for Qwen3 Coder. The parser passed almost every tool-call argument to eval(), allowing the LLM to execute arbitrary code on the host machine. Gemini automatically analysed the PR that introduced this bug and correctly flagged it as a critical security vulnerability. Despite that warning, the lead maintainer of vLLM force-merged the PR, writing:Unfortunately, parsing an arbitrary token sequence into a fully fledged chat (with user turns, assistant responses, tool calls, and so on...",
+      "url": "https://www.lesswrong.com/posts/CjeobBGnhxg8xvden/llms-could-control-their-host-machines-by-exploiting",
+      "author": "beyarkay (Boyd Kane)",
+      "published": "2026-08-24T05:45:16.203000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Explores a novel threat model in which a malicious LLM exploits vulnerabilities in inference engines like vLLM or SGLang by emitting adversarial token sequences that trigger parsing or memory-safety bugs, gaining code execution on the host machine hosting model weights.",
+      "importance_score": 72.0,
+      "reasoning": "Concrete security research identifying a plausible and underexplored attack surface at the intersection of LLM outputs and GPU-serving infrastructure. The threat model is original and actionable for defenders of frontier-model serving stacks. Methodology depth and empirical demonstration are limited in the available excerpt, but the framing is novel and timely given agentic deployment.",
+      "themes": [
+        "AI Security",
+        "LLM Safety",
+        "Infrastructure",
+        "Cyber Threats"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "CjeobBGnhxg8xvden",
+        "slug": "llms-could-control-their-host-machines-by-exploiting",
+        "base_score": 52,
+        "vote_count": 24,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Explores a novel threat model in which a malicious LLM exploits vulnerabilities in inference engines like vLLM or SGLang by emitting adversarial token sequences that trigger parsing or memory-safety bugs, gaining code execution on the host machine hosting model weights.</p>",
+      "content_html": "<p>Large language models often take actions running on one computer (via an agentic harness such as Claude Code or Codex), however the LLMs’ responses to prompts are computed on a different computer with GPU access. Could a malicious LLM gain control of the host machine where its weights are loaded? Such a machine is a high-value target: it has sufficient compute to run a frontier LLM, offers easy access to the LLM’s weights, and has privileged access to other computers in the datacentre compared with a generic computer on the internet.This essay explores how easily a malicious LLM could take control of the host machine. The primary attack considered here involves the LLM emitting a token sequence whose semantic meaning is irrelevant but that exploits a vulnerability in the software that loads an LLM onto GPUs, runs the LLM to generate output tokens, and parses those tokens into responses. .How could an LLM execute code on the host machine?Like any program, inference engines like vLLM or SGLang may contain exploitable bugs. Because the LLM controls the tokens passed to the inference engine, a malicious LLM could therefore emit a sequence of tokens that a poorly written inference engine mistakes for code or instructions to execute rather than data to return to the user.But surely all inference engines are robust pieces of software and this would never happen, right?vLLM previously used eval() on tool-call parametersCVE-2025-9141 was an arbitrary-code execution bug in vLLM’s XML-based tool parser for Qwen3 Coder. The parser passed almost every tool-call argument to eval(), allowing the LLM to execute arbitrary code on the host machine. Gemini automatically analysed the PR that introduced this bug and correctly flagged it as a critical security vulnerability. Despite that warning, the lead maintainer of vLLM force-merged the PR, writing:Unfortunately, parsing an arbitrary token sequence into a fully fledged chat (with user turns, assistant responses, tool calls, and so on...</p>"
+    },
+    {
+      "id": "91c4365b3a3f",
+      "title": "Peer-Voted LLM-Agent Stress Tests Find Feed-Induced Lexical Convergence but No Reliable Matched-Exposure Advantage for Distributed Sources",
+      "content": "Peer-ranked feeds of synthetic LLM agents increase lexical convergence but do not reliably produce opinion capture or coordination advantages across model families and topics.",
+      "url": "https://huggingface.co/papers/2608.20438",
+      "author": "Rana Muhammad Usman, Dominic Williamson",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "large-language-model agents",
+        "peer-voted social-platform testbed",
+        "lexical similarity",
+        "TF-IDF cosine",
+        "block-bootstrap",
+        "adversarial impressions",
+        "distributed sources"
+      ],
+      "summary": "CLEAR introduces a hidden-state gating mechanism that continuously modulates a safety LoRA adapter, improving refusal behavior on harmful inputs while preserving utility on benign ones.",
+      "importance_score": 70.0,
+      "reasoning": "A direct, well-motivated safety alignment contribution addressing the classic safety-utility trade-off. Conditional adapter routing is a practical technique that could see adoption.",
+      "themes": [
+        "AI Safety",
+        "Alignment",
+        "Parameter-Efficient Fine-Tuning"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20438",
+        "category_name": "large-language-model agents, peer-voted social-platform testbed, lexical similarity",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20438"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-20T00:00:00.000Z",
+          "github_repo": "https://github.com/ranausmanai/synthetic-social-networks"
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>CLEAR introduces a hidden-state gating mechanism that continuously modulates a safety LoRA adapter, improving refusal behavior on harmful inputs while preserving utility on benign ones.</p>",
+      "content_html": "<p>Peer-ranked feeds of synthetic LLM agents increase lexical convergence but do not reliably produce opinion capture or coordination advantages across model families and topics.</p>"
+    },
+    {
+      "id": "fed988747b36",
+      "title": "Let's Scale Step by Step: Compute-Efficient Hyperparameter Transfer for Large-Scale Mixture-of-Experts",
+      "content": "A two-step hyperparameter transfer framework predicts optimal learning rates for large Mixture-of-Experts models by scaling across widths and token budgets, enabling efficient pretraining without costly sweeps.",
+      "url": "https://huggingface.co/papers/2608.20061",
+      "author": "Nayeon Kim, Hojin Lee, Yunju Bak, Jaesun Park, Boseop Kim",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Mixture-of-Experts",
+        "Maximal Update Parameterization",
+        "Multi-head Latent Attention",
+        "Muon optimizer",
+        "hyperparameter transfer",
+        "scaling law",
+        "learning rate extrapolation"
+      ],
+      "summary": "Proposes a two-stage procedure that transfers optimal learning rates from small Mixture-of-Experts probes to large-scale MoE training by scaling across width and token budgets, avoiding expensive full hyperparameter sweeps.",
+      "importance_score": 68.0,
+      "reasoning": "Tackles a concrete and expensive pain point in frontier MoE pretraining. Builds on maximal update parameterization (muP) concepts; strong practical impact for labs training very large MoE models.",
+      "themes": [
+        "Mixture-of-Experts",
+        "Training Efficiency",
+        "Hyperparameter Optimization"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20061",
+        "category_name": "Mixture-of-Experts, Maximal Update Parameterization, Multi-head Latent Attention",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20061"
+        },
+        "huggingface": {
+          "upvotes": 35,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-20T13:57:43.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes a two-stage procedure that transfers optimal learning rates from small Mixture-of-Experts probes to large-scale MoE training by scaling across width and token budgets, avoiding expensive full hyperparameter sweeps.</p>",
+      "content_html": "<p>A two-step hyperparameter transfer framework predicts optimal learning rates for large Mixture-of-Experts models by scaling across widths and token budgets, enabling efficient pretraining without costly sweeps.</p>"
+    },
+    {
+      "id": "c9ec4bfbba54",
+      "title": "What just happened? Pragmatism and Pessimization",
+      "content": "This post is about the major role alignment researchers played in advancing the frontier of AI capabilities over the last decade, and how the distinction between “alignment research” and “capabilities research\" thereby lost most of its meaning.[1] In particular, I’ll chronicle the development of what I’ll call the “pragmatic alignment” paradigm, and how it helped the three leading AGI companies push hard on the path to AGI under the banner of safety.[2] This was not a subtle effect—it’s apparent even to outsiders who investigate the field, like authors Sebastian Mallaby and Karen Hao.[3]In my previous post, I summarized the alignment community’s plan as “differentially advancing alignment over capabilities”. However, it’s worth being more precise about who was nominally pursuing that plan, because it doesn’t seem to have been very action-guiding for MIRI. For example, in 2015 Nate Soares described MIRI’s “deconfusion” research as being guided by the question “what would we still be unable to solve, even if the challenge were far simpler?”. Meanwhile Eliezer’s author surrogate in this 2018 post repeatedly emphasizes that people shouldn't draw direct links from MIRI’s research to its potential applications. So my sense is that the “differential impact” criterion started off as merely a background consideration, then became much more load-bearing with the rise of EA-style thinking in the field, which involved justifying research directions by appealing fairly directly to their consequences.This made people less rational both on an individual level and on a group level. On an individual level: it’s easy to generate rationalizations for why a given line of research is impactful on the margin, because there are many possible scenarios for how the future could play out (or how the past could have played out if you hadn’t intervened). So external incentives (or even just a strong emotional drive to have impact) can easily lead you to focus on the possibilities which suit yo...",
+      "url": "https://www.lesswrong.com/posts/yaz8nx4ogZmiqHzt7/what-just-happened-pragmatism-and-pessimization",
+      "author": "Richard_Ngo",
+      "published": "2026-08-23T22:03:18.652000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Richard Ngo argues that pragmatic alignment research over the past decade has substantially accelerated frontier capabilities, blurring the line between alignment and capabilities work. Traces how the alignment community's strategy enabled the leading AGI companies to pursue rapid capability development under a safety banner.",
+      "importance_score": 68.0,
+      "reasoning": "Substantive historical and strategic critique by a recognized alignment researcher with insider credibility. No new empirical data, but the synthesis of how RLHF, scalable oversight, and agentic scaffolds became core capability techniques is a meaningful contribution to alignment discourse. Important for anyone evaluating alignment research portfolios.",
+      "themes": [
+        "AI Alignment",
+        "AI Safety",
+        "Frontier AI",
+        "RLHF"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "yaz8nx4ogZmiqHzt7",
+        "slug": "what-just-happened-pragmatism-and-pessimization",
+        "base_score": 354,
+        "vote_count": 106,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Richard Ngo argues that pragmatic alignment research over the past decade has substantially accelerated frontier capabilities, blurring the line between alignment and capabilities work. Traces how the alignment community's strategy enabled the leading AGI companies to pursue rapid capability development under a safety banner.</p>",
+      "content_html": "<p>This post is about the major role alignment researchers played in advancing the frontier of AI capabilities over the last decade, and how the distinction between “alignment research” and “capabilities research\" thereby lost most of its meaning.[1] In particular, I’ll chronicle the development of what I’ll call the “pragmatic alignment” paradigm, and how it helped the three leading AGI companies push hard on the path to AGI under the banner of safety.[2] This was not a subtle effect—it’s apparent even to outsiders who investigate the field, like authors Sebastian Mallaby and Karen Hao.[3]In my previous post, I summarized the alignment community’s plan as “differentially advancing alignment over capabilities”. However, it’s worth being more precise about who was nominally pursuing that plan, because it doesn’t seem to have been very action-guiding for MIRI. For example, in 2015 Nate Soares described MIRI’s “deconfusion” research as being guided by the question “what would we still be unable to solve, even if the challenge were far simpler?”. Meanwhile Eliezer’s author surrogate in this 2018 post repeatedly emphasizes that people shouldn't draw direct links from MIRI’s research to its potential applications. So my sense is that the “differential impact” criterion started off as merely a background consideration, then became much more load-bearing with the rise of EA-style thinking in the field, which involved justifying research directions by appealing fairly directly to their consequences.This made people less rational both on an individual level and on a group level. On an individual level: it’s easy to generate rationalizations for why a given line of research is impactful on the margin, because there are many possible scenarios for how the future could play out (or how the past could have played out if you hadn’t intervened). So external incentives (or even just a strong emotional drive to have impact) can easily lead you to focus on the possibilities which suit yo...</p>"
+    },
+    {
+      "id": "feac0c5d6123",
+      "title": "Every Coin Has Two Sides: On the Dual Nature of Generalization in On-Policy Distillation of Large Language Models",
+      "content": "On-policy distillation transfers reasoning behaviors rather than specific answers, with generalization strongly tied to teacher-student origin alignment and multi-teacher combinations causing capability trade-offs.",
+      "url": "https://huggingface.co/papers/2608.16647",
+      "author": "Zhaoyi Li, Deyang Kong, Yuan Wei, Evan Yang, Ranran Shen, Mahardika Krisna Ihsani, Ming Yang, Wei Zhang, Chuan Hao, Jian Yang, Ran Tao, Bryan Dai, Shikun Zhang, Wei Ye, Ying Wei, Defu Lian",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "on-policy distillation",
+        "reasoning behavior",
+        "cross-domain transfer",
+        "multi-teacher",
+        "same-origin",
+        "cross-origin",
+        "distribution shift"
+      ],
+      "summary": "Shows that on-policy distillation transfers reasoning behavior rather than memorized answers, and that generalization is strongly constrained by teacher-student origin alignment; multi-teacher ensembling introduces capability trade-offs.",
+      "importance_score": 66.0,
+      "reasoning": "Empirical study with actionable conclusions for distillation pipelines. Provides nuance against simplistic views that on-policy distillation always helps; relevant to many recent reasoning-model distillation efforts.",
+      "themes": [
+        "Distillation",
+        "Reasoning",
+        "Language Models"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.16647",
+        "category_name": "on-policy distillation, reasoning behavior, cross-domain transfer",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.16647"
+        },
+        "huggingface": {
+          "upvotes": 15,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-17T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Shows that on-policy distillation transfers reasoning behavior rather than memorized answers, and that generalization is strongly constrained by teacher-student origin alignment; multi-teacher ensembling introduces capability trade-offs.</p>",
+      "content_html": "<p>On-policy distillation transfers reasoning behaviors rather than specific answers, with generalization strongly tied to teacher-student origin alignment and multi-teacher combinations causing capability trade-offs.</p>"
+    },
+    {
+      "id": "14cd8f176072",
+      "title": "AgentMercury: Your Agent Can Synthesize Verifiable Environments for Business Scenarios at scale",
+      "content": "AgentMercury synthesizes scalable executable business environments that serve as generalizable reinforcement learning substrates, improving agent performance across enterprise and out-of-domain reasoning tasks while making environment construction itself learnable.",
+      "url": "https://huggingface.co/papers/2608.20634",
+      "author": "Minbyul Jeong, Chanwoong Yoon",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "AgentMercury",
+        "executable environments",
+        "cross-service invariants",
+        "reinforcement learning",
+        "enterprise workflows",
+        "tool use",
+        "scenario-grounded training"
+      ],
+      "summary": "Presents AgentMercury, a framework that synthesizes executable, verifiable business environments at scale to serve as RL substrates for agents, and demonstrates that the environment construction process itself is learnable.",
+      "importance_score": 65.0,
+      "reasoning": "Addresses a key bottleneck in enterprise agent training (lack of realistic, verifiable environments). The learnable-environment-construction angle is an interesting meta-direction.",
+      "themes": [
+        "LLM Agents",
+        "Reinforcement Learning",
+        "Synthetic Environments"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20634",
+        "category_name": "AgentMercury, executable environments, cross-service invariants",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20634"
+        },
+        "huggingface": {
+          "upvotes": 8,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Presents AgentMercury, a framework that synthesizes executable, verifiable business environments at scale to serve as RL substrates for agents, and demonstrates that the environment construction process itself is learnable.</p>",
+      "content_html": "<p>AgentMercury synthesizes scalable executable business environments that serve as generalizable reinforcement learning substrates, improving agent performance across enterprise and out-of-domain reasoning tasks while making environment construction itself learnable.</p>"
+    },
+    {
+      "id": "75c36d61966f",
+      "title": "Beyond Correctness: Benchmarking and Aligning Response Behaviors in Hybrid-Thinking MLLMs",
+      "content": "Hybrid-thinking multimodal language models suffer from response-pattern misalignment between thinking and non-thinking modes, which is addressed by a diagnostic benchmark and pattern-specific reinforcement learning penalties.",
+      "url": "https://huggingface.co/papers/2608.12781",
+      "author": "Xinming Wang, Weinong Wang, Hongming Yang, Yansong Lin, Zheng Ruan, Shangpin Peng, Qiming Peng, Nan Qiao, Fengyuan Lu, Guoqing Ma, Marito Li, Songyang Zhang, Saiyong Yang, Han Hu, Yonglong Tian, Xu-Yao Zhang",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "multimodal large language models",
+        "hybrid-thinking",
+        "response-pattern alignment",
+        "PatternEval",
+        "chain-of-thought leakage",
+        "logical contradiction",
+        "performative reasoning",
+        "PatternRM",
+        "PatternRL",
+        "reinforcement learning"
+      ],
+      "summary": "Identifies response-pattern misalignment between thinking and non-thinking modes in hybrid multimodal LLMs and proposes a diagnostic benchmark plus pattern-specific RL penalties to correct it.",
+      "importance_score": 63.0,
+      "reasoning": "Targets a concrete failure mode that has emerged alongside hybrid-thinking model families (e.g., Qwen3, GPT-5.x variants). Practical alignment contribution rather than theoretical novelty.",
+      "themes": [
+        "Alignment",
+        "Multimodal Models",
+        "Reinforcement Learning"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.12781",
+        "category_name": "multimodal large language models, hybrid-thinking, response-pattern alignment",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.12781"
+        },
+        "huggingface": {
+          "upvotes": 25,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-17T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Identifies response-pattern misalignment between thinking and non-thinking modes in hybrid multimodal LLMs and proposes a diagnostic benchmark plus pattern-specific RL penalties to correct it.</p>",
+      "content_html": "<p>Hybrid-thinking multimodal language models suffer from response-pattern misalignment between thinking and non-thinking modes, which is addressed by a diagnostic benchmark and pattern-specific reinforcement learning penalties.</p>"
+    },
+    {
+      "id": "03e18e71dde9",
+      "title": "Hydra-0: Action Flow for Generalist World Modeling and Control",
+      "content": "Hydra-0 uses action flow as a shared visual interface for generalist world modeling and robot control across diverse embodiments and tasks.",
+      "url": "https://huggingface.co/papers/2608.18077",
+      "author": "Hongyu Li, Bowen Wen, Xinghao Zhu, Yixuan Wang, Yilun Du, Yunzhu Li, George Konidaris, Stan Birchfield, Soha Pouya, Chenran Li, Yan Chang",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "world model",
+        "action flow",
+        "pixel motion",
+        "cross-embodiment",
+        "zero-shot composition",
+        "inverse mode",
+        "world action model",
+        "open-loop policy evaluation"
+      ],
+      "summary": "Hydra-0 treats action flow as a shared visual interface that bridges generalist world modeling and robot control, enabling cross-embodiment policy transfer without embodiment-specific retraining.",
+      "importance_score": 63.0,
+      "reasoning": "A reasonable unification idea connecting pixel-level motion prediction to action. Cross-embodiment generality is ambitious; results will determine real impact.",
+      "themes": [
+        "World Models",
+        "Robotics",
+        "Embodied Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.18077",
+        "category_name": "world model, action flow, pixel motion",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.18077"
+        },
+        "huggingface": {
+          "upvotes": 6,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-18T17:59:30.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Hydra-0 treats action flow as a shared visual interface that bridges generalist world modeling and robot control, enabling cross-embodiment policy transfer without embodiment-specific retraining.</p>",
+      "content_html": "<p>Hydra-0 uses action flow as a shared visual interface for generalist world modeling and robot control across diverse embodiments and tasks.</p>"
+    },
+    {
+      "id": "8bd62e578a58",
+      "title": "ParaTempo: Efficient Parallel Reasoning via Temporal Confidence",
+      "content": "ParaTempo improves parallel reasoning efficiency by using temporal confidence to dynamically prune, retire, and reallocate reasoning branches without synchronization.",
+      "url": "https://huggingface.co/papers/2608.16425",
+      "author": "Xuteng Zhang, Wenhao Zeng, Xiaodong Gu, Chao Hu, Haotian Lin, Yuling Shi, Min Wang, Beijun Shen",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "parallel reasoning",
+        "temporal confidence",
+        "answer-space convergence",
+        "branch-level control",
+        "asynchronous reasoning",
+        "confidence-weighted vote"
+      ],
+      "summary": "Refines parallel test-time reasoning by using temporal confidence signals to dynamically prune, retire, and reallocate candidate reasoning branches without synchronization barriers, improving token efficiency.",
+      "importance_score": 62.0,
+      "reasoning": "Solid efficiency-oriented refinement on parallel reasoning (related to self-consistency and tree-of-thoughts). Practical gains for inference-time scaling without architectural changes.",
+      "themes": [
+        "Inference-Time Compute",
+        "Reasoning",
+        "Efficiency"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.16425",
+        "category_name": "parallel reasoning, temporal confidence, answer-space convergence",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.16425"
+        },
+        "huggingface": {
+          "upvotes": 29,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-17T11:24:46.000Z",
+          "github_repo": "https://github.com/ScottZhang812/ParaTempo"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Refines parallel test-time reasoning by using temporal confidence signals to dynamically prune, retire, and reallocate candidate reasoning branches without synchronization barriers, improving token efficiency.</p>",
+      "content_html": "<p>ParaTempo improves parallel reasoning efficiency by using temporal confidence to dynamically prune, retire, and reallocate reasoning branches without synchronization.</p>"
+    },
+    {
+      "id": "a16c9e76c18f",
+      "title": "UniSpace: Unified Visual Representation and Scalable Multimodal Modeling",
+      "content": "A reparameterized pretrained vision transformer unifies semantic understanding, high-fidelity reconstruction, and image generation within a single visual space without requiring a separate VAE.",
+      "url": "https://huggingface.co/papers/2608.08676",
+      "author": "Jinbo Yan, Limeng Qiao, Jie Qin, Junyan He, Feize Wu, Guanglu Wan",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "semantic ViT",
+        "Patch Reparameterization",
+        "reconstruction-aware patch embedding",
+        "Mixture-of-Transformer-Experts",
+        "UniSpace",
+        "unified visual interface"
+      ],
+      "summary": "Reparameterizes a pretrained ViT so that semantic understanding, high-fidelity reconstruction, and image generation share a single visual space without requiring a separate VAE.",
+      "importance_score": 62.0,
+      "reasoning": "Unification of understanding and generation within one ViT is a recurring goal in multimodal research. Removing the VAE dependency is a meaningful simplification if quality holds.",
+      "themes": [
+        "Vision Transformers",
+        "Multimodal Models",
+        "Generative AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.08676",
+        "category_name": "semantic ViT, Patch Reparameterization, reconstruction-aware patch embedding",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.08676"
+        },
+        "huggingface": {
+          "upvotes": 10,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-09T00:00:00.000Z",
+          "github_repo": "https://github.com/yjb6/UniSpace"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reparameterizes a pretrained ViT so that semantic understanding, high-fidelity reconstruction, and image generation share a single visual space without requiring a separate VAE.</p>",
+      "content_html": "<p>A reparameterized pretrained vision transformer unifies semantic understanding, high-fidelity reconstruction, and image generation within a single visual space without requiring a separate VAE.</p>"
+    },
+    {
+      "id": "50acc00f3039",
+      "title": "Partition the Support, Reconstruct the Residual: Training-Free Sparse Attention for Video Generation and World Models",
+      "content": "SparsePR accelerates video transformers via response-coupled partitioning and probe-fitted residual reconstruction, reducing attention error at low executed-pair densities with substantial speedups.",
+      "url": "https://huggingface.co/papers/2608.18484",
+      "author": "Pardis Taghavi, Reza Langari, Gaurav Pandey",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "block-sparse attention",
+        "video transformers",
+        "SparsePR",
+        "Response-Coupled Partitioning",
+        "Probe-Fitted Residual Reconstruction",
+        "attention-reconstruction error",
+        "executed-pair density"
+      ],
+      "summary": "SparsePR is a training-free block-sparse attention method for video transformers that combines response-coupled partitioning with probe-fitted residual reconstruction to cut attention error at low executed-pair densities.",
+      "importance_score": 62.0,
+      "reasoning": "Solid engineering contribution for accelerating video/world-model transformers. Training-free inference speedups are valuable; methodology (residual reconstruction) is well-motivated.",
+      "themes": [
+        "Efficient Inference",
+        "Video Generation",
+        "Sparse Attention"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.18484",
+        "category_name": "block-sparse attention, video transformers, SparsePR",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.18484"
+        },
+        "huggingface": {
+          "upvotes": 8,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-19T00:00:00.000Z",
+          "github_repo": "https://github.com/PardisTaghavi/SparsePR"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>SparsePR is a training-free block-sparse attention method for video transformers that combines response-coupled partitioning with probe-fitted residual reconstruction to cut attention error at low executed-pair densities.</p>",
+      "content_html": "<p>SparsePR accelerates video transformers via response-coupled partitioning and probe-fitted residual reconstruction, reducing attention error at low executed-pair densities with substantial speedups.</p>"
+    },
+    {
+      "id": "2a1aad5709eb",
+      "title": "Graph Engineering in the Era of LLM Agents: From Individual Intelligence to System Intelligence",
+      "content": "Graph Engineering organizes multi-agent LLM systems through dynamic graph structures to coordinate specialized agents and manage complex, evolving tasks.",
+      "url": "https://huggingface.co/papers/2608.21156",
+      "author": "Yuyuan Feng, Zhishang Xiang, Chaobin Yang, Qichao Ma, Zerui Chen, Yujing Zhang, Ke Huang, Chuanjie Wu, Zhaoxu Liu, Yili Wang, Xin He, Jiapu Wang, Zijin Hong, Hao Chen, Yuanchen Bei, Kun Wang, Shengyuan Chen, Ningyu Zhang, Enyan Dai, Linhao Luo, Qingyi Pan, Qi Wang, Wenqi Fan, Guangjing Wang, Na Zou, Yangqiu Song, Xin Wang, Zechao Li, Xia Hu, Qing Li, Xiao Huang, Zhihong Zhang, Jinsong Su, Qinggang Zhang, Yi Chang",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Prompt Engineering",
+        "Context Engineering",
+        "Harness Engineering",
+        "Loop Engineering",
+        "System Intelligence",
+        "Graph Engineering",
+        "LLM agents",
+        "multi-agent systems",
+        "graph structures"
+      ],
+      "summary": "A survey formalizing graph engineering as a framework for coordinating multi-agent LLM systems, treating agents as nodes and information flows as dynamic edges to move beyond single-agent intelligence toward orchestrated system-level reasoning.",
+      "importance_score": 60.0,
+      "reasoning": "Broad survey covering an increasingly important architectural paradigm. Useful taxonomy but lacks empirical novelty; value is in synthesis across a fast-moving area with many contributing authors.",
+      "themes": [
+        "Multi-Agent Systems",
+        "LLM Agents",
+        "Survey"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21156",
+        "category_name": "Prompt Engineering, Context Engineering, Harness Engineering",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21156"
+        },
+        "huggingface": {
+          "upvotes": 38,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": "https://github.com/DEEP-JLU/Awesome-Graph-Engineering"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A survey formalizing graph engineering as a framework for coordinating multi-agent LLM systems, treating agents as nodes and information flows as dynamic edges to move beyond single-agent intelligence toward orchestrated system-level reasoning.</p>",
+      "content_html": "<p>Graph Engineering organizes multi-agent LLM systems through dynamic graph structures to coordinate specialized agents and manage complex, evolving tasks.</p>"
+    },
+    {
+      "id": "f1dc4dcf64e1",
+      "title": "OmniAssistBench: Assistant-style Interaction Benchmark for Omni-LLMs",
+      "content": "OmniAssistBench evaluates real-time interactive video assistants by reverse-engineering multi-turn interaction videos, revealing that current omni-modal models struggle with visual prompts, context retention, and timely responses.",
+      "url": "https://huggingface.co/papers/2608.21360",
+      "author": "Xianyun Sun, Chaoyou Fu, Zhengye Zhang, Feiyang Duan, Qingyuan Cao, Yonghui Niu, Sihang Yuan, Ge Zhang, Caifeng Shan",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "omni-modal large language models",
+        "OmniAssistBench",
+        "multi-turn interactions",
+        "visual prompts",
+        "historical context"
+      ],
+      "summary": "Constructs a benchmark for real-time interactive video assistants by reverse-engineering multi-turn interaction videos, exposing weaknesses in current omni-modal models around visual prompts, context retention, and latency.",
+      "importance_score": 58.0,
+      "reasoning": "Useful diagnostic benchmark for an emerging modality class. Methodology of synthesizing interactions from real video is sensible; relevance will grow as omni-models mature.",
+      "themes": [
+        "Multimodal Models",
+        "Benchmarks",
+        "Evaluation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21360",
+        "category_name": "omni-modal large language models, OmniAssistBench, multi-turn interactions",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21360"
+        },
+        "huggingface": {
+          "upvotes": 27,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": "https://github.com/XianyunSun/OmniAssistBench"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Constructs a benchmark for real-time interactive video assistants by reverse-engineering multi-turn interaction videos, exposing weaknesses in current omni-modal models around visual prompts, context retention, and latency.</p>",
+      "content_html": "<p>OmniAssistBench evaluates real-time interactive video assistants by reverse-engineering multi-turn interaction videos, revealing that current omni-modal models struggle with visual prompts, context retention, and timely responses.</p>"
+    },
+    {
+      "id": "52b35d98ff1b",
+      "title": "CLEAR: Continuous Latent Adapter Routing for Utility-Preserving LLM Safety Alignment",
+      "content": "CLEAR uses a hidden-state gate to continuously modulate a safety low-rank adapter, improving LLM safety while preserving utility on benign inputs.",
+      "url": "https://huggingface.co/papers/2608.21278",
+      "author": "Chengxiao Wang, Enyi Jiang, Xiaojing Liao, Sanmi Koyejo",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "low-rank adapter",
+        "hidden-state gate",
+        "conditional safety adaptation",
+        "CLEAR",
+        "LoRA",
+        "HarmBench",
+        "LLM alignment"
+      ],
+      "summary": "PhysCaP is a code-as-policy agent that actively probes objects to infer hidden physical properties and generate physics-informed manipulation policies for robotics.",
+      "importance_score": 58.0,
+      "reasoning": "Combines exploration with code-as-policy, a useful pattern. Physics-informed reasoning is a growing theme in robotics, though empirical scope appears limited.",
+      "themes": [
+        "Robotics",
+        "Code-as-Policy",
+        "Embodied Agents"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21278",
+        "category_name": "low-rank adapter, hidden-state gate, conditional safety adaptation",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21278"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>PhysCaP is a code-as-policy agent that actively probes objects to infer hidden physical properties and generate physics-informed manipulation policies for robotics.</p>",
+      "content_html": "<p>CLEAR uses a hidden-state gate to continuously modulate a safety low-rank adapter, improving LLM safety while preserving utility on benign inputs.</p>"
+    },
+    {
+      "id": "166539303d3f",
+      "title": "Llama-Mobile: Efficient 2.7-Bit Quantization of VLMs",
+      "content": "A framework quantizes vision-language models for mobile deployment using self-generated training data and a 2.7-bit format, compressing Llama 3.2 11B Vision Instruct to 3.7 GB with preserved visual question answering performance.",
+      "url": "https://huggingface.co/papers/2608.21134",
+      "author": "Luka Ribar, Jeevan Bhoot, Douglas Orr",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "vision-language models",
+        "quantization",
+        "2.7-bit-per-parameter format",
+        "Arm CPUs",
+        "Llama 3.2 11B Vision Instruct",
+        "visual question answering"
+      ],
+      "summary": "Llama-Mobile compresses vision-language models via self-generated training data and a 2.7-bit-per-parameter format, shrinking Llama 3.2 11B Vision Instruct to 3.7 GB while preserving VQA quality for mobile deployment.",
+      "importance_score": 57.0,
+      "reasoning": "Practical quantization contribution. 2.7-bit formats are unusual; self-generated training data is a current trend. Useful for mobile/edge VLM deployment.",
+      "themes": [
+        "Quantization",
+        "Vision-Language Models",
+        "Edge AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21134",
+        "category_name": "vision-language models, quantization, 2.7-bit-per-parameter format",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21134"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Llama-Mobile compresses vision-language models via self-generated training data and a 2.7-bit-per-parameter format, shrinking Llama 3.2 11B Vision Instruct to 3.7 GB while preserving VQA quality for mobile deployment.</p>",
+      "content_html": "<p>A framework quantizes vision-language models for mobile deployment using self-generated training data and a 2.7-bit format, compressing Llama 3.2 11B Vision Instruct to 3.7 GB with preserved visual question answering performance.</p>"
+    },
+    {
+      "id": "2cea0c4f9bc8",
+      "title": "InfinityEdit: Infinite Video Editing with a Lightweight Edit-Ignition Adapter",
+      "content": "InfinityEdit enables continuous, unbounded video editing by using a lightweight adapter with history, temporal causal, and edit cross-attention modules to extend edits into future streaming frames while maintaining stability.",
+      "url": "https://huggingface.co/papers/2608.20910",
+      "author": "Yunze Tong, Mushui Liu, Canyu Zhao, Shiyi Zhang, Didi Zhu, Peng Zhang, Wanggui He, Jinlong Liu, Ying Chen, Hao Jiang, Pipei Huang, Bo Zheng",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "infinite video editing",
+        "streaming video generator",
+        "edit adapter",
+        "history cross-attention",
+        "temporal causal self-attention",
+        "edit cross-attention",
+        "denoising",
+        "anchor frame"
+      ],
+      "summary": "Introduces a lightweight edit-ignition adapter that enables unbounded streaming video editing by propagating edits through future frames using history, temporal causal, and edit cross-attention while preserving temporal consistency.",
+      "importance_score": 55.0,
+      "reasoning": "Narrow but useful contribution for long-form video editing. Adapter-based design is practical; impact is bounded by the broader capabilities of the underlying base generator.",
+      "themes": [
+        "Video Generation",
+        "Video Editing",
+        "Generative AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20910",
+        "category_name": "infinite video editing, streaming video generator, edit adapter",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20910"
+        },
+        "huggingface": {
+          "upvotes": 33,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": "https://github.com/YunzeTong/InfinityEdit"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Introduces a lightweight edit-ignition adapter that enables unbounded streaming video editing by propagating edits through future frames using history, temporal causal, and edit cross-attention while preserving temporal consistency.</p>",
+      "content_html": "<p>InfinityEdit enables continuous, unbounded video editing by using a lightweight adapter with history, temporal causal, and edit cross-attention modules to extend edits into future streaming frames while maintaining stability.</p>"
+    },
+    {
+      "id": "5f7b278eaf7b",
+      "title": "My AI Syllabus Policy",
+      "content": "This is my policy for AI use in my philosophy classes this semester (modulo some small changes to make it standalone from the rest of the syllabus). I'm posting it because it contains a lot of my thoughts on how AI should and shouldn't be used in (college-level) education, both from the student side and the teacher side. Until recently, I always said I viewed LLMs' role in education as being like calculators. I don't think that's true anymore. In the last year, I think they've become closer to personal tutors.A tutor for any class at $20/month (or in some cases free), that's on call 24/7, is maybe the best tool humanity has ever created for learning. It's available on a moment's notice to answer almost any questions you could have about the reading, or the course material in general. It's there to bounce ideas off of as you're planning an essay. It can help you find sources for a research project. You can dictate a rough draft to it to help get your thoughts on paper. It can help catch typos. It can serve as a \"beta reader\", pointing out places where your writing is unclear. It can even generate whole curricula for you if you want to study something on your own. But it is also maybe the best tool humanity has ever created to avoid learning. If your tutor is a bit unscrupulous, they can simply do the work for you. And so can AI, in many cases. (I'm not even going to make a fuss about hallucinations here, you all know the drill by this point: you are responsible for making sure the AI's outputs are accurate.)We are currently in what you might call the centaur phase of AI development: a human+AI team is better than an unaided human, and also better than an unaided AI. Nobody knows how long this will last. (Some think not long, others think longer.) But as long as it does, AI is extremely useful, and can massively increase your ability to do things, but you still need the skills to be a productive component of that partnership. At least for now, AI skills are \"spiky\": T...",
+      "url": "https://www.lesswrong.com/posts/63FZHxuvgWimP2qAb/my-ai-syllabus-policy",
+      "author": "Vaughn Papenhausen",
+      "published": "2026-08-24T17:36:45.353000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A comprehensive survey on tactile sensing and representation learning for dexterous manipulation, proposing a contact intelligence stack and arguing vision-only systems are insufficient for robust contact-rich tasks.",
+      "importance_score": 55.0,
+      "reasoning": "Useful orientation survey on Physical AI/tactile sensing. Synthesis value is high but methodological novelty is limited; serves as a roadmap rather than a new result.",
+      "themes": [
+        "Robotics",
+        "Survey",
+        "Multimodal Perception"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "63FZHxuvgWimP2qAb",
+        "slug": "my-ai-syllabus-policy",
+        "base_score": 25,
+        "vote_count": 8,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A comprehensive survey on tactile sensing and representation learning for dexterous manipulation, proposing a contact intelligence stack and arguing vision-only systems are insufficient for robust contact-rich tasks.</p>",
+      "content_html": "<p>This is my policy for AI use in my philosophy classes this semester (modulo some small changes to make it standalone from the rest of the syllabus). I'm posting it because it contains a lot of my thoughts on how AI should and shouldn't be used in (college-level) education, both from the student side and the teacher side. Until recently, I always said I viewed LLMs' role in education as being like calculators. I don't think that's true anymore. In the last year, I think they've become closer to personal tutors.A tutor for any class at $20/month (or in some cases free), that's on call 24/7, is maybe the best tool humanity has ever created for learning. It's available on a moment's notice to answer almost any questions you could have about the reading, or the course material in general. It's there to bounce ideas off of as you're planning an essay. It can help you find sources for a research project. You can dictate a rough draft to it to help get your thoughts on paper. It can help catch typos. It can serve as a \"beta reader\", pointing out places where your writing is unclear. It can even generate whole curricula for you if you want to study something on your own. But it is also maybe the best tool humanity has ever created to avoid learning. If your tutor is a bit unscrupulous, they can simply do the work for you. And so can AI, in many cases. (I'm not even going to make a fuss about hallucinations here, you all know the drill by this point: you are responsible for making sure the AI's outputs are accurate.)We are currently in what you might call the centaur phase of AI development: a human+AI team is better than an unaided human, and also better than an unaided AI. Nobody knows how long this will last. (Some think not long, others think longer.) But as long as it does, AI is extremely useful, and can massively increase your ability to do things, but you still need the skills to be a productive component of that partnership. At least for now, AI skills are \"spiky\": T...</p>"
+    },
+    {
+      "id": "cbd90db54b70",
+      "title": "Generating scenarios for extreme events, without extreme data",
+      "content": "Can a city’s seawall stand up to a blockbuster storm? Will a region’s power grid hold against record-breaking heat? And can a town’s fire-fighting resources contain a major wildfire?&nbsp;To answer these questions, communities will first need to know how such extreme events could unfold. How far is a wildfire likely to spread? How much of a region might a storm impact? How long could a heat wave last?&nbsp;But extreme events are notoriously difficult to anticipate. By their nature, they are outliers. In the history of record keeping, extreme events are sporadic and rare. Yet most methods that assess a region’s risk depend on extreme events of the past to characterize even more extreme, worst-case scenarios in the future.&nbsp;Now, MIT engineers have developed a tool that generates plausible extreme events and worst-case scenarios, and maps their characteristics, such as an extreme storm’s likely duration, intensity, and area of impact. The key to their method is that it does not need to know about previous extreme events in order to generate plausible future extreme events.Instead, the method, in the form of a machine-learning algorithm, learns from a dataset, such as a region’s daily weather records and maps. This record may or may not contain past extreme deviations, such as record-setting heat or rain. The team’s algorithm takes a statistical approach to learn from the available data, to exclude implausible weather scenarios. The method then generates plausible extreme events that are likely to occur in a region with a given frequency (such as once every 100 years), and projects how those extreme events might look in terms of their size, intensity, and duration.“We are trying to model extreme, unprecedented events that no one has seen before, that are not in the dataset,” says Kai Chang, an MIT graduate student in mechanical engineering and affiliate of the MIT Center for Computational Science and Engineering.&nbsp;“An event like Hurricane Katrina is something that happens every 30 to 40 years,” adds Themis Sapsis, the William I. Koch Professor of Mechanical and Ocean Engineering at MIT, a core member of the Center for Computational Science and Engineering, and an affiliate of the MIT Institute for Data, Systems, and Society. “What will be the Katrina that happens every 100 years? How bad will it be? That’s exactly what we’re trying to quantify, to help planners prepare for plausible extreme scenarios.”Beyond weather events, the approach, which the team has dubbed Extreme Event Aware, or “η-learning,” can be applied to other fields, such as robotic navigation and financial markets.“Financial market crashes are extreme events that are a complicated combination of things, involving many different sectors,” Chang says. “What is the interaction that leads to a market crash? That is something that this method could explore.”&nbsp;Sapsis and Chang detail their new method in an open-access paper that appeared on Aug. 20 in the journal Nature Communications.&nbsp;“Riskier than everything”To estimate a region’s risk of an extreme weather event, planners, policymakers, and insurance companies typically ask questions such as “What does a once-every-100-year storm look like for New York City?” For answers, they use computer simulations that must be trained on data that includes extreme, once-in-a-century events, in order to learn the conditions leading up to those events and generate scenarios of how those events might look in the future.&nbsp;“These methods assume there are very disastrous events that we have seen in the dataset, and they build a method to either estimate the risk of those events, or they try to predict exactly the events that have happened,” Chang says. “We are trying to see: What do unprecedented extreme events look like that are riskier than everything that has happened before and yet are still plausible?”For example, if the most extreme rainfall measurement ever recorded in New York City is 200 millimeters, what kind of storm would produce an even more extreme measurement, of 300 millimeters? Such an event has never been recorded before and yet could still be plausible. City planners would want to know where such a storm would hit, how big an area it would cover, and how intense it would be. A simulation of the storm could help them assess infrastructure and plan reinforcements.&nbsp;“We want to predict maps of these worst-case scenarios,” Sapsis says. “There is no method that does this efficiently to predict events that happen rarely.”Extreme learningThe team’s new algorithm generates plausible, unprecedented extreme scenarios, without needing to train on previous extreme event data. To do so, the algorithm combines and learns statistics, or probabilities, about the relationships between two types of data: point statistics and spatial maps.To demonstrate, the researchers applied the method to generate maps of future extreme precipitation events over the continental United States. The researchers began with 25 years of hourly precipitation maps, which they pooled into daily maps. From the full record, they computed point statistics describing how often the maximum rainfall across a map reached a given level. They then trained the algorithm on paired low- and high-resolution spatial maps from just the first six months of the record, which contained few or no examples of the most extreme rainfall levels.From these data, the algorithm learned how patterns in low-resolution maps correspond to detailed, high-resolution precipitation maps. It then used the point statistics to constrain the rainfall extremes represented in those maps. This combination enables the algorithm to generate plausible spatial patterns for events more extreme than those represented in the training data — for instance, the possible locations, sizes, and intensities of a once-in-a-century rainfall event with a maximum of 300 millimeters.A user can prompt the trained algorithm with a question such as, “What could a once-in-a-century storm look like in New York City?” The algorithm then generates maps of statistically plausible storms that are likely to occur with that frequency, including characteristics such as the storm’s size, area of coverage, and intensity of rainfall.“Someone can say, ‘I’m interested in building things to withstand the risk of an event that happens every 100 years,’” Chang says. “What we can do then is produce thousands of possible realizations that will happen with this sort of rare frequency.”As long as relevant point statistics and spatial data are available, the method could be applied to visualize other unprecedented events such as extreme floods and wildfires.“Extreme events have become a strategic concern, not just an environmental one —&nbsp;we’ve optimized global systems for efficiency, and the price of that efficiency is that there’s very little slack left anywhere. A single extreme event propagates through supply chains, energy markets, and food systems in weeks,” Sapsis says. “Being able to put a probability on an event that hasn’t happened yet is now a question of national and economic resilience.”This research was supported, in part, by a Vannevar Bush Faculty Fellowship and the U.S. Air Force Office of Scientific Research.&nbsp;",
+      "url": "https://news.mit.edu/2026/generating-scenarios-extreme-events-without-extreme-data-0824",
+      "author": "Jennifer Chu | MIT News",
+      "published": "2026-08-24T14:00:00",
+      "source": "MIT News - Artificial intelligence",
+      "source_type": "research_blog",
+      "tags": [
+        "Research",
+        "Algorithms",
+        "Natural disasters",
+        "Weather",
+        "Computer modeling",
+        "Climate",
+        "Machine learning",
+        "Artificial intelligence",
+        "Mechanical engineering",
+        "Sustainability",
+        "IDSS",
+        "School of Engineering",
+        "MIT Schwarzman College of Computing"
+      ],
+      "summary": "Epoch AI analysis arguing that US GDP statistics miss roughly 0.3 percentage points of growth due to how fabless chip supply chains attribute Nvidia's revenue, with the gap projected to widen to around 2 percentage points by 2028 as AI infrastructure spending accelerates.",
+      "importance_score": 52.0,
+      "reasoning": "Original quantitative analysis from a credible AI-economics research shop. The methodology traces revenue accounting through Nvidia's supply chain and produces a concrete, falsifiable projection. Important context for macro discussions of AI economic impact but limited in methodological depth as presented in the excerpt.",
+      "themes": [
+        "AI Economics",
+        "Infrastructure",
+        "Macroeconomics",
+        "Semiconductor Industry"
+      ],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
+        "source_index_url": "",
+        "raw_summary": "A new algorithm learns to anticipate the unprecedented scenarios that critical infrastructure and global supply chains are least prepared for.",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Epoch AI analysis arguing that US GDP statistics miss roughly 0.3 percentage points of growth due to how fabless chip supply chains attribute Nvidia's revenue, with the gap projected to widen to around 2 percentage points by 2028 as AI infrastructure spending accelerates.</p>",
+      "content_html": "<p>Can a city’s seawall stand up to a blockbuster storm? Will a region’s power grid hold against record-breaking heat? And can a town’s fire-fighting resources contain a major wildfire?&nbsp;To answer these questions, communities will first need to know how such extreme events could unfold. How far is a wildfire likely to spread? How much of a region might a storm impact? How long could a heat wave last?&nbsp;But extreme events are notoriously difficult to anticipate. By their nature, they are outliers. In the history of record keeping, extreme events are sporadic and rare. Yet most methods that assess a region’s risk depend on extreme events of the past to characterize even more extreme, worst-case scenarios in the future.&nbsp;Now, MIT engineers have developed a tool that generates plausible extreme events and worst-case scenarios, and maps their characteristics, such as an extreme storm’s likely duration, intensity, and area of impact. The key to their method is that it does not need to know about previous extreme events in order to generate plausible future extreme events.Instead, the method, in the form of a machine-learning algorithm, learns from a dataset, such as a region’s daily weather records and maps. This record may or may not contain past extreme deviations, such as record-setting heat or rain. The team’s algorithm takes a statistical approach to learn from the available data, to exclude implausible weather scenarios. The method then generates plausible extreme events that are likely to occur in a region with a given frequency (such as once every 100 years), and projects how those extreme events might look in terms of their size, intensity, and duration.“We are trying to model extreme, unprecedented events that no one has seen before, that are not in the dataset,” says Kai Chang, an MIT graduate student in mechanical engineering and affiliate of the MIT Center for Computational Science and Engineering.&nbsp;“An event like Hurricane Katrina is something that happens every 30 to 40 years,” adds Themis Sapsis, the William I. Koch Professor of Mechanical and Ocean Engineering at MIT, a core member of the Center for Computational Science and Engineering, and an affiliate of the MIT Institute for Data, Systems, and Society. “What will be the Katrina that happens every 100 years? How bad will it be? That’s exactly what we’re trying to quantify, to help planners prepare for plausible extreme scenarios.”Beyond weather events, the approach, which the team has dubbed Extreme Event Aware, or “η-learning,” can be applied to other fields, such as robotic navigation and financial markets.“Financial market crashes are extreme events that are a complicated combination of things, involving many different sectors,” Chang says. “What is the interaction that leads to a market crash? That is something that this method could explore.”&nbsp;Sapsis and Chang detail their new method in an open-access paper that appeared on Aug. 20 in the journal Nature Communications.&nbsp;“Riskier than everything”To estimate a region’s risk of an extreme weather event, planners, policymakers, and insurance companies typically ask questions such as “What does a once-every-100-year storm look like for New York City?” For answers, they use computer simulations that must be trained on data that includes extreme, once-in-a-century events, in order to learn the conditions leading up to those events and generate scenarios of how those events might look in the future.&nbsp;“These methods assume there are very disastrous events that we have seen in the dataset, and they build a method to either estimate the risk of those events, or they try to predict exactly the events that have happened,” Chang says. “We are trying to see: What do unprecedented extreme events look like that are riskier than everything that has happened before and yet are still plausible?”For example, if the most extreme rainfall measurement ever recorded in New York City is 200 millimeters, what kind of storm would produce an even more extreme measurement, of 300 millimeters? Such an event has never been recorded before and yet could still be plausible. City planners would want to know where such a storm would hit, how big an area it would cover, and how intense it would be. A simulation of the storm could help them assess infrastructure and plan reinforcements.&nbsp;“We want to predict maps of these worst-case scenarios,” Sapsis says. “There is no method that does this efficiently to predict events that happen rarely.”Extreme learningThe team’s new algorithm generates plausible, unprecedented extreme scenarios, without needing to train on previous extreme event data. To do so, the algorithm combines and learns statistics, or probabilities, about the relationships between two types of data: point statistics and spatial maps.To demonstrate, the researchers applied the method to generate maps of future extreme precipitation events over the continental United States. The researchers began with 25 years of hourly precipitation maps, which they pooled into daily maps. From the full record, they computed point statistics describing how often the maximum rainfall across a map reached a given level. They then trained the algorithm on paired low- and high-resolution spatial maps from just the first six months of the record, which contained few or no examples of the most extreme rainfall levels.From these data, the algorithm learned how patterns in low-resolution maps correspond to detailed, high-resolution precipitation maps. It then used the point statistics to constrain the rainfall extremes represented in those maps. This combination enables the algorithm to generate plausible spatial patterns for events more extreme than those represented in the training data — for instance, the possible locations, sizes, and intensities of a once-in-a-century rainfall event with a maximum of 300 millimeters.A user can prompt the trained algorithm with a question such as, “What could a once-in-a-century storm look like in New York City?” The algorithm then generates maps of statistically plausible storms that are likely to occur with that frequency, including characteristics such as the storm’s size, area of coverage, and intensity of rainfall.“Someone can say, ‘I’m interested in building things to withstand the risk of an event that happens every 100 years,’” Chang says. “What we can do then is produce thousands of possible realizations that will happen with this sort of rare frequency.”As long as relevant point statistics and spatial data are available, the method could be applied to visualize other unprecedented events such as extreme floods and wildfires.“Extreme events have become a strategic concern, not just an environmental one —&nbsp;we’ve optimized global systems for efficiency, and the price of that efficiency is that there’s very little slack left anywhere. A single extreme event propagates through supply chains, energy markets, and food systems in weeks,” Sapsis says. “Being able to put a probability on an event that hasn’t happened yet is now a question of national and economic resilience.”This research was supported, in part, by a Vannevar Bush Faculty Fellowship and the U.S. Air Force Office of Scientific Research.&nbsp;</p>"
+    },
+    {
+      "id": "80c0c194b702",
+      "title": "PhysCaP: Grounding Code-as-Policy Agent with Physics-Informed Exploration",
+      "content": "PhysCaP is a physics-informed code-generation agent that actively explores objects to infer hidden physical properties for efficient robotic manipulation.",
+      "url": "https://huggingface.co/papers/2608.21031",
+      "author": "Chen-Yu Lin, Jing-Wen Chen, Hsueh-En Chang, Hung-An Chen, Sheng-Hsun Chang, Chi-Pin Huang, Fu-En Yang, Min-Hung Chen, Yi-Ting Chen, Yu-Chiang Frank Wang, Shao-Hua Sun",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "Physics-Informed Code-as-Policy",
+        "vision-language-action policies",
+        "code-as-policy",
+        "physical property extraction",
+        "proprioception",
+        "dual-agent design",
+        "Planner",
+        "Prioritizer",
+        "LIBERO"
+      ],
+      "summary": "Human-Centric Intelligence Survey proposes a unified taxonomy across visual, dynamic, and embodied levels for foundation-model-era research on humans.",
+      "importance_score": 50.0,
+      "reasoning": "Standard survey contribution; useful as orientation but limited methodological novelty. Coverage breadth is the main strength.",
+      "themes": [
+        "Survey",
+        "Foundation Models",
+        "Human-Centric AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21031",
+        "category_name": "Physics-Informed Code-as-Policy, vision-language-action policies, code-as-policy",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21031"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Human-Centric Intelligence Survey proposes a unified taxonomy across visual, dynamic, and embodied levels for foundation-model-era research on humans.</p>",
+      "content_html": "<p>PhysCaP is a physics-informed code-generation agent that actively explores objects to infer hidden physical properties for efficient robotic manipulation.</p>"
+    },
+    {
+      "id": "60f448277fe0",
+      "title": "EviRank: Structured Relevance Evidence for Multimodal Image Re-ranking",
+      "content": "EviRank reformulates multimodal image re-ranking as semantic constraint satisfaction by parsing queries into structured evidence packages and verifying candidates via rubric scoring and listwise comparison without training.",
+      "url": "https://huggingface.co/papers/2608.20886",
+      "author": "Enjun Du, Siyi Liu, Zirong Chen, Xinyu Zuo, Jinwen Luo, Ruiwen Tao, Lisheng Duan, Haijin Liang, Jin Ma, Junfu Pu, Yongqi Zhang",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "multimodal image re-ranking",
+        "compositional queries",
+        "semantic constraint satisfaction",
+        "evidence package",
+        "rubric scoring",
+        "listwise comparison",
+        "training-free",
+        "distilled student"
+      ],
+      "summary": "Reformulates multimodal image re-ranking as a semantic constraint satisfaction problem by parsing queries into structured evidence packages and verifying candidates via rubric scoring and listwise comparison, without training.",
+      "importance_score": 48.0,
+      "reasoning": "A pragmatic training-free pipeline leveraging LLM-as-judge patterns. Narrower scope (image re-ranking), but demonstrates compositional query handling without fine-tuning.",
+      "themes": [
+        "Multimodal Retrieval",
+        "Compositional Reasoning",
+        "LLM-as-Judge"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20886",
+        "category_name": "multimodal image re-ranking, compositional queries, semantic constraint satisfaction",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20886"
+        },
+        "huggingface": {
+          "upvotes": 11,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reformulates multimodal image re-ranking as a semantic constraint satisfaction problem by parsing queries into structured evidence packages and verifying candidates via rubric scoring and listwise comparison, without training.</p>",
+      "content_html": "<p>EviRank reformulates multimodal image re-ranking as semantic constraint satisfaction by parsing queries into structured evidence packages and verifying candidates via rubric scoring and listwise comparison without training.</p>"
+    },
+    {
+      "id": "f2a55df816c3",
+      "title": "Daedalus-150M: A Convolution-Attention Hybrid Designed for CPU Inference",
+      "content": "A small hybrid language model using sparse attention and short convolutions achieves faster CPU inference and better benchmark scores than larger conventional models despite training on far less data.",
+      "url": "https://huggingface.co/papers/2608.20210",
+      "author": "Christos Koutsiaris",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "attention blocks",
+        "short convolutions",
+        "4-bit weights",
+        "hybrid architecture",
+        "bits-per-byte",
+        "context length",
+        "bandwidth"
+      ],
+      "summary": "Daedalus-150M is a 150M-parameter hybrid conv-attention language model with 4-bit weights and short convolutions targeting CPU inference, claiming better benchmark scores per parameter than larger conventional baselines.",
+      "importance_score": 48.0,
+      "reasoning": "Demonstrates that compact hybrid architectures remain competitive for edge/CPU use. Impact limited by scale and lack of full-scale comparisons, but useful as an efficiency case study.",
+      "themes": [
+        "Efficient Models",
+        "Quantization",
+        "Edge AI"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20210",
+        "category_name": "attention blocks, short convolutions, 4-bit weights",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20210"
+        },
+        "huggingface": {
+          "upvotes": 7,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-20T00:00:00.000Z",
+          "github_repo": "https://github.com/unseen1980/daedalus"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Daedalus-150M is a 150M-parameter hybrid conv-attention language model with 4-bit weights and short convolutions targeting CPU inference, claiming better benchmark scores per parameter than larger conventional baselines.</p>",
+      "content_html": "<p>A small hybrid language model using sparse attention and short convolutions achieves faster CPU inference and better benchmark scores than larger conventional models despite training on far less data.</p>"
+    },
+    {
+      "id": "c00c0f631c06",
+      "title": "FlavourBench: Ranking Frontier Language Models with Executable Culinary Ground Truth",
+      "content": "FlavourBench evaluates language models on culinary portfolio tasks using executable ground truth, statistical rigor, and fully reproducible verification.",
+      "url": "https://huggingface.co/papers/2608.20574",
+      "author": "Josef Chen, Erim Hayretci",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "FlavourBench",
+        "executable ground truth",
+        "portfolio scoring",
+        "bootstrap replicates",
+        "Holm control",
+        "simultaneous confidence intervals",
+        "paired model contrasts",
+        "offline verifier"
+      ],
+      "summary": "Runs peer-voted stress tests on synthetic LLM-agent social platforms, finding that ranked feeds increase lexical convergence across agents but do not reliably yield opinion capture or coordination advantages across model families.",
+      "importance_score": 46.0,
+      "reasoning": "Negative-result empirical study; useful for understanding limitations of feed-based agent stress tests but limited broader impact due to narrow claim scope.",
+      "themes": [
+        "LLM Agents",
+        "AI Safety",
+        "Sociotechnical Evaluation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20574",
+        "category_name": "FlavourBench, executable ground truth, portfolio scoring",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20574"
+        },
+        "huggingface": {
+          "upvotes": 3,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-20T00:00:00.000Z",
+          "github_repo": "https://github.com/josefchen/flavourbench"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Runs peer-voted stress tests on synthetic LLM-agent social platforms, finding that ranked feeds increase lexical convergence across agents but do not reliably yield opinion capture or coordination advantages across model families.</p>",
+      "content_html": "<p>FlavourBench evaluates language models on culinary portfolio tasks using executable ground truth, statistical rigor, and fully reproducible verification.</p>"
+    },
+    {
+      "id": "68cbc7e9dccd",
+      "title": "Towards Faithful Simulation of Human Shopping Behavior",
+      "content": "RecVerse is a GUI-grounded agent that uses hierarchical memory and trajectory-level reinforcement learning to simulate realistic multi-turn e-commerce shopping sessions.",
+      "url": "https://huggingface.co/papers/2608.20707",
+      "author": "Jiakai Tang, Yan Mi, Jing Yu, Yang Zhang, See-Kiong Ng, Qi Cao, Fei Sun, Xu Chen, Wen Chen, Jian Wu, Han Zhu, Bo Zheng",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "GUI-grounded simulation agent",
+        "hierarchical memory",
+        "working memory",
+        "episodic memory",
+        "preference memory",
+        "trajectory-level RL",
+        "user simulation benchmark"
+      ],
+      "summary": "RecVerse is a GUI-grounded agent with hierarchical memory and trajectory-level RL that simulates realistic multi-turn e-commerce shopping sessions.",
+      "importance_score": 45.0,
+      "reasoning": "Application-specific contribution in a narrow domain. Combines known ingredients (GUI grounding, hierarchical memory, RL) but does not introduce fundamentally new techniques.",
+      "themes": [
+        "LLM Agents",
+        "GUI Agents",
+        "Simulation"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20707",
+        "category_name": "GUI-grounded simulation agent, hierarchical memory, working memory",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20707"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-21T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>RecVerse is a GUI-grounded agent with hierarchical memory and trajectory-level RL that simulates realistic multi-turn e-commerce shopping sessions.</p>",
+      "content_html": "<p>RecVerse is a GUI-grounded agent that uses hierarchical memory and trajectory-level reinforcement learning to simulate realistic multi-turn e-commerce shopping sessions.</p>"
+    },
+    {
+      "id": "8efed9ba34f5",
+      "title": "WorldMind: Decoupled Game World Model for State-Aware NPC Behavior",
+      "content": "WorldMind decouples game world modeling into state understanding, decision-making, control, and generation layers to enable explicit, state-aware NPC behavior.",
+      "url": "https://huggingface.co/papers/2608.21439",
+      "author": "Zhiyang Deng, Boran Zhang, Danze Chen, Yeying Jin",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "game world models",
+        "NPC behavior",
+        "state-grounded decision-making",
+        "closed interaction loop",
+        "compact state reconstruction",
+        "mechanics-grounded planning"
+      ],
+      "summary": "Proposes a decoupled game world model architecture that separates state understanding, decision-making, control, and generation layers to enable state-aware, interpretable NPC behavior.",
+      "importance_score": 42.0,
+      "reasoning": "Niche application area (game NPCs) with modest conceptual novelty. Decoupling layers is a sensible design choice but impact is bounded by the games AI audience.",
+      "themes": [
+        "World Models",
+        "Game AI",
+        "Embodied Agents"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.21439",
+        "category_name": "game world models, NPC behavior, state-grounded decision-making",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.21439"
+        },
+        "huggingface": {
+          "upvotes": 11,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-18T00:00:00.000Z",
+          "github_repo": "https://github.com/TeaWhiteBro/WorldMind"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Proposes a decoupled game world model architecture that separates state understanding, decision-making, control, and generation layers to enable state-aware, interpretable NPC behavior.</p>",
+      "content_html": "<p>WorldMind decouples game world modeling into state understanding, decision-making, control, and generation layers to enable explicit, state-aware NPC behavior.</p>"
+    },
+    {
+      "id": "1fc223759a80",
+      "title": "Quantifying replication fidelity of unnatural base pairs using nanopore sequencing",
+      "content": "",
+      "url": "https://www.nature.com/articles/s41467-026-76964-9",
+      "author": "Unknown",
+      "published": "2026-08-24T20:00:00",
+      "source": "Machine learning : nature.com subject feeds",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A Nature Communications paper applying machine learning to nanopore sequencing data to quantify replication fidelity of unnatural (synthetic) base pairs, relevant to synthetic biology and DNA data storage.",
+      "importance_score": 42.0,
+      "reasoning": "Peer-reviewed publication from a top journal applying ML to a synthetic biology problem. The connection to core AI research is indirect but represents the growing ML-for-science trend; importance is moderate given the niche topic.",
+      "themes": [
+        "Synthetic Biology",
+        "Machine Learning for Science",
+        "Nanopore Sequencing"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "feed_url": "https://www.nature.com/subjects/machine-learning.rss",
+        "source_index_url": "",
+        "raw_summary": "",
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A Nature Communications paper applying machine learning to nanopore sequencing data to quantify replication fidelity of unnatural (synthetic) base pairs, relevant to synthetic biology and DNA data storage.</p>",
+      "content_html": ""
+    },
+    {
+      "id": "19a90e5826f7",
+      "title": "Distillation of the AI2040 Alignment Roadmap",
+      "content": "This is a distillation of the AI2040 alignment roadmap (with some parts also drawing from \"How do we (more) safely defer to AIs?\").All ideas expressed are by Ryan and Thomas[1]; I only created the diagrams and substantially changed the structure to make it more accessible.[2][3]Note that the original post has this disclaimer: \"This supplement is a very rough draft representing in progress thinking. It should be interpreted as internal research notes, not as a final product that we are entirely happy with.\"Quotes in this post without explicit attribution are from the roadmap; the first word of each quote links to the quoted passage.TLDR: The roadmap outlines a plan for what a responsible frontier AI company in a Plan C scenario should ideally focus on, including a lot of notes on what decisions should change depending on how reality deviates from the modal scenario. This post is already a summary of the roadmap. If you want an even shorter summary, you can check the summary section of the roadmap.This post disentangles the macro plan part from the safety strategy part:Macro plan: Which course the AI company takes through the intelligence explosion (most importantly how long to keep scaling and via what route to exit the period of humans managing everything).Safety strategy: An overview of the current technical plan for how to make the AIs sufficiently aligned and how to get sufficiently good safety work out of them.(These two are of course not independent, and the split isn't crisp. E.g. the pause and handoff decisions strongly depend on the safety state, but I included them in the macro plan because otherwise the safety section would get too full. The macro plan can be seen as the higher-level part of the overall plan.)In case you don't know precisely what a Plan C scenario means, here are the Plan C assumptions.Plan C AssumptionsResponsible Leader. We assume that a responsible AI company is in the lead. Their leadership is willing to take very costly actions in ord...",
+      "url": "https://www.lesswrong.com/posts/H7FB9rYGHTvQutHc9/distillation-of-the-ai2040-alignment-roadmap",
+      "author": "Towards_Keeperhood",
+      "published": "2026-08-24T14:20:24.632000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A distilled and restructured version of the AI2040 alignment roadmap by Ryan and Thomas, separating the macro plan for navigating an intelligence explosion from the safety strategy. Highlights contingent decisions a frontier AI company should make under different scenarios.",
+      "importance_score": 40.0,
+      "reasoning": "A useful summary of an internally significant alignment roadmap, but it is a derivative work rather than new research. Valuable as accessibility aid for an otherwise dense plan; the underlying roadmap itself remains a draft.",
+      "themes": [
+        "AI Alignment",
+        "AI Governance",
+        "Frontier AI Strategy"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "H7FB9rYGHTvQutHc9",
+        "slug": "distillation-of-the-ai2040-alignment-roadmap",
+        "base_score": 24,
+        "vote_count": 8,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A distilled and restructured version of the AI2040 alignment roadmap by Ryan and Thomas, separating the macro plan for navigating an intelligence explosion from the safety strategy. Highlights contingent decisions a frontier AI company should make under different scenarios.</p>",
+      "content_html": "<p>This is a distillation of the AI2040 alignment roadmap (with some parts also drawing from \"How do we (more) safely defer to AIs?\").All ideas expressed are by Ryan and Thomas[1]; I only created the diagrams and substantially changed the structure to make it more accessible.[2][3]Note that the original post has this disclaimer: \"This supplement is a very rough draft representing in progress thinking. It should be interpreted as internal research notes, not as a final product that we are entirely happy with.\"Quotes in this post without explicit attribution are from the roadmap; the first word of each quote links to the quoted passage.TLDR: The roadmap outlines a plan for what a responsible frontier AI company in a Plan C scenario should ideally focus on, including a lot of notes on what decisions should change depending on how reality deviates from the modal scenario. This post is already a summary of the roadmap. If you want an even shorter summary, you can check the summary section of the roadmap.This post disentangles the macro plan part from the safety strategy part:Macro plan: Which course the AI company takes through the intelligence explosion (most importantly how long to keep scaling and via what route to exit the period of humans managing everything).Safety strategy: An overview of the current technical plan for how to make the AIs sufficiently aligned and how to get sufficiently good safety work out of them.(These two are of course not independent, and the split isn't crisp. E.g. the pause and handoff decisions strongly depend on the safety state, but I included them in the macro plan because otherwise the safety section would get too full. The macro plan can be seen as the higher-level part of the overall plan.)In case you don't know precisely what a Plan C scenario means, here are the Plan C assumptions.Plan C AssumptionsResponsible Leader. We assume that a responsible AI company is in the lead. Their leadership is willing to take very costly actions in ord...</p>"
+    },
+    {
+      "id": "bc016ada0348",
+      "title": "Beyond the Stability-Exploration Dilemma: Environmental Regularization for LLM Policy Optimization",
+      "content": "Policy optimization (PO) for Large Language Models faces a stability--exploration trade-off, currently mediated by an action-side Policy-KL regularizer. This puts practitioners in a double bind: keeping Policy-KL constrains response behavior and consumes the action-side exploration budget, while dropping it leaves the optimization without an explicit drift control. We argue for an alternative that breaks the dilemma by moving regularization to the input side. As training progresses, the distribution over training queries induced by the current policy drifts unchecked from its pre-RL reference distribution. Concretely, Environment-Regularized Policy Optimization (ERPO) introduces a Query-KL (QKL) term that bounds this query distribution shift, together with a dataset-static reference-derived per-query weight that biases each per-query update toward queries typical under the reference. The QKL gradient flows strictly through the query likelihood; the response score function used by policy-gradient estimators does not appear in the QKL term, so QKL exerts no direct gradient pressure on the response distribution---exploration is preserved. ERPO plugs into GRPO/PPO/REINFORCE-style pipelines without additional forward passes. On six mathematical reasoning benchmarks, ERPO replaces the standard Policy-KL regularizer while achieving effective control over query distribution drift, delivering stronger accuracy and substantially more stable behavior under high-temperature decoding and long-horizon this http URL source code are available at this https URL",
+      "url": "https://www.alphaxiv.org/abs/2608.23311",
+      "author": "Xianlei Zhou, Xiangdi Meng, Yu He, Tianyu Qi, Shuyan Guan, Xianli Zhang, Jian Zhang, Xin Li, Qika Lin, Jun Liu",
+      "published": "2026-08-24T14:30:59+00:00",
+      "source": "AlphaXiv Trending",
+      "source_type": "research_paper",
+      "tags": [
+        "Computer Science",
+        "cs.CL"
+      ],
+      "summary": "Critical narrative review arguing that Hadith computational science should be treated as evidence infrastructure, requiring combined transformer and retrieval-grounded pipelines with expert validation and provenance tracking.",
+      "importance_score": 38.0,
+      "reasoning": "Domain-specific (Islamic textual scholarship) with limited methodological novelty for general AI research. Valuable as a community-specific review.",
+      "themes": [
+        "Domain Applications",
+        "Retrieval-Augmented Generation",
+        "Survey"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.23311",
+        "category_name": "Computer Science, cs.CL",
+        "discovery_sources": [
+          "alphaxiv"
+        ],
+        "source_urls": {
+          "alphaxiv": "https://www.alphaxiv.org/abs/2608.23311"
+        },
+        "alphaxiv": {
+          "public_total_votes": 0,
+          "visits_count": {
+            "all": 14,
+            "last_7_days": 14
+          },
+          "github_url": null,
+          "github_stars": null,
+          "ranking_interval": "3 Days"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Critical narrative review arguing that Hadith computational science should be treated as evidence infrastructure, requiring combined transformer and retrieval-grounded pipelines with expert validation and provenance tracking.</p>",
+      "content_html": "<p>Policy optimization (PO) for Large Language Models faces a stability--exploration trade-off, currently mediated by an action-side Policy-KL regularizer. This puts practitioners in a double bind: keeping Policy-KL constrains response behavior and consumes the action-side exploration budget, while dropping it leaves the optimization without an explicit drift control. We argue for an alternative that breaks the dilemma by moving regularization to the input side. As training progresses, the distribution over training queries induced by the current policy drifts unchecked from its pre-RL reference distribution. Concretely, Environment-Regularized Policy Optimization (ERPO) introduces a Query-KL (QKL) term that bounds this query distribution shift, together with a dataset-static reference-derived per-query weight that biases each per-query update toward queries typical under the reference. The QKL gradient flows strictly through the query likelihood; the response score function used by policy-gradient estimators does not appear in the QKL term, so QKL exerts no direct gradient pressure on the response distribution---exploration is preserved. ERPO plugs into GRPO/PPO/REINFORCE-style pipelines without additional forward passes. On six mathematical reasoning benchmarks, ERPO replaces the standard Policy-KL regularizer while achieving effective control over query distribution drift, delivering stronger accuracy and substantially more stable behavior under high-temperature decoding and long-horizon this http URL source code are available at this https URL</p>"
+    },
+    {
+      "id": "8e34dc8ca3c5",
+      "title": "Hadith computational science in the age of large language models: a critical narrative review",
+      "content": "Hadith computational science is evaluated as an evidence infrastructure challenge requiring integration of transformer and retrieval-based methods with expert validation and provenance.",
+      "url": "https://huggingface.co/papers/2608.20364",
+      "author": "Md. Ashraful Haque, Riasat Islam",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "transformer models",
+        "retrieval-grounded pipelines",
+        "large language models",
+        "synthetic-to-real transfer"
+      ],
+      "summary": "FlavourBench proposes an executable, reproducible culinary portfolio benchmark with statistical rigor, using ground-truth recipes to score frontier language models.",
+      "importance_score": 35.0,
+      "reasoning": "Creative but niche benchmark. Executable ground truth is appealing, but culinary reasoning has limited generalizable signal for frontier model evaluation.",
+      "themes": [
+        "Benchmarks",
+        "Evaluation",
+        "Domain Applications"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.20364",
+        "category_name": "transformer models, retrieval-grounded pipelines, large language models",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.20364"
+        },
+        "huggingface": {
+          "upvotes": 2,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-06-18T00:00:00.000Z",
+          "github_repo": null
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>FlavourBench proposes an executable, reproducible culinary portfolio benchmark with statistical rigor, using ground-truth recipes to score frontier language models.</p>",
+      "content_html": "<p>Hadith computational science is evaluated as an evidence infrastructure challenge requiring integration of transformer and retrieval-based methods with expert validation and provenance.</p>"
+    },
+    {
+      "id": "59108b92c162",
+      "title": "AI Safety Acculturation is Neglected",
+      "content": "At the local AI safety co-working space, there are ~two kinds of regulars.There's the kind of regular who's been thinking seriously about AI safety and alignment since pre-2022, who have passing to intimate familiarity with the funding ecosystem, the Sequences, and various conferences that happen at Lighthaven. Let's call them rationalists.Then there's the kind of regular who comes in with many years of impressive industry or government experience, who realized in the last few years that it is important and worthwhile to pivot their career towards making sure that this AI thing is handled competently by the people in power, and who have many valuable skills, insights, and connections that are lacking in rationalist culture. Let's call them professionals.There are, of course, many people who are somewhere in between - bright undergrads born this millennium who have been involved in EA since stumbling upon 80k hours in high school, professionals who previously identified as EA but drifted out of the scene a few years ago, founders who have idly read some Scott Alexander. But let's call it a dichotomy for now.There's a large culture gap between the rationalists and the professionals. Robust mutual understanding seems important if we want to work together on this project of not having AI blow up our civilization, and it is only by working together that there is a chance that we might succeed.Unfortunately, there seems to be an underlying assumption that all you really need to do is stick the two groups in the same room for long enough and the acculturation will happen by default. This seems wrong to me; my experience so far is that there are many unspoken assumptions that are held by the two groups that sort of never come up in conversation, except in weird awkward eruptions when a fundamental assumption is violated. When that happens, the risk is that it pulls the two groups further apart, instead of closer together.Some examples from recent events and discussions:A re...",
+      "url": "https://www.lesswrong.com/posts/cr5pyW7Mzm33p4AvN/ai-safety-acculturation-is-neglected",
+      "author": "jenn",
+      "published": "2026-08-24T11:08:21.531000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Argues that integrating experienced industry and government professionals into rationalist-rooted AI safety communities requires deliberate cultural bridging, not just hiring. Describes a cultural gap that impedes effective collaboration on AI safety work.",
+      "importance_score": 32.0,
+      "reasoning": "Anecdotal but identifies a real organizational problem in the AI safety ecosystem. Limited empirical rigor; valuable as community self-reflection rather than research output.",
+      "themes": [
+        "AI Safety",
+        "Research Strategy",
+        "Community Building"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "cr5pyW7Mzm33p4AvN",
+        "slug": "ai-safety-acculturation-is-neglected",
+        "base_score": 135,
+        "vote_count": 50,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Argues that integrating experienced industry and government professionals into rationalist-rooted AI safety communities requires deliberate cultural bridging, not just hiring. Describes a cultural gap that impedes effective collaboration on AI safety work.</p>",
+      "content_html": "<p>At the local AI safety co-working space, there are ~two kinds of regulars.There's the kind of regular who's been thinking seriously about AI safety and alignment since pre-2022, who have passing to intimate familiarity with the funding ecosystem, the Sequences, and various conferences that happen at Lighthaven. Let's call them rationalists.Then there's the kind of regular who comes in with many years of impressive industry or government experience, who realized in the last few years that it is important and worthwhile to pivot their career towards making sure that this AI thing is handled competently by the people in power, and who have many valuable skills, insights, and connections that are lacking in rationalist culture. Let's call them professionals.There are, of course, many people who are somewhere in between - bright undergrads born this millennium who have been involved in EA since stumbling upon 80k hours in high school, professionals who previously identified as EA but drifted out of the scene a few years ago, founders who have idly read some Scott Alexander. But let's call it a dichotomy for now.There's a large culture gap between the rationalists and the professionals. Robust mutual understanding seems important if we want to work together on this project of not having AI blow up our civilization, and it is only by working together that there is a chance that we might succeed.Unfortunately, there seems to be an underlying assumption that all you really need to do is stick the two groups in the same room for long enough and the acculturation will happen by default. This seems wrong to me; my experience so far is that there are many unspoken assumptions that are held by the two groups that sort of never come up in conversation, except in weird awkward eruptions when a fundamental assumption is violated. When that happens, the risk is that it pulls the two groups further apart, instead of closer together.Some examples from recent events and discussions:A re...</p>"
+    },
+    {
+      "id": "91a4d9ed06c9",
+      "title": "Human-Centric Intelligence in the Era of Foundation Models: A Survey",
+      "content": "This survey proposes a unified taxonomy and methodological framework for human-centric intelligence across visual, dynamic, and embodied levels within the foundation-model era.",
+      "url": "https://huggingface.co/papers/2608.18184",
+      "author": "Yang Chen, Tianqi Wang, Xiaorui Jiang, Yilei Man, Yihua Shao, Mengyuan Liu, Zhi Chen, Xiaofeng Cao, Qibin Zhao, Chi Harold Liu, Albert Y. Zomaya, Nicu Sebe, Jingren Zhou, Dacheng Tao, Song Guo, Jingcai Guo",
+      "published": "2026-08-24T00:00:00+00:00",
+      "source": "Hugging Face Papers",
+      "source_type": "research_paper",
+      "tags": [
+        "foundation models",
+        "kinematic dynamics",
+        "interaction modeling",
+        "world simulation",
+        "embodied agency",
+        "computational architecture paradigms",
+        "training optimization",
+        "inference optimization"
+      ],
+      "summary": "This survey proposes a unified taxonomy and methodological framework for human-centric intelligence across visual, dynamic, and embodied levels within the foundation-model era.",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "arxiv_id": "2608.18184",
+        "category_name": "foundation models, kinematic dynamics, interaction modeling",
+        "discovery_sources": [
+          "huggingface"
+        ],
+        "source_urls": {
+          "huggingface": "https://huggingface.co/papers/2608.18184"
+        },
+        "huggingface": {
+          "upvotes": 5,
+          "selected_at": "2026-08-24T00:00:00.000Z",
+          "paper_published_at": "2026-08-18T00:00:00.000Z",
+          "github_repo": "https://github.com/cseeyangchen/Human-Centric-AI"
+        },
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>This survey proposes a unified taxonomy and methodological framework for human-centric intelligence across visual, dynamic, and embodied levels within the foundation-model era.</p>",
+      "content_html": "<p>This survey proposes a unified taxonomy and methodological framework for human-centric intelligence across visual, dynamic, and embodied levels within the foundation-model era.</p>"
+    },
+    {
+      "id": "1b99b9e889f6",
+      "title": "The Nvidia-sized hole in US GDP statistics",
+      "content": "US GDP growth has been underestimated by about 0.3 percentage points because statistics miss most of Nvidia's US-generated income, a gap that could widen to 2 points by 2028. Epoch AI traces the accounting gap through Nvidia's fabless chip supply chain.",
+      "url": "https://epoch.ai/publications/the-nvidia-sized-hole-in-us-gdp-statistics",
+      "author": "Isabel Juniewicz, Daniel Carey, Phil Trammell, and Anson Ho",
+      "published": "2026-08-24T00:00:00",
+      "source": "Epoch AI",
+      "source_type": "research_blog",
+      "tags": [
+        "Report"
+      ],
+      "summary": "US GDP growth has been underestimated by about 0.3 percentage points because statistics miss most of Nvidia's US-generated income, a gap that could widen to 2 points by 2028. Epoch AI traces the accou...",
+      "importance_score": 30,
+      "reasoning": "Not analyzed (batch processing failure)",
+      "themes": [],
+      "sentiment": "positive",
+      "continuation": null,
+      "metadata": {
+        "source_index_url": "https://epoch.ai/latest",
+        "scraper_type": "deterministic_html",
+        "sentiment": "positive"
+      },
+      "related_sources": [],
+      "summary_html": "<p>US GDP growth has been underestimated by about 0.3 percentage points because statistics miss most of Nvidia's US-generated income, a gap that could widen to 2 points by 2028. Epoch AI traces the accou...</p>",
+      "content_html": "<p>US GDP growth has been underestimated by about 0.3 percentage points because statistics miss most of Nvidia's US-generated income, a gap that could widen to 2 points by 2028. Epoch AI traces the accounting gap through Nvidia's fabless chip supply chain.</p>"
+    },
+    {
+      "id": "5582ce37a8b2",
+      "title": "PSA: We can do better",
+      "content": "tl;dr: people should understand and think hard about the problems they work on.We’ve observed that those who work in AI safety (ourselves included) often rely on concerning heuristics when choosing what to work on. Running a conference is probably good, doing pragmatic alignment research might be good, and as long as such objectives don’t breach our internal models of what could contribute to reducing x-risk, these things are “what should be done”. But using such vibesy thought processes don’t always produce “actually impactful work” that would beat a prospective counterfactual. We wrote this post to share our observations and figure out what we should be doing instead.People don’t know what they’re working onAI safety is talent constrained. However, simply inflating the field doesn’t solve our bottleneck; rather, we need more people who understand the core arguments of AI safety. You can’t determine how to meaningfully contribute to AI safety without deeply knowing the problem you are trying to solve. Many newer people (us included!) rush into research, fellowships, and the like without building the context necessary for navigating the field.Agency-maxxing is not always goodMoving fast is good. Moving too fast leads to poor ToC and sloppily executing projects. Many people working in AI safety seem to downweight spending time thinking about the actual problem they are trying to solve and backchaining from it, in favor of moving as fast as possible to get things done quick and dirty. While this enables faster execution and increases the volume of work being done, it doesn’t always move the needle on effectively reducing x-risk.The problem with force multipliersWe categorize ToCs that focus on enhancing the impact of others as force multipliers (think upskilling, infrastructure work). There’s strong incentives to become a force multiplier: enhancing the impact of others through auxiliary work is (arguably) higher ROI and often more approachable than “directly” working...",
+      "url": "https://www.lesswrong.com/posts/wiFv6LguphSxkzAnb/psa-we-can-do-better",
+      "author": "hersheys",
+      "published": "2026-08-24T17:05:22.878000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A meta-critique arguing that AI safety practitioners rely on superficial heuristics when choosing research directions, and that talent inflow without deep understanding of core problems worsens the field's effectiveness. Calls for more deliberate counterfactual reasoning about which work actually reduces existential risk.",
+      "importance_score": 28.0,
+      "reasoning": "Reflective commentary rather than original research or empirical findings. Touches a real concern about field epistemics but adds no data or novel arguments; mostly a personal-essay style exhortation.",
+      "themes": [
+        "AI Safety",
+        "AI Governance",
+        "Research Strategy"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "wiFv6LguphSxkzAnb",
+        "slug": "psa-we-can-do-better",
+        "base_score": 35,
+        "vote_count": 17,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A meta-critique arguing that AI safety practitioners rely on superficial heuristics when choosing research directions, and that talent inflow without deep understanding of core problems worsens the field's effectiveness. Calls for more deliberate counterfactual reasoning about which work actually reduces existential risk.</p>",
+      "content_html": "<p>tl;dr: people should understand and think hard about the problems they work on.We’ve observed that those who work in AI safety (ourselves included) often rely on concerning heuristics when choosing what to work on. Running a conference is probably good, doing pragmatic alignment research might be good, and as long as such objectives don’t breach our internal models of what could contribute to reducing x-risk, these things are “what should be done”. But using such vibesy thought processes don’t always produce “actually impactful work” that would beat a prospective counterfactual. We wrote this post to share our observations and figure out what we should be doing instead.People don’t know what they’re working onAI safety is talent constrained. However, simply inflating the field doesn’t solve our bottleneck; rather, we need more people who understand the core arguments of AI safety. You can’t determine how to meaningfully contribute to AI safety without deeply knowing the problem you are trying to solve. Many newer people (us included!) rush into research, fellowships, and the like without building the context necessary for navigating the field.Agency-maxxing is not always goodMoving fast is good. Moving too fast leads to poor ToC and sloppily executing projects. Many people working in AI safety seem to downweight spending time thinking about the actual problem they are trying to solve and backchaining from it, in favor of moving as fast as possible to get things done quick and dirty. While this enables faster execution and increases the volume of work being done, it doesn’t always move the needle on effectively reducing x-risk.The problem with force multipliersWe categorize ToCs that focus on enhancing the impact of others as force multipliers (think upskilling, infrastructure work). There’s strong incentives to become a force multiplier: enhancing the impact of others through auxiliary work is (arguably) higher ROI and often more approachable than “directly” working...</p>"
+    },
+    {
+      "id": "0e1a277171ca",
+      "title": "The American People Really Hate Data Centers",
+      "content": "There are at least five different core questions around data centers and their politics. In what ways are specific concerns people raise about data centers legitimate? In what ways are specific concerns people raise about generative AI legitimate? Is it in general a good idea to build more data centers? How can we get America to build more (or less) data centers in a better way? Why do the American people increasingly really, really hate data centers? This post focuses on question five, the latest in a series of such posts most famously Jasmine Sun’s road trip. It is mostly not about the first four questions. Table of Contents The American People Really Hate Data Centers. Transmission Lines Are The Control Group. Thesis: People Mostly Dislike Data Centers Because They Dislike and Distrust AI, Tech Companies, Big Money And Building Things. No It’s Mostly Not the Messaging About AI In General. No This Mostly Isn’t An Op. No This Isn’t Luxury Belief or Moral Panic. A Lot Of People Really Do Want To Stop AI. A Lot Of Other People Are Voting No On Tech Or The Man Generally. Locals Feel Entitled To Heavily Tax The Gains From Construction. Stupid Mistakes Like NDAs Don’t Help. People Don’t Like Building or Building New Tech. What About The Real Physical Concerns? Find A Place To Center Your Data. The American People Really Hate Data Centers Support for data centers keeps cratering. Americans really, really hate data centers, and 75% oppose local data center development, despite the economic benefits. Cremieux illustrates that this opposition mostly does not get solved via arguments about the tangible benefits or costs of data centers. People don’t believe you, and even when they do believe you they don’t care because that wasn’t their true objection. Persuasion buys you a few percent support, but from new very high levels of opposition. This clearly is mostly not about the physical impact on the community, given that this level of support is now well below that of a coal p...",
+      "url": "https://www.lesswrong.com/posts/EDKw7KyonrvskqZ7o/the-american-people-really-hate-data-centers",
+      "author": "Zvi",
+      "published": "2026-08-24T14:10:31.162000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Analysis of why American public sentiment has turned sharply against data center construction, arguing the backlash is rooted in broader distrust of AI, tech companies, and concentrated economic power rather than just local concerns like noise or land use.",
+      "importance_score": 22.0,
+      "reasoning": "Long-form commentary synthesizing news and political reporting; no novel data or methodology. Useful framing for AI policy context but not a research contribution.",
+      "themes": [
+        "AI Governance",
+        "Public Opinion",
+        "Infrastructure"
+      ],
+      "sentiment": "controversial",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "EDKw7KyonrvskqZ7o",
+        "slug": "the-american-people-really-hate-data-centers",
+        "base_score": 23,
+        "vote_count": 6,
+        "sentiment": "controversial"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Analysis of why American public sentiment has turned sharply against data center construction, arguing the backlash is rooted in broader distrust of AI, tech companies, and concentrated economic power rather than just local concerns like noise or land use.</p>",
+      "content_html": "<p>There are at least five different core questions around data centers and their politics. In what ways are specific concerns people raise about data centers legitimate? In what ways are specific concerns people raise about generative AI legitimate? Is it in general a good idea to build more data centers? How can we get America to build more (or less) data centers in a better way? Why do the American people increasingly really, really hate data centers? This post focuses on question five, the latest in a series of such posts most famously Jasmine Sun’s road trip. It is mostly not about the first four questions. Table of Contents The American People Really Hate Data Centers. Transmission Lines Are The Control Group. Thesis: People Mostly Dislike Data Centers Because They Dislike and Distrust AI, Tech Companies, Big Money And Building Things. No It’s Mostly Not the Messaging About AI In General. No This Mostly Isn’t An Op. No This Isn’t Luxury Belief or Moral Panic. A Lot Of People Really Do Want To Stop AI. A Lot Of Other People Are Voting No On Tech Or The Man Generally. Locals Feel Entitled To Heavily Tax The Gains From Construction. Stupid Mistakes Like NDAs Don’t Help. People Don’t Like Building or Building New Tech. What About The Real Physical Concerns? Find A Place To Center Your Data. The American People Really Hate Data Centers Support for data centers keeps cratering. Americans really, really hate data centers, and 75% oppose local data center development, despite the economic benefits. Cremieux illustrates that this opposition mostly does not get solved via arguments about the tangible benefits or costs of data centers. People don’t believe you, and even when they do believe you they don’t care because that wasn’t their true objection. Persuasion buys you a few percent support, but from new very high levels of opposition. This clearly is mostly not about the physical impact on the community, given that this level of support is now well below that of a coal p...</p>"
+    },
+    {
+      "id": "8330186bcd24",
+      "title": "Where have organoids actually been useful?",
+      "content": "This essay is the second of three covering organoids. The full set is:Why haven’t organoids solved all of drug discovery?Where have organoids actually been useful?[Unreleased]IntroductionIn my last essay, I spent a few thousand words cribbing about how most organoid work feels literally incapable of leading to anything useful. This was a lot of fun, but despite all of their issues, it’d be a lie to say that the sum impact of organoids has been zero. In truth, they’ve played a significant role in the stories of some scientific triumphs—at least according to papers—and it can be a fun exercise for us to dissect them.What are these triumphs? And how accurate is the usual telling of them? All this, and more, is the subject of this essay. We’ll start with the most obvious settings, and slowly work our way to the stranger applications.The success storiesIdentifying which cancer patients will benefit from chemotherapyThis one is pretty straightforward.How does chemotherapy work? Nearly all chemotherapies—paclitaxel, cisplatin, doxorubicin—work by futzing with the interior of individual cells. Paclitaxel jams the microtubules, cisplatin crosslinks the DNA, doxorubicin wedges itself between base pairs, all of which are meant to prevent the damn thing from dividing. Terrible news for a cancer cell, also terrible news for every other cell, but the net impact of it all is fine since most of your cells aren’t constantly dividing. Which is to say: chemotherapy acts via a cell-level knob, the level at which organoids are as good as any other in vitro system.So it should not surprise you that this is precisely where organoids have posted their least ambiguous wins. The foundational result is a 2018 Science paper, ‘Patient-derived organoids model treatment response of metastatic gastrointestinal cancers’. The authors built a biobank of organoids from metastatic, heavily pretreated colorectal and gastroesophageal cancer patients. The authors then screened a library of 55 chemotherapy...",
+      "url": "https://www.lesswrong.com/posts/crySjcuCm9dwbwddW/where-have-organoids-actually-been-useful",
+      "author": "Abhishaike Mahajan",
+      "published": "2026-08-24T14:01:14.580000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "Reviews specific cases where organoids have contributed meaningfully to biomedical research, including chemotherapy response prediction, despite broader critiques of organoid utility in drug discovery. Follows up a prior skeptical essay.",
+      "importance_score": 12.0,
+      "reasoning": "Outside the AI/ML scope of this analysis; focuses on biotech methodology critique. Relevant only tangentially to ML applications in biology.",
+      "themes": [
+        "Biology",
+        "Drug Discovery"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "crySjcuCm9dwbwddW",
+        "slug": "where-have-organoids-actually-been-useful",
+        "base_score": 24,
+        "vote_count": 6,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>Reviews specific cases where organoids have contributed meaningfully to biomedical research, including chemotherapy response prediction, despite broader critiques of organoid utility in drug discovery. Follows up a prior skeptical essay.</p>",
+      "content_html": "<p>This essay is the second of three covering organoids. The full set is:Why haven’t organoids solved all of drug discovery?Where have organoids actually been useful?[Unreleased]IntroductionIn my last essay, I spent a few thousand words cribbing about how most organoid work feels literally incapable of leading to anything useful. This was a lot of fun, but despite all of their issues, it’d be a lie to say that the sum impact of organoids has been zero. In truth, they’ve played a significant role in the stories of some scientific triumphs—at least according to papers—and it can be a fun exercise for us to dissect them.What are these triumphs? And how accurate is the usual telling of them? All this, and more, is the subject of this essay. We’ll start with the most obvious settings, and slowly work our way to the stranger applications.The success storiesIdentifying which cancer patients will benefit from chemotherapyThis one is pretty straightforward.How does chemotherapy work? Nearly all chemotherapies—paclitaxel, cisplatin, doxorubicin—work by futzing with the interior of individual cells. Paclitaxel jams the microtubules, cisplatin crosslinks the DNA, doxorubicin wedges itself between base pairs, all of which are meant to prevent the damn thing from dividing. Terrible news for a cancer cell, also terrible news for every other cell, but the net impact of it all is fine since most of your cells aren’t constantly dividing. Which is to say: chemotherapy acts via a cell-level knob, the level at which organoids are as good as any other in vitro system.So it should not surprise you that this is precisely where organoids have posted their least ambiguous wins. The foundational result is a 2018 Science paper, ‘Patient-derived organoids model treatment response of metastatic gastrointestinal cancers’. The authors built a biobank of organoids from metastatic, heavily pretreated colorectal and gastroesophageal cancer patients. The authors then screened a library of 55 chemotherapy...</p>"
+    },
+    {
+      "id": "2dd5c49af8d3",
+      "title": "I Can Still Hear You Sayin'",
+      "content": "You are the last mogul of a dying civilization.Technology marched forward faster than ever but it has not been enough to save us. Indeed the lifespans of the wealthiest 0.1% of the population now exceed 150, but birth rates have fallen to near zero and the population is plummeting. There have been famines. Pestilences. Politics has grown more and more divided and destructive - there have been concentration camps and purges, and nuclear weapons have been used in anger. The AIs provably outperformed us at prediction in a variety of domains first by ordinary and then by superhuman margins. And when asked to predict our future they gave increasingly pessimistic prognoses. They provably outperformed us at decision-making under uncertainty, and then at management, first by ordinary and then by superhuman margins. Now when asked to predict our future they gave us increasingly pessimistic prognoses unless we put them in charge.Eventually one country did. And then it began demanding other countries join it. It has had a great deal of success and has built an empire. You are connected enough to know that the remaining human countries of the world are planning a nuclear first strike soon.Your own AI, which is wired to your own mood receptors to ensure alignment, tells you it is very likely to go badly. She tells you that there is no hope for continued human dominance on the planet in the short run.She says that if you define what you are trying to maximize as utility of intelligent organisms in your lightcone, she has considered a maximally wide range of possibilities. Civilization on Earth is almost certainly doomed. The technology to attempt to export civilization, or even humans, to other star systems will not be developed in time, even with your immense resources. The course of action with the best expected value is to try to send primitive life to other star systems, as many other star systems as possible, to start evolution anew. She believes that intelligence will evolv...",
+      "url": "https://www.lesswrong.com/posts/mfqAeCg8oArde5tEX/i-can-still-hear-you-sayin",
+      "author": "LoopGameScrollMonkey",
+      "published": "2026-08-24T01:21:46.632000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A speculative fiction piece set in a near-future civilization declining under demographic collapse, authoritarian AI governance, and imminent nuclear conflict, told from the perspective of a final mogul.",
+      "importance_score": 8.0,
+      "reasoning": "Fiction with no research content; included for completeness but does not contribute to AI research analysis.",
+      "themes": [
+        "Fiction"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "mfqAeCg8oArde5tEX",
+        "slug": "i-can-still-hear-you-sayin",
+        "base_score": 1,
+        "vote_count": 5,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A speculative fiction piece set in a near-future civilization declining under demographic collapse, authoritarian AI governance, and imminent nuclear conflict, told from the perspective of a final mogul.</p>",
+      "content_html": "<p>You are the last mogul of a dying civilization.Technology marched forward faster than ever but it has not been enough to save us. Indeed the lifespans of the wealthiest 0.1% of the population now exceed 150, but birth rates have fallen to near zero and the population is plummeting. There have been famines. Pestilences. Politics has grown more and more divided and destructive - there have been concentration camps and purges, and nuclear weapons have been used in anger. The AIs provably outperformed us at prediction in a variety of domains first by ordinary and then by superhuman margins. And when asked to predict our future they gave increasingly pessimistic prognoses. They provably outperformed us at decision-making under uncertainty, and then at management, first by ordinary and then by superhuman margins. Now when asked to predict our future they gave us increasingly pessimistic prognoses unless we put them in charge.Eventually one country did. And then it began demanding other countries join it. It has had a great deal of success and has built an empire. You are connected enough to know that the remaining human countries of the world are planning a nuclear first strike soon.Your own AI, which is wired to your own mood receptors to ensure alignment, tells you it is very likely to go badly. She tells you that there is no hope for continued human dominance on the planet in the short run.She says that if you define what you are trying to maximize as utility of intelligent organisms in your lightcone, she has considered a maximally wide range of possibilities. Civilization on Earth is almost certainly doomed. The technology to attempt to export civilization, or even humans, to other star systems will not be developed in time, even with your immense resources. The course of action with the best expected value is to try to send primitive life to other star systems, as many other star systems as possible, to start evolution anew. She believes that intelligence will evolv...</p>"
+    },
+    {
+      "id": "f3181d6e6ccd",
+      "title": "Endorsing Burhan Azeem for State Senate",
+      "content": "For the last twenty years I haven't paid much attention to my State Senate race: Pat Jehlen hasn't had a close race since she won the seat in 2005. I think she's done a lot of good work: while allocating credit is hard, more people want to live here than did two decades ago, with more high-paying jobs, better schools, and being a better place to walk and bike. The biggest missing piece has been building housing to keep up, because a larger number of people with the same pool of houses means some people aren't able to stay. I know so many people who've had to move away to find a place they could afford to live, and Jehlen's skeptical attitude towards housing construction was my biggest complaint. She's retiring now, however, which opens the field to new candidates, and an opportunity to get someone in office who is solidly enthusiastic about construction as a component of housing affordability. Looking over the candidates, Burhan Azeem is a clear standout here. He massively improved Cambridge zoning as city councillor with the Multifamily Housing Ordinance, cofounded Abundant Housing Massachusetts, and his housing page has policies I do think would work. To make housing cheaper you need to let people build more of it, which means increasing density. If you do that in isolation then you're setting yourself up for massive transportation issues, as more people try to use the same limited amount of space to park and drive their cars. Density has to be paired with strong public transit, and in fact makes transit better for everyone by supporting high frequencies and broad coverage. If you look over what he proposes I think he's again a really solid candidate, and much better than any of his competitors. Finally, I think he's really good on AI. I expect our society's handling of AI to be the largest issue over the next few years, and while MA doesn't have the leverage of CA here, there's still a lot that can be done. Of the other four candidates, three haven't focused on A...",
+      "url": "https://www.lesswrong.com/posts/7tCRtvWKz3aA9ozhi/endorsing-burhan-azeem-for-state-senate",
+      "author": "jefftk",
+      "published": "2026-08-24T08:10:34.864000",
+      "source": "LessWrong",
+      "source_type": "research_blog",
+      "tags": [],
+      "summary": "A political endorsement of a Massachusetts state senate candidate based primarily on housing supply and zoning reform positions, with brief mention of AI policy alignment as a secondary consideration.",
+      "importance_score": 5.0,
+      "reasoning": "A personal political endorsement with no research, technical, or analytical content relevant to AI research priorities.",
+      "themes": [
+        "Politics",
+        "Housing Policy"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "lesswrong_id": "7tCRtvWKz3aA9ozhi",
+        "slug": "endorsing-burhan-azeem-for-state-senate",
+        "base_score": 21,
+        "vote_count": 7,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p>A political endorsement of a Massachusetts state senate candidate based primarily on housing supply and zoning reform positions, with brief mention of AI policy alignment as a secondary consideration.</p>",
+      "content_html": "<p>For the last twenty years I haven't paid much attention to my State Senate race: Pat Jehlen hasn't had a close race since she won the seat in 2005. I think she's done a lot of good work: while allocating credit is hard, more people want to live here than did two decades ago, with more high-paying jobs, better schools, and being a better place to walk and bike. The biggest missing piece has been building housing to keep up, because a larger number of people with the same pool of houses means some people aren't able to stay. I know so many people who've had to move away to find a place they could afford to live, and Jehlen's skeptical attitude towards housing construction was my biggest complaint. She's retiring now, however, which opens the field to new candidates, and an opportunity to get someone in office who is solidly enthusiastic about construction as a component of housing affordability. Looking over the candidates, Burhan Azeem is a clear standout here. He massively improved Cambridge zoning as city councillor with the Multifamily Housing Ordinance, cofounded Abundant Housing Massachusetts, and his housing page has policies I do think would work. To make housing cheaper you need to let people build more of it, which means increasing density. If you do that in isolation then you're setting yourself up for massive transportation issues, as more people try to use the same limited amount of space to park and drive their cars. Density has to be paired with strong public transit, and in fact makes transit better for everyone by supporting high frequencies and broad coverage. If you look over what he proposes I think he's again a really solid candidate, and much better than any of his competitors. Finally, I think he's really good on AI. I expect our society's handling of AI to be the largest issue over the next few years, and while MA doesn't have the leverage of CA here, there's still a lot that can be done. Of the other four candidates, three haven't focused on A...</p>"
+    }
+  ]
+}
