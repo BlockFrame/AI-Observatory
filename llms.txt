@@ -2,7 +2,7 @@
 
 > Daily AI intelligence digest: news, papers, repos, HN, social signals.
 > Multi-agent analysis with adaptive thinking (MAP-REDUCE).
-> Generated: 2026-08-26
+> Generated: 2026-08-27
 
 ## Data structure
 All daily data is available as JSON at /web/data/{YYYY-MM-DD}/{category}.json
@@ -15,7 +15,8 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web
 - social.json — Posts from Twitter/X, Bluesky, Mastodon
 - github_trending.json — Trending AI repositories
 
-## Available dates (242 total)
+## Available dates (243 total)
+- 2026-08-27: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-27/summary.json
 - 2026-08-26: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-26/summary.json
 - 2026-08-25: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-25/summary.json
 - 2026-08-24: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-08-24/summary.json
@@ -75,7 +76,6 @@ Base URL: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web
 - 2026-06-29: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-29/summary.json
 - 2026-06-28: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-28/summary.json
 - 2026-06-27: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-27/summary.json
-- 2026-06-26: https://raw.githubusercontent.com/BlockFrame/wiredframe-radar/main/web/data/2026-06-26/summary.json
 
 ## Quick query patterns
 - "What happened today?" → fetch /web/data/{today}/summary.json
