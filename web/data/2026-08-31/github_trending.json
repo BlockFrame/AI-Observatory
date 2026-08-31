@@ -1,0 +1,1667 @@
+{
+  "schema_version": "1.0",
+  "category": "github_trending",
+  "date": "2026-08-31",
+  "category_summary": "### Executive Signal\n- Trending repos concentrate on agent **orchestration**, reusable **capability packaging**, and shared **context layers**, signaling an architectural pivot from model-centric to agent-centric infrastructure.\n\n### Priority Developments\n- **Reusable agent capability packages** dominate momentum: [archify](/?date=2026-08-31&category=github_trending#item-fadb24a6f24e) and [scientific-agent-skills](/?date=2026-08-31&category=github_trending#item-685a0343f341) treat skills as portable, governed components rather than model-layer add-ons.\n- **Coordination and isolation primitives** for agents gain breakout traction via [OpenMAIC](/?date=2026-08-31&category=github_trending#item-5be431a93c0b), reinforcing demand for repeatable execution control in multi-agent stacks.\n- **Consolidated context, memory, and retrieval layers** (ECC) reduce duplicated infrastructure across multi-agent systems and standardize shared state.\n- **Security automation for AI workflows** ([reverse-skill](/?date=2026-08-31&category=github_trending#item-405e22fa9c64)) accelerates repeatable testing and control mapping, contingent on benchmark validation.\n- **Operational tooling** for model deployment ([freellmapi](/?date=2026-08-31&category=github_trending#item-e55b690547e1)) and AI-assisted media production ([video-use](/?date=2026-08-31&category=github_trending#item-c59dff5a9a86)) lowers friction but shifts value to measured latency, cost, and review throughput.\n\n### Leadership Implications\n- Reallocate platform investment toward **governed, reusable agent capability layers** and standardized coordination primitives over monolithic model stacks.\n- Consolidate **context, memory, and retrieval infrastructure** to prevent duplication as agent initiatives scale across the enterprise.",
+  "category_summary_html": "<h3>Executive Signal</h3>\n<ul>\n<li>Trending repos concentrate on agent <strong>orchestration</strong>, reusable <strong>capability packaging</strong>, and shared <strong>context layers</strong>, signaling an architectural pivot from model-centric to agent-centric infrastructure.</li>\n</ul>\n<h3>Priority Developments</h3>\n<ul>\n<li><strong>Reusable agent capability packages</strong> dominate momentum: <a href=\"/?date=2026-08-31&amp;category=github_trending#item-fadb24a6f24e\" class=\"internal-link\" rel=\"noopener noreferrer\">archify</a> and <a href=\"/?date=2026-08-31&amp;category=github_trending#item-685a0343f341\" class=\"internal-link\" rel=\"noopener noreferrer\">scientific-agent-skills</a> treat skills as portable, governed components rather than model-layer add-ons.</li>\n<li><strong>Coordination and isolation primitives</strong> for agents gain breakout traction via <a href=\"/?date=2026-08-31&amp;category=github_trending#item-5be431a93c0b\" class=\"internal-link\" rel=\"noopener noreferrer\">OpenMAIC</a>, reinforcing demand for repeatable execution control in multi-agent stacks.</li>\n<li><strong>Consolidated context, memory, and retrieval layers</strong> (ECC) reduce duplicated infrastructure across multi-agent systems and standardize shared state.</li>\n<li><strong>Security automation for AI workflows</strong> (<a href=\"/?date=2026-08-31&amp;category=github_trending#item-405e22fa9c64\" class=\"internal-link\" rel=\"noopener noreferrer\">reverse-skill</a>) accelerates repeatable testing and control mapping, contingent on benchmark validation.</li>\n<li><strong>Operational tooling</strong> for model deployment (<a href=\"/?date=2026-08-31&amp;category=github_trending#item-e55b690547e1\" class=\"internal-link\" rel=\"noopener noreferrer\">freellmapi</a>) and AI-assisted media production (<a href=\"/?date=2026-08-31&amp;category=github_trending#item-c59dff5a9a86\" class=\"internal-link\" rel=\"noopener noreferrer\">video-use</a>) lowers friction but shifts value to measured latency, cost, and review throughput.</li>\n</ul>\n<h3>Leadership Implications</h3>\n<ul>\n<li>Reallocate platform investment toward <strong>governed, reusable agent capability layers</strong> and standardized coordination primitives over monolithic model stacks.</li>\n<li>Consolidate <strong>context, memory, and retrieval infrastructure</strong> to prevent duplication as agent initiatives scale across the enterprise.</li>\n</ul>",
+  "category_summary_evidence": [
+    [
+      "fadb24a6f24e",
+      "685a0343f341",
+      "5be431a93c0b"
+    ],
+    [
+      "fadb24a6f24e",
+      "685a0343f341",
+      "5be431a93c0b"
+    ],
+    [
+      "5be431a93c0b"
+    ],
+    [
+      "7fe32979b285"
+    ],
+    [
+      "405e22fa9c64"
+    ],
+    [
+      "e55b690547e1",
+      "c59dff5a9a86"
+    ],
+    [
+      "fadb24a6f24e",
+      "685a0343f341",
+      "5be431a93c0b"
+    ],
+    [
+      "7fe32979b285"
+    ]
+  ],
+  "themes": [
+    {
+      "name": "Agentic Automation & Web Tools",
+      "description": "Repositories focusing on autonomous agent workflows, browser automation, and MCP integrations.",
+      "item_count": 14,
+      "example_items": [
+        "5be431a93c0b",
+        "fadb24a6f24e",
+        "685a0343f341"
+      ],
+      "importance": 88.0
+    },
+    {
+      "name": "Local LLM & Inference Infrastructure",
+      "description": "High-performance open-source runtimes, local model tooling, and quantization engines.",
+      "item_count": 8,
+      "example_items": [
+        "5be431a93c0b",
+        "fadb24a6f24e",
+        "685a0343f341"
+      ],
+      "importance": 85.0
+    }
+  ],
+  "total_items": 40,
+  "items": [
+    {
+      "id": "5be431a93c0b",
+      "title": "THU-MAIC/OpenMAIC",
+      "content": "GitHub Repository: THU-MAIC/OpenMAIC\nDescription: Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click\nLanguage: TypeScript\nStars Today: 1,370",
+      "url": "https://github.com/THU-MAIC/OpenMAIC",
+      "author": "THU-MAIC",
+      "published": "2026-08-31T11:18:36.536844+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 1,370 stars today indicate breakout developer momentum. **Why it matters:** It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (1,370 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "THU-MAIC/OpenMAIC",
+        "description": "Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click",
+        "stars": 0,
+        "stars_today": "1,370",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.536844+00:00",
+        "hn_score": 1370,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 1,370 stars today indicate breakout developer momentum. <strong>Why it matters:</strong> It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.</p>",
+      "content_html": "<p>GitHub Repository: THU-MAIC/OpenMAIC</p>\n<p>Description: Open Multi-Agent Interactive Classroom — Get an immersive, multi-agent learning experience in just one click</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 1,370</p>"
+    },
+    {
+      "id": "fadb24a6f24e",
+      "title": "tt-a1i/archify",
+      "content": "GitHub Repository: tt-a1i/archify\nDescription: Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.\nLanguage: JavaScript\nStars Today: 3,722",
+      "url": "https://github.com/tt-a1i/archify",
+      "author": "tt-a1i",
+      "published": "2026-08-31T11:18:36.537173+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 3,722 stars today indicate breakout developer momentum. **Why it matters:** It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (3,722 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "JavaScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "tt-a1i/archify",
+        "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+        "stars": 0,
+        "stars_today": "3,722",
+        "language": "JavaScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.537173+00:00",
+        "hn_score": 3722,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 3,722 stars today indicate breakout developer momentum. <strong>Why it matters:</strong> It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.</p>",
+      "content_html": "<p>GitHub Repository: tt-a1i/archify</p>\n<p>Description: Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 3,722</p>"
+    },
+    {
+      "id": "685a0343f341",
+      "title": "K-Dense-AI/scientific-agent-skills",
+      "content": "GitHub Repository: K-Dense-AI/scientific-agent-skills\nDescription: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.\nLanguage: Python\nStars Today: 1,114",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "author": "K-Dense-AI",
+      "published": "2026-08-31T11:18:36.537473+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 1,114 stars today indicate breakout developer momentum. **Why it matters:** It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (1,114 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "K-Dense-AI/scientific-agent-skills",
+        "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+        "stars": 0,
+        "stars_today": "1,114",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.537473+00:00",
+        "hn_score": 1114,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 1,114 stars today indicate breakout developer momentum. <strong>Why it matters:</strong> It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.</p>",
+      "content_html": "<p>GitHub Repository: K-Dense-AI/scientific-agent-skills</p>\n<p>Description: Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.</p>\n<p>Language: Python</p>\n<p>Stars Today: 1,114</p>"
+    },
+    {
+      "id": "405e22fa9c64",
+      "title": "zhaoxuya520/reverse-skill",
+      "content": "GitHub Repository: zhaoxuya520/reverse-skill\nDescription: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端\nLanguage: PowerShell\nStars Today: 1,439",
+      "url": "https://github.com/zhaoxuya520/reverse-skill",
+      "author": "zhaoxuya520",
+      "published": "2026-08-31T11:18:36.539233+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 1,439 stars today indicate breakout developer momentum. **Why it matters:** Its security automation can make testing and control mapping more repeatable across AI workflows, provided teams validate coverage and benchmark quality.",
+      "importance_score": 98,
+      "reasoning": "Ranked on current community velocity (1,439 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "PowerShell"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "zhaoxuya520/reverse-skill",
+        "description": "Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端",
+        "stars": 0,
+        "stars_today": "1,439",
+        "language": "PowerShell",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.539233+00:00",
+        "hn_score": 1439,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 1,439 stars today indicate breakout developer momentum. <strong>Why it matters:</strong> Its security automation can make testing and control mapping more repeatable across AI workflows, provided teams validate coverage and benchmark quality.</p>",
+      "content_html": "<p>GitHub Repository: zhaoxuya520/reverse-skill</p>\n<p>Description: Reverse Engineering / Authorized Penetration Testing / Security Research Skill Router Pack AI-powered routing + On-demand toolchain bootstrapping + Self-evolving knowledge base Supports Claude Code, Kiro, Cursor, Cline, and other AI coding clients 逆向/渗透/安全技能路由包 - AI 自动路由 + 按需自举工具链 + 自动进化经验库 | 支持 Claude Code / Kiro / Cursor / Cline 等代码 AI 客户端</p>\n<p>Language: PowerShell</p>\n<p>Stars Today: 1,439</p>"
+    },
+    {
+      "id": "f91419c340ac",
+      "title": "k1tbyte/Wand-Enhancer",
+      "content": "GitHub Repository: k1tbyte/Wand-Enhancer\nDescription: Advanced UX and interoperability extension for Wand (WeMod) app\nLanguage: C#\nStars Today: 718",
+      "url": "https://github.com/k1tbyte/Wand-Enhancer",
+      "author": "k1tbyte",
+      "published": "2026-08-31T11:18:36.537743+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 718 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for advanced UX and interoperability extension for Wand (WeMod) app; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 95,
+      "reasoning": "Ranked on current community velocity (718 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "C#"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "k1tbyte/Wand-Enhancer",
+        "description": "Advanced UX and interoperability extension for Wand (WeMod) app",
+        "stars": 0,
+        "stars_today": "718",
+        "language": "C#",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.537743+00:00",
+        "hn_score": 718,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 718 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for advanced UX and interoperability extension for Wand (WeMod) app; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: k1tbyte/Wand-Enhancer</p>\n<p>Description: Advanced UX and interoperability extension for Wand (WeMod) app</p>\n<p>Language: C#</p>\n<p>Stars Today: 718</p>"
+    },
+    {
+      "id": "c59dff5a9a86",
+      "title": "browser-use/video-use",
+      "content": "GitHub Repository: browser-use/video-use\nDescription: Edit videos with coding agents\nLanguage: Python\nStars Today: 504",
+      "url": "https://github.com/browser-use/video-use",
+      "author": "browser-use",
+      "published": "2026-08-31T11:18:38.194763+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 504 stars today indicate strong developer attention. **Why it matters:** It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.",
+      "importance_score": 85,
+      "reasoning": "Ranked on current community velocity (504 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "browser-use/video-use",
+        "description": "Edit videos with coding agents",
+        "stars": 0,
+        "stars_today": "504",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.194763+00:00",
+        "hn_score": 504,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 504 stars today indicate strong developer attention. <strong>Why it matters:</strong> It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.</p>",
+      "content_html": "<p>GitHub Repository: browser-use/video-use</p>\n<p>Description: Edit videos with coding agents</p>\n<p>Language: Python</p>\n<p>Stars Today: 504</p>"
+    },
+    {
+      "id": "e55b690547e1",
+      "title": "tashfeenahmed/freellmapi",
+      "content": "GitHub Repository: tashfeenahmed/freellmapi\nDescription: 7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.\nLanguage: TypeScript\nStars Today: 504",
+      "url": "https://github.com/tashfeenahmed/freellmapi",
+      "author": "tashfeenahmed",
+      "published": "2026-08-31T11:18:39.708206+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 504 stars today indicate strong developer attention. **Why it matters:** It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.",
+      "importance_score": 85,
+      "reasoning": "Ranked on current community velocity (504 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "tashfeenahmed/freellmapi",
+        "description": "7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.",
+        "stars": 0,
+        "stars_today": "504",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.708206+00:00",
+        "hn_score": 504,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 504 stars today indicate strong developer attention. <strong>Why it matters:</strong> It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.</p>",
+      "content_html": "<p>GitHub Repository: tashfeenahmed/freellmapi</p>\n<p>Description: 7.4 billion tokens per month. 34 free LLM providers. 635 free model endpoints. All behind one /v1 endpoint, plus any custom OpenAI-compatible endpoint. Smart routing, automatic failover, encrypted keys. Personal experimentation only.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 504</p>"
+    },
+    {
+      "id": "7fe32979b285",
+      "title": "affaan-m/ECC",
+      "content": "GitHub Repository: affaan-m/ECC\nDescription: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.\nLanguage: JavaScript\nStars Today: 490",
+      "url": "https://github.com/affaan-m/ECC",
+      "author": "affaan-m",
+      "published": "2026-08-31T11:18:36.539550+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 490 stars today indicate strong developer attention. **Why it matters:** It consolidates agent context, memory, and retrieval into a shared layer, which can reduce duplicated infrastructure in multi-agent systems.",
+      "importance_score": 84,
+      "reasoning": "Ranked on current community velocity (490 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "JavaScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "affaan-m/ECC",
+        "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+        "stars": 0,
+        "stars_today": "490",
+        "language": "JavaScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.539550+00:00",
+        "hn_score": 490,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 490 stars today indicate strong developer attention. <strong>Why it matters:</strong> It consolidates agent context, memory, and retrieval into a shared layer, which can reduce duplicated infrastructure in multi-agent systems.</p>",
+      "content_html": "<p>GitHub Repository: affaan-m/ECC</p>\n<p>Description: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</p>\n<p>Language: JavaScript</p>\n<p>Stars Today: 490</p>"
+    },
+    {
+      "id": "cede89c567e6",
+      "title": "calesthio/OpenMontage",
+      "content": "GitHub Repository: calesthio/OpenMontage\nDescription: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.\nLanguage: Python\nStars Today: 480",
+      "url": "https://github.com/calesthio/OpenMontage",
+      "author": "calesthio",
+      "published": "2026-08-31T11:18:38.198444+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 480 stars today indicate strong developer attention. **Why it matters:** It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.",
+      "importance_score": 84,
+      "reasoning": "Ranked on current community velocity (480 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "calesthio/OpenMontage",
+        "description": "World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.",
+        "stars": 0,
+        "stars_today": "480",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.198444+00:00",
+        "hn_score": 480,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 480 stars today indicate strong developer attention. <strong>Why it matters:</strong> It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.</p>",
+      "content_html": "<p>GitHub Repository: calesthio/OpenMontage</p>\n<p>Description: World's first open-source, agentic video production system. 12 production pipelines, 100+ tools, 700+ agent skill and production-knowledge files. Turn your AI coding assistant into a full video production studio.</p>\n<p>Language: Python</p>\n<p>Stars Today: 480</p>"
+    },
+    {
+      "id": "f90cc50b79fe",
+      "title": "jingyaogong/minimind",
+      "content": "GitHub Repository: jingyaogong/minimind\nDescription: 🧠 Train a 64M-parameter LLM from scratch in just 2h!\nLanguage: Python\nStars Today: 472",
+      "url": "https://github.com/jingyaogong/minimind",
+      "author": "jingyaogong",
+      "published": "2026-08-31T11:18:36.538331+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 472 stars today indicate strong developer attention. **Why it matters:** It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.",
+      "importance_score": 83,
+      "reasoning": "Ranked on current community velocity (472 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "jingyaogong/minimind",
+        "description": "🧠 Train a 64M-parameter LLM from scratch in just 2h!",
+        "stars": 0,
+        "stars_today": "472",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.538331+00:00",
+        "hn_score": 472,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 472 stars today indicate strong developer attention. <strong>Why it matters:</strong> It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.</p>",
+      "content_html": "<p>GitHub Repository: jingyaogong/minimind</p>\n<p>Description: 🧠 Train a 64M-parameter LLM from scratch in just 2h!</p>\n<p>Language: Python</p>\n<p>Stars Today: 472</p>"
+    },
+    {
+      "id": "65a180d88f01",
+      "title": "kaifcodec/user-scanner",
+      "content": "GitHub Repository: kaifcodec/user-scanner\nDescription: 🕵️‍♂️ (2-in-1) Email & Username OSINT suite for deep data extraction just from a single Email/Username. Analyzes 465+ actively maintained scan vectors (175+ email / 290+ username) for security research, investigations, and digital footprinting.\nLanguage: Python\nStars Today: 462",
+      "url": "https://github.com/kaifcodec/user-scanner",
+      "author": "kaifcodec",
+      "published": "2026-08-31T11:18:36.539926+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 462 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for 🕵️‍♂️ (2-in-1) Email & Username OSINT suite for deep data extraction just from a single Email/Username. Analyzes 465+ actively maintained scan vectors (175+ email / 290+…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 83,
+      "reasoning": "Ranked on current community velocity (462 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "kaifcodec/user-scanner",
+        "description": "🕵️‍♂️ (2-in-1) Email & Username OSINT suite for deep data extraction just from a single Email/Username. Analyzes 465+ actively maintained scan vectors (175+ email / 290+ username) for security research, investigations, and digital footprinting.",
+        "stars": 0,
+        "stars_today": "462",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.539926+00:00",
+        "hn_score": 462,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 462 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for 🕵️‍♂️ (2-in-1) Email &amp; Username OSINT suite for deep data extraction just from a single Email/Username. Analyzes 465+ actively maintained scan vectors (175+ email / 290+…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: kaifcodec/user-scanner</p>\n<p>Description: 🕵️‍♂️ (2-in-1) Email &amp; Username OSINT suite for deep data extraction just from a single Email/Username. Analyzes 465+ actively maintained scan vectors (175+ email / 290+ username) for security research, investigations, and digital footprinting.</p>\n<p>Language: Python</p>\n<p>Stars Today: 462</p>"
+    },
+    {
+      "id": "2027991d8a65",
+      "title": "every-app/open-seo",
+      "content": "GitHub Repository: every-app/open-seo\nDescription: Open source alternative to Semrush and Ahrefs\nLanguage: TypeScript\nStars Today: 469",
+      "url": "https://github.com/every-app/open-seo",
+      "author": "every-app",
+      "published": "2026-08-31T11:18:36.540197+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 469 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for open source alternative to Semrush and Ahrefs; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 83,
+      "reasoning": "Ranked on current community velocity (469 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "every-app/open-seo",
+        "description": "Open source alternative to Semrush and Ahrefs",
+        "stars": 0,
+        "stars_today": "469",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.540197+00:00",
+        "hn_score": 469,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 469 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for open source alternative to Semrush and Ahrefs; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: every-app/open-seo</p>\n<p>Description: Open source alternative to Semrush and Ahrefs</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 469</p>"
+    },
+    {
+      "id": "e7e5cff2c23a",
+      "title": "hieunc229/mailflare",
+      "content": "GitHub Repository: hieunc229/mailflare\nDescription: Professional email for professionals and teams\nLanguage: TypeScript\nStars Today: 450",
+      "url": "https://github.com/hieunc229/mailflare",
+      "author": "hieunc229",
+      "published": "2026-08-31T11:18:39.706622+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 450 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for professional email for professionals and teams; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 82,
+      "reasoning": "Ranked on current community velocity (450 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "hieunc229/mailflare",
+        "description": "Professional email for professionals and teams",
+        "stars": 0,
+        "stars_today": "450",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.706622+00:00",
+        "hn_score": 450,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 450 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for professional email for professionals and teams; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: hieunc229/mailflare</p>\n<p>Description: Professional email for professionals and teams</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 450</p>"
+    },
+    {
+      "id": "9b4a3877ccf1",
+      "title": "debpalash/VoiceStudio",
+      "content": "GitHub Repository: debpalash/VoiceStudio\nDescription: VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.\nLanguage: Python\nStars Today: 400",
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "author": "debpalash",
+      "published": "2026-08-31T11:18:38.196625+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 400 stars today indicate strong developer attention. **Why it matters:** It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.",
+      "importance_score": 80,
+      "reasoning": "Ranked on current community velocity (400 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "debpalash/VoiceStudio",
+        "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages.",
+        "stars": 0,
+        "stars_today": "400",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.196625+00:00",
+        "hn_score": 400,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 400 stars today indicate strong developer attention. <strong>Why it matters:</strong> It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.</p>",
+      "content_html": "<p>GitHub Repository: debpalash/VoiceStudio</p>\n<p>Description: VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription &amp; audiobook creation in 646 languages.</p>\n<p>Language: Python</p>\n<p>Stars Today: 400</p>"
+    },
+    {
+      "id": "1d3344687186",
+      "title": "abi/screenshot-to-code",
+      "content": "GitHub Repository: abi/screenshot-to-code\nDescription: Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)\nLanguage: Python\nStars Today: 418",
+      "url": "https://github.com/abi/screenshot-to-code",
+      "author": "abi",
+      "published": "2026-08-31T11:18:38.197517+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 418 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue); teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 80,
+      "reasoning": "Ranked on current community velocity (418 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "abi/screenshot-to-code",
+        "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
+        "stars": 0,
+        "stars_today": "418",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.197517+00:00",
+        "hn_score": 418,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 418 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue); teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: abi/screenshot-to-code</p>\n<p>Description: Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)</p>\n<p>Language: Python</p>\n<p>Stars Today: 418</p>"
+    },
+    {
+      "id": "947b7c1c48ee",
+      "title": "p-e-w/heretic",
+      "content": "GitHub Repository: p-e-w/heretic\nDescription: Fully automatic censorship removal for language models\nLanguage: Python\nStars Today: 369",
+      "url": "https://github.com/p-e-w/heretic",
+      "author": "p-e-w",
+      "published": "2026-08-31T11:18:36.540474+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 369 stars today indicate strong developer attention. **Why it matters:** It is attracting attention for fully automatic censorship removal for language models; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 78,
+      "reasoning": "Ranked on current community velocity (369 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "p-e-w/heretic",
+        "description": "Fully automatic censorship removal for language models",
+        "stars": 0,
+        "stars_today": "369",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.540474+00:00",
+        "hn_score": 369,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 369 stars today indicate strong developer attention. <strong>Why it matters:</strong> It is attracting attention for fully automatic censorship removal for language models; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: p-e-w/heretic</p>\n<p>Description: Fully automatic censorship removal for language models</p>\n<p>Language: Python</p>\n<p>Stars Today: 369</p>"
+    },
+    {
+      "id": "402019fc9892",
+      "title": "MakazhanAlpamys/Soup",
+      "content": "GitHub Repository: MakazhanAlpamys/Soup\nDescription: Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.\nLanguage: Python\nStars Today: 349",
+      "url": "https://github.com/MakazhanAlpamys/Soup",
+      "author": "MakazhanAlpamys",
+      "published": "2026-08-31T11:18:38.198100+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 349 stars today indicate strong developer attention. **Why it matters:** It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.",
+      "importance_score": 77,
+      "reasoning": "Ranked on current community velocity (349 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "MakazhanAlpamys/Soup",
+        "description": "Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.",
+        "stars": 0,
+        "stars_today": "349",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.198100+00:00",
+        "hn_score": 349,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 349 stars today indicate strong developer attention. <strong>Why it matters:</strong> It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.</p>",
+      "content_html": "<p>GitHub Repository: MakazhanAlpamys/Soup</p>\n<p>Description: Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.</p>\n<p>Language: Python</p>\n<p>Stars Today: 349</p>"
+    },
+    {
+      "id": "d8bfd89fd055",
+      "title": "Osmantic/ODS",
+      "content": "GitHub Repository: Osmantic/ODS\nDescription: Turn your PC, Mac, or Linux box into an AI server. LLM inference, chat UI, voice, agents, workflows, RAG, and image generation.\nLanguage: Python\nStars Today: 331",
+      "url": "https://github.com/Osmantic/ODS",
+      "author": "Osmantic",
+      "published": "2026-08-31T11:18:36.538609+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 331 stars today indicate strong developer attention. **Why it matters:** It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.",
+      "importance_score": 76,
+      "reasoning": "Ranked on current community velocity (331 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "Osmantic/ODS",
+        "description": "Turn your PC, Mac, or Linux box into an AI server. LLM inference, chat UI, voice, agents, workflows, RAG, and image generation.",
+        "stars": 0,
+        "stars_today": "331",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.538609+00:00",
+        "hn_score": 331,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 331 stars today indicate strong developer attention. <strong>Why it matters:</strong> It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.</p>",
+      "content_html": "<p>GitHub Repository: Osmantic/ODS</p>\n<p>Description: Turn your PC, Mac, or Linux box into an AI server. LLM inference, chat UI, voice, agents, workflows, RAG, and image generation.</p>\n<p>Language: Python</p>\n<p>Stars Today: 331</p>"
+    },
+    {
+      "id": "477fe2810d17",
+      "title": "unclecode/crawl4ai",
+      "content": "GitHub Repository: unclecode/crawl4ai\nDescription: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN\nLanguage: Python\nStars Today: 221",
+      "url": "https://github.com/unclecode/crawl4ai",
+      "author": "unclecode",
+      "published": "2026-08-31T11:18:38.195144+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 221 stars today indicate emerging developer interest. **Why it matters:** It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.",
+      "importance_score": 71,
+      "reasoning": "Ranked on current community velocity (221 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "unclecode/crawl4ai",
+        "description": "🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler & Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN",
+        "stars": 0,
+        "stars_today": "221",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.195144+00:00",
+        "hn_score": 221,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 221 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.</p>",
+      "content_html": "<p>GitHub Repository: unclecode/crawl4ai</p>\n<p>Description: 🚀🤖 Crawl4AI: Open-source LLM Friendly Web Crawler &amp; Scraper. Don't be shy, join here: https://discord.gg/jP8KfhDhyN</p>\n<p>Language: Python</p>\n<p>Stars Today: 221</p>"
+    },
+    {
+      "id": "bdeb6f17e10a",
+      "title": "mvanhorn/last30days-skill",
+      "content": "GitHub Repository: mvanhorn/last30days-skill\nDescription: AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary\nLanguage: Python\nStars Today: 230",
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "author": "mvanhorn",
+      "published": "2026-08-31T11:18:38.196289+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 230 stars today indicate emerging developer interest. **Why it matters:** It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.",
+      "importance_score": 71,
+      "reasoning": "Ranked on current community velocity (230 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "mvanhorn/last30days-skill",
+        "description": "AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary",
+        "stars": 0,
+        "stars_today": "230",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.196289+00:00",
+        "hn_score": 230,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 230 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.</p>",
+      "content_html": "<p>GitHub Repository: mvanhorn/last30days-skill</p>\n<p>Description: AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary</p>\n<p>Language: Python</p>\n<p>Stars Today: 230</p>"
+    },
+    {
+      "id": "c8e554c07816",
+      "title": "firecrawl/pdf-inspector",
+      "content": "GitHub Repository: firecrawl/pdf-inspector\nDescription: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.\nLanguage: Rust\nStars Today: 199",
+      "url": "https://github.com/firecrawl/pdf-inspector",
+      "author": "firecrawl",
+      "published": "2026-08-31T11:18:36.541017+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 199 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 69,
+      "reasoning": "Ranked on current community velocity (199 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Rust"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "firecrawl/pdf-inspector",
+        "description": "Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.",
+        "stars": 0,
+        "stars_today": "199",
+        "language": "Rust",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.541017+00:00",
+        "hn_score": 199,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 199 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: firecrawl/pdf-inspector</p>\n<p>Description: Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</p>\n<p>Language: Rust</p>\n<p>Stars Today: 199</p>"
+    },
+    {
+      "id": "d846cf91dcb1",
+      "title": "abhigyanpatwari/GitNexus",
+      "content": "GitHub Repository: abhigyanpatwari/GitNexus\nDescription: GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github, Gitlab, Azure, Local) or ZIP file, and get an interactive knowledge graph with a built in Graph RAG Agent. Perfect for code exploration\nLanguage: TypeScript\nStars Today: 182",
+      "url": "https://github.com/abhigyanpatwari/GitNexus",
+      "author": "abhigyanpatwari",
+      "published": "2026-08-31T11:18:39.706010+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 182 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for gitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github,…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 69,
+      "reasoning": "Ranked on current community velocity (182 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "abhigyanpatwari/GitNexus",
+        "description": "GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github, Gitlab, Azure, Local) or ZIP file, and get an interactive knowledge graph with a built in Graph RAG Agent. Perfect for code exploration",
+        "stars": 0,
+        "stars_today": "182",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.706010+00:00",
+        "hn_score": 182,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 182 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for gitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github,…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: abhigyanpatwari/GitNexus</p>\n<p>Description: GitNexus: The Zero-Server Code Intelligence Engine - GitNexus is a client-side knowledge graph creator that runs entirely in your browser. Drop in a git repository (Github, Gitlab, Azure, Local) or ZIP file, and get an interactive knowledge graph with a built in Graph RAG Agent. Perfect for code exploration</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 182</p>"
+    },
+    {
+      "id": "69c0eb2d2102",
+      "title": "pollen-robotics/microduck_rl",
+      "content": "GitHub Repository: pollen-robotics/microduck_rl\nDescription: RL training environments for Microduck (mjlab)\nLanguage: Python\nStars Today: 168",
+      "url": "https://github.com/pollen-robotics/microduck_rl",
+      "author": "pollen-robotics",
+      "published": "2026-08-31T11:18:36.541283+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 168 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for rL training environments for Microduck (mjlab); teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 68,
+      "reasoning": "Ranked on current community velocity (168 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "pollen-robotics/microduck_rl",
+        "description": "RL training environments for Microduck (mjlab)",
+        "stars": 0,
+        "stars_today": "168",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.541283+00:00",
+        "hn_score": 168,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 168 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for rL training environments for Microduck (mjlab); teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: pollen-robotics/microduck_rl</p>\n<p>Description: RL training environments for Microduck (mjlab)</p>\n<p>Language: Python</p>\n<p>Stars Today: 168</p>"
+    },
+    {
+      "id": "8f21689f9359",
+      "title": "koala73/worldmonitor",
+      "content": "GitHub Repository: koala73/worldmonitor\nDescription: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface\nLanguage: TypeScript\nStars Today: 175",
+      "url": "https://github.com/koala73/worldmonitor",
+      "author": "koala73",
+      "published": "2026-08-31T11:18:39.705295+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 175 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 68,
+      "reasoning": "Ranked on current community velocity (175 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "koala73/worldmonitor",
+        "description": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+        "stars": 0,
+        "stars_today": "175",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.705295+00:00",
+        "hn_score": 175,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 175 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: koala73/worldmonitor</p>\n<p>Description: Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 175</p>"
+    },
+    {
+      "id": "5d33f7f907bb",
+      "title": "securo-finance/securo",
+      "content": "GitHub Repository: securo-finance/securo\nDescription: Open-source personal finance manager. Self-hosted, privacy-first.\nLanguage: Python\nStars Today: 125",
+      "url": "https://github.com/securo-finance/securo",
+      "author": "securo-finance",
+      "published": "2026-08-31T11:18:38.195719+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 125 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for open-source personal finance manager. Self-hosted, privacy-first; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 66,
+      "reasoning": "Ranked on current community velocity (125 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "securo-finance/securo",
+        "description": "Open-source personal finance manager. Self-hosted, privacy-first.",
+        "stars": 0,
+        "stars_today": "125",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.195719+00:00",
+        "hn_score": 125,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 125 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for open-source personal finance manager. Self-hosted, privacy-first; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: securo-finance/securo</p>\n<p>Description: Open-source personal finance manager. Self-hosted, privacy-first.</p>\n<p>Language: Python</p>\n<p>Stars Today: 125</p>"
+    },
+    {
+      "id": "2d46a48780df",
+      "title": "checkstyle/checkstyle",
+      "content": "GitHub Repository: checkstyle/checkstyle\nDescription: Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.\nLanguage: Java\nStars Today: 115",
+      "url": "https://github.com/checkstyle/checkstyle",
+      "author": "checkstyle",
+      "published": "2026-08-31T11:18:36.538888+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 115 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 65,
+      "reasoning": "Ranked on current community velocity (115 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Java"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "checkstyle/checkstyle",
+        "description": "Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.",
+        "stars": 0,
+        "stars_today": "115",
+        "language": "Java",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.538888+00:00",
+        "hn_score": 115,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 115 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: checkstyle/checkstyle</p>\n<p>Description: Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.</p>\n<p>Language: Java</p>\n<p>Stars Today: 115</p>"
+    },
+    {
+      "id": "5a18e9c290d9",
+      "title": "Waishnav/devspace",
+      "content": "GitHub Repository: Waishnav/devspace\nDescription: Minimal Coding Agent Harness over MCP for ChatGPT, Claude, Hermes, Grok Bot, OpenClaw\nLanguage: TypeScript\nStars Today: 108",
+      "url": "https://github.com/Waishnav/devspace",
+      "author": "Waishnav",
+      "published": "2026-08-31T11:18:39.707917+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 108 stars today indicate emerging developer interest. **Why it matters:** It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.",
+      "importance_score": 65,
+      "reasoning": "Ranked on current community velocity (108 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "Waishnav/devspace",
+        "description": "Minimal Coding Agent Harness over MCP for ChatGPT, Claude, Hermes, Grok Bot, OpenClaw",
+        "stars": 0,
+        "stars_today": "108",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.707917+00:00",
+        "hn_score": 108,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 108 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.</p>",
+      "content_html": "<p>GitHub Repository: Waishnav/devspace</p>\n<p>Description: Minimal Coding Agent Harness over MCP for ChatGPT, Claude, Hermes, Grok Bot, OpenClaw</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 108</p>"
+    },
+    {
+      "id": "1c5d09d5ee06",
+      "title": "smicallef/spiderfoot",
+      "content": "GitHub Repository: smicallef/spiderfoot\nDescription: SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.\nLanguage: Python\nStars Today: 93",
+      "url": "https://github.com/smicallef/spiderfoot",
+      "author": "smicallef",
+      "published": "2026-08-31T11:18:38.195443+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 93 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for spiderFoot automates OSINT for threat intelligence and mapping your attack surface; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 64,
+      "reasoning": "Ranked on current community velocity (93 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "concerned",
+      "continuation": null,
+      "metadata": {
+        "title": "smicallef/spiderfoot",
+        "description": "SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.",
+        "stars": 0,
+        "stars_today": "93",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.195443+00:00",
+        "hn_score": 93,
+        "sentiment": "concerned"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 93 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for spiderFoot automates OSINT for threat intelligence and mapping your attack surface; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: smicallef/spiderfoot</p>\n<p>Description: SpiderFoot automates OSINT for threat intelligence and mapping your attack surface.</p>\n<p>Language: Python</p>\n<p>Stars Today: 93</p>"
+    },
+    {
+      "id": "b66df3423e8b",
+      "title": "handsomestWei/patent-disclosure-skill",
+      "content": "GitHub Repository: handsomestWei/patent-disclosure-skill\nDescription: 中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。\nLanguage: Python\nStars Today: 62",
+      "url": "https://github.com/handsomestWei/patent-disclosure-skill",
+      "author": "handsomestWei",
+      "published": "2026-08-31T11:18:36.540746+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 62 stars today indicate emerging developer interest. **Why it matters:** It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (62 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "handsomestWei/patent-disclosure-skill",
+        "description": "中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。",
+        "stars": 0,
+        "stars_today": "62",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.540746+00:00",
+        "hn_score": 62,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 62 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It packages reusable agent capabilities instead of another model layer, signaling a shift toward portable, governed workflow components.</p>",
+      "content_html": "<p>GitHub Repository: handsomestWei/patent-disclosure-skill</p>\n<p>Description: 中国专利.skill：专利点挖掘与交底书（发明/实用/外观）编写，通俗解读专利，嗅探政策动向，辅助审查答复。</p>\n<p>Language: Python</p>\n<p>Stars Today: 62</p>"
+    },
+    {
+      "id": "40c780651754",
+      "title": "microsoft/qlib",
+      "content": "GitHub Repository: microsoft/qlib\nDescription: Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process.\nLanguage: Python\nStars Today: 69",
+      "url": "https://github.com/microsoft/qlib",
+      "author": "microsoft",
+      "published": "2026-08-31T11:18:38.196014+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 69 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (69 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "microsoft/qlib",
+        "description": "Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&D process.",
+        "stars": 0,
+        "stars_today": "69",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.196014+00:00",
+        "hn_score": 69,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 69 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML…; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: microsoft/qlib</p>\n<p>Description: Qlib is an AI-oriented Quant investment platform that aims to use AI tech to empower Quant Research, from exploring ideas to implementing productions. Qlib supports diverse ML modeling paradigms, including supervised learning, market dynamics modeling, and RL, and is now equipped with https://github.com/microsoft/RD-Agent to automate R&amp;D process.</p>\n<p>Language: Python</p>\n<p>Stars Today: 69</p>"
+    },
+    {
+      "id": "3c3c44ea372f",
+      "title": "ionic-team/capacitor",
+      "content": "GitHub Repository: ionic-team/capacitor\nDescription: Build cross-platform Native Progressive Web Apps for iOS, Android, and the Web ⚡️\nLanguage: TypeScript\nStars Today: 79",
+      "url": "https://github.com/ionic-team/capacitor",
+      "author": "ionic-team",
+      "published": "2026-08-31T11:18:39.707260+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 79 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for build cross-platform Native Progressive Web Apps for iOS, Android, and the Web ⚡️; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (79 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "ionic-team/capacitor",
+        "description": "Build cross-platform Native Progressive Web Apps for iOS, Android, and the Web ⚡️",
+        "stars": 0,
+        "stars_today": "79",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.707260+00:00",
+        "hn_score": 79,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 79 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for build cross-platform Native Progressive Web Apps for iOS, Android, and the Web ⚡️; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: ionic-team/capacitor</p>\n<p>Description: Build cross-platform Native Progressive Web Apps for iOS, Android, and the Web ⚡️</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 79</p>"
+    },
+    {
+      "id": "e68a2e567001",
+      "title": "paperclipai/paperclip",
+      "content": "GitHub Repository: paperclipai/paperclip\nDescription: The open-source app everyone uses to manage agents at work\nLanguage: TypeScript\nStars Today: 77",
+      "url": "https://github.com/paperclipai/paperclip",
+      "author": "paperclipai",
+      "published": "2026-08-31T11:18:39.708494+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 77 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for the open-source app everyone uses to manage agents at work; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 63,
+      "reasoning": "Ranked on current community velocity (77 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "paperclipai/paperclip",
+        "description": "The open-source app everyone uses to manage agents at work",
+        "stars": 0,
+        "stars_today": "77",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.708494+00:00",
+        "hn_score": 77,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 77 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for the open-source app everyone uses to manage agents at work; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: paperclipai/paperclip</p>\n<p>Description: The open-source app everyone uses to manage agents at work</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 77</p>"
+    },
+    {
+      "id": "3ec6c72648a8",
+      "title": "majd/ipatool",
+      "content": "GitHub Repository: majd/ipatool\nDescription: Command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store.\nLanguage: Go\nStars Today: 58",
+      "url": "https://github.com/majd/ipatool",
+      "author": "majd",
+      "published": "2026-08-31T11:18:36.538016+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 58 stars today indicate emerging developer interest. **Why it matters:** It is attracting attention for command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (58 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Go"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "majd/ipatool",
+        "description": "Command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store.",
+        "stars": 0,
+        "stars_today": "58",
+        "language": "Go",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:36.538016+00:00",
+        "hn_score": 58,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 58 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It is attracting attention for command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: majd/ipatool</p>\n<p>Description: Command-line tool that allows searching and downloading app packages (known as ipa files) for iOS, iPadOS, tvOS, and visionOS from the App Store.</p>\n<p>Language: Go</p>\n<p>Stars Today: 58</p>"
+    },
+    {
+      "id": "a7f85c07da19",
+      "title": "PurpleDoubleD/locally-uncensored",
+      "content": "GitHub Repository: PurpleDoubleD/locally-uncensored\nDescription: Plug-and-play local AI studio: uncensored chat, image & video generation, coding agent. Runs abliterated LLMs + ComfyUI 100% offline. One installer, no Docker, no cloud.\nLanguage: TypeScript\nStars Today: 57",
+      "url": "https://github.com/PurpleDoubleD/locally-uncensored",
+      "author": "PurpleDoubleD",
+      "published": "2026-08-31T11:18:39.705664+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 57 stars today indicate emerging developer interest. **Why it matters:** It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.",
+      "importance_score": 62,
+      "reasoning": "Ranked on current community velocity (57 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "PurpleDoubleD/locally-uncensored",
+        "description": "Plug-and-play local AI studio: uncensored chat, image & video generation, coding agent. Runs abliterated LLMs + ComfyUI 100% offline. One installer, no Docker, no cloud.",
+        "stars": 0,
+        "stars_today": "57",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.705664+00:00",
+        "hn_score": 57,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 57 stars today indicate emerging developer interest. <strong>Why it matters:</strong> It compresses AI-assisted media production into a repeatable workflow, making content throughput and human review the key adoption questions.</p>",
+      "content_html": "<p>GitHub Repository: PurpleDoubleD/locally-uncensored</p>\n<p>Description: Plug-and-play local AI studio: uncensored chat, image &amp; video generation, coding agent. Runs abliterated LLMs + ComfyUI 100% offline. One installer, no Docker, no cloud.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 57</p>"
+    },
+    {
+      "id": "26d6c645463b",
+      "title": "Open-LLM-VTuber/Open-LLM-VTuber",
+      "content": "GitHub Repository: Open-LLM-VTuber/Open-LLM-VTuber\nDescription: Talk to any LLM with hands-free voice interaction, voice interruption, and Live2D taking face running locally across platforms\nLanguage: Python\nStars Today: 21",
+      "url": "https://github.com/Open-LLM-VTuber/Open-LLM-VTuber",
+      "author": "Open-LLM-VTuber",
+      "published": "2026-08-31T11:18:38.197178+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 21 stars today indicate early developer interest. **Why it matters:** It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (21 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "Open-LLM-VTuber/Open-LLM-VTuber",
+        "description": "Talk to any LLM with hands-free voice interaction, voice interruption, and Live2D taking face running locally across platforms",
+        "stars": 0,
+        "stars_today": "21",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.197178+00:00",
+        "hn_score": 21,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 21 stars today indicate early developer interest. <strong>Why it matters:</strong> It can lower the friction of deploying or operating models, so its value depends on measured gains in latency, cost, and hardware efficiency.</p>",
+      "content_html": "<p>GitHub Repository: Open-LLM-VTuber/Open-LLM-VTuber</p>\n<p>Description: Talk to any LLM with hands-free voice interaction, voice interruption, and Live2D taking face running locally across platforms</p>\n<p>Language: Python</p>\n<p>Stars Today: 21</p>"
+    },
+    {
+      "id": "02f95b006f90",
+      "title": "mukul975/cve-mcp-server",
+      "content": "GitHub Repository: mukul975/cve-mcp-server\nDescription: Production-grade MCP server giving Claude 27 security intelligence tools across 21 APIs — CVE lookup, EPSS scoring, CISA KEV, MITRE ATT&CK, Shodan, VirusTotal, and more.\nLanguage: Python\nStars Today: 29",
+      "url": "https://github.com/mukul975/cve-mcp-server",
+      "author": "mukul975",
+      "published": "2026-08-31T11:18:38.197826+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 29 stars today indicate early developer interest. **Why it matters:** Its security automation can make testing and control mapping more repeatable across AI workflows, provided teams validate coverage and benchmark quality.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (29 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "mukul975/cve-mcp-server",
+        "description": "Production-grade MCP server giving Claude 27 security intelligence tools across 21 APIs — CVE lookup, EPSS scoring, CISA KEV, MITRE ATT&CK, Shodan, VirusTotal, and more.",
+        "stars": 0,
+        "stars_today": "29",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.197826+00:00",
+        "hn_score": 29,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 29 stars today indicate early developer interest. <strong>Why it matters:</strong> Its security automation can make testing and control mapping more repeatable across AI workflows, provided teams validate coverage and benchmark quality.</p>",
+      "content_html": "<p>GitHub Repository: mukul975/cve-mcp-server</p>\n<p>Description: Production-grade MCP server giving Claude 27 security intelligence tools across 21 APIs — CVE lookup, EPSS scoring, CISA KEV, MITRE ATT&amp;CK, Shodan, VirusTotal, and more.</p>\n<p>Language: Python</p>\n<p>Stars Today: 29</p>"
+    },
+    {
+      "id": "bf5b496b2110",
+      "title": "siyuan-note/siyuan",
+      "content": "GitHub Repository: siyuan-note/siyuan\nDescription: An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作\nLanguage: TypeScript\nStars Today: 29",
+      "url": "https://github.com/siyuan-note/siyuan",
+      "author": "siyuan-note",
+      "published": "2026-08-31T11:18:39.707573+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 29 stars today indicate early developer interest. **Why it matters:** It is attracting attention for an open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 61,
+      "reasoning": "Ranked on current community velocity (29 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "siyuan-note/siyuan",
+        "description": "An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作",
+        "stars": 0,
+        "stars_today": "29",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.707573+00:00",
+        "hn_score": 29,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 29 stars today indicate early developer interest. <strong>Why it matters:</strong> It is attracting attention for an open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: siyuan-note/siyuan</p>\n<p>Description: An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 29</p>"
+    },
+    {
+      "id": "eed7a25b6a74",
+      "title": "PrefectHQ/prefect",
+      "content": "GitHub Repository: PrefectHQ/prefect\nDescription: Prefect is a workflow orchestration framework for building resilient data pipelines in Python.\nLanguage: Python\nStars Today: 12",
+      "url": "https://github.com/PrefectHQ/prefect",
+      "author": "PrefectHQ",
+      "published": "2026-08-31T11:18:38.196903+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 12 stars today indicate early developer interest. **Why it matters:** It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (12 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "Python"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "PrefectHQ/prefect",
+        "description": "Prefect is a workflow orchestration framework for building resilient data pipelines in Python.",
+        "stars": 0,
+        "stars_today": "12",
+        "language": "Python",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:38.196903+00:00",
+        "hn_score": 12,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 12 stars today indicate early developer interest. <strong>Why it matters:</strong> It targets the coordination layer around agents, making it relevant for teams that need repeatable execution, isolation, and workflow control.</p>",
+      "content_html": "<p>GitHub Repository: PrefectHQ/prefect</p>\n<p>Description: Prefect is a workflow orchestration framework for building resilient data pipelines in Python.</p>\n<p>Language: Python</p>\n<p>Stars Today: 12</p>"
+    },
+    {
+      "id": "7afd74398189",
+      "title": "Hiram-Wong/zyfun",
+      "content": "GitHub Repository: Hiram-Wong/zyfun\nDescription: 跨平台桌面端视频资源播放器,免费高颜值.\nLanguage: TypeScript\nStars Today: 6",
+      "url": "https://github.com/Hiram-Wong/zyfun",
+      "author": "Hiram-Wong",
+      "published": "2026-08-31T11:18:39.706325+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 6 stars today indicate early developer interest. **Why it matters:** It is attracting attention for 跨平台桌面端视频资源播放器,免费高颜值; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (6 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "Hiram-Wong/zyfun",
+        "description": "跨平台桌面端视频资源播放器,免费高颜值.",
+        "stars": 0,
+        "stars_today": "6",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.706325+00:00",
+        "hn_score": 6,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 6 stars today indicate early developer interest. <strong>Why it matters:</strong> It is attracting attention for 跨平台桌面端视频资源播放器,免费高颜值; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: Hiram-Wong/zyfun</p>\n<p>Description: 跨平台桌面端视频资源播放器,免费高颜值.</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 6</p>"
+    },
+    {
+      "id": "1f30411b7b61",
+      "title": "wonderwhy-er/DesktopCommanderMCP",
+      "content": "GitHub Repository: wonderwhy-er/DesktopCommanderMCP\nDescription: This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities\nLanguage: TypeScript\nStars Today: 12",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+      "author": "wonderwhy-er",
+      "published": "2026-08-31T11:18:39.706955+00:00",
+      "source": "github_trending",
+      "source_type": "github_trending",
+      "tags": [
+        "github-trending"
+      ],
+      "summary": "**Adoption signal:** 12 stars today indicate early developer interest. **Why it matters:** It is attracting attention for this is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities; teams should verify that this capability removes a concrete workflow bottleneck before adoption.",
+      "importance_score": 60,
+      "reasoning": "Ranked on current community velocity (12 stars today) and potential relevance to enterprise AI delivery.",
+      "themes": [
+        "Open Source",
+        "Developer Tools",
+        "TypeScript"
+      ],
+      "sentiment": "neutral",
+      "continuation": null,
+      "metadata": {
+        "title": "wonderwhy-er/DesktopCommanderMCP",
+        "description": "This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities",
+        "stars": 0,
+        "stars_today": "12",
+        "language": "TypeScript",
+        "topics": [
+          "github-trending"
+        ],
+        "created": "",
+        "updated": "2026-08-31T11:18:39.706955+00:00",
+        "hn_score": 12,
+        "sentiment": "neutral"
+      },
+      "related_sources": [],
+      "summary_html": "<p><strong>Adoption signal:</strong> 12 stars today indicate early developer interest. <strong>Why it matters:</strong> It is attracting attention for this is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities; teams should verify that this capability removes a concrete workflow bottleneck before adoption.</p>",
+      "content_html": "<p>GitHub Repository: wonderwhy-er/DesktopCommanderMCP</p>\n<p>Description: This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities</p>\n<p>Language: TypeScript</p>\n<p>Stars Today: 12</p>"
+    }
+  ]
+}
