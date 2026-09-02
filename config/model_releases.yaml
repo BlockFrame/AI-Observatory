@@ -10,9 +10,14 @@
 #   - Web search verification for specific releases (Codex, etc.)
 #
 # Coverage: November 2025 onwards (post Claude Opus 4.8 knowledge cutoff)
-# Last verified: 2026-09-01
+# Last verified: 2026-09-02
 
 openai:
+  # Astra (auto-detected 2026-09-02)
+  Astra:
+    ga_date: "2026-09-01"
+    api_date: "unknown"
+
   # Daybreak-Blue (auto-detected 2026-08-11)
   Daybreak-Blue:
     ga_date: "2026-08-10"
@@ -196,6 +201,11 @@ openai:
     api_date: "2025-10-29"  # OpenRouter (later)
 
 anthropic:
+  # Claude-Fable-5.1 (auto-detected 2026-09-02)
+  Claude-Fable-5.1:
+    ga_date: "2026-09-01"
+    api_date: "unknown"
+
   # Claude-Opus-5 (auto-detected 2026-07-25)
   Claude-Opus-5:
     ga_date: "2026-07-24"
